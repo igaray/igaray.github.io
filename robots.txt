@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://igaray.github.io/sitemap.xml

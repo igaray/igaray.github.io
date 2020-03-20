@@ -170,7 +170,7 @@
                                 
                                     <ul>
                                         
-                                            <li >
+                                            <li class="active">
                                                 <a href="https:&#x2F;&#x2F;igaray.github.io&#x2F;compsci_tools&#x2F;ansible&#x2F;">
                                                     <strong>14.1.</strong>
                                                     Ansible
@@ -268,18 +268,150 @@
                 
                 <div class="book-content">
                     
-                    
+    <h1>Ansible</h1>
+    <h2 id="getting-started-with-ansible">Getting started with ansible</h2>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">controller machine -&gt; managed machine
+
+inventory
+    -&gt; machines to be managed by ansible
+    -&gt; get through:
+        -&gt; inventory file -&gt; /etc/ansible/hosts
+            [webservers]
+            site01
+            site02
+            ...
+            [production]
+            site01
+            site02
+            db01
+            bastion
+
+        -&gt; ansible plug-in
+</span></pre>
+<ol>
+<li>populate <code>/etc/ansible/hosts</code></li>
+</ol>
+<pre style="background-color:#2b303b;">
+<span style="color:#bf616a;">$</span><span style="color:#c0c5ce;"> ansible site01</span><span style="color:#bf616a;"> --u</span><span style="color:#c0c5ce;"> root</span><span style="color:#bf616a;"> -k -m</span><span style="color:#c0c5ce;"> ping
+    </span><span style="color:#bf616a;">-u</span><span style="color:#c0c5ce;"> root : username to configure globally, set in /etc/ansible/ansible.cfg
+                </span><span style="color:#bf616a;">[defaults]
+                remote_user</span><span style="color:#c0c5ce;"> = ...
+                </span><span style="color:#bf616a;">remote_port</span><span style="color:#c0c5ce;"> = ...
+              </span><span style="color:#bf616a;">this</span><span style="color:#c0c5ce;"> file is overrideable in inventory file per group or server
+              </span><span style="color:#bf616a;">to</span><span style="color:#c0c5ce;"> set username in inventory filappend, ansible_ssh_user:
+                </span><span style="color:#bf616a;">[webservers]
+                site01</span><span style="color:#c0c5ce;"> ansible_ssh_user=root
+    </span><span style="color:#bf616a;">-k</span><span style="color:#c0c5ce;">      : prompt for password, leave out to use keys
+    </span><span style="color:#bf616a;">-m</span><span style="color:#c0c5ce;"> ping : module to run
+</span></pre><h2 id="simple-playbooks">Simple playbooks</h2>
+<h2 id="advanced-playbooks">Advanced playbooks</h2>
+<h2 id="larger-projects">Larger projects</h2>
+<h2 id="custom-modules">Custom modules</h2>
+
+
                 </div>
             </div>
 
             <div class="prev-link">
                 
-                
+    
+        
+        
+        <a class="previous" href="https:&#x2F;&#x2F;igaray.github.io&#x2F;compsci_tools&#x2F;"><</a>
+    
+
             </div>
 
             <div class="next-link">
                 
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
                 
+                    
+                
+            
+        
+            
+            
+                <a class="next" href="https:&#x2F;&#x2F;igaray.github.io&#x2F;euskera&#x2F;">></a>
+                
+                
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+    
+
             </div>
         </div>
 
