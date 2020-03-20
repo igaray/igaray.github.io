@@ -147,7 +147,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#blog" id="blog">Blog</a></h1>
+                        <p># Blog</p>
 <ul>
 <li><a href="./2015_07_06_dune_50_years_on.html">Dune, 50 years on</a></li>
 <li><a href="./2015_07_24_the_library_of_babel.html">The tower of Babel</a></li>
@@ -190,21 +190,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
