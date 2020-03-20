@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PKB</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="Introduction.html">Introduction</a></li><li class="expanded "><a href="blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li class="expanded "><a href="blog/2015_07_06_dune_50_years_on.html"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li class="expanded "><a href="blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<h1><a class="header" href="#blog" id="blog">Blog</a></h1>
+<ul>
+<li><a href="blog/./2015_07_06_dune_50_years_on.html">Dune, 50 years on</a></li>
+<li><a href="blog/./2015_07_24_the_library_of_babel.html">The tower of Babel</a></li>
+</ul>
+<h1><a class="header" href="#2015-07-06-dune-50-years-on" id="2015-07-06-dune-50-years-on">2015-07-06 Dune, 50 years on</a></h1>
+<p><a href="http://www.theguardian.com/books/2015/jul/03/dune-50-years-on-science-fiction-novel-world">Original article</a></p>
+<h2><a class="header" href="#quotes" id="quotes">Quotes:</a></h2>
+<blockquote>
+<p>Herbert was a quintessential product of the libertarian culture of the Pacific coast, self-reliant and distrustful of centralised authority, yet with a mile-wide streak of utopian futurism and a concomitant willingness to experiment.</p>
+</blockquote>
+<blockquote>
+<p>This setup owes something to the Mars stories of Edgar Rice Burroughs and Isaac Asimov’s Foundation books, as well as the tales written by Idaho-born food chemist Elmer Edward “Doc” Smith, creator of the popular Lensman space operas of the 1940s and 50s, in which eugenically bred heroes are initiated into a “galactic patrol” of psychically enhanced supercops.
+For Smith, altered states of consciousness were mainly tools for the whiteous and righteous to vaporise whole solar systems of subversives, aliens and others with undesirable traits.
+Herbert, by contrast, was no friend of big government.
+He had also taken peyote and read Jung.
+In 1960, a sailing buddy introduced him to the Zen thinker Alan Watts, who was living on a houseboat in Sausalito.
+Long conversations with Watts, the main conduit by which Zen was permeating the west-coast counterculture, helped turn Herbert’s pacy adventure story into an exploration of temporality, the limits of personal identity and the mind’s relationship to the body.</p>
+</blockquote>
+<blockquote>
+<p>Every fantasy reflects the place and time that produced it.
+If The Lord of the Rings is about the rise of fascism and the trauma of the second world war, and Game of Thrones, with its cynical realpolitik and cast of precarious, entrepreneurial characters is a fairytale of neoliberalism, then Dune is the paradigmatic fantasy of the Age of Aquarius.
+Its concerns – environmental stress, human potential, altered states of consciousness and the developing countries’ revolution against imperialism – are blended together into an era-defining vision of personal and cosmic transformation.</p>
+</blockquote>
+<blockquote>
+<p>Books read differently as the world reforms itself around them, and the Dune of 2015 has geopolitical echoes that it didn’t in 1965, before the oil crisis and 9/11.
+Paul Atreides is a young white man who fulfils a persistent colonial fantasy, that of becoming a God-king to a tribal people. Herbert’s portrayal of the “Fremen” [...] owes much to TE Lawrence and Wilfred Thesiger’s enthusiastic portrayals of the Bedouin of Arabia’s Empty Quarter. Fremen culture is described in words liberally cribbed from Arabic. [...] They are tough, proud and relatively egalitarian. The harshness of their environment has given them an ethic of fellowship and mutual aid. They are what Kipling would have termed “one of the martial races”: absolutely to be admired, possessing none of the negative “oriental” traits – deviousness, laziness and the like.
+They are, however, not carbon-copy Bedouin: Herbert freely mixes elements of Zen into their belief system, and also, intriguingly, suggests that their messianic eschatology – the sense in which they were “waiting” for Paul – may have been seeded in previous millennia by the Bene Gesserit order as part of its murky eugenic plans.
+Herbert, whose female characters are consistently strong and active, has also ditched the strict sexual divisions of actually existing Bedouin culture. Thus Fremen women do their share of fighting and fearlessly contradict their menfolk, though there is still a fair amount of child-bearing and housework to be done while the men are off riding worms.</p>
+</blockquote>
+<blockquote>
+<p>What makes Dune more palatable [...] Game of Thrones, is the sincerity of Herbert’s identification with the Fremen. They are the moral centre of the book, not an ignorant mass to be civilised. Paul does not transform them in his image, but participates in their culture and is himself transformed into the prophet Muad’Dib.</p>
+</blockquote>
+<blockquote>
+<p>By rights, Dune ought to have become a big movie. An attempt by the visionary Chilean film maker Alejandro Jodorowsky to bring it to the screen became one of the great “what if” stories of SF cinema. Jodorowsky had extraordinary collaborators: visuals by Moebius and HR Giger, spaceships designed by the English illustrator Chris Foss. Orson Welles was to play Baron Harkonnen, Salvador Dali the Emperor. Pink Floyd and Magma were on board to do the soundtrack. But Jodorowsky’s prog-tastic project was strangled in the crib by risk-averse Hollywood producers.</p>
+</blockquote>
+<blockquote>
+<p>Actually, the great Dune film did get made. Its name is Star Wars. In early drafts, this story of a desert planet, an evil emperor, and a boy with a galactic destiny also included warring noble houses and a princess guarding a shipment of something called “aura spice”. All manner of borrowings from Dune litter the Star Wars universe, from the Bene Gesserit-like mental powers of the Jedi to the mining and “moisture farming” on Tattooine. Herbert knew he’d been ripped off, and thought he saw the ideas of other SF writers in Lucas’s money-spinning franchise. He and a number of colleagues formed a joke organisation called the We’re Too Big to Sue George Lucas Society.</p>
+</blockquote>
+<blockquote>
+<p>In Dune, he has Kynes, the “First Planetologist of Arrakis” (and hero of the novel’s first draft) muse that “beyond a critical point within a finite space, freedom diminishes as numbers increase.
+This is as true of humans in the finite space of a planetary ecosystem as it is of gas molecules in a sealed flask.
+The human question is not how many can possibly survive within the system, but what kind of existence is possible for those who do survive.” Gloomy Malthusianism was much in vogue in the 1960s and 70s.
+In 1968 Paul Ehrlich’s The Population Bomb became a runaway bestseller, predicting mass starvation unless population growth was restricted.
+The flip side of the green movement’s valorisation of small scale and self-reliance is an uneasy relationship with the masses, and with the idea of economic growth more generally.
+Herbert’s libertarian politics reinforced this worry.
+In Dune, Paul knows that if the desert planet is made to bloom, it will support a larger population, and the ethic of individualism will be eroded.
+He himself, as he is transformed from aristocrat to messiah, loses his individuality and begins to dissolve into myth, becoming part of a Jungian collective unconscious.</p>
+</blockquote>
+<h1><a class="header" href="#2015-07-24-the-library-of-babel-as-seen-from-within" id="2015-07-24-the-library-of-babel-as-seen-from-within">2015-07-24 The Library of Babel as Seen from Within</a></h1>
+<h2><a class="header" href="#keywords-borges-babel-semiotics-language-meaning" id="keywords-borges-babel-semiotics-language-meaning">Keywords: Borges, Babel, Semiotics, Language, Meaning</a></h2>
+<p><a href="http://www.theparisreview.org/blog/2015/07/23/the-library-of-babel-as-seen-from-within/">Original article</a></p>
+<h2><a class="header" href="#quotes-1" id="quotes-1">Quotes:</a></h2>
+<blockquote>
+<p>The story describes a universal library containing, in 410-page volumes, every possible permutation of twenty-two letters, spaces, commas, and periods—every book that’s ever been written and every book that ever could be, drowned out by endless pages of gibberish. Its librarians are addicted to the search for certain master texts, the complete catalog of the library, or the future history of one’s own life, but their quest inevitably ends in failure, despair, even suicide.</p>
+</blockquote>
+<blockquote>
+<p>Though the story’s librarian-narrator believes in the possible triumph of reason, the principle force underlying the library is irrationality. Any expression, even the most elegant or undeniably true, is nonetheless possible without sincerity, or even any intention towards signification. The library makes this hidden power explicit: anything that can be referenced in language or accessible to experience must be separable from itself—a thought, a perception, a word can be made of it. This may undermine our sense of the simple presence of things, but it allows for everything interesting in the world: fantasy, lies, illusions, imagination, and fiction.</p>
+</blockquote>
+<blockquote>
+<p>Borges’s story isn’t simply one among others, but the story of all fiction, and with it all reality.</p>
+</blockquote>
+<blockquote>
+<p>Though its underlying theory of language is powerful and undeniable, there are strange inaccuracies elsewhere in the library, [...] The librarians in the story, for instance, encounter far more rational text than would ever be possible in a truly random universal library. Merely in the hexagons under his administration, our narrator recounts volumes with the titles Combed Thunder and The Plaster Cramp.</p>
+</blockquote>
+<blockquote>
+<p>Even some of the incoherent texts in the story, such as one where the letters “MCV” repeat “perversely” for 410 pages, are statistically impossible for mere mortals to encounter.</p>
+</blockquote>
+<blockquote>
+<p>The most important of the librarians’ discoveries is another impossibility, a work with two pages in a “Samoyed-Lithuanian dialect of Guaraní with inflections from classical Arabic” containing the rudiments of combinatory analysis. Borges notes, with his usual strange humor, that it’s “illustrated with examples of endlessly repeating variations.” One could understand every volume in the library as such an illustration—an appendix to this manual on permutation and combination. The entire library fits inside a single one of its books, like the master catalog the librarians seek or the algorithm that produces the online version of the library, a few lines of code that can also be found inside its volumes.</p>
+</blockquote>
+<blockquote>
+<p>The librarians’ entire universe-as-library theory grows from this discovery. The library contains all possible text, and thus offers the promise of revelation that motivates their search through its volumes. I doubt Borges was being naive when he placed these impossibly rare texts in his story. Rather, he played the role of a trickster god, seeding his creation with just enough meaningful and poetic text to entice both his story’s librarians and its readers. That its only possible result is disappointment and despair is part of his dark humor, and a fate he laments along with us.</p>
+</blockquote>
+<blockquote>
+<p>His narrator, on the other hand, seduced by Borges’s trickery, has no sense of the true scale of the library, a barrier I continually encountered when trying to re-create it. Whether the library contains all possible permutations of letters, contains not a single repetition, or cycles through every possibility before repeating are unknowable. No one will ever encounter any duplicate books in a universal library. The entirety of human endeavor is insufficient to make it statistically possible.</p>
+</blockquote>
+<blockquote>
+<p>There is another improbable text the librarian-narrator has come across in his travels, one written by Borges himself, from an essay titled “The Total Library.” It was Borges’s first reflection on the theme of the universal library, published two years before his short story. The excerpt, well known to the librarians, claims that confusion and irrationality overwhelm the possibility of rationality in the library. Our narrator condemns these words as impious, tasteless, and ignorant. His counterargument is quite beautiful, and equally relevant when considering the “ascetic rage” of the Purifiers:</p>
+</blockquote>
+<blockquote>
+<p>&quot;There is no combination of characters one can make—dhcmrlchtdj, for example—that the divine Library has not foreseen and that in one or more of its secret tongues does not hide a terrible significance. There is no syllable one can speak that is not filled with tenderness and terror, that is not, in one of those languages, the mighty name of a god.&quot;</p>
+</blockquote>
+<blockquote>
+<p>There is no such thing as meaninglessness, in other words, and not a single volume or even a single line of text worthy of condemnation in the near-infinite library. According to the theory of language with which we began, a speaker’s intentions can never secure a univocal meaning for his utterance: the possibility for those same signs to appear in new contexts, animated by different intentions or none at all, is as limitless as the library itself. The result is not that language loses all meaning but that it constantly gains more, as even the unprecedented combinations of its atoms, the letters, wait patiently for the discovery or invention of the language in which they will be the names of new gods.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
