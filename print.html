@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>PKB</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +34,11 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -56,10 +60,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -75,44 +82,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="Introduction.html">Introduction</a></li><li><a href="blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li><a href="blog/2015_07_06_dune_50_years_on.html"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li><a href="blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li><li><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li></ol>
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="Introduction.html">Introduction</a></li><li class="expanded "><a href="blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li class="expanded "><a href="blog/2015_07_06_dune_50_years_on.html"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li class="expanded "><a href="blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li><li class="expanded "><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="expanded "><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">PKB</h1> 
+                    <h1 class="menu-title">PKB</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -140,15 +149,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
-<p># Blog</p>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p>This is my personal web site and knowledge base.</p>
+<p># Not a blog</p>
 <ul>
 <li><a href="blog/./2015_07_06_dune_50_years_on.html">Dune, 50 years on</a></li>
 <li><a href="blog/./2015_07_24_the_library_of_babel.html">The tower of Babel</a></li>
 </ul>
-<a class="header" href="#2015-07-06-dune-50-years-on" id="2015-07-06-dune-50-years-on"><h1>2015-07-06 Dune, 50 years on</h1></a>
+<h1><a class="header" href="#2015-07-06-dune-50-years-on" id="2015-07-06-dune-50-years-on">2015-07-06 Dune, 50 years on</a></h1>
 <p><a href="http://www.theguardian.com/books/2015/jul/03/dune-50-years-on-science-fiction-novel-world">Original article</a></p>
-<a class="header" href="#quotes" id="quotes"><h2>Quotes:</h2></a>
+<h2><a class="header" href="#quotes" id="quotes">Quotes:</a></h2>
 <blockquote>
 <p>Herbert was a quintessential product of the libertarian culture of the Pacific coast, self-reliant and distrustful of centralised authority, yet with a mile-wide streak of utopian futurism and a concomitant willingness to experiment.</p>
 </blockquote>
@@ -190,10 +200,10 @@ Herbert’s libertarian politics reinforced this worry.
 In Dune, Paul knows that if the desert planet is made to bloom, it will support a larger population, and the ethic of individualism will be eroded.
 He himself, as he is transformed from aristocrat to messiah, loses his individuality and begins to dissolve into myth, becoming part of a Jungian collective unconscious.</p>
 </blockquote>
-<a class="header" href="#2015-07-24-the-library-of-babel-as-seen-from-within" id="2015-07-24-the-library-of-babel-as-seen-from-within"><h1>2015-07-24 The Library of Babel as Seen from Within</h1></a>
-<a class="header" href="#keywords-borges-babel-semiotics-language-meaning" id="keywords-borges-babel-semiotics-language-meaning"><h2>Keywords: Borges, Babel, Semiotics, Language, Meaning</h2></a>
+<h1><a class="header" href="#2015-07-24-the-library-of-babel-as-seen-from-within" id="2015-07-24-the-library-of-babel-as-seen-from-within">2015-07-24 The Library of Babel as Seen from Within</a></h1>
+<h2><a class="header" href="#keywords-borges-babel-semiotics-language-meaning" id="keywords-borges-babel-semiotics-language-meaning">Keywords: Borges, Babel, Semiotics, Language, Meaning</a></h2>
 <p><a href="http://www.theparisreview.org/blog/2015/07/23/the-library-of-babel-as-seen-from-within/">Original article</a></p>
-<a class="header" href="#quotes-1" id="quotes-1"><h2>Quotes:</h2></a>
+<h2><a class="header" href="#quotes-1" id="quotes-1">Quotes:</a></h2>
 <blockquote>
 <p>The story describes a universal library containing, in 410-page volumes, every possible permutation of twenty-two letters, spaces, commas, and periods—every book that’s ever been written and every book that ever could be, drowned out by endless pages of gibberish. Its librarians are addicted to the search for certain master texts, the complete catalog of the library, or the future history of one’s own life, but their quest inevitably ends in failure, despair, even suicide.</p>
 </blockquote>
@@ -227,229 +237,229 @@ He himself, as he is transformed from aristocrat to messiah, loses his individua
 <blockquote>
 <p>There is no such thing as meaninglessness, in other words, and not a single volume or even a single line of text worthy of condemnation in the near-infinite library. According to the theory of language with which we began, a speaker’s intentions can never secure a univocal meaning for his utterance: the possibility for those same signs to appear in new contexts, animated by different intentions or none at all, is as limitless as the library itself. The result is not that language loses all meaning but that it constantly gains more, as even the unprecedented combinations of its atoms, the letters, wait patiently for the discovery or invention of the language in which they will be the names of new gods.</p>
 </blockquote>
-<a class="header" href="#euskera" id="euskera"><h1>Euskera</h1></a>
-<a class="header" href="#nire-apunteak" id="nire-apunteak"><h1>Nire Apunteak</h1></a>
-<a class="header" href="#pronombres" id="pronombres"><h2>Pronombres</h2></a>
-<a class="header" href="#personales" id="personales"><h3>Personales</h3></a>
-<table><thead><tr><th> Numero       </th><th> Intransitivo </th><th> Transitivo </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Ni           </td><td> Nik        </td><td> Yo         </td></tr>
-<tr><td>              </td><td> Zu           </td><td> Zuk        </td><td> Vos        </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Gu           </td><td> Guk        </td><td> Nosotros   </td></tr>
-<tr><td>              </td><td> Zuek         </td><td> Zuek       </td><td> Vosotros   </td></tr>
+<h1><a class="header" href="#euskera" id="euskera">Euskera</a></h1>
+<h1><a class="header" href="#nire-apunteak" id="nire-apunteak">Nire Apunteak</a></h1>
+<h2><a class="header" href="#pronombres" id="pronombres">Pronombres</a></h2>
+<h3><a class="header" href="#personales" id="personales">Personales</a></h3>
+<table><thead><tr><th>Numero</th><th>Intransitivo</th><th>Transitivo</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Ni</td><td>Nik</td><td>Yo</td></tr>
+<tr><td></td><td>Zu</td><td>Zuk</td><td>Vos</td></tr>
+<tr><td><strong>Plural</strong></td><td>Gu</td><td>Guk</td><td>Nosotros</td></tr>
+<tr><td></td><td>Zuek</td><td>Zuek</td><td>Vosotros</td></tr>
 </tbody></table>
-<a class="header" href="#demostrativos" id="demostrativos"><h3>Demostrativos</h3></a>
-<table><thead><tr><th> Numero       </th><th> Intransitivo </th><th> Transitivo </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Hau          </td><td> Honek      </td><td> Este       </td></tr>
-<tr><td>              </td><td> Hori         </td><td> Horrek     </td><td> Ese        </td></tr>
-<tr><td>              </td><td> Hura         </td><td> Hark       </td><td> Aquel      </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Hauek        </td><td> Hauek      </td><td> Estos      </td></tr>
-<tr><td>              </td><td> Horiek       </td><td> Horiek     </td><td> Esos       </td></tr>
-<tr><td>              </td><td> Haiek        </td><td> Haiek      </td><td> Aquellos   </td></tr>
+<h3><a class="header" href="#demostrativos" id="demostrativos">Demostrativos</a></h3>
+<table><thead><tr><th>Numero</th><th>Intransitivo</th><th>Transitivo</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Hau</td><td>Honek</td><td>Este</td></tr>
+<tr><td></td><td>Hori</td><td>Horrek</td><td>Ese</td></tr>
+<tr><td></td><td>Hura</td><td>Hark</td><td>Aquel</td></tr>
+<tr><td><strong>Plural</strong></td><td>Hauek</td><td>Hauek</td><td>Estos</td></tr>
+<tr><td></td><td>Horiek</td><td>Horiek</td><td>Esos</td></tr>
+<tr><td></td><td>Haiek</td><td>Haiek</td><td>Aquellos</td></tr>
 </tbody></table>
-<a class="header" href="#indeterminados" id="indeterminados"><h3>Indeterminados</h3></a>
-<a class="header" href="#interrogativo" id="interrogativo"><h2>Interrogativo</h2></a>
-<a class="header" href="#negativo" id="negativo"><h2>Negativo</h2></a>
-<a class="header" href="#casos" id="casos"><h2>Casos</h2></a>
-<table><thead><tr><th> Caso       </th><th> Castellano               </th></tr></thead><tbody>
-<tr><td> Nor / Nork </td><td> Quien?                   </td></tr>
-<tr><td> Nori       </td><td> A quien?                 </td></tr>
-<tr><td> Noren      </td><td> De quien?                </td></tr>
-<tr><td> Norentzat  </td><td> Para quien?              </td></tr>
-<tr><td> Norekin    </td><td> Con quien?               </td></tr>
-<tr><td> Non        </td><td> Donde?                   </td></tr>
-<tr><td> Nongo      </td><td> De donde? (provenienica) </td></tr>
-<tr><td> Nora       </td><td> A donde?                 </td></tr>
-<tr><td> Nondik     </td><td> De donde?                </td></tr>
-<tr><td> Noraino    </td><td> Hasta donde?             </td></tr>
-<tr><td> Norantz    </td><td> Hacia donde? (sentido)   </td></tr>
-<tr><td> Zer / Zerk </td><td> Que?                     </td></tr>
-<tr><td> Zein       </td><td> Cual?                    </td></tr>
-<tr><td> Zertara    </td><td> A que?                   </td></tr>
-<tr><td> Zertarako  </td><td> Para que?                </td></tr>
+<h3><a class="header" href="#indeterminados" id="indeterminados">Indeterminados</a></h3>
+<h2><a class="header" href="#interrogativo" id="interrogativo">Interrogativo</a></h2>
+<h2><a class="header" href="#negativo" id="negativo">Negativo</a></h2>
+<h2><a class="header" href="#casos" id="casos">Casos</a></h2>
+<table><thead><tr><th>Caso</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>Nor / Nork</td><td>Quien?</td></tr>
+<tr><td>Nori</td><td>A quien?</td></tr>
+<tr><td>Noren</td><td>De quien?</td></tr>
+<tr><td>Norentzat</td><td>Para quien?</td></tr>
+<tr><td>Norekin</td><td>Con quien?</td></tr>
+<tr><td>Non</td><td>Donde?</td></tr>
+<tr><td>Nongo</td><td>De donde? (provenienica)</td></tr>
+<tr><td>Nora</td><td>A donde?</td></tr>
+<tr><td>Nondik</td><td>De donde?</td></tr>
+<tr><td>Noraino</td><td>Hasta donde?</td></tr>
+<tr><td>Norantz</td><td>Hacia donde? (sentido)</td></tr>
+<tr><td>Zer / Zerk</td><td>Que?</td></tr>
+<tr><td>Zein</td><td>Cual?</td></tr>
+<tr><td>Zertara</td><td>A que?</td></tr>
+<tr><td>Zertarako</td><td>Para que?</td></tr>
 </tbody></table>
-<a class="header" href="#nornork" id="nornork"><h3>Nor/Nork</h3></a>
-<table><thead><tr><th>          </th><th> Nor    </th><th> Nork   </th></tr></thead><tbody>
-<tr><td> Singular </td><td> hau    </td><td> honek  </td></tr>
-<tr><td>          </td><td> hori   </td><td> horrek </td></tr>
-<tr><td>          </td><td> hura   </td><td> hark   </td></tr>
-<tr><td> Plural   </td><td> hauek  </td><td> haiek  </td></tr>
-<tr><td>          </td><td> horiek </td><td> haiek  </td></tr>
-<tr><td>          </td><td> haiek  </td><td> haiek  </td></tr>
+<h3><a class="header" href="#nornork" id="nornork">Nor/Nork</a></h3>
+<table><thead><tr><th></th><th>Nor</th><th>Nork</th></tr></thead><tbody>
+<tr><td>Singular</td><td>hau</td><td>honek</td></tr>
+<tr><td></td><td>hori</td><td>horrek</td></tr>
+<tr><td></td><td>hura</td><td>hark</td></tr>
+<tr><td>Plural</td><td>hauek</td><td>haiek</td></tr>
+<tr><td></td><td>horiek</td><td>haiek</td></tr>
+<tr><td></td><td>haiek</td><td>haiek</td></tr>
 </tbody></table>
 <p>Nombres 'comunes': en nork singular, si termina en vocal se le agrega <code>-ak</code>.
 En nork singular, si termina en consonante se le agrega <code>-ak</code>.
 En nork plural se le agrega <code>-ek</code>.</p>
 <p>Nombres 'propios': <code>-(e)k</code>.</p>
-<a class="header" href="#non" id="non"><h3>Non</h3></a>
-<a class="header" href="#nongoa" id="nongoa"><h3>Nongoa</h3></a>
+<h3><a class="header" href="#non" id="non">Non</a></h3>
+<h3><a class="header" href="#nongoa" id="nongoa">Nongoa</a></h3>
 <p>Observese que el nombre del caso termina en <code>-goa</code> y el sufjio que le
 corresponde es <code>-goa</code> si el nombre del lugar termina en consonante y <code>-koa</code> si
 termina en vocal.</p>
-<table><thead><tr><th> Adibide                                              </th><th> Ejemplos                                          </th></tr></thead><tbody>
-<tr><td> Ni Bahia Blancakoa naiz.                             </td><td> Yo soy de Bahia Blanca.                           </td></tr>
-<tr><td> Zu Bahia Blancakoa zara.                             </td><td> Vos sos de Bahia Blanca.                          </td></tr>
-<tr><td> Hau Bahia Blancakoa da.                              </td><td> Eso es de Bahia Blanca.                           </td></tr>
-<tr><td> Hori Bahia Blancakoa da.                             </td><td> Esto es de Bahia Blanca.                          </td></tr>
-<tr><td> Hura Bahia Blancakoa da.                             </td><td> Aquello es de Bahia Blanca.                       </td></tr>
-<tr><td> Gu Bahia Blancakoa gara.                             </td><td> Nosotros somos de Bahia Blanca.                   </td></tr>
-<tr><td> Zuek Bahia Blancakoa zarete.                         </td><td> Ustedes son de Bahia Blanca.                      </td></tr>
-<tr><td> Hauek Bahia Blancakoa dira.                          </td><td> Esos son de Bahia Blanca.                         </td></tr>
-<tr><td> Horiek Bahia Blancakoa dira.                         </td><td> Estos son de Bahia Blanca.                        </td></tr>
-<tr><td> Haiek Bahia Blancakoa dira.                          </td><td> Aquellos son de Bahia Blanca.                     </td></tr>
-<tr><td> Nongoa zara zu?                                      </td><td> De donde sos vos?                                 </td></tr>
-<tr><td> Ni Bahia Blancakoa naiz.                             </td><td> Yo soy de Bahia Blanca.                           </td></tr>
-<tr><td> Nongoa dira zure gurasoak?                           </td><td> De donde son vuestros padres?                     </td></tr>
-<tr><td> Nire aita Olavarriakoa da eta nire ama Trelewgoa da. </td><td> Mi padre es de Olavarria y mi madre es de Trelew. </td></tr>
-<tr><td> J. L. Borges Palermokoa da.                          </td><td> J. L. Borges es de Palermo.                       </td></tr>
-<tr><td> Saramago Portugalgoa da.                             </td><td> Saramago es de Portugal.                          </td></tr>
-<tr><td> Haiek Veronakoak dira.                               </td><td> Aquellos son de Verona.                           </td></tr>
+<table><thead><tr><th>Adibide</th><th>Ejemplos</th></tr></thead><tbody>
+<tr><td>Ni Bahia Blancakoa naiz.</td><td>Yo soy de Bahia Blanca.</td></tr>
+<tr><td>Zu Bahia Blancakoa zara.</td><td>Vos sos de Bahia Blanca.</td></tr>
+<tr><td>Hau Bahia Blancakoa da.</td><td>Eso es de Bahia Blanca.</td></tr>
+<tr><td>Hori Bahia Blancakoa da.</td><td>Esto es de Bahia Blanca.</td></tr>
+<tr><td>Hura Bahia Blancakoa da.</td><td>Aquello es de Bahia Blanca.</td></tr>
+<tr><td>Gu Bahia Blancakoa gara.</td><td>Nosotros somos de Bahia Blanca.</td></tr>
+<tr><td>Zuek Bahia Blancakoa zarete.</td><td>Ustedes son de Bahia Blanca.</td></tr>
+<tr><td>Hauek Bahia Blancakoa dira.</td><td>Esos son de Bahia Blanca.</td></tr>
+<tr><td>Horiek Bahia Blancakoa dira.</td><td>Estos son de Bahia Blanca.</td></tr>
+<tr><td>Haiek Bahia Blancakoa dira.</td><td>Aquellos son de Bahia Blanca.</td></tr>
+<tr><td>Nongoa zara zu?</td><td>De donde sos vos?</td></tr>
+<tr><td>Ni Bahia Blancakoa naiz.</td><td>Yo soy de Bahia Blanca.</td></tr>
+<tr><td>Nongoa dira zure gurasoak?</td><td>De donde son vuestros padres?</td></tr>
+<tr><td>Nire aita Olavarriakoa da eta nire ama Trelewgoa da.</td><td>Mi padre es de Olavarria y mi madre es de Trelew.</td></tr>
+<tr><td>J. L. Borges Palermokoa da.</td><td>J. L. Borges es de Palermo.</td></tr>
+<tr><td>Saramago Portugalgoa da.</td><td>Saramago es de Portugal.</td></tr>
+<tr><td>Haiek Veronakoak dira.</td><td>Aquellos son de Verona.</td></tr>
 </tbody></table>
 <ul>
 <li>gurasoak: padres</li>
 </ul>
-<a class="header" href="#noren" id="noren"><h3>Noren</h3></a>
-<table><thead><tr><th>                           </th><th>        </th><th>           </th></tr></thead><tbody>
-<tr><td> Sustantivo comun singular </td><td> -aren  </td><td> Mutilaren </td></tr>
-<tr><td> Sustantivo comun plural   </td><td> -en    </td><td> Mutilen   </td></tr>
-<tr><td> Sustantivo propio         </td><td> -(r)en </td><td> Martinen  </td></tr>
-<tr><td>                           </td><td>        </td><td> iñakiren  </td></tr>
+<h3><a class="header" href="#noren" id="noren">Noren</a></h3>
+<table><thead><tr><th></th><th></th><th></th></tr></thead><tbody>
+<tr><td>Sustantivo comun singular</td><td>-aren</td><td>Mutilaren</td></tr>
+<tr><td>Sustantivo comun plural</td><td>-en</td><td>Mutilen</td></tr>
+<tr><td>Sustantivo propio</td><td>-(r)en</td><td>Martinen</td></tr>
+<tr><td></td><td></td><td>iñakiren</td></tr>
 </tbody></table>
-<table><thead><tr><th>          </th><th>        </th></tr></thead><tbody>
-<tr><td> Singular </td><td> Nire   </td></tr>
-<tr><td>          </td><td> Zure   </td></tr>
-<tr><td>          </td><td> Honen  </td></tr>
-<tr><td>          </td><td> Horren </td></tr>
-<tr><td>          </td><td> Haren  </td></tr>
-<tr><td>          </td><td> Bere   </td></tr>
-<tr><td> Plural   </td><td> Gure   </td></tr>
-<tr><td>          </td><td> Zuen   </td></tr>
-<tr><td>          </td><td> Hauen  </td></tr>
-<tr><td>          </td><td> Horien </td></tr>
-<tr><td>          </td><td> Haien  </td></tr>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>Singular</td><td>Nire</td></tr>
+<tr><td></td><td>Zure</td></tr>
+<tr><td></td><td>Honen</td></tr>
+<tr><td></td><td>Horren</td></tr>
+<tr><td></td><td>Haren</td></tr>
+<tr><td></td><td>Bere</td></tr>
+<tr><td>Plural</td><td>Gure</td></tr>
+<tr><td></td><td>Zuen</td></tr>
+<tr><td></td><td>Hauen</td></tr>
+<tr><td></td><td>Horien</td></tr>
+<tr><td></td><td>Haien</td></tr>
 </tbody></table>
 <p>Nire ordenagailua txikia da.</p>
-<a class="header" href="#verbos" id="verbos"><h2>Verbos</h2></a>
-<a class="header" href="#intransitivos" id="intransitivos"><h3>Intransitivos</h3></a>
-<a class="header" href="#izan" id="izan"><h4>Izan</h4></a>
+<h2><a class="header" href="#verbos" id="verbos">Verbos</a></h2>
+<h3><a class="header" href="#intransitivos" id="intransitivos">Intransitivos</a></h3>
+<h4><a class="header" href="#izan" id="izan">Izan</a></h4>
 <p>En castellano, &quot;ser&quot; o &quot;estar&quot;.</p>
-<table><thead><tr><th>              </th><th> Nor    </th><th> Aditza </th><th> Castellano     </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Ni     </td><td> naiz   </td><td> Yo soy         </td></tr>
-<tr><td>              </td><td> Zu     </td><td> zara   </td><td> Vos sos        </td></tr>
-<tr><td>              </td><td> Hau    </td><td> da     </td><td> Eso es         </td></tr>
-<tr><td>              </td><td> Hori   </td><td> da     </td><td> Esto es        </td></tr>
-<tr><td>              </td><td> Hauek  </td><td> da     </td><td> Aquello es     </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Gu     </td><td> gara   </td><td> Nosotros somos </td></tr>
-<tr><td>              </td><td> Zuek   </td><td> zarete </td><td> Vosotros sois  </td></tr>
-<tr><td>              </td><td> Hauek  </td><td> dira   </td><td> Esos son       </td></tr>
-<tr><td>              </td><td> Horiek </td><td> dira   </td><td> Estos son      </td></tr>
-<tr><td>              </td><td> Haiek  </td><td> dira   </td><td> Aquellos son   </td></tr>
+<table><thead><tr><th></th><th>Nor</th><th>Aditza</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Ni</td><td>naiz</td><td>Yo soy</td></tr>
+<tr><td></td><td>Zu</td><td>zara</td><td>Vos sos</td></tr>
+<tr><td></td><td>Hau</td><td>da</td><td>Eso es</td></tr>
+<tr><td></td><td>Hori</td><td>da</td><td>Esto es</td></tr>
+<tr><td></td><td>Hauek</td><td>da</td><td>Aquello es</td></tr>
+<tr><td><strong>Plural</strong></td><td>Gu</td><td>gara</td><td>Nosotros somos</td></tr>
+<tr><td></td><td>Zuek</td><td>zarete</td><td>Vosotros sois</td></tr>
+<tr><td></td><td>Hauek</td><td>dira</td><td>Esos son</td></tr>
+<tr><td></td><td>Horiek</td><td>dira</td><td>Estos son</td></tr>
+<tr><td></td><td>Haiek</td><td>dira</td><td>Aquellos son</td></tr>
 </tbody></table>
-<a class="header" href="#nolakoa-da" id="nolakoa-da"><h5>Nolakoa da?</h5></a>
-<table><thead><tr><th> Euskera   </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> berri     </td><td> nuevo      </td></tr>
-<tr><td> gaxte     </td><td> joven      </td></tr>
-<tr><td> zahar     </td><td> viejo      </td></tr>
-<tr><td> polit     </td><td> bonito     </td></tr>
-<tr><td> itsusi    </td><td> feo        </td></tr>
-<tr><td> handi     </td><td> grande     </td></tr>
-<tr><td> txiki     </td><td> chico      </td></tr>
-<tr><td> zabal     </td><td> ancho      </td></tr>
-<tr><td> estu      </td><td> angosto    </td></tr>
-<tr><td> luze      </td><td> largo      </td></tr>
-<tr><td> labur     </td><td> corto      </td></tr>
-<tr><td> altu      </td><td> alto       </td></tr>
-<tr><td> baxu      </td><td> bajo       </td></tr>
-<tr><td> langile   </td><td> trabajador </td></tr>
-<tr><td> alfer     </td><td> vago       </td></tr>
-<tr><td> garbi     </td><td> limpio     </td></tr>
-<tr><td> zikin     </td><td> sucio      </td></tr>
-<tr><td> alai      </td><td> alegre     </td></tr>
-<tr><td> triste    </td><td> triste     </td></tr>
-<tr><td> atsegin   </td><td> agradable  </td></tr>
-<tr><td> jator     </td><td> macanudo   </td></tr>
-<tr><td> lasai     </td><td> tranquilo  </td></tr>
-<tr><td> urdin     </td><td> nervioso   </td></tr>
-<tr><td> ilehori   </td><td> rubio      </td></tr>
-<tr><td> ilegorri  </td><td> pelirrojo  </td></tr>
-<tr><td> beltzaran </td><td> morocho    </td></tr>
-<tr><td> burusoil  </td><td> pelado     </td></tr>
+<h5><a class="header" href="#nolakoa-da" id="nolakoa-da">Nolakoa da?</a></h5>
+<table><thead><tr><th>Euskera</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>berri</td><td>nuevo</td></tr>
+<tr><td>gaxte</td><td>joven</td></tr>
+<tr><td>zahar</td><td>viejo</td></tr>
+<tr><td>polit</td><td>bonito</td></tr>
+<tr><td>itsusi</td><td>feo</td></tr>
+<tr><td>handi</td><td>grande</td></tr>
+<tr><td>txiki</td><td>chico</td></tr>
+<tr><td>zabal</td><td>ancho</td></tr>
+<tr><td>estu</td><td>angosto</td></tr>
+<tr><td>luze</td><td>largo</td></tr>
+<tr><td>labur</td><td>corto</td></tr>
+<tr><td>altu</td><td>alto</td></tr>
+<tr><td>baxu</td><td>bajo</td></tr>
+<tr><td>langile</td><td>trabajador</td></tr>
+<tr><td>alfer</td><td>vago</td></tr>
+<tr><td>garbi</td><td>limpio</td></tr>
+<tr><td>zikin</td><td>sucio</td></tr>
+<tr><td>alai</td><td>alegre</td></tr>
+<tr><td>triste</td><td>triste</td></tr>
+<tr><td>atsegin</td><td>agradable</td></tr>
+<tr><td>jator</td><td>macanudo</td></tr>
+<tr><td>lasai</td><td>tranquilo</td></tr>
+<tr><td>urdin</td><td>nervioso</td></tr>
+<tr><td>ilehori</td><td>rubio</td></tr>
+<tr><td>ilegorri</td><td>pelirrojo</td></tr>
+<tr><td>beltzaran</td><td>morocho</td></tr>
+<tr><td>burusoil</td><td>pelado</td></tr>
 </tbody></table>
-<a class="header" href="#bizi" id="bizi"><h4>Bizi</h4></a>
+<h4><a class="header" href="#bizi" id="bizi">Bizi</a></h4>
 <p>En castellano, &quot;vivir&quot;.
 Usado con el caso 'Non'.
 Observese que el caso se llama 'No<strong>n</strong>' y el sufijo que le corresponde tambien
 termina en <code>-n</code>.
 Al nombre geografico (ciudad, pueblo, pais, region) se le agrega una <code>-n</code>.
 Si el nombre del lugar termina en consonante el sufijo se convierte en <code>-en</code>.</p>
-<table><thead><tr><th> Nor    </th><th> Aditza      </th></tr></thead><tbody>
-<tr><td> Ni     </td><td> bizi naiz   </td></tr>
-<tr><td> Zu     </td><td> bizi zara   </td></tr>
-<tr><td> Hau    </td><td> bizi da     </td></tr>
-<tr><td> Hori   </td><td> bizi da     </td></tr>
-<tr><td> Hura   </td><td> bizi da     </td></tr>
-<tr><td> Gu     </td><td> bizi gara   </td></tr>
-<tr><td> Zuek   </td><td> bizi zarete </td></tr>
-<tr><td> Hauek  </td><td> bizi dira   </td></tr>
-<tr><td> Horiek </td><td> bizi dira   </td></tr>
-<tr><td> Haiek  </td><td> bizi dira   </td></tr>
+<table><thead><tr><th>Nor</th><th>Aditza</th></tr></thead><tbody>
+<tr><td>Ni</td><td>bizi naiz</td></tr>
+<tr><td>Zu</td><td>bizi zara</td></tr>
+<tr><td>Hau</td><td>bizi da</td></tr>
+<tr><td>Hori</td><td>bizi da</td></tr>
+<tr><td>Hura</td><td>bizi da</td></tr>
+<tr><td>Gu</td><td>bizi gara</td></tr>
+<tr><td>Zuek</td><td>bizi zarete</td></tr>
+<tr><td>Hauek</td><td>bizi dira</td></tr>
+<tr><td>Horiek</td><td>bizi dira</td></tr>
+<tr><td>Haiek</td><td>bizi dira</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<table><thead><tr><th> Adibide                                </th><th> Ejemplos                          </th></tr></thead><tbody>
-<tr><td> Ni Bahia Blanca<strong>n</strong> bizi naiz.        </td><td> Yo vivo en Bahia Blanca.          </td></tr>
-<tr><td> Non bizi da Benedicto XVI?             </td><td> Donde vive Benedicto XVI?         </td></tr>
-<tr><td> Benedicto XVI Erroman bizi da.         </td><td> Benedicto XVI vive en Roma.       </td></tr>
-<tr><td> Non bizi da Juan Carlos I?             </td><td> Donde vive Juan Carlos I?         </td></tr>
-<tr><td> Juan Carlos I Espainan bizi da.        </td><td> Juan Carlos I vive en España.     </td></tr>
-<tr><td> Non bizi zara zu?                      </td><td> Donde vivis vos?                  </td></tr>
-<tr><td> Non bizi dira Erreomeo eta Julieta?    </td><td> Donde viven Romeo y Julieta?      </td></tr>
-<tr><td> Erromeo eta Julieta Veronan bizi dira. </td><td> Romeo y Julieta viven en Verona.  </td></tr>
-<tr><td> Haiek Veronan bizi dira.               </td><td> Ellos viven en Verona.            </td></tr>
-<tr><td> Non bizi zarete zuek?                  </td><td> Donde viven ustedes?              </td></tr>
-<tr><td> Gu Bahia Blancan bizi gara.            </td><td> Nosotros vivimos en Bahia Blanca. </td></tr>
-<tr><td> Non bizi gara gu?                      </td><td> Donde vivimos nosotros?           </td></tr>
-<tr><td> Zuek Bahia Blancan bizi zarete.        </td><td> Ustedes viven en Bahia Blanca.    </td></tr>
+<table><thead><tr><th>Adibide</th><th>Ejemplos</th></tr></thead><tbody>
+<tr><td>Ni Bahia Blanca<strong>n</strong> bizi naiz.</td><td>Yo vivo en Bahia Blanca.</td></tr>
+<tr><td>Non bizi da Benedicto XVI?</td><td>Donde vive Benedicto XVI?</td></tr>
+<tr><td>Benedicto XVI Erroman bizi da.</td><td>Benedicto XVI vive en Roma.</td></tr>
+<tr><td>Non bizi da Juan Carlos I?</td><td>Donde vive Juan Carlos I?</td></tr>
+<tr><td>Juan Carlos I Espainan bizi da.</td><td>Juan Carlos I vive en España.</td></tr>
+<tr><td>Non bizi zara zu?</td><td>Donde vivis vos?</td></tr>
+<tr><td>Non bizi dira Erreomeo eta Julieta?</td><td>Donde viven Romeo y Julieta?</td></tr>
+<tr><td>Erromeo eta Julieta Veronan bizi dira.</td><td>Romeo y Julieta viven en Verona.</td></tr>
+<tr><td>Haiek Veronan bizi dira.</td><td>Ellos viven en Verona.</td></tr>
+<tr><td>Non bizi zarete zuek?</td><td>Donde viven ustedes?</td></tr>
+<tr><td>Gu Bahia Blancan bizi gara.</td><td>Nosotros vivimos en Bahia Blanca.</td></tr>
+<tr><td>Non bizi gara gu?</td><td>Donde vivimos nosotros?</td></tr>
+<tr><td>Zuek Bahia Blancan bizi zarete.</td><td>Ustedes viven en Bahia Blanca.</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<table><thead><tr><th> Ariketak                                 </th><th> Ejercicios </th></tr></thead><tbody>
-<tr><td> Mutila Lazkaokoa da.                     </td><td>            </td></tr>
-<tr><td> Bi liburu oso politak dira.              </td><td>            </td></tr>
-<tr><td> Neskak ez dira Tolosan dira.             </td><td>            </td></tr>
-<tr><td> Ariketa hau oso zaila da.                </td><td>            </td></tr>
-<tr><td> Ariketa hauek oso zailak dira.           </td><td>            </td></tr>
-<tr><td> Neska hauek ez dira oso politak.         </td><td>            </td></tr>
-<tr><td> Gazteiz e da Gipuzkoan.                  </td><td>            </td></tr>
-<tr><td> Zuek Gernikan bizi zarete.               </td><td>            </td></tr>
-<tr><td> Zuek ez dira ikasleak.                   </td><td>            </td></tr>
-<tr><td> Liburu horiek ez dira zailak.            </td><td>            </td></tr>
-<tr><td> Gu oso serioak gara eta Baionakoak gara. </td><td>            </td></tr>
+<table><thead><tr><th>Ariketak</th><th>Ejercicios</th></tr></thead><tbody>
+<tr><td>Mutila Lazkaokoa da.</td><td></td></tr>
+<tr><td>Bi liburu oso politak dira.</td><td></td></tr>
+<tr><td>Neskak ez dira Tolosan dira.</td><td></td></tr>
+<tr><td>Ariketa hau oso zaila da.</td><td></td></tr>
+<tr><td>Ariketa hauek oso zailak dira.</td><td></td></tr>
+<tr><td>Neska hauek ez dira oso politak.</td><td></td></tr>
+<tr><td>Gazteiz e da Gipuzkoan.</td><td></td></tr>
+<tr><td>Zuek Gernikan bizi zarete.</td><td></td></tr>
+<tr><td>Zuek ez dira ikasleak.</td><td></td></tr>
+<tr><td>Liburu horiek ez dira zailak.</td><td></td></tr>
+<tr><td>Gu oso serioak gara eta Baionakoak gara.</td><td></td></tr>
 </tbody></table>
 <ul>
 <li>Nor? Khadim.</li>
 <li>Nongoa da? Senegal.</li>
 <li>Non bizi da? Euskal Herria.</li>
 </ul>
-<table><thead><tr><th> Euskera                                                              </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> Khadim Senegalgoa da baina Euskal Herrian bizi da.                   </td><td>            </td></tr>
-<tr><td> Aitor eta Ignacio Euskal Herriakoak dira baina Hondurasen bizi dira. </td><td>            </td></tr>
-<tr><td> Ken Japanikoa da, eta Japonian bizi da.                              </td><td>            </td></tr>
-<tr><td> Stuart Erresuma Batuakoa da, baina Australian bizi da.               </td><td>            </td></tr>
-<tr><td> Ibrahim Egiptokoa da, baina Kuwaiten bizi da.                        </td><td>            </td></tr>
-<tr><td> Cesar Txilekoa da, baina Argentinann bizi da.                        </td><td>            </td></tr>
-<tr><td> Juan Perukoa da, baina Txinan bizi da.                               </td><td>            </td></tr>
-<tr><td> Brad eta Susan Galeskoak dira, baina Taiwanen bizi dira.             </td><td>            </td></tr>
+<table><thead><tr><th>Euskera</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>Khadim Senegalgoa da baina Euskal Herrian bizi da.</td><td></td></tr>
+<tr><td>Aitor eta Ignacio Euskal Herriakoak dira baina Hondurasen bizi dira.</td><td></td></tr>
+<tr><td>Ken Japanikoa da, eta Japonian bizi da.</td><td></td></tr>
+<tr><td>Stuart Erresuma Batuakoa da, baina Australian bizi da.</td><td></td></tr>
+<tr><td>Ibrahim Egiptokoa da, baina Kuwaiten bizi da.</td><td></td></tr>
+<tr><td>Cesar Txilekoa da, baina Argentinann bizi da.</td><td></td></tr>
+<tr><td>Juan Perukoa da, baina Txinan bizi da.</td><td></td></tr>
+<tr><td>Brad eta Susan Galeskoak dira, baina Taiwanen bizi dira.</td><td></td></tr>
 </tbody></table>
-<a class="header" href="#otros-verbos" id="otros-verbos"><h4>Otros verbos</h4></a>
-<a class="header" href="#joan" id="joan"><h4>Joan</h4></a>
+<h4><a class="header" href="#otros-verbos" id="otros-verbos">Otros verbos</a></h4>
+<h4><a class="header" href="#joan" id="joan">Joan</a></h4>
 <p>Berando joan naiz.</p>
-<a class="header" href="#egon" id="egon"><h4>Egon</h4></a>
-<a class="header" href="#etorri" id="etorri"><h4>Etorri</h4></a>
-<a class="header" href="#ibili" id="ibili"><h4>Ibili</h4></a>
-<a class="header" href="#transitivos" id="transitivos"><h3>Transitivos</h3></a>
-<a class="header" href="#ukan" id="ukan"><h4>Ukan</h4></a>
+<h4><a class="header" href="#egon" id="egon">Egon</a></h4>
+<h4><a class="header" href="#etorri" id="etorri">Etorri</a></h4>
+<h4><a class="header" href="#ibili" id="ibili">Ibili</a></h4>
+<h3><a class="header" href="#transitivos" id="transitivos">Transitivos</a></h3>
+<h4><a class="header" href="#ukan" id="ukan">Ukan</a></h4>
 <p>En castellano, &quot;tener&quot;.</p>
 <p>El 'hark' es la conjugacion solo correspondiente al 'hau'.
 El 'haiek' en cambio es la conjugacion correspondiente a 'hauek', 'horiek', y
@@ -458,58 +468,58 @@ Estas conjugaciones verbales solo son para singulares (dut, duzu, gu, dugu, ...)
 Para plurales el verbo se conjuga de manera distinta.
 Notese que en general la conjugacion del verbo para la primera persona termina
 en 't', y para la tercera no tiene nada.</p>
-<table><thead><tr><th> Nor    </th><th> Aditza </th></tr></thead><tbody>
-<tr><td> Nik    </td><td> dut    </td></tr>
-<tr><td> Zuk    </td><td> duzu   </td></tr>
-<tr><td> Honek  </td><td> du     </td></tr>
-<tr><td> Horrek </td><td> du     </td></tr>
-<tr><td> Hark   </td><td> du     </td></tr>
-<tr><td> Guk    </td><td> dugu   </td></tr>
-<tr><td> Zuk    </td><td> duzue  </td></tr>
-<tr><td> Hauek  </td><td> dute   </td></tr>
-<tr><td> Horiek </td><td> dute   </td></tr>
-<tr><td> Haiek  </td><td> dute   </td></tr>
+<table><thead><tr><th>Nor</th><th>Aditza</th></tr></thead><tbody>
+<tr><td>Nik</td><td>dut</td></tr>
+<tr><td>Zuk</td><td>duzu</td></tr>
+<tr><td>Honek</td><td>du</td></tr>
+<tr><td>Horrek</td><td>du</td></tr>
+<tr><td>Hark</td><td>du</td></tr>
+<tr><td>Guk</td><td>dugu</td></tr>
+<tr><td>Zuk</td><td>duzue</td></tr>
+<tr><td>Hauek</td><td>dute</td></tr>
+<tr><td>Horiek</td><td>dute</td></tr>
+<tr><td>Haiek</td><td>dute</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<p>| Adibideak                      |
-|--------------------------------|
-| Nik autoa dut.                 |
-| Zuk liburua duzu.              |
-| Honek irratia du.              |
-| Horrek irratia du.             |
-| Hark irratia du.               |
-| Guk txakur bat dugu.           |
-| Zuek ordenagailu berria duzue. |
-| Hauek hiztegia dute.           |
-| Horiek hiztegia dute.          |
-| Haiek hiztegia dute.           |</p>
-<a class="header" href="#balio" id="balio"><h4>Balio</h4></a>
-<p>|                                                   |
-|---------------------------------------------------|
-| Zenbat balio du sagar honek?                      |
-| Sagar honek bi euro balio ditu.                   |
-| Zerk balio ditu bi euro?                          |
-| Sagar honek balio ditu bi euro.                   |
-| Zenbat balio du izozkigilea horrek?               |
-| Izozkigilea horrek 1849 peso balio ditu.          |
-| Zenbat balio dituzte fideoak honek?               |
-| Fideoak honek hire peso balio ditu.               |
-| Zenbat balio du txokolate honek?                  |
-| Txokolate honek 3.79 peso balio ditu.             |
-| Zenbat balio du hortzetako eskuilak horiek?       |
-| Hortzetako eskuilak horiek 2.59 peso balio ditu.  |</p>
-<a class="header" href="#behar" id="behar"><h4>Behar</h4></a>
-<a class="header" href="#eduki" id="eduki"><h4>Eduki</h4></a>
-<a class="header" href="#ekarri" id="ekarri"><h4>Ekarri</h4></a>
-<a class="header" href="#eraman" id="eraman"><h4>Eraman</h4></a>
-<a class="header" href="#jakin" id="jakin"><h4>Jakin</h4></a>
-<a class="header" href="#condicional" id="condicional"><h2>Condicional</h2></a>
+<table><thead><tr><th>Adibideak</th></tr></thead><tbody>
+<tr><td>Nik autoa dut.</td></tr>
+<tr><td>Zuk liburua duzu.</td></tr>
+<tr><td>Honek irratia du.</td></tr>
+<tr><td>Horrek irratia du.</td></tr>
+<tr><td>Hark irratia du.</td></tr>
+<tr><td>Guk txakur bat dugu.</td></tr>
+<tr><td>Zuek ordenagailu berria duzue.</td></tr>
+<tr><td>Hauek hiztegia dute.</td></tr>
+<tr><td>Horiek hiztegia dute.</td></tr>
+<tr><td>Haiek hiztegia dute.</td></tr>
+</tbody></table>
+<h4><a class="header" href="#balio" id="balio">Balio</a></h4>
+<table><thead><tr><th></th></tr></thead><tbody>
+<tr><td>Zenbat balio du sagar honek?</td></tr>
+<tr><td>Sagar honek bi euro balio ditu.</td></tr>
+<tr><td>Zerk balio ditu bi euro?</td></tr>
+<tr><td>Sagar honek balio ditu bi euro.</td></tr>
+<tr><td>Zenbat balio du izozkigilea horrek?</td></tr>
+<tr><td>Izozkigilea horrek 1849 peso balio ditu.</td></tr>
+<tr><td>Zenbat balio dituzte fideoak honek?</td></tr>
+<tr><td>Fideoak honek hire peso balio ditu.</td></tr>
+<tr><td>Zenbat balio du txokolate honek?</td></tr>
+<tr><td>Txokolate honek 3.79 peso balio ditu.</td></tr>
+<tr><td>Zenbat balio du hortzetako eskuilak horiek?</td></tr>
+<tr><td>Hortzetako eskuilak horiek 2.59 peso balio ditu.</td></tr>
+</tbody></table>
+<h4><a class="header" href="#behar" id="behar">Behar</a></h4>
+<h4><a class="header" href="#eduki" id="eduki">Eduki</a></h4>
+<h4><a class="header" href="#ekarri" id="ekarri">Ekarri</a></h4>
+<h4><a class="header" href="#eraman" id="eraman">Eraman</a></h4>
+<h4><a class="header" href="#jakin" id="jakin">Jakin</a></h4>
+<h2><a class="header" href="#condicional" id="condicional">Condicional</a></h2>
 <p>(e)z gero</p>
-<a class="header" href="#futuro" id="futuro"><h2>Futuro</h2></a>
+<h2><a class="header" href="#futuro" id="futuro">Futuro</a></h2>
 <p>-tzen / noiz -tzen</p>
-<a class="header" href="#miscelaneo" id="miscelaneo"><h1>Miscelaneo</h1></a>
+<h1><a class="header" href="#miscelaneo" id="miscelaneo">Miscelaneo</a></h1>
 <hr />
 <p>Borroka da bide bakarra.
 Solo pierde el que no lucha.</p>
@@ -636,6 +646,14 @@ Noizean behin | de vez en cuando</p>
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         

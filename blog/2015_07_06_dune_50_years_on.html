@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Dune, 50 years on - PKB</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +32,11 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -56,10 +58,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -75,44 +80,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="../Introduction.html">Introduction</a></li><li><a href="../blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li><a href="../blog/2015_07_06_dune_50_years_on.html" class="active"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li><a href="../blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li><li><a href="../euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li><a href="../euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li></ol>
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="expanded "><a href="../blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li class="expanded "><a href="../blog/2015_07_06_dune_50_years_on.html" class="active"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li class="expanded "><a href="../blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li><li class="expanded "><a href="../euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="expanded "><a href="../euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">PKB</h1> 
+                    <h1 class="menu-title">PKB</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -140,9 +147,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#2015-07-06-dune-50-years-on" id="2015-07-06-dune-50-years-on"><h1>2015-07-06 Dune, 50 years on</h1></a>
+                        <h1><a class="header" href="#2015-07-06-dune-50-years-on" id="2015-07-06-dune-50-years-on">2015-07-06 Dune, 50 years on</a></h1>
 <p><a href="http://www.theguardian.com/books/2015/jul/03/dune-50-years-on-science-fiction-novel-world">Original article</a></p>
-<a class="header" href="#quotes" id="quotes"><h2>Quotes:</h2></a>
+<h2><a class="header" href="#quotes" id="quotes">Quotes:</a></h2>
 <blockquote>
 <p>Herbert was a quintessential product of the libertarian culture of the Pacific coast, self-reliant and distrustful of centralised authority, yet with a mile-wide streak of utopian futurism and a concomitant willingness to experiment.</p>
 </blockquote>
@@ -208,13 +215,13 @@ He himself, as he is transformed from aristocrat to messiah, loses his individua
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../blog/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../blog/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../blog/2015_07_24_the_library_of_babel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../blog/2015_07_24_the_library_of_babel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -224,6 +231,14 @@ He himself, as he is transformed from aristocrat to messiah, loses his individua
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         
