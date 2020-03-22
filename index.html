@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="Introduction.html">Introduction</a></li><li class="expanded "><a href="blog/index.html"><strong aria-hidden="true">1.</strong> Blog</a></li><li><ol class="section"><li class="expanded "><a href="blog/2015_07_06_dune_50_years_on.html"><strong aria-hidden="true">1.1.</strong> Dune, 50 years on</a></li><li class="expanded "><a href="blog/2015_07_24_the_library_of_babel.html"><strong aria-hidden="true">1.2.</strong> The tower of Babel</a></li></ol></li><li class="expanded "><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="expanded "><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="Introduction.html">Introduction</a></li><li class="expanded "><a href="cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li class="expanded "><a href="cyberpunk/cyberpunk.html"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li class="expanded "><a href="cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li class="expanded "><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="expanded "><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li class="expanded "><a href="society/index.html"><strong aria-hidden="true">3.</strong> Society</a></li><li><ol class="section"><li class="expanded "><a href="society/umberto_eco_ur_fascism.html"><strong aria-hidden="true">3.1.</strong> Ur Fascism</a></li></ol></li><li class="expanded "><a href="tools/index.html"><strong aria-hidden="true">4.</strong> Tools</a></li><li><ol class="section"><li class="expanded "><a href="tools/cli.html"><strong aria-hidden="true">4.1.</strong> CLI</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -157,7 +157,7 @@
                         
 
                         
-                            <a rel="next" href="blog/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="cyberpunk/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -171,7 +171,7 @@
                 
 
                 
-                    <a rel="next" href="blog/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="cyberpunk/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -179,6 +179,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
