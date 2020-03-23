@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Cyberpunk - PKB</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="../Introduction.html">Introduction</a></li><li><a href="../cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li><a href="../cyberpunk/cyberpunk.html" class="active"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li><a href="../cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li><a href="../euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li><a href="../euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li><a href="../misc/index.html"><strong aria-hidden="true">3.</strong> Misc</a></li><li><ol class="section"><li><a href="../misc/library.html"><strong aria-hidden="true">3.1.</strong> Library</a></li></ol></li><li><a href="../society/index.html"><strong aria-hidden="true">4.</strong> Society</a></li><li><ol class="section"><li><a href="../society/umberto_eco_ur_fascism.html"><strong aria-hidden="true">4.1.</strong> Ur Fascism</a></li></ol></li><li><a href="../tools/index.html"><strong aria-hidden="true">5.</strong> Tools</a></li><li><ol class="section"><li><a href="../tools/cli.html"><strong aria-hidden="true">5.1.</strong> CLI</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">PKB</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#cyberculturecyberpunk" id="cyberculturecyberpunk"><h1>Cyberculture.CyberPunk</h1></a>
+<p>Cyberpunk is a postmodern and science fiction genre noted for its focus
+on &quot;high tech and low life.&quot;[1][2] The name is a portmanteau of
+cybernetics and punk, and was originally coined by Bruce Bethke as the
+title of his short story &quot;Cyberpunk,&quot; published in 1983.[3][4] It
+features advanced science, such as information technology and
+cybernetics, coupled with a degree of breakdown or radical change in the
+social order.[5] Cyberpunk works are well situated within postmodern
+literature.[6]</p>
+<p>Cyberpunk plots often center on a conflict among hackers, artificial
+intelligences, and megacorporations, and tend to be set in a near-future
+Earth, rather than the far-future settings or galactic vistas found in
+novels such as Isaac Asimov's Foundation or Frank Herbert's Dune.[7] The
+settings are usually post-industrial dystopias but tend to be marked by
+extraordinary cultural ferment and the use of technology in ways never
+anticipated by its creators (&quot;the street finds its own uses for
+things&quot;).[8] Much of the genre's atmosphere echoes film noir, and
+written works in the genre often use techniques from detective
+fiction.[9]</p>
+<pre><code>&quot;Classic cyberpunk characters were marginalized, alienated loners
+who lived on the edge of society in generally dystopic futures where
+daily life was impacted by rapid technological change, an ubiquitous
+datasphere of computerized information, and invasive modification of
+the human body.&quot; – Lawrence Person[10]
+</code></pre>
+<a class="header" href="#style-and-ethos" id="style-and-ethos"><h2>Style and ethos</h2></a>
+<p>Primary exponents of the cyberpunk field include William Gibson, Neal
+Stephenson, Bruce Sterling, Pat Cadigan, Rudy Rucker, and John
+Shirley.[11]</p>
+<p>Many influential films such as Blade Runner and the Matrix trilogy can
+be seen as prominent examples of the cyberpunk style and theme.[7]
+Computer games, board games, and role-playing games, such as Cyberpunk
+2020 and Shadowrun, often feature storylines that are heavily influenced
+by cyberpunk writing and movies. Beginning in the early 1990s, some
+trends in fashion and music were also labeled as cyberpunk. Cyberpunk is
+also featured prominently in anime,[12] Akira and Ghost in the Shell
+being among the most notable.[12]</p>
+<a class="header" href="#setting" id="setting"><h2>Setting</h2></a>
+<p>Cyberpunk writers tend to use elements from the hard-boiled detective
+novel, film noir, and postmodernist prose to describe the often
+nihilistic underground side of an electronic society. The genre's vision
+of a troubled future is often called the antithesis of the generally
+utopian visions of the future popular in the 1940s and 1950s. Gibson
+defined cyberpunk's antipathy towards utopian SF in his 1981 short story
+&quot;The Gernsback Continuum,&quot; which pokes fun at and, to a certain extent,
+condemns utopian science fiction.[16][17][18]</p>
+<p>In some cyberpunk writing, much of the action takes place online, in
+cyberspace, blurring the border between actual and virtual reality.[19]
+A typical trope in such work is a direct connection between the human
+brain and computer systems. Cyberpunk depicts the world as a dark,
+sinister place with networked computers dominating every aspect of life.
+Giant, multinational corporations have for the most part replaced
+governments as centers of political, economic, and even military power.</p>
+<a class="header" href="#protagonists" id="protagonists"><h2>Protagonists</h2></a>
+<p>Protagonists in cyberpunk writing usually include computer hackers, who
+are often patterned on the idea of the lone hero fighting injustice,
+such as Robin Hood.[20] One of the cyberpunk genre's prototype
+characters is Case, from Gibson's Neuromancer.[21] Case is a &quot;console
+cowboy,&quot; a brilliant hacker who had betrayed his organized criminal
+partners. Robbed of his talent through a crippling injury inflicted by
+the vengeful partners, Case unexpectedly receives a once-in-a-lifetime
+opportunity to be healed by expert medical care but only if he
+participates in another criminal enterprise with a new crew.</p>
+<p>Like Case, many cyberpunk protagonists are manipulated, placed in
+situations where they have little or no choice, and although they might
+see things through, they do not necessarily come out any further ahead
+than they previously were. These anti-heroes—&quot;criminals, outcasts,
+visionaries, dissenters and misfits&quot;[22] call to mind the private eye of
+detective novels. This emphasis on the misfits and the malcontents is
+the &quot;punk&quot; component of cyberpunk.</p>
+<a class="header" href="#society-and-government" id="society-and-government"><h2>Society and government</h2></a>
+<p>Cyberpunk can be intended to disquiet readers and call them to action.
+It often expresses a sense of rebellion, suggesting that one could
+describe it as a type of culture revolution in science fiction. In the
+words of author and critic David Brin:</p>
+<pre><code>...a closer look [at cyberpunk authors] reveals that they nearly
+always portray future societies in which governments have become
+wimpy and pathetic ...Popular science fiction tales by Gibson,
+Williams, Cadigan and others do depict Orwellian accumulations of
+power in the next century, but nearly always clutched in the
+secretive hands of a wealthy or corporate elite.[23]
+</code></pre>
+<p>Cyberpunk stories have also been seen as fictional forecasts of the
+evolution of the Internet. The earliest descriptions of a global
+communications network came long before the World Wide Web entered
+popular awareness, though not before traditional science-fiction writers
+such as Arthur C. Clarke and some social commentators such as James
+Burke began predicting that such networks would eventually form.[24]</p>
+<a class="header" href="#media" id="media"><h2>Media</h2></a>
+<a class="header" href="#literature" id="literature"><h3>Literature</h3></a>
+<p>The science-fiction editor Gardner Dozois is generally acknowledged as
+the person who popularized the use of the term &quot;cyberpunk&quot; as a kind of
+literature, although Minnesota writer Bruce Bethke coined the term in
+1980 for his short story &quot;Cyberpunk,&quot; which was published in the
+November 1983 issue of Amazing Science Fiction Stories.[25] The term was
+quickly appropriated as a label to be applied to the works of William
+Gibson, Bruce Sterling, Pat Cadigan and others. Of these, Sterling
+became the movement's chief ideologue, thanks to his fanzine Cheap
+Truth. John Shirley wrote articles on Sterling and Rucker's
+significance.[26]</p>
+<p>William Gibson with his novel Neuromancer (1984) is likely the most
+famous writer connected with the term cyberpunk. He emphasized style,
+a fascination with surfaces, and atmosphere over traditional
+science-fiction tropes. Regarded as ground-breaking and sometimes as
+&quot;the archetypal cyberpunk work,&quot;[10] Neuromancer was awarded the Hugo,
+Nebula, and Philip K. Dick Awards. After Gibson's popular debut novel,
+Count Zero (1986) and Mona Lisa Overdrive (1988) followed. According to
+the Jargon File, &quot;Gibson's near-total ignorance of computers and the
+present-day hacker culture enabled him to speculate about the role of
+computers and hackers in the future in ways hackers have since found
+both irritatingly naive and tremendously stimulating.&quot;[27]</p>
+<p>Early on, cyberpunk was hailed as a radical departure from
+science-fiction standards and a new manifestation of vitality.[28]
+Shortly thereafter, however, many critics arose to challenge its status
+as a revolutionary movement. These critics said that the SF New Wave of
+the 1960s was much more innovative as far as narrative techniques and
+styles were concerned.[29] Furthermore, while Neuromancer's narrator may
+have had an unusual &quot;voice&quot; for science fiction, much older examples can
+be found: Gibson's narrative voice, for example, resembles that of an
+updated Raymond Chandler, as in his novel The Big Sleep (1939).[28]
+Others noted that almost all traits claimed to be uniquely cyberpunk
+could in fact be found in older writers' works—often citing J. G.
+Ballard, Philip K. Dick, Harlan Ellison, Stanisław Lem, Samuel R.
+Delany, and even William S. Burroughs.[28] For example, Philip K. Dick's
+works contain recurring themes of social decay, artificial intelligence,
+paranoia, and blurred lines between objective and subjective realities,
+and the influential cyberpunk movie Blade Runner is based on one of his
+books. Humans linked to machines are found in Pohl and Kornbluth's
+Wolfbane (1959) and Roger Zelazny's Creatures of Light and Darkness
+(1968).</p>
+<p>In 1994, scholar Brian Stonehill suggested that Thomas Pynchon's 1973
+novel Gravity's Rainbow &quot;not only curses but precurses what we now
+glibly dub cyberspace.&quot;[30] Other important predecessors include Alfred
+Bester's two most celebrated novels, The Demolished Man and The Stars My
+Destination,[31] as well as Vernor Vinge's novella True Names.[32]</p>
+<p>Science-fiction writer David Brin describes cyberpunk as &quot;the finest
+free promotion campaign ever waged on behalf of science fiction.&quot; It may
+not have attracted the &quot;real punks,&quot; but it did ensnare many new
+readers, and it provided the sort of movement that postmodern literary
+critics found alluring. Cyberpunk made science fiction more attractive
+to academics, argues Brin; in addition, it made science fiction more
+profitable to Hollywood and to the visual arts generally. Although the
+&quot;self-important rhetoric and whines of persecution&quot; on the part of
+cyberpunk fans were irritating at worst and humorous at best, Brin
+declares that the &quot;rebels did shake things up. We owe them a debt.&quot;[33]</p>
+<p>Cyberpunk further inspired many professional writers who were not among
+the &quot;original&quot; cyberpunks to incorporate cyberpunk ideas into their own
+works, such as George Alec Effinger's When Gravity Fails. Wired
+magazine, created by Louis Rossetto and Jane Metcalfe, mixes new
+technology, art, literature, and current topics in order to interest
+today’s cyberpunk fans, which Paula Yoo claims &quot;proves that hardcore
+hackers, multimedia junkies, cyberpunks and cellular freaks are poised
+to take over the world.&quot;[34]</p>
+<a class="header" href="#film-and-television" id="film-and-television"><h3>Film and television</h3></a>
+<p>The film Blade Runner (1982), adapted from Philip K. Dick's Do Androids
+Dream of Electric Sheep?, is set in 2019 in a dystopian future in which
+manufactured beings called replicants are slaves used on space colonies
+and are legal prey on Earth to various bounty hunters who &quot;retire&quot;
+(kill) them. Although Blade Runner was largely unsuccessful in its first
+theatrical release, it found a viewership in the home video market and
+became a cult film.[35] Since the movie omits the religious and mythical
+elements of Dick's original novel (e.g. empathy boxes and Wilbur
+Mercer), it falls more strictly within the cyberpunk genre than the
+novel does. William Gibson would later reveal that upon first viewing
+the film, he was surprised at how the look of this film matched his
+vision when he was working on Neuromancer. The film's tone has since
+been the staple of many cyberpunk movies, such as The Matrix (1999),
+which uses a wide variety of cyberpunk elements.</p>
+<p>The number of films in the genre or at least using a few genre elements
+has grown steadily since Blade Runner. Several of Philip K. Dick's works
+have been adapted to the silver screen. The films Johnny Mnemonic[36]
+and New Rose Hotel,[37][38] both based upon short stories by William
+Gibson, flopped commercially and critically.</p>
+<p>In addition, &quot;tech-noir&quot; film as a hybrid genre, means a work of
+combining neo-noir and science fiction or cyberpunk. It includes many
+cyberpunk films such as Blade Runner, The Terminator, 12 Monkeys, The
+Lawnmower Man, Hackers, Hardware, and Strange Days.</p>
+<a class="header" href="#anime-and-manga" id="anime-and-manga"><h3>Anime and manga</h3></a>
+<p>Cyberpunk themes are widely visible in anime and manga. In Japan, where
+cosplay is popular and not only teenagers display such fashion styles,
+cyberpunk has been accepted and its influence is widespread. William
+Gibson’s Neuromancer, whose influence dominated the early cyberpunk
+movement, was also set in Chiba, one of Japan’s largest industrial
+areas, although at the time of writing the novel Gibson did not know the
+location of Chiba and had no idea how perfectly it fit his vision in
+some ways. The exposure to cyberpunk ideas and fiction in the mid 1980s
+has allowed it to seep into the Japanese culture. Even though most anime
+and manga is written in Japan, the cyberpunk anime and manga have a more
+futuristic and therefore international feel to them so they are widely
+accepted by all. “The conceptualization involved in cyberpunk is more of
+forging ahead, looking at the new global culture. It is a culture that
+does not exist right now, so the Japanese concept of a cyberpunk future,
+seems just as valid as a Western one, especially as Western cyberpunk
+often incorporates many Japanese elements.”[39] William Gibson is now
+a frequent visitor to Japan, and he came to see that many of his visions
+of Japan have become a reality:</p>
+<pre><code>Modern Japan simply was cyberpunk. The Japanese themselves knew it
+and delighted in it. I remember my first glimpse of Shibuya, when
+one of the young Tokyo journalists who had taken me there, his face
+drenched with the light of a thousand media-suns—all that towering,
+animated crawl of commercial information—said, &quot;You see? You see? It
+is Blade Runner town.&quot; And it was. It so evidently was.[40]
+</code></pre>
+<p>Cyberpunk has influenced many anime and manga including the
+ground-breaking Armitage III, Blame!, Akira, Battle Angel Alita and
+Ghost in the Shell.</p>
+<a class="header" href="#games--online" id="games--online"><h3>Games &amp; Online</h3></a>
+<p>Several role-playing games (RPGs) called Cyberpunk exist: Cyberpunk,
+Cyberpunk 2020 and Cyberpunk v3, by R. Talsorian Games, and GURPS
+Cyberpunk, published by Steve Jackson Games as a module of the GURPS
+family of RPGs. Cyberpunk 2020 was designed with the settings of William
+Gibson's writings in mind, and to some extent with his approval[citation
+needed], unlike the approach taken by FASA in producing the transgenre
+Shadowrun game. Both are set in the near future, in a world where
+cybernetics are prominent. In addition, Iron Crown Enterprises released
+an RPG named Cyberspace, which was out of print for several years until
+recently being re-released in online PDF form.</p>
+<p>In 1990, in a convergence of cyberpunk art and reality, the United
+States Secret Service raided Steve Jackson Games's headquarters and
+confiscated all their computers. This was allegedly because the GURPS
+Cyberpunk sourcebook could be used to perpetrate computer crime. That
+was, in fact, not the main reason for the raid, but after the event it
+was too late to correct the public's impression.[41] Steve Jackson Games
+later won a lawsuit against the Secret Service, aided by the new
+Electronic Frontier Foundation. This event has achieved a sort of
+notoriety, which has extended to the book itself as well. All published
+editions of GURPS Cyberpunk have a tagline on the front cover, which
+reads &quot;The book that was seized by the U.S. Secret Service!&quot; Inside, the
+book provides a summary of the raid and its aftermath.</p>
+<p>Cyberpunk has also inspired several tabletop, miniature and board games.
+Netrunner is a collectible card game introduced in 1996, based on the
+Cyberpunk 2020 role-playing game.</p>
+<p>Computer games have frequently used cyberpunk as a source of
+inspiration, such as the Deus Ex series and the System Shock series as
+well as the MMORPG Neocron. Other games, like Blade Runner and the
+Matrix games, are based upon genre movies. Electronic Arts and Tilted
+Mill also published a game called SimCity Societies in 2007 which
+features the ability for a cyberpunk society along with numerous others.
+While it is arguable as to whether or not the game as a whole should be
+classified as cyberpunk, the widely popular Final Fantasy VII features
+many elements of cyberpunk fiction, particularly in regards to its
+portrayals of the world-ruling technological corporation Shinra and the
+dystopian city of Midgar, which is the center of Shinra power.</p>
+<p>In Second Life, the cities of Hangars Liquides [4] [42], Insilico[43]
+and S.I.C.[44] are also influenced by the Cyberpunk theme.</p>
+<p>Another game was Hell: A Cyberpunk Thriller on the 3DO System.</p>
+<a class="header" href="#social-impact" id="social-impact"><h2>Social impact</h2></a>
+<a class="header" href="#society-and-counterculture" id="society-and-counterculture"><h3>Society and counterculture</h3></a>
+<p>Several subcultures have been inspired by cyberpunk fiction. These
+include the Cyberdelic counter culture of the late 80s and early 90s.
+Cyberdelic, whose adherents referred to themselves as &quot;cyberpunks,&quot;
+attempted to blend the psychedelic art and drug movement with the
+technology of cyberculture. Early adherents included Timothy Leary, Mark
+Frauenfelder and R. U. Sirius. The movement largely faded following the
+dot-com bubble implosion of 2000.</p>
+<p>Cybergoth is a fashion and dance subculture which draws its inspiration
+from cyberpunk fiction, as well as rave and gothic subcultures.</p>
+<p>In addition, a distinct cyberpunk fashion of its own has emerged in
+recent years which rejects the raver and goth influences of cybergoth.</p>
+<a class="header" href="#arts-and-aesthetics" id="arts-and-aesthetics"><h2>Arts and aesthetics</h2></a>
+<a class="header" href="#literary-subgenres-and-connected-genres" id="literary-subgenres-and-connected-genres"><h3>Literary subgenres and connected genres</h3></a>
+<p>As a wider variety of writers began to work with cyberpunk concepts, new
+sub-genres of science fiction emerged, some which could be considered as
+playing off the cyberpunk label, others which could be considered as
+legitimate explorations into newer territory. These focused on
+technology and its social effects in different ways. One prominent
+subgenre is &quot;steampunk,&quot; which is set in an alternate history Victorian
+era that combines anachronistic technology with cyberpunk's bleak film
+noir world view. The term was originally coined around 1987 as a joke to
+describe some of the novels of Tim Powers, James P. Blaylock, and K.W.
+Jeter, but by the time Gibson and Sterling entered the subgenre with
+their collaborative novel The Difference Engine the term was being used
+earnestly as well.[47]</p>
+<p>Another subgenre is &quot;biopunk&quot; (cyberpunk themes dominated by
+biotechnology) from the early 1990s, a derivative style building on
+biotechnology rather than informational technology. In these stories,
+people are changed in some way not by mechanical means, but by genetic
+manipulation. Paul Di Filippo is seen as the most prominent biopunk
+writer, including his half-serious ribofunk. Bruce Sterling's
+Shaper/Mechanist cycle is also seen as a major influence. In addition,
+some people consider works such as Neal Stephenson's The Diamond Age to
+be postcyberpunk.</p>
+<a class="header" href="#music" id="music"><h3>Music</h3></a>
+<p>Some musicians and acts have been classified as cyberpunk due to their
+aesthetic style and musical content. Often dealing with dystopian
+visions of the future or biomechanical themes, some fit more squarely in
+the category than others. Bands whose music has been classified as
+cyberpunk include Psydoll, Front Line Assembly, Atari Teenage Riot and
+Sigue Sigue Sputnik. Some musicians not normally associated with
+cyberpunk have at times been inspired to create concept albums exploring
+such themes. Nine Inch Nails' concept album Year Zero fits into this
+category. Billy Idol's Cyberpunk drew heavily from cyberpunk literature
+and the cyberdelic counter culture in its creation. 1. Outside,
+a cyberpunk narrative fueled concept album by David Bowie, was warmly
+met by critics upon its release in 1995. Many musicians have also taken
+inspiration from specific cyberpunk works or authors, including Sonic
+Youth, whose albums Sister and Daydream Nation take influence from the
+works of Phillip K. Dick and William Gibson respectively.</p>
+<p>Industrial music can be seen as cyberpunk, as well as various electronic
+body music acts.</p>
+<a class="header" href="#postcyberpunk" id="postcyberpunk"><h2>Postcyberpunk</h2></a>
+<p>As new writers and artists began to experiment with cyberpunk ideas, new
+varieties of fiction emerged, sometimes addressing the criticisms
+leveled at the original cyberpunk stories. Lawrence Person wrote in an
+essay he posted to the Internet forum Slashdot:</p>
+<pre><code>Many writers who grew up reading in the 1980s are just now starting
+to have their stories and novels published. To them cyberpunk was
+not a revolution or alien philosophy invading science fiction, but
+rather just another flavor of science fiction. Like the writers of
+the 1970s and 80s who assimilated the New Wave's classics and
+stylistic techniques without necessarily knowing or even caring
+about the manifestos and ideologies that birthed them, today's new
+writers might very well have read Neuromancer back to back with
+Asimov's Foundation, John Brunner's Stand on Zanzibar, and Larry
+Niven's Ringworld and seen not discontinuities but a continuum.[2]
+</code></pre>
+<p>Person's essay advocates using the term postcyberpunk to label the new
+works such writers produce. In this view, typical postcyberpunk stories
+continue the focus on a ubiquitous datasphere of computerized
+information and cybernetic augmentation of the human body, but without
+the assumption of dystopia (see Technological utopianism). Good examples
+are Neal Stephenson's The Diamond Age and Bruce Sterling's Holy Fire. In
+television, Ghost in the Shell: Stand Alone Complex has been called &quot;the
+most interesting, sustained postcyberpunk media work in existence.&quot;[4]
+In 2007, SF writers James Patrick Kelly and John Kessel published
+Rewired: The Post-Cyberpunk Anthology. Like all categories discerned
+within science fiction, the boundaries of postcyberpunk are likely to be
+fluid or ill defined.[5]</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../cyberpunk/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../cyberpunk/ghost_in_the_shell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../cyberpunk/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../cyberpunk/ghost_in_the_shell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
