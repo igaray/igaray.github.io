@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Ur Fascism - PKB</title>
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +32,11 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -56,10 +58,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -75,44 +80,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="../Introduction.html">Introduction</a></li><li><a href="../cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li><a href="../cyberpunk/cyberpunk.html"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li><a href="../cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li><a href="../euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li><a href="../euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li><a href="../misc/index.html"><strong aria-hidden="true">3.</strong> Misc</a></li><li><ol class="section"><li><a href="../misc/library.html"><strong aria-hidden="true">3.1.</strong> Library</a></li></ol></li><li><a href="../society/index.html"><strong aria-hidden="true">4.</strong> Society</a></li><li><ol class="section"><li><a href="../society/umberto_eco_ur_fascism.html" class="active"><strong aria-hidden="true">4.1.</strong> Ur Fascism</a></li></ol></li><li><a href="../tools/index.html"><strong aria-hidden="true">5.</strong> Tools</a></li><li><ol class="section"><li><a href="../tools/cli.html"><strong aria-hidden="true">5.1.</strong> CLI</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cyberpunk/cyberpunk.html"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li class="chapter-item expanded "><a href="../cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li class="chapter-item expanded "><a href="../euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li class="chapter-item expanded "><a href="../misc/index.html"><strong aria-hidden="true">3.</strong> Misc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../misc/library.html"><strong aria-hidden="true">3.1.</strong> Library</a></li></ol></li><li class="chapter-item expanded "><a href="../society/index.html"><strong aria-hidden="true">4.</strong> Society</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../society/umberto_eco_ur_fascism.html" class="active"><strong aria-hidden="true">4.1.</strong> Ur Fascism</a></li></ol></li><li class="chapter-item expanded "><a href="../tools/index.html"><strong aria-hidden="true">5.</strong> Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools/cli.html"><strong aria-hidden="true">5.1.</strong> CLI</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">PKB</h1> 
+                    <h1 class="menu-title">PKB</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -140,25 +147,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#ur-fascism---umberto-eco-june-22-1995-issue" id="ur-fascism---umberto-eco-june-22-1995-issue"><h1>Ur-Fascism - Umberto Eco June 22, 1995 Issue</h1></a>
-<a class="header" href="#fascism-checklist" id="fascism-checklist"><h2>Fascism Checklist</h2></a>
+                        <h1><a class="header" href="#ur-fascism---umberto-eco-june-22-1995-issue" id="ur-fascism---umberto-eco-june-22-1995-issue">Ur-Fascism - Umberto Eco June 22, 1995 Issue</a></h1>
+<h2><a class="header" href="#fascism-checklist" id="fascism-checklist">Fascism Checklist</a></h2>
 <ol>
-<li>[ ] cult of tradition (return to a golden age)</li>
-<li>[ ] rejection of modernism</li>
-<li>[ ] irrationalism (action before discourse)</li>
-<li>[ ] no analytical criticism (disagreement is treason)</li>
-<li>[ ] no diversity (appeal against intruders)</li>
-<li>[ ] derives from individual or social frustration</li>
-<li>[ ] nationalistic (to people who feel deprived of a clear social identity, ur-fascism says that their only privilege is the most common one, to be born in the same country)</li>
-<li>[ ] followers must feel humiliated by the ostentatious wealth and force of their enemies</li>
-<li>[ ] there is no struggle for life but, rather, life is lived for struggle (pacifism is trafficking with the enemy)</li>
-<li>[ ] hierarchy, elitism is a typical aspect of any reactionary ideology, insofar as it is fundamentally aristocratic, and aristocratic and militaristic elitism cruelly implies contempt for the weak</li>
-<li>[ ] cult of heroism (everybody is educated to become a hero, in every mythology the hero is an exceptional being, but in ur-fascist ideology, heroism is the norm)</li>
-<li>[ ] machismo (since both permanent war and heroism are difficult games to play, the Ur-Fascist transfers his will to power to sexual matters)</li>
-<li>[ ] based upon a selective populism, a qualitative populism</li>
-<li>[ ] Ur-Fascism speaks Newspeak (impoverished vocabulary and an elementary syntax)</li>
+<li><input disabled="" type="checkbox"/>
+cult of tradition (return to a golden age)</li>
+<li><input disabled="" type="checkbox"/>
+rejection of modernism</li>
+<li><input disabled="" type="checkbox"/>
+irrationalism (action before discourse)</li>
+<li><input disabled="" type="checkbox"/>
+no analytical criticism (disagreement is treason)</li>
+<li><input disabled="" type="checkbox"/>
+no diversity (appeal against intruders)</li>
+<li><input disabled="" type="checkbox"/>
+derives from individual or social frustration</li>
+<li><input disabled="" type="checkbox"/>
+nationalistic (to people who feel deprived of a clear social identity, ur-fascism says that their only privilege is the most common one, to be born in the same country)</li>
+<li><input disabled="" type="checkbox"/>
+followers must feel humiliated by the ostentatious wealth and force of their enemies</li>
+<li><input disabled="" type="checkbox"/>
+there is no struggle for life but, rather, life is lived for struggle (pacifism is trafficking with the enemy)</li>
+<li><input disabled="" type="checkbox"/>
+hierarchy, elitism is a typical aspect of any reactionary ideology, insofar as it is fundamentally aristocratic, and aristocratic and militaristic elitism cruelly implies contempt for the weak</li>
+<li><input disabled="" type="checkbox"/>
+cult of heroism (everybody is educated to become a hero, in every mythology the hero is an exceptional being, but in ur-fascist ideology, heroism is the norm)</li>
+<li><input disabled="" type="checkbox"/>
+machismo (since both permanent war and heroism are difficult games to play, the Ur-Fascist transfers his will to power to sexual matters)</li>
+<li><input disabled="" type="checkbox"/>
+based upon a selective populism, a qualitative populism</li>
+<li><input disabled="" type="checkbox"/>
+Ur-Fascism speaks Newspeak (impoverished vocabulary and an elementary syntax)</li>
 </ol>
-<a class="header" href="#text" id="text"><h2>Text</h2></a>
+<h2><a class="header" href="#text" id="text">Text</a></h2>
 <p>In 1942, at the age of ten, I received the First Provincial Award of Ludi Juveniles (a voluntary, compulsory competition for young Italian Fascists—that is, for every young Italian). I elaborated with rhetorical skill on the subject “Should we die for the glory of Mussolini and the immortal destiny of Italy?” My answer was positive. I was a smart boy.</p>
 <p>I spent two of my early years among the SS, Fascists, Republicans, and partisans shooting at one another, and I learned how to dodge bullets. It was good exercise.</p>
 <p>In April 1945, the partisans took over in Milan. Two days later they arrived in the small town where I was living at the time. It was a moment of joy. The main square was crowded with people singing and waving flags, calling in loud voices for Mimo, the partisan leader of that area. A former maresciallo of the Carabinieri, Mimo joined the supporters of General Badoglio, Mussolini’s successor, and lost a leg during one of the first clashes with Mussolini’s remaining forces. Mimo showed up on the balcony of the city hall, pale, leaning on his crutch, and with one hand tried to calm the crowd. I was waiting for his speech because my whole childhood had been marked by the great historic speeches of Mussolini, whose most significant passages we memorized in school. Silence. Mimo spoke in a hoarse voice, barely audible. He said: “Citizens, friends. After so many painful sacrifices … here we are. Glory to those who have fallen for freedom.” And that was it. He went back inside. The crowd yelled, the partisans raised their guns and fired festive volleys. We kids hurried to pick up the shells, precious items, but I had also learned that freedom of speech means freedom from rhetoric.</p>
@@ -313,13 +334,13 @@ Lies the justice to be served.)
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../society/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../society/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../tools/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../tools/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -329,6 +350,14 @@ Lies the justice to be served.)
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         

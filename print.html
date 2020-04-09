@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>PKB</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +34,11 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -56,10 +60,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -75,44 +82,46 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li class="affix"><a href="Introduction.html">Introduction</a></li><li><a href="cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li><a href="cyberpunk/cyberpunk.html"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li><a href="cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li><a href="misc/index.html"><strong aria-hidden="true">3.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/library.html"><strong aria-hidden="true">3.1.</strong> Library</a></li></ol></li><li><a href="society/index.html"><strong aria-hidden="true">4.</strong> Society</a></li><li><ol class="section"><li><a href="society/umberto_eco_ur_fascism.html"><strong aria-hidden="true">4.1.</strong> Ur Fascism</a></li></ol></li><li><a href="tools/index.html"><strong aria-hidden="true">5.</strong> Tools</a></li><li><ol class="section"><li><a href="tools/cli.html"><strong aria-hidden="true">5.1.</strong> CLI</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="Introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="cyberpunk/index.html"><strong aria-hidden="true">1.</strong> Cyberpunk</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cyberpunk/cyberpunk.html"><strong aria-hidden="true">1.1.</strong> Cyberpunk</a></li><li class="chapter-item expanded "><a href="cyberpunk/ghost_in_the_shell.html"><strong aria-hidden="true">1.2.</strong> Ghost in the Shell</a></li></ol></li><li class="chapter-item expanded "><a href="euskera/index.html"><strong aria-hidden="true">2.</strong> Euskera</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="euskera/apuntes.html"><strong aria-hidden="true">2.1.</strong> Nire Apunteak</a></li></ol></li><li class="chapter-item expanded "><a href="misc/index.html"><strong aria-hidden="true">3.</strong> Misc</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="misc/library.html"><strong aria-hidden="true">3.1.</strong> Library</a></li></ol></li><li class="chapter-item expanded "><a href="society/index.html"><strong aria-hidden="true">4.</strong> Society</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="society/umberto_eco_ur_fascism.html"><strong aria-hidden="true">4.1.</strong> Ur Fascism</a></li></ol></li><li class="chapter-item expanded "><a href="tools/index.html"><strong aria-hidden="true">5.</strong> Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/cli.html"><strong aria-hidden="true">5.1.</strong> CLI</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">PKB</h1> 
+                    <h1 class="menu-title">PKB</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -140,9 +149,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#introduction" id="introduction"><h1>Introduction</h1></a>
-<a class="header" href="#cyberpunk" id="cyberpunk"><h1>Cyberpunk</h1></a>
-<a class="header" href="#cyberculturecyberpunk" id="cyberculturecyberpunk"><h1>Cyberculture.CyberPunk</h1></a>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p>This is my personal web site and knowledge base.</p>
+<h1><a class="header" href="#cyberpunk" id="cyberpunk">Cyberpunk</a></h1>
+<h1><a class="header" href="#cyberculturecyberpunk" id="cyberculturecyberpunk">Cyberculture.CyberPunk</a></h1>
 <p>Cyberpunk is a postmodern and science fiction genre noted for its focus
 on &quot;high tech and low life.&quot;[1][2] The name is a portmanteau of
 cybernetics and punk, and was originally coined by Bruce Bethke as the
@@ -167,7 +177,7 @@ daily life was impacted by rapid technological change, an ubiquitous
 datasphere of computerized information, and invasive modification of
 the human body.&quot; – Lawrence Person[10]
 </code></pre>
-<a class="header" href="#style-and-ethos" id="style-and-ethos"><h2>Style and ethos</h2></a>
+<h2><a class="header" href="#style-and-ethos" id="style-and-ethos">Style and ethos</a></h2>
 <p>Primary exponents of the cyberpunk field include William Gibson, Neal
 Stephenson, Bruce Sterling, Pat Cadigan, Rudy Rucker, and John
 Shirley.[11]</p>
@@ -179,7 +189,7 @@ by cyberpunk writing and movies. Beginning in the early 1990s, some
 trends in fashion and music were also labeled as cyberpunk. Cyberpunk is
 also featured prominently in anime,[12] Akira and Ghost in the Shell
 being among the most notable.[12]</p>
-<a class="header" href="#setting" id="setting"><h2>Setting</h2></a>
+<h2><a class="header" href="#setting" id="setting">Setting</a></h2>
 <p>Cyberpunk writers tend to use elements from the hard-boiled detective
 novel, film noir, and postmodernist prose to describe the often
 nihilistic underground side of an electronic society. The genre's vision
@@ -195,7 +205,7 @@ brain and computer systems. Cyberpunk depicts the world as a dark,
 sinister place with networked computers dominating every aspect of life.
 Giant, multinational corporations have for the most part replaced
 governments as centers of political, economic, and even military power.</p>
-<a class="header" href="#protagonists" id="protagonists"><h2>Protagonists</h2></a>
+<h2><a class="header" href="#protagonists" id="protagonists">Protagonists</a></h2>
 <p>Protagonists in cyberpunk writing usually include computer hackers, who
 are often patterned on the idea of the lone hero fighting injustice,
 such as Robin Hood.[20] One of the cyberpunk genre's prototype
@@ -212,7 +222,7 @@ than they previously were. These anti-heroes—&quot;criminals, outcasts,
 visionaries, dissenters and misfits&quot;[22] call to mind the private eye of
 detective novels. This emphasis on the misfits and the malcontents is
 the &quot;punk&quot; component of cyberpunk.</p>
-<a class="header" href="#society-and-government" id="society-and-government"><h2>Society and government</h2></a>
+<h2><a class="header" href="#society-and-government" id="society-and-government">Society and government</a></h2>
 <p>Cyberpunk can be intended to disquiet readers and call them to action.
 It often expresses a sense of rebellion, suggesting that one could
 describe it as a type of culture revolution in science fiction. In the
@@ -230,8 +240,8 @@ communications network came long before the World Wide Web entered
 popular awareness, though not before traditional science-fiction writers
 such as Arthur C. Clarke and some social commentators such as James
 Burke began predicting that such networks would eventually form.[24]</p>
-<a class="header" href="#media" id="media"><h2>Media</h2></a>
-<a class="header" href="#literature" id="literature"><h3>Literature</h3></a>
+<h2><a class="header" href="#media" id="media">Media</a></h2>
+<h3><a class="header" href="#literature" id="literature">Literature</a></h3>
 <p>The science-fiction editor Gardner Dozois is generally acknowledged as
 the person who popularized the use of the term &quot;cyberpunk&quot; as a kind of
 literature, although Minnesota writer Bruce Bethke coined the term in
@@ -295,7 +305,7 @@ technology, art, literature, and current topics in order to interest
 today’s cyberpunk fans, which Paula Yoo claims &quot;proves that hardcore
 hackers, multimedia junkies, cyberpunks and cellular freaks are poised
 to take over the world.&quot;[34]</p>
-<a class="header" href="#film-and-television" id="film-and-television"><h3>Film and television</h3></a>
+<h3><a class="header" href="#film-and-television" id="film-and-television">Film and television</a></h3>
 <p>The film Blade Runner (1982), adapted from Philip K. Dick's Do Androids
 Dream of Electric Sheep?, is set in 2019 in a dystopian future in which
 manufactured beings called replicants are slaves used on space colonies
@@ -319,7 +329,7 @@ Gibson, flopped commercially and critically.</p>
 combining neo-noir and science fiction or cyberpunk. It includes many
 cyberpunk films such as Blade Runner, The Terminator, 12 Monkeys, The
 Lawnmower Man, Hackers, Hardware, and Strange Days.</p>
-<a class="header" href="#anime-and-manga" id="anime-and-manga"><h3>Anime and manga</h3></a>
+<h3><a class="header" href="#anime-and-manga" id="anime-and-manga">Anime and manga</a></h3>
 <p>Cyberpunk themes are widely visible in anime and manga. In Japan, where
 cosplay is popular and not only teenagers display such fashion styles,
 cyberpunk has been accepted and its influence is widespread. William
@@ -348,7 +358,7 @@ is Blade Runner town.&quot; And it was. It so evidently was.[40]
 <p>Cyberpunk has influenced many anime and manga including the
 ground-breaking Armitage III, Blame!, Akira, Battle Angel Alita and
 Ghost in the Shell.</p>
-<a class="header" href="#games--online" id="games--online"><h3>Games &amp; Online</h3></a>
+<h3><a class="header" href="#games--online" id="games--online">Games &amp; Online</a></h3>
 <p>Several role-playing games (RPGs) called Cyberpunk exist: Cyberpunk,
 Cyberpunk 2020 and Cyberpunk v3, by R. Talsorian Games, and GURPS
 Cyberpunk, published by Steve Jackson Games as a module of the GURPS
@@ -388,8 +398,8 @@ dystopian city of Midgar, which is the center of Shinra power.</p>
 <p>In Second Life, the cities of Hangars Liquides [4] [42], Insilico[43]
 and S.I.C.[44] are also influenced by the Cyberpunk theme.</p>
 <p>Another game was Hell: A Cyberpunk Thriller on the 3DO System.</p>
-<a class="header" href="#social-impact" id="social-impact"><h2>Social impact</h2></a>
-<a class="header" href="#society-and-counterculture" id="society-and-counterculture"><h3>Society and counterculture</h3></a>
+<h2><a class="header" href="#social-impact" id="social-impact">Social impact</a></h2>
+<h3><a class="header" href="#society-and-counterculture" id="society-and-counterculture">Society and counterculture</a></h3>
 <p>Several subcultures have been inspired by cyberpunk fiction. These
 include the Cyberdelic counter culture of the late 80s and early 90s.
 Cyberdelic, whose adherents referred to themselves as &quot;cyberpunks,&quot;
@@ -401,8 +411,8 @@ dot-com bubble implosion of 2000.</p>
 from cyberpunk fiction, as well as rave and gothic subcultures.</p>
 <p>In addition, a distinct cyberpunk fashion of its own has emerged in
 recent years which rejects the raver and goth influences of cybergoth.</p>
-<a class="header" href="#arts-and-aesthetics" id="arts-and-aesthetics"><h2>Arts and aesthetics</h2></a>
-<a class="header" href="#literary-subgenres-and-connected-genres" id="literary-subgenres-and-connected-genres"><h3>Literary subgenres and connected genres</h3></a>
+<h2><a class="header" href="#arts-and-aesthetics" id="arts-and-aesthetics">Arts and aesthetics</a></h2>
+<h3><a class="header" href="#literary-subgenres-and-connected-genres" id="literary-subgenres-and-connected-genres">Literary subgenres and connected genres</a></h3>
 <p>As a wider variety of writers began to work with cyberpunk concepts, new
 sub-genres of science fiction emerged, some which could be considered as
 playing off the cyberpunk label, others which could be considered as
@@ -424,7 +434,7 @@ writer, including his half-serious ribofunk. Bruce Sterling's
 Shaper/Mechanist cycle is also seen as a major influence. In addition,
 some people consider works such as Neal Stephenson's The Diamond Age to
 be postcyberpunk.</p>
-<a class="header" href="#music" id="music"><h3>Music</h3></a>
+<h3><a class="header" href="#music" id="music">Music</a></h3>
 <p>Some musicians and acts have been classified as cyberpunk due to their
 aesthetic style and musical content. Often dealing with dystopian
 visions of the future or biomechanical themes, some fit more squarely in
@@ -442,7 +452,7 @@ Youth, whose albums Sister and Daydream Nation take influence from the
 works of Phillip K. Dick and William Gibson respectively.</p>
 <p>Industrial music can be seen as cyberpunk, as well as various electronic
 body music acts.</p>
-<a class="header" href="#postcyberpunk" id="postcyberpunk"><h2>Postcyberpunk</h2></a>
+<h2><a class="header" href="#postcyberpunk" id="postcyberpunk">Postcyberpunk</a></h2>
 <p>As new writers and artists began to experiment with cyberpunk ideas, new
 varieties of fiction emerged, sometimes addressing the criticisms
 leveled at the original cyberpunk stories. Lawrence Person wrote in an
@@ -470,7 +480,7 @@ In 2007, SF writers James Patrick Kelly and John Kessel published
 Rewired: The Post-Cyberpunk Anthology. Like all categories discerned
 within science fiction, the boundaries of postcyberpunk are likely to be
 fluid or ill defined.[5]</p>
-<a class="header" href="#ghost-in-the-shell" id="ghost-in-the-shell"><h1>Ghost in the Shell</h1></a>
+<h1><a class="header" href="#ghost-in-the-shell" id="ghost-in-the-shell">Ghost in the Shell</a></h1>
 <p>Believe me, I know how you feel! Once I watched the 1st and 2nd seasons, I
 realized no anime came close in terms of plot, characters, sociology, politics,
 and philosophy. I've been trying to find things that are similar to GITS (anime
@@ -518,229 +528,231 @@ aforementioned Avalon, which is live-action</p>
 <p>All the suggestions above are good if not amazing, but one series that recently
 blew me away was Kino's Journey. Only 13 episodes long but dear God, how each
 ones packs a punch.</p>
-<a class="header" href="#euskera" id="euskera"><h1>Euskera</h1></a>
-<a class="header" href="#nire-apunteak" id="nire-apunteak"><h1>Nire Apunteak</h1></a>
-<a class="header" href="#pronombres" id="pronombres"><h2>Pronombres</h2></a>
-<a class="header" href="#personales" id="personales"><h3>Personales</h3></a>
-<table><thead><tr><th> Numero       </th><th> Intransitivo </th><th> Transitivo </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Ni           </td><td> Nik        </td><td> Yo         </td></tr>
-<tr><td>              </td><td> Zu           </td><td> Zuk        </td><td> Vos        </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Gu           </td><td> Guk        </td><td> Nosotros   </td></tr>
-<tr><td>              </td><td> Zuek         </td><td> Zuek       </td><td> Vosotros   </td></tr>
+<h1><a class="header" href="#euskera" id="euskera">Euskera</a></h1>
+<h1><a class="header" href="#nire-apunteak" id="nire-apunteak">Nire Apunteak</a></h1>
+<h2><a class="header" href="#pronombres" id="pronombres">Pronombres</a></h2>
+<h3><a class="header" href="#personales" id="personales">Personales</a></h3>
+<table><thead><tr><th>Numero</th><th>Intransitivo</th><th>Transitivo</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Ni</td><td>Nik</td><td>Yo</td></tr>
+<tr><td></td><td>Zu</td><td>Zuk</td><td>Vos</td></tr>
+<tr><td><strong>Plural</strong></td><td>Gu</td><td>Guk</td><td>Nosotros</td></tr>
+<tr><td></td><td>Zuek</td><td>Zuek</td><td>Vosotros</td></tr>
 </tbody></table>
-<a class="header" href="#demostrativos" id="demostrativos"><h3>Demostrativos</h3></a>
-<table><thead><tr><th> Numero       </th><th> Intransitivo </th><th> Transitivo </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Hau          </td><td> Honek      </td><td> Este       </td></tr>
-<tr><td>              </td><td> Hori         </td><td> Horrek     </td><td> Ese        </td></tr>
-<tr><td>              </td><td> Hura         </td><td> Hark       </td><td> Aquel      </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Hauek        </td><td> Hauek      </td><td> Estos      </td></tr>
-<tr><td>              </td><td> Horiek       </td><td> Horiek     </td><td> Esos       </td></tr>
-<tr><td>              </td><td> Haiek        </td><td> Haiek      </td><td> Aquellos   </td></tr>
+<h3><a class="header" href="#demostrativos" id="demostrativos">Demostrativos</a></h3>
+<table><thead><tr><th>Numero</th><th>Intransitivo</th><th>Transitivo</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Hau</td><td>Honek</td><td>Este</td></tr>
+<tr><td></td><td>Hori</td><td>Horrek</td><td>Ese</td></tr>
+<tr><td></td><td>Hura</td><td>Hark</td><td>Aquel</td></tr>
+<tr><td><strong>Plural</strong></td><td>Hauek</td><td>Hauek</td><td>Estos</td></tr>
+<tr><td></td><td>Horiek</td><td>Horiek</td><td>Esos</td></tr>
+<tr><td></td><td>Haiek</td><td>Haiek</td><td>Aquellos</td></tr>
 </tbody></table>
-<a class="header" href="#indeterminados" id="indeterminados"><h3>Indeterminados</h3></a>
-<a class="header" href="#interrogativo" id="interrogativo"><h2>Interrogativo</h2></a>
-<a class="header" href="#negativo" id="negativo"><h2>Negativo</h2></a>
-<a class="header" href="#casos" id="casos"><h2>Casos</h2></a>
-<table><thead><tr><th> Caso       </th><th> Castellano               </th></tr></thead><tbody>
-<tr><td> Nor / Nork </td><td> Quien?                   </td></tr>
-<tr><td> Nori       </td><td> A quien?                 </td></tr>
-<tr><td> Noren      </td><td> De quien?                </td></tr>
-<tr><td> Norentzat  </td><td> Para quien?              </td></tr>
-<tr><td> Norekin    </td><td> Con quien?               </td></tr>
-<tr><td> Non        </td><td> Donde?                   </td></tr>
-<tr><td> Nongo      </td><td> De donde? (provenienica) </td></tr>
-<tr><td> Nora       </td><td> A donde?                 </td></tr>
-<tr><td> Nondik     </td><td> De donde?                </td></tr>
-<tr><td> Noraino    </td><td> Hasta donde?             </td></tr>
-<tr><td> Norantz    </td><td> Hacia donde? (sentido)   </td></tr>
-<tr><td> Zer / Zerk </td><td> Que?                     </td></tr>
-<tr><td> Zein       </td><td> Cual?                    </td></tr>
-<tr><td> Zertara    </td><td> A que?                   </td></tr>
-<tr><td> Zertarako  </td><td> Para que?                </td></tr>
+<h3><a class="header" href="#indeterminados" id="indeterminados">Indeterminados</a></h3>
+<h2><a class="header" href="#interrogativo" id="interrogativo">Interrogativo</a></h2>
+<h2><a class="header" href="#negativo" id="negativo">Negativo</a></h2>
+<h2><a class="header" href="#casos" id="casos">Casos</a></h2>
+<table><thead><tr><th>Caso</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>Nor / Nork</td><td>Quien?</td></tr>
+<tr><td>Nori</td><td>A quien?</td></tr>
+<tr><td>Noren</td><td>De quien?</td></tr>
+<tr><td>Norentzat</td><td>Para quien?</td></tr>
+<tr><td>Norekin</td><td>Con quien?</td></tr>
+<tr><td>Non</td><td>Donde?</td></tr>
+<tr><td>Nongo</td><td>De donde? (provenienica)</td></tr>
+<tr><td>Nora</td><td>A donde?</td></tr>
+<tr><td>Nondik</td><td>De donde?</td></tr>
+<tr><td>Noraino</td><td>Hasta donde?</td></tr>
+<tr><td>Norantz</td><td>Hacia donde? (sentido)</td></tr>
+<tr><td>Zer / Zerk</td><td>Que?</td></tr>
+<tr><td>Zein</td><td>Cual?</td></tr>
+<tr><td>Zertara</td><td>A que?</td></tr>
+<tr><td>Zertarako</td><td>Para que?</td></tr>
 </tbody></table>
-<a class="header" href="#nornork" id="nornork"><h3>Nor/Nork</h3></a>
-<table><thead><tr><th>          </th><th> Nor    </th><th> Nork   </th></tr></thead><tbody>
-<tr><td> Singular </td><td> hau    </td><td> honek  </td></tr>
-<tr><td>          </td><td> hori   </td><td> horrek </td></tr>
-<tr><td>          </td><td> hura   </td><td> hark   </td></tr>
-<tr><td> Plural   </td><td> hauek  </td><td> haiek  </td></tr>
-<tr><td>          </td><td> horiek </td><td> haiek  </td></tr>
-<tr><td>          </td><td> haiek  </td><td> haiek  </td></tr>
+<h3><a class="header" href="#nornork" id="nornork">Nor/Nork</a></h3>
+<table><thead><tr><th></th><th>Nor</th><th>Nork</th></tr></thead><tbody>
+<tr><td>Singular</td><td>hau</td><td>honek</td></tr>
+<tr><td></td><td>hori</td><td>horrek</td></tr>
+<tr><td></td><td>hura</td><td>hark</td></tr>
+<tr><td>Plural</td><td>hauek</td><td>haiek</td></tr>
+<tr><td></td><td>horiek</td><td>haiek</td></tr>
+<tr><td></td><td>haiek</td><td>haiek</td></tr>
 </tbody></table>
 <p>Nombres 'comunes': en nork singular, si termina en vocal se le agrega <code>-ak</code>.
 En nork singular, si termina en consonante se le agrega <code>-ak</code>.
 En nork plural se le agrega <code>-ek</code>.</p>
 <p>Nombres 'propios': <code>-(e)k</code>.</p>
-<a class="header" href="#non" id="non"><h3>Non</h3></a>
-<a class="header" href="#nongoa" id="nongoa"><h3>Nongoa</h3></a>
+<h3><a class="header" href="#non" id="non">Non</a></h3>
+<h3><a class="header" href="#nongoa" id="nongoa">Nongoa</a></h3>
 <p>Observese que el nombre del caso termina en <code>-goa</code> y el sufjio que le
 corresponde es <code>-goa</code> si el nombre del lugar termina en consonante y <code>-koa</code> si
 termina en vocal.</p>
-<table><thead><tr><th> Adibide                                              </th><th> Ejemplos                                          </th></tr></thead><tbody>
-<tr><td> Ni Bahia Blancakoa naiz.                             </td><td> Yo soy de Bahia Blanca.                           </td></tr>
-<tr><td> Zu Bahia Blancakoa zara.                             </td><td> Vos sos de Bahia Blanca.                          </td></tr>
-<tr><td> Hau Bahia Blancakoa da.                              </td><td> Eso es de Bahia Blanca.                           </td></tr>
-<tr><td> Hori Bahia Blancakoa da.                             </td><td> Esto es de Bahia Blanca.                          </td></tr>
-<tr><td> Hura Bahia Blancakoa da.                             </td><td> Aquello es de Bahia Blanca.                       </td></tr>
-<tr><td> Gu Bahia Blancakoa gara.                             </td><td> Nosotros somos de Bahia Blanca.                   </td></tr>
-<tr><td> Zuek Bahia Blancakoa zarete.                         </td><td> Ustedes son de Bahia Blanca.                      </td></tr>
-<tr><td> Hauek Bahia Blancakoa dira.                          </td><td> Esos son de Bahia Blanca.                         </td></tr>
-<tr><td> Horiek Bahia Blancakoa dira.                         </td><td> Estos son de Bahia Blanca.                        </td></tr>
-<tr><td> Haiek Bahia Blancakoa dira.                          </td><td> Aquellos son de Bahia Blanca.                     </td></tr>
-<tr><td> Nongoa zara zu?                                      </td><td> De donde sos vos?                                 </td></tr>
-<tr><td> Ni Bahia Blancakoa naiz.                             </td><td> Yo soy de Bahia Blanca.                           </td></tr>
-<tr><td> Nongoa dira zure gurasoak?                           </td><td> De donde son vuestros padres?                     </td></tr>
-<tr><td> Nire aita Olavarriakoa da eta nire ama Trelewgoa da. </td><td> Mi padre es de Olavarria y mi madre es de Trelew. </td></tr>
-<tr><td> J. L. Borges Palermokoa da.                          </td><td> J. L. Borges es de Palermo.                       </td></tr>
-<tr><td> Saramago Portugalgoa da.                             </td><td> Saramago es de Portugal.                          </td></tr>
-<tr><td> Haiek Veronakoak dira.                               </td><td> Aquellos son de Verona.                           </td></tr>
+<table><thead><tr><th>Adibide</th><th>Ejemplos</th></tr></thead><tbody>
+<tr><td>Ni Bahia Blancakoa naiz.</td><td>Yo soy de Bahia Blanca.</td></tr>
+<tr><td>Zu Bahia Blancakoa zara.</td><td>Vos sos de Bahia Blanca.</td></tr>
+<tr><td>Hau Bahia Blancakoa da.</td><td>Eso es de Bahia Blanca.</td></tr>
+<tr><td>Hori Bahia Blancakoa da.</td><td>Esto es de Bahia Blanca.</td></tr>
+<tr><td>Hura Bahia Blancakoa da.</td><td>Aquello es de Bahia Blanca.</td></tr>
+<tr><td>Gu Bahia Blancakoa gara.</td><td>Nosotros somos de Bahia Blanca.</td></tr>
+<tr><td>Zuek Bahia Blancakoa zarete.</td><td>Ustedes son de Bahia Blanca.</td></tr>
+<tr><td>Hauek Bahia Blancakoa dira.</td><td>Esos son de Bahia Blanca.</td></tr>
+<tr><td>Horiek Bahia Blancakoa dira.</td><td>Estos son de Bahia Blanca.</td></tr>
+<tr><td>Haiek Bahia Blancakoa dira.</td><td>Aquellos son de Bahia Blanca.</td></tr>
+<tr><td>Nongoa zara zu?</td><td>De donde sos vos?</td></tr>
+<tr><td>Ni Bahia Blancakoa naiz.</td><td>Yo soy de Bahia Blanca.</td></tr>
+<tr><td>Nongoa dira zure gurasoak?</td><td>De donde son vuestros padres?</td></tr>
+<tr><td>Nire aita Olavarriakoa da eta nire ama Trelewgoa da.</td><td>Mi padre es de Olavarria y mi madre es de Trelew.</td></tr>
+<tr><td>J. L. Borges Palermokoa da.</td><td>J. L. Borges es de Palermo.</td></tr>
+<tr><td>Saramago Portugalgoa da.</td><td>Saramago es de Portugal.</td></tr>
+<tr><td>Haiek Veronakoak dira.</td><td>Aquellos son de Verona.</td></tr>
 </tbody></table>
 <ul>
 <li>gurasoak: padres</li>
 </ul>
-<a class="header" href="#noren" id="noren"><h3>Noren</h3></a>
-<table><thead><tr><th>                           </th><th>        </th><th>           </th></tr></thead><tbody>
-<tr><td> Sustantivo comun singular </td><td> -aren  </td><td> Mutilaren </td></tr>
-<tr><td> Sustantivo comun plural   </td><td> -en    </td><td> Mutilen   </td></tr>
-<tr><td> Sustantivo propio         </td><td> -(r)en </td><td> Martinen  </td></tr>
-<tr><td>                           </td><td>        </td><td> iñakiren  </td></tr>
+<h3><a class="header" href="#noren" id="noren">Noren</a></h3>
+<table><thead><tr><th></th><th></th><th></th></tr></thead><tbody>
+<tr><td>Sustantivo comun singular</td><td>-aren</td><td>Mutilaren</td></tr>
+<tr><td>Sustantivo comun plural</td><td>-en</td><td>Mutilen</td></tr>
+<tr><td>Sustantivo propio</td><td>-(r)en</td><td>Martinen</td></tr>
+<tr><td></td><td></td><td>Iñakiren</td></tr>
 </tbody></table>
-<table><thead><tr><th>          </th><th>        </th></tr></thead><tbody>
-<tr><td> Singular </td><td> Nire   </td></tr>
-<tr><td>          </td><td> Zure   </td></tr>
-<tr><td>          </td><td> Honen  </td></tr>
-<tr><td>          </td><td> Horren </td></tr>
-<tr><td>          </td><td> Haren  </td></tr>
-<tr><td>          </td><td> Bere   </td></tr>
-<tr><td> Plural   </td><td> Gure   </td></tr>
-<tr><td>          </td><td> Zuen   </td></tr>
-<tr><td>          </td><td> Hauen  </td></tr>
-<tr><td>          </td><td> Horien </td></tr>
-<tr><td>          </td><td> Haien  </td></tr>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>Singular</td><td>Nire</td></tr>
+<tr><td></td><td>Zure</td></tr>
+<tr><td></td><td>Honen</td></tr>
+<tr><td></td><td>Horren</td></tr>
+<tr><td></td><td>Haren</td></tr>
+<tr><td></td><td>Bere</td></tr>
+<tr><td>Plural</td><td>Gure</td></tr>
+<tr><td></td><td>Zuen</td></tr>
+<tr><td></td><td>Hauen</td></tr>
+<tr><td></td><td>Horien</td></tr>
+<tr><td></td><td>Haien</td></tr>
 </tbody></table>
-<p>Nire ordenagailua txikia da.</p>
-<a class="header" href="#verbos" id="verbos"><h2>Verbos</h2></a>
-<a class="header" href="#intransitivos" id="intransitivos"><h3>Intransitivos</h3></a>
-<a class="header" href="#izan" id="izan"><h4>Izan</h4></a>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>Nire ordenagailua txikia da.</td><td>Mi computadora es chiquita.</td></tr>
+</tbody></table>
+<h2><a class="header" href="#verbos" id="verbos">Verbos</a></h2>
+<h3><a class="header" href="#intransitivos" id="intransitivos">Intransitivos</a></h3>
+<h4><a class="header" href="#izan" id="izan">Izan</a></h4>
 <p>En castellano, &quot;ser&quot; o &quot;estar&quot;.</p>
-<table><thead><tr><th>              </th><th> Nor    </th><th> Aditza </th><th> Castellano     </th></tr></thead><tbody>
-<tr><td> <strong>Singular</strong> </td><td> Ni     </td><td> naiz   </td><td> Yo soy         </td></tr>
-<tr><td>              </td><td> Zu     </td><td> zara   </td><td> Vos sos        </td></tr>
-<tr><td>              </td><td> Hau    </td><td> da     </td><td> Eso es         </td></tr>
-<tr><td>              </td><td> Hori   </td><td> da     </td><td> Esto es        </td></tr>
-<tr><td>              </td><td> Hauek  </td><td> da     </td><td> Aquello es     </td></tr>
-<tr><td> <strong>Plural</strong>   </td><td> Gu     </td><td> gara   </td><td> Nosotros somos </td></tr>
-<tr><td>              </td><td> Zuek   </td><td> zarete </td><td> Vosotros sois  </td></tr>
-<tr><td>              </td><td> Hauek  </td><td> dira   </td><td> Esos son       </td></tr>
-<tr><td>              </td><td> Horiek </td><td> dira   </td><td> Estos son      </td></tr>
-<tr><td>              </td><td> Haiek  </td><td> dira   </td><td> Aquellos son   </td></tr>
+<table><thead><tr><th></th><th>Nor</th><th>Aditza</th><th>Castellano</th></tr></thead><tbody>
+<tr><td><strong>Singular</strong></td><td>Ni</td><td>naiz</td><td>Yo soy</td></tr>
+<tr><td></td><td>Zu</td><td>zara</td><td>Vos sos</td></tr>
+<tr><td></td><td>Hau</td><td>da</td><td>Eso es</td></tr>
+<tr><td></td><td>Hori</td><td>da</td><td>Esto es</td></tr>
+<tr><td></td><td>Hauek</td><td>da</td><td>Aquello es</td></tr>
+<tr><td><strong>Plural</strong></td><td>Gu</td><td>gara</td><td>Nosotros somos</td></tr>
+<tr><td></td><td>Zuek</td><td>zarete</td><td>Vosotros sois</td></tr>
+<tr><td></td><td>Hauek</td><td>dira</td><td>Esos son</td></tr>
+<tr><td></td><td>Horiek</td><td>dira</td><td>Estos son</td></tr>
+<tr><td></td><td>Haiek</td><td>dira</td><td>Aquellos son</td></tr>
 </tbody></table>
-<a class="header" href="#nolakoa-da" id="nolakoa-da"><h5>Nolakoa da?</h5></a>
-<table><thead><tr><th> Euskera   </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> berri     </td><td> nuevo      </td></tr>
-<tr><td> gaxte     </td><td> joven      </td></tr>
-<tr><td> zahar     </td><td> viejo      </td></tr>
-<tr><td> polit     </td><td> bonito     </td></tr>
-<tr><td> itsusi    </td><td> feo        </td></tr>
-<tr><td> handi     </td><td> grande     </td></tr>
-<tr><td> txiki     </td><td> chico      </td></tr>
-<tr><td> zabal     </td><td> ancho      </td></tr>
-<tr><td> estu      </td><td> angosto    </td></tr>
-<tr><td> luze      </td><td> largo      </td></tr>
-<tr><td> labur     </td><td> corto      </td></tr>
-<tr><td> altu      </td><td> alto       </td></tr>
-<tr><td> baxu      </td><td> bajo       </td></tr>
-<tr><td> langile   </td><td> trabajador </td></tr>
-<tr><td> alfer     </td><td> vago       </td></tr>
-<tr><td> garbi     </td><td> limpio     </td></tr>
-<tr><td> zikin     </td><td> sucio      </td></tr>
-<tr><td> alai      </td><td> alegre     </td></tr>
-<tr><td> triste    </td><td> triste     </td></tr>
-<tr><td> atsegin   </td><td> agradable  </td></tr>
-<tr><td> jator     </td><td> macanudo   </td></tr>
-<tr><td> lasai     </td><td> tranquilo  </td></tr>
-<tr><td> urdin     </td><td> nervioso   </td></tr>
-<tr><td> ilehori   </td><td> rubio      </td></tr>
-<tr><td> ilegorri  </td><td> pelirrojo  </td></tr>
-<tr><td> beltzaran </td><td> morocho    </td></tr>
-<tr><td> burusoil  </td><td> pelado     </td></tr>
+<h5><a class="header" href="#nolakoa-da" id="nolakoa-da">Nolakoa da?</a></h5>
+<table><thead><tr><th>Euskera</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>berri</td><td>nuevo</td></tr>
+<tr><td>gaxte</td><td>joven</td></tr>
+<tr><td>zahar</td><td>viejo</td></tr>
+<tr><td>polit</td><td>bonito</td></tr>
+<tr><td>itsusi</td><td>feo</td></tr>
+<tr><td>handi</td><td>grande</td></tr>
+<tr><td>txiki</td><td>chico</td></tr>
+<tr><td>zabal</td><td>ancho</td></tr>
+<tr><td>estu</td><td>angosto</td></tr>
+<tr><td>luze</td><td>largo</td></tr>
+<tr><td>labur</td><td>corto</td></tr>
+<tr><td>altu</td><td>alto</td></tr>
+<tr><td>baxu</td><td>bajo</td></tr>
+<tr><td>langile</td><td>trabajador</td></tr>
+<tr><td>alfer</td><td>vago</td></tr>
+<tr><td>garbi</td><td>limpio</td></tr>
+<tr><td>zikin</td><td>sucio</td></tr>
+<tr><td>alai</td><td>alegre</td></tr>
+<tr><td>triste</td><td>triste</td></tr>
+<tr><td>atsegin</td><td>agradable</td></tr>
+<tr><td>jator</td><td>macanudo</td></tr>
+<tr><td>lasai</td><td>tranquilo</td></tr>
+<tr><td>urdin</td><td>nervioso</td></tr>
+<tr><td>ilehori</td><td>rubio</td></tr>
+<tr><td>ilegorri</td><td>pelirrojo</td></tr>
+<tr><td>beltzaran</td><td>morocho</td></tr>
+<tr><td>burusoil</td><td>pelado</td></tr>
 </tbody></table>
-<a class="header" href="#bizi" id="bizi"><h4>Bizi</h4></a>
+<h4><a class="header" href="#bizi" id="bizi">Bizi</a></h4>
 <p>En castellano, &quot;vivir&quot;.
 Usado con el caso 'Non'.
 Observese que el caso se llama 'No<strong>n</strong>' y el sufijo que le corresponde tambien
 termina en <code>-n</code>.
 Al nombre geografico (ciudad, pueblo, pais, region) se le agrega una <code>-n</code>.
 Si el nombre del lugar termina en consonante el sufijo se convierte en <code>-en</code>.</p>
-<table><thead><tr><th> Nor    </th><th> Aditza      </th></tr></thead><tbody>
-<tr><td> Ni     </td><td> bizi naiz   </td></tr>
-<tr><td> Zu     </td><td> bizi zara   </td></tr>
-<tr><td> Hau    </td><td> bizi da     </td></tr>
-<tr><td> Hori   </td><td> bizi da     </td></tr>
-<tr><td> Hura   </td><td> bizi da     </td></tr>
-<tr><td> Gu     </td><td> bizi gara   </td></tr>
-<tr><td> Zuek   </td><td> bizi zarete </td></tr>
-<tr><td> Hauek  </td><td> bizi dira   </td></tr>
-<tr><td> Horiek </td><td> bizi dira   </td></tr>
-<tr><td> Haiek  </td><td> bizi dira   </td></tr>
+<table><thead><tr><th>Nor</th><th>Aditza</th></tr></thead><tbody>
+<tr><td>Ni</td><td>bizi naiz</td></tr>
+<tr><td>Zu</td><td>bizi zara</td></tr>
+<tr><td>Hau</td><td>bizi da</td></tr>
+<tr><td>Hori</td><td>bizi da</td></tr>
+<tr><td>Hura</td><td>bizi da</td></tr>
+<tr><td>Gu</td><td>bizi gara</td></tr>
+<tr><td>Zuek</td><td>bizi zarete</td></tr>
+<tr><td>Hauek</td><td>bizi dira</td></tr>
+<tr><td>Horiek</td><td>bizi dira</td></tr>
+<tr><td>Haiek</td><td>bizi dira</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<table><thead><tr><th> Adibide                                </th><th> Ejemplos                          </th></tr></thead><tbody>
-<tr><td> Ni Bahia Blanca<strong>n</strong> bizi naiz.        </td><td> Yo vivo en Bahia Blanca.          </td></tr>
-<tr><td> Non bizi da Benedicto XVI?             </td><td> Donde vive Benedicto XVI?         </td></tr>
-<tr><td> Benedicto XVI Erroman bizi da.         </td><td> Benedicto XVI vive en Roma.       </td></tr>
-<tr><td> Non bizi da Juan Carlos I?             </td><td> Donde vive Juan Carlos I?         </td></tr>
-<tr><td> Juan Carlos I Espainan bizi da.        </td><td> Juan Carlos I vive en España.     </td></tr>
-<tr><td> Non bizi zara zu?                      </td><td> Donde vivis vos?                  </td></tr>
-<tr><td> Non bizi dira Erreomeo eta Julieta?    </td><td> Donde viven Romeo y Julieta?      </td></tr>
-<tr><td> Erromeo eta Julieta Veronan bizi dira. </td><td> Romeo y Julieta viven en Verona.  </td></tr>
-<tr><td> Haiek Veronan bizi dira.               </td><td> Ellos viven en Verona.            </td></tr>
-<tr><td> Non bizi zarete zuek?                  </td><td> Donde viven ustedes?              </td></tr>
-<tr><td> Gu Bahia Blancan bizi gara.            </td><td> Nosotros vivimos en Bahia Blanca. </td></tr>
-<tr><td> Non bizi gara gu?                      </td><td> Donde vivimos nosotros?           </td></tr>
-<tr><td> Zuek Bahia Blancan bizi zarete.        </td><td> Ustedes viven en Bahia Blanca.    </td></tr>
+<table><thead><tr><th>Adibide</th><th>Ejemplos</th></tr></thead><tbody>
+<tr><td>Ni Bahia Blanca<strong>n</strong> bizi naiz.</td><td>Yo vivo en Bahia Blanca.</td></tr>
+<tr><td>Non bizi da Benedicto XVI?</td><td>Donde vive Benedicto XVI?</td></tr>
+<tr><td>Benedicto XVI Erroman bizi da.</td><td>Benedicto XVI vive en Roma.</td></tr>
+<tr><td>Non bizi da Juan Carlos I?</td><td>Donde vive Juan Carlos I?</td></tr>
+<tr><td>Juan Carlos I Espainan bizi da.</td><td>Juan Carlos I vive en España.</td></tr>
+<tr><td>Non bizi zara zu?</td><td>Donde vivis vos?</td></tr>
+<tr><td>Non bizi dira Erreomeo eta Julieta?</td><td>Donde viven Romeo y Julieta?</td></tr>
+<tr><td>Erromeo eta Julieta Veronan bizi dira.</td><td>Romeo y Julieta viven en Verona.</td></tr>
+<tr><td>Haiek Veronan bizi dira.</td><td>Ellos viven en Verona.</td></tr>
+<tr><td>Non bizi zarete zuek?</td><td>Donde viven ustedes?</td></tr>
+<tr><td>Gu Bahia Blancan bizi gara.</td><td>Nosotros vivimos en Bahia Blanca.</td></tr>
+<tr><td>Non bizi gara gu?</td><td>Donde vivimos nosotros?</td></tr>
+<tr><td>Zuek Bahia Blancan bizi zarete.</td><td>Ustedes viven en Bahia Blanca.</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<table><thead><tr><th> Ariketak                                 </th><th> Ejercicios </th></tr></thead><tbody>
-<tr><td> Mutila Lazkaokoa da.                     </td><td>            </td></tr>
-<tr><td> Bi liburu oso politak dira.              </td><td>            </td></tr>
-<tr><td> Neskak ez dira Tolosan dira.             </td><td>            </td></tr>
-<tr><td> Ariketa hau oso zaila da.                </td><td>            </td></tr>
-<tr><td> Ariketa hauek oso zailak dira.           </td><td>            </td></tr>
-<tr><td> Neska hauek ez dira oso politak.         </td><td>            </td></tr>
-<tr><td> Gazteiz e da Gipuzkoan.                  </td><td>            </td></tr>
-<tr><td> Zuek Gernikan bizi zarete.               </td><td>            </td></tr>
-<tr><td> Zuek ez dira ikasleak.                   </td><td>            </td></tr>
-<tr><td> Liburu horiek ez dira zailak.            </td><td>            </td></tr>
-<tr><td> Gu oso serioak gara eta Baionakoak gara. </td><td>            </td></tr>
+<table><thead><tr><th>Ariketak</th><th>Ejercicios</th></tr></thead><tbody>
+<tr><td>Mutila Lazkaokoa da.</td><td></td></tr>
+<tr><td>Bi liburu oso politak dira.</td><td></td></tr>
+<tr><td>Neskak ez dira Tolosan dira.</td><td></td></tr>
+<tr><td>Ariketa hau oso zaila da.</td><td></td></tr>
+<tr><td>Ariketa hauek oso zailak dira.</td><td></td></tr>
+<tr><td>Neska hauek ez dira oso politak.</td><td></td></tr>
+<tr><td>Gazteiz e da Gipuzkoan.</td><td></td></tr>
+<tr><td>Zuek Gernikan bizi zarete.</td><td></td></tr>
+<tr><td>Zuek ez dira ikasleak.</td><td></td></tr>
+<tr><td>Liburu horiek ez dira zailak.</td><td></td></tr>
+<tr><td>Gu oso serioak gara eta Baionakoak gara.</td><td></td></tr>
 </tbody></table>
 <ul>
 <li>Nor? Khadim.</li>
 <li>Nongoa da? Senegal.</li>
 <li>Non bizi da? Euskal Herria.</li>
 </ul>
-<table><thead><tr><th> Euskera                                                              </th><th> Castellano </th></tr></thead><tbody>
-<tr><td> Khadim Senegalgoa da baina Euskal Herrian bizi da.                   </td><td>            </td></tr>
-<tr><td> Aitor eta Ignacio Euskal Herriakoak dira baina Hondurasen bizi dira. </td><td>            </td></tr>
-<tr><td> Ken Japanikoa da, eta Japonian bizi da.                              </td><td>            </td></tr>
-<tr><td> Stuart Erresuma Batuakoa da, baina Australian bizi da.               </td><td>            </td></tr>
-<tr><td> Ibrahim Egiptokoa da, baina Kuwaiten bizi da.                        </td><td>            </td></tr>
-<tr><td> Cesar Txilekoa da, baina Argentinann bizi da.                        </td><td>            </td></tr>
-<tr><td> Juan Perukoa da, baina Txinan bizi da.                               </td><td>            </td></tr>
-<tr><td> Brad eta Susan Galeskoak dira, baina Taiwanen bizi dira.             </td><td>            </td></tr>
+<table><thead><tr><th>Euskera</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>Khadim Senegalgoa da baina Euskal Herrian bizi da.</td><td></td></tr>
+<tr><td>Aitor eta Ignacio Euskal Herriakoak dira baina Hondurasen bizi dira.</td><td></td></tr>
+<tr><td>Ken Japanikoa da, eta Japonian bizi da.</td><td></td></tr>
+<tr><td>Stuart Erresuma Batuakoa da, baina Australian bizi da.</td><td></td></tr>
+<tr><td>Ibrahim Egiptokoa da, baina Kuwaiten bizi da.</td><td></td></tr>
+<tr><td>Cesar Txilekoa da, baina Argentinann bizi da.</td><td></td></tr>
+<tr><td>Juan Perukoa da, baina Txinan bizi da.</td><td></td></tr>
+<tr><td>Brad eta Susan Galeskoak dira, baina Taiwanen bizi dira.</td><td></td></tr>
 </tbody></table>
-<a class="header" href="#otros-verbos" id="otros-verbos"><h4>Otros verbos</h4></a>
-<a class="header" href="#joan" id="joan"><h4>Joan</h4></a>
+<h4><a class="header" href="#otros-verbos" id="otros-verbos">Otros verbos</a></h4>
+<h4><a class="header" href="#joan" id="joan">Joan</a></h4>
 <p>Berando joan naiz.</p>
-<a class="header" href="#egon" id="egon"><h4>Egon</h4></a>
-<a class="header" href="#etorri" id="etorri"><h4>Etorri</h4></a>
-<a class="header" href="#ibili" id="ibili"><h4>Ibili</h4></a>
-<a class="header" href="#transitivos" id="transitivos"><h3>Transitivos</h3></a>
-<a class="header" href="#ukan" id="ukan"><h4>Ukan</h4></a>
+<h4><a class="header" href="#egon" id="egon">Egon</a></h4>
+<h4><a class="header" href="#etorri" id="etorri">Etorri</a></h4>
+<h4><a class="header" href="#ibili" id="ibili">Ibili</a></h4>
+<h3><a class="header" href="#transitivos" id="transitivos">Transitivos</a></h3>
+<h4><a class="header" href="#ukan" id="ukan">Ukan</a></h4>
 <p>En castellano, &quot;tener&quot;.</p>
 <p>El 'hark' es la conjugacion solo correspondiente al 'hau'.
 El 'haiek' en cambio es la conjugacion correspondiente a 'hauek', 'horiek', y
@@ -749,368 +761,429 @@ Estas conjugaciones verbales solo son para singulares (dut, duzu, gu, dugu, ...)
 Para plurales el verbo se conjuga de manera distinta.
 Notese que en general la conjugacion del verbo para la primera persona termina
 en 't', y para la tercera no tiene nada.</p>
-<table><thead><tr><th> Nor    </th><th> Aditza </th></tr></thead><tbody>
-<tr><td> Nik    </td><td> dut    </td></tr>
-<tr><td> Zuk    </td><td> duzu   </td></tr>
-<tr><td> Honek  </td><td> du     </td></tr>
-<tr><td> Horrek </td><td> du     </td></tr>
-<tr><td> Hark   </td><td> du     </td></tr>
-<tr><td> Guk    </td><td> dugu   </td></tr>
-<tr><td> Zuk    </td><td> duzue  </td></tr>
-<tr><td> Hauek  </td><td> dute   </td></tr>
-<tr><td> Horiek </td><td> dute   </td></tr>
-<tr><td> Haiek  </td><td> dute   </td></tr>
+<table><thead><tr><th>Nor</th><th>Aditza</th></tr></thead><tbody>
+<tr><td>Nik</td><td>dut</td></tr>
+<tr><td>Zuk</td><td>duzu</td></tr>
+<tr><td>Honek</td><td>du</td></tr>
+<tr><td>Horrek</td><td>du</td></tr>
+<tr><td>Hark</td><td>du</td></tr>
+<tr><td>Guk</td><td>dugu</td></tr>
+<tr><td>Zuk</td><td>duzue</td></tr>
+<tr><td>Hauek</td><td>dute</td></tr>
+<tr><td>Horiek</td><td>dute</td></tr>
+<tr><td>Haiek</td><td>dute</td></tr>
 </tbody></table>
 <ul>
 <li></li>
 </ul>
-<p>| Adibideak                      |
-|--------------------------------|
-| Nik autoa dut.                 |
-| Zuk liburua duzu.              |
-| Honek irratia du.              |
-| Horrek irratia du.             |
-| Hark irratia du.               |
-| Guk txakur bat dugu.           |
-| Zuek ordenagailu berria duzue. |
-| Hauek hiztegia dute.           |
-| Horiek hiztegia dute.          |
-| Haiek hiztegia dute.           |</p>
-<a class="header" href="#balio" id="balio"><h4>Balio</h4></a>
-<p>|                                                   |
-|---------------------------------------------------|
-| Zenbat balio du sagar honek?                      |
-| Sagar honek bi euro balio ditu.                   |
-| Zerk balio ditu bi euro?                          |
-| Sagar honek balio ditu bi euro.                   |
-| Zenbat balio du izozkigilea horrek?               |
-| Izozkigilea horrek 1849 peso balio ditu.          |
-| Zenbat balio dituzte fideoak honek?               |
-| Fideoak honek hire peso balio ditu.               |
-| Zenbat balio du txokolate honek?                  |
-| Txokolate honek 3.79 peso balio ditu.             |
-| Zenbat balio du hortzetako eskuilak horiek?       |
-| Hortzetako eskuilak horiek 2.59 peso balio ditu.  |</p>
-<a class="header" href="#behar" id="behar"><h4>Behar</h4></a>
-<a class="header" href="#eduki" id="eduki"><h4>Eduki</h4></a>
-<a class="header" href="#ekarri" id="ekarri"><h4>Ekarri</h4></a>
-<a class="header" href="#eraman" id="eraman"><h4>Eraman</h4></a>
-<a class="header" href="#jakin" id="jakin"><h4>Jakin</h4></a>
-<a class="header" href="#condicional" id="condicional"><h2>Condicional</h2></a>
+<table><thead><tr><th>Adibideak</th></tr></thead><tbody>
+<tr><td>Nik autoa dut.</td></tr>
+<tr><td>Zuk liburua duzu.</td></tr>
+<tr><td>Honek irratia du.</td></tr>
+<tr><td>Horrek irratia du.</td></tr>
+<tr><td>Hark irratia du.</td></tr>
+<tr><td>Guk txakur bat dugu.</td></tr>
+<tr><td>Zuek ordenagailu berria duzue.</td></tr>
+<tr><td>Hauek hiztegia dute.</td></tr>
+<tr><td>Horiek hiztegia dute.</td></tr>
+<tr><td>Haiek hiztegia dute.</td></tr>
+</tbody></table>
+<h4><a class="header" href="#balio" id="balio">Balio</a></h4>
+<table><thead><tr><th></th></tr></thead><tbody>
+<tr><td>Zenbat balio du sagar honek?</td></tr>
+<tr><td>Sagar honek bi euro balio ditu.</td></tr>
+<tr><td>Zerk balio ditu bi euro?</td></tr>
+<tr><td>Sagar honek balio ditu bi euro.</td></tr>
+<tr><td>Zenbat balio du izozkigilea horrek?</td></tr>
+<tr><td>Izozkigilea horrek 1849 peso balio ditu.</td></tr>
+<tr><td>Zenbat balio dituzte fideoak honek?</td></tr>
+<tr><td>Fideoak honek hire peso balio ditu.</td></tr>
+<tr><td>Zenbat balio du txokolate honek?</td></tr>
+<tr><td>Txokolate honek 3.79 peso balio ditu.</td></tr>
+<tr><td>Zenbat balio du hortzetako eskuilak horiek?</td></tr>
+<tr><td>Hortzetako eskuilak horiek 2.59 peso balio ditu.</td></tr>
+</tbody></table>
+<h4><a class="header" href="#behar" id="behar">Behar</a></h4>
+<h4><a class="header" href="#eduki" id="eduki">Eduki</a></h4>
+<h4><a class="header" href="#ekarri" id="ekarri">Ekarri</a></h4>
+<h4><a class="header" href="#eraman" id="eraman">Eraman</a></h4>
+<h4><a class="header" href="#jakin" id="jakin">Jakin</a></h4>
+<h2><a class="header" href="#condicional" id="condicional">Condicional</a></h2>
 <p>(e)z gero</p>
-<a class="header" href="#futuro" id="futuro"><h2>Futuro</h2></a>
+<h2><a class="header" href="#futuro" id="futuro">Futuro</a></h2>
 <p>-tzen / noiz -tzen</p>
-<a class="header" href="#miscelaneo" id="miscelaneo"><h1>Miscelaneo</h1></a>
-<hr />
-<p>Borroka da bide bakarra.
-Solo pierde el que no lucha.</p>
-<hr />
-<p>Nor da?</p>
-<p>Hau Guillermo da.
-Hori Florencia da.
-Hura Soledad da.</p>
-<p>Zer da?</p>
-<p>Guillermo eta Florencia jokalariak dira.
-Soledad abeslaria da.</p>
-<p>Nongoa da? Non bizi da?</p>
-<p>Guillermo, Florencia, eta Soledad Argentinakoak dira, eta ere Argentinan bizi
-dira.</p>
-<p>Nolakoa da?</p>
-<p>Guillermo gizona zaharra eta itsusia da.
-Florencia emakumea ilehoria da.
-Eta Soledad oraindij neska gaztea da.</p>
-<hr />
-<p>Herri hau Irun da.
-Irun handia da.
-Herri txiki hori Hondarrabia da.
-Hondarrabia herri txiki baina polita da.
-Beste herri hura Hendaia da.
-Hendaia ere oso polita da.
-Mendi hura Jaizkibel da.
-Jaizkibel ez da mendi handia.
-Neska hauek Begoña eta Itziar dira.
-Neskak gazteak dira.
-Begoña Bilbokoa da, baina Itziar Hendaiakoa da.
-Neskak ikasleak dira.
-Oso ikasle onak dira.  (ojo, el 'muy' va pegado al sustantivo, no al adjetivo).</p>
-<hr />
-<p>Nik daukat
-Zuk daukazu
-Honek dauka
-Guk daukagu
-Zuek daukazue
-Hauek daukate</p>
-<p>(?) Lagunak liburua du.
-Neskak jatorrak dira.
-Neskek umore ona dute.
-Laguna oso jatorra da.
-(?) Lagunak New Yorken bizi dira.
-Lagunak kotxe gorria dute.
-Lagunak kotxe onak dituzte.
-Lagunak kotxe ona du.
-Ikasleak oso jatorrak dira.
-Gu oso jatorrak dira.
-Guk umore ona dugu.
-Etxeak politak dira.
-Etxeak itxura ona dute.
-Koldo jatorra da.
-Koldok bi seme ditu.
-Marian Irungoa da.
-Marianek berrogei urte ditu.
-Etxe urdina oso handia da.
-Ba duzu sua?
-Ez, ez daukat zurik eta tabakorik.</p>
-<hr />
-<p>Nik liburu dut.
-Zuk diskoa duzu.
-Guk etxe polita dugu.
-Lagunek liburua dute. | Los amigos tienen un libro.
-Nik sudur handia dut. | Yo tengo una nariz grande.
-Guk tripa handia dugu.
-Zuek anaia duzue.
-Koldok oso umore ona du.
-Nik oso jenio txarra dut.
-Robertok oso gorputz polita du.
-Hark liburua du.
-Haiek liburua dute.
-Aitorrek bista ona dute.
-Zuk bista txarra duzu.
-Guk kotxe ona dugu.
-Guk liburua etxean dugu.</p>
-<hr />
-<p>Gizona txikia da; gizonak egunkaria du.
-Emakumeak haurra du; emakumea oso gaztea da.
-Itsasoa handia da; itsasoak ur asko du. (observese que 'asko' va despues del sustantivo)
-Ni gizona naiz; nik etxe txikia dut.
-Zuk aurpegi garbia duzu, zu neska zara.
-Kaleak luzeak dira; kaleek ez dute argirik.
-Mendiak handiak dira; mendiek belarra dute.
-Gazteak indarra dute; gazteak langileak dira.
-Idoiak irratia du; Idoiak anaia txikia du.
-Mikel ona da; Mikelek liburua du.</p>
-<p>Nork plural
-dut   -&gt; d<strong>IT</strong>ut
-duzu  -&gt; d<strong>IT</strong>uzu
-du    -&gt; d<strong>IT</strong>u
-dugu  -&gt; d<strong>IT</strong>ugu
-duzue -&gt; d<strong>IT</strong>uzue
-dute  -&gt; d<strong>IT</strong>uzte</p>
-<hr />
-<p>izozkigile | heladera
-txokolate | chocolate</p>
-<hr />
-<p>Egunero       | diaramente
-Batzuetan     | a veces
-Noizean behin | de vez en cuando</p>
-<hr />
-<a class="header" href="#miscellaneous" id="miscellaneous"><h1>Miscellaneous</h1></a>
-<a class="header" href="#library" id="library"><h1>Library</h1></a>
-<a class="header" href="#miscellaneous-1" id="miscellaneous-1"><h2>Miscellaneous</h2></a>
+<h1><a class="header" href="#miscellaneous" id="miscellaneous">Miscellaneous</a></h1>
+<h1><a class="header" href="#library" id="library">Library</a></h1>
+<h3><a class="header" href="#miscellaneous-1" id="miscellaneous-1">Miscellaneous</a></h3>
 <ul>
-<li>[x] 1001 Discos de Musica Clasica que hay que escuchar antes de morir ES</li>
-<li>[x] 1001 Libros que hay que leer antes de morir ES</li>
-<li>[x] 1001 Peliculas que hay que ver antes de morir ES</li>
-<li>[x] 50 Cosas Que Hay Que Saber Sobre - Martin Redfern - La Tierra ES</li>
-<li>[x] 50 Cosas Que Hay Que Saber Sobre - Philip Wilkinson - Arquitectura ES</li>
-<li>[x] 50 Cosas Que Hay Que Saber Sobre - Tony Crilly - Matematica ES</li>
-<li>[x] Canciones Celtas ES</li>
-<li>[x] No Longer at Ease EN</li>
-<li>[x] The Vicar of Wakefield EN</li>
-<li>[x] Three Men in a Boat EN</li>
-<li>[x] Maria Angelica Canel - Asi aprendi a cocinar sano, rico y natural</li>
-<li>[x] Jan Sardi - Guion Original de Claroscuro</li>
-<li>[x] S R Ranganathan - Colon Classification EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+1001 Discos de Musica Clasica que hay que escuchar antes de morir ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+1001 Libros que hay que leer antes de morir ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+1001 Peliculas que hay que ver antes de morir ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+50 Cosas Que Hay Que Saber Sobre - Martin Redfern - La Tierra ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+50 Cosas Que Hay Que Saber Sobre - Philip Wilkinson - Arquitectura ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+50 Cosas Que Hay Que Saber Sobre - Tony Crilly - Matematica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Canciones Celtas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+No Longer at Ease EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Vicar of Wakefield EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Three Men in a Boat EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Maria Angelica Canel - Asi aprendi a cocinar sano, rico y natural</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jan Sardi - Guion Original de Claroscuro</li>
+<li><input disabled="" type="checkbox" checked=""/>
+S R Ranganathan - Colon Classification EN</li>
 </ul>
-<a class="header" href="#art" id="art"><h2>Art</h2></a>
+<h3><a class="header" href="#art" id="art">Art</a></h3>
 <ul>
-<li>[x] Williams - Jazz Panorama EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Williams - Jazz Panorama EN</li>
 </ul>
-<a class="header" href="#literature-1" id="literature-1"><h2>Literature</h2></a>
+<h3><a class="header" href="#literature-1" id="literature-1">Literature</a></h3>
 <ul>
-<li>[x] Anne Morrow Lindbergh - Gift From the Sea EN</li>
-<li>[x] Arabien Nights EN</li>
-<li>[x] Arthur Conan Doyle - The Case Book of Sherlock Holmes EN</li>
-<li>[x] Carl Djerassi - Cantor's Dilemma EN</li>
-<li>[x] Carson McCullers - The Heart is a Lonely Hunter EN</li>
-<li>[x] Charles Dickens - A Tale of Two Cities EN</li>
-<li>[x] Daniel Defoe - Robinson Crusoe EN</li>
-<li>[x] Edgar Allen Poe - Selected Tales EN</li>
-<li>[x] Erich Maria Remarque - All Quiet on the Western Front EN</li>
-<li>[x] Evelyn Waugh - Scoop EN</li>
-<li>[x] Frederick Forsyth - The Day of the Jackal EN</li>
-<li>[x] George Eliot - Middlemarch EN</li>
-<li>[x] Graham Greene - The Honorary Consul EN</li>
-<li>[x] Gulliver's Travels EN</li>
-<li>[x] H G Wells - The Invisible Man EN</li>
-<li>[x] Harriet Beech Stowe - Uncle Tom's Cabin EN</li>
-<li>[x] Haruki Murakami - 1Q84 Vol 1 ES</li>
-<li>[x] Haruki Murakami - 1Q84 Vol 2 ES</li>
-<li>[x] Haruki Murakami - 1Q84 Vol 3 ES</li>
-<li>[ ] Haruki Murakami - A Wild Sheep Chase ES</li>
-<li>[x] Haruki Murakami - After Dark ES</li>
-<li>[ ] Haruki Murakami - Colorless Tsukuru Tazaki and His Years of Pilgrimage ES</li>
-<li>[ ] Haruki Murakami - Dance Dance Dance ES</li>
-<li>[x] Haruki Murakami - Hard-boiled Wonderland and the End of the World ES</li>
-<li>[ ] Haruki Murakami - Hear the Wind Sing ES</li>
-<li>[x] Haruki Murakami - Kafka on the Shore ES</li>
-<li>[x] Haruki Murakami - Men Without Women ES</li>
-<li>[ ] Haruki Murakami - Norwegian Wood ES</li>
-<li>[ ] Haruki Murakami - Pinball, 1973 ES</li>
-<li>[ ] Haruki Murakami - South of the Border, West of the Sun ES</li>
-<li>[ ] Haruki Murakami - Sputnik Sweetheart ES</li>
-<li>[x] Haruki Murakami - The Wind-Up Bird Chronicle ES</li>
-<li>[x] J D Salinger - The Catcher in the Rye EN</li>
-<li>[x] James Baldwin - Nobody Knows My Name EN</li>
-<li>[x] Jane Austen - Pride and Prejudice EN</li>
-<li>[x] Jeff Goodell - The Cyberthief and the Samurai EN</li>
-<li>[x] John Irving - A Son of the Circus EN</li>
-<li>[x] John Milton - The Complete English Poetry of John Milton EN</li>
-<li>[x] John Steinbeck - The Moon is Down EN</li>
-<li>[x] John Updike - Couples EN</li>
-<li>[x] Jules Verne - Twenty Thousand Leagues Under the Sea EN</li>
-<li>[x] Kingsley Amis - Lucky Jim EN</li>
-<li>[x] Kurt Vonnegut - Bluebeard EN</li>
-<li>[x] Kurt Vonnegut - Player Piano EN</li>
-<li>[x] Kurt Vonnegut - Welcome to the Monkey House EN</li>
-<li>[x] L P Hartley - The Shrimp and the Anemone EN</li>
-<li>[x] Lu Hsun - Diario de un loco ES</li>
-<li>[x] Mark Twain - The Complete Short Stories of Mark Twain EN</li>
-<li>[x] Marlowe - The Tragedy of Doctor Faustus EN</li>
-<li>[x] Michael Crichton - A Case of Need EN</li>
-<li>[x] Michael Crichton - Airframe EN</li>
-<li>[x] Michael Crichton - Congo EN</li>
-<li>[x] Michael Crichton - Disclosure EN</li>
-<li>[x] Michael Crichton - Eaters of the Dead EN</li>
-<li>[x] Michael Crichton - Rising Sun EN</li>
-<li>[x] Michael Crichton - Sphere EN</li>
-<li>[x] Michael Crichton - The Andromeda Strain EN</li>
-<li>[x] Michael Crichton - The Great Train Robbery EN</li>
-<li>[x] Michael Crichton - The Terminal Man EN</li>
-<li>[x] Oscar Wilde - Lord Arthur Savile's Crime EN</li>
-<li>[x] Peter Blauner - Man of the Hour EN</li>
-<li>[x] Phil Rickman - December EN</li>
-<li>[x] Rhine Sagas EN</li>
-<li>[x] Richard Adams - Watership Down EN</li>
-<li>[x] Rudyard Kipling - Captains Courageous EN</li>
-<li>[x] Rudyard Kipling - The Jungle Book EN</li>
-<li>[x] Soviet Short Stories EN</li>
-<li>[x] The Adventures of Huckleberry Finn EN</li>
-<li>[x] The Adventures of Ulysses EN</li>
-<li>[x] The Earliest English Poems EN</li>
-<li>[x] The Trojan War EN</li>
-<li>[x] Thomas Hardy - Tess of the d'Urbervilles EN</li>
-<li>[x] Thomas Harris - The Silence of the Lambs EN</li>
-<li>[ ] Marcel Proust - En busqueda del tiempo perdido</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Anne Morrow Lindbergh - Gift From the Sea EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Arabien Nights EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Arthur Conan Doyle - The Case Book of Sherlock Holmes EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Carl Djerassi - Cantor's Dilemma EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Carson McCullers - The Heart is a Lonely Hunter EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Charles Dickens - A Tale of Two Cities EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Daniel Defoe - Robinson Crusoe EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Edgar Allen Poe - Selected Tales EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Erich Maria Remarque - All Quiet on the Western Front EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Evelyn Waugh - Scoop EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Frederick Forsyth - The Day of the Jackal EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+George Eliot - Middlemarch EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Graham Greene - The Honorary Consul EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Gulliver's Travels EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+H G Wells - The Invisible Man EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Harriet Beech Stowe - Uncle Tom's Cabin EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - 1Q84 Vol 1 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - 1Q84 Vol 2 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - 1Q84 Vol 3 ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - A Wild Sheep Chase ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - After Dark ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Colorless Tsukuru Tazaki and His Years of Pilgrimage ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Dance Dance Dance ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - Hard-boiled Wonderland and the End of the World ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Hear the Wind Sing ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - Kafka on the Shore ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - Men Without Women ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Norwegian Wood ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Pinball, 1973 ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - South of the Border, West of the Sun ES</li>
+<li><input disabled="" type="checkbox"/>
+Haruki Murakami - Sputnik Sweetheart ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Haruki Murakami - The Wind-Up Bird Chronicle ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J D Salinger - The Catcher in the Rye EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+James Baldwin - Nobody Knows My Name EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jane Austen - Pride and Prejudice EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jeff Goodell - The Cyberthief and the Samurai EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+John Irving - A Son of the Circus EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+John Milton - The Complete English Poetry of John Milton EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+John Steinbeck - The Moon is Down EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+John Updike - Couples EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jules Verne - Twenty Thousand Leagues Under the Sea EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Kingsley Amis - Lucky Jim EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Kurt Vonnegut - Bluebeard EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Kurt Vonnegut - Player Piano EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Kurt Vonnegut - Welcome to the Monkey House EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+L P Hartley - The Shrimp and the Anemone EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Lu Hsun - Diario de un loco ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mark Twain - The Complete Short Stories of Mark Twain EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Marlowe - The Tragedy of Doctor Faustus EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - A Case of Need EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Airframe EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Congo EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Disclosure EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Eaters of the Dead EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Rising Sun EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - Sphere EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - The Andromeda Strain EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - The Great Train Robbery EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michael Crichton - The Terminal Man EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Oscar Wilde - Lord Arthur Savile's Crime EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Peter Blauner - Man of the Hour EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Phil Rickman - December EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rhine Sagas EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Richard Adams - Watership Down EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rudyard Kipling - Captains Courageous EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rudyard Kipling - The Jungle Book EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Soviet Short Stories EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Adventures of Huckleberry Finn EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Adventures of Ulysses EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Earliest English Poems EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Trojan War EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Thomas Hardy - Tess of the d'Urbervilles EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Thomas Harris - The Silence of the Lambs EN</li>
+<li><input disabled="" type="checkbox"/>
+Marcel Proust - En busqueda del tiempo perdido</li>
 </ul>
-<a class="header" href="#north-american-literature" id="north-american-literature"><h2>North American Literature</h2></a>
-<a class="header" href="#english-literature" id="english-literature"><h2>English Literature</h2></a>
+<h3><a class="header" href="#english-literature" id="english-literature">English Literature</a></h3>
 <ul>
-<li>[ ] Spencer Holst - The Language of Cats and Other Stories</li>
-<li>[x] Agatha Christie - Hercule Poirot, Miss Marple and 3 Whodunnits EN</li>
-<li>[x] Agatha Christie - Murder on the Orient Express EN</li>
+<li><input disabled="" type="checkbox"/>
+Spencer Holst - The Language of Cats and Other Stories</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Agatha Christie - Hercule Poirot, Miss Marple and 3 Whodunnits EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Agatha Christie - Murder on the Orient Express EN</li>
 </ul>
-<p>## Latinoamerican Literature</p>
+<p>### Latin American Literature</p>
 <ul>
-<li>[ ] Adolfo Bioy Casares - El Sueño de los Heroes</li>
-<li>[ ] Alan Pauls - El Pasado</li>
-<li>[ ] Alberto Laiseca - El Jardin de las Maquinas Parlantes</li>
-<li>[ ] Alberto Laiseca - La Hija de Kheops</li>
-<li>[ ] Alberto Laiseca - La Mujer en la Muralla</li>
-<li>[ ] Alberto Laiseca - Las Cuatro Torres de Babel</li>
-<li>[ ] Alberto Laiseca - Los Sorias</li>
+<li><input disabled="" type="checkbox"/>
+Adolfo Bioy Casares - El Sueño de los Heroes</li>
+<li><input disabled="" type="checkbox"/>
+Alan Pauls - El Pasado</li>
+<li><input disabled="" type="checkbox"/>
+Alberto Laiseca - El Jardin de las Maquinas Parlantes</li>
+<li><input disabled="" type="checkbox"/>
+Alberto Laiseca - La Hija de Kheops</li>
+<li><input disabled="" type="checkbox"/>
+Alberto Laiseca - La Mujer en la Muralla</li>
+<li><input disabled="" type="checkbox"/>
+Alberto Laiseca - Las Cuatro Torres de Babel</li>
+<li><input disabled="" type="checkbox"/>
+Alberto Laiseca - Los Sorias</li>
 <li>[ ] Alejo Carpentier - El recurso del metodo ES</li>
 <li>[ ] Alejo Carpentier - El Reino de este Mundo ES</li>
 <li>[ ] Alejo Carpentier - El Siglo de las Luces ES</li>
 <li>[ ] Alejo Carpentier - La consagracion de la primavera ES</li>
 <li>[ ] Alejo Carpentier - Los Pasos Perdidos ES</li>
-<li>[ ] Camila Sosa Villada - Las Malas</li>
-<li>[ ] Carla Maliandi - La Habitacion Alemana</li>
+<li><input disabled="" type="checkbox"/>
+Camila Sosa Villada - Las Malas</li>
+<li><input disabled="" type="checkbox"/>
+Carla Maliandi - La Habitacion Alemana</li>
 <li>[ ] Cesar Aira - El Marmol</li>
-<li>[ ] Daniel Guebel - El Absoluto</li>
-<li>[ ] Enrique Vila-Matas - Exploradores del Abismo</li>
-<li>[ ] Ernesto Sabato - Hombres y Engranajes</li>
-<li>[ ] Ernesto Sabato - Uno y el Universo</li>
-<li>[x] Ernesto Sabato - Ensayo sobre la ceguera</li>
-<li>[ ] Ernestp Sabato - Sobre Heroes y Tumbas</li>
-<li>[ ] Ernesto Sabato - El Tunel</li>
-<li>[x] Ernesto Sabato - Abaddon, el exterminador</li>
-<li>[x] Gabriel Garcia Marquez - One Hundred Years of Solitude EN</li>
+<li><input disabled="" type="checkbox"/>
+Daniel Guebel - El Absoluto</li>
+<li><input disabled="" type="checkbox"/>
+Enrique Vila-Matas - Exploradores del Abismo</li>
+<li><input disabled="" type="checkbox"/>
+Ernesto Sabato - Hombres y Engranajes</li>
+<li><input disabled="" type="checkbox"/>
+Ernesto Sabato - Uno y el Universo</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ernesto Sabato - Ensayo sobre la ceguera</li>
+<li><input disabled="" type="checkbox"/>
+Ernestp Sabato - Sobre Heroes y Tumbas</li>
+<li><input disabled="" type="checkbox"/>
+Ernesto Sabato - El Tunel</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ernesto Sabato - Abaddon, el exterminador</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Gabriel Garcia Marquez - One Hundred Years of Solitude EN</li>
 <li>[ ] Gabriel Garcia Marquez - Cien Años de Soledad ES</li>
 <li>[ ] Gabriel Garcia Marquez - Del Amor y Otros Demonios ES</li>
 <li>[ ] Gabriel Garcia Marquez - El Amor en Tiempos de Colera ES</li>
 <li>[ ] Gabriel Garcia Marquez - El Coronel no tiene quien le escriba ES</li>
 <li>[ ] Gabriel Garcia Marquez - Memoria de mis putas tristes ES</li>
-<li>[x] Guillermo Martinez - Acerca de Roderer ES</li>
-<li>[x] Guillermo Martinez - Borges y la Matematica ES</li>
-<li>[x] Guillermo Martinez - Crimenes imperceptibles ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Guillermo Martinez - Acerca de Roderer ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Guillermo Martinez - Borges y la Matematica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Guillermo Martinez - Crimenes imperceptibles ES</li>
 <li>[ ] Jorge Baron Biza - El Desierto y Su Semilla</li>
-<li>[x] Jorge Luis Borges - Obras Completas 1 ES</li>
-<li>[x] Jorge Luis Borges - Obras Completas 2 ES</li>
-<li>[x] Jorge Luis Borges - Obras Completas 3 ES</li>
-<li>[x] Jorge Luis Borges - Obras Completas 4 ES</li>
-<li>[x] Julio Cortazar - Bestiario ES</li>
-<li>[x] Julio Cortazar - Cuentos Completos 1 ES</li>
-<li>[x] Julio Cortazar - Cuentos Completos 2 ES</li>
-<li>[x] Julio Cortazar - Cuentos Completos 3 ES</li>
-<li>[x] Julio Cortazar - El Diario de Andres Fava ES</li>
-<li>[x] Julio Cortazar - Rayuela ES</li>
-<li>[ ] Juan Forn - Los Viernes</li>
-<li>[ ] Julian Lopez - Una Muchacha Muy Bella</li>
-<li>[ ] Leila Guerriero - Los suicidas del fin del mundo. Cronica de un pueblo patagonico</li>
-<li>[ ] Maria Sonia Cristoff - Bajo Influencia</li>
-<li>[ ] Maria Sonia Cristoff - Falsa Calma</li>
-<li>[ ] Maria Sonia Cristoff - Incluyanme Afuera</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jorge Luis Borges - Obras Completas 1 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jorge Luis Borges - Obras Completas 2 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jorge Luis Borges - Obras Completas 3 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jorge Luis Borges - Obras Completas 4 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - Bestiario ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - Cuentos Completos 1 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - Cuentos Completos 2 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - Cuentos Completos 3 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - El Diario de Andres Fava ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Julio Cortazar - Rayuela ES</li>
+<li><input disabled="" type="checkbox"/>
+Juan Forn - Los Viernes</li>
+<li><input disabled="" type="checkbox"/>
+Julian Lopez - Una Muchacha Muy Bella</li>
+<li><input disabled="" type="checkbox"/>
+Leila Guerriero - Los suicidas del fin del mundo. Cronica de un pueblo patagonico</li>
+<li><input disabled="" type="checkbox"/>
+Maria Sonia Cristoff - Bajo Influencia</li>
+<li><input disabled="" type="checkbox"/>
+Maria Sonia Cristoff - Falsa Calma</li>
+<li><input disabled="" type="checkbox"/>
+Maria Sonia Cristoff - Incluyanme Afuera</li>
 <li>[ ] Roa Bastos - Yo El Supremo ES</li>
 <li>[ ] Roberto Arlt - El Amor Brujo</li>
 <li>[ ] Roberto Arlt - El Juguete Rabioso</li>
 <li>[ ] Roberto Arlt - Los Lanzallamas</li>
 <li>[ ] Roberto Arlt - Los Siete Locos</li>
-<li>[ ] Roberto Bolaño - Los detectives salvajes</li>
+<li><input disabled="" type="checkbox"/>
+Roberto Bolaño - Los detectives salvajes</li>
 <li>[ ] Rodolfo Fogwill - Los Pichiciegos</li>
 <li>[ ] Samantha Schwebling - Distancia de Rescate</li>
 <li>[ ] Samantha Schwebling - Kentukis</li>
-<li>[ ] Valeria Luiselli - Desierto Sonoro</li>
+<li><input disabled="" type="checkbox"/>
+Valeria Luiselli - Desierto Sonoro</li>
 </ul>
-<a class="header" href="#fantasymythology" id="fantasymythology"><h2>Fantasy/Mythology</h2></a>
+<h3><a class="header" href="#fantasymythology" id="fantasymythology">Fantasy/Mythology</a></h3>
 <ul>
-<li>[x] Bernard Cowell - The Winter King EN</li>
-<li>[x] Bullfinch's Mythology EN</li>
-<li>[x] C S Lewis - Prince Caspian EN</li>
-<li>[x] C S Lewis - The Lion, the Witch and the Wardrobe EN</li>
-<li>[x] C S Lewis - The Silver Chair EN</li>
-<li>[x] Dioses Vikingos ES</li>
-<li>[x] Dioses y Mitos Chinos ES</li>
-<li>[x] Dioses y Mitos Japoneses ES</li>
-<li>[x] Edith Hamilton - Mythology EN</li>
-<li>[x] El Libro Magico de las Runas ES</li>
-<li>[x] Esteban Ierardo - El Druida ES</li>
-<li>[x] J R R Tolkien - Sauron Defeated EN</li>
-<li>[x] J R R Tolkien - The Book of Lost Tales 1 EN</li>
-<li>[x] J R R Tolkien - The Book of Lost Tales 2 EN</li>
-<li>[x] J R R Tolkien - The Hobbit EN</li>
-<li>[x] J R R Tolkien - The Lays of Beleriand EN</li>
-<li>[x] J R R Tolkien - The Legend of Sigurd and Gudrun EN</li>
-<li>[x] J R R Tolkien - The Lord of the Rings EN</li>
-<li>[x] J R R Tolkien - The Lost Road and Other Writings EN</li>
-<li>[x] J R R Tolkien - The Shaping of Middle Earth EN</li>
-<li>[x] J R R Tolkien - The Silmarillion EN</li>
-<li>[x] J R R Tolkien - Unfinished Tales EN</li>
-<li>[x] Liliana Bodoc - Los Dias de la Sombra ES</li>
-<li>[x] Liliana Bodoc - Los Dias del Fuego ES</li>
-<li>[x] Liliana Bodoc - Los Dias del Venado ES</li>
-<li>[x] Marion Zimmer Bradley - The Mists of Avalon EN</li>
-<li>[x] Mitos y Leyendas de los Vikingos ES</li>
-<li>[x] R Rosaspini Reynolds - Historia y Leyenda del Rey Arturo ES</li>
-<li>[x] R Rosaspini Reynolds - Mitos y Leyendas Celtas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Bernard Cowell - The Winter King EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Bullfinch's Mythology EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+C S Lewis - Prince Caspian EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+C S Lewis - The Lion, the Witch and the Wardrobe EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+C S Lewis - The Silver Chair EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Dioses Vikingos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Dioses y Mitos Chinos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Dioses y Mitos Japoneses ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Edith Hamilton - Mythology EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+El Libro Magico de las Runas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Esteban Ierardo - El Druida ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - Sauron Defeated EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Book of Lost Tales 1 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Book of Lost Tales 2 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Hobbit EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Lays of Beleriand EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Legend of Sigurd and Gudrun EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Lord of the Rings EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Lost Road and Other Writings EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Shaping of Middle Earth EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - The Silmarillion EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J R R Tolkien - Unfinished Tales EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Liliana Bodoc - Los Dias de la Sombra ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Liliana Bodoc - Los Dias del Fuego ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Liliana Bodoc - Los Dias del Venado ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Marion Zimmer Bradley - The Mists of Avalon EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mitos y Leyendas de los Vikingos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+R Rosaspini Reynolds - Historia y Leyenda del Rey Arturo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+R Rosaspini Reynolds - Mitos y Leyendas Celtas ES</li>
 </ul>
-<a class="header" href="#science-fiction" id="science-fiction"><h2>Science Fiction</h2></a>
+<h3><a class="header" href="#science-fiction" id="science-fiction">Science Fiction</a></h3>
 <ul>
-<li>[x] Arthur C Clarke - Rama II EN</li>
-<li>[x] Arthur C Clarke - Rendezvous with Rama EN</li>
-<li>[x] Diane Carey - Star Trek The Next Generation Descent EN</li>
-<li>[x] Douglas Adamas - The Hitchiker's Guide to the Galaxy EN</li>
-<li>[x] Frank Herbert - Dune EN</li>
-<li>[x] Gene DeWeese - Die Kolonie Der Abtrünnigen DE</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Arthur C Clarke - Rama II EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Arthur C Clarke - Rendezvous with Rama EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Diane Carey - Star Trek The Next Generation Descent EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Douglas Adamas - The Hitchiker's Guide to the Galaxy EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Frank Herbert - Dune EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Gene DeWeese - Die Kolonie Der Abtrünnigen DE</li>
 <li>[ ] Isaac Asimov - The Caves of Steel EN</li>
 <li>[ ] Isaac Asimov - The Naked Sun EN</li>
 <li>[ ] Isaac Asimov - The Robots of Dawn EN</li>
@@ -1119,157 +1192,287 @@ Noizean behin | de vez en cuando</p>
 <li>[ ] Isaac Asimov - The Stars, Like Dust EN</li>
 <li>[ ] Isaac Asimov - Pebble in the Sky EN</li>
 <li>[ ] Isaac Asimov - Foundation EN</li>
-<li>[x] Isaac Asimov - Foundation and Empire EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isaac Asimov - Foundation and Empire EN</li>
 <li>[ ] Isaac Asimov - Second Foundation EN</li>
-<li>[x] Isaac Asimov - Foundation's Edge EN</li>
-<li>[x] Isaac Asimov - Foundation and Earth EN</li>
-<li>[x] Isaac Asimov - The Winds of Change EN</li>
-<li>[x] Isaac Asimov - Words from the Myths EN</li>
-<li>[ ] Neal Stephenson - Anathem EN</li>
-<li>[x] Neal Stephenson - Cryptonomicon EN</li>
-<li>[x] Neal Stephenson - REAMDE EN</li>
-<li>[x] Neal Stephenson - Snow Crash EN</li>
-<li>[x] Neal Stephenson - The Diamond Age EN* [x] Orson Scott Card - Ender's Game EN</li>
-<li>[x] Peter Haining - The Flying Sorcerers EN</li>
-<li>[x] Timothy Zahn - Star Wars Dark Force Rising EN</li>
-<li>[x] Timothy Zahn - Star Wars The Last Command EN</li>
-<li>[x] William Gibson - Sprawl 1: Neuromancer (1984) EN</li>
-<li>[x] William Gibson - Sprawl 2: Count Zero (1986) EN</li>
-<li>[x] William Gibson - Sprawl 3: Mona Lisa Overdrive (1988) EN</li>
-<li>[x] William Gibson - Bridge 1: Virtual Light (1993) EN</li>
-<li>[x] William Gibson - Bridge 2: Idoru (1996) EN</li>
-<li>[x] William Gibson - Bridge 3: All Tomorrow's Parties (1999) EN</li>
-<li>[x] William Gibson - Blue Ant 1: Pattern Recognition (2003) EN</li>
-<li>[ ] William Gibson - Blue Ant 2: Spook Country (2007) EN</li>
-<li>[ ] William Gibson - Blue Ant 3: Zero History (2010) EN</li>
-<li>[ ] William Gibson - Burning Chrome (1986) EN</li>
-<li>[ ] William Gibson - The Difference Engine (1990) EN</li>
-<li>[ ] William Gibson - The Peripheral (2014)</li>
-<li>[ ] William Gibson - Agency (2020)</li>
-<li>[x] William Shatner - Startrek: The Return EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isaac Asimov - Foundation's Edge EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isaac Asimov - Foundation and Earth EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isaac Asimov - The Winds of Change EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isaac Asimov - Words from the Myths EN</li>
+<li><input disabled="" type="checkbox"/>
+Neal Stephenson - Anathem EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Neal Stephenson - Cryptonomicon EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Neal Stephenson - REAMDE EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Neal Stephenson - Snow Crash EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Neal Stephenson - The Diamond Age EN* [x] Orson Scott Card - Ender's Game EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Peter Haining - The Flying Sorcerers EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Timothy Zahn - Star Wars Dark Force Rising EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Timothy Zahn - Star Wars The Last Command EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Sprawl 1: Neuromancer (1984) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Sprawl 2: Count Zero (1986) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Sprawl 3: Mona Lisa Overdrive (1988) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Bridge 1: Virtual Light (1993) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Bridge 2: Idoru (1996) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Bridge 3: All Tomorrow's Parties (1999) EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Gibson - Blue Ant 1: Pattern Recognition (2003) EN</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - Blue Ant 2: Spook Country (2007) EN</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - Blue Ant 3: Zero History (2010) EN</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - Burning Chrome (1986) EN</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - The Difference Engine (1990) EN</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - The Peripheral (2014)</li>
+<li><input disabled="" type="checkbox"/>
+William Gibson - Agency (2020)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+William Shatner - Startrek: The Return EN</li>
 </ul>
-<a class="header" href="#science" id="science"><h2>Science</h2></a>
+<h3><a class="header" href="#science" id="science">Science</a></h3>
 <ul>
-<li>[x] Ciencia Que Ladra - Gonzalo Zabala - Robots ES</li>
-<li>[x] Ciencia Que Ladra - Pablo Amster - La Matematica como una de las Bellas Artes ES</li>
-<li>[x] Ciencia Que Ladra - Pablo Kreimer - El Cientifico Tambien es un Ser Humano ES</li>
-<li>[x] Douglas Hofstadter - Gödel, Escher, Bach EN</li>
-<li>[x] Douglas Hofstadter - Gödel, Escher, Bach ES</li>
-<li>[x] Francisco Martin Casalderrey - La Burla de los Sentidos ES</li>
-<li>[x] Javier Fresan - El Sueño de la Razon ES</li>
-<li>[x] Malba Tahan - El Hombre Que Calculaba ES</li>
-<li>[x] Oscar Reula - Metodos Matematicos de la Fisica ES</li>
-<li>[x] Serway Vuille - Fundamentos de Fisica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ciencia Que Ladra - Gonzalo Zabala - Robots ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ciencia Que Ladra - Pablo Amster - La Matematica como una de las Bellas Artes ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ciencia Que Ladra - Pablo Kreimer - El Cientifico Tambien es un Ser Humano ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Douglas Hofstadter - Gödel, Escher, Bach EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Douglas Hofstadter - Gödel, Escher, Bach ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Francisco Martin Casalderrey - La Burla de los Sentidos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Javier Fresan - El Sueño de la Razon ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Malba Tahan - El Hombre Que Calculaba ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Oscar Reula - Metodos Matematicos de la Fisica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Serway Vuille - Fundamentos de Fisica ES</li>
 </ul>
-<a class="header" href="#computer-science" id="computer-science"><h2>Computer Science</h2></a>
+<h3><a class="header" href="#computer-science" id="computer-science">Computer Science</a></h3>
 <ul>
-<li>[x] A Little Riak Book 2.0 EN</li>
-<li>[x] Artificial Social Systems EN</li>
-<li>[x] Intelligent Agents. Theories, Architectures and Languages EN</li>
-<li>[x] JavaScript: The Good Parts EN</li>
-<li>[x] Korsch, Garrett - Data Structures, Algorithms and Program Style Using C EN</li>
-<li>[x] Linux Ed4 ES</li>
-<li>[x] Linux Maxima Seguridad ES</li>
-<li>[x] Lippman, Lajoie, Moo - C++ Primer EN</li>
-<li>[x] Multiagent Systems: Intentions, Know-How and Communications EN</li>
-<li>[x] Redes GNU/Linux ES</li>
-<li>[x] Sedgewick Algorithms in C Part 5 EN</li>
-<li>[x] Sedgewick Algorithms in C Parts 1-4 EN</li>
-<li>[x] SuSE Linux 6.4 EN</li>
-<li>[x] Van Wyk - Data Structures and C Programs EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+A Little Riak Book 2.0 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Artificial Social Systems EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Intelligent Agents. Theories, Architectures and Languages EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+JavaScript: The Good Parts EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Korsch, Garrett - Data Structures, Algorithms and Program Style Using C EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Linux Ed4 ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Linux Maxima Seguridad ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Lippman, Lajoie, Moo - C++ Primer EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Multiagent Systems: Intentions, Know-How and Communications EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Redes GNU/Linux ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Sedgewick Algorithms in C Part 5 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Sedgewick Algorithms in C Parts 1-4 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+SuSE Linux 6.4 EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Van Wyk - Data Structures and C Programs EN</li>
 </ul>
-<a class="header" href="#cognitive-science" id="cognitive-science"><h2>Cognitive Science</h2></a>
+<h3><a class="header" href="#cognitive-science" id="cognitive-science">Cognitive Science</a></h3>
 <ul>
-<li>[x] Csikszentmihalyi - Aprender a Fluir ES</li>
-<li>[x] Csikszentmihalyi - Fluir (Flow) ES</li>
-<li>[x] Daniel Goleman - Focus ES</li>
-<li>[x] Diego Golombek - Las Neuronas de Dios ES</li>
-<li>[x] Facundo Manes - Usar el Cerebro ES</li>
-<li>[x] Marcelo Rodriguez - Historia de la Inteligencia ES</li>
-<li>[x] Marvin Minsky - La Maquina de las Emociones ES</li>
-<li>[x] Ramirez - Cognotecnicas ES</li>
-<li>[x] Skidelsky, Scotto - Cuestiones Mentales ES</li>
-<li>[x] Stanislas Dehaene - La Conciencia en el Cerebro ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Csikszentmihalyi - Aprender a Fluir ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Csikszentmihalyi - Fluir (Flow) ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Daniel Goleman - Focus ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Diego Golombek - Las Neuronas de Dios ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Facundo Manes - Usar el Cerebro ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Marcelo Rodriguez - Historia de la Inteligencia ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Marvin Minsky - La Maquina de las Emociones ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ramirez - Cognotecnicas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Skidelsky, Scotto - Cuestiones Mentales ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Stanislas Dehaene - La Conciencia en el Cerebro ES</li>
 </ul>
-<a class="header" href="#philosophypsychologysociology" id="philosophypsychologysociology"><h2>Philosophy/Psychology/Sociology</h2></a>
+<h3><a class="header" href="#philosophypsychologysociology" id="philosophypsychologysociology">Philosophy/Psychology/Sociology</a></h3>
 <ul>
-<li>[x] Arthur Schopenhauer - Historia de la Filosofia ES</li>
-<li>[x] Bertrand Russel - Misticismo y Logica ES</li>
-<li>[x] Carl Jung - El Hombre y Sus Simbolos ES</li>
-<li>[x] Edgar Morin - Introduccion al Pensamiento Complejo ES</li>
-<li>[x] Frost - Basic Teachings: Philosophers EN</li>
-<li>[x] Herbert Read - The Meaning of Art EN</li>
-<li>[x] Hodgson - Wittgenstein y el Zen ES</li>
-<li>[x] Jostein Gaarder - El Mundo de Sofia ES</li>
-<li>[x] Martin Heidegger - Que Significa Pensar? ES</li>
-<li>[x] Milan Kundera - La Identidad ES</li>
-<li>[x] Milan Kundera - La Insoportable Levedad del Ser ES</li>
-<li>[x] Mircea Eliade - Mefistoles y el Androgino ES</li>
-<li>[x] Monica Cavalle - La Sabiduria de la No-Dualidad ES</li>
-<li>[x] Noam Chomsky - El Conocimiento del Lenguaje ES</li>
-<li>[x] Para Principiantes - Baudrillard ES</li>
-<li>[x] Para Principiantes - Heidegger ES</li>
-<li>[x] Paul Feyerabend - Tratado Contra el Metodo ES</li>
-<li>[x] Georges Bataille - El erotismo</li>
-<li>[x] Rene Descartes - Discurso del Metodo / Meditaciones Metafisicas ES</li>
-<li>[x] Sigmund Freud - The Future of an Illusion EN</li>
-<li>[x] Umberto Eco - Apocalipticos e Integrados ES</li>
-<li>[x] Umberto Eco - Baudolino ES</li>
-<li>[x] Umberto Eco - Decir casi lo mismo ES</li>
-<li>[x] Umberto Eco - El cementerio de Praga ES</li>
-<li>[x] Umberto Eco - El nombre del a rosa ES</li>
-<li>[x] Umberto Eco - El pendulo de Foucault ES</li>
-<li>[x] Umberto Eco - La busqueda de la lengua perfecta ES</li>
-<li>[x] Umberto Eco - La misteriosa llama de la Reina Loana ES</li>
-<li>[x] Umberto Eco - La estructura ausente ES</li>
-<li>[x] Umberto Eco - Signo ES</li>
-<li>[x] Umberto Eco - Numero Zero</li>
-<li>[x] Willard Quine - Los Metodos de la Logica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Arthur Schopenhauer - Historia de la Filosofia ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Bertrand Russel - Misticismo y Logica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Carl Jung - El Hombre y Sus Simbolos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Edgar Morin - Introduccion al Pensamiento Complejo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Frost - Basic Teachings: Philosophers EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Herbert Read - The Meaning of Art EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Hodgson - Wittgenstein y el Zen ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jostein Gaarder - El Mundo de Sofia ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Martin Heidegger - Que Significa Pensar? ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Milan Kundera - La Identidad ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Milan Kundera - La Insoportable Levedad del Ser ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mircea Eliade - Mefistoles y el Androgino ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Monica Cavalle - La Sabiduria de la No-Dualidad ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Noam Chomsky - El Conocimiento del Lenguaje ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Para Principiantes - Baudrillard ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Para Principiantes - Heidegger ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Paul Feyerabend - Tratado Contra el Metodo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Georges Bataille - El erotismo</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rene Descartes - Discurso del Metodo / Meditaciones Metafisicas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Sigmund Freud - The Future of an Illusion EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - Apocalipticos e Integrados ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - Baudolino ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - Decir casi lo mismo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - El cementerio de Praga ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - El nombre del a rosa ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - El pendulo de Foucault ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - La busqueda de la lengua perfecta ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - La misteriosa llama de la Reina Loana ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - La estructura ausente ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - Signo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Umberto Eco - Numero Zero</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Willard Quine - Los Metodos de la Logica ES</li>
 </ul>
-<a class="header" href="#existentialism" id="existentialism"><h2>Existentialism</h2></a>
+<h3><a class="header" href="#western-existentialism" id="western-existentialism">Western Existentialism</a></h3>
 <ul>
-<li>[x] Ramiro Calle - Ante la ansiedad ES</li>
-<li>[x] Sade - Filosofia en el tocador ES</li>
-<li>[x] Max Stirner - El Unico y su propiedad ES</li>
-<li>[x] Nietzsche - La Voluntad de poder ES</li>
-<li>[x] Nietzsche - Mas alla del bien y del mal ES</li>
-<li>[x] Jean-Paul Sartre - La nausea ES</li>
-<li>[x] Jean-Paul Sartre - El ser y la nada ES</li>
-<li>[x] Martin Heidegger - El ser y el tiempo ES</li>
-<li>[x] Albert Camus - El mito de sisifo ES</li>
-<li>[x] Albert Camus - El extranjero ES</li>
-<li>[x] Soren Kierkegaard - El Concepto de la Angustia ES</li>
-<li>[x] Soren Kierkegaard - Tratado de la desesperacion ES</li>
-<li>[x] Soren Kierkegaard - Temor y temblor ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Ramiro Calle - Ante la ansiedad ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Sade - Filosofia en el tocador ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Max Stirner - El Unico y su propiedad ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Nietzsche - La Voluntad de poder ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Nietzsche - Mas alla del bien y del mal ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jean-Paul Sartre - La nausea ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jean-Paul Sartre - El ser y la nada ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Martin Heidegger - El ser y el tiempo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Albert Camus - El mito de sisifo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Albert Camus - El extranjero ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Soren Kierkegaard - El Concepto de la Angustia ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Soren Kierkegaard - Tratado de la desesperacion ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Soren Kierkegaard - Temor y temblor ES</li>
 </ul>
-<a class="header" href="#orientalism" id="orientalism"><h2>Orientalism</h2></a>
+<h3><a class="header" href="#eastern-philosophy--mysticism" id="eastern-philosophy--mysticism">Eastern Philosophy &amp; Mysticism</a></h3>
 <ul>
-<li>[x] Alan Watts - El Camino del Zen ES</li>
-<li>[x] Carmelo Rios - El Espiritu de las Artes Marciales ES</li>
-<li>[x] Daisetz Suzuki - Budismo Zen ES</li>
-<li>[x] Daisetz Suzuki - Introduccion al Budismo Zen ES</li>
-<li>[x] Eugen Herrigel - Zen el Tiro del Arco ES</li>
-<li>[x] Fritjof Capra - El Tao de la Fisica ES</li>
-<li>[x] Gaku Homma - La Estructura del Aikido ES</li>
-<li>[x] Gozo Shioda - Aikido Total ES</li>
-<li>[x] I Ching ES</li>
-<li>[x] J van de Wetering - El Espejo Vacio ES</li>
-<li>[x] La Mente del Samurai ES</li>
-<li>[x] Lao Tse - Tao Te Ching ES</li>
-<li>[x] Mitsugi Saotome - Aikido ES</li>
-<li>[x] Indra Devi - Respirar bien para vivir mejor</li>
-<li>[x] Luciano Jolly - Do-In Hara</li>
-<li>[x] Mantak Chia - Automasaje Chi: Sistema Taoista de Rejuvenecimiento</li>
-<li>[x] Mantak Chia - Taoist Secrets of Love: Cultivating Female Sexual Energy</li>
-<li>[x] Mantak Chia - Taoist Secrets of Love: Cultivating Male Sexual Energy</li>
-<li>[x] Shigeru Onoda - Libro completo de shiatsu</li>
-<li>[x] Stephen Chang - El libro de los ejercicios internos</li>
-<li>[x] Taisen Deshimaru - La Practica del Zen ES</li>
-<li>[x] Taisen Deshimaru - Zen Verdadero ES</li>
-<li>[x] Taisen Deshimaru - Zen y Autocontrol ES</li>
-<li>[x] Taisen Deshimaru - Zen y Cerebro ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Alan Watts - El Camino del Zen ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Carmelo Rios - El Espiritu de las Artes Marciales ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Daisetz Suzuki - Budismo Zen ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Daisetz Suzuki - Introduccion al Budismo Zen ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Eugen Herrigel - Zen el Tiro del Arco ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Fritjof Capra - El Tao de la Fisica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Gaku Homma - La Estructura del Aikido ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Gozo Shioda - Aikido Total ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+I Ching ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+J van de Wetering - El Espejo Vacio ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+La Mente del Samurai ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Lao Tse - Tao Te Ching ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mitsugi Saotome - Aikido ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Indra Devi - Respirar bien para vivir mejor</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Luciano Jolly - Do-In Hara</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mantak Chia - Automasaje Chi: Sistema Taoista de Rejuvenecimiento</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mantak Chia - Taoist Secrets of Love: Cultivating Female Sexual Energy</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mantak Chia - Taoist Secrets of Love: Cultivating Male Sexual Energy</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Shigeru Onoda - Libro completo de shiatsu</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Stephen Chang - El libro de los ejercicios internos</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Taisen Deshimaru - La Practica del Zen ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Taisen Deshimaru - Zen Verdadero ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Taisen Deshimaru - Zen y Autocontrol ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Taisen Deshimaru - Zen y Cerebro ES</li>
 </ul>
-<p>## Politics</p>
+<p>### Politics</p>
 <ul>
 <li>[ ] Horacio Verbitsky - 1985 Rodolfo Walsh y la prensa clandestina (1976-1978).</li>
 <li>[ ] Horacio Verbitsky - 1985 La posguerra sucia.</li>
@@ -1292,60 +1495,101 @@ Noizean behin | de vez en cuando</p>
 <li>[ ] Horacio Verbitsky - 2013 Cuentas pendientes. Los cómplices económicos de la dictadura</li>
 <li>[ ] Horacio Verbitsky - 2017 La libertad no es un milagro</li>
 <li>[ ] Horacio Verbitsky - 2018 Vida de Perro</li>
-<li>[x] Daniel Guerin - El anarquismo ES</li>
-<li>[x] Michal Bakunin - Dios y el estado ES</li>
-<li>[x] Noam Chomsky - Anarquismo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Daniel Guerin - El anarquismo ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Michal Bakunin - Dios y el estado ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Noam Chomsky - Anarquismo ES</li>
 </ul>
-<a class="header" href="#economics" id="economics"><h2>Economics</h2></a>
+<h3><a class="header" href="#economics" id="economics">Economics</a></h3>
 <ul>
-<li>[ ] Alfredo Zaiat - Economia a contramano ES</li>
+<li><input disabled="" type="checkbox"/>
+Alfredo Zaiat - Economia a contramano ES</li>
 </ul>
-<a class="header" href="#other" id="other"><h2>Other</h2></a>
+<h3><a class="header" href="#other" id="other">Other</a></h3>
 <ul>
-<li>[x] Harper and Row - A College Book of Modern Verse EN</li>
-<li>[x] German Literature Since Goethe DE</li>
-<li>[x] The Illustrated Encyclopedia of Minerals EN</li>
-<li>[x] Mein Lesebuch DE</li>
-<li>[x] Krüss - Der Korngeist DE</li>
-<li>[x] Finnland, Geschichte und Gegenwart DE</li>
-<li>[x] Dante - La Divina Comedia ES</li>
-<li>[x] Paolo Bacigalupi - La chica mecanica ES</li>
-<li>[x] Deepak Chopra - The way of the wizard EN</li>
-<li>[x] Italo Calvino - De fabula ES</li>
-<li>[ ] Italo Calvino - Ciudades Invisibles ES</li>
-<li>[x] Fyodor Dostoievski - Los demonios ES</li>
-<li>[x] Fyodor Dostoievski - Noches blancas ES</li>
-<li>[x] Rudolph Koch - El Libro de los simbolos ES</li>
-<li>[x] Paulo Coelho - Manual del guerrero de la luz ES</li>
-<li>[x] Jean Marigny - Los vampiros ES</li>
-<li>[x] Robert Kiyosaki - Rich dad, poor dad EN</li>
-<li>[x] Luis Alberto Romero - Breve historia contemporanea Argentina ES</li>
-<li>[x] John Updike - Rabbit is Rich, Rabbit Redux, Rabbit, Run EN</li>
-<li>[x] Harry Thompson - This thing of darkness EN</li>
-<li>[x] Roald Dahl - The Twits EN</li>
-<li>[x] Roald Dahl - The collected short stories EN</li>
-<li>[x] Roald Dahl - The wonderful story of Henry Sugar and six more</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Harper and Row - A College Book of Modern Verse EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+German Literature Since Goethe DE</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Illustrated Encyclopedia of Minerals EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Mein Lesebuch DE</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Krüss - Der Korngeist DE</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Finnland, Geschichte und Gegenwart DE</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Dante - La Divina Comedia ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Paolo Bacigalupi - La chica mecanica ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Deepak Chopra - The way of the wizard EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Italo Calvino - De fabula ES</li>
+<li><input disabled="" type="checkbox"/>
+Italo Calvino - Ciudades Invisibles ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Fyodor Dostoievski - Los demonios ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Fyodor Dostoievski - Noches blancas ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rudolph Koch - El Libro de los simbolos ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Paulo Coelho - Manual del guerrero de la luz ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jean Marigny - Los vampiros ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Robert Kiyosaki - Rich dad, poor dad EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Luis Alberto Romero - Breve historia contemporanea Argentina ES</li>
+<li><input disabled="" type="checkbox" checked=""/>
+John Updike - Rabbit is Rich, Rabbit Redux, Rabbit, Run EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Harry Thompson - This thing of darkness EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Roald Dahl - The Twits EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Roald Dahl - The collected short stories EN</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Roald Dahl - The wonderful story of Henry Sugar and six more</li>
 </ul>
-<a class="header" href="#society" id="society"><h1>Society</h1></a>
-<a class="header" href="#ur-fascism---umberto-eco-june-22-1995-issue" id="ur-fascism---umberto-eco-june-22-1995-issue"><h1>Ur-Fascism - Umberto Eco June 22, 1995 Issue</h1></a>
-<a class="header" href="#fascism-checklist" id="fascism-checklist"><h2>Fascism Checklist</h2></a>
+<h1><a class="header" href="#society" id="society">Society</a></h1>
+<h1><a class="header" href="#ur-fascism---umberto-eco-june-22-1995-issue" id="ur-fascism---umberto-eco-june-22-1995-issue">Ur-Fascism - Umberto Eco June 22, 1995 Issue</a></h1>
+<h2><a class="header" href="#fascism-checklist" id="fascism-checklist">Fascism Checklist</a></h2>
 <ol>
-<li>[ ] cult of tradition (return to a golden age)</li>
-<li>[ ] rejection of modernism</li>
-<li>[ ] irrationalism (action before discourse)</li>
-<li>[ ] no analytical criticism (disagreement is treason)</li>
-<li>[ ] no diversity (appeal against intruders)</li>
-<li>[ ] derives from individual or social frustration</li>
-<li>[ ] nationalistic (to people who feel deprived of a clear social identity, ur-fascism says that their only privilege is the most common one, to be born in the same country)</li>
-<li>[ ] followers must feel humiliated by the ostentatious wealth and force of their enemies</li>
-<li>[ ] there is no struggle for life but, rather, life is lived for struggle (pacifism is trafficking with the enemy)</li>
-<li>[ ] hierarchy, elitism is a typical aspect of any reactionary ideology, insofar as it is fundamentally aristocratic, and aristocratic and militaristic elitism cruelly implies contempt for the weak</li>
-<li>[ ] cult of heroism (everybody is educated to become a hero, in every mythology the hero is an exceptional being, but in ur-fascist ideology, heroism is the norm)</li>
-<li>[ ] machismo (since both permanent war and heroism are difficult games to play, the Ur-Fascist transfers his will to power to sexual matters)</li>
-<li>[ ] based upon a selective populism, a qualitative populism</li>
-<li>[ ] Ur-Fascism speaks Newspeak (impoverished vocabulary and an elementary syntax)</li>
+<li><input disabled="" type="checkbox"/>
+cult of tradition (return to a golden age)</li>
+<li><input disabled="" type="checkbox"/>
+rejection of modernism</li>
+<li><input disabled="" type="checkbox"/>
+irrationalism (action before discourse)</li>
+<li><input disabled="" type="checkbox"/>
+no analytical criticism (disagreement is treason)</li>
+<li><input disabled="" type="checkbox"/>
+no diversity (appeal against intruders)</li>
+<li><input disabled="" type="checkbox"/>
+derives from individual or social frustration</li>
+<li><input disabled="" type="checkbox"/>
+nationalistic (to people who feel deprived of a clear social identity, ur-fascism says that their only privilege is the most common one, to be born in the same country)</li>
+<li><input disabled="" type="checkbox"/>
+followers must feel humiliated by the ostentatious wealth and force of their enemies</li>
+<li><input disabled="" type="checkbox"/>
+there is no struggle for life but, rather, life is lived for struggle (pacifism is trafficking with the enemy)</li>
+<li><input disabled="" type="checkbox"/>
+hierarchy, elitism is a typical aspect of any reactionary ideology, insofar as it is fundamentally aristocratic, and aristocratic and militaristic elitism cruelly implies contempt for the weak</li>
+<li><input disabled="" type="checkbox"/>
+cult of heroism (everybody is educated to become a hero, in every mythology the hero is an exceptional being, but in ur-fascist ideology, heroism is the norm)</li>
+<li><input disabled="" type="checkbox"/>
+machismo (since both permanent war and heroism are difficult games to play, the Ur-Fascist transfers his will to power to sexual matters)</li>
+<li><input disabled="" type="checkbox"/>
+based upon a selective populism, a qualitative populism</li>
+<li><input disabled="" type="checkbox"/>
+Ur-Fascism speaks Newspeak (impoverished vocabulary and an elementary syntax)</li>
 </ol>
-<a class="header" href="#text" id="text"><h2>Text</h2></a>
+<h2><a class="header" href="#text" id="text">Text</a></h2>
 <p>In 1942, at the age of ten, I received the First Provincial Award of Ludi Juveniles (a voluntary, compulsory competition for young Italian Fascists—that is, for every young Italian). I elaborated with rhetorical skill on the subject “Should we die for the glory of Mussolini and the immortal destiny of Italy?” My answer was positive. I was a smart boy.</p>
 <p>I spent two of my early years among the SS, Fascists, Republicans, and partisans shooting at one another, and I learned how to dodge bullets. It was good exercise.</p>
 <p>In April 1945, the partisans took over in Milan. Two days later they arrived in the small town where I was living at the time. It was a moment of joy. The main square was crowded with people singing and waving flags, calling in loud voices for Mimo, the partisan leader of that area. A former maresciallo of the Carabinieri, Mimo joined the supporters of General Badoglio, Mussolini’s successor, and lost a leg during one of the first clashes with Mussolini’s remaining forces. Mimo showed up on the balcony of the city hall, pale, leaning on his crutch, and with one hand tried to calm the crowd. I was waiting for his speech because my whole childhood had been marked by the great historic speeches of Mussolini, whose most significant passages we memorized in school. Silence. Mimo spoke in a hoarse voice, barely audible. He said: “Citizens, friends. After so many painful sacrifices … here we are. Glory to those who have fallen for freedom.” And that was it. He went back inside. The crowd yelled, the partisans raised their guns and fired festive volleys. We kids hurried to pick up the shells, precious items, but I had also learned that freedom of speech means freedom from rhetoric.</p>
@@ -1476,9 +1720,9 @@ Lies the justice to be served.)
 —poem translated by Stephen Sartarelli
 </code></pre>
 <p>Copyright © by Umberto Eco</p>
-<a class="header" href="#tools" id="tools"><h1>Tools</h1></a>
-<a class="header" href="#cli" id="cli"><h1>CLI</h1></a>
-<a class="header" href="#shell" id="shell"><h2>Shell</h2></a>
+<h1><a class="header" href="#tools" id="tools">Tools</a></h1>
+<h1><a class="header" href="#cli" id="cli">CLI</a></h1>
+<h2><a class="header" href="#shell" id="shell">Shell</a></h2>
 <ul>
 <li>In bash, 'ctrl-r' searches your command history as you type</li>
 </ul>
@@ -1540,13 +1784,13 @@ you want <em>only</em> executable folders: 'find . -type d -exec chmod g+x {} ;'
 <ul>
 <li>'xargs' gets its input from a pipe and runs some command for each argument</li>
 </ul>
-<a class="header" href="#interesting-aliases" id="interesting-aliases"><h3>Interesting Aliases</h3></a>
+<h3><a class="header" href="#interesting-aliases" id="interesting-aliases">Interesting Aliases</a></h3>
 <ul>
 <li><code>function lt() { ls -ltrsa &quot;$@&quot; | tail; }</code></li>
 <li><code>function psgrep() { ps axuf | grep -v grep | grep &quot;$@&quot; -i --color=auto; }</code></li>
 <li><code>function fname() { find . -iname &quot;*$@*&quot;; }</code></li>
 </ul>
-<a class="header" href="#redirecting-output-to-other-terminal" id="redirecting-output-to-other-terminal"><h3>Redirecting output to other terminal</h3></a>
+<h3><a class="header" href="#redirecting-output-to-other-terminal" id="redirecting-output-to-other-terminal">Redirecting output to other terminal</a></h3>
 <p>There are many reasons one might want to see output from shell commands in
 another terminal emulator but it definitely has its uses. The other day it just
 so happended that I needed such a functionality. Without going into details I’m
@@ -1562,7 +1806,7 @@ can obtain it for instance by running <code>echo $$</code> inside the target ter
 <pre><code>exec me
 </code></pre>
 <p>I think the biggest revelation comes with acknowledging the fact that exec is
-used for something more than to (according to man): &quot;replace the shell with
+used for something more than to (according to man): &quot;replace the shell with 
 command without creating a new process&quot;</p>
 <p>Because this functionality isn’t even the first thing mentioned in man. The
 first thing man has to say about exec is that</p>
@@ -1575,7 +1819,7 @@ file descriptors, unless you resort to some gdb wizardry – and even then it’
 not always possible.</p>
 <p>Wrapping up – while it’s not really a game-changer, it’s still a feature that
 can sometimes be put to good use.</p>
-<a class="header" href="#invoke-an-editor-to-write-a-long-complex-or-tricky-command" id="invoke-an-editor-to-write-a-long-complex-or-tricky-command"><h3>Invoke an editor to write a long, complex, or tricky command</h3></a>
+<h3><a class="header" href="#invoke-an-editor-to-write-a-long-complex-or-tricky-command" id="invoke-an-editor-to-write-a-long-complex-or-tricky-command">Invoke an editor to write a long, complex, or tricky command</a></h3>
 <pre><code>$ ctrl-x e
 </code></pre>
 <p>Next time you are using your shell, try typing <code>ctrl-x e</code> (that is holding
@@ -1583,16 +1827,16 @@ control key press x and then e). The shell will take what you've written on
 the command line thus far and paste it into the editor specified by <code>$EDITOR</code>.
 Then you can edit at leisure using all the powerful macros and commands of
 vi, emacs, nano, or whatever.</p>
-<a class="header" href="#list-of-commands-you-use-most-often" id="list-of-commands-you-use-most-often"><h3>List of commands you use most often</h3></a>
+<h3><a class="header" href="#list-of-commands-you-use-most-often" id="list-of-commands-you-use-most-often">List of commands you use most often</a></h3>
 <pre><code>$ history | awk $({a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}) | sort -rn | head
 </code></pre>
-<a class="header" href="#check-command-history-but-avoid-running-it" id="check-command-history-but-avoid-running-it"><h3>Check command history, but avoid running it</h3></a>
+<h3><a class="header" href="#check-command-history-but-avoid-running-it" id="check-command-history-but-avoid-running-it">Check command history, but avoid running it</a></h3>
 <pre><code>$ !whatever:p
 </code></pre>
 <p><code>!whatever</code> will search your command history and execute the first command
 that matches 'whatever' If you don’t feel safe doing this put <code>:p</code> on the end
 to print without executing. Recommended when running as superuser.</p>
-<a class="header" href="#run-the-last-command-as-root" id="run-the-last-command-as-root"><h3>Run the last command as root</h3></a>
+<h3><a class="header" href="#run-the-last-command-as-root" id="run-the-last-command-as-root">Run the last command as root</a></h3>
 <pre><code>$ sudo !!
 </code></pre>
 <p>Useful when you forget to use sudo for a command. <code>!!</code> grabs the last run command.
@@ -1613,20 +1857,20 @@ scp file $_:
 </code></pre>
 <p>Meta period (<code>esc-.</code>) cycles the last argument from the previous commands.
 It works on the current prompt.</p>
-<a class="header" href="#create-a-script-of-the-last-executed-command" id="create-a-script-of-the-last-executed-command"><h3>Create a script of the last executed command</h3></a>
+<h3><a class="header" href="#create-a-script-of-the-last-executed-command" id="create-a-script-of-the-last-executed-command">Create a script of the last executed command</a></h3>
 <pre><code>$ echo &quot;!!&quot; &gt; foo.sh
 </code></pre>
 <p>Sometimes commands are long, but useful, so it's helpful to be able to make
 them permanent without having to retype them.</p>
-<a class="header" href="#files" id="files"><h2>Files</h2></a>
-<a class="header" href="#like-top-but-for-files" id="like-top-but-for-files"><h3>Like top, but for files</h3></a>
+<h2><a class="header" href="#files" id="files">Files</a></h2>
+<h3><a class="header" href="#like-top-but-for-files" id="like-top-but-for-files">Like top, but for files</a></h3>
 <pre><code>$ watch -d -n 2 $(df; ls -FlAt;)
 </code></pre>
-<a class="header" href="#empty-a-file" id="empty-a-file"><h3>Empty a file</h3></a>
+<h3><a class="header" href="#empty-a-file" id="empty-a-file">Empty a file</a></h3>
 <pre><code>$ &gt; file.txt
 </code></pre>
 <p>For when you want to flush all content from a file without removing it.</p>
-<a class="header" href="#zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable" id="zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable"><h3>Zeroing out the empty space and making deleted information non-recoverable</h3></a>
+<h3><a class="header" href="#zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable" id="zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable">Zeroing out the empty space and making deleted information non-recoverable</a></h3>
 <pre><code>$ sudo su
 $ touch junk.bin # Create a dummy file named junk.bin on the USB flash drive
 $ fdisk -l and locate the partition you would like to zero out
@@ -1635,23 +1879,23 @@ $ mount -o loop /dev/sdxx /tmp/ddsdb (replacing sdxxx with your partition)
 $ dd if=/dev/zero of=/tmp/ddusb/junk.bin
 $ rm /tmp/ddusb/junk.bin
 </code></pre>
-<a class="header" href="#copy-folder-structure-without-files" id="copy-folder-structure-without-files"><h3>Copy folder structure without files</h3></a>
+<h3><a class="header" href="#copy-folder-structure-without-files" id="copy-folder-structure-without-files">Copy folder structure without files</a></h3>
 <pre><code>$ cd /new/dir
 $ (cd /old/dir; find -type d ! -name . -printf &quot;\&quot;%p\&quot;\n&quot;) | xargs mkdir
 </code></pre>
 <p><code>&quot;\&quot;%p\&quot;\n&quot;</code> Double quoted path names or else xargs and mkdir will fail.</p>
-<a class="header" href="#find-all-extensions-in-a-directory-tree" id="find-all-extensions-in-a-directory-tree"><h3>Find all extensions in a directory tree</h3></a>
+<h3><a class="header" href="#find-all-extensions-in-a-directory-tree" id="find-all-extensions-in-a-directory-tree">Find all extensions in a directory tree</a></h3>
 <pre><code>$ find . -type f | awk -F . '{print $NF}' | tr '[:upper:]' '[:lower:]' | sort | uniq
 </code></pre>
-<a class="header" href="#tail-a-file-with-less" id="tail-a-file-with-less"><h3>Tail a file with less</h3></a>
+<h3><a class="header" href="#tail-a-file-with-less" id="tail-a-file-with-less">Tail a file with less</a></h3>
 <pre><code>$ less +F somelogfile
 </code></pre>
 <p>Using <code>+F</code> will put less in follow mode. This works similar to <code>'tail -f'</code>
 To stop scrolling, use the interrupt. Then you’ll get the normal benefits of
 less (scroll, etc.).
 Pressing <code>SHIFT-F</code> will resume the 'tailing'.</p>
-<a class="header" href="#text-1" id="text-1"><h2>Text</h2></a>
-<a class="header" href="#trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree" id="trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree"><h3>Trim trailing whitespace and expand tabs to spaces in a tree</h3></a>
+<h2><a class="header" href="#text-1" id="text-1">Text</a></h2>
+<h3><a class="header" href="#trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree" id="trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree">Trim trailing whitespace and expand tabs to spaces in a tree</a></h3>
 <pre><code>$ find . -type f \( -name &quot;*.ex&quot; -o -name &quot;*.exs&quot; \) -exec bash -c 'echo &quot;$0&quot; &amp;&amp; sed -i &quot;&quot; -e &quot;s/[[:space:]]*$//&quot; &quot;$0&quot; &amp;&amp; expand -t 4 &quot;$0&quot; &gt; /tmp/e &amp;&amp; mv /tmp/e &quot;$0&quot;' {} \;
 </code></pre>
 <p>The command finds all erlang and elixir source files and expands tabs to 4
@@ -1671,83 +1915,83 @@ nothing.</li>
 since expand does not have an option to run it in-place we redirect output
 to a temporary file and then copy it over the original file.</li>
 </ul>
-<a class="header" href="#convert-between-dos--unix-textfile-formats" id="convert-between-dos--unix-textfile-formats"><h3>Convert between DOS / UNIX textfile formats</h3></a>
+<h3><a class="header" href="#convert-between-dos--unix-textfile-formats" id="convert-between-dos--unix-textfile-formats">Convert between DOS / UNIX textfile formats</a></h3>
 <pre><code>$ cp &lt;fileid&gt; &lt;fileid&gt;.dos &amp;&amp;
 $ cat &lt;fileid&gt;.dos | tr -d '\r' &gt; &lt;fileid&gt;
 </code></pre>
-<a class="header" href="#diff-two-unsorted-files-without-creating-temporary-files" id="diff-two-unsorted-files-without-creating-temporary-files"><h3>Diff two unsorted files without creating temporary files</h3></a>
+<h3><a class="header" href="#diff-two-unsorted-files-without-creating-temporary-files" id="diff-two-unsorted-files-without-creating-temporary-files">Diff two unsorted files without creating temporary files</a></h3>
 <pre><code>$ diff &lt;(sort file1) &lt;(sort file2)
 </code></pre>
 <p>bash subshell redirection (as file descriptors) used as input to diff</p>
-<a class="header" href="#ascii-table" id="ascii-table"><h3>ASCII table</h3></a>
+<h3><a class="header" href="#ascii-table" id="ascii-table">ASCII table</a></h3>
 <pre><code>$ man ascii
 </code></pre>
-<a class="header" href="#system" id="system"><h2>System</h2></a>
-<a class="header" href="#display-which-distro-is-installed" id="display-which-distro-is-installed"><h3>Display which distro is installed</h3></a>
+<h2><a class="header" href="#system" id="system">System</a></h2>
+<h3><a class="header" href="#display-which-distro-is-installed" id="display-which-distro-is-installed">Display which distro is installed</a></h3>
 <pre><code>cat /etc/issue
 </code></pre>
-<a class="header" href="#currently-mounted-filesystems" id="currently-mounted-filesystems"><h3>Currently mounted filesystems</h3></a>
+<h3><a class="header" href="#currently-mounted-filesystems" id="currently-mounted-filesystems">Currently mounted filesystems</a></h3>
 <pre><code>$ mount | column -t
 </code></pre>
 <p>Particularly useful if you're mounting different drives, using the following
 command will allow you to see all the filesystems currently mounted on your
 computer and their respective specs with the added benefit of nice
 formatting.</p>
-<a class="header" href="#execute-a-command-at-a-given-time" id="execute-a-command-at-a-given-time"><h3>Execute a command at a given time</h3></a>
+<h3><a class="header" href="#execute-a-command-at-a-given-time" id="execute-a-command-at-a-given-time">Execute a command at a given time</a></h3>
 <pre><code>$ echo &quot;ls -l&quot; | at midnight
 </code></pre>
 <p>This is an alternative to cron which allows a one-off task to be scheduled
 for a certain time.</p>
-<a class="header" href="#mount-a-temporary-ram-partition" id="mount-a-temporary-ram-partition"><h3>Mount a temporary ram partition</h3></a>
+<h3><a class="header" href="#mount-a-temporary-ram-partition" id="mount-a-temporary-ram-partition">Mount a temporary ram partition</a></h3>
 <pre><code>$ mount -t tmpfs tmpfs /mnt -o size=1024m
 </code></pre>
 <p>Makes a partition in ram which is useful if you need a temporary working
 space as read/write access is fast. Be aware that anything saved in this
 partition will be gone after your computer is turned off.</p>
-<a class="header" href="#memory" id="memory"><h2>Memory</h2></a>
-<a class="header" href="#see-all-strings-in-ram" id="see-all-strings-in-ram"><h3>See all strings in RAM</h3></a>
+<h2><a class="header" href="#memory" id="memory">Memory</a></h2>
+<h3><a class="header" href="#see-all-strings-in-ram" id="see-all-strings-in-ram">See all strings in RAM</a></h3>
 <pre><code>$ sudo dd if=/dev/mem | cat | strings
 </code></pre>
 <p>This command will show you all the string (plain text) values in ram.
 A fun thing to do with ram is actually open it up and take a peek.</p>
-<a class="header" href="#display-the-top-ten-running-processes-sorted-by-memory-usage" id="display-the-top-ten-running-processes-sorted-by-memory-usage"><h3>Display the top ten running processes sorted by memory usage</h3></a>
+<h3><a class="header" href="#display-the-top-ten-running-processes-sorted-by-memory-usage" id="display-the-top-ten-running-processes-sorted-by-memory-usage">Display the top ten running processes sorted by memory usage</a></h3>
 <pre><code>ps aux | sort -nk +4 | tail
 </code></pre>
 <p><code>ps</code> returns all running processes which are then sorted by the 4th field in
 numerical order and the top 10 are sent to STDOUT.</p>
-<a class="header" href="#networking" id="networking"><h2>Networking</h2></a>
-<a class="header" href="#set-audible-alarm-when-an-ip-address-comes-online" id="set-audible-alarm-when-an-ip-address-comes-online"><h3>Set audible alarm when an ip address comes online.</h3></a>
+<h2><a class="header" href="#networking" id="networking">Networking</a></h2>
+<h3><a class="header" href="#set-audible-alarm-when-an-ip-address-comes-online" id="set-audible-alarm-when-an-ip-address-comes-online">Set audible alarm when an ip address comes online.</a></h3>
 <pre><code>$ ping -i 60 -a IP_address
 </code></pre>
-<p>Waiting for your server to finish rebooting? Issue the command above and you will
-hear a beep when it comes online. The <code>-i 60</code> flag tells ping to wait for 60
-seconds between ping, putting less strain on your system. Vary it to your need.
-The <code>-a</code> flag tells ping to include an audible bell in the output when a package
+<p>Waiting for your server to finish rebooting? Issue the command above and you will 
+hear a beep when it comes online. The <code>-i 60</code> flag tells ping to wait for 60 
+seconds between ping, putting less strain on your system. Vary it to your need. 
+The <code>-a</code> flag tells ping to include an audible bell in the output when a package 
 is received (that is, when your server comes online).</p>
-<a class="header" href="#serve-files-locally" id="serve-files-locally"><h3>Serve files locally</h3></a>
+<h3><a class="header" href="#serve-files-locally" id="serve-files-locally">Serve files locally</a></h3>
 <p><code>python -m SimpleHTTPServer 8080</code> shares all the files in the current
 folder over HTTP, port 8080</p>
-<a class="header" href="#port-forwarding" id="port-forwarding"><h3>Port forwarding</h3></a>
+<h3><a class="header" href="#port-forwarding" id="port-forwarding">Port forwarding</a></h3>
 <pre><code>ssh -R 12345:localhost:22 server.com &quot;sleep 1000; exit&quot;
 </code></pre>
 <p>forwards server.com's port 12345 to your local ssh port, even if you machine is not externally visible on the net.
 Now you can <code>ssh localhost -p 12345</code> from server.com and you will log into your machine.
 'sleep' avoids getting kicked out from server.com for inactivity</p>
-<a class="header" href="#network-monitoring" id="network-monitoring"><h3>Network monitoring</h3></a>
+<h3><a class="header" href="#network-monitoring" id="network-monitoring">Network monitoring</a></h3>
 <p>Some tools to monitor network connections and bandwith:</p>
 <ul>
 <li><code>lsof -i</code> monitors network connections in real time</li>
 <li><code>iftop</code> shows bandwith usage per <em>connection</em></li>
 <li><code>nethogs</code> shows the bandwith usage per <em>process</em></li>
 </ul>
-<a class="header" href="#ssh-configuration" id="ssh-configuration"><h3>SSH configuration</h3></a>
+<h3><a class="header" href="#ssh-configuration" id="ssh-configuration">SSH configuration</a></h3>
 <p>Use this trick on <code>.ssh/config</code> to directly access 'host2' which is on a private
 network, and must be accessed by ssh-ing into 'host1' first</p>
 <pre><code>  Host host2
       ProxyCommand ssh -T host1 'nc %h %p'
-      HostName host2
+  	  HostName host2
 </code></pre>
-<a class="header" href="#pipe-over-network" id="pipe-over-network"><h3>Pipe over network</h3></a>
+<h3><a class="header" href="#pipe-over-network" id="pipe-over-network">Pipe over network</a></h3>
 <p>Pipe a compressed file over ssh to avoid creating large temporary .tgz files</p>
 <pre><code>tar cz folder/ | ssh server &quot;tar xz&quot; 
 </code></pre>
@@ -1775,6 +2019,14 @@ network, and must be accessed by ssh-ing into 'host1' first</p>
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         
