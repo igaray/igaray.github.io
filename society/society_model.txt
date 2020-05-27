@@ -1,0 +1,33 @@
+SOCIETY
+  FOOD
+  ENERGY
+  NATURAL RESOURCES
+  PROCESSED RESOURCES
+  WASTE MANAGEMENT
+  TRANSPORT
+  RESEARCH
+  ADMINISTRATION
+  COMMUNICATION
+  EDUCATION
+  CULTURE
+  DEFENSE
+
+LIVING ORGANISM ANALOGY:
+  - digestive system: resource production
+  - vascular system: resource distribution
+  - immune system: military & police?
+  - nervous & endocrine system: communications system
+  - brain: decision making
+
+education
+medicine
+agriculture
+mining
+technology
+public infrastructure
+  defense
+  water management
+  transport, roads and railways
+  schools, universities
+political-economic system
+religion

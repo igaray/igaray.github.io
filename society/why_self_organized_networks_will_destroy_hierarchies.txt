@@ -1,0 +1,84 @@
+anarchism.PeerToPeer
+
+[http://dallas.libertarianleft.org/blog/2011/why-self-organized-networks-will-destroy-hierarchies]
+
+Why Self-Organized Networks Will Destroy Hierarchies
+
+by DFW ALL
+Oct. 13, 2011
+
+“Hierarchies are systematically stupid and inefficient, for the
+following reasons.
+
+1. Hayekian information problems: The people in authority who make the
+   rules interfere with the people who know how to do the job and are in
+   direct contact with the situation. The people who make the rules know
+   nothing about the work they’re interfering with. The people who make
+   the rules are unaccountable to the people who do know how to do the
+   work. Consequently, all authority-based rules create suboptimal
+   results and irrationality when they interfere with the judgment of
+   those in direct contact with the situation.
+
+   People in authority make stupid decisions because the people who know
+   more than they do are their subordinates, and the only people who can
+   hold them accountable know even less than they do.
+
+   The only way the people doing the work can get anything done is to
+   treat irrational authority as an obstacle to be routed around, the
+   same way the Internet treats censorship as damage and routes around
+   it.
+
+2. Groupthink: Hierarchies systematically suppress negative feedback on
+   the results of their policies. As R.A. Wilson said, nobody tells the
+   truth to a man with a gun. Hierarchies are very good at telling naked
+   emperors how good their clothes look.
+
+   Hierarchies also systematically suppress critical thinking ability in
+   their members. Psychological studies have found that people in
+   positions of authority become less likely to evaluate communications
+   based on their internal logic, and instead evaluate them based on the
+   authority of the source.
+
+3. Opacity from above: A major theme of “Seeing Like a State,” by James
+   Scott, is that states try to make populations “legible” from above,
+   and hence more amenable to control. We might add a “seeing like
+   a boss” corrollary about the analogous phenomenon inside hierarchies.
+   The problem is that such legibility is very costly, if not
+   impossible, to achieve.
+
+   Hospitals are a good example. Most of the paperwork that nurses are
+   required to fill out results from the fact that management doesn’t
+   trust them to do what it wants them to do without some independent
+   means of verification. But the paperwork is worthless, unless
+   management operates on the assumption that those same nurses can be
+   trusted to fill out the paperwork honestly. It all boils down to the
+   fact that management knows their interests are diametrically opposed
+   to those of the nurses, but there’s no way to actually get inside the
+   nurses’ heads and look out through their eyes and thereby overcome
+   this fundamental agency problem. So bosses constantly look for new,
+   ineffectual gimmicks to get around the problem, resulting in endless
+   layers of new paperwork that are as useless as the old paperwork.
+   
+   Conclusion: To the extent that hierarchical organizations leave
+   subordinates with freedom of exit, they are not coercive in the same
+   way that the state is. But given that hierarchies are artificially
+   prevalent because of state policies, and those who work within them
+   do so as a necessary evil resulting from artificial constraints on
+   the range of competing opportunities, the hierarchy resembles
+   a microcosm of statist society, in which the agency and knowledge
+   problems of authority internally mirror the irrationalities created
+   by state authority in society at large.
+   
+   So long as the predominant production methods required large
+   aggregations of capital beyond the means of individuals and small
+   groups, and corporate hierarchies were propped up by state ones, the
+   cultural pathologies of hierarchy were surmountable. But
+   technological change is rapidly eroding the requirement for capital
+   outlays, nullifying the advantages of capital ownership, and
+   increasing the vulnerability of hierarchy to external and internal
+   attacks by self-organized networks.
+   
+   So hierarchies, increasingly, lack the resources to compensate for
+   their handicaps — even with help from the state. The state will only
+   bankrupt itself, along with corporate hierarchies, in trying to prop
+   up the old order.”
