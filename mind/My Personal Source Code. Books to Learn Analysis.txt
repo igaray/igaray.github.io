@@ -1,0 +1,40 @@
+My Personal Source Code: Books to Learn Analysis
+
+Posted on May 21, 2018
+
+Occasionally people come to me and say they want to learn certain things. They ask “how do I become a good tester” or “how do I design test cases” or “how do I automate” or something specific like that. These are not really the right questions, though. The better question, which addresses all the other ones, is “how do I become a competent analyst?” Analysis is at the root of all technical work. It’s the master key to nearly everything else. You will almost automatically become a good tester, test case designer, or automater of whatever you choose, IF you master analysis. (Yes, there are other factors of equal precedence, such as humanity, temperance, and detachment. I’m going to focus on analysis, today.)
+
+One simple way to answer the question is to suggest reading books. It’s not enough, but it’s an important step. Now, I own a lot of useful books. I’ve encountered many more. But there are just a few that express the essence of my thought process– the thought process that allows me to analyze difficult problems in complex systems and provide my clients with the help they need. These books have been so important to me that if you know them, too, you will have a good understanding of the “source code” by which I operate; my “secrets.”
+
+These are difficult books in at least two senses: each of them is full of funny words and complicated sentences; but much more importantly, to digest each one is to change the structure of your mind, which is always a painful process. I can’t tell you it will be easy, or even fun. (Some of these books I can only read about 10 pages at a time, before getting too excited to continue.) I am simply saying I make my living as a consultant and expert witness who tackles very complex problems, and I believe it’s substantially down to what I learned from struggling with these books.
+
+Against Method, by Paul Feyerabend
+I encountered Feyerabend just after I quit high school. I had already read Ayn Rand and considered myself an Objectivist. Feyerabend cured me of that, more or less. He introduced me to the skeptical study of method; to methodology as a pursuit. I was also drawn to his combative, wild attitude.
+
+Gödel, Escher, Bach: An Eternal Golden Braid, by Douglas R. Hofstadter
+I had tried to study logic formally when I was in my teens. I just felt it was a lot of boring symbol manipulation and rule-following. Hofstadter’s book showed me the true essence of logic: exciting symbol manipulation and rule-following! Logic came alive for me through this amazing treatise.
+
+The Hero with a Thousand Faces, by Joseph Campbell
+When I joined Apple Computer as a young tester, I joined a philosophy discussion group. There I was introduced to Joseph Campbell’s work on mythology. He applied what I later came to know as “general systems thinking” to theology. What had seemed to me, an atheist, to be boring and silly rituals and statues suddenly became connected with all of humanity and history and with my own life. This was analysis connected directly to the meaning of life (although Campbell hated that phrase). I’m still an atheist, but I appreciate what religion is trying to do.
+
+Introduction to General Systems Thinking, by Gerald M. Weinberg
+This was the first book I encountered that actually taught me to do analysis. It taught me to be a tester. It cemented my career choice.
+
+Conjectures and Refutations: The Growth of Scientific Knowledge, by Karl Popper
+Read the first 30 pages about what defines science. The rest is optional. Popper was the opposite of Feyerabend. He believed that there was a best method of science. I ignore that. What impressed me about Popper is his convincing attack on Foundationalism. He showed me that science and testing are the same thing in slightly different wrappers. In testing, as in science, you can’t prove that your theory about the facts is correct. You can only try to refute it.
+
+The Sciences of the Artificial, by Herbert Simon
+This book is about what a science of design would look like. It provided a sort of road map for me about what my testing methodology had to include and accomplish. It opened my eyes to the central role that heuristic play in analysis.
+
+The Pleasure of Finding Things Out, by Richard Feynman
+Feynman’s book is really about attitude and agency. He convinced me never to seek permission to think, and to develop and follow my own code of conduct.
+
+Discussion of the Method, by Billy Vaughan Koen
+Billy Koen’s book is the best explanation of heuristics there is. But what he wrote goes beyond that, because he connected heuristics to skeptical philosophy. He showed me that I am not just using heuristics in testing; I am swimming in them; I am made of them. Also, I wrote a fan letter to him and he wrote back! So, there’s that.
+
+Tacit and Explicit Knowledge, by Harry Collins
+This is the book I encountered most recently, and it caused Michael Bolton and I to change how we teach. We now realize that much of the skills of the analyst are tacit in nature, and therefore cannot directly be taught. We teach them indirectly, by arranging and examining experiences. Michael Bolton and I made a pilgrimage to Harry’s home in Wales, too. To me, Harry is the sociologist of software testing.
+
+http://www.satisfice.com/blog/archives/1918
+
+For a solid understanding of how our thinking can go awry, I’d also suggest Judgment Under Uncertainty: Heuristics and Biases, edited by Daniel Kahneman, Paul Slovic, and Amos Tversky. Or Thinking, Fast and Slow by Daniel Kahneman, for a more accessible (less academic) version of the same topics.

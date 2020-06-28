@@ -1,0 +1,164 @@
+aikido.TechniqueSummary
+
+FUNDAMENTALS
+    Shisei
+    Kokyu
+    kamae
+    Ma Ai
+    Irimi
+    Tenkan
+    Ura / Omote
+    Tai Sabaki
+    Atemi
+    Kokyu Ryoku
+    Ukemi
+        Mae Ukemi
+        Yoko Ukemi
+        Ushiro Ukemi 
+        Zempo Kaiten Ukemi
+
+POSITIONS
+    SUWARI WAZA
+        Seiza
+    TACHI WAZA
+        Ai Hanmi
+        Gyaku Hanmi
+
+ATTACKS
+
+AGARRES
+    AGARRES FRENTE:
+        Hai Hanmi Katate Dori
+        Gyaku Hanmi Katate Dori
+        Sode Dori
+        Kata Dori
+        Katate Dori (one hand grabs one wrist)
+        Mune Dori (chest grab)
+        Ryote Dori (both hands grab both wrists)
+        Ryo Sode Dori
+        Ryo Kata Dori
+        Katate Ryote Dori
+        Morote Dori (both hands grab one wrist)
+
+    AGARRES DE ESPALDA:
+        Ushiro Ryote Dori
+        Ushiro Ryo Hiji Dori
+        Ushiro Ryo Kata Dori
+        Ushiro Eri Dori
+        Ushiro Haga Ijime
+        Ushiro Kata Dori Kubi Shime
+
+    AGARRES LATERALES:
+        Hanmi Handachi Katate Dori
+
+GOLPES
+    GOLPES DE FRENTE:
+        Shomen Uchi
+        Yokomen Uchi
+        Mae Giri
+        Jodan Tsuki (upper-level thrust)
+        Ganmen Tsuki (face punch)
+        Mune Tsuki (chest thrust)
+        Chudan Tsuki (middle-level thrust)
+        Choku Tsuki (direct thrust)
+        Kiawase Shomen Uchi
+
+    AGARRE Y GOLPE DE FRENTE:
+        Kata Dori Men Uchi
+        Sode Dori Jodan Tsuki
+        Mune Dori Men Uchi
+
+    AGARRE POR ESPALDA Y GOLPE:
+        Ushiro Eri Dori Men Uchi
+
+TECHNIQUES
+    BASIC TECHNIQUES
+        Kote Gaeshi (forearm return)
+            Tachi Waza Hai Hanmi Katate Dori Kote Gaeshi Omote
+            Tachi Waza Hai Hanmi Katete Dory Kote Gaeshi Ura
+            Tachi Waza Chudan Tsuki Kote Gaeshi Omote (6)
+            Tachi Waza Chudan Tsuki Kote Gaeshi Ura (6)
+        Irimi Nage (entering throw)
+            Tachi Waza Hai Hanmi Katate Dori Irimi Nage Omote
+            Tachi Waza Hai Hanmi Katate Dori Irimi Nage Ura
+            Tachi Waza Shomen Uchi Irimi Nage Omote (6)
+            Tachi Waza Shomen Uchi Irimi Nage Ura (6)
+        Shiho Nage (four direction throw)
+            Tachi Waza Hai Hanmi Katate Dori Shiho Nage Omote (6)
+            Tachi Waza Hai Hanmi Katete Dori Shiho Nage Ura (6)
+            Tachi Waza Yokomen Uchi Shiho Nage Omote (6)
+            Tachi Waza Yokomen Uchi Shiho Nage Ura (6)
+        Tenchi Nage (heaven and earth throw)
+        Kokyu Nage (breath throw)
+        Koshi Nage (hip throw)
+        Uchi Kaiten Nage (rotary throw)
+        Soto Kaiten Nage (rotary throw)
+        Juji Nage (figure ten throw)
+        Sumi Otoshi
+        Aiki Otoshi
+        Ushiro Kiri Otoshi
+        Kokyu Ho
+            Tachi Waza Kokyu Ho (6)
+            Suwari Waza Kokyu Ho (6)
+        Juji Garami
+        Ude Garami
+
+    IMMOBILIZATION TECHNIQUES
+        Ikkyo (first technique)
+            Tachi Waza Shomen Uchi Ikkyo Omote (6)
+            Tachi Waza Shomen Uchi Ikkyo Ura (6)
+            Tachi Waza Hai Hanmi Katate Dori Ikkyo Omote
+            Tachi Waza Hai Hanmi Katate Dori Ikkyo Ura
+        Nikkyo (second technique)
+        Sankyo (third technique)
+            Katate Dori Sankyo
+        Yonkyo (fourth technique)
+        Gokyo (fifth technique)
+        Hiji Kimi Osae
+
+    OTHER TECHNIQUES
+        Uchi Kaiten Sankyo
+        Ude Kimi Nage
+
+
+AIKIDO TOTAL
+    Los princios del aikido
+        La potencia de la linea del centro
+        Potencia concentrada
+        Potencia de la respiracion ki
+        Irimi (entrada)
+        Tenkan (giro)
+        Extension del cuerpo del compañero
+        Sincronizacion
+        Utilizacion de la energia del compañero
+        Control de la rodilla del uke
+        Atemi (ataque)
+        Ichitaita (uno contra muchos)
+        Sistema de entrenamiento
+        Explicacion de terminologia especial
+
+    Los fundamentos del movimiento del cuerpo (tai sabaki no kihon)
+        Kamae                                 (postura basica)
+        Hiriki no yosei ichi                  (potencia del codo 1)
+        Hiriki no yosei ni                    (potencia del codo 2)
+        Tai no henko ichi                     (cambio de movimiento del cuerpo 1)
+        Tan no henko no                       (cambio de movimiento del cuerpo 2)
+        Shumatsu dosa ichi                    (ejercicio para despues de clase 1)
+        Shumatsu dosa ni                      (ejercicio para despues de clase 2)
+        Kihon dosa                            (movimientos basicos: puntos importantes)
+        Shikkho-ho                            (andar sobre rodillas)
+        Ukemi                                 (caer)
+        Shomen-uchi                           (ataque frontal)
+        Shomen-uchi no ukekata                (bloqueo del ataque frontal)
+        Shomen-uchi no uchiyoke               (entrada interior al ataque frontal)
+        Yokomen-uchi                          (ataque lateral a la cabeza)
+        Yokomen-uchi no ukekata               (bloqueo del ataque lateral a la cabeza
+        Yokomen-ushi no uchiyoke              (entrada interior al ataque lateral a la cabeza)
+        Tsuki                                 (puñetazo frontal)
+        Ejecucion de un bloqueo fluido a tsuki
+
+        
+    Tecnicas basicas (kihon waza)
+    Tecnicas de auto-defensa (goshin waza)
+    Tecnicas ocultas (ogi)
+

@@ -1,0 +1,111 @@
+sample playback: reproducing a clip of audio, uses computer memory to store a pre-recorded sound, which may be played back at a fixed or variable pitch, and can be repeated in a continuous loop to extend the duration of a sound without increasing the memory requirements
+wavetable synthesis: Wavetable synthesis is fundamentally based on periodic reproduction of an arbitrary, single-cycle waveform; The distinction from other synthesis methods employing single-cycle waveforms is twofold: 1) multiple single-cycle waveforms are used and 2) some means of modulation of the amplitude and mix the single-cycle waveforms is employed
+signal generator:
+pitch generators:
+arbitrary waveform generators:
+digital pattern generators:
+frequency generators
+waveform generator:  a fundamental module in a sound synthesis system, usually produces a basic geometrical waveform with a fixed or variable timbre and variable pitch; Common waveform generator configurations usually included two or three simple waveforms and often a single pseudo-random-noise generator (PRNG)
+pseudo-random-noise generator (PRNG)
+pulse wave: the timbre of which can be varied by modifying the duty cycle
+duty cycle: A duty cycle is the percent of time that an entity spends in an active state as a fraction of the total time under consideration
+square wave: a symmetrical pulse wave producing only odd overtones
+triangle wave: has a fixed timbre containing only odd harmonics, but is softer than a square wave
+sawtooth wave: has a bright raspy timbre and contains odd and even harmonics
+white noise
+brown noise
+pink noise
+frequency modulation synthesis:  a form of audio synthesis where the timbre of a simple waveform is changed by frequency modulating it with a modulating frequency that is also in the audio range, resulting in a more complex waveform and a different-sounding tone
+
+HIPPIE
+  Bug:        bother, annoy
+  Bummer:     an emotionally unpleasant or upsetting experience; also, a negative drug reaction as an "LSD bummer"
+  Burned:     cheated
+  Busted:     arrested
+  Cool:       to be tuned-in, into things
+  Dig:        enjoy, appreciate, understated
+  Far out:    unusual, extraordinary; bizarre or avant-garde
+  Freak-out:  to lose control, to have bizarre patterns of though or behavior. Often occurring under the influence of a drug
+  Groove:     to "swing," to enjoy, to be "with it"
+  Hassle:     an annoyance or a conflict situation
+  Hip:        to be "in," "with it," emotionally wise, in the know
+  Out front:  open; honest; or the preface to a statement
+  Split:      to leave
+  Square:     a person or thing, not tuned-in or in the know
+  Stoned:     very high on drugs
+  Up-tight:   overly anxious or nervous
+
+EUSKARA
+  askatasuna      libertad
+  berdintasuna    igualdad
+  indarra         fuerza, intensidad
+  iraunkortasuna  persistencia
+  atxikitzea      perseverancia?
+  ohorea          honor
+
+WORDS
+  create destroy,delete
+   store retrieve,fetch,load
+     add remove
+     set get
+    read write
+  update undo
+  append truncate
+
+feature
+    the structure, form, or appearance especially of a person ("stern of feature even when he smiled")
+    the makeup or appearance of the face or its parts ("a person with Asian features")
+    a prominent part or characteristic ("Pine trees were a feature of the landscape")
+    any of the properties (such as voice or gender) that are characteristic of a grammatical element (such as a phoneme or morpheme); especially : one that is distinctive
+    a special attraction ("a featured article, story, or department in a newspaper or magazine")
+    something offered to the public or advertised as particularly attractive ("one of the car's most popular features")
+
+property
+    a quality or trait belonging and especially peculiar to an individual or thing
+    an effect that an object has on another object or on the senses
+    an attribute common to all members of a class
+    something owned or possessed
+    the exclusive right to possess, enjoy, and dispose of a thing
+    something to which a person or business has a legal title
+    one (such as a performer) who is under contract and whose work is especially valuable
+    a book or script purchased for publication or production
+    an article or object used in a play or motion picture except painted scenery and costumes
+
+attribute
+
+resource
+
+asset
+
+command
+
+query
+
+rule
+
+transformation
+
+change
+
+apply
+
+effect
+
+class
+
+type
+
+kind
+
+value
+
+simple
+
+complex
+
+complicated
+
+
+CONCEPTS
+  kaizen: continuous improvement
+  monozukuri: the art of making things
