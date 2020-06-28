@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>2003 Libre - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../../favicon.png">
+        <link rel="stylesheet" href="../../../../css/variables.css">
+        <link rel="stylesheet" href="../../../../css/general.css">
+        <link rel="stylesheet" href="../../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../../highlight.css">
+        <link rel="stylesheet" href="../../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../../../../tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../../../tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../../../tools/rsync.html">RSync</a></li></ol></li><li class="chapter-item "><li class="part-title active">Other Stuff</li><li class="chapter-item "><a href="../../../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../../../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../../../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../../../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../../../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../../../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../../../euskera/izen_sintagma.html">Izen Sintagma</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nor.html">Kasua: Nor</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_partitiboa.html">Kasua: Partitiboa</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nori.html">Kasua: Nori</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nork.html">Kasua: Nork</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_noren.html">Kasua: Noren</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norentzat.html">Kasua: Norentzat</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norekin.html">Kasua: Norekin</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norengatik.html">Kasua: Norengatik</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norengan.html">Kasua: Norengan</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norengandik.html">Kasua: Norengandik</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norengana.html">Kasua: Norengana</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norenganaino.html">Kasua: Norenganaino</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norenganantz.html">Kasua: Norenganantz</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_non.html">Kasua: Non</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nora.html">Kasua: Nora</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_noraino.html">Kasua: Noraino</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norantz.html">Kasua: Norantz</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_norako.html">Kasua: Norako</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nondik.html">Kasua: Nondik</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nongo.html">Kasua: Nongo</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_nortzat.html">Kasua: Nortzat</a></li><li class="chapter-item "><a href="../../../../euskera/kasua_zerez_zertaz.html">Kasua: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../../../../euskera/aditzak.html">Aditzak</a></li><li class="chapter-item "><a href="../../../../euskera/nominalizazioa.html">Nominalizazioa</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../mind/index.html">Mind</a></li><li class="chapter-item "><a href="../../../../body/index.html">Body</a></li><li class="chapter-item "><a href="../../../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../../../misc/library.html">My library</a></li><li class="chapter-item "><a href="../../../../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li><li class="chapter-item expanded "><a href="../../../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a></li><li class="chapter-item expanded "><a href="../../../../music/lyrics/berri_txarrak/2003_libre/index.html" class="active">2003 Libre</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a></li><li class="chapter-item "><a href="../../../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a></li></ol></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../../../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../../../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../../../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#2003-libre" id="2003-libre">2003 Libre</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

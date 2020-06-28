@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sustainable Economics - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Introduction.html">Introduction</a></li><li class="chapter-item "><a href="../tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../tools/rsync.html">RSync</a></li></ol></li><li class="chapter-item "><li class="part-title active">Other Stuff</li><li class="chapter-item "><a href="../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../euskera/izen_sintagma.html">Izen Sintagma</a></li><li class="chapter-item "><a href="../euskera/kasua_nor.html">Kasua: Nor</a></li><li class="chapter-item "><a href="../euskera/kasua_partitiboa.html">Kasua: Partitiboa</a></li><li class="chapter-item "><a href="../euskera/kasua_nori.html">Kasua: Nori</a></li><li class="chapter-item "><a href="../euskera/kasua_nork.html">Kasua: Nork</a></li><li class="chapter-item "><a href="../euskera/kasua_noren.html">Kasua: Noren</a></li><li class="chapter-item "><a href="../euskera/kasua_norentzat.html">Kasua: Norentzat</a></li><li class="chapter-item "><a href="../euskera/kasua_norekin.html">Kasua: Norekin</a></li><li class="chapter-item "><a href="../euskera/kasua_norengatik.html">Kasua: Norengatik</a></li><li class="chapter-item "><a href="../euskera/kasua_norengan.html">Kasua: Norengan</a></li><li class="chapter-item "><a href="../euskera/kasua_norengandik.html">Kasua: Norengandik</a></li><li class="chapter-item "><a href="../euskera/kasua_norengana.html">Kasua: Norengana</a></li><li class="chapter-item "><a href="../euskera/kasua_norenganaino.html">Kasua: Norenganaino</a></li><li class="chapter-item "><a href="../euskera/kasua_norenganantz.html">Kasua: Norenganantz</a></li><li class="chapter-item "><a href="../euskera/kasua_non.html">Kasua: Non</a></li><li class="chapter-item "><a href="../euskera/kasua_nora.html">Kasua: Nora</a></li><li class="chapter-item "><a href="../euskera/kasua_noraino.html">Kasua: Noraino</a></li><li class="chapter-item "><a href="../euskera/kasua_norantz.html">Kasua: Norantz</a></li><li class="chapter-item "><a href="../euskera/kasua_norako.html">Kasua: Norako</a></li><li class="chapter-item "><a href="../euskera/kasua_nondik.html">Kasua: Nondik</a></li><li class="chapter-item "><a href="../euskera/kasua_nongo.html">Kasua: Nongo</a></li><li class="chapter-item "><a href="../euskera/kasua_nortzat.html">Kasua: Nortzat</a></li><li class="chapter-item "><a href="../euskera/kasua_zerez_zertaz.html">Kasua: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../euskera/aditzak.html">Aditzak</a></li><li class="chapter-item "><a href="../euskera/nominalizazioa.html">Nominalizazioa</a></li></ol></li></ol></li><li class="chapter-item "><a href="../mind/index.html">Mind</a></li><li class="chapter-item "><a href="../body/index.html">Body</a></li><li class="chapter-item "><a href="../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../misc/library.html">My library</a></li><li class="chapter-item "><a href="../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li><li class="chapter-item "><a href="../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../society/sustainable_economics.html" class="active">Sustainable Economics</a></li><li class="chapter-item "><a href="../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#sustainable-economics" id="sustainable-economics">Sustainable Economics</a></h1>
+<p>Harald Welzer's career as a critic of growth began with a few simple reflections. Just how progressive is it, he asked himself, when millions of hectares of land are used elsewhere in the world so that we keep down the cost of meat? How modern is it when producing a kilogram of salmon in a supposedly sustainable way requires feeding the fish five to six kilograms (11 to 13 pounds) of other types of fish?</p>
+<p>If everyone used up as much space and resources as we do, says the 54-year-old Berlin-based social psychologist, we would need three earths. In Welzer's eyes, this can hardly be called progress.</p>
+<p>All of this made Welzer so angry that he wrote a book critical of equating this sort of progress with growth. The ruling class of economists, who he characterizes as &quot;disdainers of reality&quot; and &quot;proponents of a world essentially limited by consumption,&quot; is responsible for compulsively tying these two concepts together, he argues. His treatise, &quot;Selbst denken&quot; (&quot;Thinking for Ourselves&quot;), is a manual for phasing out the &quot;totalitarian consumerism&quot; that gives people desires that, until recently, they didn't even suspect they would ever have.</p>
+<p>Until a few months ago, Welzer specialized in studying the psyche of Nazi criminals. He has also written about climate wars. His current bestseller, &quot;Selbst denken,&quot; has now made him the figurehead of a movement that radically questions the growth model of the Western economy.</p>
+<p>Welzer was also recently named a professor in transformation design at the University of Flensburg, in northern Germany. When a local journalist asked him what transformation design is, he replied: &quot;We don't exactly know yet ourselves.&quot; But the goal of the discipline, he added, is to counter the &quot;systematic scam&quot; created by an industry that produces things that break unnecessarily or are hardly capable of being repaired. Welzer wants to &quot;design corridors&quot; in which companies would be given time to transform faceless, no-name products into durable products with an origin and a history.</p>
+<p>Economists have largely disregarded the environmental consequences of growth. For them, the key benchmark of prosperity is gross domestic product (GDP), the sum of all products and services produced in a given country. However, GDP does not factor in the overexploitation of resources, the destruction of biological diversity, air pollution, noise, the expansion of impervious surfaces known as soil sealing, and the poisoning of groundwater.</p>
+<p>But for many people, a wealth model built on chronic growth is no longer a desirable goal. They are deciding to opt out of this model by establishing &quot;repair cafés&quot; or &quot;transition towns,&quot; communities that try to run things differently at the local level. But doubts about the growth dogma are even beginning to creep into politics. For instance, German Finance Minister Wolfgang Schäuble, a member of Chancellor Angela Merkel's center-right Christian Democratic Union (CDU), recently argued that Western countries should &quot;espouse limiting economic growth&quot; at home.</p>
+<p>But can there be prosperity without growth and growth without environmental damage? How can jobs be preserved in a stagnating or even a shrinking economy? How can a government service its debts in such an economy, especially as the population shrinks?</p>
+<h2><a class="header" href="#the-culture-of-enough" id="the-culture-of-enough">The 'Culture of Enough'</a></h2>
+<p>The German parliamentary commission on growth, prosperity and quality of life spent two years trying to find answers to these questions. Two weeks ago, the commission presented its 1,000-page final report. In the end, it was as far removed from a consensus as it was at the beginning.</p>
+<p>Faith in never-ending growth has long had its critics. But many found warnings like those coming from the Club of Rome, especially in its study on the &quot;Limits of Growth,&quot; to be too alarmist. Nevertheless, the financial crisis has brought renewed misgivings about the system. One of the first to point the way to an alternative was British economist Tim Jackson. In his 2009 book &quot;Prosperity Without Growth,&quot; he outlined a &quot;coherent ecological macroeconomics&quot; based on a &quot;fixed&quot; economy with strict upper limits on emissions and resources.</p>
+<p>Many in the British political world have viewed Jackson, an expert with the UK's Sustainable Development Commission, as a bit of an oddball. Hostile government tax officials wondered whether Jackson was proposing that we all go back to living in caves. A professor at the University of Surrey, near London, Jackson had had the audacity to paint capitalism as a faulty system, as a gluttony machine that constantly needs new supplies of people prepared to resolutely continue consuming goods and services.</p>
+<p>And when consumers lose their taste for new things, Jackson argues, our system has plenty of shrewd advertisers, marketers and investors to persuade us &quot;to spend money we don't have on things that we don't need to create impressions that won't last on people we don't care about.&quot; Jackson's book, already translated into 15 languages, became a bestseller in the new &quot;culture of enough.&quot;</p>
+<p>&quot;It's time to change the channel&quot;, says Welzer, the German growth critic. He is giving a talk in a large lecture hall at the University of Flensburg, and the room is so full that even most of the steps along the side are occupied.</p>
+<p>&quot;We apply the old recipes, which is typical for societies that come under stress&quot;, he says. They recognize that resources are dwindling, and yet they intensify their exploitation and accelerate their own demise. He sees no better example of this than the way we treat our resources. Peak oil? Let's drill deeper! Natural gas bottlenecks? Let's use chemicals to pump it out of the earth! Cash-strapped financial markets? Let's flood them!</p>
+<p>According to Niko Paech, a 52-year-old economics professor in the northern German city of Oldenburg, we continue to apply these remedies until GDP is back on track, even in the midst of a crisis. But, he adds, treating GDP as a measure of the prosperity of modern societies is downplaying the problem and is &quot;a measure of environmental destruction.&quot;</p>
+<p>Paech advocates a shrinking economy and preaches a new frugality. He has been wearing his striped brown sport coat for 25 years, and no matter where he is invited, he always takes his bike or the train. In fact, he has only flown once in his life.</p>
+<p>Paech attacks what he calls our &quot;autistic faith in progress.&quot; He is not interested in criticizing a few greedy executives for destroying a supposedly good system. For Paech, the system itself is broken, and instead of repairing it, he wants to rebuild it from the ground up. He no longer believes in reconciliation between the environment and the economy, and in the notion that a level of prosperity achieved through credit can simply be continued through green growth. And unlike many members of the environmentalist Green Party, Paech adds, he is &quot;extremely conservative.&quot;</p>
+<p>His message is simple: that we should be giving up and sharing some of our wealth. The labor market he envisions is full of thriving repair and maintenance shops. He wants to see our society become more civilized with less: less material, less energy, less waste and less pollution. He also believes that resources should be managed more effectively. We should produce the kind of clothing, he argues, that can be handed down from one generation to the next instead of throwing things away after wearing them just a few times.</p>
+<p>The post-growth theorist explained to a perplexed journalist for the website of Bild, Germany's top-selling tabloid newspaper, that Germans are not role models when it comes to environmental protection because they have merely outsourced their dirty production. For Paech, wealth that can no longer be stabilized without growth is merely &quot;the result of comprehensive environmental depredation.&quot;</p>
+<p>The most important argument against growth skeptics like Paech is technology. Influential US economist Julian Simon, for example, predicted that technological advancements could bring us 7 billion more years of growth. The hope is that better and more environmentally friendly products will essentially eliminate the limits on growth. For example, the PR strategists of the Initiative for a New Social Market Economy (INSM), a German umbrella lobbying group supported by free-market-inclined politicians of all stripes, use the slogan &quot;Less CO2 needs more growth.&quot;</p>
+<p>But disconnecting growth from more consumption and environmental degradation is still just a dream. According to a study by the parliamentary commission on growth, prosperity and quality of life, which summarizes the current state of research in the field, growth with declining absolute resource consumption currently exists &quot;as good as nowhere&quot; in the world.</p>
+<p>There are now alternative methods to measure growth, such as the National Prosperity Index developed by Hans Diefenbacher, an economist in the western German city of Heidelberg. He simply treats the negative impacts of economic activity as a reduction in our welfare. So far, his work has been largely ignored. But now even the divided parliamentary growth commission referred to his model in its final report, in which it recommended a new way of measuring growth, using an indicator called &quot;W3.&quot; This method would not only provide information on wealth, but also on social matters, economic participation and the environment.</p>
+<h2><a class="header" href="#leading-a-subversive-double-existence" id="leading-a-subversive-double-existence">Leading 'A Subversive Double Existence'</a></h2>
+<p>But can an economy without growth truly exist? The question gives rise to great skepticism, as it does on an evening in the back room of a bar in the northern German city-state of Bremen. Niko Paech is talking to members of the Catholic Guild of St. Ansgar, a group of highly educated retirees who are relentless in their questioning.</p>
+<p>How can you pay for our social systems when people are working 20-hour weeks, they ask? But we already can't pay for those structures today, Paech replies. In his system for the future, he explains, people would lead a sort of &quot;subversive double existence.&quot; They would share and recycle, thereby outsmarting an industry geared toward nonstop renewal. People would only work 20 hours a week, but they would also have 20 hours of &quot;market-free&quot; time to provide for themselves.</p>
+<p>But such slimmed-down jobs would hardly be enough for many people, says an older man. He hears that a lot, says Paech, especially when he speaks at union functions, where he is routinely grilled by his audience. Besides, says the economist, all the hype about jobs in our supposed knowledge society is in fact questionable. &quot;What exactly are we doing?&quot; he asks. &quot;As we anxiously invoke competitiveness, we train younger and younger delegators with touchscreens to manage the dirty work, forcing Indians to whom the work is being outsourced halfway around the world to work extra hours so that we'll continue to be flooded with consumer goods.&quot; By now, some of his listeners are nodding in agreement.</p>
+<p>Paech recently spoke at an event sponsored by Volkswagen, the German automotive giant. &quot;I was in the lion's den, being showered with malice,&quot; he says. At a certain point, he asked what the workers did during the economic crisis, when so many saw their hours reduced under the Kurzarbeit program, the &quot;short-time work&quot;program that the German government used during the crisis to avoid layoffs by encouraging companies to reduce workers' hours while making up for some of the workers' lost salaries and benefits itself. &quot;We worked in the garden, did things in the neighborhood and fixed things,&quot; they told Paech.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../society/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../society/umberto_eco_ur_fascism.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../society/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../society/umberto_eco_ur_fascism.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
