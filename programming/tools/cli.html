@@ -1,0 +1,503 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CLI - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title active">Computer Science and Engineering</li><li class="chapter-item expanded "><a href="../../programming/index.html">Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../../programming/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../programming/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../programming/ai/richard_sutton.html">Richard Sutton</a></li></ol></li><li class="chapter-item "><a href="../../programming/compilers/index.html">Compilers</a></li><li class="chapter-item "><a href="../../programming/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../../programming/excellency/index.html">Excellency</a></li><li class="chapter-item expanded "><a href="../../programming/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/tools/code_searching.html">Code Searching</a></li><li class="chapter-item expanded "><a href="../../programming/tools/cli.html" class="active">CLI</a></li><li class="chapter-item "><a href="../../programming/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../programming/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../programming/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../programming/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../programming/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../programming/tools/suckless.html">&quot;Suckless&quot;</a></li><li class="chapter-item "><a href="../../programming/tools/utils.html">System Utilities</a></li><li class="chapter-item "><a href="../../programming/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../../programming/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/misc/systems_performance.html">Systems Performance</a></li><li class="chapter-item "><a href="../../programming/misc/sql_explain.html">SQL Explain</a></li><li class="chapter-item "><a href="../../programming/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../programming/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../programming/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../programming/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../programming/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../programming/misc/zen_python.html">The Zen of Python</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title active">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/kasuak.html">Kasuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/kasu_nor.html">Kasu: Nor</a></li><li class="chapter-item "><a href="../../euskera/kasu_partitiboa.html">Kasu: Partitiboa</a></li><li class="chapter-item "><a href="../../euskera/kasu_non.html">Kasu: Non</a></li><li class="chapter-item "><a href="../../euskera/kasu_nork.html">Kasu: Nork</a></li><li class="chapter-item "><a href="../../euskera/kasu_nori.html">Kasu: Nori</a></li><li class="chapter-item "><a href="../../euskera/kasu_noren.html">Kasu: Noren</a></li><li class="chapter-item "><a href="../../euskera/kasu_norentzat.html">Kasu: Norentzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_norekin.html">Kasu: Norekin</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengatik.html">Kasu: Norengatik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengan.html">Kasu: Norengan</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengandik.html">Kasu: Norengandik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengana.html">Kasu: Norengana</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganaino.html">Kasu: Norenganaino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganantz.html">Kasu: Norenganantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_nora.html">Kasu: Nora</a></li><li class="chapter-item "><a href="../../euskera/kasu_noraino.html">Kasu: Noraino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norantz.html">Kasu: Norantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_norako.html">Kasu: Norako</a></li><li class="chapter-item "><a href="../../euskera/kasu_nondik.html">Kasu: Nondik</a></li><li class="chapter-item "><a href="../../euskera/kasu_nongo.html">Kasu: Nongo</a></li><li class="chapter-item "><a href="../../euskera/kasu_nortzat.html">Kasu: Nortzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerez_zertaz.html">Kasu: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerezko.html">Kasu: Zerezko</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a></li></ol></li><li class="chapter-item "><a href="../../body/index.html">Body</a></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li><li class="chapter-item "><a href="../../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#cli" id="cli">CLI</a></h1>
+<h2><a class="header" href="#shell" id="shell">Shell</a></h2>
+<ul>
+<li>In bash, 'ctrl-r' searches your command history as you type</li>
+</ul>
+<ul>
+<li>Add &quot;set -o vi&quot; in your ~/.bashrc to make use the vi keybindings instead
+of the Emacs ones. Takes some time to get used to, but it's fantastic!</li>
+<li>Input from the commandline as if it were a file by replacing
+'command &lt; file.in' with 'command &lt;&lt;&lt; &quot;some input text&quot;'</li>
+<li>'^' is a sed-like operator to replace chars from last command
+'ls docs; ^docs^web^' is equal to 'ls web'. The second argument can be empty.</li>
+</ul>
+<ul>
+<li>'!!:n' selects the nth argument of the last command, and '!$' the last arg
+'ls file1 file2 file3; cat !!:1-2' shows all files and cats only 1 and 2</li>
+</ul>
+<ul>
+<li>More in-line substitutions: http://tiny.cc/ecv0cw http://tiny.cc/8zbltw</li>
+<li>'nohup ./long_script &amp;' to leave stuff in background even if you logout</li>
+<li>'cd -' change to the previous directory you were working on</li>
+<li>'ctrl-x ctrl-e' opens an editor to work with long or complex command lines</li>
+</ul>
+<ul>
+<li>Use traps for cleaning up bash scripts on exit http://tiny.cc/traps</li>
+<li>'shopt -s cdspell' automatically fixes your 'cd folder' spelling mistakes</li>
+</ul>
+<ul>
+<li>'dict' is a commandline dictionary</li>
+</ul>
+<ul>
+<li>'trash-cli' sends files to the trash instead of deleting them forever.
+Be very careful with 'rm' or maybe make a wrapper to avoid deleting '<em>' by
+accident (e.g. you want to type 'rm tmp</em>' but type 'rm tmp *')</li>
+</ul>
+<ul>
+<li>'file' gives information about a file, as image dimensions or text encoding</li>
+<li>'echo start_backup.sh | at midnight' starts a command at the specified time</li>
+<li>Pipe any command over 'column -t' to nicely align the columns</li>
+</ul>
+<ul>
+<li>Google 'magic sysrq' and learn how to bring you machine back from the dead</li>
+</ul>
+<ul>
+<li>'diff --side-by-side fileA.txt fileB.txt | pager' to see a nice diff</li>
+</ul>
+<ul>
+<li>'j.py' http://tiny.cc/62qjow remembers your most used folders and is an
+incredible substitute to browse directories by name instead of 'cd'</li>
+</ul>
+<ul>
+<li>'dropbox_uploader.sh' http://tiny.cc/o2qjow is a fantastic solution to
+upload by commandline via Dropbox's API if you can't use the official client</li>
+<li>learn to use 'pushd' to save time navigating folders (j.py is better though)</li>
+<li>if you liked the 'psgrep' alias, check 'pgrep' as it is far more powerful</li>
+</ul>
+<ul>
+<li>never run 'chmod o+x * -R', capitalize the X to avoid executable files. If
+you want <em>only</em> executable folders: 'find . -type d -exec chmod g+x {} ;'</li>
+</ul>
+<ul>
+<li>'xargs' gets its input from a pipe and runs some command for each argument</li>
+</ul>
+<h3><a class="header" href="#interesting-aliases" id="interesting-aliases">Interesting Aliases</a></h3>
+<ul>
+<li><code>function lt() { ls -ltrsa &quot;$@&quot; | tail; }</code></li>
+<li><code>function psgrep() { ps axuf | grep -v grep | grep &quot;$@&quot; -i --color=auto; }</code></li>
+<li><code>function fname() { find . -iname &quot;*$@*&quot;; }</code></li>
+</ul>
+<h3><a class="header" href="#redirecting-output-to-other-terminal" id="redirecting-output-to-other-terminal">Redirecting output to other terminal</a></h3>
+<p>There are many reasons one might want to see output from shell commands in
+another terminal emulator but it definitely has its uses. The other day it just
+so happended that I needed such a functionality. Without going into details I’m
+going to show you how to achieve such behaviour – and more – easily, by
+leveraging the fact that under the hood <code>std(in|out|err)</code> are just *nix file
+descriptors.</p>
+<p>All that’s needed is the snippet below</p>
+<pre><code>exec 1&gt;/proc/&lt;PID&gt;/fd/1
+</code></pre>
+<p>Where <code>&lt;PID&gt;</code> is id of the process you want to redirect your output to (and you
+can obtain it for instance by running <code>echo $$</code> inside the target terminal).</p>
+<p>But don’t take my word for it – let’s see for ourselves how it works.</p>
+<pre><code>exec me
+</code></pre>
+<p>I think the biggest revelation comes with acknowledging the fact that exec is
+used for something more than to (according to man): &quot;replace the shell with 
+command without creating a new process&quot;</p>
+<p>Because this functionality isn’t even the first thing mentioned in man. The
+first thing man has to say about exec is that</p>
+<pre><code>The exec utility shall open, close, and/or copy file descriptors as specified by
+any redirections as part of the command.
+</code></pre>
+<p>And before you ask – yes, there’s a caveat. Unfortunately (or fortunately for
+process security), once the process has started there’s no way to change its
+file descriptors, unless you resort to some gdb wizardry – and even then it’s
+not always possible.</p>
+<p>Wrapping up – while it’s not really a game-changer, it’s still a feature that
+can sometimes be put to good use.</p>
+<h3><a class="header" href="#invoke-an-editor-to-write-a-long-complex-or-tricky-command" id="invoke-an-editor-to-write-a-long-complex-or-tricky-command">Invoke an editor to write a long, complex, or tricky command</a></h3>
+<pre><code>$ ctrl-x e
+</code></pre>
+<p>Next time you are using your shell, try typing <code>ctrl-x e</code> (that is holding
+control key press x and then e). The shell will take what you've written on
+the command line thus far and paste it into the editor specified by <code>$EDITOR</code>.
+Then you can edit at leisure using all the powerful macros and commands of
+vi, emacs, nano, or whatever.</p>
+<h3><a class="header" href="#list-of-commands-you-use-most-often" id="list-of-commands-you-use-most-often">List of commands you use most often</a></h3>
+<pre><code>$ history | awk $({a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}) | sort -rn | head
+</code></pre>
+<h3><a class="header" href="#check-command-history-but-avoid-running-it" id="check-command-history-but-avoid-running-it">Check command history, but avoid running it</a></h3>
+<pre><code>$ !whatever:p
+</code></pre>
+<p><code>!whatever</code> will search your command history and execute the first command
+that matches 'whatever' If you don’t feel safe doing this put <code>:p</code> on the end
+to print without executing. Recommended when running as superuser.</p>
+<h3><a class="header" href="#run-the-last-command-as-root" id="run-the-last-command-as-root">Run the last command as root</a></h3>
+<pre><code>$ sudo !!
+</code></pre>
+<p>Useful when you forget to use sudo for a command. <code>!!</code> grabs the last run command.
+Similarly <code>!$</code> gets the last argument of the previous command
+And <code>!&lt;#&gt;</code> repeats that line number from bash history, so:</p>
+<pre><code>$ history
+332   ls -l
+$ !332
+ls -l
+</code></pre>
+<p>Along the same line <code>$_</code>. Repeat the last argument.</p>
+<pre><code>ping mybox.domain
+ssh $_
+</code></pre>
+<p>You can also append it so something like:</p>
+<pre><code>ping mybox.domain
+scp file $_:
+</code></pre>
+<p>Meta period (<code>esc-.</code>) cycles the last argument from the previous commands.
+It works on the current prompt.</p>
+<h3><a class="header" href="#create-a-script-of-the-last-executed-command" id="create-a-script-of-the-last-executed-command">Create a script of the last executed command</a></h3>
+<pre><code>$ echo &quot;!!&quot; &gt; foo.sh
+</code></pre>
+<p>Sometimes commands are long, but useful, so it's helpful to be able to make
+them permanent without having to retype them.</p>
+<h2><a class="header" href="#files" id="files">Files</a></h2>
+<h3><a class="header" href="#like-top-but-for-files" id="like-top-but-for-files">Like top, but for files</a></h3>
+<pre><code>$ watch -d -n 2 $(df; ls -FlAt;)
+</code></pre>
+<h3><a class="header" href="#empty-a-file" id="empty-a-file">Empty a file</a></h3>
+<pre><code>$ &gt; file.txt
+</code></pre>
+<p>For when you want to flush all content from a file without removing it.</p>
+<h3><a class="header" href="#zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable" id="zeroing-out-the-empty-space-and-making-deleted-information-non-recoverable">Zeroing out the empty space and making deleted information non-recoverable</a></h3>
+<pre><code>$ sudo su
+$ touch junk.bin # Create a dummy file named junk.bin on the USB flash drive
+$ fdisk -l and locate the partition you would like to zero out
+$ mkdir /tmp/ddusb
+$ mount -o loop /dev/sdxx /tmp/ddsdb (replacing sdxxx with your partition)
+$ dd if=/dev/zero of=/tmp/ddusb/junk.bin
+$ rm /tmp/ddusb/junk.bin
+</code></pre>
+<h3><a class="header" href="#copy-folder-structure-without-files" id="copy-folder-structure-without-files">Copy folder structure without files</a></h3>
+<pre><code>$ cd /new/dir
+$ (cd /old/dir; find -type d ! -name . -printf &quot;\&quot;%p\&quot;\n&quot;) | xargs mkdir
+</code></pre>
+<p><code>&quot;\&quot;%p\&quot;\n&quot;</code> Double quoted path names or else xargs and mkdir will fail.</p>
+<h3><a class="header" href="#find-all-extensions-in-a-directory-tree" id="find-all-extensions-in-a-directory-tree">Find all extensions in a directory tree</a></h3>
+<pre><code>$ find . -type f | awk -F . '{print $NF}' | tr '[:upper:]' '[:lower:]' | sort | uniq
+</code></pre>
+<h3><a class="header" href="#tail-a-file-with-less" id="tail-a-file-with-less">Tail a file with less</a></h3>
+<pre><code>$ less +F somelogfile
+</code></pre>
+<p>Using <code>+F</code> will put less in follow mode. This works similar to <code>'tail -f'</code>
+To stop scrolling, use the interrupt. Then you’ll get the normal benefits of
+less (scroll, etc.).
+Pressing <code>SHIFT-F</code> will resume the 'tailing'.</p>
+<h2><a class="header" href="#text" id="text">Text</a></h2>
+<h3><a class="header" href="#trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree" id="trim-trailing-whitespace-and-expand-tabs-to-spaces-in-a-tree">Trim trailing whitespace and expand tabs to spaces in a tree</a></h3>
+<pre><code>$ find . -type f \( -name &quot;*.ex&quot; -o -name &quot;*.exs&quot; \) -exec bash -c 'echo &quot;$0&quot; &amp;&amp; sed -i &quot;&quot; -e &quot;s/[[:space:]]*$//&quot; &quot;$0&quot; &amp;&amp; expand -t 4 &quot;$0&quot; &gt; /tmp/e &amp;&amp; mv /tmp/e &quot;$0&quot;' {} \;
+</code></pre>
+<p>The command finds all erlang and elixir source files and expands tabs to 4
+spaces and removes trailing whitespace.</p>
+<ul>
+<li><code>-type f \( -name &quot;*.erl&quot; -o -name &quot;*.ex&quot; -o -name &quot;*.exs&quot; \)</code> filters all
+erlang and elixir source files. The escaped parentheses are necessary to
+tell find that the <code>-name</code> filters are part of one condition, otherwise it
+will short-circuit evaluate them.</li>
+<li><code>-exec bash -c</code> tell find to run a bash command on each matching file.</li>
+<li><code>echo &quot;$0&quot;</code> will print out the first parameter (i.e. the filename) passed
+to the bash command.</li>
+<li><code>sed -i &quot;&quot; -e &quot;s/[[:space:]]*$//&quot; &quot;$0&quot;</code> will run sed in-place on the file,
+telling it to match all whitespace at the end of line and replace it with
+nothing.</li>
+<li><code>expand -t 4 &quot;$0&quot; &gt; /tmp/e &amp;&amp; mv /tmp/e &quot;$0&quot;</code> will run expand on the file,
+since expand does not have an option to run it in-place we redirect output
+to a temporary file and then copy it over the original file.</li>
+</ul>
+<h3><a class="header" href="#convert-between-dos--unix-textfile-formats" id="convert-between-dos--unix-textfile-formats">Convert between DOS / UNIX textfile formats</a></h3>
+<pre><code>$ cp &lt;fileid&gt; &lt;fileid&gt;.dos &amp;&amp;
+$ cat &lt;fileid&gt;.dos | tr -d '\r' &gt; &lt;fileid&gt;
+</code></pre>
+<h3><a class="header" href="#diff-two-unsorted-files-without-creating-temporary-files" id="diff-two-unsorted-files-without-creating-temporary-files">Diff two unsorted files without creating temporary files</a></h3>
+<pre><code>$ diff &lt;(sort file1) &lt;(sort file2)
+</code></pre>
+<p>bash subshell redirection (as file descriptors) used as input to diff</p>
+<h3><a class="header" href="#ascii-table" id="ascii-table">ASCII table</a></h3>
+<pre><code>$ man ascii
+</code></pre>
+<h2><a class="header" href="#system" id="system">System</a></h2>
+<h3><a class="header" href="#display-which-distro-is-installed" id="display-which-distro-is-installed">Display which distro is installed</a></h3>
+<pre><code>cat /etc/issue
+</code></pre>
+<h3><a class="header" href="#currently-mounted-filesystems" id="currently-mounted-filesystems">Currently mounted filesystems</a></h3>
+<pre><code>$ mount | column -t
+</code></pre>
+<p>Particularly useful if you're mounting different drives, using the following
+command will allow you to see all the filesystems currently mounted on your
+computer and their respective specs with the added benefit of nice
+formatting.</p>
+<h3><a class="header" href="#execute-a-command-at-a-given-time" id="execute-a-command-at-a-given-time">Execute a command at a given time</a></h3>
+<pre><code>$ echo &quot;ls -l&quot; | at midnight
+</code></pre>
+<p>This is an alternative to cron which allows a one-off task to be scheduled
+for a certain time.</p>
+<h3><a class="header" href="#mount-a-temporary-ram-partition" id="mount-a-temporary-ram-partition">Mount a temporary ram partition</a></h3>
+<pre><code>$ mount -t tmpfs tmpfs /mnt -o size=1024m
+</code></pre>
+<p>Makes a partition in ram which is useful if you need a temporary working
+space as read/write access is fast. Be aware that anything saved in this
+partition will be gone after your computer is turned off.</p>
+<h2><a class="header" href="#memory" id="memory">Memory</a></h2>
+<h3><a class="header" href="#see-all-strings-in-ram" id="see-all-strings-in-ram">See all strings in RAM</a></h3>
+<pre><code>$ sudo dd if=/dev/mem | cat | strings
+</code></pre>
+<p>This command will show you all the string (plain text) values in ram.
+A fun thing to do with ram is actually open it up and take a peek.</p>
+<h3><a class="header" href="#display-the-top-ten-running-processes-sorted-by-memory-usage" id="display-the-top-ten-running-processes-sorted-by-memory-usage">Display the top ten running processes sorted by memory usage</a></h3>
+<pre><code>ps aux | sort -nk +4 | tail
+</code></pre>
+<p><code>ps</code> returns all running processes which are then sorted by the 4th field in
+numerical order and the top 10 are sent to STDOUT.</p>
+<h2><a class="header" href="#networking" id="networking">Networking</a></h2>
+<h3><a class="header" href="#set-audible-alarm-when-an-ip-address-comes-online" id="set-audible-alarm-when-an-ip-address-comes-online">Set audible alarm when an ip address comes online.</a></h3>
+<pre><code>$ ping -i 60 -a IP_address
+</code></pre>
+<p>Waiting for your server to finish rebooting? Issue the command above and you will 
+hear a beep when it comes online. The <code>-i 60</code> flag tells ping to wait for 60 
+seconds between ping, putting less strain on your system. Vary it to your need. 
+The <code>-a</code> flag tells ping to include an audible bell in the output when a package 
+is received (that is, when your server comes online).</p>
+<h3><a class="header" href="#serve-files-locally" id="serve-files-locally">Serve files locally</a></h3>
+<p><code>python -m SimpleHTTPServer 8080</code> shares all the files in the current
+folder over HTTP, port 8080</p>
+<h3><a class="header" href="#port-forwarding" id="port-forwarding">Port forwarding</a></h3>
+<pre><code>ssh -R 12345:localhost:22 server.com &quot;sleep 1000; exit&quot;
+</code></pre>
+<p>forwards server.com's port 12345 to your local ssh port, even if you machine is not externally visible on the net.
+Now you can <code>ssh localhost -p 12345</code> from server.com and you will log into your machine.
+'sleep' avoids getting kicked out from server.com for inactivity</p>
+<h3><a class="header" href="#network-monitoring" id="network-monitoring">Network monitoring</a></h3>
+<p>Some tools to monitor network connections and bandwith:</p>
+<ul>
+<li><code>lsof -i</code> monitors network connections in real time</li>
+<li><code>iftop</code> shows bandwith usage per <em>connection</em></li>
+<li><code>nethogs</code> shows the bandwith usage per <em>process</em></li>
+</ul>
+<h3><a class="header" href="#ssh-configuration" id="ssh-configuration">SSH configuration</a></h3>
+<p>Use this trick on <code>.ssh/config</code> to directly access 'host2' which is on a private
+network, and must be accessed by ssh-ing into 'host1' first</p>
+<pre><code>  Host host2
+      ProxyCommand ssh -T host1 'nc %h %p'
+  	  HostName host2
+</code></pre>
+<h3><a class="header" href="#pipe-over-network" id="pipe-over-network">Pipe over network</a></h3>
+<p>Pipe a compressed file over ssh to avoid creating large temporary .tgz files</p>
+<pre><code>tar cz folder/ | ssh server &quot;tar xz&quot; 
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../programming/tools/code_searching.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../programming/tools/docker.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../programming/tools/code_searching.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../programming/tools/docker.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

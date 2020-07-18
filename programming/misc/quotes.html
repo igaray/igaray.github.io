@@ -1,0 +1,488 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Quotes - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title active">Computer Science and Engineering</li><li class="chapter-item expanded "><a href="../../programming/index.html">Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../../programming/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../programming/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../programming/ai/richard_sutton.html">Richard Sutton</a></li></ol></li><li class="chapter-item "><a href="../../programming/compilers/index.html">Compilers</a></li><li class="chapter-item "><a href="../../programming/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../../programming/excellency/index.html">Excellency</a></li><li class="chapter-item "><a href="../../programming/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/tools/code_searching.html">Code Searching</a></li><li class="chapter-item "><a href="../../programming/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../programming/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../programming/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../programming/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../programming/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../programming/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../programming/tools/suckless.html">&quot;Suckless&quot;</a></li><li class="chapter-item "><a href="../../programming/tools/utils.html">System Utilities</a></li><li class="chapter-item "><a href="../../programming/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item expanded "><a href="../../programming/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/misc/systems_performance.html">Systems Performance</a></li><li class="chapter-item "><a href="../../programming/misc/sql_explain.html">SQL Explain</a></li><li class="chapter-item "><a href="../../programming/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../programming/misc/magic.html">Magic</a></li><li class="chapter-item expanded "><a href="../../programming/misc/quotes.html" class="active">Quotes</a></li><li class="chapter-item "><a href="../../programming/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../programming/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../programming/misc/zen_python.html">The Zen of Python</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title active">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/kasuak.html">Kasuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/kasu_nor.html">Kasu: Nor</a></li><li class="chapter-item "><a href="../../euskera/kasu_partitiboa.html">Kasu: Partitiboa</a></li><li class="chapter-item "><a href="../../euskera/kasu_non.html">Kasu: Non</a></li><li class="chapter-item "><a href="../../euskera/kasu_nork.html">Kasu: Nork</a></li><li class="chapter-item "><a href="../../euskera/kasu_nori.html">Kasu: Nori</a></li><li class="chapter-item "><a href="../../euskera/kasu_noren.html">Kasu: Noren</a></li><li class="chapter-item "><a href="../../euskera/kasu_norentzat.html">Kasu: Norentzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_norekin.html">Kasu: Norekin</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengatik.html">Kasu: Norengatik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengan.html">Kasu: Norengan</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengandik.html">Kasu: Norengandik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengana.html">Kasu: Norengana</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganaino.html">Kasu: Norenganaino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganantz.html">Kasu: Norenganantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_nora.html">Kasu: Nora</a></li><li class="chapter-item "><a href="../../euskera/kasu_noraino.html">Kasu: Noraino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norantz.html">Kasu: Norantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_norako.html">Kasu: Norako</a></li><li class="chapter-item "><a href="../../euskera/kasu_nondik.html">Kasu: Nondik</a></li><li class="chapter-item "><a href="../../euskera/kasu_nongo.html">Kasu: Nongo</a></li><li class="chapter-item "><a href="../../euskera/kasu_nortzat.html">Kasu: Nortzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerez_zertaz.html">Kasu: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerezko.html">Kasu: Zerezko</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a></li></ol></li><li class="chapter-item "><a href="../../body/index.html">Body</a></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li><li class="chapter-item "><a href="../../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#quotes" id="quotes">Quotes</a></h1>
+<blockquote>
+<p>Walking on water and developing software from a specification are easy if both
+are frozen. -- Edward V Berard</p>
+</blockquote>
+<blockquote>
+<p>Hofstadter's Law: It always takes longer than you expect, even when you take
+into account Hofstadter's Law.</p>
+</blockquote>
+<blockquote>
+<p>Debugging is twice as hard as writing the code in the first
+place. Therefore, if you write the code as cleverly as possible, you are, by
+definition, not smart enough to debug it. -- Brian Kernighan</p>
+</blockquote>
+<blockquote>
+<p>The idea that I can be presented with a problem, set out to logically solve it
+with the tools at hand, and wind up with a program that could not be legally
+used because someone else followed the same logical steps some years ago and
+filed for a patent on it is horrifying. - John Carmack on software patents</p>
+</blockquote>
+<blockquote>
+<p>&quot;Some people, when confronted with a problem, think &quot;I know, I’ll use regular
+expressions.&quot; Now they have two problems.&quot; -- Jamie Zawinski</p>
+</blockquote>
+<blockquote>
+<p>&quot;In order to understand recursion, one must first understand recursion.&quot;</p>
+</blockquote>
+<blockquote>
+<p>On two occasions I have been asked [by members of Parliament], 'Pray, Mr.
+Babbage, if you put into the machine wrong figures, will the right answers come
+out?' I am not able rightly to apprehend the kind of confusion of ideas that
+could provoke such a question. -- Charles Babbage</p>
+</blockquote>
+<blockquote>
+<p>If debugging is the process of removing software bugs, then programming must be the process of putting them in. -- Edsger Dijkstra</p>
+</blockquote>
+<blockquote>
+<p>Computer Science is no more about computers than astronomy is about telescopes. -- E. W. Dijkstra</p>
+</blockquote>
+<blockquote>
+<p>Perfection is achieved, not when there is nothing more to add, but when there is
+nothing left to take away. -- Antoine de Saint Exupéry</p>
+</blockquote>
+<blockquote>
+<p>Debuggers don't remove bugs. They only show them in slow motion.</p>
+</blockquote>
+<blockquote>
+<p>&quot;The trouble with programmers is that you can never tell what a programmer is
+doing until it's too late.&quot; -- Seymour Cray</p>
+</blockquote>
+<blockquote>
+<p>There are two ways of constructing a software design: One way is to make it so
+simple that there are obviously no deficiencies, and the other way is to make it
+so complicated that there are no obvious deficiencies. The first method is far
+more difficult. -- C.A.R. Hoare</p>
+</blockquote>
+<blockquote>
+<p>Beware of bugs in the above code; I have only proved it correct, not tried it. -- Donald Knuth</p>
+</blockquote>
+<blockquote>
+<p>&quot;Weeks of coding can save you hours of planning.&quot;</p>
+</blockquote>
+<blockquote>
+<p>&quot;My definition of an expert in any field is a person who knows enough about
+what's really going on to be scared.&quot; -- P. J. Plauger, Computer Language, March
+1983</p>
+</blockquote>
+<blockquote>
+<p>&quot;An expert is a man who has made all the mistakes that can be made in a very
+narrow field&quot; -- Niels Bohr</p>
+</blockquote>
+<blockquote>
+<p>Programs must be written for people to read, and only incidentally for machines
+to execute. -- SICP</p>
+</blockquote>
+<blockquote>
+<p>Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</p>
+</blockquote>
+<blockquote>
+<p>Theory is when you know something, but it doesn't work. Practice is when
+something works, but you don't know why. Programmers combine theory and
+practice: Nothing works and they don't know why.</p>
+</blockquote>
+<blockquote>
+<p>We better hurry up and start coding, there are going to be a lot of bugs to fix.</p>
+</blockquote>
+<blockquote>
+<p>&quot;Computer science education cannot make anybody an expert programmer any more than studying brushes and pigment can make somebody an expert painter.&quot; -- Eric Raymond</p>
+</blockquote>
+<blockquote>
+<p>The generation of random numbers is too important to be left to chance.
+Robert R. Coveyou, Oak Ridge National Laboratory</p>
+</blockquote>
+<blockquote>
+<p>The only &quot;intuitive&quot; interface is the nipple. After that it's all learned. --Bruce Ediger</p>
+</blockquote>
+<blockquote>
+<p>&quot;When art critics get together they talk about Form and Structure and Meaning.
+When artists get together they talk about where you can buy cheap turpentine.&quot; 
+-- Pablo Picasso</p>
+</blockquote>
+<blockquote>
+<p>A good programmer looks both ways before crossing a one-way street.</p>
+</blockquote>
+<blockquote>
+<p>It is easier to optimize correct code than to correct optimized code.</p>
+</blockquote>
+<blockquote>
+<p>From a bit to a few hundred megabytes, from a microsecond to a half an hour of
+computing confronts us with completely baffling ratio of 109! The programmer is
+in the unique position that his is the only discipline and profession in which
+such a gigantic ratio, which totally baffles our imagination, has to be bridged
+by a single technology. He has to be able to think in terms of conceptual
+hierarchies that are much deeper than a single mind ever needed to face before.
+— E.W. Dijkstra</p>
+</blockquote>
+<blockquote>
+<p>One man's constant is another man's variable.
+Functions delay binding: data structures induce binding. Moral: Structure data late in the programming process.
+Syntactic sugar causes cancer of the semi-colons.
+Every program is a part of some other program and rarely fits.
+If a program manipulates a large amount of data, it does so in a small number of ways.
+Symmetry is a complexity reducing concept (co-routines include sub-routines); seek it everywhere.
+It is easier to write an incorrect program than understand a correct one.
+A programming language is low level when its programs require attention to the irrelevant.
+It is better to have 100 functions operate on one data structure than 10 functions on 10 data
+structures.
+Get into a rut early: Do the same processes the same way. Accumulate idioms. Standardize. The only difference (!) between Shakespeare and you was the size of his idiom list - not the size of his vocabulary.
+If you have a procedure with 10 parameters, you probably missed some.
+Recursion is the root of computation since it trades description for time.
+If two people write exactly the same program, each should be put in micro-code and then they
+certainly won't be the same.
+In the long run every program becomes rococo - then rubble.
+Everything should be built top-down, except the first time.
+Every program has (at least) two purposes: the one for which it was written and another for which it wasn't.
+If a listener nods his head when you're explaining your program, wake him up.
+A program without a loop and a structured variable isn't worth writing.
+A language that doesn't affect the way you think about programming, is not worth knowing.
+Wherever there is modularity there is the potential for misunderstanding: Hiding information
+implies a need to check communication.
+Optimization hinders evolution.
+A good system can't have a weak command language.
+To understand a program you must become both the machine and the program.
+Perhaps if we wrote programs from childhood on, as adults we'd be able to read them.
+One can only display complex information in the mind. Like seeing, movement or flow
+or alteration of view is more important than the static picture, no matter how lovely.
+There will always be things we wish to say in our programs that in all known languages can only be said poorly.
+Once you understand how to write a program get someone else to write it.
+Around computers it is difficult to find the correct unit of time to measure progress. Some
+cathedrals took a century to complete. Can you imagine the grandeur and scope of a program that would take as long?
+For systems, the analogue of a face-lift is to add to the control graph an edge that creates a cycle, not just an additional node.
+In programming, everything we do is a special case of something more general - and often we know it too quickly.
+Simplicity does not precede complexity, but follows it.
+Programmers are not to be measured by their ingenuity and their logic but by the completeness of their case analysis.
+The 11th commandment was &quot;Thou Shalt Compute&quot; or &quot;Thou Shalt Not Compute&quot; - I forget which.
+The string is a stark data structure and everywhere it is passed there is much duplication of process. It is a perfect vehicle for hiding information.
+Everyone can be taught to sculpt: Michelangelo would have had to be taught how not to. So it is with the great programmers.
+The use of a program to prove the 4-color theorem will not change mathematics - it merely
+demonstrates that the theorem, a challenge for a century, is probably not important to mathematics.
+The most important computer is the one that rages in our skulls and ever seeks that satisfactory
+external emulator. The standardization of real computers would be a disaster - and so it probably won't happen.
+Structured Programming supports the law of the excluded muddle.
+Re graphics: A picture is worth 10K words - but only those to describe the picture. Hardly any
+sets of 10K words can be adequately described with pictures.
+There are two ways to write error-free programs; only the third one works.
+Some programming languages manage to absorb change, but withstand progress.
+You can measure a programmer's perspective by noting his attitude on the continuing vitality of FORTRAN.
+In software systems it is often the early bird that makes the worm.
+Sometimes I think the only universal in the computing field is the fetch-execute-cycle.
+The goal of computation is the emulation of our synthetic abilities, not the understanding of our
+analytic ones.
+Like punning, programming is a play on words.
+As Will Rogers would have said, &quot;There is no such thing as a free variable.&quot;
+The best book on programming for the layman is &quot;Alice in Wonderland&quot;; but that's because it's
+the best book on anything for the layman.
+Giving up on assembly language was the apple in our Garden of Eden: Languages whose use
+squanders machine cycles are sinful. The LISP machine now permits LISP programmers to abandon bra and fig-leaf.
+When we understand knowledge-based systems, it will be as before - except our finger-tips will
+have been singed.
+Bringing computers into the home won't change either one, but may revitalize the corner saloon.
+Systems have sub-systems and sub-systems have sub-systems and so on ad infinitum - which is
+why we're always starting over.
+So many good ideas are never heard from again once they embark in a voyage on the semantic gulf.
+Beware of the Turing tar-pit in which everything is possible but nothing of interest is easy.
+A LISP programmer knows the value of everything, but the cost of nothing.
+Software is under a constant tension. Being symbolic it is arbitrarily perfectible; but also it is arbitrarily changeable.
+It is easier to change the specification to fit the program than vice versa.
+Fools ignore complexity. Pragmatists suffer it. Some can avoid it. Geniuses remove it.
+In English every word can be verbed. Would that it were so in our programming languages.
+Dana Scott is the Church of the Lattice-Way Saints.
+In programming, as in everything else, to be in error is to be reborn.
+In computing, invariants are ephemeral.
+When we write programs that &quot;learn&quot;, it turns out we do and they don't.
+Often it is means that justify ends: Goals advance technique and technique survives even when
+goal structures crumble.
+Make no mistake about it: Computers process numbers - not symbols. We measure our understanding (and control) by the extent to which we can arithmetize an activity.
+Making something variable is easy. Controlling duration of constancy is the trick.
+Think of all the psychic energy expended in seeking a fundamental distinction between &quot;algorithm&quot; and &quot;program&quot;.
+If we believe in data structures, we must believe in independent (hence simultaneous) processing. For why else would we collect items within a structure? Why do we tolerate languages that give us the one without the other?
+In a 5 year period we get one superb programming language. Only we can't control when the
+5 year period will begin.
+Over the centuries the Indians developed sign language for communicating phenomena of interest. Programmers from different tribes (FORTRAN, LISP, ALGOL, SNOBOL, etc.) could use one that doesn't require them to carry a blackboard on their ponies.
+Documentation is like term insurance: It satisfies because almost no one who subscribes to it depends on its benefits.
+An adequate bootstrap is a contradiction in terms.
+It is not a language's weaknesses but its strengths that control the gradient of its change: Alas, a language never escapes its embryonic sac.
+It is possible that software is not like anything else, that it is meant to be discarded: that the whole point is to always see it as soap bubble?
+Because of its vitality, the computing field is always in desperate need of new cliches: Banality
+soothes our nerves.
+It is the user who should parameterize procedures, not their creators.
+The cybernetic exchange between man, computer and algorithm is like a game of musical chairs: The frantic search for balance always leaves one of the three standing ill at ease.
+If your computer speaks English it was probably made in Japan.
+A year spent in artificial intelligence is enough to make one believe in God.
+Prolonged contact with the computer turns mathematicians into clerks and vice versa.
+In computing, turning the obvious into the useful is a living definition of the word &quot;frustration&quot;.
+We are on the verge: Today our program proved Fermat's next-to-last theorem!
+What is the difference between a Turing machine and the modern computer? It's the same as that between Hillary's ascent of Everest and the establishment of a Hilton hotel on its peak.
+Motto for a research laboratory: What we work on today, others will first think of tomorrow.
+Though the Chinese should adore APL, it's FORTRAN they put their money on.
+We kid ourselves if we think that the ratio of procedure to data in an active data-base system can be made arbitrarily small or even kept small.
+We have the mini and the micro computer. In what semantic niche would the pico computer fall?
+It is not the computer's fault that Maxwell's equations are not adequate to design the electric motor.
+One does not learn computing by using a hand calculator, but one can forget arithmetic.
+Computation has made the tree flower.
+The computer reminds one of Lon Chaney - it is the machine of a thousand faces.
+The computer is the ultimate polluter. Its feces are indistinguishable from the food it produces.
+When someone says &quot;I want a programming language in which I need only say what I wish done,&quot; give him a lollipop.
+Interfaces keep things tidy, but don't accelerate growth: Functions do.
+Don't have good ideas if you aren't willing to be responsible for them.
+Computers don't introduce order anywhere as much as they expose opportunities.
+When a professor insists computer science is X but not Y, have compassion for his graduate students.
+In computing, the mean time to failure keeps getting shorter.
+In man-machine symbiosis, it is man who must adjust: The machines can't.
+We will never run out of things to program as long as there is a single program around.
+Dealing with failure is easy: Work hard to improve. Success is also easy to handle: You've solved the wrong problem. Work hard to improve.
+One can't proceed from the informal to the formal by formal means.
+Purely applicative languages are poorly applicable.
+The proof of a system's value is its existence.
+You can't communicate complexity, only an awareness of it.
+It's difficult to extract sense from strings, but they're the only communication coin we can count on.
+The debate rages on: Is PL/I Bactrian or Dromedary?
+Whenever two programmers meet to criticize their programs, both are silent.
+Think of it! With VLSI we can pack 100 ENIACs in 1 sq.cm.
+Editing is a rewording activity.
+Why did the Roman Empire collapse? What is the Latin for office automation?
+Computer Science is embarrassed by the computer.
+The only constructive theory connecting neuroscience and psychology will arise from the study of software.
+Within a computer natural language is unnatural.
+Most people find the concept of programming obvious, but the doing impossible.
+You think you know when you learn, are more sure when you can write, even more when you can teach, but certain when you can program.
+It goes against the grain of modern education to teach children to program. What fun is there in
+making plans, acquiring discipline in organizing thoughts, devoting attention to detail and learning to be self-critical?
+If you can imagine a society in which the computer-robot is the only menial, you can imagine
+anything.
+Programming is an unnatural act.
+Adapting old programs to fit new machines usually means adapting new machines to behave like old ones.
+In seeking the unattainable, simplicity only gets in the way.
+by Alan J. Perlis, Yale University.
+This text has been published in SIGPLAN Notices Vol. 17, No. 9, September 1982, pages 7 - 13.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../programming/misc/magic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../programming/misc/unix_philosophy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../programming/misc/magic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../programming/misc/unix_philosophy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,1405 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Algorithms - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title active">Computer Science and Engineering</li><li class="chapter-item expanded "><a href="../../programming/index.html">Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../programming/algorithms/index.html" class="active">Algorithms</a></li><li class="chapter-item "><a href="../../programming/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../programming/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../programming/ai/richard_sutton.html">Richard Sutton</a></li></ol></li><li class="chapter-item "><a href="../../programming/compilers/index.html">Compilers</a></li><li class="chapter-item "><a href="../../programming/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../../programming/excellency/index.html">Excellency</a></li><li class="chapter-item "><a href="../../programming/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/tools/code_searching.html">Code Searching</a></li><li class="chapter-item "><a href="../../programming/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../programming/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../programming/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../programming/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../programming/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../programming/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../programming/tools/suckless.html">&quot;Suckless&quot;</a></li><li class="chapter-item "><a href="../../programming/tools/utils.html">System Utilities</a></li><li class="chapter-item "><a href="../../programming/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../../programming/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../programming/misc/systems_performance.html">Systems Performance</a></li><li class="chapter-item "><a href="../../programming/misc/sql_explain.html">SQL Explain</a></li><li class="chapter-item "><a href="../../programming/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../programming/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../programming/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../programming/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../programming/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../programming/misc/zen_python.html">The Zen of Python</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title active">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/kasuak.html">Kasuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/kasu_nor.html">Kasu: Nor</a></li><li class="chapter-item "><a href="../../euskera/kasu_partitiboa.html">Kasu: Partitiboa</a></li><li class="chapter-item "><a href="../../euskera/kasu_non.html">Kasu: Non</a></li><li class="chapter-item "><a href="../../euskera/kasu_nork.html">Kasu: Nork</a></li><li class="chapter-item "><a href="../../euskera/kasu_nori.html">Kasu: Nori</a></li><li class="chapter-item "><a href="../../euskera/kasu_noren.html">Kasu: Noren</a></li><li class="chapter-item "><a href="../../euskera/kasu_norentzat.html">Kasu: Norentzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_norekin.html">Kasu: Norekin</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengatik.html">Kasu: Norengatik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengan.html">Kasu: Norengan</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengandik.html">Kasu: Norengandik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengana.html">Kasu: Norengana</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganaino.html">Kasu: Norenganaino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganantz.html">Kasu: Norenganantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_nora.html">Kasu: Nora</a></li><li class="chapter-item "><a href="../../euskera/kasu_noraino.html">Kasu: Noraino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norantz.html">Kasu: Norantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_norako.html">Kasu: Norako</a></li><li class="chapter-item "><a href="../../euskera/kasu_nondik.html">Kasu: Nondik</a></li><li class="chapter-item "><a href="../../euskera/kasu_nongo.html">Kasu: Nongo</a></li><li class="chapter-item "><a href="../../euskera/kasu_nortzat.html">Kasu: Nortzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerez_zertaz.html">Kasu: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerezko.html">Kasu: Zerezko</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a></li></ol></li><li class="chapter-item "><a href="../../body/index.html">Body</a></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li><li class="chapter-item "><a href="../../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#algorithms" id="algorithms">Algorithms</a></h1>
+<h2><a class="header" href="#books" id="books">Books</a></h2>
+<h3><a class="header" href="#brassard---fundamentals-of-algorithmics" id="brassard---fundamentals-of-algorithmics">Brassard - Fundamentals Of Algorithmics</a></h3>
+<p>Chapters</p>
+<ul>
+<li>1 Preliminaries</li>
+<li>2 Elementary Algorithmics</li>
+<li>3 Asymptotic Notation</li>
+<li>4 Analysis Of Algorithms</li>
+<li>5 Some Data Structures</li>
+<li>6 Greedy Algorithms</li>
+<li>7 Divide and Conquer</li>
+<li>8 Dynamic Programming</li>
+<li>9 Exploring Graphs</li>
+<li>10 Probabilistic Algorithms</li>
+<li>11 Parallel Algorithms</li>
+<li>12 Computational Complexity</li>
+<li>13 Heuristic And Approximate Algorithms</li>
+</ul>
+<h3><a class="header" href="#cormen---introduction-to-algorithms" id="cormen---introduction-to-algorithms">Cormen - Introduction To Algorithms</a></h3>
+<p>Chapters</p>
+<ul>
+<li>1.0 the role of algorithms in computing
+<ul>
+<li>1.1 algorithms</li>
+<li>1.2 algorithms as a technology</li>
+</ul>
+</li>
+<li>2.0 getting started
+<ul>
+<li>2.1 insertion sort</li>
+<li>2.2 analyzing algorithms</li>
+<li>2.3 designing algorithms</li>
+</ul>
+</li>
+<li>3.0 growth of functions
+<ul>
+<li>3.1 asymptotic functions</li>
+<li>3.2 standard notations and common functions</li>
+</ul>
+</li>
+<li>4.0 recurrences
+<ul>
+<li>4.1 the substitution method</li>
+<li>4.2 the recursion-tree method</li>
+<li>4.3 the master method</li>
+<li>4.4 proof of the master theorem</li>
+</ul>
+</li>
+<li>5.0 probalistic analysis and randomized algorithms
+<ul>
+<li>5.1 the hiring problem</li>
+<li>5.2 indicator random variables</li>
+<li>5.3 randomized algorithms</li>
+<li>5.4 probabilistic analysis and further uses of indicator random variables</li>
+</ul>
+</li>
+<li>6.0 heapsort
+<ul>
+<li>6.1 heaps</li>
+<li>6.2 maintaining the heap property</li>
+<li>6.3 building a heap</li>
+<li>6.4 the heapsort algorithm</li>
+<li>6.5 priority queues</li>
+</ul>
+</li>
+<li>7.0 quicksort
+<ul>
+<li>7.1 description of quicksort</li>
+<li>7.2 performance of quicksort</li>
+<li>7.3 a randomized version of quicksort</li>
+<li>7.4 analysis of quicksort</li>
+</ul>
+</li>
+<li>8.0 sorting in linear time
+<ul>
+<li>8.1 lower bounds for sorting</li>
+<li>8.2 counting sort</li>
+<li>8.3 radix sort</li>
+<li>8.4 bucket sort</li>
+</ul>
+</li>
+<li>9.0 medians and order statistics
+<ul>
+<li>9.1 minimum and maximum</li>
+<li>9.2 selection in expected linear time</li>
+<li>9.3 selection in worst-case linear time</li>
+</ul>
+</li>
+<li>10.0 elementary data structures
+<ul>
+<li>10.1 stacks and queues</li>
+<li>10.2 linked lists</li>
+<li>10.3 implementing pointers and objects</li>
+<li>10.4 representing rooted trees</li>
+</ul>
+</li>
+<li>11.0 hash tables
+<ul>
+<li>11.1 direct-address tables</li>
+<li>11.2 hash tables</li>
+<li>11.3 hash functions</li>
+<li>11.4 open addressing</li>
+<li>11.5 perfect hashing</li>
+</ul>
+</li>
+<li>12.0 binary search trees
+<ul>
+<li>12.1 what is a binary search tree?</li>
+<li>12.2 querying a binary search tree</li>
+<li>12.3 insertion and deletion</li>
+<li>12.4 randomly built binary search trees</li>
+</ul>
+</li>
+<li>13.0 red-black trees
+<ul>
+<li>13.1 properties of red-black trees</li>
+<li>13.2 rotations</li>
+<li>13.3 insertion</li>
+<li>13.4 deletion</li>
+</ul>
+</li>
+<li>14.0 augmenting data structures
+<ul>
+<li>14.1 dynamic order statistics</li>
+<li>14.2 how to augment a data structure</li>
+<li>14.3 interval trees</li>
+</ul>
+</li>
+<li>15.0 dynamic programming
+<ul>
+<li>15.1 assembly-line scheduling</li>
+<li>15.2 matrix-chain multiplication</li>
+<li>15.3 elements of dynamic programming</li>
+<li>15.4 longest common subsequence</li>
+<li>15.5 optimal binary search trees</li>
+</ul>
+</li>
+<li>16.0 ggreedy algorithms
+<ul>
+<li>16.1 an activity-selection problem</li>
+<li>16.2 elements of the greedy strategy</li>
+<li>16.3 huffman codes</li>
+<li>16.4 theoretical foundations for greedy algorithms</li>
+<li>16.5 a task-scheduling algorithm</li>
+</ul>
+</li>
+<li>17.0 amortized analysis
+<ul>
+<li>17.2 the accounting method</li>
+<li>17.3 the potential method</li>
+<li>17.4 dynamic tables</li>
+</ul>
+</li>
+<li>18.0 b-trees
+<ul>
+<li>18.1 definition of b-trees</li>
+<li>18.2 basic operations on b-trees</li>
+<li>18.3 deleting keys from a b-tree</li>
+</ul>
+</li>
+<li>19.0 binomial heaps
+<ul>
+<li>19.1 binomial trees and binomial heaps</li>
+<li>19.2 operations on binomial heaps</li>
+</ul>
+</li>
+<li>20.0 fibonacci heaps
+<ul>
+<li>20.1 structure of fibonacci heaps</li>
+<li>20.2 mergeable-heap operations</li>
+<li>20.3 decreasing a key and deleting a node</li>
+<li>20.4 bounding the maximum degree</li>
+</ul>
+</li>
+<li>21.0 data structures for disjoint sets
+<ul>
+<li>21.1 disjoint-set opertions</li>
+<li>21.2 linked-list representation of disjoint sets</li>
+<li>21.3 disjoint-set forests</li>
+<li>21.4 analysis of union by rank with path compression</li>
+</ul>
+</li>
+<li>22.0 elementary graph algorithms
+<ul>
+<li>22.1 representation of graphs</li>
+<li>22.2 breadth-first search</li>
+<li>22.3 depth-first search</li>
+<li>22.4 topological sort</li>
+<li>22.5 strongly connected components</li>
+</ul>
+</li>
+<li>23.0 minimum spanning trees
+<ul>
+<li>23.1 growing a minimum spanning tree</li>
+<li>23.2 the algorithms of kruskal and prim</li>
+</ul>
+</li>
+<li>24.0 single-source shortest paths
+<ul>
+<li>24.1 the bellman-ford algorithm</li>
+<li>24.2 single-source shortest paths in directed acyclic graphs</li>
+<li>24.3 dijkstra's algorithm</li>
+<li>24.4 difference constraints and shortest paths</li>
+<li>24.5 proofs of shortest-paths properties</li>
+</ul>
+</li>
+<li>25.0 all-pairs shortest paths
+<ul>
+<li>25.1 shortest paths and matrix multiplication</li>
+<li>25.2 the floyd-warshall algorithm</li>
+<li>25.3 johnson's algorithm for sparse graphs</li>
+</ul>
+</li>
+<li>26.0 maximum flow
+<ul>
+<li>26.1 flow networks</li>
+<li>26.2 the ford-fulkerson method</li>
+<li>26.3 maximum bipartite graph</li>
+<li>26.4 push-relabel algorithms</li>
+<li>26.5 the relabel-to-front algorithm</li>
+</ul>
+</li>
+<li>27.0 sorting algorithms
+<ul>
+<li>27.1 comparison networks</li>
+<li>27.2 the zero-one principle</li>
+<li>27.3 a bitonic sorting network</li>
+<li>27.4 a merging network</li>
+<li>27.5 a sorting network</li>
+</ul>
+</li>
+<li>28.0 matrix operations
+<ul>
+<li>28.1 properties of matrices</li>
+<li>28.2 strassen's algorithm for matrix multiplication</li>
+<li>28.3 solving systems of linear equations</li>
+<li>28.4 inverting matrices</li>
+<li>28.5 symmetric possitive-definite matrices and least-squares approximation</li>
+</ul>
+</li>
+<li>29.0 linear programming
+<ul>
+<li>29.1 standard and slack forms</li>
+<li>29.2 formulating problems as linear programs</li>
+<li>29.3 the simplex algorithm</li>
+<li>29.4 duality</li>
+<li>29.5 the initial basic feasible solution</li>
+</ul>
+</li>
+<li>30.0 polynomials and the FFT
+<ul>
+<li>30.1 representation of polynomials</li>
+<li>30.2 the dft and the fft</li>
+<li>30.3 efficient fft implementations</li>
+</ul>
+</li>
+<li>31.0 number-theoretic algorithms
+<ul>
+<li>31.1 elementary number-theoretic notions</li>
+<li>31.2 greatest common divisor</li>
+<li>31.3 modular arithmetic</li>
+<li>31.4 soving modular linear equations</li>
+<li>31.5 the chinese remainder problem</li>
+<li>31.6 powers of an element</li>
+<li>31.7 the rsa public-key cryptosystem</li>
+<li>31.8 primality testing</li>
+<li>31.9 integer factorization</li>
+</ul>
+</li>
+<li>32.0 string matching
+<ul>
+<li>32.1 the naive string-matching algorithm</li>
+<li>32.2 the rabin-karp algorithm</li>
+<li>32.3 string matching with finite automata</li>
+<li>32.4 the knuth-morris-pratt algorithm</li>
+</ul>
+</li>
+<li>33.0 computational geometry
+<ul>
+<li>33.1 line-segment properties</li>
+<li>33.2 determining whether any pair of segments intersect</li>
+<li>33.3 finding the convex hull</li>
+<li>33.4 finding the closest pair of points</li>
+</ul>
+</li>
+<li>34.0 np-completeness
+<ul>
+<li>34.1 polynomial time</li>
+<li>34.2 polynomial time verification</li>
+<li>34.3 np-completeness and reducibility</li>
+<li>34.4 np-completeness proofs</li>
+<li>34.5 np-completeness problems</li>
+</ul>
+</li>
+<li>35.0 approximation algorithms
+<ul>
+<li>35.1 the vertex-cover problem</li>
+<li>35.2 the traveling salesman problem</li>
+<li>35.3 the set-covering problem</li>
+<li>35.4 randomization and linear programming</li>
+<li>35.5 the subset-sum problem</li>
+</ul>
+</li>
+<li>A summations
+<ul>
+<li>A1 summation formulas and properties</li>
+<li>A2 bounding summations</li>
+</ul>
+</li>
+<li>B sets, etc
+<ul>
+<li>B1 sets</li>
+<li>B2 relations</li>
+<li>B3 functions</li>
+<li>B4 graphs</li>
+<li>B5 trees</li>
+</ul>
+</li>
+<li>C counting and probability
+<ul>
+<li>C1 counting</li>
+<li>C2 probability</li>
+<li>C3 discrete random variables</li>
+<li>C4 the geometric and binomial distributions</li>
+<li>C5 the tails of the binomial distribution</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#sedgewick---algorithms" id="sedgewick---algorithms">Sedgewick - Algorithms</a></h3>
+<p>Chapters</p>
+<ul>
+<li>1.1 Basic Programming Model</li>
+<li>1.2 Data Abstraction</li>
+<li>1.3 Bags, Queues And Stacks</li>
+<li>1.4 Analysis Of Algorithms</li>
+<li>1.5 Case Study Union-find Algorithm</li>
+<li>2.1 Elementary Sorts</li>
+<li>2.2 Mergesort</li>
+<li>2.3 Quicksort</li>
+<li>2.4 Priority Queues</li>
+<li>2.5 Applications</li>
+<li>3.1 Symbol Tables</li>
+<li>3.2 Binary Search Trees</li>
+<li>3.3 Balanced Search Trees</li>
+<li>3.4 Hash Tables</li>
+<li>3.5 Applications</li>
+<li>4.1 Undirected Graphs</li>
+<li>4.2 Directed Graphs</li>
+<li>4.3 Minimum Spanning Trees</li>
+<li>4.4 Shortest Paths</li>
+<li>5.1 String Sorts</li>
+<li>5.2 Tries</li>
+<li>5.3 Substring Search</li>
+<li>5.4 Regular Expressions</li>
+<li>5.5 Data Compression</li>
+<li>6 Context</li>
+</ul>
+<h3><a class="header" href="#sedgewick---algorithms-in-c" id="sedgewick---algorithms-in-c">Sedgewick - Algorithms in C</a></h3>
+<p>Chapters</p>
+<ul>
+<li>Fundamentals
+<ul>
+<li>1 introduction</li>
+<li>2 principles of algorithm analysis</li>
+</ul>
+</li>
+<li>Data structures
+<ul>
+<li>3 elementary data structures</li>
+<li>4 trees and recursion</li>
+<li>5 elementary abstract data types</li>
+</ul>
+</li>
+<li>Sorting
+<ul>
+<li>6 elementary sorting methods</li>
+<li>7 quicksort</li>
+<li>8 mergesort</li>
+<li>9 priority queues and heapsort</li>
+<li>10 radix sorting</li>
+<li>11 special-purpose sorts</li>
+</ul>
+</li>
+<li>Searching
+<ul>
+<li>12 symbol tables and bsts</li>
+<li>13 balances trees</li>
+<li>14 hashing</li>
+<li>15 radix searching</li>
+<li>16 external searching</li>
+</ul>
+</li>
+<li>Graph algorithms
+<ul>
+<li>17 graph properties and types</li>
+<li>18 graph search</li>
+<li>19 digraphs and dags</li>
+<li>20 minimum spanning trees</li>
+<li>21 shortest paths</li>
+<li>22 network flows</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#van-wyk---data-structures-and-c-programs" id="van-wyk---data-structures-and-c-programs">Van Wyk - Data Structures And C Programs</a></h3>
+<p>Chapters</p>
+<ul>
+<li>Fundamental Ideas
+<ul>
+<li>1 Introduction</li>
+<li>2 The Complexity Of Algorithms</li>
+<li>3 Pointers And Dynamic Storage</li>
+<li>4 Stacks And Queues</li>
+<li>5 Linked Lists</li>
+<li>6 Memory Organization</li>
+</ul>
+</li>
+<li>Efficient Algorithms
+<ul>
+<li>7 Searching</li>
+<li>8 Hashing</li>
+<li>9 Sorted Lists</li>
+<li>10 Priority Queues</li>
+<li>11 Sorting</li>
+<li>12 Applying Data Structures</li>
+</ul>
+</li>
+<li>Advanced Topics
+<ul>
+<li>Acyclic Graphs</li>
+<li>Graphs</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#korsh--garrett---data-structures-algorithms-and-program-style-using-c" id="korsh--garrett---data-structures-algorithms-and-program-style-using-c">Korsh &amp; Garrett - Data Structures, Algorithms and Program Style Using C</a></h3>
+<p>Chapters</p>
+<ul>
+<li>Fundamentals
+<ul>
+<li>1 Programming structure</li>
+<li>2 Records, Arrays, and Pointers</li>
+<li>3 Lists</li>
+<li>4 Introduction to Recursion, Stacks, Queues</li>
+<li>5 Packaging Data Abstractions</li>
+<li>6 More Complex Lists</li>
+<li>7 Trees</li>
+</ul>
+</li>
+<li>Applications
+<ul>
+<li>8 Introduction to Searching and Sorting</li>
+<li>9 More Searching: Insertion and Deletion</li>
+<li>10 Files</li>
+<li>11 Topological Sorting: An Archetypal Solution</li>
+<li>12 Huffman Coding and Optimal and Nearly Optimal Binary Search Trees</li>
+<li>13 Some Pointers on Storage Management</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#weiss---data-structs--algorithm-analysis-in-c" id="weiss---data-structs--algorithm-analysis-in-c">Weiss - Data Structs &amp; Algorithm Analysis In C++</a></h3>
+<p>Chapters</p>
+<ul>
+<li>
+<h2><a class="header" href="#1-introduction" id="1-introduction">1 Introduction</a></h2>
+</li>
+<li>2 Algorithm Analysis</li>
+<li>3 Lists, Stacks and Queues</li>
+<li>4 Trees</li>
+<li>5 Hashing</li>
+<li>6 Priority Queues (Heaps)</li>
+<li>7 Sorting</li>
+<li>8 The Disjoint Set Class</li>
+<li>9 Graph Algorithms</li>
+<li>10 Algorithm Design Techniques</li>
+<li>11 Amortized Analysis</li>
+<li>12 Advanced Data Structures and Implementation</li>
+</ul>
+<h3><a class="header" href="#skiena---algorithm-design-manual" id="skiena---algorithm-design-manual">Skiena - Algorithm Design Manual</a></h3>
+<p>Chapters</p>
+<ul>
+<li>1.0 Introduction To Algorithm Design
+<ul>
+<li>1.1 Robot Tour Optimization</li>
+<li>1.2 Selecting The Right Jobs</li>
+<li>1.3 Reasoning About Correctness</li>
+<li>1.4 Modeling The Problem</li>
+<li>1.5 About The War Stories</li>
+<li>1.6 War Story: Psychic Modeling</li>
+<li>1.7 Exercises</li>
+</ul>
+</li>
+<li>2.0 Algorithm Analysis
+<ul>
+<li>2.1 The Ram Model Of Computation</li>
+<li>2.2 The Big Oh Notation</li>
+<li>2.3 Growth Rates And Dominance Relations</li>
+<li>2.4 Working With The Big Oh</li>
+<li>2.5 Reasoning About Efficiency</li>
+<li>2.6 Logarithms And Their Applications</li>
+<li>2.7 Properties Of Logarithms</li>
+<li>2.8 War Story: Mystery Of The Pyramids</li>
+<li>2.9 Advanced Analysis</li>
+</ul>
+</li>
+<li>3.0 Data Structures
+<ul>
+<li>3.1 Contiguous Vs Linked-list Structures</li>
+<li>3.2 Stacks And Queues</li>
+<li>3.3 Dictionaries</li>
+<li>3.4 Binary Search Trees</li>
+<li>3.5 Priority Queues</li>
+<li>3.6 War Story: Stripping Triangulations</li>
+<li>3.7 Hashing And Strings</li>
+<li>3.8 Specialized Data Structures</li>
+<li>3.9 War Story: String 'em Up</li>
+<li>3.10 Exercises</li>
+</ul>
+</li>
+<li>4.0 Sorting And Searching
+<ul>
+<li>4.1 Applications Of Sorting</li>
+<li>4.2 Pragmatics Of Sorting</li>
+<li>4.3 Heapsort: Fast Sorting Via Data Structures</li>
+<li>4.4 War Story: Give Me A Ticket On The Airplane</li>
+<li>4.5 Mergesort: Sorting By Divide-and-conquer</li>
+<li>4.6 Quicksort: Sorting By Randomization</li>
+<li>4.7 Distribution Sort: Sorting Via Bucketing</li>
+<li>4.8 War Story: Skiena For The Defense</li>
+<li>4.9 Binary Search And Related Algorithms</li>
+<li>4.10 Divide-and-conquer</li>
+<li>4.11 Exercises</li>
+</ul>
+</li>
+<li>5.0 Graph Traversal
+<ul>
+<li>5.1 Flavors Of Graphs</li>
+<li>5.2 Data Structures For Graphs</li>
+<li>5.3 War Story: I Was A Victim Of Moore's Law</li>
+<li>5.4 War Story: Getting The Graph</li>
+<li>5.5 Traversing The Graph</li>
+<li>5.6 Breadth-first Search</li>
+<li>5.7 Applications Of Breadth-first Search</li>
+<li>5.8 Depth-first Search</li>
+<li>5.9 Applications Of Depth-first Search</li>
+<li>5.10 Depth-first Search On Directed Graphs</li>
+<li>5.11 Exercises</li>
+</ul>
+</li>
+<li>6.0 Weighted Graph Algorithms
+<ul>
+<li>6.1 Minimum Spanning Trees</li>
+<li>6.2 War Story: Nothing But Nets</li>
+<li>6.3 Shortest Paths</li>
+<li>6.4 War Story: Dialing For Documents</li>
+<li>6.5 Network Flows And Bipartite Matching</li>
+<li>6.6 Design Graphs, Not Algorithms</li>
+<li>6.7 Exercises</li>
+</ul>
+</li>
+<li>7.0 Combinatorial Search And Heuristic Methods
+<ul>
+<li>7.1 Backtracking</li>
+<li>7.2 Search Pruning</li>
+<li>7.3 Sudoku</li>
+<li>7.4 War Story: Covering Chessboards</li>
+<li>7.5 Heuristic Search Methods</li>
+<li>7.6 War Story: Only It Is Not A Radio</li>
+<li>7.7 War Story: Annealing Arrays</li>
+<li>7.8 Other Heuristic Search Methods</li>
+<li>7.9 Parallel Algorithms</li>
+<li>7.10 War Story: Going Nowhere Fast</li>
+<li>7.11 Exercises</li>
+</ul>
+</li>
+<li>8.0 Dynamic Programming
+<ul>
+<li>8.1 Caching Vs Computation</li>
+<li>8.2 Approximate String Matching</li>
+<li>8.3 Longest Increasing Sequence</li>
+<li>8.4 War Story: Evolution Of The Lobster</li>
+<li>8.5 The Partition Problem</li>
+<li>8.6 Parsing Context-free Grammars</li>
+<li>8.7 Limitations Of Dynamic Programming: Tsp</li>
+<li>8.8 War Story: What's Past Is Prolog</li>
+<li>8.9 War Story: Text Compression For Bar Codes</li>
+<li>8.10 Exercises</li>
+</ul>
+</li>
+<li>9.0 Intractable Problems And Approximation Algorithms
+<ul>
+<li>9.1 Problems And Reductions</li>
+<li>9.2 Reductions For Algorithms</li>
+<li>9.3 Elementary Hardness Reductions</li>
+<li>9.4 Satisfiability</li>
+<li>9.5 Creative Reductions</li>
+<li>9.6 The Art Of Proving Hardness</li>
+<li>9.7 War Story: Hard Against The Clock</li>
+<li>9.8 War Story: And The I Failed</li>
+<li>9.9 P Vs Np</li>
+<li>9.10 Dealing With Np-complete Problems</li>
+<li>9.11 Exercises</li>
+</ul>
+</li>
+<li>10.0 How To Design Algorithms
+<ul>
+<li>11.0 A Catalog Of Algorithmic Problems</li>
+<li>12.0 Data Structures</li>
+<li>12.1 Dictionaries</li>
+<li>12.2 Priority Queues</li>
+<li>12.3 Suffix Trees And Arrays</li>
+<li>12.4 Graph Data Structures</li>
+<li>12.5 Set Data Structures</li>
+<li>12.6 Kd-trees</li>
+</ul>
+</li>
+<li>13.0 Numerical Problems
+<ul>
+<li>13.1 Solving Linear Equations</li>
+<li>13.2 Bandwidth Reduction</li>
+<li>13.3 Matrix Multiplication</li>
+<li>13.4 Determinants And Permanents</li>
+<li>13.5 Constrained And Unconstrained Optimization</li>
+<li>13.6 Linear Programming</li>
+<li>13.7 Random Numer Generation</li>
+<li>13.8 Factoring And Primality Testing</li>
+<li>13.9 Arbitrary-precision Arithmetic</li>
+<li>13.10 Knapsack Problem</li>
+<li>13.11 Discrete Fourier Transform</li>
+</ul>
+</li>
+<li>14.0 Combinatorial Problems
+<ul>
+<li>14.1 Sorting</li>
+<li>14.2 Searching</li>
+<li>14.3 Median And Selection</li>
+<li>14.4 Generating Permutations</li>
+<li>14.5 Generating Subsets</li>
+<li>14.6 Geneasting Partitions</li>
+<li>14.7 Generating Graphs</li>
+<li>14.8 Calendarical Calculations</li>
+<li>14.9 Job Scheduling</li>
+<li>14.10 Satisfiability</li>
+</ul>
+</li>
+<li>15.0 Graph Problems: Polynomial Time
+<ul>
+<li>15.1 Connected Components</li>
+<li>15.2 Topological Sorting</li>
+<li>15.3 Minimum Spanning Tree</li>
+<li>15.4 Shortest Path</li>
+<li>15.5 Transitive Closure And Reduction</li>
+<li>15.6 Matching</li>
+<li>15.7 Eulerian Cycle/chinese Postman</li>
+<li>15.8 Edge And Vertex Connectivity</li>
+<li>15.9 Network Flow</li>
+<li>15.10 Drawing Graphs Nicely</li>
+<li>15.11 Drawing Trees</li>
+<li>15.12 Planarity Detection And Embedding</li>
+</ul>
+</li>
+<li>16.0 Graph Problems: Hard Problems
+<ul>
+<li>16.1 Clique</li>
+<li>16.2 Independent Set</li>
+<li>16.3 Vertex Cover</li>
+<li>16.4 Traveling Salesman Problem</li>
+<li>16.5 Hamiltonian Cycle</li>
+<li>16.6 Graph Partition</li>
+<li>16.7 Vertex Coloring</li>
+<li>16.8 Edge Coloring</li>
+<li>16.9 Graph Isomorphism</li>
+<li>16.10 Steiner Tree</li>
+<li>16.11 Feedback Edge/vertex Set</li>
+</ul>
+</li>
+<li>17.0 Computational Geometry
+<ul>
+<li>17.1 Robust Geometric Primitives</li>
+<li>17.2 Convex Hull</li>
+<li>17.3 Triangulation</li>
+<li>17.4 Voronoi Diagrams</li>
+<li>17.5 Nearest Neighbor Search</li>
+<li>17.6 Range Search</li>
+<li>17.7 Point Location</li>
+<li>17.8 Intersection Detection</li>
+<li>17.9 Bin Packing</li>
+<li>17.10 Medial-axis Transform</li>
+<li>17.11 Polygon Partitioning</li>
+<li>17.12 Simplifying Polygons</li>
+<li>17.13 Shape Similarity</li>
+<li>17.14 Motion Planning</li>
+<li>17.15 Maintaining Line Arrangements</li>
+<li>17.16 Minkowski Sum</li>
+</ul>
+</li>
+<li>18.0 Set And String Problems
+<ul>
+<li>18.1 Set Cover</li>
+<li>18.2 Set Packing</li>
+<li>18.3 String Matching</li>
+<li>18.4 Approximate String Matching</li>
+<li>18.5 Text Compression</li>
+<li>18.6 Cryptography</li>
+<li>18.7 Finite State Machine Minimization</li>
+<li>18.8 Longest Common Substring/subsequence</li>
+<li>18.9 Shortest Common Superstring</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#knuth---the-art-of-computer-programming-volume-1" id="knuth---the-art-of-computer-programming-volume-1">Knuth - The Art of Computer Programming Volume 1</a></h3>
+<h3><a class="header" href="#knuth---the-art-of-computer-programming-volume-2" id="knuth---the-art-of-computer-programming-volume-2">Knuth - The Art of Computer Programming Volume 2</a></h3>
+<h3><a class="header" href="#knuth---the-art-of-computer-programming-volume-3" id="knuth---the-art-of-computer-programming-volume-3">Knuth - The Art of Computer Programming Volume 3</a></h3>
+<h3><a class="header" href="#knuth---the-art-of-computer-programming-volume-4" id="knuth---the-art-of-computer-programming-volume-4">Knuth - The Art of Computer Programming Volume 4</a></h3>
+<h3><a class="header" href="#kleinberg-tardos-algorithm-design" id="kleinberg-tardos-algorithm-design">Kleinberg Tardos Algorithm Design</a></h3>
+<p>Chapters</p>
+<ul>
+<li>1 Introduction: Some Representative Problems</li>
+<li>2 Basics Of Algorithm Analysis</li>
+<li>3 Graphs</li>
+<li>4 Greedy Algorithms</li>
+<li>5 Divide And Conquer</li>
+<li>6 Dynamic Programming</li>
+<li>7 Network Flow</li>
+<li>8 Np And Computational Intractability</li>
+<li>9 Pspace: A Class Of Problems Beyond Np</li>
+<li>10 Extending The Limits Of Tractability</li>
+<li>11 Approximation Algorithms</li>
+<li>12 Local Search</li>
+<li>13 Randomized Algorithms</li>
+</ul>
+<h3><a class="header" href="#papadimitriou---algorithms" id="papadimitriou---algorithms">Papadimitriou - Algorithms</a></h3>
+<p>Chapters</p>
+<ul>
+<li>0 Prologue</li>
+<li>1 Algorithms With Numbers</li>
+<li>2 Divide-and-conquer Algoritms</li>
+<li>3 Decomposition Of Graphs</li>
+<li>4 Paths In Graphs</li>
+<li>5 Greedy Algorithms</li>
+<li>6 Dynamic Programming</li>
+<li>7 Linear Programming And Reductions</li>
+<li>8 Np-complete Problems</li>
+<li>9 Coping With Np-completeness</li>
+<li>10 Quantum Algorithms</li>
+</ul>
+<h3><a class="header" href="#peter-brass---advanced-data-structures" id="peter-brass---advanced-data-structures">Peter Brass - Advanced Data Structures</a></h3>
+<p>Chapters</p>
+<ul>
+<li>Elementary Structures</li>
+<li>Search Trees</li>
+<li>Balanced Search Trees</li>
+<li>Tree Structures For Sets Of Intervals</li>
+<li>Heaps</li>
+<li>Union-find And Related Structures</li>
+<li>Data Structure Transformations</li>
+<li>Data Structures For Strings</li>
+<li>Hash Tables</li>
+<li>Appendix</li>
+</ul>
+<h3><a class="header" href="#flajolet---analytic-combinatorics" id="flajolet---analytic-combinatorics">Flajolet - Analytic Combinatorics</a></h3>
+<p>Chapters</p>
+<ul>
+<li>Preface</li>
+<li>An Invitation To Analytic Combinatorics</li>
+<li>Part A. Symbolic Methods:</li>
+<li>
+<ol>
+<li>Combinatorial Structures And Ordinary Generating Functions</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Labelled Structures And Exponential Generating Functions</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Combinatorial Parameters And Multivariate Generating Functions</li>
+</ol>
+</li>
+<li>Part B. Complex Asymptotics:</li>
+<li>
+<ol start="4">
+<li>Complex Analysis, Rational And Meromorphic Asymptotics</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>Applications Of Rational And Meromorphic Asymptotics</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>Singularity Analysis Of Generating Functions</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>Applications Of Singularity Analysis</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>Saddle-point Asymptotics</li>
+</ol>
+</li>
+<li>Part C. Random Structures:</li>
+<li>
+<ol start="9">
+<li>Multivariate Asymptotics And Limit Laws</li>
+</ol>
+</li>
+<li>Part D. Appendices: Appendix A. Auxiliary Elementary Notions</li>
+<li>Appendix B. Basic Complex Analysis</li>
+<li>Appendix C. Concepts Of Probability Theory</li>
+</ul>
+<h3><a class="header" href="#deberg---computational-geometry" id="deberg---computational-geometry">Deberg - Computational Geometry</a></h3>
+<h3><a class="header" href="#laszlo---computational-geometry-in-c" id="laszlo---computational-geometry-in-c">Laszlo - Computational Geometry In C++</a></h3>
+<h2><a class="header" href="#courses" id="courses">Courses</a></h2>
+<h3><a class="header" href="#mathematical-thinking" id="mathematical-thinking">Mathematical Thinking</a></h3>
+<h3><a class="header" href="#mitcw-introduction-to-algorithmas" id="mitcw-introduction-to-algorithmas">MITCW Introduction To Algorithmas</a></h3>
+<h3><a class="header" href="#algorithm-design-and-analysis-1" id="algorithm-design-and-analysis-1">Algorithm Design And Analysis 1</a></h3>
+<h3><a class="header" href="#algorithm-design-and-analysis-2" id="algorithm-design-and-analysis-2">Algorithm Design And Analysis 2</a></h3>
+<h3><a class="header" href="#sedgewick-algorithms-1" id="sedgewick-algorithms-1">Sedgewick Algorithms 1</a></h3>
+<h3><a class="header" href="#sedgewick-algorithms-2" id="sedgewick-algorithms-2">Sedgewick Algorithms 2</a></h3>
+<h3><a class="header" href="#skiena" id="skiena">Skiena</a></h3>
+<h3><a class="header" href="#algorithmic-toolbox" id="algorithmic-toolbox">Algorithmic Toolbox</a></h3>
+<h3><a class="header" href="#data-structures" id="data-structures">Data Structures</a></h3>
+<h3><a class="header" href="#algorithms-on-graphs" id="algorithms-on-graphs">Algorithms On Graphs</a></h3>
+<h3><a class="header" href="#algorithms-on-strings" id="algorithms-on-strings">Algorithms On Strings</a></h3>
+<h3><a class="header" href="#algorithmic-thinking-1" id="algorithmic-thinking-1">Algorithmic Thinking 1</a></h3>
+<h3><a class="header" href="#algorithmic-thinking-2" id="algorithmic-thinking-2">Algorithmic Thinking 2</a></h3>
+<h3><a class="header" href="#advanced-data-structures" id="advanced-data-structures">Advanced Data Structures</a></h3>
+<h3><a class="header" href="#mastering-the-software-engineering-interview" id="mastering-the-software-engineering-interview">Mastering The Software Engineering Interview</a></h3>
+<h3><a class="header" href="#sedgewick-analytics-combinatorics-1" id="sedgewick-analytics-combinatorics-1">Sedgewick Analytics Combinatorics 1</a></h3>
+<h3><a class="header" href="#sedgewick-analytics-combinatorics-2" id="sedgewick-analytics-combinatorics-2">Sedgewick Analytics Combinatorics 2</a></h3>
+<h3><a class="header" href="#discrete-optimization" id="discrete-optimization">Discrete Optimization</a></h3>
+<h3><a class="header" href="#intro-to-parallel-programming" id="intro-to-parallel-programming">Intro To Parallel Programming</a></h3>
+<h3><a class="header" href="#performance-engineering-of-software" id="performance-engineering-of-software">Performance Engineering Of Software</a></h3>
+<h3><a class="header" href="#the-hardware-software-interface" id="the-hardware-software-interface">The Hardware-Software Interface</a></h3>
+<h3><a class="header" href="#ecimag-computational-geometry-introduction" id="ecimag-computational-geometry-introduction">ECIMAG Computational Geometry Introduction</a></h3>
+<h2><a class="header" href="#topics" id="topics">Topics</a></h2>
+<pre><code>| Data Structure | Advantages                                                                                    | Disadvantages                                                           |
+|----------------+-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------|
+| Array          | Quick insertion, fast access if index is known.                                               | Slow search, slow deletion, fixed size.                                 |
+| Ordered Array  | Quicker search than unsorted array.                                                           | Slow insertion and deletion, fixed size.                                |
+| Stack          | LIFO access.                                                                                  | Slow access to other items.                                             |
+| Queue          | FIFO access.                                                                                  | Slow access to other items.                                             |
+| Linked List    | Quick insertion, quick deletion.                                                              | Slow search.                                                            |
+| Binary Tree    | Quick search, insertion, deletion (if tree remains balanced).                                 | Deletion algorithm complex.                                             |
+| Red-black Tree | Quick search, insertion, deletion, tree always balanced.                                      | Complex.                                                                |
+| 2-3-4 Tree     | Quick search, insertion, deletion, tree always balanced, similar trees good for disk storage. | Complex.                                                                |
+| Hash Table     | Very fast access if key is known, fast insertion.                                             | Slow deletion, access slow if key is unknown, inefficient memory usage. |
+| Heap           | Fast insertion, deletion, access to largest item.                                             | Slow access to other items.                                             |
+</code></pre>
+<h3><a class="header" href="#linear-data-structures" id="linear-data-structures">Linear Data Structures</a></h3>
+<h4><a class="header" href="#arrays" id="arrays">Arrays</a></h4>
+<h4><a class="header" href="#linked-lists" id="linked-lists">Linked Lists</a></h4>
+<h5><a class="header" href="#singly-linked" id="singly-linked">Singly Linked</a></h5>
+<h5><a class="header" href="#doubly-linked" id="doubly-linked">Doubly Linked</a></h5>
+<h5><a class="header" href="#direct--indirect-positioning" id="direct--indirect-positioning">Direct &amp; Indirect Positioning</a></h5>
+<h5><a class="header" href="#with--without-header" id="with--without-header">With &amp; Without Header</a></h5>
+<h3><a class="header" href="#trees" id="trees">Trees</a></h3>
+<h4><a class="header" href="#binary-trees" id="binary-trees">Binary Trees</a></h4>
+<h4><a class="header" href="#general-trees" id="general-trees">General Trees</a></h4>
+<h4><a class="header" href="#balanced-trees" id="balanced-trees">Balanced Trees</a></h4>
+<h5><a class="header" href="#balanced-binary-trees" id="balanced-binary-trees">Balanced Binary Trees</a></h5>
+<h5><a class="header" href="#avl-trees" id="avl-trees">Avl Trees</a></h5>
+<h5><a class="header" href="#red-black-trees" id="red-black-trees">Red-black Trees</a></h5>
+<h4><a class="header" href="#b-trees" id="b-trees">B Trees</a></h4>
+<h4><a class="header" href="#b-trees-1" id="b-trees-1">B+ Trees</a></h4>
+<h4><a class="header" href="#tries" id="tries">Tries</a></h4>
+<h3><a class="header" href="#heaps" id="heaps">Heaps</a></h3>
+<h3><a class="header" href="#hash-tables" id="hash-tables">Hash Tables</a></h3>
+<h3><a class="header" href="#sets" id="sets">Sets</a></h3>
+<h4><a class="header" href="#disjoint-sets" id="disjoint-sets">Disjoint Sets</a></h4>
+<h3><a class="header" href="#graphs" id="graphs">Graphs</a></h3>
+<h4><a class="header" href="#adjacency-list" id="adjacency-list">Adjacency List</a></h4>
+<h4><a class="header" href="#adjacency-matrix" id="adjacency-matrix">Adjacency Matrix</a></h4>
+<h3><a class="header" href="#sorting" id="sorting">Sorting</a></h3>
+<pre><code>| Algorithm       | Small Oh       | Big Oh     |
+|-----------------+----------------+------------|
+| BubbleSort      |                |            |
+| InsertionSort   | Theta(n^2)     | O(n^2)     |
+| SelectionSort   | Theta(n^2)     | O(n^2)     |
+| QuickSort       | Theta(n log n) | O(n^2)     |
+| MergeSort       | Theta(n log n) | O(n log n) |
+| HeapSort        | Theta(n log n) | O(n log n) |
+| PidgeonHoleSort | Theta(n)       | O(n)       |
+</code></pre>
+<h4><a class="header" href="#bubble-sort" id="bubble-sort">Bubble Sort</a></h4>
+<h4><a class="header" href="#insertion-sort" id="insertion-sort">Insertion Sort</a></h4>
+<p>Pseudocode</p>
+<pre><code>procedure insert( T[1..n] )
+    for i = 2 to n do
+        x = T[i]
+        j = i - 1
+        while j &gt; 0 and x &lt; T[j] do
+            T[j + 1] = T[j]
+            j = j - 1
+        T[j + 1] = x
+</code></pre>
+<p>Java</p>
+<pre><code>void insertionSort(int[] arr) {
+    int i, j, newValue;
+    for (i = 1; i &lt; arr.length; i++) {
+        newValue = arr[i];
+        j = i;
+        while (j &gt; 0 &amp;&amp; arr[j - 1] &gt; newValue) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = newValue;
+    }
+}
+</code></pre>
+<p>C++</p>
+<pre><code>void insertionSort(int arr[], int length) {
+    int i, j, tmp;
+    for (i = 1; i &lt; length; i++) {
+        j = i;
+        while (j &gt; 0 &amp;&amp; arr[j - 1] &gt; arr[j]) {
+            tmp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = tmp;
+            j--;
+        }
+    }
+}
+</code></pre>
+<p>Insertion sort provides several advantages:</p>
+<ul>
+<li>Simple implementation</li>
+<li>Efficient for (quite) small data sets</li>
+<li>Adaptive for data sets that are already substantially sorted: the time complexity is O(n + d), where d is the number of inversions</li>
+<li>More efficient in practice than most other simple quadratic (i.e., O(n2)) algorithms such as selection sort or bubble sort; the best case (nearly sorted input) is O(n)</li>
+<li>Stable; does not change the relative order of elements with equal keys</li>
+<li>In-place; only requires a constant amount O(1) of additional memory space</li>
+<li>Online; can sort a list as it receives it</li>
+</ul>
+<p>Let U and V be two arrays of n elements, such that U is already sorted in
+ascending order, V is already sorted in descending order.</p>
+<p>Both InsertionSort and SelectionSort take more time on U than V.</p>
+<p>Array V represents the worst possible case for both insertion sort and selection
+sort.</p>
+<p>The time required by the selection sort is not very sensitive to the original
+order of the array to be sorted.</p>
+<p>The test &quot;if T[j] &lt; minx&quot; is executed the same number of times in case.</p>
+<p>The variation in execution time is only due to the number of times the
+assignments in the then clause of the test are executed.</p>
+<p>The time requires by selection is cuadratic, regardless of the initial order of
+the elements.</p>
+<p>If we compare the times taked by the insertion sort algorithm on U and V,
+because the condition controlling the while loop is always false at the outset,
+insert(U) is very fast, taking linear time.</p>
+<p>On the other hand, insert(V) taked quadratic time because the while loop is
+executed i-1 times for each value of i.</p>
+<p>The variation in time between these two instances is considerable, and increases
+with the number of elements to be sorted.</p>
+<p>https://en.wikipedia.org/wiki/Insertion_sort
+http://www.algolist.net/Algorithms/Sorting/Insertion_sort
+http://www.leepoint.net/notes-java/data/arrays/arrays.html
+http://docs.oracle.com/javase/6/docs/api/java/util/Scanner.html</p>
+<h4><a class="header" href="#selection-sort" id="selection-sort">Selection Sort</a></h4>
+<h4><a class="header" href="#pidgeon-hole-sort" id="pidgeon-hole-sort">Pidgeon Hole Sort</a></h4>
+<p>Suppose that the elements to be sorted are integers known to lie between 1 and 10000.</p>
+<pre><code>procedure pidgeonhole(T[1..n])
+    { Sorts integers between 1 and 10000 }
+    array U[1..10000]
+    for k-1 to 10000 do
+        U[k] = 0
+    for i-1 to 10000 do
+        k = T[i]
+        U[k] = U[k] + 1
+    i = 0
+    for k-1 to 10000 do
+        while U[k] != 0 do
+            i = i+1
+            T[i] = k
+            U[k] = U[k] - 1
+</code></pre>
+<p>The first loop clears the pigeon-holes, the second puts each element of T into
+the appropriate place, and the third pulls them out again in ascending order.
+This algorithm and its variants take a time in n.
+The hidden multiplicative constant depends on the bound on the value of elements
+to be sorted, here 10000.</p>
+<h4><a class="header" href="#shell-sort" id="shell-sort">Shell Sort</a></h4>
+<h4><a class="header" href="#quick-sort" id="quick-sort">Quick Sort</a></h4>
+<h4><a class="header" href="#merge-sort" id="merge-sort">Merge Sort</a></h4>
+<ol>
+<li>Divide the array A[1..n] into two subarrays A[1..m] and A[m+1..n], where m = floor(n / 2)</li>
+<li>Recursively mergesort the subarrays A[1..m] and A[m+1..n]</li>
+<li>Merge the newly sorted subarrays A[1..m] and A[m+1..n]</li>
+</ol>
+<p>The first is completely trivial, we only need to compute the middle index.
+All the real work is done in the final step: the two sorted subarrays A[1..m]
+and A[m+1..n] can be merged using a simple linear-time algorithm.</p>
+<pre><code>MergeSort( A[1..n] )
+    if (n &gt; 1)
+        m &lt;- floor(n / 1)
+        MergeSort( A[1..m] )
+        MergeSort( A[m+1..n] )
+        Merge( A[1..n], m )
+
+Merge( A[1..n], m )
+    i &lt;- 1
+    j &lt;- m+1
+    for k &lt;- 1 to n
+        if j &gt; n
+</code></pre>
+<h4><a class="header" href="#radix-sort" id="radix-sort">Radix Sort</a></h4>
+<h4><a class="header" href="#sorting-networks" id="sorting-networks">Sorting Networks</a></h4>
+<h3><a class="header" href="#searching" id="searching">Searching</a></h3>
+<h4><a class="header" href="#arrays-1" id="arrays-1">Arrays</a></h4>
+<p>Unordered arrays offer faster insertion but slow searching and deletion.
+Ordered arrays offer faster search by using binary search.</p>
+<h4><a class="header" href="#binary-search" id="binary-search">Binary Search</a></h4>
+<pre><code>int find(double searchkey) {
+    int lowerbound = 0;
+    int upperbound = array.size(); // array is a global vector&lt;double&gt;
+    int curin; // current index
+
+    while (true) {
+        curin = (lowerbound + upperbound) / 2;
+        if (array[curin] == searchkey) {
+            return searchkey;
+        }
+        else {
+            if (lowerbound &gt; upperbound) {
+                return array.size(); // can't find it
+            }
+            else {
+                if (array[curin] &lt; searchkey) {
+                    lowerbound = curin + 1; // it's in the upper half
+                }
+                else {
+                    upperbound = curin - 1; // it's in the lower half
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h4><a class="header" href="#spatial-search" id="spatial-search">Spatial Search</a></h4>
+<h3><a class="header" href="#greedy-algorithms" id="greedy-algorithms">Greedy Algorithms</a></h3>
+<h3><a class="header" href="#divide-and-conquer-algorithms" id="divide-and-conquer-algorithms">Divide And Conquer Algorithms</a></h3>
+<h3><a class="header" href="#dynamic-algorithms" id="dynamic-algorithms">Dynamic Algorithms</a></h3>
+<h3><a class="header" href="#string-algorithms" id="string-algorithms">String Algorithms</a></h3>
+<h3><a class="header" href="#matrix-algorithms" id="matrix-algorithms">Matrix Algorithms</a></h3>
+<h3><a class="header" href="#randomized-algorithms" id="randomized-algorithms">Randomized Algorithms</a></h3>
+<h3><a class="header" href="#computational-geometry-algorithms" id="computational-geometry-algorithms">Computational Geometry Algorithms</a></h3>
+<h3><a class="header" href="#numerical-algorithms" id="numerical-algorithms">Numerical Algorithms</a></h3>
+<h4><a class="header" href="#euclids-algorithm-greatest-common-divisor" id="euclids-algorithm-greatest-common-divisor">Euclid's Algorithm: Greatest Common Divisor</a></h4>
+<p>Let m and n be two positive integers.
+The greatest common divisor of m and n, denoted gcd(m, n) is the largest integer
+that divides both m and n exactly.
+When gcd(m, n) = 1 we say that m and n are coprime.</p>
+<pre><code>function gcd(m, n)
+    i = min(m, n) + 1
+    repeat
+        i = i -1
+    until i divides both m and n exactly
+    return i
+</code></pre>
+<p>The time taken by this algorithm is in the order of the difference between the
+smaller of the two arguments and their greatest cmmon divisor.
+When m and n are of similar size and coprime, it therefore takes a time in the
+order of n.
+Notice that this is the value of the operand and not its size.</p>
+<p>A classic algorithm for calculating gcd(m, n) consists of first factorizing
+m and n, and then taking the product of the prime factors common to m and n,
+each primer factor being raised to the lower of its power s in the two
+arguments.
+Even though this algorithm is better than the one given previously, it requires
+factorizing m and n, something which crurrently cannot be done efficiently when
+m and n are large.</p>
+<p>There exists a much better algorithm known as Euclid's algorithm.</p>
+<pre><code>function euclid(m, n)
+    while m &gt; 0 do
+        t = m
+        m = n mod m
+        n = t
+    return n
+</code></pre>
+<h4><a class="header" href="#fibonacci-sequence" id="fibonacci-sequence">Fibonacci Sequence</a></h4>
+<h3><a class="header" href="#bit-manipulation-algorthms" id="bit-manipulation-algorthms">Bit Manipulation Algorthms</a></h3>
+<h2><a class="header" href="#an-algorithm-for-algorithmic-technical-interview-questions" id="an-algorithm-for-algorithmic-technical-interview-questions">An algorithm for algorithmic technical interview questions</a></h2>
+<p>After solving dozens of practice questions, I started to notice a strategy
+emerge for how I solve technical interview questions. This framework isn’t
+guaranteed to get you the job; however, the perspective will hopefully help in
+your practice regimen.</p>
+<p>The algorithm is roughly as follows:</p>
+<p>1 Repeat the problem statement a few times in your head.</p>
+<p>2 Jot down key pieces of information: input domain (numbers, strings, etc),
+whether or not the inputs are sorted, the type of data structure we’re dealing
+with (binary search tree or not, singly or doubly linked list, a single or
+multi-dimensional array), a suggested traversal method (breadth-first or
+depth-first), or a desired implementation style (recursive or iterative).</p>
+<p>3 Actively think about edge cases (i.e., inputs that could break your solution)
+to clarify with the interviewer and run through when testing the solution you
+decide to code.</p>
+<p>4 Acknowledge the brute-force solution (that usually smacks you in the face).</p>
+<p>5 Analyze the (usually quadratic, factorial, or exponential) time and (typically
+constant) space complexity of that brute-force approach.</p>
+<p>6 Think about a solution that optimizes for time complexity (i.e., use more
+space for time savings). I usually ask myself: what are the redundant
+computations or what can I store (and in which data structure) to reduce the
+workload?</p>
+<p>7 Think about a solution that optimizes for space complexity (i.e., takes longer
+to run but uses less space). It’ll hopefully be more efficient (in time
+complexity) than the brute-force approach. If we’re dealing with a list of
+inputs, I usually ask myself: is there a way to (in-place) sort the inputs
+(if they’re not already sorted) to achieve an O(n log n) runtime with O(1)
+space? Or is there a way of using a few variables/pointers while iterating to
+achieve an O(n) time and O(1) space solution?</p>
+<p>8 Avoid committing to any solution — leaving a little time to see if any other
+approaches to come to mind. Typically the current problem resembles another
+problem that you’ve solved and a technique used in that solved problem can be
+applied.</p>
+<p>9 Ask the interviewer what we’re optimizing for (usually runtime) and narrow
+down your set of solutions to a single one to code.</p>
+<p>10 Outline the structure of the solution (I tend do it on the side of the
+whiteboard) either with high level functions (input, purpose of the method, and
+its output) or the order of loops and conditions.</p>
+<p>11 Start writing code (slowly and carefully) that models the outline.</p>
+<p>12 Do a light pass code review of my solution making sure it is syntactically
+correct and not introducing idioms that utilize extra space/time (i.e., creating
+intermediate arrays or doing implicit passes through the entire array) that
+result in a different (possibly quadratic) runtime complexity than desired.</p>
+<p>13 Run through your code with normal and edge-case inputs — correcting any bugs
+in your solution.</p>
+<p>14 If there is a follow-up tweak to the original problem, think about how to
+reuse the previously implemented method(s) to implement the tweak.</p>
+<p>15 Apply the same principles of analysis from this list to the follow-up
+question’s solution.</p>
+<h2><a class="header" href="#miscellaneous" id="miscellaneous">Miscellaneous</a></h2>
+<h4><a class="header" href="#implementation" id="implementation">Implementation:</a></h4>
+<ul>
+<li>Recursion/Iteration</li>
+<li>Logical</li>
+<li>Serial/Parallel/Distributed</li>
+<li>Deterministic/Non-deterministic</li>
+<li>Exact/Approximate</li>
+</ul>
+<h4><a class="header" href="#design-paradigm" id="design-paradigm">Design Paradigm:</a></h4>
+<ul>
+<li>Brute Force/Exhaustive Search</li>
+<li>Divide and Conquer</li>
+<li>Dynamic Programming</li>
+<li>Greedy</li>
+<li>Linear Programming</li>
+<li>Reduction</li>
+<li>Search and Enumeration</li>
+<li>Probabilistic &amp; Heuristic Paradigm
+<ul>
+<li>Probabilistic Algorithms</li>
+<li>Genetic Algorithms</li>
+<li>Heuristics Algorithms</li>
+</ul>
+</li>
+</ul>
+<h4><a class="header" href="#field-of-study" id="field-of-study">Field of Study:</a></h4>
+<ul>
+<li>Search Algorithms</li>
+<li>Sorting Algorithms</li>
+<li>Merge Algorithms</li>
+<li>Numerical Algorithms</li>
+<li>Graph Algorithms</li>
+<li>String Algorithms</li>
+<li>Computational Geometry</li>
+<li>Combinatorial Algorithms</li>
+<li>Machine Learning</li>
+<li>Cryptography</li>
+<li>Data Compression Algorithms</li>
+<li>Parsing Techniques</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../programming/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../programming/ai/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../programming/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../programming/ai/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
