@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Theory - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../programming/index.html">Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../programming/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../programming/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../programming/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../programming/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../programming/ai/richard_sutton.html">Richard Sutton</a></li></ol></li><li class="chapter-item "><a href="../programming/compilers/index.html">Compilers</a></li><li class="chapter-item "><a href="../programming/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../programming/excellency/index.html">Excellency</a></li><li class="chapter-item "><a href="../programming/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../programming/tools/code_searching.html">Code Searching</a></li><li class="chapter-item "><a href="../programming/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../programming/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../programming/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../programming/tools/git.html">Git</a></li><li class="chapter-item "><a href="../programming/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../programming/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../programming/tools/suckless.html">&quot;Suckless&quot;</a></li><li class="chapter-item "><a href="../programming/tools/utils.html">System Utilities</a></li><li class="chapter-item "><a href="../programming/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../programming/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../programming/misc/systems_performance.html">Systems Performance</a></li><li class="chapter-item "><a href="../programming/misc/sql_explain.html">SQL Explain</a></li><li class="chapter-item "><a href="../programming/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../programming/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../programming/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../programming/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../programming/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../programming/misc/zen_python.html">The Zen of Python</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../euskera/kasuak.html">Kasuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/kasu_nor.html">Kasu: Nor</a></li><li class="chapter-item "><a href="../euskera/kasu_partitiboa.html">Kasu: Partitiboa</a></li><li class="chapter-item "><a href="../euskera/kasu_non.html">Kasu: Non</a></li><li class="chapter-item "><a href="../euskera/kasu_nork.html">Kasu: Nork</a></li><li class="chapter-item "><a href="../euskera/kasu_nori.html">Kasu: Nori</a></li><li class="chapter-item "><a href="../euskera/kasu_noren.html">Kasu: Noren</a></li><li class="chapter-item "><a href="../euskera/kasu_norentzat.html">Kasu: Norentzat</a></li><li class="chapter-item "><a href="../euskera/kasu_norekin.html">Kasu: Norekin</a></li><li class="chapter-item "><a href="../euskera/kasu_norengatik.html">Kasu: Norengatik</a></li><li class="chapter-item "><a href="../euskera/kasu_norengan.html">Kasu: Norengan</a></li><li class="chapter-item "><a href="../euskera/kasu_norengandik.html">Kasu: Norengandik</a></li><li class="chapter-item "><a href="../euskera/kasu_norengana.html">Kasu: Norengana</a></li><li class="chapter-item "><a href="../euskera/kasu_norenganaino.html">Kasu: Norenganaino</a></li><li class="chapter-item "><a href="../euskera/kasu_norenganantz.html">Kasu: Norenganantz</a></li><li class="chapter-item "><a href="../euskera/kasu_nora.html">Kasu: Nora</a></li><li class="chapter-item "><a href="../euskera/kasu_noraino.html">Kasu: Noraino</a></li><li class="chapter-item "><a href="../euskera/kasu_norantz.html">Kasu: Norantz</a></li><li class="chapter-item "><a href="../euskera/kasu_norako.html">Kasu: Norako</a></li><li class="chapter-item "><a href="../euskera/kasu_nondik.html">Kasu: Nondik</a></li><li class="chapter-item "><a href="../euskera/kasu_nongo.html">Kasu: Nongo</a></li><li class="chapter-item "><a href="../euskera/kasu_nortzat.html">Kasu: Nortzat</a></li><li class="chapter-item "><a href="../euskera/kasu_zerez_zertaz.html">Kasu: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../euskera/kasu_zerezko.html">Kasu: Zerezko</a></li></ol></li><li class="chapter-item "><a href="../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mind/buddhism/index.html">Buddhism</a></li></ol></li><li class="chapter-item "><a href="../body/index.html">Body</a></li><li class="chapter-item "><a href="../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item expanded "><a href="../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../music/music_theory.html" class="active">Theory</a></li><li class="chapter-item "><a href="../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../music/tabs/at_the_drive_in__son_et_lumiere_inertiatic_esp.html">At the Drive-In - Son et Lumiere &amp; Inertiatic ESP</a></li><li class="chapter-item "><a href="../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../music/tabs/queen__another_one_bites_the_dust.html">Queen - Another One Bites the Dust</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__around_the_world.html">Red Hot Chili Peppers - Around the World</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__by_the_way.html">Red Hot Chili Peppers - By the Way</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__otherside.html">Red Hot Chili Peppers - Otherside</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__parallel_universe.html">Red Hot Chili Peppers - Parallel Universe</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__this_is_the_place.html">Red Hot Chili Peppers - This Is the Place</a></li><li class="chapter-item "><a href="../music/tabs/red_hot_chili_peppers__venice_queen.html">Red Hot Chili Peppers - Venice Queen</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li><li class="chapter-item "><a href="../music/tabs/tool__wings_for_marie_10000_days.html">Tool - Wings for Marie &amp; 10,000 Days</a></li></ol></li></ol></li><li class="chapter-item "><a href="../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../misc/library.html">My library</a></li><li class="chapter-item "><a href="../misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#music-theory" id="music-theory">Music Theory</a></h1>
+<h2><a class="header" href="#roots-to-chords" id="roots-to-chords">Roots to chords</a></h2>
+<p>Understand and apply root notes on the bass...</p>
+<p>A root note is the main note on which a chord is built. 
+It is the foundation, or root, of the chord. 
+For example, the three notes G, B, and D form a G major chord. 
+The note G is the chord's root note.</p>
+<p>As another example, the notes Bb, Db, F, and Ab form a Bb minor 7th chord. 
+The note Bb is the chord's root note.</p>
+<h3><a class="header" href="#identifying-the-root-note" id="identifying-the-root-note">Identifying the Root Note</a></h3>
+<ul>
+<li>Root notes of chords are easy to identify. </li>
+<li>Each chord is always named with its root followed by its chord type, or chord quality.</li>
+<li>For the chord A7 – the root is A, the quality is 7th</li>
+<li>For the chord Fm7 – the root is F, the quality is minor 7th</li>
+<li>For the chord Gb7#11 – the root is Gb, the quality is 7 sharp 11 </li>
+</ul>
+<h2><a class="header" href="#octaves" id="octaves">Octaves</a></h2>
+<p>Learn about the octave, how it applies to bass playing.</p>
+<p>An octave is the same note at a higher or lower pitch. 
+You'll recall from the musical alphabet lesson there are only 12 notes in music. 
+That same cycle of 12 notes is repeated over and over in what are called 
+different octaves. 
+That means there are multiple 'A' notes, multiple 'Bb' notes, and so on. 
+Each one is just a higher-, or lower-pitched version of the others.</p>
+<p>The most common way bassists play octaves on the bass is: from any one note 
+the higher octave can be played two strings up and two frets over. 
+To get any note's lower octave, reverse the pattern: play the note two 
+strings down and two frets back.</p>
+<h2><a class="header" href="#roots-and-fifths" id="roots-and-fifths">Roots and fifths</a></h2>
+<p>Lesson on one of the most common bass patterns: roots and fifths. </p>
+<h3><a class="header" href="#what-are-roots-and-fifths" id="what-are-roots-and-fifths">What Are Roots and Fifths?</a></h3>
+<p>The root and fifth pattern is one of the most common note patterns used 
+by bass players. 
+When a guitarist or keyboardist plays a chord, he or she is playing 
+several notes at the same time — usually 3 or more different notes. 
+Two of the notes which form each chord are called a root and a fifth. 
+The root and fifth of the chord are the most supportive sounding notes 
+a bassist can play beneath a chord. 
+We are just adding one more note to the root note you learned about in 
+the roots lesson.</p>
+<p>Roots and fifths are conveniently the same pattern for almost every chord. 
+It doesn't matter if it's a major chord, minor chord, or a power chord. 
+You can apply this pattern pretty broadly when creating basslines. 
+If you know the root note to play, you can use the fifth, too. 
+It almost always works.</p>
+<h3><a class="header" href="#why-is-it-called-a-fifth" id="why-is-it-called-a-fifth">Why is It Called a Fifth?</a></h3>
+<p>The short answer is the notes of scales and chords are assigned 
+specific numbers. 
+The fifth is simply the fifth note of the scale from which it comes. </p>
+<h3><a class="header" href="#playing-roots-and-fifths-on-the-bass" id="playing-roots-and-fifths-on-the-bass">Playing Roots and Fifths on the Bass</a></h3>
+<p>The root-fifth pattern is pretty easy to remember on the bass fretboard 
+and it's not too hard to play. 
+Just like the octave pattern, the root-fifth pattern is the same shape 
+all over the neck of the bass. Remember when we say above/below and 
+up/down, we are talking about pitch, not physical space. The fifth 
+above any root note is always on the next higher string, two frets higher.</p>
+<p>The fifth below any root note is always on the next lower string, on 
+the same fret.</p>
+<p>When you combine the octaves of the root notes and the octaves of the 
+fifths, you have a lot you can play with for nearly any chord.
+Notice for any root note there is a fifth a string below. 
+Notice how the 5ths are octaves of each other.</p>
+<h3><a class="header" href="#fingering-roots-and-fifths-on-bass" id="fingering-roots-and-fifths-on-bass">Fingering Roots and Fifths on Bass</a></h3>
+<p>You will be playing roots and fifths a lot regardless of style. 
+It's good to develop a consistent fingering and learn to play the 
+patterns cleanly. 
+When you play these patterns by themselves, use your 1st finger on the 
+root and play the higher 5th with your 3rd finger. 
+You can still use either the 3rd or 4th finger on the higher octave of 
+the root.</p>
+<p>When playing the lower 5th, always use the same finger you used on the 
+root note.</p>
+<h3><a class="header" href="#the-use-of-roots-and-fifths-in-bass-playing" id="the-use-of-roots-and-fifths-in-bass-playing">The Use of Roots and Fifths in Bass Playing</a></h3>
+<p>You will quickly notice that roots and fifths are the most common bass 
+note pattern after just roots by themselves. 
+If roots and fifths aren't being used all by themselves in a bassline, 
+a lot of the time they anchor more complex basslines. 
+The reason roots and 5ths are used so often is because they consistently 
+sound good, they fulfill the bassist's supportive responsibility, and 
+they're not too hard to play.</p>
+<p>You'll most easily recognize root-fifth basslines in styles like 
+country, polkas, tejano, and tuba basslines. 
+Those are just very obvious uses. 
+Don't think for a minute that these are the only uses of roots and 
+fifths. 
+They are absolutely everywhere in every style from Classical music to 
+metal. 
+The root and fifth pattern is critical to bass playing. 
+You must have a thorough grasp of these patterns regardless of what you 
+intend to play.</p>
+<h2><a class="header" href="#root-fifth-flat-seventh" id="root-fifth-flat-seventh">Root fifth flat seventh</a></h2>
+<p>Learn about the flat 7th and its application in bass playing...</p>
+<h3><a class="header" href="#building-on-a-foundation" id="building-on-a-foundation">Building on a Foundation</a></h3>
+<p>So far in the common bass pattern lessons we've covered roots, octaves, 
+and roots and fifths. 
+These note patterns are applied by bassists to provide each chord of a 
+song with a solid foundation. 
+Think of roots, 5ths, and their octaves as a solid, simple anchor for 
+each chord played in a song.</p>
+<p>Obviously bass players play a lot more than just roots and 5ths. 
+There are 12 notes in all and they are all fair game if you can place 
+them correctly. 
+We can add a new dimension to these basic bass patterns just by adding 
+one frequently used note to them. 
+Though it's only one more note added to the root/5th foundation, it 
+greatly increases the possibilities of the basslines you can create.</p>
+<h3><a class="header" href="#root---fifth---flat-7th" id="root---fifth---flat-7th">Root - Fifth - Flat 7th</a></h3>
+<p>In this lesson we will add a note called the flat 7th into the mix of 
+roots, 5ths and octaves. 
+You'll remember that the root and the 5th were two notes found in almost 
+all chords. 
+Even though the flat 7th is used a lot in basslines, it is a little less 
+universal and a little more care needs to be taken when applying it. 
+When you apply it always listen that it fits with the sound of the chord.
+Some chords have a flat 7th in them, others don't. 
+On those chords which do, you can always apply the flat 7th. 
+On those chords which don't, many times you can still apply the flat 7th 
+and it will sound good. 
+But, you have to be careful. 
+Listening, experience, and more knowledge of chords and scales will 
+teach you when to apply this note.</p>
+<h3><a class="header" href="#why-is-it-called-a-flat-seventh" id="why-is-it-called-a-flat-seventh">Why is It Called a Flat Seventh?</a></h3>
+<p>In the roots and fifths lesson I mentioned that notes are assigned 
+number names in relationship to the root note. </p>
+<p>The 7th is the seventh note of the major scale. 
+To flat a note means to lower it by one note (meaning one fret lower). 
+Therefore a flat 7th means one note lower than the 7th.</p>
+<h3><a class="header" href="#playing-r-5-b7-patterns-on-bass" id="playing-r-5-b7-patterns-on-bass">Playing R-5-b7 Patterns on Bass</a></h3>
+<p>The flat seventh is easy to locate on the bass fretboard. 
+The flat 7th is always two notes, or frets, below any root note. 
+In the first fretboard example above, the root is A on the 5th fret of 
+the E-string and the flat 7th is the note G two notes lower.</p>
+<p>You can also find it two strings above on the same fret. 
+In the second fretboard example above, the same root note A is shown 
+with its higher flat 7th. (Notice how this higher flat 7th is just two 
+notes below the octave of the root note which is ghosted in.)</p>
+<p>When you add the flat 7th to the root, fifth and octave patterns, you 
+get a number of new note patterns to play. 
+You can shift these patterns around to any root note on any string.</p>
+<p>The third example just above shows a flat 7th on a string below the root 
+fingered with the 1st finger. 
+This flat 7th is still two notes below the root note. 
+It's only on a lower string. This fingering may confuse you in the 
+beginning, but eventually you might find it very useful.</p>
+<p>What combinations of roots, fifths, flat 7ths and their octaves can you 
+find on your own?</p>
+<h3><a class="header" href="#fingering-root---fifth---flat-7th-patterns-on-bass" id="fingering-root---fifth---flat-7th-patterns-on-bass">Fingering Root - Fifth - Flat 7th Patterns on Bass</a></h3>
+<p>When playing the R-5-b7 pattern you will most often stick to the 
+one-finger-per-fret position. 
+With your mouse pointer hover over the notes of the above diagrams for 
+suggested fingerings. 
+This is a fairly comfortable note pattern to play. 
+Since it sounds good and is easy to play, it gets played a lot.</p>
+<h3><a class="header" href="#note-names-and-the-flat-7th" id="note-names-and-the-flat-7th">Note names and the Flat 7th</a></h3>
+<p>A common point of confusion for beginners is that they think the flat 
+7th must be a note named with a flat. It doesn't. 
+The flat 7th can be any note of any name. 
+For example, the flat 7th of the root C# would be B.</p>
+<h3><a class="header" href="#the-use-of-root---fifth---flat-seventh-bass-patterns" id="the-use-of-root---fifth---flat-seventh-bass-patterns">The Use of Root - Fifth - Flat Seventh Bass Patterns</a></h3>
+<p>The root-fifth-flat 7th pattern is a really common bass sound in most 
+popular styles of music. 
+It's hard to think of a style that doesn't use this pattern somewhere. 
+You will hear many blues basslines make use of it. 
+Since the blues has influenced nearly every other style of music 
+(rock, jazz, soul, funk, etc.), this sound lives on in each one of them.</p>
+<h2><a class="header" href="#root-fifth-sixth" id="root-fifth-sixth">Root fifth sixth</a></h2>
+<p>Learn about adding the sixth to the root and fifth bass pattern.</p>
+<h2><a class="header" href="#chromatic-approach-notes" id="chromatic-approach-notes">Chromatic approach notes</a></h2>
+<p>Using approach notes and passing tones in basslines.</p>
+<h2><a class="header" href="#common-patterns-summary" id="common-patterns-summary">Common patterns summary</a></h2>
+<p>Section review and about combining the note patterns.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../music/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../music/lyrics/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../music/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../music/lyrics/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
