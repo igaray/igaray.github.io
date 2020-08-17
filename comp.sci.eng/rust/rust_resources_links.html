@@ -1,0 +1,858 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust Resources: Links - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../comp.sci.eng/misc/scientific_method.html">Scientific Method</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/index.html">Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/compilers/bytecode_interpreters_for_tiny_computers.html">Bytecode Interpreters for Tiny Computers</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../../comp.sci.eng/excellency/index.html">Excellency</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_learning.html">Rust Resources: Learning</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books.html">Rust Resources: Books</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/rust/rust_resources_links.html" class="active">Rust Resources: Links</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib.html">Rust Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/tools/code_searching.html">Code Searching</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/suckless.html">&quot;Suckless&quot;</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/utils.html">System Utilities</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/misc/systems_performance.html">Systems Performance</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/sql_explain.html">SQL Explain</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/kasuak.html">Kasuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/kasu_nor.html">Kasu: Nor</a></li><li class="chapter-item "><a href="../../euskera/kasu_partitiboa.html">Kasu: Partitiboa</a></li><li class="chapter-item "><a href="../../euskera/kasu_non.html">Kasu: Non</a></li><li class="chapter-item "><a href="../../euskera/kasu_nork.html">Kasu: Nork</a></li><li class="chapter-item "><a href="../../euskera/kasu_nori.html">Kasu: Nori</a></li><li class="chapter-item "><a href="../../euskera/kasu_noren.html">Kasu: Noren</a></li><li class="chapter-item "><a href="../../euskera/kasu_norentzat.html">Kasu: Norentzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_norekin.html">Kasu: Norekin</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengatik.html">Kasu: Norengatik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengan.html">Kasu: Norengan</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengandik.html">Kasu: Norengandik</a></li><li class="chapter-item "><a href="../../euskera/kasu_norengana.html">Kasu: Norengana</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganaino.html">Kasu: Norenganaino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norenganantz.html">Kasu: Norenganantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_nora.html">Kasu: Nora</a></li><li class="chapter-item "><a href="../../euskera/kasu_noraino.html">Kasu: Noraino</a></li><li class="chapter-item "><a href="../../euskera/kasu_norantz.html">Kasu: Norantz</a></li><li class="chapter-item "><a href="../../euskera/kasu_norako.html">Kasu: Norako</a></li><li class="chapter-item "><a href="../../euskera/kasu_nondik.html">Kasu: Nondik</a></li><li class="chapter-item "><a href="../../euskera/kasu_nongo.html">Kasu: Nongo</a></li><li class="chapter-item "><a href="../../euskera/kasu_nortzat.html">Kasu: Nortzat</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerez_zertaz.html">Kasu: Zerez/Zertaz</a></li><li class="chapter-item "><a href="../../euskera/kasu_zerezko.html">Kasu: Zerezko</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/sustainable_economics.html">Sustainable Economics</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/music_theory.html">Theory</a></li><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/matisyahu__king_without_a_crown.html">Matisyahu - King Without a Crown</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__around_the_world.html">Red Hot Chili Peppers - Around the World</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__by_the_way.html">Red Hot Chili Peppers - By the Way</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__otherside.html">Red Hot Chili Peppers - Otherside</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__parallel_universe.html">Red Hot Chili Peppers - Parallel Universe</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__this_is_the_place.html">Red Hot Chili Peppers - This Is the Place</a></li><li class="chapter-item "><a href="../../music/tabs/red_hot_chili_peppers__venice_queen.html">Red Hot Chili Peppers - Venice Queen</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere &amp; Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#rust-resources-links" id="rust-resources-links">Rust Resources: Links</a></h1>
+<!-- toc -->
+<hr />
+<h2><a class="header" href="#the-language--its-features" id="the-language--its-features">The language &amp; its features</a></h2>
+<h3><a class="header" href="#2016" id="2016">2016</a></h3>
+<ul>
+<li><a href="https://internals.rust-lang.org/t/setting-our-vision-for-the-2017-cycle/3958/1">Setting our vision for the 2017 cycle</a></li>
+<li><a href="http://words.steveklabnik.com/four-years-with-rust">Four years with Rust</a></li>
+</ul>
+<h3><a class="header" href="#2017" id="2017">2017</a></h3>
+<ul>
+<li><a href="https://blog.rust-lang.org/2017/12/21/rust-in-2017.html">Rust in 2017: what we achieved</a></li>
+<li><a href="https://codeburst.io/my-journey-with-rust-in-2017-the-good-the-bad-the-weird-f07aa918f4f8">My journey with Rust in 2017 — The good, the bad, the weird</a></li>
+</ul>
+<h3><a class="header" href="#2018" id="2018">2018</a></h3>
+<ul>
+<li><a href="https://hacks.mozilla.org/2018/12/rust-2018-is-here/">Rust 2018 is here… but what is it?</a></li>
+<li><a href="https://blog.rust-lang.org/2018/07/27/what-is-rust-2018.html">What is Rust 2018?</a></li>
+<li><a href="https://jvns.ca/blog/2018/01/13/rust-in-2018--way-easier-to-use/">Rust in 2018: it's way easier to use!</a></li>
+<li><a href="http://www.jonathanturner.org/2018/12/the-fallow-year.html">The Fallow Year, my Rust2019 post</a></li>
+</ul>
+<h3><a class="header" href="#2019" id="2019">2019</a></h3>
+<ul>
+<li><a href="https://smallcultfollowing.com/babysteps/blog/2019/01/07/rust-in-2019-focus-on-sustainability/">Rust in 2019: Focus on sustainability</a></li>
+<li><a href="https://kodraus.github.io/rust/2019/01/01/rust-2019.html">Rust in 2019</a></li>
+<li><a href="https://medium.com/@bowlescompling/thoughts-on-rust-in-2019-6c0af39a6b76">Thoughts on Rust in 2019</a></li>
+<li><a href="https://www.ralfj.de/blog/2019/01/12/rust-2019.html">Rust 2019: Solid Foundations for Unsafe Code</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/acjcbp/rust_2019_beat_c/">Rust 2019: Beat C++</a></li>
+</ul>
+<h3><a class="header" href="#ownership" id="ownership">Ownership</a></h3>
+<ul>
+<li>
+<p><a href="https://koerbitz.me/posts/Understanding%2DPointers%2DOwnership%2Dand%2DLifetimes%2Din%2DRust%2Ehtml">2015 Understanding Pointers, Ownership, and Lifetimes in Rust</a></p>
+</li>
+<li>
+<p><a href="https://typeinference.com/rust/2015/07/31/rust-ownership-part-i.html">2015 Rust Data Ownership</a></p>
+</li>
+<li>
+<p><a href="https://deterministic.space/rust-ownership-and-borrowing-in-150-words.html">Rust's ownership and borrowing in 150 words</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/@bugaevc/understanding-rust-ownership-borrowing-lifetimes-ff9ee9f79a9c">2016 Understanding Rust: ownership, borrowing, lifetimes</a></p>
+</li>
+<li>
+<p><a href="https://softwaremaniacs.org/blog/2016/02/12/ownership-borrowing-hard/en/">2016 Why Rust's ownership/borrowing is hard</a></p>
+</li>
+<li>
+<p><a href="http://www.jackhoy.com/web-applications/2016/11/10/rusts-ownership-model.html">2016 Rust's Ownership Model</a></p>
+</li>
+<li>
+<p><a href="https://rufflewind.com/2017-02-15/rust-move-copy-borrow">2017 Graphical depiction of ownership and borrowing in Rust</a></p>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/comments/5u6e6f/graphical_depiction_of_ownership_and_borrowing_in/">2017</a></li>
+</ul>
+</li>
+<li>
+<p><a href="http://users.cs.northwestern.edu/%7Ejesse/course/eecs395rust-sp17/lec/02-ownership.pdf">2017 PDF Ownership and Borrowingand Lifetimes (Oh My!)</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/@thomascountz/ownership-in-rust-part-1-112036b1126b">2018 Ownership in Rust, Part 1</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/@thomascountz/ownership-in-rust-part-2-c3e1da89956e">2018 Ownership in Rust, Part 2</a></p>
+</li>
+<li>
+<p><a href="https://paulkernfeld.com/2018/09/16/ownership-explained-with-python.html">2018 Ownership Explained with Python</a></p>
+</li>
+<li>
+<p><a href="https://dzone.com/articles/ownership-in-the-rust-language">2018 Ownership in the Rust Language</a></p>
+</li>
+<li>
+<p><a href="https://dzone.com/articles/basics-of-ownership-rust-crash-course-lesson-2">2018 Basics of Ownership: Rust Crash Course Lesson 2, Part 1</a></p>
+</li>
+<li>
+<p><a href="http://squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">2018 Fear not the Rust Borrow Checker</a></p>
+</li>
+<li>
+<p><a href="https://werner.github.io/language/ownership/type-system/2018/09/25/move-semantics-vs-copy-semantics.html">2018 Move Semantics vs Copy Semantics</a></p>
+</li>
+<li>
+<p><a href="https://smallcultfollowing.com/babysteps/blog/2018/06/15/mir-based-borrow-check-nll-status-update/">2018 MIR-based borrow check (NLL) status update</a></p>
+</li>
+<li>
+<p><a href="https://chrismorgan.info/blog/rust-ownership-the-hard-way.html">2019 Rust ownership, the hard way</a></p>
+</li>
+<li>
+<p><a href="https://hauleth.dev/post/eli5-ownership/">2019 Here be (owned) books</a></p>
+</li>
+<li>
+<p><a href="https://www.gingerbill.org/article/2020/06/21/the-ownership-semantics-flaw/">2020 The Fatal Flaw of Ownership Semantics</a></p>
+<ul>
+<li><a href="https://blog.knoldus.com/memory-management-in-rust-ownership/"></a>
+- <a href="https://bryce.fisher-fleig.org/blog/strategies-for-returning-references-in-rust/index.html"></a>
+- <a href="https://blog.codeship.com/rust-design-considerations-with-borrowing/"></a>
+- <a href="https://conscientiousprogrammer.com/blog/2014/12/21/how-to-think-about-rust-ownership-versus-c-plus-plus-unique-ptr/"></a>
+- <a href="http://www.ccs.neu.edu/home/matthias/4620-s15/lecture1.pdf"></a>
+- <a href="https://macsphere.mcmaster.ca/bitstream/11375/23625/2/Alhazmi_Elaf_A_finalsubmission2018September_M.SC.pdf"></a>
+- <a href="https://speakerdeck.com/alocquet/rust-ownership-and-borrowing?slide=12"></a>
+- <a href="https://blog.skylight.io/rust-means-never-having-to-close-a-socket/"></a>
+- <a href="https://cglab.ca/%7Eabeinges/talks/iter-easy/#0"></a>
+- <a href="https://www.ralfj.de/projects/rust-101/part04.html"></a>
+- <a href="https://naftuli.wtf/2019/03/20/rust-the-hard-parts/"></a>
+- <a href="https://apprize.info/programming/rust/5.html"></a>
+- <a href="https://jvns.ca/blog/2017/11/27/rust-ref/"></a>
+- <a href="http://jeenalee.com/2016/08/29/move-clone-copy.html"></a>
+- <a href="https://www.centare.com/blog/2017/03/racking_your_brain_with_rust/"></a>
+- <a href="https://theburningmonk.com/2015/05/rust-memory-safety-without-gc/"></a>
+- <a href="http://smallcultfollowing.com/babysteps/blog/2018/09/02/rust-pattern-iterating-an-over-a-rc-vec-t/"></a>
+- <a href="https://theta.eu.org/2016/03/12/learn-you-a-rust-for-great-good.html"></a>
+- <a href="https://theta.eu.org/2016/03/18/lyar-borrows.html"></a>
+- <a href="http://xion.io/post/code/rust-borrowchk-tricks.html"></a>
+- <a href="https://www.quora.com/How-does-Rust-enforce-safety"></a>
+- <a href="https://www.slideshare.net/saneyuki/rusts-ownership-and-move-semantics"></a>
+- <a href="http://www.garin.io/rust-vs-c-pitfalls"></a>
+- <a href="https://koerbitz.me/posts/Understanding-Pointers-Ownership-and-Lifetimes-in-Rust.html"></a>
+- <a href="http://blog.pnkfx.org/blog/2019/06/26/breaking-news-non-lexical-lifetimes-arrives-for-everyone/"></a>
+- <a href="http://intorust.com/tutorial/shared-borrows/"></a>
+- <a href="https://corecursive.com/016-moves-and-borrowing-in-rust-with-jim-blandy/"></a></li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#lifetimes" id="lifetimes">Lifetimes</a></h3>
+<pre><code>  - [](http://pling.jondgoodwin.com/post/lifetimes/)
+  - [](https://santiagopastorino.com/how-to-use-rust-non-lexical-lifetimes-on-nightly/)
+  - [](https://asquera.de/blog/2018-01-29/rust-lifetimes-for-the-uninitialised/)
+  - [](http://www.randomhacks.net/2014/09/19/rust-lifetimes-reckless-cxx/)
+</code></pre>
+<h3><a class="header" href="#concurrency" id="concurrency">Concurrency</a></h3>
+<h3><a class="header" href="#asyncawait" id="asyncawait">Async/Await</a></h3>
+<h3><a class="header" href="#unsafe" id="unsafe">Unsafe</a></h3>
+<ul>
+<li>
+<p><a href="https://steveklabnik.com/writing/you-can-t-turn-off-the-borrow-checker-in-rust">2018 You can't &quot;turn off the borrow checker&quot; in Rust</a></p>
+<pre><code>- [](https://doc.rust-lang.org/nomicon/)
+- [](https://news.ycombinator.com/item?id=17831933)
+- [](https://manishearth.github.io/blog/2017/12/24/undefined-vs-unsafe-in-rust/)
+- [The Scope of Unsafe](https://www.ralfj.de/blog/2016/01/09/the-scope-of-unsafe.html)
+- [](https://rust-lang.github.io/unsafe-code-guidelines/)
+- [](https://boats.gitlab.io/blog/post/2018-01-04-unsafe-abstractions/)
+</code></pre>
+</li>
+</ul>
+<h3><a class="header" href="#macros" id="macros">Macros</a></h3>
+<pre><code>  - [A Practical Intro to Macros in Rust 1.0](https://danielkeep.github.io/practical-intro-to-macros.html)
+  - [](https://lab.whitequark.org/notes/2017-01-16/abstracting-over-mutability-in-rust-macros/)
+  - [An Overview of Macros in Rust](http://words.steveklabnik.com/an-overview-of-macros-in-rust)
+  - [The Little Book of Rust Macros](http://danielkeep.github.io/tlborm/book/index.html)
+  - [](https://jvns.ca/blog/2017/12/24/my-first-rust-macro/)
+  - [](http://fitzgeraldnick.com/2018/11/15/program-synthesis-is-possible-in-rust.html)
+  - [](https://happens.lol/posts/a-love-letter-to-rust-macros/)
+  - [](https://www.reddit.com/r/rust/comments/7aohpf/rerast_astbased_transformations_of_rust_code/)
+  - [](http://kamalmarhubi.com/blog/2016/06/02/playing-with-the-rust-ast/)
+  - [](https://kasma1990.gitlab.io/2018/03/04/why-rust-has-macros/)
+  - [](https://llogiq.github.io/2018/10/25/macros.html)
+  - [](https://github.com/dtolnay/cargo-expand)
+</code></pre>
+<hr />
+<h2><a class="header" href="#development-tools" id="development-tools">Development Tools</a></h2>
+<h3><a class="header" href="#rust-analyzer" id="rust-analyzer">Rust Analyzer</a></h3>
+<ul>
+<li><a href="https://rust-analyzer.github.io/">Rust Analyzer</a></li>
+<li><a href="https://rust-analyzer.github.io/manual.html">Manual</a></li>
+<li><a href="https://rust-analyzer.github.io/blog">Blog</a></li>
+<li><a href="https://rust-analyzer.github.io/thisweek">Changelog</a></li>
+<li><a href="https://github.com/rust-analyzer/rust-analyzer">Github</a></li>
+<li><a href="https://github.com/rust-analyzer/rust-analyzer/blob/e0d8c86563b72e5414cf10fe16da5e88201447e2/guide.md">Guide</a>
+<ul>
+<li><a href="https://youtu.be/ANKBNiSWyfc">Guide Video</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/ai881s/guide_to_the_rustanalyzer/">Reddit</a></li>
+</ul>
+</li>
+<li><a href="https://ferrous-systems.com/blog/rust-analyzer-2019/">Rust Analyzer in 2018 and 2019</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=18699627">Hacker News</a></li>
+</ul>
+</li>
+<li><a href="https://ferrous-systems.com/blog/rust-analyzer-status-opencollective/">Status of rust-analyzer: Achievements and Open Collective</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLXajQV_H-DxLMBt0amcuxgTeOTj6L-YGl">Rust Analyzer Q&amp;A</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#error-handling" id="error-handling">Error Handling</a></h2>
+<ul>
+<li><a href="http://blog.burntsushi.net/rust-error-handling/">2015 Error Handling in Rust — Andrew Gallant's Blog</a></li>
+<li><a href="https://m4rw3r.github.io/rust-questionmark-operator">2016 Rust: The <code>?</code> operator · m4rw3r</a></li>
+<li><a href="http://rantsideasstuff.com/posts/2018/04/20-rust-error-handling-awesome/">2018 Why Rust's error handling is awesome</a></li>
+<li><a href="https://blog.yoshuawuyts.com/error-handling-survey/">Error Handling Survey — 2019-11-13 </a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#testing" id="testing">Testing</a></h2>
+<hr />
+<h2><a class="header" href="#debugging" id="debugging">Debugging</a></h2>
+<h3><a class="header" href="#gdb" id="gdb">GDB</a></h3>
+<ul>
+<li><a href="https://sourceware.org/gdb/onlinedocs/gdb/Rust.html">Debugging with GDB - Supported Languages: Rust</a></li>
+<li><a href="http://thornydev.blogspot.com/2014/01/debugging-rust-with-gdb.html">Debugging Rust with gdb</a></li>
+<li><a href="https://os.phil-opp.com/set-up-gdb/">Writing an OS in Rust - Set Up GDB</a></li>
+<li><a href="https://michaelwoerister.github.io/2015/03/27/rust-xxdb.html">rust-gdb. rust-lldb.</a></li>
+</ul>
+<h3><a class="header" href="#lldb" id="lldb">LLDB</a></h3>
+<ul>
+<li><a href="https://bryce.fisher-fleig.org/blog/debugging-rust-programs-with-lldb/index.html">Debugging Rust programs with lldb on MacOS</a></li>
+<li><a href="https://www.marcelbelmont.com/post/debugging-rust-with-lldb/">Debugging Rust With LLDB</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#logging" id="logging">Logging</a></h2>
+<hr />
+<h2><a class="header" href="#tracing" id="tracing">Tracing</a></h2>
+<hr />
+<h2><a class="header" href="#profiling" id="profiling">Profiling</a></h2>
+<ul>
+<li>
+<p><a href="https://llogiq.github.io/2015/07/15/profiling.html">2015 Profiling Rust applications on Linux</a></p>
+</li>
+<li>
+<p><a href="https://github.com/llogiq/flame">llogiq/flame</a></p>
+<ul>
+<li>A cool flamegraph library for rust.</li>
+</ul>
+</li>
+<li>
+<p><a href="http://blog.adamperry.me/rust/2016/07/24/profiling-rust-perf-flamegraph/">2016 Rust Performance: A story featuring perf and flamegraph on Linux</a></p>
+</li>
+<li>
+<p><a href="https://athemathmo.github.io/2016/09/14/tools-for-profiling-rust.html">2016 Tools for profiling Rust</a></p>
+</li>
+<li>
+<p><a href="http://mikejsavage.co.uk/blog/rust-performance-finishing-the-job.html">2017 Rust performance: finishing the job</a></p>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2015/12/09/rust-profiling-on-osx-cpu-time/">2015 Rust Profiling with Instruments and FlameGraph on OSX: CPU/Time</a></p>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2017/04/20/rust-profiling-with-dtrace-on-osx/">2017 Rust Profiling with DTrace and FlameGraph on OSX</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=hTHp0gjWMLQ">Youtube | RustConf 2017 - Improving Rust Performance Through Profiling and Benchmarking by Steve Jenson</a></p>
+</li>
+<li>
+<p><a href="https://gist.github.com/KodrAus/97c92c07a90b1fdd6853654357fd557a">2018 Profile Rust on Linux</a></p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/rust/comments/8ovje0/cargo_bench_benchmarking_performance_regression/">2018 Cargo bench, benchmarking, performance regression testing</a></p>
+</li>
+<li>
+<p><a href="https://www.packtpub.com/application-development/rust-high-performance"></a></p>
+<pre><code>- [](https://github.com/PacktPublishing/Rust-High-Performance
+- http://dtrace.org/blogs/bmc/2018/09/28/the-relative-performance-of-c-and-rust/)
+- [](https://www.kentik.com/blog/under-the-hood-how-rust-helps-keep-kentik's-performance-on-high/)
+- [](https://deterministic.space/high-performance-rust.html)
+- [](http://athemathmo.github.io/2016/09/14/tools-for-profiling-rust.html)
+- [](https://users.rust-lang.org/t/profiling-in-rust-application/18195)
+- [](https://stackoverflow.com/questions/26282902/profiling-tools-for-rust)
+- [](https://www.reddit.com/r/rust/comments/d97ndr/causal_profiling_rust_code/)
+- [](https://rustwasm.github.io/book/reference/time-profiling.html)
+- [](https://www.reddit.com/r/rust/comments/6v7p9o/whats_a_good_rust_profiler_for_windows/)
+- [](https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/)
+- [](https://gendignoux.com/blog/2019/11/09/profiling-rust-docker-perf.html)
+- [](https://dev.to/martinmodrak/profiling-rust-code-on-windows-using-codexl)
+- [](https://rustwasm.github.io/docs/book/game-of-life/time-profiling.html)
+- [](https://rust-lang.github.io/rustc-guide/queries/profiling.html)
+- [](https://stackoverflow.com/questions/29901705/does-the-rust-compiler-have-a-profiling-option)
+- [](https://rust-lang.github.io/rustc-guide/profile-guided-optimization.html)
+- [](https://internals.rust-lang.org/t/improve-the-heap-and-cpu-profiling-story/5996)
+- [](https://github.com/tikv/pprof-rs)
+- [](https://lib.rs/development-tools/profiling)
+- [](https://gist.github.com/KodrAus/97c92c07a90b1fdd6853654357fd557a)
+- [](https://llogiq.github.io/2019/09/25/coz.html)
+- [](https://doc.rust-lang.org/rustc/profile-guided-optimization.html)
+- [](https://archive.fosdem.org/2019/schedule/event/rust_hawktracer/)
+- [](https://www.reddit.com/r/rust/comments/aqqr0z/what_are_best_resources_on_profiling_and/)
+</code></pre>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/rust/comments/cxr09i/high_performance_duration_measurement/"></a></p>
+</li>
+</ul>
+<hr />
+<h2><a class="header" href="#performance" id="performance">Performance</a></h2>
+<ul>
+<li><a href="http://cantrip.org/rust-vs-c++.html">2016 Rust vs. C++: Fine-grained Performance</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=11047144">Hacker News</a></li>
+<li><a href="https://lobste.rs/s/oxuwzf/rust_vs_c_fine_grained_performance">Lobste.rs</a></li>
+</ul>
+</li>
+<li><a href="http://robert.ocallahan.org/2017/04/rust-optimizations-that-c-cant-do.html">2017 Eyes Above The Waves: Rust Optimizations That C++ Can't Do</a></li>
+<li><a href="http://robert.ocallahan.org/2017/04/rust-optimizations-that-c-cant-do_5.html">2017 Eyes Above The Waves: Rust Optimizations That C++ Can't Do (Version 2)</a></li>
+<li><a href="http://www.codeofview.com/fix-rs/2017/01/24/how-to-optimize-rust-programs-on-linux/">2017 How-to Optimize Rust Programs on Linux</a></li>
+<li><a href="https://llogiq.github.io/2017/06/01/perf-pitfalls.html">2017 Rust Performance Pitfalls</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=14514591">Hacker News</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/6ep1ao/blog_rust_performance_pitfalls/">Reddit</a></li>
+</ul>
+</li>
+<li><a href="https://gist.github.com/jFransham/369a86eff00e5f280ed25121454acec1">2017 Rust Optimization.md · Achieving warp speed with Rust</a></li>
+<li><a href="https://www.reidatcheson.com/hpc/architecture/performance/rust/c++/2019/10/19/measure-cache.html">2019 Rust and C++ on Floating-point Intensive Code</a></li>
+<li><a href="https://lise-henry.github.io/articles/optimising_strings.html">Optimising string processing in Rust</a></li>
+</ul>
+<h3><a class="header" href="#simd" id="simd">SIMD</a></h3>
+<ul>
+<li><a href="https://medium.com/@Razican/learning-simd-with-rust-by-finding-planets-b85ccfb724c3">Learning SIMD with Rust by finding planets</a></li>
+</ul>
+<h3><a class="header" href="#executable-size" id="executable-size">Executable Size</a></h3>
+<ul>
+<li><a href="https://clap.rs/?p=66">clap.rs | New Years Weightloss</a></li>
+<li><a href="https://clap.rs/?p=70">clap.rs | Tuning Weightloss and Performance</a></li>
+<li><a href="https://github.com/uutils/coreutils/issues/747">Oversized executables</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#configuration-management" id="configuration-management">Configuration Management</a></h2>
+<ul>
+<li><a href="https://clux.github.io/probes/post/2018-12-15-config-management-in-rust/">Config management in rust</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#command-line-applications" id="command-line-applications">Command Line Applications</a></h2>
+<ul>
+<li><a href="https://rust-lang-nursery.github.io/cli-wg/index.html">Command Line Applications in Rust</a></li>
+<li><a href="https://mattgathu.github.io/2017/08/29/writing-cli-app-rust.html">2017 Writing a Command Line Tool in Rust</a></li>
+<li><a href="https://deterministic.space/rust-cli-tips.html">2017 5 Tips for Writing Small CLI Tools in Rust</a></li>
+<li><a href="https://mattgathu.github.io/2017/10/01/testing-rust-cli-apps.html">2017 Testing a Rust Command Line Tool</a></li>
+<li><a href="http://vitiral.github.io/2018/01/17/rust2018-and-the-great-cli-awakening.html">2018 Rust And The Great Cli Awakening</a></li>
+<li><a href="https://qiita.com/tigercosmos/items/678f39b1209e60843cc3">2018 Write a Good CLI Program</a></li>
+</ul>
+<h3><a class="header" href="#argument-parsing" id="argument-parsing">Argument Parsing</a></h3>
+<ul>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/std_misc/arg/matching.html">Rust by Example: Argument parsing</a></li>
+<li><a href="https://github.com/spacekookie/thunder">spacekookie/thunder</a>
+<ul>
+<li>Zero-boilerplate commandline argument parsing in Rust.</li>
+</ul>
+</li>
+<li><a href="https://clap.rs">clap.rs</a>
+<ul>
+<li>A full featured, fast Command Line Argument Parser for Rust.</li>
+<li><a href="https://github.com/clap-rs/clap">clap-rs/clap</a></li>
+<li><a href="https://siciarz.net/24-days-rust-clap/">24 days of Rust - clap</a></li>
+<li><a href="https://github.com/TeXitoi/structopt">TeXitoi/structopt</a></li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#text-user-interfaces" id="text-user-interfaces">Text User Interfaces</a></h3>
+<ul>
+<li><a href="https://github.com/gyscos/Cursive">gyscos/Cursive</a>
+<ul>
+<li>A Text User Interface library for the Rust programming language.</li>
+</ul>
+</li>
+<li><a href="https://github.com/fdehau/tui-rs">fdehau/tui-rs</a>
+<ul>
+<li>Build terminal user interfaces and dashboards using Rust.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#cli-applications-written-in-rust" id="cli-applications-written-in-rust">CLI Applications written in Rust</a></h3>
+<ul>
+<li><a href="https://the.exa.website/">Exa</a></li>
+<li><a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></li>
+<li><a href="https://github.com/BurntSushi/xsv">xsv</a></li>
+<li><a href="https://github.com/casey/just">just</a></li>
+<li><a href="https://github.com/cgag/loc">loc</a></li>
+<li><a href="https://github.com/Peltoche/lsd">lsd</a></li>
+<li><a href="https://github.com/dflemstr/rq">rq</a></li>
+<li><a href="https://github.com/dpc/text-minimap">text-minimap</a></li>
+<li><a href="https://github.com/frewsxcv/alert-after">alert-after</a></li>
+<li><a href="https://github.com/gchp/iota">iota</a></li>
+<li><a href="https://github.com/osa1/rhex">rhex</a></li>
+<li><a href="https://github.com/RazrFalcon/svgcleaner">svgcleaner</a></li>
+<li><a href="https://github.com/redox-os/ion">ion</a></li>
+<li><a href="https://github.com/sharkdp/fd">fd</a></li>
+<li><a href="https://github.com/uutils/coreutils">coreutils</a></li>
+<li><a href="https://github.com/vitiral/artifact">artifact</a></li>
+<li><a href="https://github.com/vmchale/tin-summer">tin-summer</a></li>
+<li><a href="https://github.com/XAMPPRocky/tokei">tokei</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#interop" id="interop">Interop</a></h2>
+<h3><a class="header" href="#porting-from-c-to-rust" id="porting-from-c-to-rust">Porting from C to Rust</a></h3>
+<ul>
+<li><a href="https://locka99.gitbooks.io/a-guide-to-porting-c-to-rust/content/">A Guide to Porting C and C++ code to Rust</a></li>
+<li><a href="https://github.com/carols10cents/rust-out-your-c-talk">2016 carols10cents/rust-out-your-c-talk</a></li>
+<li><a href="https://jamey.thesharps.us/2016/12/09/how-to-translate-large-c-project-to-rust/">2016 How to translate a large C project to Rust</a></li>
+<li><a href="http://people.gnome.org/%7Efederico/news-2016-10.html#28">2016 Porting a few C functions to Rust</a></li>
+</ul>
+<h3><a class="header" href="#c" id="c">C</a></h3>
+<ul>
+<li><a href="http://blog.rust-lang.org/2015/04/24/Rust-Once-Run-Everywhere.html">2015 Rust Once, Run Everywhere</a></li>
+<li><a href="http://hermanradtke.com/2016/03/17/unions-rust-ffi.html">2016 Working with C unions in Rust FFI</a></li>
+<li><a href="https://jvns.ca/blog/2017/12/21/bindgen-is-awesome/">2017 Bindgen: awesome Rust tool for generating C bindings</a></li>
+</ul>
+<h3><a class="header" href="#erlang" id="erlang">Erlang</a></h3>
+<ul>
+<li><a href="https://medium.com/@vonmo/erlang-safe-optimization-with-nif-on-rust-6000b0e9e4bf">2018 Erlang. Safe optimization with NIF on Rust</a></li>
+<li>Rustler
+<ul>
+<li><a href="https://github.com/rusterlium/rustler">rusterlium/rustler</a></li>
+<li><a href="https://hansihe.com/posts/rustler-safe-erlang-elixir-nifs-in-rust/">2017 Rustler - Safe Elixir and Erlang NIFs in Rust</a></li>
+<li><a href="https://news.ycombinator.com/item?id=13608874">Hacker News</a></li>
+<li><a href="https://blog.discordapp.com/using-rust-to-scale-elixir-for-11-million-concurrent-users-c6f19fc029d3">2019 Using Rust to Scale Elixir for 11 Million Concurrent Users</a></li>
+</ul>
+</li>
+<li>Erlang NIF Sys
+<ul>
+<li><a href="https://github.com/rusterlium/erlang_nif-sys">rusterlium/erlang_nif-sys</a></li>
+</ul>
+</li>
+<li>Erlang Rust NIF
+<ul>
+<li><a href="https://github.com/erszcz/erlang-rust-nif">erszcz/erlang-rust-nif</a></li>
+</ul>
+</li>
+<li>Bitwise Rust
+<ul>
+<li><a href="https://github.com/tatsuya6502/bitwise_rust">tatsuya6502/bitwise_rust</a></li>
+</ul>
+</li>
+<li><a href="https://gist.github.com/LeebDeveloper/38c9a2b7cf169333f9c8">Erlang NIF in pure Rust</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#algorithms" id="algorithms">Algorithms</a></h2>
+<ul>
+<li><a href="https://rust-unofficial.github.io/too-many-lists/">Learning Rust With Entirely Too Many Linked Lists</a>
+<ul>
+<li><a href="https://github.com/Gankro/too-many-lists">Github</a></li>
+<li><a href="https://news.ycombinator.com/item?id=15378206">Hacker News</a></li>
+<li><a href="https://lobste.rs/s/td0qze/learning_rust_with_entirely_too_many">Lobste.rs</a></li>
+</ul>
+</li>
+<li><a href="https://rcoh.me/posts/rust-linked-list-basically-impossible/">2018 Why Writing a Linked List in (safe) Rust is So Damned Hard </a></li>
+<li><a href="https://www.hackertouch.com/data-structures-and-algorithms.html">Rust Data Structures and Algorithms</a></li>
+<li><a href="https://github.com/brndnmtthws/cracking-the-coding-interview-rust">Cracking the Coding Interview with Rust</a></li>
+<li><a href="https://github.com/EbTech/rust-algorithms">Contest Algorithms in Rust - Github</a></li>
+<li><a href="https://ilyabiz.com/2018/12/rust-for-algorithms/">Rust for algorithms</a>
+<ul>
+<li><a href="https://github.com/IlyaBizyaev/rust-experiments">IlyaBizyaev/rust-experiments</a></li>
+</ul>
+</li>
+<li><a href="https://users.rust-lang.org/t/fast-euler-solutions-in-rust/13659">Fast Euler Solutions in Rust</a>
+<ul>
+<li><a href="https://github.com/dhbradshaw/ProjectEulerFastRust">dhbradshaw/ProjectEulerFastRust</a></li>
+</ul>
+</li>
+<li><a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust.html">The Computer Language Benchmarks Game - Rust versus C</a></li>
+<li><a href="https://cs.mcgill.ca/%7Evfoley1/literate/count-luck.html">Count Luck</a></li>
+<li><a href="https://kevinyap.ca/2017/04/breaking-the-enigma-code-with-rust/">Breaking the Enigma Code With Rust</a></li>
+<li><a href="http://cglab.ca/%7Eabeinges/blah/rust-lifetimes-and-collections/">Rust, Lifetimes, and Collections</a></li>
+<li><a href="http://cglab.ca/%7Eabeinges/blah/rust-generics-and-collections/">Rust, Generics, and Collections</a></li>
+<li><a href="http://cglab.ca/%7Eabeinges/blah/rust-btree-case/">Rust Collections Case Study: BTreeMap</a></li>
+<li><a href="http://cglab.ca/%7Eabeinges/blah/robinhood-part-1/">Building a HashMap in Rust - Part 1: What's a HashMap?</a></li>
+<li><a href="http://cglab.ca/%7Eabeinges/blah/everyone-poops/">Pre-Pooping Your Pants With Rust</a></li>
+<li><a href="https://github.com/weihanglo/rust-algorithm-club">Rust Algorithm Club</a></li>
+<li><a href="https://github.com/PacktPublishing/Hands-On-Data-Structures-and-Algorithms-with-Rust">Hands-On Data Structures and Algorithms with Rust Code</a></li>
+</ul>
+<h3><a class="header" href="#sorting" id="sorting">Sorting</a></h3>
+<ul>
+<li><a href="https://github.com/rust-lang/rust/pull/38192">Implement a faster sort algorithm</a></li>
+</ul>
+<h3><a class="header" href="#searching" id="searching">Searching</a></h3>
+<ul>
+<li><a href="https://gist.github.com/gnuvince/c07405ac141528db6cba97c865b83e40">Binary Search</a></li>
+</ul>
+<h3><a class="header" href="#hashing" id="hashing">Hashing</a></h3>
+<ul>
+<li><a href="http://accidentallyquadratic.tumblr.com/post/153545455987/rust-hash-iteration-reinsertion">Accidentally Quadratic — Rust hash iteration+reinsertion</a></li>
+<li><a href="https://samrat.me/posts/2017-11-04-kvstore-linear-hashing/">Implementing a key-value store, part 1: Linear Hashing</a></li>
+<li><a href="https://samrat.me/posts/2017-11-09-kvstore-rust-hashtable/">Implementing a key-value store, part 2: Linear Hashing implementation in Rust</a></li>
+<li><a href="https://samrat.me/posts/2017-11-13-external-sorting/">Disk-based algorithms: External merge-sort</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/6zv7v9/what_is_the_preferred_way_of_doing_hashmaps_and/">Reddit: What is the preferred way of doing HashMaps and HashSets keyed with non-copy values?</a></li>
+<li><a href="https://github.com/sfackler/rust-phf">sfackler/rust-phf</a>
+<ul>
+<li>Compile time static maps for Rust.</li>
+</ul>
+</li>
+<li><a href="https://github.com/servo/rust-fnv">servo/rust-fnv</a>
+<ul>
+<li>Fowler–Noll–Vo hash function.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#judy-arrays" id="judy-arrays">Judy Arrays</a></h3>
+<ul>
+<li><a href="https://github.com/adevore/rudy/">adevore/rudy: Judy array implementation in pure Rust</a></li>
+</ul>
+<h3><a class="header" href="#graphs" id="graphs">Graphs</a></h3>
+<h3><a class="header" href="#evaluation-graphs" id="evaluation-graphs">Evaluation Graphs</a></h3>
+<ul>
+<li><a href="https://github.com/nannou-org/gantz">nannou-org/gantz</a>
+<ul>
+<li>A crate for creating and evaluating executable directed graphs at runtime. In other words, gantz allows users to compose programs described by interconnected nodes on the fly.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#probabilistic-data-structures" id="probabilistic-data-structures">Probabilistic Data Structures</a></h3>
+<ul>
+<li><a href="https://github.com/crepererum/pdatastructs.rs/">crepererum/pdatastructs.rs</a>
+<ul>
+<li>Simple probabilistic data structures</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2><a class="header" href="#entity-component-systems" id="entity-component-systems">Entity Component Systems</a></h2>
+<h3><a class="header" href="#specs" id="specs">SPECS</a></h3>
+<hr />
+<h2><a class="header" href="#games" id="games">Games</a></h2>
+<hr />
+<h2><a class="header" href="#graphics" id="graphics">Graphics</a></h2>
+<hr />
+<h2><a class="header" href="#user-interfaces" id="user-interfaces">User Interfaces</a></h2>
+<hr />
+<h2><a class="header" href="#storage--data-bases" id="storage--data-bases">Storage &amp; Data Bases</a></h2>
+<h3><a class="header" href="#sled" id="sled">Sled</a></h3>
+<h3><a class="header" href="#tikvtidb" id="tikvtidb">TiKV/TiDB</a></h3>
+<hr />
+<h2><a class="header" href="#operating-systems" id="operating-systems">Operating Systems</a></h2>
+<hr />
+<h2><a class="header" href="#cloud" id="cloud">Cloud</a></h2>
+<h3><a class="header" href="#aws" id="aws">AWS</a></h3>
+<ul>
+<li>AWS SDK for Rust 
+<ul>
+<li><a href="https://github.com/rusoto/rusoto">rusoto/rusoto</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/figp3a/s3algo_highlevel_highperformance_algorithms_for/">s3-algo: High-level, high-performance algorithms for S3 batch operations, built on top of Rusoto</a></li>
+</ul>
+</li>
+<li>A Rust runtime for AWS Lambda 
+<ul>
+<li><a href="https://github.com/awslabs/aws-lambda-rust-runtime">awslabs/aws-lambda-rust-runtime</a></li>
+<li><a href="https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/">Rust Runtime for AWS Lambda</a></li>
+<li><a href="http://julienblanchard.com/2015/rust-on-aws-lambda/">Rust on AWS Lambda</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2><a class="header" href="#webassembly" id="webassembly">WebAssembly</a></h2>
+<pre><code>  - [](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/introduction.html)
+  - [](http://fitzgeraldnick.com/2018/12/14/rust-and-webassembly-in-2019.html)
+  - [](https://00f.net/2018/11/25/webassembly-doesnt-make-unsafe-languages-safe/)
+  - [](https://rustwasm.github.io/book/)
+  - [](https://www.fastly.com/blog/announcing-lucet-fastly-native-webassembly-compiler-runtime)
+  - [](https://hacks.mozilla.org/2018/01/oxidizing-source-maps-with-rust-and-webassembly/)
+  - [](https://mgattozzi.com/rust-wasm)
+  - [](https://rustwasm.github.io/book/game-of-life/introduction.html)
+  - [](https://hacks.mozilla.org/2019/03/fast-bump-allocated-virtual-doms-with-rust-and-wasm/)
+  - [](https://newrustacean.com/show_notes/cysk/wasm/index.html)
+  - [](https://fosdem.org/2018/schedule/event/rust_embedding_wasm/)
+  - [](https://lukaslueg.github.io/macro_railroad_wasm_demo/)
+  - [](https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html)
+  - [](https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html)
+  - [](https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html)
+  - [](https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html)
+</code></pre>
+<hr />
+<h2><a class="header" href="#embedded" id="embedded">Embedded</a></h2>
+<ul>
+<li><a href="https://k155la3.blog/2020/03/21/learning-embedded-rust-by-building-riscv-powered-robot-part-1/">Learning embedded Rust by building RISC-V-powered robot - Part 1</a></li>
+<li><a href="https://k155la3.blog/2020/03/28/learning-embedded-rust-by-building-riscv-powered-robot-part-2/">Learning embedded Rust by building RISC-V-powered robot - Part 2</a></li>
+<li><a href="https://k155la3.blog/2020/04/04/learning-embedded-rust-by-building-riscv-powered-robot-part-3/">Learning embedded Rust by building RISC-V-powered robot - Part 3</a> </li>
+<li><a href="https://k155la3.blog/2020/04/19/learning-embedded-rust-by-building-riscv-powered-robot-part-4/">Learning embedded Rust by building RISC-V-powered robot - Part 4</a></li>
+<li><a href="https://rust-embedded.github.io/book/intro/index.html">The Embedded Rust Book</a></li>
+<li><a href="https://blog.usejournal.com/visual-embedded-rust-programming-with-visual-studio-code-1bc1262e398c?gi=fd20bfd9c658">Visual Embedded Rust Programming with Visual Studio Code</a></li>
+<li><a href="https://medium.com/@ly.lee/advanced-topics-for-visual-embedded-rust-programming-ebf1627fe397">Advanced Topics for Visual Embedded Rust Programming</a></li>
+<li>https://www.reddit.com/r/rust/comments/fejass/embedded_rust_structure_initialization_with_option/</li>
+</ul>
+<hr />
+<h2><a class="header" href="#parsing" id="parsing">Parsing</a></h2>
+<h3><a class="header" href="#larlpop" id="larlpop">LARLPop</a></h3>
+<ul>
+<li><a href="https://lalrpop.github.io/lalrpop/">lalrpop</a>
+<ul>
+<li><a href="https://github.com/lalrpop/lalrpop">lalrpop/lalrpop</a></li>
+<li><a href="https://dfockler.github.io/2016/09/15/lalrpop.html">Let's Build a REPL/Parser with Rust &amp; LALRPOP</a></li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#nom" id="nom">Nom</a></h3>
+<ul>
+<li><a href="https://github.com/Geal/nom">Geal/nom</a></li>
+</ul>
+<h3><a class="header" href="#menhir" id="menhir">Menhir</a></h3>
+<ul>
+<li><a href="http://gallium.inria.fr/%7Efpottier/menhir/">What is Menhir?</a></li>
+<li><a href="http://gallium.inria.fr/blog/parser-construction-menhir-appetizers/">Parser Construction With Menhir: A Couple Appetizers</a></li>
+</ul>
+<h3><a class="header" href="#pratt-parsers" id="pratt-parsers">Pratt Parsers</a></h3>
+<ul>
+<li><a href="https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html">Simple but Powerful Pratt Parsing</a></li>
+<li><a href="https://matklad.github.io/2020/04/15/from-pratt-to-dijkstra.html">From Pratt to Dijkstra</a></li>
+</ul>
+<hr />
+<h2><a class="header" href="#compiler-internals" id="compiler-internals">Compiler Internals</a></h2>
+<ul>
+<li><a href="https://internals.rust-lang.org/">IRLO</a></li>
+<li><a href="https://rustc-dev-guide.rust-lang.org/index.html">Guide to Rustc Development</a>
+<ul>
+<li><a href="https://internals.rust-lang.org/t/so-you-want-to-hack-on-the-rust-compiler-a-plan-for-a-book/6497">IRLO</a></li>
+</ul>
+</li>
+<li><a href="https://doc.rust-lang.org/error-index.html">Rust Compiler Error Index</a></li>
+<li><a href="https://github.com/rust-lang/rfcs">RFCs</a></li>
+<li><a href="https://rust-lang.github.io/compiler-team/">Compiler Team</a>
+<ul>
+<li><a href="https://github.com/rust-lang/compiler-team">rust-lang/compiler-team</a></li>
+</ul>
+</li>
+<li><a href="http://patshaughnessy.net/2018/3/15/how-rust-implements-tagged-unions">2018 How Rust Implements Tagged Unions</a></li>
+<li><a href="https://kazlauskas.me/entries/the-road-to-bestest-optimiser.html">2019 The steps towards rustc, the great optimiser</a></li>
+<li></li>
+</ul>
+<h3><a class="header" href="#rust-compilation-speed" id="rust-compilation-speed">Rust Compilation Speed</a></h3>
+<ul>
+<li><a href="https://perf.rust-lang.org/">perf.rust-lang.org</a></li>
+<li><a href="https://vfoley.xyz/rust-compile-speed-tips/">How to alleviate the pain of Rust compile times</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2016/10/14/how-to-speed-up-the-rust-compiler/">How to speed up the Rust compiler</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2016/11/23/how-to-speed-up-the-rust-compiler-some-more/">How to speed up the Rust compiler some more</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2018/04/30/how-to-speed-up-the-rust-compiler-in-2018/">How to speed up the Rust compiler in 2018</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2018/06/05/how-to-speed-up-the-rust-compiler-some-more-in-2018/">How to speed up the Rust compiler some more in 2018</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2018/11/06/how-to-speed-up-the-rust-compiler-in-2018-nll-edition/">How to speed up the Rust compiler in 2018: NLL edition</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2018/05/17/the-rust-compiler-is-getting-faster/">The Rust compiler is getting faster</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2019/07/25/the-rust-compiler-is-still-getting-faster/">The Rust compiler is still getting faster</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2019/07/17/how-to-speed-up-the-rust-compiler-in-2019/">How to speed up the Rust compiler in 2019</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2019/10/11/how-to-speed-up-the-rust-compiler-some-more-in-2019/">How to speed up the Rust compiler some more in 2019</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2019/12/11/how-to-speed-up-the-rust-compiler-one-last-time-in-2019/">How to speed up the Rust compiler one last time in 2019</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2020/04/24/how-to-speed-up-the-rust-compiler-in-2020/">How to speed up the Rust compiler in 2020</a></li>
+<li><a href="https://blog.mozilla.org/nnethercote/2020/08/05/how-to-speed-up-the-rust-compiler-some-more-in-2020/">How to speed up the Rust compiler some more in 2020</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../comp.sci.eng/rust/rust_resources_books.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../comp.sci.eng/rust/rust_stdlib.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../comp.sci.eng/rust/rust_resources_books.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../comp.sci.eng/rust/rust_stdlib.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
