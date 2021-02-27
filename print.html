@@ -8318,8 +8318,6 @@ https://github.com/tokio-rs/tracing/tree/master/examples
 </li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#una-arquitectura-nueva-dunbar2016">Una arquitectura nueva (dunbar2016)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#estado-actual-de-llbuild-dunbar2016">Estado actual de <code>llbuild</code> (dunbar2016)</a></li>
-</ul>
-</li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#en-rustc-1">En <code>rustc</code></a>
 <ul>
 <li><a href="comp.sci.eng/rust/tesina_es.html#why-incremental-compilation-in-the-first-place-woe16">Why Incremental Compilation in the First Place? (Woe16)</a></li>
@@ -8346,26 +8344,22 @@ https://github.com/tokio-rs/tracing/tree/master/examples
 <li><a href="comp.sci.eng/rust/tesina_es.html#a-basic-algorithm-for-incremental-query-evaluation-rdg">A Basic Algorithm For Incremental Query Evaluation (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#the-problem-with-the-basic-algorithm-false-positives-rdg">The Problem With The Basic Algorithm: False Positives (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#improving-accuracy-the-red-green-algorithm-rdg">Improving Accuracy: The red-green Algorithm (RDG)</a></li>
-<li><a href="comp.sci.eng/rust/tesina_es.html#the-real-world-how-persistence-makes-everything-complicated-rdg">The Real World: How Persistence Makes Everything Complicated (RDG)</a>
-<ul>
+<li><a href="comp.sci.eng/rust/tesina_es.html#the-real-world-how-persistence-makes-everything-complicated-rdg">The Real World: How Persistence Makes Everything Complicated (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#a-question-of-stability-bridging-the-gap-between-compilation-sessions-rdg">A Question Of Stability: Bridging The Gap Between Compilation Sessions (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#checking-query-results-for-changes-hashstable-and-fingerprints-rdg">Checking Query Results For Changes: HashStable And Fingerprints (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#a-tale-of-two-depgraphs-the-old-and-the-new-rdg">A Tale Of Two DepGraphs: The Old And The New (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#didnt-you-forget-something-cache-promotion-rdg">Didn't You Forget Something?: Cache Promotion (RDG)</a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#incremental-compilation-and-the-compiler-backend-rdg">Incremental Compilation and the Compiler Backend (RDG)</a>
 <ul>
 <li><a href="comp.sci.eng/rust/tesina_es.html#query-modifiers-rdg">Query Modifiers (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#the-projection-query-pattern-rdg">The Projection Query Pattern (RDG)</a></li>
-</ul>
-</li>
-<li><a href="comp.sci.eng/rust/tesina_es.html#shortcomings-of-the-current-system-rdg">Shortcomings of the Current System (RDG)</a>
-<ul>
+<li><a href="comp.sci.eng/rust/tesina_es.html#shortcomings-of-the-current-system-rdg">Shortcomings of the Current System (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#incrementality-of-on-disk-data-structures-rdg">Incrementality of on-disk data structures (RDG)</a></li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#unnecessary-data-dependencies-rdg">Unnecessary data dependencies (RDG)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="comp.sci.eng/rust/tesina_es.html#en-rust-analyzer">En <code>rust analyzer</code></a>
@@ -8809,8 +8803,8 @@ Pasar a &quot;la nueva arquitectura&quot; sigue siendo dificil, principalmente p
 Es dificil deshacer 40 años de precedente de un dia para el otro.
 Desde su publicacion, la implementacion de ninja basada en llbuild tiene mejor performance en la mayoria de las situaciones de mundo real (e.g. build de clang/llvm en variedad de hardware distinto).
 <code>\cite{dunbar2016}</code></p>
-<h2><a class="header" href="#en-rustc-1" id="en-rustc-1">En <code>rustc</code></a></h2>
-<h3><a class="header" href="#why-incremental-compilation-in-the-first-place-woe16" id="why-incremental-compilation-in-the-first-place-woe16">Why Incremental Compilation in the First Place? (Woe16)</a></h3>
+<h3><a class="header" href="#en-rustc-1" id="en-rustc-1">En <code>rustc</code></a></h3>
+<h4><a class="header" href="#why-incremental-compilation-in-the-first-place-woe16" id="why-incremental-compilation-in-the-first-place-woe16">Why Incremental Compilation in the First Place? (Woe16)</a></h4>
 <p>Gran parte del tiempo de un programador se pasa en el ciclo de trabajo editar-compilar-debuguear:</p>
 <ul>
 <li>se realiza un pequeño cambio (frecuentemente en un unico modulo o funcion),</li>
@@ -8824,12 +8818,12 @@ Se busca que el tiempo que se pasa detenido mientras se espera que el compilador
 Muchos, si no la mayoria, de los cambios entre sesiones de compilacion solo tienen un impacto local en el codigo maquina del binario producido, mientras que la mayor parte del programa, al igual que a nivel codigo, termina igual, bit a bit.
 La compilacion incremental apunta a retener la mayor parte posible de estas partes sin cambios a la vez que se rehace solo la cantidad de trabajo que debe hacerse.
 <code>\cite{rust_blog_incremental_compilation}</code></p>
-<h3><a class="header" href="#how-do-you-make-something-incremental-woe16" id="how-do-you-make-something-incremental-woe16">How Do You Make Something &quot;Incremental&quot;? (Woe16)</a></h3>
+<h4><a class="header" href="#how-do-you-make-something-incremental-woe16" id="how-do-you-make-something-incremental-woe16">How Do You Make Something &quot;Incremental&quot;? (Woe16)</a></h4>
 <p>Ya se detallo que computar algo incrementalmente significa actualizar solo aquellas partes de la salida de la computacion que necesita ser adaptada en respuesta a los cambios dados en las entradas de la computacion.
 Una estrategia basica que podemos emplear para lograr esto es ver una computacion grande (tal como compilar un programa completo) como una composicion de muchas computaciones pequeñas interrelacionadas que construyen una sobre otra.
 Cada una de estas computaciones mas pequeñas producira un resultado intermedio que puede ser cacheado y reutilizado en una iteracion subsiguiente, evitando la necesidad de re-computar ese resultado intermedio en particular.
 <code>\cite{rust_blog_incremental_compilation}</code></p>
-<h3><a class="header" href="#an-incremental-compiler-woe16" id="an-incremental-compiler-woe16">An Incremental Compiler (Woe16)</a></h3>
+<h4><a class="header" href="#an-incremental-compiler-woe16" id="an-incremental-compiler-woe16">An Incremental Compiler (Woe16)</a></h4>
 <p>La forma en que se eligio implementar la incrementalidad en el compilador de Rust es directa: una sesion de compilacion incremental sigue exactamente los mismos pasos que una sesion de compilacion batch.
 Sin embargo, cuando el flujo de control llegue a un punto en el cual esta a punto de computar un resulto intermedio no trivial, intentara cargar ese resultado del cache de compilacion incremental en disco en su lugar.
 Si existe una entrada valida en el cache, el copmilador puede saltear la computacion de ese dato en particular.
@@ -8843,7 +8837,7 @@ En la ultima fase todos los archivo objeto son linkeados juntos en el binario fi
 Hasta ahora las cosas parecen bastante simples: en lugar de computar algo por segunda vez, sencillamente cargar el valor desde el cache.
 Las cosas se complican cuando es necesario saber si es efectivamente valido usar un valor del cache o si hay que recomputarlo porque alguna entrada ha cambiado.
 <code>\cite{rust_blog_incremental_compilation}</code></p>
-<h3><a class="header" href="#seguimiento-de-dependencias-olle20" id="seguimiento-de-dependencias-olle20">Seguimiento de Dependencias (Olle20)</a></h3>
+<h4><a class="header" href="#seguimiento-de-dependencias-olle20" id="seguimiento-de-dependencias-olle20">Seguimiento de Dependencias (Olle20)</a></h4>
 <p>El seguimiento, o \textit{tracking}, de dependencias, es provista por librerias tales como llbuild, Shake, Rock, o Salsa.
 Estas librerias proveen parte de la funcionalidad necesaria para crear compiladores basados en queries.</p>
 <p>Rock es una libreria experimental fuertemente inspirada por Shake y el paper \textit{Build systems à la carte} \cite{mokhov2018build}.
@@ -8858,21 +8852,21 @@ El sistema de build tiene control sobre que codigo corre al momento de ejecutar 
 Un problema que surge inmediatamente es que no hay ningun tipo satisfactorio para \texttt{Value}.
 E.g. puede haber una query para obtener el modulo donde esta definido un tipo, y otra para obtener la representacion del tipo dado el nombre calificado de un tipo.
 <code>\cite{olle_query_based}</code></p>
-<h3><a class="header" href="#verifying-dependencies-and-reusing-state-olle20" id="verifying-dependencies-and-reusing-state-olle20">Verifying dependencies and reusing state (Olle20)</a></h3>
+<h4><a class="header" href="#verifying-dependencies-and-reusing-state-olle20" id="verifying-dependencies-and-reusing-state-olle20">Verifying dependencies and reusing state (Olle20)</a></h4>
 <p>Una funcionalidad que se puede incorporar a las funciones regla son las actualizaciones incrementales.
 Cuando se utiliza, el sistema de build mantiene un registro en una tabla de cuales dependencias uso una tarea al ejecutarse, i.e. cuales claves busco y cuales fueron sus valores asociados.
 Usando esta informacion es posible determinar cuando es seguro reutilizar el cache de una corrida previa del compilador aunque haya habido cambios en otras partes del grafo de dependencias.
 Este seguimiento de grano fino de las dependencias tambien permite reutilizar el cache cuando la dependencia de una tarea cambia de tal manera que el cambio no tiene efecto.
 E.g. cambios en el espaciado pueden disparar un reparseo, pero dado que el AST permanece igual, los valores del AST cacheados pueden ser reutilizados en queries que dependan de ese resultado de parseo.
 <code>\cite{olle_query_based}</code></p>
-<h3><a class="header" href="#reverse-dependency-tracking-olle20" id="reverse-dependency-tracking-olle20">Reverse dependency tracking (Olle20)</a></h3>
+<h4><a class="header" href="#reverse-dependency-tracking-olle20" id="reverse-dependency-tracking-olle20">Reverse dependency tracking (Olle20)</a></h4>
 <p>Verificar las dependencias puede ser demasiado lento para herramientas que deben proveer informacion en tiempo real como servidores de lenguaje, dado que puede ser necesario recorrer partes grandes del grafo de dependencias solo para verificar que no cambio nada aun para pequeños cambios.
 E.g. si se realizan cambios en un archivo fuente con una gran cantidad de imports, se debe caminar los grafos de dependencias de todos los imports para actualizar el estado del editor para ese unico archivo.
 Para evitar esto, se puede registrar las dependencias inversas entre queries.
 E.g. cuando un servidor de lenguaje detecta que un unico archivo ha cambiado, el grafo de dependencia inverso se usa para invalidar el cache unicamente para las queries que dependen de ese archivo, recorriendo las dependencias inversas comenzando desde el archivo modificado.
 Dado que los modulos importados no dependen de ese archivo, no deben ser verificados nuevamente, resultando en una respuesta mucho mas pronta del servidor de lenguaje.
 <code>\cite{olle_query_based}</code></p>
-<h3><a class="header" href="#rustc-dependency-graphs-woe16" id="rustc-dependency-graphs-woe16">Rustc Dependency graphs (Woe16)</a></h3>
+<h4><a class="header" href="#rustc-dependency-graphs-woe16" id="rustc-dependency-graphs-woe16">Rustc Dependency graphs (Woe16)</a></h4>
 <p>Existe un modelo formal que puede usarse para modelar los resultados intermedios de una computacion y su propiedad de estar actualizad de una manera directa: los grafos de dependencias.
 Cada entrada y cada resultado intermedio son representados como un nodo en un grafo dirigido.
 Los arcos en el grafo representan cual resultado intermedio o entrada puede tener influencia en otro resultado intermedio.
@@ -8881,7 +8875,7 @@ Lo que convierte a esta estructura de datos en realmente util es que permite rea
 Para resolver esta consulta se examina un nodo Y y se colectan las entradas de las cuales Y depende transitivamente, siguiendo los arcos salientes de Y.
 Si alguna de esas entradas cambio, el valor cacheado para Y esta desactualizado y debe ser recomputado.
 \cite{rust_blog_incremental_compilation}</p>
-<h3><a class="header" href="#dependency-tracking-in-the-compiler-woe16" id="dependency-tracking-in-the-compiler-woe16">Dependency Tracking in the Compiler (Woe16)</a></h3>
+<h4><a class="header" href="#dependency-tracking-in-the-compiler-woe16" id="dependency-tracking-in-the-compiler-woe16">Dependency Tracking in the Compiler (Woe16)</a></h4>
 <p>Al compilar en modo incremental, siempre se construye el grafo de dependencia de los datos producidos: cada vez que se escribe un dato (como un archivo objeto), se registra cuales otros datoa se acceden en el proceso.
 Se hace enfasis en el registro. En todo momento el compilador mantiene el registro de sobre cual dato esta trabajando (esto lo hace en background en memoria local al thread).
 Este es el nodo actualmente activo del grafo de dependencias.
@@ -8913,7 +8907,7 @@ Esto asegura que el grafo efectivo y el grafo de referencia se construyen por di
 Cambiar un unico caracter del codigo fuente podria invalidar completamente el cache de compilacion incremental.
 Sin embargo, este tipo de cambio es un caso raro y la mayor parte del tiempo solo una pequeña porcion del programa debe ser recompilado.
 <code>\cite{rust_blog_incremental_compilation}</code></p>
-<h3><a class="header" href="#the-current-status-of-the-implementation-woe16" id="the-current-status-of-the-implementation-woe16">The Current Status of the Implementation (Woe16)</a></h3>
+<h4><a class="header" href="#the-current-status-of-the-implementation-woe16" id="the-current-status-of-the-implementation-woe16">The Current Status of the Implementation (Woe16)</a></h4>
 <p>El estado actual de rustc a fines de 2019.
 Para la primera implementacion de compilacion incremental, implementada a principios de 2019, el equipo de rustc de focalizo en cachear archivos objeto.
 Consequentemente, si esta fase se puede saltear aunque sea para parte de un codigo, se puede lograr el mayor impacto en tiempos de compilacion.
@@ -8924,29 +8918,29 @@ Por ejemplo, el grafo de dependencias solo tiene un unico nodo para todos los me
 En consecuencia, el compilador considerara que cambiaron todos los metodos de ese \texttt{impl} aunque solo haya cambiado uno solo.
 Esto por supuesto significa que mas codigo sera recompilado de lo que seria estrictamente necesario.
 <code>\cite{rust_blog_incremental_compilation}</code></p>
-<h3><a class="header" href="#incremental-compilation-rdg" id="incremental-compilation-rdg">Incremental compilation (RDG)</a></h3>
+<h4><a class="header" href="#incremental-compilation-rdg" id="incremental-compilation-rdg">Incremental compilation (RDG)</a></h4>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-basic-algorithm-rdg" id="the-basic-algorithm-rdg">The basic algorithm (RDG)</a></h4>
+<h5><a class="header" href="#the-basic-algorithm-rdg" id="the-basic-algorithm-rdg">The basic algorithm (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-try-mark-green-algorithm-rdg" id="the-try-mark-green-algorithm-rdg">The try-mark-green algorithm (RDG)</a></h4>
+<h5><a class="header" href="#the-try-mark-green-algorithm-rdg" id="the-try-mark-green-algorithm-rdg">The try-mark-green algorithm (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-query-dag-rdg" id="the-query-dag-rdg">The query DAG (RDG)</a></h4>
+<h5><a class="header" href="#the-query-dag-rdg" id="the-query-dag-rdg">The query DAG (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#improvements-to-the-basic-algorithm-rdg" id="improvements-to-the-basic-algorithm-rdg">Improvements to the basic algorithm (RDG)</a></h4>
+<h5><a class="header" href="#improvements-to-the-basic-algorithm-rdg" id="improvements-to-the-basic-algorithm-rdg">Improvements to the basic algorithm (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#resources-rdg" id="resources-rdg">Resources (RDG)</a></h4>
+<h5><a class="header" href="#resources-rdg" id="resources-rdg">Resources (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#footnotes-rdg" id="footnotes-rdg">Footnotes (RDG)</a></h4>
+<h5><a class="header" href="#footnotes-rdg" id="footnotes-rdg">Footnotes (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h3><a class="header" href="#incremental-compilation-in-detail-rdg-1" id="incremental-compilation-in-detail-rdg-1">Incremental Compilation In Detail (RDG)</a></h3>
+<h4><a class="header" href="#incremental-compilation-in-detail-rdg-1" id="incremental-compilation-in-detail-rdg-1">Incremental Compilation In Detail (RDG)</a></h4>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#a-basic-algorithm-for-incremental-query-evaluation-rdg" id="a-basic-algorithm-for-incremental-query-evaluation-rdg">A Basic Algorithm For Incremental Query Evaluation (RDG)</a></h4>
+<h5><a class="header" href="#a-basic-algorithm-for-incremental-query-evaluation-rdg" id="a-basic-algorithm-for-incremental-query-evaluation-rdg">A Basic Algorithm For Incremental Query Evaluation (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-problem-with-the-basic-algorithm-false-positives-rdg" id="the-problem-with-the-basic-algorithm-false-positives-rdg">The Problem With The Basic Algorithm: False Positives (RDG)</a></h4>
+<h5><a class="header" href="#the-problem-with-the-basic-algorithm-false-positives-rdg" id="the-problem-with-the-basic-algorithm-false-positives-rdg">The Problem With The Basic Algorithm: False Positives (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#improving-accuracy-the-red-green-algorithm-rdg" id="improving-accuracy-the-red-green-algorithm-rdg">Improving Accuracy: The red-green Algorithm (RDG)</a></h4>
+<h5><a class="header" href="#improving-accuracy-the-red-green-algorithm-rdg" id="improving-accuracy-the-red-green-algorithm-rdg">Improving Accuracy: The red-green Algorithm (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-real-world-how-persistence-makes-everything-complicated-rdg" id="the-real-world-how-persistence-makes-everything-complicated-rdg">The Real World: How Persistence Makes Everything Complicated (RDG)</a></h4>
+<h5><a class="header" href="#the-real-world-how-persistence-makes-everything-complicated-rdg" id="the-real-world-how-persistence-makes-everything-complicated-rdg">The Real World: How Persistence Makes Everything Complicated (RDG)</a></h5>
 <p><strong>TODO</strong></p>
 <h5><a class="header" href="#a-question-of-stability-bridging-the-gap-between-compilation-sessions-rdg" id="a-question-of-stability-bridging-the-gap-between-compilation-sessions-rdg">A Question Of Stability: Bridging The Gap Between Compilation Sessions (RDG)</a></h5>
 <p><strong>TODO</strong></p>
@@ -8956,17 +8950,17 @@ Esto por supuesto significa que mas codigo sera recompilado de lo que seria estr
 <p><strong>TODO</strong></p>
 <h5><a class="header" href="#didnt-you-forget-something-cache-promotion-rdg" id="didnt-you-forget-something-cache-promotion-rdg">Didn't You Forget Something?: Cache Promotion (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h3><a class="header" href="#incremental-compilation-and-the-compiler-backend-rdg" id="incremental-compilation-and-the-compiler-backend-rdg">Incremental Compilation and the Compiler Backend (RDG)</a></h3>
+<h4><a class="header" href="#incremental-compilation-and-the-compiler-backend-rdg" id="incremental-compilation-and-the-compiler-backend-rdg">Incremental Compilation and the Compiler Backend (RDG)</a></h4>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#query-modifiers-rdg" id="query-modifiers-rdg">Query Modifiers (RDG)</a></h4>
+<h5><a class="header" href="#query-modifiers-rdg" id="query-modifiers-rdg">Query Modifiers (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#the-projection-query-pattern-rdg" id="the-projection-query-pattern-rdg">The Projection Query Pattern (RDG)</a></h4>
+<h5><a class="header" href="#the-projection-query-pattern-rdg" id="the-projection-query-pattern-rdg">The Projection Query Pattern (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h3><a class="header" href="#shortcomings-of-the-current-system-rdg" id="shortcomings-of-the-current-system-rdg">Shortcomings of the Current System (RDG)</a></h3>
+<h5><a class="header" href="#shortcomings-of-the-current-system-rdg" id="shortcomings-of-the-current-system-rdg">Shortcomings of the Current System (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#incrementality-of-on-disk-data-structures-rdg" id="incrementality-of-on-disk-data-structures-rdg">Incrementality of on-disk data structures (RDG)</a></h4>
+<h5><a class="header" href="#incrementality-of-on-disk-data-structures-rdg" id="incrementality-of-on-disk-data-structures-rdg">Incrementality of on-disk data structures (RDG)</a></h5>
 <p><strong>TODO</strong></p>
-<h4><a class="header" href="#unnecessary-data-dependencies-rdg" id="unnecessary-data-dependencies-rdg">Unnecessary data dependencies (RDG)</a></h4>
+<h5><a class="header" href="#unnecessary-data-dependencies-rdg" id="unnecessary-data-dependencies-rdg">Unnecessary data dependencies (RDG)</a></h5>
 <p><strong>TODO</strong></p>
 <h3><a class="header" href="#en-rust-analyzer-1" id="en-rust-analyzer-1">En <code>rust analyzer</code></a></h3>
 <!--
