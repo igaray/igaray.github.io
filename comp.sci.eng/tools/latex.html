@@ -1,0 +1,2292 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Latex - PKB</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/index.html">Algorithms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/introductory_material.html">Introductory Material</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/mathematics_for_algorithmics.html">Mathematics for Algorithmics</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/index.html">Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/benoit/index.html">Benoit</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/bovet/index.html">Bovet</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/index.html">Brassard</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch01_preliminaries.html">Preliminaries</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch02_elementary_algorithmics.html">Elementary Algorithmics</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch03_asymptotic_notation.html">Asymptotic Notation</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch04_analysis_of_algorithms.html">Analysis of Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch05_some_data_structures.html">Some Data Structures</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch06_greedy_algorithms.html">Greedy Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch07_divide_and_conquer.html">Divide and Conquer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch08_dynamic_programming.html">Dynamic Programming</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch09_exploring_graphs.html">Exploring Graphs</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch10_probabilistic_algorithms.html">Probabilistic Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch11_parallel_algorithms.html">Parallel Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch12_computational_complexity.html">Computational Complexity</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/brassard/ch13_heuristic_approximate_algorithms.html">Heuristic and Approximate Algorithms</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/index.html">Cormen</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch01_the_role_of_algorithms.html">The Role of Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch02_getting_started.html">Getting Started</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch03_growth_of_functions.html">Growth of Functions</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch04_recurrences.html">Recurrences</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch05_probabilistic_analysis_and_randomized_algorithms.html">Probabilistic Analysis and Randomized Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch06_heapsort.html">Heapsort</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch07_quicksort.html">Quicksort</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch08_sorting_in_linear_time.html">Sorting in Linear Time</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch09_medians_and_order_statistics.html">Medians and Order Statistics</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch10_elementary_data_structures.html">Elementary Data Structures</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch11_hash_tables.html">Hash Tables</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch12_binary_search_trees.html">Binary Search Trees</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch13_red_black_trees.html">Red-Black Trees</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch14_augmenting_data_structures.html">Augmenting Data Structures</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch15_dynamic_programming.html">Dynamic Programming</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch16_greedy_algorithms.html">Greedy Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch17_amortized_analysis.html">Amortized Analysis</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch18_b_trees.html">B-Trees</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch19_binomial_heaps.html">Binomial Heaps</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch20_fibonacci_heaps.html">Fibonacci Heaps</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch21_data_structures_for_disjoint_sets.html">Data Structures for Disjoint Sets</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch22_elementary_graph_algorithms.html">Elementary Graph Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch23_minimum_spanning_trees.html">Minimum Spanning Trees</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch24_single_source_shortes_paths.html">Single-Source Shortest Paths</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch25_all_pairs_shortest_paths.html">All-Pairs Shortest Paths</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch26_maximum_flow.html">Maximum Flow</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch27_sorting_algorithms.html">Sorting Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch28_matrix_operations.html">Matrix Operations</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch29_linear_programming.html">Linear Programming</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch30_polynomials_and_the_fft.html">Polynomials and the FFT</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch31_number_theoretic_algorithms.html">Number-Theoretic Algorithms</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch32_string_matching.html">String Matching</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch33_computational_complexity.html">Computational Complexity</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch34_np_completeness.html">NP-Completeness</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/cormen/ch35_approximate_algorithms.html">Approximate Algorithms</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/goodrich/index.html">Goodrich</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/harel/index.html">Harel</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/harel/ch06_the_efficiency_of_algorithms.html">The Efficiency of Algorithms</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/roughgarden/index.html">Roughgarden</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/sedgewick_a/index.html">Sedgewick A</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/sedgewick_aic/index.html">Sedgewick AiC</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/sedgewick_aoa/index.html">Sedgewick AoA</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/sedgewick_ac/index.html">Sedgewick AC</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/skiena/index.html">Skiena</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/sipser/index.html">Sipser</a></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/books/tardos/index.html">Tardos</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/courses/index.html">Courses</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/algorithms/courses/uns_ayc_2021/index.html">UNS Algoritmos y Complejidad 2021</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/compilers/compilers_resources_books.html">Resources: Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping a simple compiler from nothing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/llvm.html">Resources: LLVM</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/tesina_es.html">Tesina</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_learning.html">Resources: Learning</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_links.html">Resources: Links</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_tracing.html">Tracing</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/git.html">Git</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/tools/latex.html" class="active">Latex</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/vim.html">Vim</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/zsh.html">Zsh</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages &amp; Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere &amp; Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="latex"><a class="header" href="#latex">Latex</a></h1>
+<ul>
+<li><a href="#links">Links</a></li>
+<li><a href="#latex-for-authors">LaTeX for authors</a></li>
+<li><a href="#the-not-so-short-introduction-to-latex-2e">The Not-so-short introduction to Latex 2e</a></li>
+<li><a href="#latex-a-document-preparation-system-2nd-ed">Latex. A document preparation system (2nd Ed)</a></li>
+<li><a href="#latex-in-24-hours">LaTeX in 24 Hours</a></li>
+<li><a href="#latex-wikibook">Latex Wikibook</a></li>
+<li><a href="#math-into-latex">Math into Latex</a></li>
+<li><a href="#more-math-into-latex">More Math into LaTeX</a></li>
+<li><a href="#practical-latex">Practical LaTeX</a></li>
+<li><a href="#the-latex-graphics-companion">The Latex graphics companion</a></li>
+<li><a href="#using-imported-graphics-in-latex">Using imported graphics in Latex</a></li>
+<li><a href="#tex-in-a-nutshell">TeX in a Nutshell</a></li>
+<li><a href="#the-texbook">The TexBook</a></li>
+<li><a href="#introduction-to-metapost">Introduction to METAPOST</a></li>
+<li><a href="#metapost-for-beginners">MetaPost for Beginners</a></li>
+<li><a href="#learning-metapost-by-doing">Learning METAPOST by doing</a></li>
+<li><a href="#the-metafont-book">The METAFONT book</a></li>
+<li><a href="#a-few-notes-on-book-design">A Few Notes on Book Design</a></li>
+<li><a href="#the-memoir-class-for-configurable-typesetting">The Memoir Class for Configurable Typesetting</a></li>
+<li><a href="#curso-introductorio-de-latex-falappa">Curso Introductorio de Latex Falappa</a>
+<ul>
+<li><a href="#primeros-pasos">Primeros Pasos</a>
+<ul>
+<li><a href="#negrita-italica-subrayado">Negrita, Italica, Subrayado</a></li>
+<li><a href="#encabezado">Encabezado</a></li>
+</ul>
+</li>
+<li><a href="#formulas-listas-enumeraciones-alineaciones">Formulas, Listas, Enumeraciones, Alineaciones</a></li>
+<li><a href="#estilos-tama%C3%B1os-simbolos-especiales-opciones-de-pagina">Estilos, Tamaños, Simbolos Especiales, Opciones de Pagina</a></li>
+<li><a href="#formulas-matematicas-avanzadas">Formulas Matematicas Avanzadas</a></li>
+<li><a href="#tablas-separaciones-silabicas">Tablas, Separaciones Silabicas</a></li>
+<li><a href="#bibliografias-graficos-entornos-indices-tematicos">Bibliografias, Graficos, Entornos, Indices Tematicos</a></li>
+</ul>
+</li>
+<li><a href="#learn-x-in-y-minutes-latex">Learn X in Y Minutes: Latex</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#logica-para-ciencias-de-la-computacion-tp3">Logica para Ciencias de la Computacion: TP3</a></li>
+</ul>
+<hr />
+<h2 id="links"><a class="header" href="#links">Links</a></h2>
+<ul>
+<li>Learning
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/TeX">Wikipedia: TeX</a></li>
+<li><a href="https://en.wikipedia.org/wiki/LaTeX">Wikipedia: LaTeX</a></li>
+<li><a href="https://learnxinyminutes.com/docs/latex/">Learn X in Y Minutes: Latex</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/Main_Page">Overleaf Documentation</a>
+<ul>
+<li><a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/Tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li><a href="https://www.latex-tutorial.com/tutorials/">latex-tutorials.com</a></li>
+<li><a href="http://www.artofproblemsolving.com/Wiki/index.php/LaTeX">Art of Problem Solving LaTeX Documentation</a></li>
+<li><a href="https://www.andy-roberts.net/writing/latex">Getting to Grips with LaTeX</a></li>
+<li><a href="https://github.com/Wookai/paper-tips-and-tricks">Tips and Tricks for Writing Scientific Papers</a></li>
+<li><a href="https://mathvault.ca/latex/">Ultimate LaTeX Reference Guide</a></li>
+<li><a href="https://hackr.io/tutorials/learn-latex">hackr.io Latex Courses</a></li>
+<li><a href="https://latex.org/forum/">latex.org Forum</a></li>
+<li><a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of LaTeX mathematical symbols</a></li>
+</ul>
+</li>
+<li>Tools
+<ul>
+<li><a href="https://tug.org/texlive/doc/texlive-en/texlive-en.html">The TeX Live Guide—2021</a></li>
+<li><a href="http://www.sharelatex.com/">ShareLaTeX, Online LaTeX Editor</a></li>
+<li><a href="http://w2.syronex.com/jmr/latex-symbols-converter">LaTeX Symbols Converter</a></li>
+<li><a href="http://ipe.otfried.org/">The Ipe extensible drawing editor</a></li>
+<li><a href="https://github.com/varkor/quiver">quiver: a modern commutative diagram editor</a></li>
+<li><a href="https://tikzit.github.io/">TikZiT GUI editor for graphs and string diagrams</a></li>
+<li><a href="https://latex.vercel.app/">LaTeX.css</a></li>
+<li><a href="https://docs.mathjax.org/en/latest/basic/mathjax.html">MathJax</a></li>
+<li><a href="https://katex.org/docs/api.html">KaTeX</a></li>
+<li><a href="https://www.intmath.com/cg5/katex-mathjax-comparison.php">KaTeX and MathJax Comparison Demo</a></li>
+</ul>
+</li>
+<li>CV
+<ul>
+<li><a href="http://www.howtotex.com/general/a-guide-to-building-a-plain-and-simple-latex-cv/">A guide to building a plain and simple latex CV</a></li>
+</ul>
+</li>
+<li>Presentations
+<ul>
+<li><a href="https://opensource.com/article/19/1/create-presentations-beamer">Beamer</a></li>
+</ul>
+</li>
+<li>Thesis
+<ul>
+<li><a href="http://cleanthesis.der-ric.de/">Clean Thesis</a></li>
+<li><a href="http://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html">Overleaf: How to write a thesis in latex</a></li>
+</ul>
+</li>
+<li>Books
+<ul>
+<li><a href="https://www.latextemplates.com/cat/books">Latex Templates: Books</a></li>
+<li><a href="https://tex.stackexchange.com/questions/47964/how-to-write-a-book-in-latex">TeX Stackexchange: How to write a book in Latex</a></li>
+</ul>
+</li>
+<li>Mathematics
+<ul>
+<li><a href="https://castel.dev/post/lecture-notes-1/">How I'm able to take notes in mathematics lectures using LaTeX and Vim</a></li>
+<li><a href="https://castel.dev/post/lecture-notes-2/">How I draw figures for my mathematical lecture notes using Inkscape</a></li>
+<li><a href="https://castel.dev/post/lecture-notes-3/">How I manage my LaTeX lecture notes</a></li>
+<li><a href="https://habr.com/ru/post/452520/">Fancy Euclid's “Elements” in TeX</a></li>
+<li><a href="https://tex.stackexchange.com/questions/27283/how-to-correctly-format-and-align-a-latex-proof">TeX Stackexchange: How to correctly format (and align) a LaTeX proof?</a></li>
+</ul>
+</li>
+<li>Algorithms
+<ul>
+<li><a href="https://tex.stackexchange.com/questions/163768/write-pseudo-code-in-latex">Write pseudocode in LaTeX</a></li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX/Algorithms">LaTeX Algorithms</a></li>
+<li><a href="https://ctan.org/pkg/algpseudocodex">algpseudocodex package</a></li>
+<li><a href="https://ctan.dcc.uchile.cl/macros/latex/contrib/algpseudocodex/documentation.pdf">algpseudocodex documentation</a></li>
+</ul>
+</li>
+<li>Graphics</li>
+<li>TikZ
+<ul>
+<li><a href="https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_1)%E2%80%94Basic_Drawing">Overleaf: LaTeX Graphics using TikZ: A Tutorial for beginners</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/TikZ_package">Overleaf: TikZ package</a></li>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ">LaTeX/PGF/TikZ</a></li>
+<li><a href="https://ctan.dcc.uchile.cl/graphics/pgf/base/doc/pgfmanual.pdf">PGF Manual</a></li>
+<li><a href="https://www3.nd.edu/%7Ecpennycu/2019-2020/Spring/CSE34151/assets/tikz_tutorial.pdf">Drawing Finite State Machines in LaTeX and TikZ</a></li>
+<li><a href="https://texample.net/tikz/examples/all/date/">TikZ and PGF examples</a></li>
+</ul>
+</li>
+<li>Meta
+<ul>
+<li><a href="https://increment.com/open-source/the-lingua-franca-of-latex/">The lingua franca of LaTeX</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=20006525">HN</a></li>
+</ul>
+</li>
+<li><a href="https://www.hillelwayne.com/post/cheatsheets/">Progressive Cheatsheets</a></li>
+<li><a href="http://www.danielallington.net/2016/09/the-latex-fetish/">The LaTeX fetish</a></li>
+<li><a href="http://mildopinions.wordpress.com/2008/07/07/why-i-use-latex-in-biology/">Why I use LaTeX in Biology</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="latex-for-authors"><a class="header" href="#latex-for-authors">LaTeX for authors</a></h2>
+<ul>
+<li>1 Introduction</li>
+<li>2 Classes and packages</li>
+<li>3 Commands</li>
+<li>4 LaTeX 2.09 documents</li>
+<li>5 Local modifications</li>
+<li>6 Problems</li>
+<li>7 Enjoy!</li>
+</ul>
+<hr />
+<h2 id="the-not-so-short-introduction-to-latex-2e"><a class="header" href="#the-not-so-short-introduction-to-latex-2e">The Not-so-short introduction to Latex 2e</a></h2>
+<ul>
+<li><a href="https://ctan.dcc.uchile.cl/info/lshort/english/lshort.pdf">Source</a></li>
+<li>1 Things you need to know
+<ul>
+<li>A bit of history</li>
+<li>Basics</li>
+<li>LaTeX input files</li>
+<li>Input file structure</li>
+<li>A typical command line session</li>
+<li>The layout of the document</li>
+<li>Files you may encounter</li>
+<li>Big projects</li>
+</ul>
+</li>
+<li>2 Typesetting text
+<ul>
+<li>The structure of text and language</li>
+<li>Line breaking and page breaking</li>
+<li>Ready-made strings</li>
+<li>Special characters and symbols</li>
+<li>International language support</li>
+<li>The space between words</li>
+<li>Titles, chapters, and sections</li>
+<li>Cross references</li>
+<li>Footnotes</li>
+<li>Emphasized words</li>
+<li>Environments</li>
+<li>Including graphics and images</li>
+<li>Floating bodies</li>
+</ul>
+</li>
+<li>3 Typesetting mathematical formulae
+<ul>
+<li>The AMS-LaTeX bundle</li>
+<li>Single equations</li>
+<li>Building blocks of a mathematical formula</li>
+<li>Single equations that are too long: multiline</li>
+<li>Multiple equations</li>
+<li>Arrays and matrices</li>
+<li>Spacing in math mode</li>
+<li>Fiddling with the math fonts</li>
+<li>Theorems, lemmas, ...</li>
+<li>List of mathematical symbols</li>
+</ul>
+</li>
+<li>4 Specialties
+<ul>
+<li>Bibliography</li>
+<li>Indexing</li>
+<li>Fancy headers</li>
+<li>The verbatim package</li>
+<li>Installing extra packages</li>
+<li>LaTeX and PDF</li>
+<li>Working with XeLaTeX and PDF</li>
+<li>Creating Presentations</li>
+</ul>
+</li>
+<li>5 Producting mathematical graphics
+<ul>
+<li>Overview</li>
+<li>The <code>picture</code> environment</li>
+<li>The PGF and TikZ graphics packages</li>
+</ul>
+</li>
+<li>6 Customising Latex
+<ul>
+<li>New commands, environments, and packages</li>
+<li>Fonts and sizes</li>
+<li>Spacing</li>
+<li>Page layout</li>
+<li>More fun with lengths</li>
+<li>Boxes</li>
+<li>Rules</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="latex-a-document-preparation-system-2nd-ed"><a class="header" href="#latex-a-document-preparation-system-2nd-ed">Latex. A document preparation system (2nd Ed)</a></h2>
+<ul>
+<li>1 Getting acquainted</li>
+<li>2 Getting started
+<ul>
+<li>Preparing an input file</li>
+<li>The input</li>
+<li>Running LaTeX</li>
+<li>Helpful hints</li>
+</ul>
+</li>
+<li>3 Carrying on
+<ul>
+<li>Changing the type style</li>
+<li>Symbols from other languages</li>
+<li>Mathematical formulas</li>
+<li>Defining commands and environments</li>
+<li>Figures and other floating bodies</li>
+<li>Lining it up in columns</li>
+<li>Simulating typed text</li>
+</ul>
+</li>
+<li>4 Moving information around
+<ul>
+<li>The table of contents</li>
+<li>Cross-references</li>
+<li>Bibliography and citation</li>
+<li>Splitting your input</li>
+<li>Making an index or glossary</li>
+<li>Keyboard input and screen output</li>
+<li>Sending your document</li>
+</ul>
+</li>
+<li>5 Other document classes
+<ul>
+<li>Books</li>
+<li>Slides</li>
+<li>Letters</li>
+</ul>
+</li>
+<li>6 Designing it yourself
+<ul>
+<li>Document and page styles</li>
+<li>Line and page breaking</li>
+<li>Numbering</li>
+<li>Length, spaces and boxes</li>
+<li>Centering and flushing</li>
+<li>List-making environments</li>
+<li>Fonts</li>
+</ul>
+</li>
+<li>7 Pictures and colors
+<ul>
+<li>Pictures</li>
+<li>The <code>graphics</code> package</li>
+<li>Color</li>
+</ul>
+</li>
+<li>8 Errors
+<ul>
+<li>Finding the error</li>
+<li>LaTeX's error messages</li>
+<li>TeX's error messages</li>
+<li>LaTeX warnings</li>
+<li>TeX warnings</li>
+</ul>
+</li>
+<li>A Using MakeIndex</li>
+<li>B The bibliography database</li>
+<li>C Reference manual</li>
+<li>D What's new</li>
+<li>E Using plain Tex commands</li>
+</ul>
+<hr />
+<h2 id="latex-in-24-hours"><a class="header" href="#latex-in-24-hours">LaTeX in 24 Hours</a></h2>
+<p>A practical guide for scientific writing</p>
+<ul>
+<li>1 Introduction
+<ul>
+<li>What is LaTeX?</li>
+<li>Why LaTeX over other word processors?</li>
+<li>How to prepare a LaTeX input file?</li>
+<li>How to compile a LaTeX input file?</li>
+<li>LaTeX syntax</li>
+<li>Keyboard characters in LaTeX</li>
+<li>How to read this book?</li>
+</ul>
+</li>
+<li>2 Fonts Selection
+<ul>
+<li>Text-mode fonts</li>
+<li>Math-mode fonts</li>
+<li>Emphasized fonts</li>
+<li>Colored fonts</li>
+</ul>
+</li>
+<li>3 Formatting Texts I
+<ul>
+<li>Sectional units</li>
+<li>Labeling and referring numbered items</li>
+<li>Texts alignment</li>
+<li>New lines and paragraphs</li>
+<li>Creating and filling blank space</li>
+<li>Producing dashes within texts</li>
+<li>Preventing line break</li>
+<li>Adjusting blank space after a period mark</li>
+<li>Hyphenating a word</li>
+</ul>
+</li>
+<li>4 Formatting Texts II
+<ul>
+<li>Increasing depth of sectional units</li>
+<li>Changing titles and counters of sectional units</li>
+<li>Multiple columns</li>
+<li>Mini pages</li>
+<li>Foot notes</li>
+<li>Marginal notes</li>
+</ul>
+</li>
+<li>5 Page Layout and Style
+<ul>
+<li>Page layout</li>
+<li>Page style</li>
+<li>Running header and footer</li>
+<li>Page breaking and adjustment</li>
+<li>Page numbering</li>
+</ul>
+</li>
+<li>6 Listing and Tabbing Texts
+<ul>
+<li>Listing texts</li>
+<li>Tabbing texts through the <code>tabbing</code> environment</li>
+</ul>
+</li>
+<li>7 Table Preparation I
+<ul>
+<li>Table through the <code>tabular</code> environment</li>
+<li>Table through the <code>tabularx</code> environment</li>
+<li>Vertical positioning of tables</li>
+<li>Sideways (rotated) texts in tables</li>
+<li>Adjusting provisions for customizing columns of tables</li>
+<li>Merging rows and columns of tables</li>
+<li>Table wrapped by texts</li>
+<li>Table with colored background</li>
+</ul>
+</li>
+<li>8 Table Preparation II
+<ul>
+<li>Nested tables</li>
+<li>Column alignment about decimal point</li>
+<li>Side-by-side tables</li>
+<li>Sideways (rotated) table</li>
+<li>Long table on multiple pages</li>
+<li>Tabels in multi-column documents</li>
+<li>Foot notes in tables</li>
+<li>Changing printing format of tables</li>
+<li>Tables at the end of a document</li>
+</ul>
+</li>
+<li>9 Figure Insertion
+<ul>
+<li>Commands and environment for inserting figures</li>
+<li>Inserting a simple figure</li>
+<li>Side-by-side figures</li>
+<li>Figure wrapped by texts</li>
+<li>Rotated figure</li>
+<li>Mathematical notations in figures</li>
+<li>Figures in tables</li>
+<li>Figures in multi-column documents</li>
+<li>Changing printing format of figures</li>
+<li>Figures at the end of a document</li>
+<li>Editing LaTeX input file involving many figures</li>
+</ul>
+</li>
+<li>10 Figure Drawing
+<ul>
+<li>Circles and circular arcs</li>
+<li>Straight lines and vectores</li>
+<li>Curves</li>
+<li>Oval boxes</li>
+<li>Texts in figures</li>
+<li>Compound figures</li>
+</ul>
+</li>
+<li>11 Equation Writing I
+<ul>
+<li>Basic mathematical notations and delimiters</li>
+<li>Mathematical operators</li>
+<li>Mathematical expressions in text-mode</li>
+<li>Simple equations</li>
+<li>Array of equations</li>
+<li>Left aligning an equation</li>
+<li>Sub-numbering a set of equations</li>
+</ul>
+</li>
+<li>12 Equation Writing II
+<ul>
+<li>Texts and blank space in math-mode</li>
+<li>Conditional expression</li>
+<li>Evaluation of functional values</li>
+<li>Splitting an equation into multiple lines</li>
+<li>Vector and matrix</li>
+<li>Overlining and underlining</li>
+<li>Stacking terms</li>
+<li>Side-by-side equations</li>
+</ul>
+</li>
+<li>13 User-defined Macros
+<ul>
+<li>Defining new commands</li>
+<li>Redefining existing commands</li>
+<li>Defining new environments</li>
+<li>Redefining existing environments</li>
+</ul>
+</li>
+<li>14 Bibliography with LaTeX
+<ul>
+<li>Preparation of bibliographic reference database</li>
+<li>Citing bibliographic references</li>
+<li>Compiling <code>thebibliography</code> based LaTeX input file</li>
+</ul>
+</li>
+<li>15 Bibliography with BibTeX
+<ul>
+<li>Preparation of BibTeX compatible reference database</li>
+<li>Standard bibliographic styles of LaTeX</li>
+<li>Use of <code>natbib</code> package</li>
+<li>Compiling BibTeX based LaTeX input files</li>
+<li>Editing the <code>.bbl</code> file</li>
+<li>Multiple bibliographies</li>
+</ul>
+</li>
+<li>16 Lists of Contents and Index
+<ul>
+<li>Lists of contents</li>
+<li>Making index</li>
+</ul>
+</li>
+<li>17 Miscellaneous I
+<ul>
+<li>Boxed items</li>
+<li>Rotated items</li>
+</ul>
+</li>
+<li>18 Miscellaneous II
+<ul>
+<li>Horizontal rules and dots</li>
+<li>Hyperlinking referred and cited items</li>
+<li>Current date and format</li>
+<li>Highlighted texts</li>
+<li>Verbatim texts</li>
+<li>Fragile commands</li>
+<li>Watermarking on pages</li>
+<li>Logo in header and footer</li>
+<li>Paragraphs in different forms</li>
+</ul>
+</li>
+<li>19 Letter and Articles
+<ul>
+<li>Letter writing</li>
+<li>Article preparation</li>
+</ul>
+</li>
+<li>20 Book and Report
+<ul>
+<li>Template of a book</li>
+<li>Book preparation using a root file</li>
+<li>Dividing a book into parts</li>
+<li>Compilation of a book</li>
+</ul>
+</li>
+<li>21 Slide Preparation I
+<ul>
+<li>Frames in presentation</li>
+<li>Sectional units in presentation</li>
+<li>Presentation structure</li>
+<li>Appearance of a presentation (BEAMER themes)</li>
+<li>Frame customization</li>
+</ul>
+</li>
+<li>22 Slide Preparation II
+<ul>
+<li>Piece-wise presentation (BEAMER overlays)</li>
+<li>Environments in BEAMER class</li>
+<li>Table and figure in presentation</li>
+<li>Dividing a frame column-wise</li>
+<li>Jumping (hyperlink) to other slides</li>
+</ul>
+</li>
+<li>23 Error and Warning Messages
+<ul>
+<li>Error message</li>
+<li>Warning message</li>
+<li>Error without any message</li>
+<li>Tips for debugging</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="latex-wikibook"><a class="header" href="#latex-wikibook">Latex Wikibook</a></h2>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX">Source</a></li>
+<li>Getting started
+<ol>
+<li>Introduction</li>
+<li>Installation</li>
+<li>Installing Extra Packages</li>
+<li>Basics</li>
+</ol>
+</li>
+<li>Common Elements
+<ol>
+<li>Document Structure</li>
+<li>Text Formatting</li>
+<li>Paragraph Formatting</li>
+<li>Colors</li>
+<li>Fonts</li>
+<li>List Structures</li>
+<li>Special Characters</li>
+<li>Internationalization</li>
+<li>Rotations</li>
+<li>Tables</li>
+<li>Title Creation</li>
+<li>Page Layout</li>
+<li>Importing Graphics</li>
+<li>Floats, Figures and Captions</li>
+<li>Hyperlinks</li>
+<li>Labels and Cross-referencing</li>
+</ol>
+</li>
+<li>Mechanics
+<ol>
+<li>Errors and Warnings</li>
+<li>Lengths</li>
+<li>Counters</li>
+<li>Boxes</li>
+<li>Rules and Struts</li>
+</ol>
+</li>
+<li>Technical Texts
+<ol>
+<li>Mathematics</li>
+<li>Advanved Mathematics</li>
+<li>Theorems</li>
+<li>Chemical Graphics</li>
+<li>Algorithms</li>
+<li>Source Code Listings</li>
+<li>Linguistics</li>
+<li>References</li>
+<li>External Links</li>
+</ol>
+</li>
+<li>Special Pages
+<ol>
+<li>Indexing</li>
+<li>More Bibliographies</li>
+</ol>
+</li>
+<li>Special Documents
+<ol>
+<li>Letters</li>
+<li>Presentations</li>
+<li>Teacher's Corner</li>
+<li>Curriculum Vitae</li>
+</ol>
+</li>
+<li>Creating Graphics
+<ol>
+<li>Introducing Procedural Graphics</li>
+<li>MetaPost</li>
+<li>Picture</li>
+<li>PGF/TikZ</li>
+<li>PSTricks</li>
+<li>Xy-Pic</li>
+<li>Creating 3D Graphics</li>
+</ol>
+</li>
+<li>Programming
+<ol>
+<li>Macros</li>
+<li>Plain Tex</li>
+<li>Creating Packages</li>
+<li>Themes</li>
+</ol>
+</li>
+<li>Miscellaneous
+<ol>
+<li>Modular Documents</li>
+<li>Collaborative Writing of Latex Documents</li>
+<li>Export to Other Formats</li>
+</ol>
+</li>
+<li>Help and Recommendations
+<ol>
+<li>FAQ</li>
+<li>Tips and Tricks</li>
+</ol>
+</li>
+<li>Appendices
+<ol>
+<li>Authors</li>
+<li>Links</li>
+<li>Sample Latex Documents</li>
+<li>Index</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2 id="math-into-latex"><a class="header" href="#math-into-latex">Math into Latex</a></h2>
+<ul>
+<li>I A short course
+<ul>
+<li>1 Typing your first article</li>
+</ul>
+</li>
+<li>II Text and math
+<ul>
+<li>2 Typing text</li>
+<li>3 Text environments</li>
+<li>4 Typing math</li>
+<li>5 Multiline math displays</li>
+</ul>
+</li>
+<li>III Document structure
+<ul>
+<li>6 Latex documents</li>
+<li>7 Standard Latex document classes</li>
+<li>8 AMS-Latex documents</li>
+</ul>
+</li>
+<li>IV Customizing
+<ul>
+<li>9 Customizing Latex</li>
+</ul>
+</li>
+<li>V Long bibligraphies and indexes
+<ul>
+<li>10 BibTex</li>
+<li>11 MakeIndex</li>
+</ul>
+</li>
+<li>VI Appendices
+<ul>
+<li>A Math symbol tables</li>
+<li>B Text symbol tables</li>
+<li>C The AMS-Latex sample article</li>
+<li>D Sample article with user-defined commands</li>
+<li>E Background</li>
+<li>F Postscript fonts</li>
+<li>G Getting it</li>
+<li>H Conversions</li>
+<li>I Final word</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="more-math-into-latex"><a class="header" href="#more-math-into-latex">More Math into LaTeX</a></h2>
+<ul>
+<li>I Mission Impossible
+<ul>
+<li>1 Short course</li>
+<li>2 And a few more things...</li>
+</ul>
+</li>
+<li>II Text and Math
+<ul>
+<li>3 Typing text</li>
+<li>4 Text environments</li>
+<li>5 Typing math</li>
+<li>6 More math</li>
+<li>7 Multiline math displays</li>
+</ul>
+</li>
+<li>III Document structure
+<ul>
+<li>8 Documents</li>
+<li>9 The AMS article document class</li>
+<li>10 Legacy documents</li>
+</ul>
+</li>
+<li>IV PDF documents
+<ul>
+<li>11 The PDF file format</li>
+<li>12 Presentations</li>
+<li>13 Illustrations</li>
+</ul>
+</li>
+<li>V Customization
+<ul>
+<li>14 Commands and environments</li>
+</ul>
+</li>
+<li>VI Long documents
+<ul>
+<li>15 BibTeX</li>
+<li>16 MakeIndex</li>
+<li>17 Books in LaTeX</li>
+</ul>
+</li>
+<li>A Math symbol tables</li>
+<li>B Text symbol tables</li>
+<li>C Some background</li>
+<li>D LaTeX and the internet</li>
+<li>E PostScript fonts</li>
+<li>F LaTeX localized</li>
+<li>G LaTeX on the iPad</li>
+<li>H Final thoughts</li>
+</ul>
+<hr />
+<h2 id="practical-latex"><a class="header" href="#practical-latex">Practical LaTeX</a></h2>
+<ul>
+<li>1 Mission impossible</li>
+<li>2 Text</li>
+<li>3 Text environments</li>
+<li>4 Inline formulas</li>
+<li>5 Displayed formulas</li>
+<li>6 Documents</li>
+<li>7 Customizing LaTeX</li>
+<li>8 Presentations</li>
+<li>9 Illustrations</li>
+</ul>
+<hr />
+<h2 id="the-latex-graphics-companion"><a class="header" href="#the-latex-graphics-companion">The Latex graphics companion</a></h2>
+<ul>
+<li>1 Graphics with Latex</li>
+<li>2 The Latex 2e graphics bundle</li>
+<li>3 Working with METAFONT and METAPOST</li>
+<li>4 Harnessing PostScript inside Latex: the pstricks package</li>
+<li>5 The Xy-pic package</li>
+<li>6 Applications in chemistry, physics and engineering</li>
+<li>7 Preparing music schores</li>
+<li>8 Playing games</li>
+<li>9 The world of color</li>
+<li>10 Using postscript fonts</li>
+<li>11 PostScript drivers and tools</li>
+</ul>
+<hr />
+<h2 id="using-imported-graphics-in-latex"><a class="header" href="#using-imported-graphics-in-latex">Using imported graphics in Latex</a></h2>
+<ul>
+<li>I Background information
+<ul>
+<li>1 Introduction</li>
+<li>2 Latex terminology</li>
+<li>3 Encapsulated postscript</li>
+<li>4 How eps files are used by latex</li>
+<li>5 PDF graphics</li>
+<li>6 Graphics software</li>
+</ul>
+</li>
+<li>II The Latex graphics bundle
+<ul>
+<li>7 Graphics inclusion</li>
+<li>8 Rotating and scaling objects</li>
+<li>9 Advanced graphics-inclusion commands</li>
+</ul>
+</li>
+<li>III Using graphics-inclusion commands
+<ul>
+<li>10 Horizontal spacing and centering</li>
+<li>11 Rotation, scaling, alignment</li>
+<li>12 Overlaying two imported graphics</li>
+<li>13 Using subdirectories</li>
+<li>14 Compressed and non-EPS graphics files in dvips</li>
+<li>15 The psfrag package</li>
+<li>16 Including an eps file multiple times</li>
+</ul>
+</li>
+<li>IV The figure environment
+<ul>
+<li>17 The figure environment</li>
+<li>18 Customizing float placement</li>
+<li>19 Customizing the figure environment</li>
+<li>20 Customizing captions with the caption package</li>
+<li>21 Non-floating figures</li>
+<li>22 Marginal figures</li>
+<li>23 Wide figures</li>
+<li>24 Landscape figures</li>
+<li>25 Captions beside figures</li>
+<li>26 Figures on odd or even pages</li>
+<li>27 Boxed figures</li>
+</ul>
+</li>
+<li>V Complex figures
+<ul>
+<li>28 Side-by-side graphics</li>
+<li>29 Separate minipages for captions</li>
+<li>30 Placing a table beside a figure</li>
+<li>31 Stacked figures and subfigures</li>
+<li>32 The subfic package</li>
+<li>33 Continued figures and subfigures</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="tex-in-a-nutshell"><a class="header" href="#tex-in-a-nutshell">TeX in a Nutshell</a></h2>
+<ul>
+<li>1 Terminology</li>
+<li>2 Formats, engines</li>
+<li>3 Searching data</li>
+<li>4 Processing the input</li>
+<li>5 Vertical and horizontal modes</li>
+<li>6 Groups in TeX</li>
+<li>7 Box, kern, penalty glue</li>
+<li>8 Syntactic rules</li>
+<li>9 Principles of macros</li>
+<li>10 Math modes</li>
+<li>11 Registers</li>
+<li>12 Expandable primitive commands</li>
+<li>13 Primitive commands at the main processor level</li>
+<li>14 Summary of plain TeX macros</li>
+</ul>
+<hr />
+<h2 id="the-texbook"><a class="header" href="#the-texbook">The TexBook</a></h2>
+<ul>
+<li>1 The name of the game</li>
+<li>2 Book printing versus ordinary typing</li>
+<li>3 Controlling Tex</li>
+<li>4 Fonts of type</li>
+<li>5 Grouping</li>
+<li>6 Running Tex</li>
+<li>7 How Tex reads what you type</li>
+<li>8 The characters you type</li>
+<li>9 Tex's roman fonts</li>
+<li>10 Dimensions</li>
+<li>11 Boxes</li>
+<li>12 Glue</li>
+<li>13 Modes</li>
+<li>14 How Tex breaks paragraphs into lines</li>
+<li>15 How Tex makes lines into pages</li>
+<li>16 Typing math formulae</li>
+<li>17 More about math</li>
+<li>18 Fine points of mathematics typing</li>
+<li>19 Displayed equations</li>
+<li>20 Definitions (also called macros)</li>
+<li>21 Making boxes</li>
+<li>22 Alignment</li>
+<li>23 Output routines</li>
+<li>24 Summary of vertical mode</li>
+<li>25 Summary of horizontal mode</li>
+<li>26 Summary of math mode</li>
+<li>27 Recovery from errors</li>
+</ul>
+<hr />
+<h2 id="introduction-to-metapost"><a class="header" href="#introduction-to-metapost">Introduction to METAPOST</a></h2>
+<ul>
+<li>1 Introduction</li>
+<li>2 Overview of the Language</li>
+<li>3 Interesting Figures</li>
+<li>4 Macro Packages</li>
+<li>5 Conclusion</li>
+</ul>
+<hr />
+<h2 id="metapost-for-beginners"><a class="header" href="#metapost-for-beginners">MetaPost for Beginners</a></h2>
+<hr />
+<h2 id="learning-metapost-by-doing"><a class="header" href="#learning-metapost-by-doing">Learning METAPOST by doing</a></h2>
+<ul>
+<li>1 Introduction</li>
+<li>2 A simple example</li>
+<li>3 Basic graphical primitives</li>
+<li>4 Style directives</li>
+<li>5 Transformations</li>
+<li>6 Advanced graphics</li>
+<li>7 Control structures</li>
+<li>8 Macros</li>
+<li>9 More examples</li>
+<li>10 Solutions to exercises</li>
+<li>11 Appendix</li>
+</ul>
+<hr />
+<h2 id="the-metafont-book"><a class="header" href="#the-metafont-book">The METAFONT book</a></h2>
+<ul>
+<li>1 The Name of the Game</li>
+<li>2 Coordinates</li>
+<li>3 Curves</li>
+<li>4 Pens</li>
+<li>5 Running METAFONT</li>
+<li>6 How METAFONT Reads What You Type</li>
+<li>7 Variables</li>
+<li>8 Algebraic Expressions</li>
+<li>9 Equations</li>
+<li>10 Assignments</li>
+<li>11 Magnification and Resolution</li>
+<li>12 Boxes</li>
+<li>13 Drawing, Filling, Erasing</li>
+<li>14 Paths</li>
+<li>15 Transformations</li>
+<li>16 Calligraphic Effects</li>
+<li>17 Grouping</li>
+<li>18 Definitions (also called Macros)</li>
+<li>19 Conditions and Loops</li>
+<li>20 More about Macros</li>
+<li>21 Random Numbers</li>
+<li>22 Strings</li>
+<li>23 Online Displays</li>
+<li>24 Discreteness and Discretion </li>
+<li>25 Summary of Expressions</li>
+<li>26 Summary of the Language</li>
+<li>27 Recovering from Errors</li>
+</ul>
+<hr />
+<h2 id="a-few-notes-on-book-design"><a class="header" href="#a-few-notes-on-book-design">A Few Notes on Book Design</a></h2>
+<ul>
+<li>1 Historical background
+<ul>
+<li>Galloping through the millenia</li>
+<li>Making type</li>
+<li>Book types</li>
+<li>Setting type</li>
+<li>Today</li>
+<li>Setting maths</li>
+</ul>
+</li>
+<li>2 The parts of a book
+<ul>
+<li>Front matter</li>
+<li>Main matter</li>
+<li>Back matter</li>
+<li>Signatures and casting off</li>
+<li>Paper</li>
+</ul>
+</li>
+<li>3 The page
+<ul>
+<li>The shape of a book</li>
+<li>The spread</li>
+<li>The typeblock </li>
+<li>Folios</li>
+<li>Headers and footers</li>
+<li>Electronic books</li>
+</ul>
+</li>
+<li>4 Styling the elements
+<ul>
+<li>Front matter</li>
+<li>Main matter</li>
+<li>Back matter</li>
+<li>Type size</li>
+<li>Poems and plays</li>
+<li>Selecting a typeface</li>
+</ul>
+</li>
+<li>5 Picky points
+<ul>
+<li>Word and line spacing</li>
+<li>Letterspacing</li>
+<li>Abbreviations and acronyms</li>
+<li>Dashes and ellipses</li>
+<li>Punctuation</li>
+<li>Narrow measures</li>
+<li>Emphasis</li>
+<li>Captions and legends</li>
+<li>Tables</li>
+<li>Number formatting</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="the-memoir-class-for-configurable-typesetting"><a class="header" href="#the-memoir-class-for-configurable-typesetting">The Memoir Class for Configurable Typesetting</a></h2>
+<ul>
+<li>1 Starting off</li>
+<li>2 Laying out the page</li>
+<li>3 Texts and fonts</li>
+<li>4 Titles</li>
+<li>5 Abstracts</li>
+<li>6 Document divisions</li>
+<li>7 Pagination and headers</li>
+<li>8 Paragraphs and lists</li>
+<li>9 Contents lists</li>
+<li>10 Floats and captions</li>
+<li>11 Rows and columns</li>
+<li>12 Page notes</li>
+<li>13 Decorative text</li>
+<li>14 Poetry</li>
+<li>15 Boxes, verbatims and files</li>
+<li>16 Cross referencing</li>
+<li>17 Back matter</li>
+<li>18 Miscellaneous</li>
+<li>19 For package users</li>
+<li>20 An example book design</li>
+<li>21 An example thesis design</li>
+<li>A Packages and macros</li>
+<li>B Showcases</li>
+<li>C Sniplets</li>
+<li>D Pictures</li>
+<li>E LaTeX and TeX</li>
+<li>F The terrors of errors</li>
+<li>G Comments</li>
+</ul>
+<hr />
+<h2 id="curso-introductorio-de-latex-falappa"><a class="header" href="#curso-introductorio-de-latex-falappa">Curso Introductorio de Latex Falappa</a></h2>
+<ul>
+<li>TeX viene de tau-epsilon-chi</li>
+<li>LaTeX fue desarrollado por Leslie Lamport a comienzos de los 80 y agrega ciertas herramientas de abstraccion a TeX.</li>
+<li>LaTeX sirve para escribir reportes tecnicos, monografias, articulos y libros. </li>
+</ul>
+<h3 id="primeros-pasos"><a class="header" href="#primeros-pasos">Primeros Pasos</a></h3>
+<ul>
+<li>Comandos y caracteres especiales
+<ul>
+<li><strong>palabras reservadas</strong>: documentclass, begin, end, emph, etc</li>
+<li><strong>caracteres especiales</strong>: <code>\</code> <code>{</code> <code>}</code> <code>#</code> <code>$</code> <code>%</code> <code>^</code> <code>&amp;</code> <code>_</code> <code>~</code></li>
+</ul>
+</li>
+<li>Estructura de un libro</li>
+<li>Oraciones y parrafos</li>
+<li>Puntos</li>
+<li>Negrita, italica, subrayado</li>
+<li>Encabezado de un documento</li>
+<li>Tipos de documento</li>
+<li>Paquetes</li>
+<li>Division de un documento</li>
+<li>Numeraciones</li>
+<li>Texto indentado</li>
+</ul>
+<p>Ejemplo 1</p>
+<pre><code class="language-latex">\documentclass{article}
+\begin{document}
+\title{Title}
+\date{14 de Noviembre de 2020}
+\author{Iñaki Garay}
+\maketitle
+Hello, world!
+\end{document}
+</code></pre>
+<p>Ejemplo 2</p>
+<pre><code class="language-latex">\documentclass[12pt]{article}
+\begin{document}
+\title{Title}
+\date{14 de Noviembre de 2020}
+\author{Iñaki Garay}
+\maketitle
+\begin{abstract}
+This is the abstract.
+\end{abstract}
+\section{Introduction}
+This is the introduction.
+\end{document}
+</code></pre>
+<p>Ejemplo 3</p>
+<pre><code class="language-latex">\documentclass{book}
+\begin{document}
+\title{Title}
+\date{14 de Noviembre de 2020}
+\author{Iñaki Garay}
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter{The First Chapter}
+\section{The first section of the first chapter}
+
+\begin{thebibliography}
+\end{thebibliography}
+
+\end{document}
+</code></pre>
+<pre><code class="language-latex">Homer J. Simpson vs Homer J.\ Simpson
+</code></pre>
+<h4 id="negrita-italica-subrayado"><a class="header" href="#negrita-italica-subrayado">Negrita, Italica, Subrayado</a></h4>
+<ul>
+<li><code>\textbf{}</code></li>
+<li><code>\textit{}</code></li>
+<li><code>\emph{}</code></li>
+<li><code>\underline{}</code></li>
+</ul>
+<p>To highlight text don’t use <code>\textit</code> but <code>\emph</code>, because the latter also provides the right logical markup (“emphasize”) and takes care of nesting.</p>
+<pre><code class="language-latex">\emph{This is some example text which is emphasized by using an italic font. A \emph{nested highlighted} will be recto (upright)}.
+</code></pre>
+<h4 id="encabezado"><a class="header" href="#encabezado">Encabezado</a></h4>
+<ul>
+<li>El texto que precede a <code>\begin{document}</code> se denomina preambulo.</li>
+<li>Tiene dos partes;
+<ul>
+<li>La definicion del tipo de documento a utilizar, y las opciones correspondientes.</li>
+<li>Los paquetes adicionales que utilizara el mismo.</li>
+</ul>
+</li>
+<li>Condiciona los comandos disponibles en el documento (e.g. book admite chapter y article no).</li>
+<li>Tipos de documentos: report, </li>
+<li>Paquetes</li>
+<li>Division de un documento</li>
+<li>Numeraciones</li>
+<li>Texto indentado</li>
+</ul>
+<h3 id="formulas-listas-enumeraciones-alineaciones"><a class="header" href="#formulas-listas-enumeraciones-alineaciones">Formulas, Listas, Enumeraciones, Alineaciones</a></h3>
+<ul>
+<li>Formulas</li>
+<li>Listas</li>
+<li>Enumeraciones</li>
+<li>Descripciones</li>
+<li>Anidamientos de items</li>
+<li>Uso de subitems</li>
+<li>Anidamiento de enumeraciones</li>
+<li>Alinenacion de texto</li>
+<li>Prevenir saltos de lineas</li>
+</ul>
+<h3 id="estilos-tamaños-simbolos-especiales-opciones-de-pagina"><a class="header" href="#estilos-tamaños-simbolos-especiales-opciones-de-pagina">Estilos, Tamaños, Simbolos Especiales, Opciones de Pagina</a></h3>
+<ul>
+<li>Estilos de letras</li>
+<li>Tamaños de letras</li>
+<li>Combinaciones de tipos y tamaños</li>
+<li>Simbolos especiales</li>
+<li>Margenes de un documento</li>
+<li>Ejemplo de ajust de margenes</li>
+<li>Tipos de documentos</li>
+<li>Tamaños de pagina</li>
+<li>Opciones de pagina</li>
+<li>Paquetes adicionales</li>
+<li>Estilos de pagina</li>
+<li>Titulo</li>
+<li>Verbatim</li>
+</ul>
+<h3 id="formulas-matematicas-avanzadas"><a class="header" href="#formulas-matematicas-avanzadas">Formulas Matematicas Avanzadas</a></h3>
+<ul>
+<li>Formulas</li>
+<li>Letras griegas</li>
+<li>Simbolos relacionales</li>
+<li>Flechas</li>
+<li>Simbolos miscelaneos</li>
+<li>Simbolos de tamaño variable</li>
+<li>Funciones</li>
+<li>Diferencia entre <code>\[</code> <code>\]</code> y <code>\(</code> <code>\)</code></li>
+<li>Entorno array</li>
+<li>Alineacion vertical</li>
+<li>Delimitadores</li>
+<li>Formulas en varias lineas</li>
+<li>Superposicion de formulas</li>
+<li>Espacios en entornos matematicos</li>
+<li>Estilos en entornos matematicos</li>
+</ul>
+<h3 id="tablas-separaciones-silabicas"><a class="header" href="#tablas-separaciones-silabicas">Tablas, Separaciones Silabicas</a></h3>
+<ul>
+<li>Entorno tabular</li>
+<li>Entorno tabbing</li>
+<li>Espacios</li>
+<li>Hyphenation</li>
+<li>Referencias cruzadas</li>
+</ul>
+<h3 id="bibliografias-graficos-entornos-indices-tematicos"><a class="header" href="#bibliografias-graficos-entornos-indices-tematicos">Bibliografias, Graficos, Entornos, Indices Tematicos</a></h3>
+<ul>
+<li>Bibliografia</li>
+<li>Bibliografia sin BibTeX</li>
+<li>Bibliografia con BibTeX</li>
+<li>Tipos de fuentes</li>
+<li>Formatos de bibliografia</li>
+<li>Archivo bib</li>
+<li>Formato plain</li>
+<li>Formato alpha</li>
+<li>Formato unsrt</li>
+<li>Formato abbrv</li>
+<li>Estilo elsevier</li>
+<li>Estilo kluwer</li>
+<li>Estilo ASL/JSL</li>
+<li>Figuras y graficos</li>
+<li>Figuras en LaTeX</li>
+<li>Uso de comandos definidos</li>
+<li>Separar un documento LaTeX</li>
+<li>Indice tematico</li>
+<li>Otros temas</li>
+</ul>
+<hr />
+<h2 id="learn-x-in-y-minutes-latex"><a class="header" href="#learn-x-in-y-minutes-latex">Learn X in Y Minutes: Latex</a></h2>
+<pre><code>% All comment lines start with %
+% There are no multi-line comments
+
+% LaTeX is NOT a &quot;What You See Is What You Get&quot; word processing software like
+% MS Word, or OpenOffice Writer
+
+% Every LaTeX command starts with a backslash (\)
+
+% LaTeX documents start with a defining the type of document it's compiling
+% Other document types include book, report, presentations, etc.
+% The options for the document appear in the [] brackets. In this case
+% it specifies we want to use 12pt font.
+\documentclass[12pt]{article}
+
+% Next we define the packages the document uses.
+% If you want to include graphics, colored text, or
+% source code from another language file into your document,
+% you need to enhance the capabilities of LaTeX. This is done by adding packages.
+% I'm going to include the float and caption packages for figures
+% and hyperref package for hyperlinks
+\usepackage{caption}
+\usepackage{float}
+\usepackage{hyperref}
+
+% We can define some other document properties too!
+\author{Chaitanya Krishna Ande, Colton Kohnke, Sricharan Chiruvolu \&amp; \\
+Svetlana Golubeva}
+\date{\today}
+\title{Learn \LaTeX{} in Y Minutes!}
+
+% Now we're ready to begin the document
+% Everything before this line is called &quot;The Preamble&quot;
+\begin{document}
+% if we set the author, date, title fields, we can have LaTeX
+% create a title page for us.
+\maketitle
+
+% If we have sections, we can create table of contents. We have to compile our
+% document twice to make it appear in right order.
+% It is a good practice to separate the table of contents form the body of the
+% document. To do so we use \newpage command
+\newpage
+\tableofcontents
+
+\newpage
+
+% Most research papers have abstract, you can use the predefined commands for this.
+% This should appear in its logical order, therefore, after the top matter,
+% but before the main sections of the body.
+% This command is available in the document classes article and report.
+\begin{abstract}
+ \LaTeX{} documentation written as \LaTeX! How novel and totally not
+ my idea!
+\end{abstract}
+
+% Section commands are intuitive.
+% All the titles of the sections are added automatically to the table of contents.
+\section{Introduction}
+Hello, my name is Colton and together we're going to explore \LaTeX!
+
+\section{Another section}
+This is the text for another section. I think it needs a subsection.
+
+\subsection{This is a subsection} % Subsections are also intuitive.
+I think we need another one.
+
+\subsubsection{Pythagoras}
+Much better now.
+\label{subsec:pythagoras}
+
+% By using the asterisk we can suppress LaTeX's inbuilt numbering.
+% This works for other LaTeX commands as well.
+\section*{This is an unnumbered section}
+However not all sections have to be numbered!
+
+\section{Some Text notes}
+%\section{Spacing} % Need to add more information about space intervals
+\LaTeX{} is generally pretty good about placing text where it should
+go. If
+a line \\ needs \\ to \\ break \\ you add \textbackslash\textbackslash{}
+to the source code.
+
+Separate paragraphs by empty lines.
+
+You need to add a backslash after abbreviations (if not followed by a comma), because otherwise the spacing after the dot is too large:
+E.g., i.e., etc.\ are are such abbreviations.
+
+\section{Lists}
+Lists are one of the easiest things to create in \LaTeX! I need to go shopping
+tomorrow, so let's make a grocery list.
+\begin{enumerate} % This creates an &quot;enumerate&quot; environment.
+  % \item tells the enumerate to increment
+  \item Salad.
+  \item 27 watermelon.
+  \item A single jackrabbit.
+  % we can even override the item number by using []
+  \item[how many?] Medium sized squirt guns.
+
+  Not a list item, but still part of the enumerate.
+
+\end{enumerate} % All environments must have an end.
+
+\section{Math}
+
+One of the primary uses for \LaTeX{} is to produce academic articles
+or technical papers. Usually in the realm of math and science. As such,
+we need to be able to add special symbols to our paper!
+
+Math has many symbols, far beyond what you can find on a keyboard;
+Set and relation symbols, arrows, operators, and Greek letters to name a few.
+
+Sets and relations play a vital role in many mathematical research papers.
+Here's how you state all x that belong to X, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;∀&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; x &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.5782em;vertical-align:-0.0391em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;∈&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; X.
+% Notice how I needed to add &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.10764em;&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.10764em;&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; signs.
+% The opposite also holds true. Variable can also be rendered in math-mode.
+% We can also enter math mode with \[\]
+
+\[a^2 + b^2 = c^2 \]
+
+My favorite Greek letter is &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.04601em;&quot;&gt;ξ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;. I also like &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05278em;&quot;&gt;β&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05556em;&quot;&gt;γ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; and &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;σ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.
+I haven't found a Greek letter yet that \LaTeX{} doesn't know
+about!
+
+Operators are essential parts of a mathematical document:
+trigonometric functions (&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.66786em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;sin&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;cos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.61508em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;tan&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;),
+logarithms and exponentials (&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;lo&lt;span style=&quot;margin-right:0.01389em;&quot;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;exp&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;),
+limits (&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;lim&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;), etc.\ 
+have pre-defined LaTeX commands.
+Let's write an equation to see how it's done:
+&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.064108em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;&lt;span class=&quot;mop&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.8141079999999999em;&quot;&gt;&lt;span style=&quot;top:-3.063em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2222222222222222em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mbin&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2222222222222222em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.121868em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;&lt;span class=&quot;mop&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.871868em;&quot;&gt;&lt;span style=&quot;top:-3.12076em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+Fractions (Numerator-denominators) can be written in these forms:
+
+% 10 / 7
+&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.1141079999999999em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.8641079999999999em;&quot;&gt;&lt;span style=&quot;top:-3.113em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;mord mtight&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.30110799999999993em;&quot;&gt;&lt;span style=&quot;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;7&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+% Relatively complex fractions can be written as
+% \frac{numerator}{denominator}
+&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:2.30744em;vertical-align:-0.936em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mopen nulldelimiter&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mfrac&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:1.37144em;&quot;&gt;&lt;span style=&quot;top:-2.314em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03148em;&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2222222222222222em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mbin&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2222222222222222em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03148em;&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;!&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.23em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;frac-line&quot; style=&quot;border-bottom-width:0.04em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.677em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;!&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.936em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mclose nulldelimiter&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+We can also insert equations in an ``equation environment''.
+
+% Display math with the equation 'environment'
+\begin{equation} % enters math-mode
+    c^2 = a^2 + b^2.
+    \label{eq:pythagoras} % for referencing
+\end{equation} % all \begin statements must have an end statement
+
+We can then reference our new equation!
+Eqn.~\ref{eq:pythagoras} is also known as the Pythagoras Theorem which is also
+the subject of Sec.~\ref{subsec:pythagoras}. A lot of things can be labeled:
+figures, equations, sections, etc.
+
+Summations and Integrals are written with sum and int commands:
+
+% Some LaTeX compilers will complain if there are blank lines
+% In an equation environment.
+\begin{equation}
+  \sum_{i=0}^{5} f_{i}
+\end{equation}
+\begin{equation}
+  \int_{0}^{\infty} \mathrm{e}^{-x} \mathrm{d}x
+\end{equation}
+
+\section{Figures}
+
+Let's insert a figure. Figure placement can get a little tricky.
+I definitely have to lookup the placement options each time.
+
+\begin{figure}[H] % H here denoted the placement option.
+    \centering % centers the figure on the page
+    % Inserts a figure scaled to 0.8 the width of the page.
+    %\includegraphics[width=0.8\linewidth]{right-triangle.png}
+    % Commented out for compilation purposes. Please use your imagination.
+    \caption{Right triangle with sides &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;a&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;b&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;c&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;}
+    \label{fig:right-triangle}
+\end{figure}
+
+\subsection{Table}
+We can also insert Tables in the same way as figures.
+
+\begin{table}[H]
+  \caption{Caption for the Table.}
+  % the {} arguments below describe how each row of the table is drawn.
+  % Again, I have to look these up. Each. And. Every. Time.
+  \begin{tabular}{c|cc}
+    Number &amp;  Last Name &amp; First Name \\ % Column rows are separated by &amp;
+    \hline % a horizontal line
+    1 &amp; Biggus &amp; Dickus \\
+    2 &amp; Monty &amp; Python
+  \end{tabular}
+\end{table}
+
+\section{Getting \LaTeX{} to not compile something (i.e.\ Source Code)}
+Let's say we want to include some code into our \LaTeX{} document,
+we would then need \LaTeX{} to not try and interpret that text and
+instead just print it to the document. We do this with a verbatim
+environment.
+
+% There are other packages that exist (i.e. minty, lstlisting, etc.)
+% but verbatim is the bare-bones basic one.
+\begin{verbatim}
+  print(&quot;Hello World!&quot;)
+  a%b; % look! We can use % signs in verbatim.
+  random = 4; #decided by fair random dice roll
+\end{verbatim}
+
+\section{Compiling}
+
+By now you're probably wondering how to compile this fabulous document
+and look at the glorious glory that is a \LaTeX{} pdf.
+(yes, this document actually does compile).
+
+Getting to the final document using \LaTeX{} consists of the following
+steps:
+  \begin{enumerate}
+    \item Write the document in plain text (the ``source code'').
+    \item Compile source code to produce a pdf.
+     The compilation step looks like this (in Linux): \\
+     \begin{verbatim}
+        &gt; pdflatex learn-latex.tex
+     \end{verbatim}
+  \end{enumerate}
+
+A number of \LaTeX{} editors combine both Step 1 and Step 2 in the
+same piece of software. So, you get to see Step 1, but not Step 2 completely.
+Step 2 is still happening behind the scenes\footnote{In cases, where you use
+references (like Eqn.~\ref{eq:pythagoras}), you may need to run Step 2
+multiple times, to generate an intermediary *.aux file.}.
+% Also, this is how you add footnotes to your document!
+
+You write all your formatting information in plain text in Step 1.
+The compilation part in Step 2 takes care of producing the document in the
+format you defined in Step 1.
+
+\section{Hyperlinks}
+We can also insert hyperlinks in our document. To do so we need to include the
+package hyperref into preamble with the command:
+\begin{verbatim}
+    \usepackage{hyperref}
+\end{verbatim}
+
+There exists two main types of links: visible URL \\
+\url{https://learnxinyminutes.com/docs/latex/}, or
+\href{https://learnxinyminutes.com/docs/latex/}{shadowed by text}
+% You can not add extra-spaces or special symbols into shadowing text since it
+% will cause mistakes during the compilation
+
+This package also produces list of thumbnails in the output pdf document and
+active links in the table of contents.
+
+\section{End}
+
+That's all for now!
+
+% Most often, you would want to have a references section in your document.
+% The easiest way to set this up would be by using the bibliography section
+\begin{thebibliography}{1}
+  % similar to other lists, the \bibitem command can be used to list items
+  % each entry can then be cited directly in the body of the text
+  \bibitem{latexwiki} The amazing \LaTeX{} wikibook: \emph{https://en.wikibooks.org/wiki/LaTeX}
+  \bibitem{latextutorial} An actual tutorial: \emph{http://www.latex-tutorial.com}
+\end{thebibliography}
+
+% end the document
+\end{document}
+
+</code></pre>
+<hr />
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code>\documentclass[a4,12pt]{book}
+% Document class can be: article, report, book, letter
+% Two-column article: \documentclass[twocolumn]{article}
+% A4 book with 11pt font: \documentclass[a4,11pt]{book}
+% Presentation: \documentclass[25pt,landscape,headrule]{foils}
+
+% Page options:
+% final/draft
+% oneside/twoside Default is oneside, except for book where it is twoside.
+% openright/openany Openright; chapters begin on right side pages only. Only for report (default openany) and book (default openright).
+% onecolumn/twocolumn
+% notitlepage/titlepage Titlepage makes \maketitle use a separate page for title and abstract.
+% leqno Makes equation numbers appear to the left.
+% fleqn Makes mathematical forumalas align left.
+
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{eucal}
+\usepackage{latexsym} % for more symbols
+
+% Margins
+
+\pageheight
+\pagewidth
+
+\voffset % The distance between the top of the page and the beginning of the top margin.
+\hoffset % The distance between the left side of the page and the odd side margin.
+
+\topmargin % The height of the top margin. 
+\headheight % The height of the header.
+\headsep % The separation between the header and the text.
+
+\textheight
+\textwidth
+
+\oddsidemargin 
+\evensidemargin
+
+\footskip
+
+\marginparwidth
+\marginparsep
+
+\begin{document}
+
+% Title
+
+\title{}
+\author{ Number One \and Number Two }
+\date{}
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Abstract is for article document class
+\begin{abstract}
+\end{abstract}
+
+% Page styles
+
+Pagestyles define the dimensions and page styles of the header and footer of a page.
+
+\pagestyle{option}
+
+option may be:
+plain header is empty and footer has page number
+empty both header and footer are empty
+headings the header is determined by the document class, normally the section name and the page number
+myheadings like headings, except the header content is specified by the user.
+
+When myheadings is used, the header may be specified with:
+\markright{}
+\markboth{lefthead}{righthead}
+\thispagestyle{options} % is like \pagestyle but applies only to the current page
+
+The page numbering is determined with the command:
+\pagenumbering{numstyle}
+
+where numstyle may be:
+arabic
+roman
+Roman
+alph
+Alph
+
+% Document structure
+
+% Chapter is for book or report document class
+% Section and subsection are allowed in article document class
+\part{}
+\chapter{}
+\section{}
+\subsection{}
+\subsubsection{}
+\paragraph{}
+\subparagraph{}
+
+% Special characters
+
+``Quote marks''
+
+\'{A} Accent.
+
+\~{N} N tilde.
+
+% Text styles
+
+\emph{Emphasized.}
+{\em Also emphasized.}
+\emph{Emphasized text \emph{within} Emphasized text.}
+\begin{emph}
+Also emphasized.
+\end{emph}
+
+\textbf{Bold face.}
+{\bf Also bold face.}
+\begin{bf}
+Also boldface.
+\end{bf}
+
+\underline{Underlined.}
+
+\textsf{Sans Serif}
+\textsc{Uppercase}
+\textsl{Inclinated}
+\texttt{Terminal}
+\verb&quot;Verbatim&quot;
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{verbatim*}
+In this mode whitespace characters are printed with a special character.
+\end{verbatim*}
+
+\begin{quote}
+\end{quote}
+
+\begin{itemize}
+ \item[] Text
+ \item[] Text
+\end{itemize}
+
+\begin{enumerate}
+ \item[] Text
+ \item[] Text
+\end{enumerate}
+
+{\tiny         Tiny}
+{\scriptsize   Scriptsize}
+{\footnotesize Footnotesize}
+{\small        Small}
+{\normalsize   Normalsize}
+{\large        large}
+{\Large        Large}
+{\huge         huge}
+{\Huge         Huge}
+
+\noindent
+Some text.
+
+\textmd{Is the same as normalsize.}
+
+\# $ \% \&amp; \_ \{ \}
+\verb&quot;^&quot; 
+\verb&quot;~&quot; 
+\verb&quot;\&quot;
+
+% Symbols
+\LaTeX
+
+% Greek letters
+\alpha
+\beta
+\gamma
+\delta
+\epsilon
+\varepsilon
+\zeta
+\eta
+\theta
+\vertheta
+\iota
+\kappa
+\lambda
+\mu
+\nu
+\xi
+\pi
+\varpi
+\rho
+\varrho
+\sigma
+\varsigma
+\tau
+\upsilon
+\phi
+\varphi
+\chi
+\psi
+\omega
+
+\Gamma
+\Delta
+\Theta
+\Lambda
+\Xi
+\Pi
+\Sigma
+\Upsilon
+\Phi
+\Psi
+\Omega
+
+% Binary operators
+\pm
+\mp
+\times
+\div
+\ast
+\star
+\circ
+\bullet
+\cdot
+\cap
+\cup
+\uplus
+\sqcap
+\sqcup
+\vee
+\wedge
+\setminus
+\wr
+\diamond
+\bigtriangleup
+\bigtriangledown
+\triangleleft
+\triangleright
+\oplus
+\odot
+\bigcirc
+\dagger
+\ddagger
+\amalg
+
+% Relational symbols
+
+% Arrows
+
+% Miscellaneous
+
+% Variable size symbols
+
+% Functions
+
+% Formulas 
+
+% Difference between \[ \] and \( \)
+
+% Array environment
+
+El entorno tiene un unico argumento que especifica el numero de columnas y la alineacion de los elementos dentro de la columna.
+c el elemento va centrado
+l el elemento va justificado a la izquierda
+r el elemento va justificado a la derehca
+Las filas adyacentes van separadas por \\
+Los elementos dentro de una fila van separados por &amp;
+No debe haber un &amp; despues del ultimo item en una fila ni un \\ despues de la ultima fila
+
+\[
+\begin{array}{clcr}
+a+b+c &amp; uv    &amp; 27       \\
+a+b   &amp; u+v   &amp; 134      \\
+a     &amp; 3u+vw &amp; xyz &amp; 65 \\
+a^2   &amp; u^{-1} &amp; z  &amp; 0
+\end{array}
+\]
+
+% Alineacion vertical
+Latex dibuja una linea horizontal central imaginaria a lo largo de cada formula, a la altura de un hipotetico signo menos.
+Los items un una fila de un arreglo se posicionan verticalmente de modo que sus lineas centrales estan a la misma altura. 
+Se puede cambiar la posicion de un entorno array (por default esta centrado)
+El argumento opcional t indica que se alineara con la primera linea del arreglo. 
+El argumento opcional b indica que se alineara con la ultima linea del arreglo. 
+
+\[
+x - 
+\begin{array}{c}
+a_1    \\
+\vdots \\
+a_n    \\
+\end{array}
++
+\begin{array}[t]{cl}
+u - v &amp; 13                                       \\
+u + v &amp; \begin{array}[b]{r}12 \\ 144 \end{array} 
+\end{array}
+\]
+
+% Delimitadores 
+
+% Tables 
+El entorno tabular es similar al entorno array pero se puede usar en modo texto y en modo matematico.
+Dentro de los argumentos, pueden ir c, l, r igual que en array, y ademas | coloca una barra vertical simple. 
+Un comando \hline despues de un \\ o al comienzo del entorno dibuja una lina horizontal a lo largo de la tabla.
+El comando \cline{i-j} dibuja una linea horizontal entre las columnas i y j inclusive.
+Un item de una tabla puede expandirse en varias en varias columnas utilizando el comando:
+\multicolumn{cols}{pos}{text}
+cols es el numero de columnas a expandir
+pos es su posicion
+text es el texto del item
+
+\begin{tabular}{||l|lr||} \hline \hline
+\textbf{Equipo} &amp; \textbf{Zone} &amp; \textbf{Puntos} \\ \hline \hline
+Licenciados     &amp; Norte         &amp; 25              \\ \hline
+Ingenieros      &amp; Sur           &amp; 24              \\ \hline
+Profesores      &amp; Centro        &amp; 22              \\ \hline \hline
+\end{tabular}
+
+\begin{tabular}{||l|lr||} \hline
+Papas   &amp; Horno   &amp; $ 2.00 \\ \cline{2-3} 
+        &amp; Fritas  &amp; $ 3.00 \\ \hline
+Asado   &amp; Parilla &amp; $ 8.00 \\ \hline
+Chorizo &amp;         &amp; $ 4.00 \\ \hline
+Vino    &amp; Rosado  &amp; $ 9.00 \\ \hline
+\end{tabular}
+
+
+\begin{tabular}{||l|l|r||} \hline \hline
+\textbf{Equipo} &amp; \multicolumn{2}{c||}{\emph{Camiseta}} \\ \hline
+River           &amp; Blanco &amp; Rojo     \\
+Boca            &amp; Azul   &amp; Amarillo \\ 
+San Lorenzo     &amp; Rojo   &amp; Azul     \\
+Olimpo          &amp; Negro  &amp; Amarillo \\ \hline \hline
+\end{tabular}
+
+Tabbing environment
+
+El entorno tabbing permite alinear texto como el entorno tabular, pero sin separar mediante lineas verticales y horizontales.
+Permite alinear texto definiendo tabulaciones.
+Las tabulaciones se definen con \= y el \&gt; permite desplazarse hasta la proxima tabulacion. 
+Las lineas se separan con \\
+Un comando \= puede resetear una antigua tabulacion
+Un comando \kill en lugar de \\ al final de una linea define las tabulaciones pero no muestra a esa linea en la salida
+
+\begin{tabbing}
+Los hermanos sean \= unidos                          \\
+                  \&gt; porque esa es la ley primera    \\
+                  \&gt; tengan union verdader           \\
+                  \&gt; en cualquier tiempo que sea     \\
+                  \&gt; porque si entre ellos se pelean \\
+                  \&gt; los devoran los de afuera
+\end{tabbing}
+
+\begin{tabbing}
+Si no se     \= definen bien las tabulaciones    \\
+las          \&gt; palabras pueden verse bien o ... \\
+superponerse \&gt; //// entre ellas
+\end{tabbing}
+
+\begin{tabbing}
+Columna 1 \= Columna 2 \= Columna 3 \\
+A \&gt; B  \&gt; C \\
+a \&gt; b  \&gt; c \\
+Nueva Columna 1 \= Nueva Columna 2 \= Nueva Columna 3 \\
+A               \&gt; B               \&gt; C \\
+a               \&gt; b               \&gt; c
+\end{tabbing}
+
+\begin{tabbing}
+Carpinteria \= Anaranjado \= Hipertension \kill
+Uno         \&gt; Dos        \&gt; Tres         \\
+Cuatro      \&gt; Cinco      \&gt; Seis         \\
+Siete       \&gt; Ocho       \&gt; Nueve
+\end{tabbing}
+
+% The bibliography is for book document class
+\begin{thebbibliography}
+\end{thebibliography}
+
+\end{document}
+</code></pre>
+<hr />
+<h2 id="logica-para-ciencias-de-la-computacion-tp3"><a class="header" href="#logica-para-ciencias-de-la-computacion-tp3">Logica para Ciencias de la Computacion: TP3</a></h2>
+<pre><code>%
+% Lógica para Ciencias de la Computación,
+% Primer Cuatrimestre de 2006
+%
+% Trabajo Práctico Número 3bis
+%
+
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+
+\input{Defs}
+
+\newcommand{\then}{\rightarrow}
+\newcommand{\tab}{\hspace{1.5cm}}
+\setlength{\tabcolsep}{0.5mm}
+
+\begin{document}
+
+\begin{center}
+
+\begin{tabular}{lcl}
+\hspace{.85in} &amp; \large Departamento de Cs.\ e Ingenier\'{\i}a de
+la Computaci\'on &amp; \hspace{.85in} \\
+&amp; \large Universidad Nacional del Sur \\
+\smash{\includegraphics[width=.70in,height=.75in]{DeptoLogo.eps}} &amp;
+&amp; \hspace{.10in} \smash{\includegraphics[width=.78in,height=.78in]{UniLogo.eps}} \\
+\end{tabular}
+
+\vspace{4mm}
+
+{\Large\sc L\'ogica para Ciencias de la Computaci\'on} \\[4pt]
+{\bf Pruebas Sint\'acticas} \\[4pt]
+Primer Cuatrimestre de 2006
+
+\end{center}
+
+\section*{Convenciones adoptadas}
+
+\setlength{\tabcolsep}{1.5mm}
+\begin{tabular}{cl}
+\sf Def. Deducci\'on &amp; Definici\'on de deducci\'on.\\
+\sf MP (&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;,&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;) &amp; Consecuencia directa, por Modus Ponens, de &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; e &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.\\
+\sf TD (&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;) &amp; Teorema de la Deducci\'on aplicado a &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.\\
+\sf Transitividad &amp; Tercer propiedad de la deducci\'on (no confundir con Lema 2.3.4). \\
+\sf Lema &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Lema &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, seg\'un ``Truth, Deduction and Computation'' (R. Davis). \\
+\sf L1 &amp; Instancia del axioma A\then(B\then A).\\
+\sf L2 &amp; Instancia del axioma (A\then(B\then C))\then((A\then B)\then(A\then C)).\\
+\sf L3 &amp; Instancia del axioma (\neg B\then\neg A)\then((\neg B\then A)\then B).\\
+\end{tabular}
+
+\section*{Soluciones}
+
+\subsubsection*{(a) \neg\neg A\then A}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Def. Deducci\'on \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg A\then\neg\neg A)\then((\neg A\then\neg A)\then A) &amp; {\bf L3} \\
+3. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then(\neg A\then\neg\neg A) &amp; {\bf L1} \\
+4. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then\neg\neg A &amp; MP (1,3) \\
+5. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg A\then\neg A)\then A &amp; MP (4,2) \\
+6. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then\neg A &amp; Lema 2.3.2 \\
+7. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (5,2) \\
+8. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then A &amp; TD (7) \\
+\end{tabular*}
+
+\subsubsection*{(b) A,B \vdash \neg(A\then\neg B)}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Def. Deducci\'on \\
+2. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Def. Deducci\'on \\
+3. &amp; \  &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg(A\then\neg B)\then\neg B)\then \\
+\ &amp; \ &amp; \ &amp; \tab ((\neg\neg(A\then\neg B)\then B)\then\neg(A\then\neg B)) &amp; {\bf L3} \\
+4. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B)\then(A\then\neg B) &amp; Ejercicio (a) \\
+5. &amp; A\then\neg B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then\neg B &amp; Def. Deducci\'on \\
+6. &amp; A,A\then\neg B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (1,5) \\
+7. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (A\then\neg B)\then\neg B &amp; TD (6) \\
+8. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B)\then\neg B &amp; Lema 2.3.4 (4,7) \\
+9. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg(A\then\neg B)\then B)\then\neg(A\then\neg B) &amp; MP (3,8) \\
+10. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; B\then(\neg\neg(A\then\neg B)\then B) &amp; {\bf L1} \\
+11. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B)\then B &amp; MP (2,10) \\
+12. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8777699999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B) &amp; MP (11,9) \\
+\end{tabular*}
+
+\ \\
+\noindent {\sc Observaci\'on:} Los pasos {\bf 5}, {\bf 6} y {\bf 7} prueban un
+resultado intermedio necesario para la demostraci\'on. No constituye una
+prueba auxiliar independiente pues se considera que el resultado es muy
+espec\'{\i}fico.
+
+\subsubsection*{(c) &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;≡&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg\neg A\then\neg A)\then((\neg\neg\neg A\then A)\then\neg\neg A) &amp; {\bf L3} \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg\neg A\then\neg A &amp; Ejercicio (a) \\
+3. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg\neg A\then A)\then\neg\neg A &amp; MP (2,1) \\
+4. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then(\neg\neg\neg A\then A) &amp; {\bf L1} \\
+5. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then\neg\neg A &amp; Lema 2.3.4 (4,3) \\
+6. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then A &amp; Ejercicio (a) \\
+7. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;≡&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Ejercicio (b) (5,6) \\
+\end{tabular*}
+
+\subsubsection*{(d) \vdash (A\then B)\then(\neg B\then\neg A)}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg A\then\neg\neg B)\then((\neg\neg A\then \neg B)\then\neg A) &amp; {\bf L3} \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then A &amp; Ejercicio (a) \\
+3. &amp; A\then B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then B &amp; Def. Deducci\'on \\
+4. &amp; A\then B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then B &amp; Lema 2.3.4 (2,3) \\
+5. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; B\then\neg\neg B &amp; Prueba Aux. (1) \\
+6. &amp; A\then B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg A\then\neg\neg B &amp; Lema 2.3.4 (4,5) \\
+7. &amp; A\then B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg A\then\neg B)\then\neg A &amp; MP (6,1) \\
+8. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg B\then(\neg\neg A\then\neg B) &amp; {\bf L1} \\
+9. &amp; A\then B &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg B\then\neg A &amp; Lema 2.3.4 (8,7) \\
+10. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (A\then B)\then(\neg B\then\neg A) &amp; TD (9) \\
+\end{tabular*}
+
+\subsubsection*{(e) \neg(A\then\neg B) \vdash B}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg B\then\neg(A\then\neg B))\then ((\neg B\then(A\then\neg B))\then B) &amp; {\bf L3} \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B)\then(\neg B\then\neg(A\then\neg B)) &amp; {\bf L1} \\
+3. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B) &amp; Def. Deducci\'on \\
+4. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg B\then\neg(A\then\neg B) &amp; MP (3,2) \\
+5. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg B\then(A\then\neg B))\then B &amp; MP (1,4) \\
+6. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg B\then(A\then\neg B) &amp; {\bf L1} \\
+7. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (6,5) \\
+\end{tabular*}
+
+\subsubsection*{(f) Si &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8888799999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.07153em;&quot;&gt;C&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;, entonces \neg(A\then\neg B) \vdash C}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Prueba Aux. (2) \\
+2. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Ejercicio (e) \\
+3. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8777699999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.07153em;&quot;&gt;C&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Hip\'otesis \\
+4. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.07153em;&quot;&gt;C&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Transitividad (1,2,3) \\
+\end{tabular*}
+
+\subsubsection*{(g) A \vdash \neg\neg(A\then\neg B)\then\neg B}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \neg\neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B) &amp; Def. Deducci\'on \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B)\then(A\then\neg B) &amp; Ejercicio (a) \\
+3. &amp; \neg\neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then\neg B &amp; MP (1,2) \\
+4. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Def. Deducci\'on \\
+5. &amp; A,\neg\neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (4,3) \\
+6. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg(A\then\neg B)\then\neg B &amp; TD (5) \\
+\end{tabular*}
+
+\subsubsection*{(h) Si \vdash P\then A y \vdash P\then B, entonces \vdash P\then \neg(A\then\neg B)}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; Def. Deducci\'on \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; P\then A &amp; Hip\'otesis \\
+3. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (1,2) \\
+4. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; P\then B &amp; Hip\'otesis \\
+5. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (1,4) \\
+6. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.8777699999999999em;vertical-align:-0.19444em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.05017em;&quot;&gt;B&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B) &amp; Ejercicio (b) \\
+7. &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B) &amp; Transitividad (3,5,6) \\
+8. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; P\then\neg(A\then\neg B) &amp; TD (7) \\
+\end{tabular*}
+
+\subsubsection*{(i) \vdash \neg A\then(A\then B)}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then(\neg B\then\neg A) &amp; {\bf L1} \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg B\then\neg A)\then(A\then B) &amp; Lema 2.3.5 \\
+3. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then(A\then B) &amp; Lema 2.3.4 (1,2) \\
+\end{tabular*}
+
+\section*{Pruebas Auxiliares}
+
+\subsubsection*{(1) &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;≡&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;¬&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg\neg A\then\neg A)\then((\neg\neg\neg A\then A)\then\neg\neg A) &amp; {\bf L3} \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg\neg\neg A\then\neg A &amp; Ejercicio (a) \\
+3. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg\neg A\then A)\then\neg\neg A &amp; MP (2,1) \\
+4. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then(\neg\neg\neg A\then A) &amp; {\bf L1} \\
+5. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; A\then\neg\neg A &amp; Lema 2.3.4 (4,3) \\
+\end{tabular*}
+
+\subsubsection*{(2) \neg(A\then\neg B) \vdash A}
+\begin{tabular*}{170mm}{lrcl@{\extracolsep{\fill}}r}
+1. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B) &amp; Def. Deducci\'on \\
+2. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg A\then\neg(A\then\neg B))\then((\neg A\then(A\then\neg B))\then A) &amp; {\bf L3} \\
+3. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg(A\then\neg B)\then(\neg A\then\neg(A\then\neg B)) &amp; {\bf L1} \\
+4. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then\neg(A\then\neg B) &amp; MP (1,3) \\
+5. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg A\then(A\then\neg B))\then A &amp; MP (4,2) \\
+6. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then(\neg\neg B\then\neg A) &amp; {\bf L1} \\
+7. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; (\neg\neg B\then\neg A)\then(A\then\neg B) &amp; Lema 2.3.5 \\
+8. &amp; \ &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; \neg A\then(A\then\neg B) &amp; Lema 2.3.4 (6,7) \\
+9. &amp; \neg(A\then\neg B) &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;⊢&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; &amp; MP (8,5) \\
+\end{tabular*}
+
+\end{document}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../comp.sci.eng/tools/git.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../comp.sci.eng/tools/vim.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../comp.sci.eng/tools/git.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../comp.sci.eng/tools/vim.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
