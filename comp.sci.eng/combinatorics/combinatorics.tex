@@ -1,0 +1,34 @@
+\documentclass[12pt, a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{wasysym}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage[pdfpagelabels]{hyperref}
+\hypersetup{
+    plainpages=false,
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+    filecolor=magenta,
+}
+
+\newcommand{\comment}[1]{}
+
+\begin{document}
+
+\include{titlepage}
+
+\pagenumbering{arabic}
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+
+\include{notes}
+
+\end{document}

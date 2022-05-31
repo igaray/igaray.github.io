@@ -1,0 +1,1135 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Resources: Books - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/compilers/compilers_resources_books.html">Resources: Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/llvm.html">Resources: LLVM</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/tesina_es.html">Tesina</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li></ol></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../comp.sci.eng/distributed_systems/resources_books.html" class="active">Resources: Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/notes.html">Notes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/questions.html">Questions</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/microservices.html">Microservices</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_links.html">Resources: Links</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/excellency.html">Excellency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/rest.html">HTTP REST</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/_kak.html">Kakoune</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/vim.html">Vim</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/zsh.html">Zsh</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li></ol></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="books"><a class="header" href="#books">Books</a></h1>
+<ul>
+<li><a href="#designing-data-intensive-applications">Designing Data Intensive Applications</a></li>
+<li><a href="#guide-to-reliable-distributed-systems">Guide To Reliable Distributed Systems</a></li>
+<li><a href="#protocol-design">Protocol Design</a></li>
+<li><a href="#introduction-to-reliable-and-secure-distributed-programming-carlos-varela-cachin">INTRODUCTION TO RELIABLE AND SECURE DISTRIBUTED PROGRAMMING (CARLOS VARELA, CACHIN)</a></li>
+<li><a href="#tanenbaum---distributed-systems-principles-and-paradigms">TANENBAUM - DISTRIBUTED SYSTEMS PRINCIPLES AND PARADIGMS</a></li>
+<li><a href="#distributed-systems-concepts-and-design-colouris">Distributed Systems: Concepts and Design (Colouris)</a></li>
+<li><a href="#distributed-operating-systems-tanenbaum">Distributed Operating Systems (Tanenbaum)</a></li>
+<li><a href="#lamport---distributed-operating-systems-theory-and-practice">LAMPORT - DISTRIBUTED OPERATING SYSTEMS: THEORY AND PRACTICE</a></li>
+<li><a href="#lynch---distributed-algorithms">LYNCH - DISTRIBUTED ALGORITHMS</a></li>
+<li><a href="#raynal---distributed-algorithms-for-message-passing-systems">RAYNAL - DISTRIBUTED ALGORITHMS FOR MESSAGE-PASSING SYSTEMS</a></li>
+<li><a href="#ghosh---distributed-systems-an-algorithmic-approach">GHOSH - DISTRIBUTED SYSTEMS AN ALGORITHMIC APPROACH</a></li>
+<li><a href="#wan-fokkink---distributed-systems-an-intuitive-approach">WAN FOKKINK - DISTRIBUTED SYSTEMS AN INTUITIVE APPROACH</a></li>
+<li><a href="#notes-on-theory-of-distributed-systems">NOTES ON THEORY OF DISTRIBUTED SYSTEMS</a></li>
+<li><a href="#scaling-reliably">SCALING RELIABLY</a></li>
+<li><a href="#uns-sistemas-distribuidos">UNS SISTEMAS DISTRIBUIDOS</a></li>
+</ul>
+<h2 id="designing-data-intensive-applications"><a class="header" href="#designing-data-intensive-applications">Designing Data Intensive Applications</a></h2>
+<pre><code>    I foundations of data systems
+      1 reliable, scalable, and maintainable applications
+        1.1 thinking about data systems
+        1.2 reliability
+        1.3 scalability
+        1.4 maintainability
+      2 data models and query languages
+        2.1 relational model vs document model
+        2.2 query languages for data
+        2.3 graph-like data models
+      3 storage and retrieval
+        3.1 data structures that power your database
+        3.2 transaction processing or analytics?
+        3.3 column-oriented storage
+      4 encoding and evolution
+        4.1 formats for encoding data
+        4.2 modes of dataflow
+    II distributed data
+      5 replication
+        5.1 leaders and followers
+        5.2 problems with replication lag
+        5.3 multi-leader replication
+        5.4 leaderless replication
+      6 partitioning
+        6.1 partitioning and replication
+        6.2 partitioning of key-value data
+        6.3 partitioning and secondary indexes
+        6.4 rebalancing partitions
+        6.5 request routing
+      7 transactions
+        7.1 the slippery concept of a transaction
+        7.2 weak isolation levels
+        7.3 serializability
+      8 the trouble with distributed systems
+        8.1 faults and partial failures
+        8.2 unreliable networks
+        8.3 unreliable clocks
+        8.4 knowledge, truth and lies
+      9 consistency and consensus
+        9.1 consistency guarantees
+        9.2 linearizability
+        9.3 ordering guarantees
+        9.4 distributed transactions and consensus
+    III derived data
+      10 batch processing
+        10.1 batch processing with unix tools
+        10.2 mapreduce and distributed filesystems
+        10.3 beyond mapreduce
+      11 stream processing
+        11.1 transmitting event streams
+        11.2 database and streams
+        11.3 processing streams
+      12 the future of data systems
+        12.1 data integration
+        12.2 unbundling databases
+        12.3 aiming for correctness
+        12.4 doing the right thing
+</code></pre>
+<h2 id="guide-to-reliable-distributed-systems"><a class="header" href="#guide-to-reliable-distributed-systems">Guide To Reliable Distributed Systems</a></h2>
+<pre><code>    I computing in the cloud
+        1 introduction
+        2 the way of the cloud
+        3 client perspective
+        4 network perspective
+        5 the structure of cloud data centers
+        6 remote procedure calls and the client/server model
+        7 corba: the common object request broker architecture
+        8 system support for fast client/server communication
+    II reliable distributed computing
+        9 how and why computer systems fail
+        10 overcoming failures in a distributed system
+        11 dynamic membership
+        12 group communication systems
+        13 point to point and multi-group considerations
+        14 the virtual synchrony execution model
+        15 consistency in distributed systems
+    III applications of reliability techniques
+        16 retrofitting reliability into complex systems
+        17 software architectures for group communication
+    IV related technologies
+        18 security options for distributed settings
+        19 clock synchronization and synchronization systems
+        20 transactional systems
+        21 peer-to-peer systems and probabilistic protocols
+        22 appendix A: virtualy synchronous methodology for building dynamic reliable services
+        23 appendix B: isis API
+</code></pre>
+<h2 id="protocol-design"><a class="header" href="#protocol-design">Protocol Design</a></h2>
+<pre><code>    1 introduction
+        1.1 what is a protocol?
+        1.2 protocols as processes
+        1.3 techniques for actual proofs
+        1.4 real protocols
+        1.5 readers's guide
+    2 CSP descriptions and proof rules
+        2.1 processes and process synchronization
+        2.2 channel history semantics
+        2.3 failure semantics
+    3 protocols and services
+        3.1 providing a service
+        3.2 service features
+        3.3 OSI and other layered architectures
+    4 basic protocol mechanisms
+        4.1 sequence control and error control
+        4.2 flow control
+        4.3 indication of change of peer state
+        4.4 change of service mode
+        4.5 multiplexing and splitting
+        4.6 segmentation and reassembly
+        4.7 prioritisation
+    5 multi-peer consensus
+        5.1 reliable consensus
+        5.2 election
+        5.3 commitment
+        5.4 byzantine agreement
+        5.5 clock synchronization
+        5.6 finding the global state
+    6 security
+        6.1 cryptographic methods
+        6.2 integrity
+        6.3 digital signatures
+        6.4 entity authentication
+        6.5 key exchange
+        6.6 non-cryptographic methods
+    7 naming addressing and routing
+        7.1 general principles of naming and addressing
+        7.2 addressing structures
+        7.3 routing
+        7.4 congestion
+    8 protocol encoding
+        8.1 simple binary encoding
+        8.2 TLV encoding
+        8.3 ASN.1 encoding
+        8.4 ASCII encodings
+    9 protocols in the OSI lower layers
+        9.1 data link layer
+        9.2 network layer
+        9.3 transport layer
+    10 application support protocols
+        10.1 session layer
+        10.2 presentation layer
+        10.3 application layer
+        10.4 basic application service elements
+        10.5 commitment, concurrency and recovery
+        10.6 client-server systems
+        10.7 security middleware
+    11 application protocols
+        11.1 file transfer
+        11.2 distributed transaction processing
+        11.3 message handling
+        11.4 hypertext and the world wide web
+        11.5 web services
+    A notation
+        A.1 data types and variables
+        A.2 data values and expressions
+        A.3 processes and process expressions
+        A.4 traces, failures, and transitions
+        A.5 inference rules for process specifications
+        A.6 security
+    B standarization
+        B.1 standards organizations
+        B.2 standards documents
+</code></pre>
+<h2 id="introduction-to-reliable-and-secure-distributed-programming-carlos-varela-cachin"><a class="header" href="#introduction-to-reliable-and-secure-distributed-programming-carlos-varela-cachin">INTRODUCTION TO RELIABLE AND SECURE DISTRIBUTED PROGRAMMING (CARLOS VARELA, CACHIN)</a></h2>
+<pre><code>    1 introduction
+        1.1 motivation
+        1.2 distributed programming abstractions
+        1.3 the end-to-end argument
+        1.4 software components
+        1.5 classes of algorithms
+    2 basic abstractions
+        2.1 distributed computation
+        2.2 abstracting processes
+        2.3 cryptographics abstractions
+        2.4 abstracting communication
+        2.5 timing assumptions
+        2.6 abstracting time
+        2.7 distributed system models
+    3 reliable broadcast
+        3.1 motivation
+        3.2 best-effort broadcast
+        3.3 regular reliable broadcast
+        3.4 uniform reliable broadcast
+        3.5 stubborn broadcast
+        3.6 logged best-effort broadcast
+        3.7 logged uniform reliable broadcast
+        3.8 probabilistic broadcast
+        3.9 FIFO and causal broadcast
+        3.10 byzantine consistent broadcast
+        3.11 byzantine reliable broadcast
+        3.12 byzantine broadcast channels
+    4 shared memory
+        4.1 introduction
+        4.2 (1,N) regular register
+        4.3 (1,N) atomic register
+        4.4 (N,N) atomic register
+        4.5 (1,N) logged regular register
+        4.6 (1,N) byzantine safe register
+        4.7 (1,N) byzantine regular register
+        4.8 (1,N) byzantine atomic register
+    5 consensus
+        5.1 regular consensus
+        5.2 uniform consensus
+        5.3 uniform consensus in the fail-noisy model
+        5.4 logged consensus
+        5.5 randomized consensus
+        5.6 byzantine consensus
+        5.7 byzantine randomized consensus
+    6 consensus variants
+        6.1 total-order broadcast
+        6.2 byzantine total order broadcast
+        6.3 terminating reliable broadcast
+        6.4 fast consensus
+        6.5 fast byzantine consensus
+        6.6 nonblocking atomic commit
+        6.7 group membership
+        6.8 view-synchronous communication
+    7 concluding remarks
+        7.1 implementation in appia
+        7.2 further implementations
+        7.3 further reading
+</code></pre>
+<h2 id="tanenbaum---distributed-systems-principles-and-paradigms"><a class="header" href="#tanenbaum---distributed-systems-principles-and-paradigms">TANENBAUM - DISTRIBUTED SYSTEMS PRINCIPLES AND PARADIGMS</a></h2>
+<pre><code>    1 introduction
+        1.1 definition of distributed system
+        1.2 goals
+        1.3 types of distributed systems
+    2 architectures
+        2.1 architectural styles
+        2.2 system architectures
+        2.3 architectures versus middleware
+        2.4 self-management in distributed systems
+    3 processes
+        3.1 threads
+        3.2 virtualization
+        3.3 clients
+        3.4 servers
+        3.5 code migration
+    4 communication
+        4.1 fundamentals
+        4.2 remote procedure call
+        4.3 message-oriented communication
+        4.4 stream-oriented communication
+        4.5 multicast communication
+    5 naming
+        5.1 names, identifiers and addresses
+        5.2 flat naming
+        5.3 structured naming
+        5.4 attribute-based naming
+    6 synchronization
+        6.1 clock synchronization
+        6.2 logical clocks
+        6.3 mutual exlusion
+        6.4 global positioning of nodes
+        6.5 election algorithms
+    7 consistency and replication
+        7.1 introduction
+        7.2 data-centric consistency models
+        7.3 client-centric consistency models
+        7.4 replica management
+        7.5 consistency protocols
+    8 fault tolerance
+        8.1 introduction to fault tolerance
+        8.2 process resilience
+        8.3 reliable client-server communication
+        8.4 reliable group communication
+        8.5 distributed commit
+        8.6 recovery
+    9 security
+        9.1 introduction to security
+        9.2 secure channels
+        9.3 access control
+        9.4 security management
+    10 distributed object-based systems
+        10.1 architecture
+        10.2 processes
+        10.3 communication
+        10.4 naming
+        10.5 synchronization
+        10.6 consistency and replication
+        10.7 fault tolerance
+        10.8 security
+    11 distributed file systems
+        11.1 architecture
+        11.2 processes
+        11.3 communication
+        11.4 naming
+        11.5 synchronization
+        11.6 consistency and replication
+        11.7 fault tolerance
+        11.8 security
+    12 distributed web-based systems
+        12.1 architecture
+        12.2 processes
+        12.3 communication
+        12.4 naming
+        12.5 synchronization
+        12.6 consistency and replication
+        12.7 fault tolerance
+        12.8 security
+    13 distributed coordination-based systems
+        13.1 introduction to coordination models
+        13.2 architectures
+        13.3 processes
+        13.4 communication
+        13.5 naming
+        13.6 synchronization
+        13.7 consistency and replication
+        13.8 fault tolerance
+        13.9 security
+    14 suggestions for further reading and bibliography
+</code></pre>
+<h2 id="distributed-systems-concepts-and-design-colouris"><a class="header" href="#distributed-systems-concepts-and-design-colouris">Distributed Systems: Concepts and Design (Colouris)</a></h2>
+<pre><code>    1 characterization of distributed systems
+        1.1 introduction
+        1.2 examples of distributed systems
+        1.3 trends in distributed systems
+        1.4 focus on resource sharing
+        1.5 challenges
+        1.6 case study: the world wide web
+    2 system models
+        2.1 introduction
+        2.2 physical models
+        2.3 architectural models
+        2.4 fundamental models
+    3 networking and internetworking
+        3.1 introduction
+        3.2 types of network
+        3.3 network principles
+        3.4 internet protocols
+        3.5 case studies: ethernet, wifi and bluetooth
+    4 interprocess communication
+        4.1 introduction
+        4.2 the api for the internet protocols
+        4.3 external data representation and marshalling
+        4.4 multicast communication
+        4.5 network virtualization: overlay networks
+        4.6 case study: MPI
+    5 remote invocation
+        5.1 introduction
+        5.2 request-reply protocols
+        5.3 remote procedure call
+        5.4 remote procedure invocation
+        5.5 case study: java RMI
+    6 indirect communication
+        6.1 introduction
+        6.2 group communication
+        6.3 publish-subscribe systems
+        6.4 message queues
+        6.5 shared memory approaches
+    7 operating systems support
+        7.1 introduction
+        7.2 the operating system layer
+        7.3 protection
+        7.4 processes and threads
+        7.5 communication and invocation
+        7.6 operating system architecture
+        7.7 virtualization at the operating system level
+    8 distributed objects and components
+        8.1 introduction
+        8.2 distributed objects
+        8.3 case study: CORBA
+        8.4 from objects to components
+        8.5 case studies: enterprise javabeans and fractal
+    9 web services
+        9.1 introduction
+        9.2 web services
+        9.3 service descriptions and IDL for web services
+        9.4 a directory service for use with web services
+        9.5 XML security
+        9.6 coordination of web services
+        9.7 applications of web services
+    10 peer-to-peer systems
+        10.1 introduction
+        10.2 napster and its legacy
+        10.3 peer-to-peer middleware
+        10.4 routing overlays
+        10.5 overlay case studies: pastry, tapestry
+        10.6 application case studies: squirrel, oceanstore, ivy
+    11 security
+        11.1 introduction
+        11.2 overview of security techniques
+        11.3 digital signatures
+        11.4 cryptography pragmatics
+        11.6 case studies: needham-schroeder, kerberos, tls, 802.11 wifi
+    12 distributed file systems
+        12.1 introduction
+        12.2 file service architecture
+        12.3 case study: sun network file system
+        12.4 case study: the andrew file system
+        12.5 enhancements and further developments
+    13 name services
+        13.1 introduction
+        13.2 name services and the domain name system
+        13.3 directory services
+        13.5 case study: the X.500 directory service
+    14 time and global states
+        14.1 introduction
+        14.2 clocks, events and process states
+        14.3 synchronizing physical clocks
+        14.4 logical time and logical clocks
+        14.5 global states
+        14.6 distributed debugging
+    15 coordination and agreement
+        15.1 introduction
+        15.2 distributed mutual exclusion
+        15.3 elections
+        15.4 coordination and agreement in group communication
+        15.5 consensus and related problems
+</code></pre>
+<h2 id="distributed-operating-systems-tanenbaum"><a class="header" href="#distributed-operating-systems-tanenbaum">Distributed Operating Systems (Tanenbaum)</a></h2>
+<pre><code>    1 introduction to distributed systems
+        1.1 what is a distributed system?
+        1.2 goals
+        1.3 hardware concepts
+        1.4 software concepts
+        1.5 design issues
+    2 communication in distributed systems
+        2.1 layered protocols
+        2.2 asynchronous transfer mode networks
+        2.3 the client-server model
+        2.4 remote procedure call
+        2.5 group communication
+    3 synchronization in distributed systems
+        3.1 clock synchronization
+        3.2 mutual exclusion
+        3.3 election algorithms
+        3.4 atomic transactions
+        3.5 deadlocks in distributed systems
+    4 processes and processors in distributed systems
+        4.1 threads
+        4.2 system models
+        4.3 processor allocation
+        4.4 scheduling in distributed systems
+        4.5 fault tolerance
+        4.6 real-time distributed systems
+    5 distributed file systems
+        5.1 distributed file system design
+        5.2 distributed file system implementation
+        5.3 trends in distributed file systems
+    6 distributed shared memory
+        6.1 introduction
+        6.2 what is shared memory?
+        6.3 consistency models
+        6.4 paged-based distributed shared memory
+        6.5 shared-variable distributed shared memory
+        6.6 object-based distributed shared memory
+        6.7 comparison
+    7 case study 1: amoeba
+        7.1 introduction to amoeba
+        7.2 objects and capabilities in amoeba
+        7.3 process management in amoeba
+        7.4 memory management in amoeba
+        7.5 communication in amoeba
+        7.6 the amoeba servers
+    8 case study 2: mach
+        8.1 introduction to mach
+        8.2 process management in mach
+        8.3 memory management in mach
+        8.4 communication in mach
+        8.5 unix emulation in mach
+    9 case study 3: chorus
+        9.1 introduction to chorus
+        9.2 process management in chorus
+        9.3 memory management in chorus
+        9.4 communication in chorus
+        9.5 unix emulation in chorus
+        9.6 cool: an object oriented subsystem
+        9.7 comparison of amoeba, mach and chorus
+    10 case study 4: DCE
+        10.1 introduction to DCE
+        10.2 threads
+        10.3 remote procedure call
+        10.4 time service
+        10.5 directory service
+        10.6 security service
+        10.7 distributed file system
+</code></pre>
+<h2 id="lamport---distributed-operating-systems-theory-and-practice"><a class="header" href="#lamport---distributed-operating-systems-theory-and-practice">LAMPORT - DISTRIBUTED OPERATING SYSTEMS: THEORY AND PRACTICE</a></h2>
+<pre><code>    1 formal aspects of concurrent systems
+        1.1 a formal basis for the specification of concurrent systems
+        1.2 on the construction of distributed programs
+        1.3 derivation of distributed algorithms
+    2 design issues for distributed systems
+        2.1 design of highly decentralised operating systems
+        2.2 communication models for distributed computation
+        2.3 new concepts for distributed system structuring
+    3 hardware support for distributed computing systems
+        3.1 distributed computing system architectures: hardware
+        3.2 hardware support for the distributed operating system of the heidelberg polyp processor
+    4 case studies
+        4.1 the apollo domain distributed file system
+        4.2 the chorus distributed operating system: some design issues
+        4.3 the conic support environment for distributed systems
+        4.4 an experience in solving a transactions ordering problem in a distributed system
+        4.5 distributed transaction processing and the camelot system
+        4.6 work programs
+</code></pre>
+<h2 id="lynch---distributed-algorithms"><a class="header" href="#lynch---distributed-algorithms">LYNCH - DISTRIBUTED ALGORITHMS</a></h2>
+<pre><code>    I synchronous network algorithms
+        1 introduction
+        2 modelling 1: synchronous network model
+        3 leader election in a synchronous ring
+        4 algorithms in general synchronous networks
+        5 distributed consensus with link failures
+        6 distributed consensus with process failures
+        7 more consensus problems
+    II asynchronous algorithms
+        8 modelling 2: asynchronous system model
+    IIA asynchronous shared memory algorithms
+        9 modelling 3: asynchronous shared memory model
+        10 mutual exclusion
+        11 resource allocation
+        12 consensus
+        13 atomic objects
+    IIB asynchronous network algorithms
+        14 modelling 4: asynchronous network model
+        15 basic asynchronous network algorithms
+        16 synchronizers
+        17 shared memory versus networks
+        18 logical time
+        19 global snapshots and stable properties
+        20 network resource allocation
+        21 asynchronous network with process failures
+        22 data link protocols
+    III partially synchronous algorithms
+        23 partially synchronous system models
+        24 mutual exlusion with partial synchrony
+        25 consensus with partial synchrony
+</code></pre>
+<h2 id="raynal---distributed-algorithms-for-message-passing-systems"><a class="header" href="#raynal---distributed-algorithms-for-message-passing-systems">RAYNAL - DISTRIBUTED ALGORITHMS FOR MESSAGE-PASSING SYSTEMS</a></h2>
+<pre><code>    I distributed graph algorithms
+        1 basic definitions and network traversal algorithms
+        2 dsitributed graph algorithms
+        3 an algorithmic framework to compute global functions on a process graph
+        4 leader election algorithms
+        5 mobile objects navigating a network
+    II logical time and global states in distributed systems
+        6 nature of distributed computations and the concept of a global state
+        7 logical time in asynchronous distributed systems
+        8 asynchronous distributed checkpointing
+        9 simulating synchrony on top of asynchronous systems
+    III mutual exclusion and resource allocation
+        10 permission-based mutual exclusion algorithms
+        11 distributed resource allocation
+    IV high-level communication abstractions
+        12 order constraints on message delivery
+        13 rendezvous (synchronous) communication
+    V detection properties on distributed executions
+        14 distributed termination detection
+        15 distributed deadlock detection
+    VI distributed shared memory
+        16 atomic consistency (linearizability)
+        17 sequential consistency
+        18 afterword
+</code></pre>
+<h2 id="ghosh---distributed-systems-an-algorithmic-approach"><a class="header" href="#ghosh---distributed-systems-an-algorithmic-approach">GHOSH - DISTRIBUTED SYSTEMS AN ALGORITHMIC APPROACH</a></h2>
+<pre><code>    I background materials
+        1 introduction
+            1.1 what is a distributed system
+            1.2 why distributed systems
+            1.3 examples of distributed systems
+            1.4 important issues in distributed systems
+            1.5 common subproblems
+            1.6 implementing a distributed system
+            1.7 parallel versus distributed systems
+        2 interprocess communication: an overview
+            2.1 introduction
+            2.2 network protocols
+            2.3 naming
+            2.4 remote procedure call
+            2.5 remote method invocation
+            2.6 messages
+            2.7 web services
+            2.8 event notification
+            2.9 virtualization: cloud computing
+            2.10 mobile agents
+            2.11 basic group communication services
+            2.12 concluding remarks
+    II foundational topics
+        3 models for communication
+            3.1 need for a model
+            3.2 message-passing model for interprocess communication
+            3.3 shared variables
+            3.4 modeling mobile agents
+            3.5 relationship among models
+            3.6 classification based on special properties
+            3.7 complexity measures
+            3.8 concluding remarks
+        4 representing distributed algorithms: syntax and semantics
+            4.1 introduction
+            4.2 guarded actions
+            4.3 nondeterminism
+            4.4 atomic operations
+            4.5 fairness
+            4.6 central versus distributed schedulers
+            4.7 concluding remarks
+        5 program correctness
+            5.1 introduction
+            5.2 correctness criteria
+            5.3 correctness proofs
+            5.4 assertional reasoning: proving safety priorities
+            5.5 proving liveness properties using well-founded sets
+            5.6 programming logic
+            5.7 predicate transformers
+            5.8 concluding remarks
+        6 time in a distributed system
+            6.1 introduction
+            6.2 logical clocks
+            6.3 vector clocks
+            6.4 physical clock synchronization
+            6.5 concluding remarks
+    III important paradigms
+        7 mutual exclusion
+            7.1 introduction
+            7.2 solutions on message-passing systems
+            7.3 token-passing algorithms
+            7.4 solutions on the shared-memory model
+            7.5 mutual exclusion using special instructions
+            7.6 group mutual exclusion
+            7.7 concluding remarks
+        8 distributed snapshot
+            8.1 introduction
+            8.2 properties of consisten snapshots
+            8.3 chandy-lamport algorithm
+            8.4 lai-yang algorithm
+            8.5 distributed debugging
+            8.6 concluding remarks
+        9 global state collection
+            9.1 introduction
+            9.2 elementary algorithm for all-to-all broadcasting
+            9.3 termination-detection algorithms
+            9.4 wave algorithms
+            9.5 distributed deadlock detection
+            9.6 concluding remarks
+        10 graph algorithms
+            10.1 introduction
+            10.2 routing algorithms
+            10.3 graph traversal
+            10.4 graph coloring
+            10.5 cole-vishkin reduction algorithm for tree coloring
+            10.6 maximal independent set: luby's algorithm
+            10.7 concluding remarks
+        11 coordination algorithms
+            11.1 introduction
+            11.2 leader election
+            11.3 synchronizers
+            11.4 concluding remarks
+    IV faults and fault-tolerant systems
+        12 fault-tolerant systems
+            12.1 introduction
+            12.2 classification of faults
+            12.3 specification of faults
+            12.4 fault-tolerant systems
+            12.5 tolerating crash failures
+            12.6 tolerating omission failures
+            12.7 concluding remarks
+        13 distributed consensus
+            13.1 introduction
+            13.2 consensus in asynchronous systems
+            13.3 consensus in synchronous systems: byzantine generals problem
+            13.4 paxos algorithm
+            13.5 failure detectors
+            13.6 concluding remarks
+        14 distributed transactions
+            14.1 introduction
+            14.2 classification of transactions
+            14.3 implementing transactions
+            14.4 concurrency control and serializability
+            14.5 atomic commit protocols
+            14.6 recovery from failures
+            14.7 conclusing remarks
+        15 group communication
+            15.1 introduction
+            15.2 atomic multicast
+            15.3 ip multicast
+            15.4 application layer multicast
+            15.5 ordered multicasts
+            15.6 reliable multicast
+            15.7 open groups
+            15.8 overview of transis
+            15.9 concluding remarks
+        16 replicated data management
+            16.1 introduction
+            16.2 architecture of replicated data management
+            16.3 data-centric consistency tools
+            16.4 client-centric consistency protocols
+            16.5 implementation of data-centric consistency models
+            16.6 quorum-based protcols
+            16.7 replica placement
+            16.8 brewer's cap theorem
+            16.9 case studies
+            16.10 concluding remarks
+        17 self-stabilizing systems
+            17.1 introduction
+            17.2 theoretical foundation
+            17.3 stabilizing mutual exclusion
+            17.4 stabilizing graph coloring
+            17.5 stabilizing spanning tree protocol
+            17.6 stabilizing maximal matching
+            17.7 distributed reset
+            17.8 stabilizing clock phase synchronization
+            17.9 concluding remarks
+    V real-world issues
+        18 distributed discrete-event simulation
+            18.1 introduction
+            18.2 distributed simulation
+            18.3 conservative simulation
+            18.4 optimistic simulation and time warp
+            18.5 concluding remarks
+        19 security in distributed systems
+            19.1 introduction
+            19.2 security mechanisms
+            19.3 common security attacks
+            19.4 encryption
+            19.5 secret key cryptosystem
+            19.6 public key cryptosystems
+            19.7 digital signatures
+            19.8 hashing algorithms
+            19.9 elliptic curve cryptography
+            19.10 authentication server
+            19.11 digital certificates
+            19.12 case studies
+            19.13 virtual private networks  and firewalls
+            19.14 sharing a secret
+            19.15 concluding remarks
+        20 sensor networks
+            20.1 vision
+            20.2 architecture of sensor nodes
+            20.3 challenges in wireless sensor networks
+            20.4 routing algorithms
+            20.5 time synchronization using reference broadcast
+            20.6 localization algorithms
+            20.7 security in sensor networks
+            20.8 applications
+            20.9 concluding remarks
+        21 social and peer-to-peer networks
+            21.1 introduction to social networks
+            21.2 metrics of social networks
+            21.3 modeling socail networks
+            21.4 centrality measures in social networks
+            21.5 community detection
+            21.6 introduction to peer-to-peer networks
+            21.7 first-generation p2p systems
+            21.8 second-generation p2p systems
+            21.9 koorde and de bruijn graph
+            21.10 skip graph
+            21.11 replication management
+            21.12 bittorrent and free riding
+            21.13 censorship resistance, anonimity
+            21.14 concluding remarks
+</code></pre>
+<h2 id="wan-fokkink---distributed-systems-an-intuitive-approach"><a class="header" href="#wan-fokkink---distributed-systems-an-intuitive-approach">WAN FOKKINK - DISTRIBUTED SYSTEMS AN INTUITIVE APPROACH</a></h2>
+<pre><code>    I message passing
+        1 introduction
+        2 preliminaries
+        3 snapshots
+        4 waves
+        5 deadlock detection
+        6 terminatino detection
+        7 garbage collection
+        8 routing
+        9 election
+        10 anonymous networks
+        11 synchronous networks
+        12 crash failures
+        13 byzantine failures
+        14 mutual exlusion
+    II shared memory
+        15 preliminaries
+        16 mutual exclusion II
+        17 barriers
+        18 self-stabilization
+        19 online scheduling
+</code></pre>
+<h2 id="notes-on-theory-of-distributed-systems"><a class="header" href="#notes-on-theory-of-distributed-systems">NOTES ON THEORY OF DISTRIBUTED SYSTEMS</a></h2>
+<pre><code>    I message passing
+        1 introduction
+        2 model
+        3 coordinated attack
+        4 broadcast and convergecast
+        5 distributed breadth-first search
+        6 leader election
+        7 synchronous agreement
+        8 byzantine agreement
+        9 impossibility of asynchronous agreement
+        10 paxos
+        11 failure detectors
+        12 logical clocks
+        13 synchronizers
+        14 quorum systems
+    II shared memory
+        15 model
+        16 distributed shared memory
+        17 mutual exclusion
+        18 the wait-free hiararchy
+        19 atomic snapshots
+        20 lower bounds on perturbable objects
+        21 restricted-use objects
+        22 common2
+        23 randomized consensus and test-and-set
+        24 renaming
+        25 software transactional memory
+        26 obstruction-freedom
+        27 BG simulation
+        28 topological methods
+        29 approximate agreement
+</code></pre>
+<h2 id="scaling-reliably"><a class="header" href="#scaling-reliably">SCALING RELIABLY</a></h2>
+<pre><code>    Improving the Scalability of the Erlang Distributed Actor Platform
+
+    1 INTRODUCTION
+
+        Controlling shared state is the only way to build reliable scalable systems.
+        State shared by multiple units of computation limits scalability due to high synchronisation and communication costs.
+        Moreover, shared state is a threat for reliability as failures corrupting or permanently locking shared state may poison the entire system.
+
+        To facilitate the development of scalable Erlang systems and make them maintainable, we have developed three new tools—Devo, SDMon, and WombatOAM—and enhanced two others—the visualisation tool Percept and the refactorer Wrangler.
+
+    2 CONTEXT
+        2.1 Scalable Reliable Programming Models
+        2.2 Actor Languages
+        2.3 Erlang’s Support for Concurrency
+        2.4 Scalability and Reliability in Erlang Systems
+        2.5 ETS: Erlang Term Storage
+    3 BENCHMARKS FOR SCALABILITY AND RELIABILITY
+        3.1 Orbit
+        3.2 Ant Colony Optimisation (ACO)
+    4 ERLANG SCALABILITY LIMITS
+        4.1 Scaling Erlang on a Single Host
+        4.2 Distributed Erlang Scalability
+        4.3 Persistent Storage
+    5 IMPROVING LANGUAGE SCALABILITY
+        5.1 SD Erlang Design
+        5.2 S_group Semantics
+        5.3 Semantics Validation
+    6 IMPROVING VM SCALABILITY
+        6.1 Improvements to Erlang Term Storage
+        6.2 Improvements to Schedulers
+        6.3 Improvements to Time Management
+    7 SCALABLE TOOLS
+        7.1 Refactoring for Scalability
+        7.2 Scalable Deployment
+        7.3 Monitoring and Visualisation
+    8 SYSTEMIC EVALUATION
+        8.1 Orbit
+        8.2 Ant Colony Optimisation (ACO)
+        8.3 Evaluation Summary
+    9 DISCUSSION
+    APPENDIX: ARCHITECTURE SPECIFICATIONS
+</code></pre>
+<h2 id="uns-sistemas-distribuidos"><a class="header" href="#uns-sistemas-distribuidos">UNS SISTEMAS DISTRIBUIDOS</a></h2>
+<pre><code>    PROGRAMA SINTETICO
+        1) Introducción a los Sistemas Distribuidos.
+        2) Comunicación en Sistemas Distribuidos.
+        3) Sincronización en Sistemas Distribuidos.
+        4) Planificación de Procesos en Sistemas Distribuidos.
+        5) Consistencia, Replicación y Memoria Compartida Distribuida.
+        6) Sistemas de Archivos en Sistemas Distribuidos.
+        7) Transacciones Distribuidas.
+        8) Sistema de Nombres.
+        9) Tolerancia a las Fallas
+        10) Seguridad en Sistemas Distribuidos.
+        11) Sistemas Distribuidos Basados en Documentos
+
+    PROGRAMA ANALITICO
+        1.0 - Introducción a los Sistemas Distribuidos.
+            1.1 Computación paralela y distribuida.
+            1.2 Desventajas y limitaciones.
+            1.3 Requerimientos de Hardware y Software.
+        2.0 - Comunicación en Sistemas Distribuidos.
+            2.1 Pasaje de mensajes
+            2.2 Modelo Cliente-Servidor
+            2.3 Llamadas a Procedimiento Remoto
+            2.4 Grupos de Comunicación
+        3.0 - Sincronización en Sistemas Distribuidos.
+            3.1 Sincronización de Reloj
+            3.2 Estado Global
+            3.3 Exclusión Mutua
+            3.4 Algoritmos de Elección
+            3.5 Interbloqueos
+        4.0 - Planificación de Procesos en Sistemas Distribuidos.
+            4.1 Estrategias de Distribución de Carga.
+            4.2 Migración de Procesos y Movilidad
+        5.0 - Consistencia, Replicación y Memoria Compartida Distribuida.
+            5.1 Modelos de Consistencia centrados en los datos
+            5.2 Modelos de Consistencia centrados en el cliente
+            5.3 Protocolos de distribución
+            5.4 Protocolos de consistencia
+            5.5 Memoria Compartida Distribuida
+        6.0 - Sistemas de Archivos Distribuidos
+            6.1 Propósito de uso
+            6.2 Servicios
+            6.3 Características deseables de los SAD
+            6.4 Modelos de archivos y sus accesos
+            6.5 Semánticas
+            6.6 Esquemas de caché
+            6.7 Tolerancia a las fallas
+        7.0 - Transacciones Distribuidas
+            7.1 Modelo Transaccional
+            7.2 Protocolos de commit
+        8.0 - Sistema de Nombres
+            8.1 Nombres, Entidades
+            8.2 Sistema de nombres y localización de objetos
+            8.3 Remoción de Entidades no Referenciadas
+        9.0 - Tolerancia a las Fallas
+            9.1 Conceptos básicos
+            9.2 Enmascaramiento
+            9.3 Ordenamiento de mensajes
+            9.4 Checkpointing
+        10.0 - Seguridad en Sistemas Distribuidos
+            10.1 Introducción
+            10.2 Ataques
+            10.3 Criptografía
+            10.4 Autenticación
+            10.5 Código móvil
+        11.0 - Sistemas Distribuidos Basados en Documentos
+            11.1 Caso: WWW
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../comp.sci.eng/distributed_systems/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../comp.sci.eng/distributed_systems/notes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../comp.sci.eng/distributed_systems/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../comp.sci.eng/distributed_systems/notes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

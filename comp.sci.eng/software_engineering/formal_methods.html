@@ -1,0 +1,742 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Formal Methods - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/compilers/compilers_resources_books.html">Resources: Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/llvm.html">Resources: LLVM</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/tesina_es.html">Tesina</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/resources_books.html">Resources: Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/notes.html">Notes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/questions.html">Questions</a></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/microservices.html">Microservices</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_links.html">Resources: Links</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/excellency.html">Excellency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/rest.html">HTTP REST</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/software_engineering/formal_methods.html" class="active">Formal Methods</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/git.html">Git</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/_kak.html">Kakoune</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/vim.html">Vim</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/zsh.html">Zsh</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li></ol></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="formal-methods"><a class="header" href="#formal-methods">Formal Methods</a></h1>
+<!--
+- author: igarai@gmail
+-->
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#general-formal-methods">General formal methods</a>
+<ul>
+<li><a href="#videos">Videos</a></li>
+</ul>
+</li>
+<li><a href="#theorem-proving">Theorem proving</a>
+<ul>
+<li><a href="#coq">Coq</a></li>
+<li><a href="#agda">Agda</a>
+<ul>
+<li><a href="#videos-1">Videos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#formal-specification">Formal specification</a>
+<ul>
+<li><a href="#alloy">Alloy</a></li>
+<li><a href="#tla">TLA+</a>
+<ul>
+<li><a href="#tla-and-consensus-algorithms">TLA+ and consensus algorithms</a></li>
+<li><a href="#videos-2">Videos</a></li>
+<li><a href="#books">Books</a>
+<ul>
+<li><a href="#leslie-lamport---specifying-systems">Leslie Lamport - Specifying Systems</a></li>
+<li><a href="#practical-tla">Practical TLA+</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#quickstrom">Quickstrom</a></li>
+</ul>
+</li>
+<li><a href="#formal-methods-in-rust">Formal methods in Rust</a>
+<ul>
+<li><a href="#high-assurance-rust">High Assurance Rust</a></li>
+<li><a href="#rustbelt">RustBelt</a></li>
+<li><a href="#kani">Kani</a></li>
+<li><a href="#tla-and-rust">TLA and Rust</a></li>
+</ul>
+</li>
+<li><a href="#formal-verification">Formal verification</a>
+<ul>
+<li><a href="#videos-3">Videos</a></li>
+<li><a href="#model-checking">Model checking</a>
+<ul>
+<li><a href="#videos-4">Videos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#compiler-verification">Compiler verification</a>
+<ul>
+<li><a href="#compcert">CompCert</a>
+<ul>
+<li><a href="#videos-5">Videos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!--
+## Formal models
+
+### Modal logic
+- [2019/11 Incomplete and Utter Introduction to Modal Logic, Pt. 1](https://serokell.io/blog/incomplete-and-utter-introduction-to-modal-logic)
+- [2020/01 Incomplete and Utter Introduction to Modal Logic, Pt. 2](https://serokell.io/blog/rapid-introduction-to-modal-logic-2)
+-->
+<h2 id="general-formal-methods"><a class="header" href="#general-formal-methods">General formal methods</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Verification_and_validation">Wikipedia: Verification and validation</a></li>
+<li>⚠️ <a href="https://en.wikipedia.org/wiki/Software_verification_and_validation">Wikipedia: Software verification and validation</a></li>
+<li>⚠️ <a href="https://en.wikipedia.org/wiki/Formal_verification">Wikipedia: Formal verification</a></li>
+<li>⚠️ <a href="https://en.wikipedia.org/wiki/Formal_methods">Wikipedia: Formal methods</a></li>
+<li>⚠️ <a href="https://en.wikipedia.org/wiki/Formal_specification">Wikipedia: Formal specification</a></li>
+<li><a href="https://github.com/awesomo4000/awesome-provable">Github: awesomo4000/awesome-provable</a> A curated set of links to formal methods involving provable code.</li>
+<li><a href="https://wiki.nikiv.dev/computer-science/formal-verification">Everything I Know - Formal verification</a></li>
+<li><a href="https://formalmethods.fandom.com/wiki/Formal_Methods_Wiki">Formal Methods Wiki</a></li>
+<li><a href="https://softwarefoundations.cis.upenn.edu/">Software Foundations</a></li>
+<li>⚠️ <a href="https://avigad.github.io/formal_methods_in_education/">Resources for Teaching with Formal Methods</a></li>
+<li><a href="http://adam.chlipala.net/frap/">Formal Reasoning About Programs</a></li>
+<li><a href="http://verdi.uwplse.org/">Verdi: Formally Verifying Distributed Systems</a></li>
+<li><a href="https://github.com/maiavictor/formality">Formality: A modern programming language featuring formal proofs</a></li>
+<li><a href="https://web.archive.org/web/20190525032556/http://infohost.nmt.edu/%7Eal/cseet-paper.html">1999/03 High-Quality Software Through Semiformal Specification and Verification</a></li>
+<li><a href="https://www.wired.com/2016/09/computer-scientists-close-perfect-hack-proof-code/">2016/09 Wired: Computer Scientists Close In on Perfect, Hack-Proof Code</a></li>
+<li><a href="https://lobste.rs/s/n7v658/your_thoughts_on_this_advice_those">2017/11 Lobste.rs: Your thoughts on this advice to those pursuing formal methods?</a></li>
+<li><a href="https://medium.com/@spiside/writing-code-like-a-mathematical-proof-f5838fc27382">2017/11 Writing Code like a Mathematical Proof</a></li>
+<li><a href="https://www.stephanboyer.com/post/134/my-hobby-proof-engineering">2017/11 My hobby: proof engineering</a></li>
+<li><a href="https://raywang.tech/2017/12/20/Formal-Verification:-The-Gap-between-Perfect-Code-and-Reality/">2017/12 Formal Verification: The Gap Between Perfect Code and Reality</a></li>
+<li><a href="https://cacm.acm.org/magazines/2018/10/231372-formally-verified-software-in-the-real-world/fulltext">2018/10 Formally Verified Software in the Real World</a></li>
+<li>⚠️ <a href="https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/">2019/01 Hillel Wayne: Why Don't People Use Formal Methods?</a>
+<ul>
+<li><a href="https://lobste.rs/s/aonc4e/why_don_t_people_use_formal_methods">Lobste.rs Comments</a></li>
+</ul>
+</li>
+<li><a href="https://roundtablelaw.medium.com/utterly-unpersuasive-formal-methods-and-law-bb8ecf048374">2019/01 Utterly Unpersuasive: Formal Methods and Law</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=31107570">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://cacm.acm.org/magazines/2019/1/233519-modeling-in-engineering-and-science/abstract">2019/01 Modeling in Engineering and Science</a></li>
+<li><a href="https://lobste.rs/s/gpx0go/program_synthesis_spec_with_optional">2019/02 Lobste.rs: Program synthesis of a spec with optional manual implementation for parts of the program</a></li>
+<li><a href="https://web.archive.org/web/20190323155230/https://cloudbootup.com/post/what-why-and-how-of-formal-methods.html">2019/03 What, Why, and How of Formal Methods </a></li>
+<li>⚠️ <a href="https://www.hillelwayne.com/post/using-formal-methods/">2019/03 Hillel Wayne: Using Formal Methods at Work</a></li>
+<li><a href="http://boxbase.org/entries/2019/apr/15/explaining-formal-proofs/">2019/04 Explaining formal proofs</a></li>
+<li><a href="https://blog.merigoux.fr/en/2019/12/20/taxes-formal-proofs.html">2019/12 A mathematical formulation of the tax code?</a></li>
+<li><a href="https://cacm.acm.org/magazines/2021/7/253452-formal-software-verification-measures-up/fulltext">2020/07 Formal Software Verification Measures Up</a></li>
+<li>⚠️ <a href="https://tldrsec.com/blog/pltalk-practical-formal-methods-hillel-wayne/">2020/07 PLTalk: Practical Formal Methods with Hillel Wayne</a></li>
+<li><a href="https://buttondown.email/hillelwayne/archive/how-knowing-math-helps-you-write-better-software/">2020/08 Hillel Wayne: How knowing math helps you write better software</a></li>
+<li>⚠️ <a href="https://www.hillelwayne.com/post/business-case-formal-methods/">2020/01 Hillel Wayne: The Business Case for Formal Methods</a></li>
+<li><a href="https://www.infoq.com/news/2020/02/zz-formal-verified-c-dialect/">2020/02 ZetZ is a Formally Verified Dialect of C</a></li>
+<li>⚠️ <a href="https://buttondown.email/hillelwayne/archive/a-very-brief-intro-to-formal-methods-aka-my-job/">2020/04 Hillel Wayne: A Very Brief Intro to Formal Methods (aka my job)</a></li>
+<li><a href="https://serokell.io/blog/formal-verification-history">2020/05 Formal Verification: History and Methods</a></li>
+<li><a href="https://surfingcomplexity.blog/2020/12/21/coding-as-a-tool-of-thought/">2020/12 Coding as a tool of thought</a></li>
+<li><a href="https://buttondown.email/hillelwayne/archive/why-uml-really-died">2021/04 Hillel Wayne: Why UML &quot;Really&quot; Died</a></li>
+<li><a href="https://buttondown.email/hillelwayne/archive/can-formal-methods-succeed-where-uml-failed">2021/04 Hillel Wayne: Can Formal Methods Succeed where UML Failed?</a></li>
+<li>⚠️ <a href="https://buttondown.email/hillelwayne/archive/10-misconceptions-about-formal-methods/">2021/07 Hillel Wayne: 10 Misconceptions about Formal Methods</a></li>
+<li>⚠️ <a href="https://lobste.rs/s/yaufia/is_formal_methods_winter_about_end">2021/09 Lobste.rs: Is the formal methods winter about to end?</a></li>
+<li><a href="https://galois.com/blog/2021/10/you-already-know-formal-methods/">2021/10 You Already Know Formal Methods</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=28859324">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://www.amazon.science/publications/using-lightweight-formal-methods-to-validate-a-key-value-storage-node-in-amazon-s3">2021/10 Using lightweight formal methods to validate a key-value storage node in Amazon S3</a></li>
+<li><a href="https://www.cs.utexas.edu/%7Entaylor/blog/proving/">2022/04 Proving the Coding Interview Part 1</a></li>
+<li><a href="https://www.cs.utexas.edu/%7Entaylor/blog/proving-2/">2022/04 Proving the Coding Interview Part 2</a></li>
+<li><a href="https://www.cs.utexas.edu/%7Entaylor/blog/proving-3/">2022/04 Proving the Coding Interview Part 3</a></li>
+</ul>
+<h3 id="videos"><a class="header" href="#videos">Videos</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLfsVAYSMwskseQbJ242TApAzA7fW83KyH">Formal Methods of Software Design</a></li>
+<li><a href="https://www.youtube.com/watch?v=D_sh1nnX3zY">2020/04 A gentle intro to TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=4RptzbNNoU0">2019/10 Leslie Lamport: What's the difference between programming and coding</a></li>
+<li><a href="https://www.youtube.com/watch?v=de7Id8sKQzY">2019/10 Leslie Lamport: How to think clearly as a programmer with mathematics and TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=6Bm_jB4N3Pw">2020/12 Hillel Wayne: The Future of Formal Methods</a></li>
+</ul>
+<h2 id="theorem-proving"><a class="header" href="#theorem-proving">Theorem proving</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Proof_assistant">Wikipedia: Proof assistant</a></li>
+</ul>
+<h3 id="coq"><a class="header" href="#coq">Coq</a></h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Coq">Wikipedia: Coq</a></li>
+<li><a href="http://coq.inria.fr/">Official website</a></li>
+<li><a href="https://github.com/coq/coq">Github: Coq</a></li>
+<li><a href="https://learnxinyminutes.com/docs/coq/">Learn X in Y minutes Where X=Coq</a></li>
+<li><a href="http://adam.chlipala.net/cpdt/">Certified Programming with Dependent Types</a></li>
+<li><a href="https://www.labri.fr/perso/casteran/CoqArt/index.html">Coq'Art Home page</a></li>
+<li><a href="https://plv.csail.mit.edu/blog/alectryon.html">2020/11 Untangling mechanized proofs</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=25148370">Hacker News Comments</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="agda"><a class="header" href="#agda">Agda</a></h3>
+<ul>
+<li><a href="http://wiki.portal.chalmers.se/agda">Official website</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Agda_(programming_language)">Wikipedia: Agda (programming language)</a></li>
+<li><a href="http://learnyouanagda.liamoc.net">Learn You an Agda and achieve enlightenment</a>
+<ul>
+<li><a href="https://lobste.rs/s/cjamii/learn_you_agda_achieve_enlightenment">Lobste/rs Comments</a></li>
+</ul>
+</li>
+<li><a href="https://people.inf.elte.hu/divip/AgdaTutorial/Index.html">Agda Tutorial</a></li>
+<li><a href="https://oxij.org/note/BrutalDepTypes/">2013/02 Brutal [Meta]Introduction to Dependent Types in Agda</a></li>
+<li><a href="https://serokell.io/blog/logical-background">2018/11 Constructive and Non-Constructive Proofs in Agda (Part 1): Logical Background</a></li>
+<li><a href="https://serokell.io/blog/agda-in-nutshell">2018/11 Constructive and Non-Constructive Proofs in Agda (Part 2): Agda in a Nutshell</a></li>
+<li><a href="https://serokell.io/blog/playing-with-negation">2018/11 Constructive and Non-Constructive Proofs in Agda (Part 3): Playing with Negation</a></li>
+<li><a href="https://www.cs.bham.ac.uk/%7Emhe/HoTT-UF-in-Agda-Lecture-Notes/index.html">2019/03 Introduction to Univalent Foundations of Mathematics with Agda</a></li>
+<li>⚠️ <a href="https://whatisrt.github.io/dependent-types/2020/02/18/agda-vs-coq-vs-idris.html">2020/02 Agda vs. Coq vs. Idris</a></li>
+</ul>
+<h4 id="videos-1"><a class="header" href="#videos-1">Videos</a></h4>
+<ul>
+<li><a href="https://www.youtube.com/playlist?p=B7F836675DCE009C">Introduction to Agda</a></li>
+</ul>
+<h2 id="formal-specification"><a class="header" href="#formal-specification">Formal specification</a></h2>
+<ul>
+<li>⚠️ <a href="https://buttondown.email/hillelwayne/archive/formal-specification-languages/">2020/08 Hillel Wayne: Formal Specification Languages</a></li>
+<li><a href="https://deepspec.org/main">DeepSpec: The science of deep specification</a></li>
+<li><a href="https://www3.risc.jku.at/research/formal/software/RISCAL/">RISC Algorithm Language</a> The RISC Algorithm Language (RISCAL) is a specification language and associated software system for describing mathematical algorithms, formally specifying their behavior based on mathematical theories, and validating the correctness of algorithms, specifications, and theories by execution/evaluation.</li>
+</ul>
+<h3 id="alloy"><a class="header" href="#alloy">Alloy</a></h3>
+<ul>
+<li><a href="https://alloytools.org/">Alloy</a></li>
+<li><a href="https://github.com/AlloyTools/org.alloytools.alloy">Github: Alloy</a></li>
+<li><a href="http://www.doc.ic.ac.uk/project/examples/2007/271j/suprema_on_alloy/Web/">Guide to Alloy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Alloy_(specification_language)">Wikipedia: Alloy</a></li>
+<li><a href="http://aqute.biz/2018/05/22/State-Machines-And-Alloy.html">2018/05 State Machines and Alloy</a></li>
+<li><a href="https://web.archive.org/web/20190318133500/https://cloudbootup.com/post/validating-a-coordination-protocol-with-alloy.html">2019/02 Validating a Coordination Protocol with Alloy</a></li>
+<li>⚠️ <a href="https://asim.ihsan.io/formal-modeling-as-a-design-tool/">2022/01 Formal modeling as a design tool</a></li>
+<li><a href="https://www.hillelwayne.com/post/alloydocs/">2020/04 Hillel Wayne: Announcing: Alloydocs</a></li>
+<li>⚠️ <a href="https://buttondown.email/hillelwayne/archive/alloy-6-first-impressions/">2021/11 Alloy 6 First Impressions</a></li>
+<li><a href="https://mostlymaths.net/2021/05/data-pipelines-alloy.html/">2021/05 Modelling data pipelines with Alloy</a></li>
+</ul>
+<h3 id="tla"><a class="header" href="#tla">TLA+</a></h3>
+<ul>
+<li><a href="https://lamport.azurewebsites.net/tla/tla.html">TLA home page</a></li>
+<li><a href="https://github.com/tlaplus">Github</a></li>
+<li><a href="https://en.wikipedia.org/wiki/TLA%2B">Wikipedia: TLA+</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=9601770">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/PlusCal">Wikipedia: PlusCal</a></li>
+<li><a href="http://lamport.azurewebsites.net/pubs/commentary-web.pdf">Leslie Lamport: The specification language TLA+</a></li>
+<li><a href="https://lamport.azurewebsites.net/tla/summary-standalone.pdf">Leslie Lamport: Summary of TLA+</a></li>
+<li><a href="https://lamport.azurewebsites.net/tla/summary.pdf">Leslie Lamport: A summary of TLA+</a></li>
+<li><a href="http://research.microsoft.com/en-us/um/people/lamport/tla/hyperbook.html">The TLA+ Hyperbook</a></li>
+<li><a href="https://learntla.com/">Learn TLA+</a></li>
+<li><a href="https://mbt.informal.systems/docs/tla_basics_tutorials/">TLA+ Basics Tutorials</a></li>
+<li><a href="https://mbt.informal.systems/docs/tla_basics_tutorials/tla+cheatsheet.html">TLA+ Cheatsheet</a></li>
+<li><a href="https://apalache.informal.systems/docs/idiomatic/index.html">Apalache Documentation: Idiomatic TLA+</a> Apalache is a symbolic model checker for the specification language TLA+</li>
+<li><a href="https://conf.tlapl.us/home/">TLA+ Conf</a></li>
+<li><a href="https://www.reddit.com/r/tlaplus/">reddit.com/r/tlaplus/</a></li>
+<li><a href="https://brooker.co.za/blog/2013/01/20/two-phase.html">2013/01 Exploring TLA+ with two-phase commit</a></li>
+<li>⚠️ <a href="https://muratbuffalo.blogspot.com/2015/01/my-experience-with-using-tla-in.html">2015/01 My experience with using TLA+ in distributed systems class</a></li>
+<li>⚠️ <a href="https://cacm.acm.org/magazines/2015/4/184701-how-amazon-web-services-uses-formal-methods/fulltext">2015/04 How Amazon Web Services Uses Formal Methods</a></li>
+<li><a href="https://medium.com/espark-engineering-blog/formal-methods-in-practice-8f20d72bce4f">2017/03 Hillel Wayne: Formal Methods in Practice: Using TLA+ at eSpark Learning</a></li>
+<li><a href="http://nchammas.com/writing/how-not-to-die-hard-with-hypothesis">2017/03 Solving the Water Jug Problem from Die Hard 3 with TLA+ and Hypothesis</a></li>
+<li><a href="https://medium.com/@jparreira/solving-the-wolf-sheep-and-cabbage-problem-using-tla-and-the-tlc-model-checker-28271a5afdfc">2017/07 Solving the “Wolf, Sheep and Cabbage” problem using TLA+ and the TLC model checker</a></li>
+<li><a href="https://surfingcomplexity.blog/2017/10/16/the-tortoise-and-the-hare-in-tla/">2017/10 The Tortoise and the Hare in TLA+</a></li>
+<li><a href="https://sookocheff.com/post/tlaplus/getting-started-with-tlaplus/">2017/04 Getting Started With TLA+</a></li>
+<li>⚠️ <a href="https://pron.github.io/posts/tlaplus_part1">2017/05 TLA+ in Practice and Theory Part 1: The Principles of TLA+</a></li>
+<li>⚠️ <a href="https://pron.github.io/posts/tlaplus_part2">2017/06 TLA+ in Practice and Theory Part 2: The + in TLA+</a></li>
+<li>⚠️ <a href="https://pron.github.io/posts/tlaplus_part3">2017/06 TLA+ in Practice and Theory Part 3: The (Temporal) Logic of Actions</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=14528072">Hacker News Comments</a></li>
+</ul>
+</li>
+<li>⚠️ <a href="https://pron.github.io/posts/tlaplus_part4">2017/06 TLA+ in Practice and Theory Part 4: Order in TLA+</a></li>
+<li>⚠️ <a href="https://muratbuffalo.blogspot.com/2018/01/why-you-should-use-modeling-with.html">2018/01 Why you should use modeling [with TLA+/PlusCal]</a></li>
+<li><a href="https://www.hillelwayne.com/tla-redux/">2018/02 Hillel Wayne: Modeling Redux with TLA+</a></li>
+<li><a href="https://www.hillelwayne.com/post/list-of-tla-examples/">2018/03 Hillel Wayne: List of TLA+ Examples</a></li>
+<li>⚠️ <a href="http://bulletin.eatcs.org/index.php/beatcs/article/view/539">2018/07 Leslie Lamport: If You’re Not Writing a Program, Don't Use a Programming Language</a></li>
+<li>⚠️ <a href="http://muratbuffalo.blogspot.com/2018/07/if-youre-not-writing-program-dont-use.html">2018/07 Metadata: If You’re Not Writing a Program, Don't Use a Programming Language</a></li>
+<li><a href="http://muratbuffalo.blogspot.com/2018/08/tla-specification-of-consistent-prefix.html">2018/08 TLA+ specification of the consistent prefix guarantee</a></li>
+<li>⚠️ <a href="http://muratbuffalo.blogspot.com/2018/10/debugging-designs-with-tla.html">2018/10 Debugging designs with TLA+</a></li>
+<li><a href="https://www.hillelwayne.com/post/practical-tla/">2018/10 Hillel Wayne: Practical TLA+ Now Available</a></li>
+<li><a href="https://www.hillelwayne.com/post/tla-messages/">2018/10 Hillel Wayne: Modeling Message Queues in TLA+</a></li>
+<li><a href="https://surfingcomplexity.blog/2018/12/24/tla-is-hard-to-learn/">2018/12 TLA+ is hard to learn</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=28256643">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://surfingcomplexity.blog/2018/12/27/inductive-invariants/">2018/12 Inductive invariants</a></li>
+<li>⚠️ <a href="https://medium.com/@bellmar/introduction-to-tla-model-checking-in-the-command-line-c6871700a6a2">2019/01 Introduction to TLA+ Model Checking in the Command Line</a></li>
+<li><a href="https://jack-vanlightly.com/blog/2019/1/25/building-a-simple-distributed-system-the-what">2019/01 Building a &quot;Simple&quot; Distributed System - The What</a></li>
+<li><a href="https://jack-vanlightly.com/blog/2019/1/27/building-a-simple-distributed-system-the-protocol">2019/01 Building A &quot;Simple&quot; Distributed System - The Protocol</a></li>
+<li><a href="https://jack-vanlightly.com/blog/2019/1/27/building-a-simple-distributed-system-formal-verification">2019/01 Building A &quot;Simple&quot; Distributed System - Formal Verification</a></li>
+<li><a href="http://roscidus.com/blog/blog/2019/01/01/using-tla-plus-to-understand-xen-vchan/">2019/01 Using TLA+ to Understand Xen Vchan</a></li>
+<li><a href="https://medium.com/@bellmar/using-tla-to-model-cascading-failures-5d1ebc5e4c4f">2019/04 Using TLA+ to Model Cascading Failures</a></li>
+<li>⚠️ <a href="https://futureofcoding.org/episodes/038">2019/04 Hillel Wayne: The Case for Formal Methods</a></li>
+<li>⚠️ <a href="https://sriramsami.com/tlaps/">2019/04 A beginner's experience with TLAPS (The TLA+ Proof System)</a></li>
+<li><a href="https://medium.com/koodoo/tla-for-startups-part-1-8b162863824b">2019/11 TLA+ for startups (part 1)</a></li>
+<li><a href="https://medium.com/koodoo/tla-for-startups-part-2-1ef288adab39">2019/12 TLA+ for startups (part 2)</a></li>
+<li><a href="https://www.heinbockel.eu/2019/12/08/train-sidings-a-tla-example/">2019/12 Train Sidings – A TLA+ Example</a></li>
+<li><a href="https://bronevichok.ru/blog/2020/05/14/tla-plus.html">2020/05 TLA+ on OpenBSD</a></li>
+<li><a href="https://blog.statechannels.org/breaking-state-channels/">2020/06 Breaking state channels with TLA+</a>
+<ul>
+<li><a href="https://github.com/statechannels/tla-specs">2020/06 Github: statechannels/tla-specs</a> TLA+ specifications of various protocols used by wallets in the nitro protocol</li>
+</ul>
+</li>
+<li><a href="https://github.com/dgpv/bip32_template_parse_tplaplus_spec">2020/07 TLA+ specification of the parser for BIP32 path templates</a></li>
+<li><a href="https://www.moritz.systems/blog/voucher-system-verification-using-tlaplus/">2020/09 Voucher System verification using TLA+</a></li>
+<li><a href="https://probablydance.com/2020/10/31/using-tla-in-the-real-world-to-understand-a-glibc-bug/">2020/10 Using TLA+ in the Real World to Understand a Glibc Bug</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=24958504">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://www.hillelwayne.com/post/tla-golang/">2020/09 Hillel Wayne: Finding Goroutine Bugs with TLA+</a></li>
+<li><a href="https://buttondown.email/hillelwayne/archive/edge-case-poisoning/">2020/10 Hillel Wayne: Edge Case Poisoning</a></li>
+<li><a href="https://blog.gchinis.com/posts/serverless-specification-with-tla/">2020/11 Specifying a simple serverless system with TLA+</a></li>
+<li>⚠️ <a href="https://www.hillelwayne.com/post/spec-composition/">2021/04 Hillel Wayne: Why Specifications Don't Compose</a>
+<ul>
+<li><a href="https://www.reddit.com/r/tlaplus/comments/nuf8i9/why_specifications_dont_compose/">r/tlaplus</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/mitchellh/tlaplus-radix-tree">2021/07 Github: mitchellh/tlaplus-radix-tree</a> TLA+ modules, specifications, and models for Radix trees</li>
+<li><a href="https://github.com/afonsonf/tlaplus-graph-explorer">2021/08 Github: afonsonf/tlaplus-graph-explorer</a> A static web application to explore and animate a TLA+ state graph</li>
+<li><a href="https://www.reddit.com/r/tlaplus/comments/pe05af/why_tla_is_untyped/">2021/09 r/tlaplus: Why TLA+ Is Untyped</a></li>
+<li><a href="https://github.com/Vanlightly/bookkeeper-tlaplus">2021/12 Github: Vanlightly/bookkeeper-tlaplus</a> A TLA+ specification of the Apache BookKeeper replication protocol</li>
+<li>⚠️ <a href="https://www.hillelwayne.com/post/tla-adt/">2021/12 Hillel Wayne: Using Abstract Data Types in TLA+</a></li>
+<li><a href="https://thenewstack.io/tla-the-best-debugger-optimizer-youve-never-heard-of/">2022/01 TLA+: The Best Debugger/ Optimizer You’ve Never Heard of</a></li>
+</ul>
+<h4 id="tla-and-consensus-algorithms"><a class="header" href="#tla-and-consensus-algorithms">TLA+ and consensus algorithms</a></h4>
+<ul>
+<li><a href="https://github.com/Cjen1/consensus-tlaplus">Github: TLA+ Consensus Specifications</a></li>
+<li><a href="https://github.com/tlaplus/DrTLAPlus">Github: tlaplus/DrTLAPlus</a> Dr. TLA+ series - learn an algorithm and protocol, study a specification
+<ul>
+<li>⚠️ <a href="https://www.microsoft.com/en-us/research/video/dr-tla-series-paxos/">Dr. TLA+ Series- Paxos</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/Starydark/Tencent-Paxos-TLA">Github: Starydark/Tencent-Paxos-TLA</a> Specification of the consensus algorithm in Tencent storage system PaxosStore</li>
+<li><a href="https://github.com/ongardie/raft.tla">Github: ongardie/raft.tla</a> TLA+ specification for the Raft consensus algorithm</li>
+<li><a href="https://github.com/afonsonf/ceph-consensus-spec">Github: afonsonf/ceph-consensus-spec</a> TLA+ specification of the Ceph consensus algorithm</li>
+<li><a href="https://stevetarzia.com/papers/Tarzia_499_paper.pdf">2007 Asynchronous Consensus: A Model in TLA+</a></li>
+<li>⚠️ <a href="https://tonyzhangnd.github.io/2018/01/Consensus-TLA-Spec.html">2018 Consensus Protocol Using TLA+</a></li>
+<li><a href="https://blog.trailofbits.com/2019/10/25/formal-analysis-of-the-cbc-casper-consensus-algorithm-with-tla/">2019 Formal Analysis of the CBC Casper Consensus Algorithm with TLA+</a></li>
+<li>⚠️ <a href="https://conf.tlapl.us/2021/AfonsodasNevesVernandes-talk.pdf">2021 Verification and Visualization of a Consensus Algorithm using TLA+</a></li>
+</ul>
+<h4 id="videos-2"><a class="header" href="#videos-2">Videos</a></h4>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLWAv2Etpa7AOAwkreYImYt0gIpOdWQevD">Leslie Lamport's TLA+ Video Course</a></li>
+<li><a href="https://lamport.azurewebsites.net/video/videos.html">The TLA+ Video Course</a></li>
+<li><a href="https://www.youtube.com/watch?v=-4Yp3j_jk8Q">2014/07 Leslie Lamport: Thinking Above the Code</a></li>
+<li><a href="http://research.microsoft.com/en-us/um/people/lamport/tla/math-knowledge.html">2017/03 Leslie Lamport: Why Don't Computer Scientists Learn Math?</a></li>
+<li><a href="https://pron.github.io/posts/tlaplus-curryon-talk">2017/06 Curry On Talk: The Practice and Theory of TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=15uy9Ga-14I">2017/06 Ron Pressler - The Practice and Theory of TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=_9B__0S21y8">2017/10 Hillel Wayne: &quot;Tackling Concurrency Bugs with TLA+&quot;</a></li>
+<li>⚠️ <a href="https://www.hillelwayne.com/talks/distributed-systems-tlaplus/">2018/12 Hillel Wayne: Designing Distributed Systems with TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=8saFY-87gvQ">2018/11 Hillel Wayne: Designing Distributed Systems with TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=tfnldxWlOhM&amp;t=1s">2018/12 Hillel Wayne: Everything about distributed systems is terrible</a></li>
+<li><a href="https://skillsmatter.com/skillscasts/13265-lightning-talk-formally-verifying-complex-systems-using-tla">2018/12 Lightning Talk: Formally Verifying Complex Systems Using TLA+</a></li>
+<li><a href="https://www.infoq.com/presentations/tla-plus">2019/04 Hillel Wayne: Designing Distributed Systems with TLA+</a>
+<a href="https://www.youtube.com/watch?v=l9XZYI3jta0">2019/04 Pawel Szulc - Formal verification applied (with TLA+)</a></li>
+<li><a href="https://www.youtube.com/watch?v=2PIgZ6hd-6I">2020/11 Hillel Wayne: Designing distributed systems with TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=qubS_wGgwO0">2021/02 Hillel Wayne is Designing Distributed Systems with TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=B5iRABcC5-Q">2021/09 Strange Loop Chat with Hillel Wayne about TLA+</a></li>
+<li><a href="https://www.youtube.com/watch?v=91J0M9yEY04">2021/10 Hillel Wayne: TLA+ Tiramisu</a></li>
+<li><a href="https://www.youtube.com/watch?v=H7yBYoY7ILc">2021/12 A Beginner's Guide to TLA+ Exploring State Machines &amp; Proving Correctness | Jeff Weiss | Code BEAM V</a></li>
+<li><a href="https://vimeo.com/193107865">Markus Kuppe: TLA+ Toolbox for Beginners</a></li>
+</ul>
+<h4 id="books"><a class="header" href="#books">Books</a></h4>
+<h5 id="leslie-lamport---specifying-systems"><a class="header" href="#leslie-lamport---specifying-systems">Leslie Lamport - Specifying Systems</a></h5>
+<ul>
+<li>I Getting started
+<ul>
+<li>1 A little simple math</li>
+<li>2 Specifying a simple clock</li>
+<li>3 An asynchronous interface</li>
+<li>4 A FIFO</li>
+<li>5 A caching memory</li>
+<li>6 Some more math</li>
+<li>7 Writing a specification: some advice</li>
+</ul>
+</li>
+<li>II More advanced topics
+<ul>
+<li>8 Liveness and fairness</li>
+<li>9 Real time</li>
+<li>10 Composing specifications</li>
+<li>11 Advanced examples</li>
+</ul>
+</li>
+<li>III The tools
+<ul>
+<li>12 The syntactic analyzer</li>
+<li>13 The TLATEX typesetter</li>
+<li>14 The TLC model checker</li>
+</ul>
+</li>
+<li>IV The TLA+ language
+<ul>
+<li>15 The syntax of TLA+</li>
+<li>16 The operators of TLA+</li>
+<li>17 The meaning of a module</li>
+<li>18 The standard modules</li>
+</ul>
+</li>
+</ul>
+<h5 id="practical-tla"><a class="header" href="#practical-tla">Practical TLA+</a></h5>
+<ul>
+<li>
+<p><a href="http://www.pathsensitive.com/2019/05/book-review-practical-tla.html">2019/05 Book Review: Practical TLA+</a></p>
+</li>
+<li>
+<p>Part I The Semantics of TLA+ and PlusCal</p>
+<ul>
+<li>1 An example</li>
+<li>2 PlusCal</li>
+<li>3 Operators and Functions</li>
+<li>4 Constants, Models and Imports</li>
+<li>5 Concurrency</li>
+<li>6 Temporal Logic</li>
+</ul>
+</li>
+<li>
+<p>Part II Applying TLA+</p>
+<ul>
+<li>7 Algorithms</li>
+<li>8 Data Structures</li>
+<li>9 State Machines</li>
+<li>10 Business Logic</li>
+<li>11 MapReduce</li>
+<li>A Math</li>
+<li>B The PT Module</li>
+<li>C PlusCal to TLA+</li>
+</ul>
+</li>
+</ul>
+<h3 id="quickstrom"><a class="header" href="#quickstrom">Quickstrom</a></h3>
+<ul>
+<li><a href="https://quickstrom.io/">Official website</a></li>
+<li><a href="https://docs.quickstrom.io/en/latest/">Documentation</a></li>
+<li><a href="https://github.com/quickstrom/quickstrom">Github</a></li>
+<li><a href="https://wickstrom.tech/programming/2021/05/03/specifying-state-machines-with-temporal-logic.html">2021/05 Specifying State Machines with Temporal Logic</a></li>
+</ul>
+<h2 id="formal-methods-in-rust"><a class="header" href="#formal-methods-in-rust">Formal methods in Rust</a></h2>
+<ul>
+<li>
+<p><a href="https://plv.mpi-sws.org/rustbelt/stacked-borrows/"></a></p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/rust/comments/as5nmg/lifetime_visualization_ideas/"></a></p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/rust/comments/axsci4/oxide_a_formal_semantics_for_rust/"></a></p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/rust/comments/mud87x/borrow_checking_formalized_in_only_9_lines_using/"></a></p>
+</li>
+<li>
+<p><a href="https://blog.adacore.com/from-rust-to-spark-formally-proven-bip-buffers"></a></p>
+</li>
+<li>
+<p><a href="https://rust-formal-methods.github.io/">Rust Formal Methods Interest Group</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rust-formal-methods/wg">Github: rust-formal-methods/wg</a></p>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=16795577">Hacker News Comments</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://rust-lang-nursery.github.io/wg-verification/">Rustc Verification Working Group</a></p>
+</li>
+<li>
+<p><a href="https://github.com/rust-lang-nursery/wg-verification">Github: rust-lang-nursery/wg-verification</a></p>
+</li>
+<li>
+<p><a href="https://github.com/PolySync/misra-rust">Github: PolySync/misra-rust</a> An investigation into what adhering to each MISRA-C rule looks like in Rust. The intention is to decipher how much we &quot;get for free&quot; from the Rust compiler.</p>
+</li>
+<li>
+<p><a href="https://github.com/xldenis/creusot">Github: xldenis/creuso</a> deductive verification of Rust code. (semi) automatically prove your code satisfies your specifications!</p>
+</li>
+<li>
+<p><a href="https://sites.google.com/view/rustverify2021/home">2021/05 Rust Verification Workshop 2021</a></p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PL85XCvVPmGQiF26DB84AK3i1yjKu52fq_">Talks</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://alastairreid.github.io/">Alastari Reed</a></p>
+<ul>
+<li><a href="https://alastairreid.github.io/rust-verification-tools/">2020 Rust verification tools</a></li>
+<li><a href="https://alastairreid.github.io/automatic-rust-verification-tools-2021/">2021 Rust verification tools</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="high-assurance-rust"><a class="header" href="#high-assurance-rust">High Assurance Rust</a></h3>
+<ul>
+<li><a href="https://highassurance.rs/">highassurance.rs</a></li>
+<li><a href="https://github.com/tnballo/high-assurance-rust">Github: tnballo/high-assurance-rust</a></li>
+</ul>
+<h3 id="rustbelt"><a class="header" href="#rustbelt">RustBelt</a></h3>
+<ul>
+<li><a href="https://plv.mpi-sws.org/rustbelt/">RustBelt</a></li>
+<li><a href="https://www.ralfj.de/blog/2015/10/12/formalizing-rust.html">2015/10 Formalizing Rust</a></li>
+<li><a href="https://www.janestreet.com/tech-talks/rustbelt/">2019/09 RustBelt: Logical Foundations for the Future of Safe Systems Programming</a></li>
+</ul>
+<h3 id="kani"><a class="header" href="#kani">Kani</a></h3>
+<ul>
+<li><a href="https://model-checking.github.io/kani/">The Kani Rust Verifier</a></li>
+<li><a href="https://github.com/model-checking/kani">Github</a>
+<ul>
+<li><a href="https://news.ycombinator.com/item?id=30786511">Hacker News Comments</a></li>
+</ul>
+</li>
+<li><a href="https://www.cs.cornell.edu/%7Eavh/dyn-trait-icse-seip-2022-preprint.pdf">2022/05 Verifying Dynamic Trait Objects in Rust</a>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/comments/uic2dy/announcing_the_kani_rust_verifier_project/">Reddit Comments</a></li>
+</ul>
+</li>
+<li><a href="https://model-checking.github.io/kani-verifier-blog/2022/05/04/announcing-the-kani-rust-verifier-project.html">2022/04 Announcing the Kani Rust Verifier Project</a></li>
+</ul>
+<h3 id="tla-and-rust"><a class="header" href="#tla-and-rust">TLA and Rust</a></h3>
+<ul>
+<li><a href="https://github.com/spacejam/tla-rust">2017/05 GitHub: spacejam/tla-rust: writing correct lock-free and distributed stateful systems in Rust, assisted by TLA+</a>
+<ul>
+<li><a href="https://www.reddit.com/r/programming/comments/6c32jv/writing_correct_lockfree_and_distributed_stateful/">Reddit Comments</a></li>
+</ul>
+</li>
+<li>⚠️ <a href="https://www.julienrouse.com/blog/rust_tla+_and_more/">2020/04 Rust, TLA+, Aesthetics and more</a></li>
+</ul>
+<h2 id="formal-verification"><a class="header" href="#formal-verification">Formal verification</a></h2>
+<ul>
+<li>⚠️ <a href="https://www.moritz.systems/blog/an-introduction-to-formal-verification/">2020/08 An introduction to Formal Verification for Software Systems</a></li>
+</ul>
+<h3 id="videos-3"><a class="header" href="#videos-3">Videos</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=20loktdryYM">Basics of Program Verification (ft. Viktor Kuncak)</a></li>
+<li><a href="https://www.youtube.com/watch?v=2zrgaq2I1SQ">Planning Out Verification</a></li>
+<li><a href="https://www.youtube.com/watch?v=8UwSUY1dECw">An introduction to Formal Verification Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=tgTt-8UqSMU">An introduction to Formal Verification Part 2</a></li>
+<li><a href="https://www.youtube.com/watch?v=_5R35QFsXM4">Getting started with Formal Verification Part 1: Introduction and Solvers</a></li>
+</ul>
+<h3 id="model-checking"><a class="header" href="#model-checking">Model checking</a></h3>
+<h4 id="videos-4"><a class="header" href="#videos-4">Videos</a></h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=I1lf2MBy3J4">2007 Edmund M. Clarke, ACM A.M. Turing Award Lecture &quot;Model checking&quot;</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLJ5C_6qdAvBGojQMUzL4x5Y0N5gBJmT4l">2017/09 Model Checking Course</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLwabKnOFhE38C0o6z_bhlF_uOUlblDTjh">2021/09 Model Checking Course</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLZ5_EQH6uyVucnu20SS2BFQdVp_m_bznu">2020/08 Formal Methods for Verification and Model Checking</a></li>
+</ul>
+<h2 id="compiler-verification"><a class="header" href="#compiler-verification">Compiler verification</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Compiler_correctness">Wikipedia: Compiler correctness</a></li>
+<li><a href="https://www.ccs.neu.edu/home/mates/articles/compiler-verification-intro.html">2013/01 An Introduction to Compiler Verification</a></li>
+<li><a href="https://blog.sigplan.org/2021/06/02/verifying-a-quantum-compiler/">2021/06 Verifying a Quantum Compiler</a></li>
+<li><a href="https://www.reddit.com/r/csMajors/comments/spntvs/compiler_verification_engineer_is_this_role_good/">2022/02 Reddit: Compiler Verification Engineer -- Is this role good for a new grad trying to be a SWE?</a></li>
+</ul>
+<h3 id="compcert"><a class="header" href="#compcert">CompCert</a></h3>
+<ul>
+<li><a href="https://compcert.org/">CompCert</a></li>
+<li><a href="https://compcert.org/doc/index.html">CompCert Documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/CompCert">Wikipedia: CompCert</a></li>
+</ul>
+<h4 id="videos-5"><a class="header" href="#videos-5">Videos</a></h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qxJBXhhrF3A">2015/03 Compiler verification for fun and profit</a></li>
+<li><a href="https://www.youtube.com/watch?v=NOfhhCjTHYw">2016/06 Using a Push-Button Verifying Compiler to Build Verified Software Components</a></li>
+<li><a href="https://www.youtube.com/watch?v=TO9F3RvA0LA">2018/12 On the Architecture of a (Verifying) Compiler</a></li>
+<li><a href="https://www.youtube.com/watch?v=wzlUdPUMrg0">2019/03 Galois, Inc. Tech Talk: Goldilocks the verification engineer</a></li>
+<li><a href="https://www.youtube.com/watch?v=KcOxdyq1vs0">2019/10 [PurPL Fest] Compiler Verification: The Next Generation - Amal Ahmed</a></li>
+<li><a href="https://www.youtube.com/watch?v=nzaIfvwOjqA">2020/01 Verification and Validation Process (V&amp;V Curve)</a></li>
+<li><a href="https://www.youtube.com/watch?v=71by_7JcDdU">2021/01 Nomadic Labs Research Seminars #6 | Towards mechanised verification of the LIGO compiler</a></li>
+<li><a href="https://www.youtube.com/watch?v=REFNUw2zMlw">2021/06 Can you trust your compiler? — With CompCert, you can!</a></li>
+</ul>
+<!--
+https://dl.acm.org/doi/10.1145/966221.966235
+https://sci-hub.st/https://doi.org/10.1145/966221.966235
+https://software-dl.ti.com/ccs/esd/documents/sdto_cgt_compiler_validations.html
+https://www.keil.com/arm/verification.asp
+https://llsoftsec.github.io/llsoftsecbook/
+https://certicoq.org/
+https://vst.cs.princeton.edu/
+https://velus.inria.fr/
+https://www.cs.cornell.edu/courses/cs3110/2014fa/lectures/23/VerifyCompiler.html
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../comp.sci.eng/software_engineering/rest.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../comp.sci.eng/software_engineering/performance_engineering.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../comp.sci.eng/software_engineering/rest.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../comp.sci.eng/software_engineering/performance_engineering.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
