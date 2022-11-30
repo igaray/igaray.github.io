@@ -1,0 +1,875 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Historia - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item expanded "><a href="../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../euskera/historia.html" class="active">Historia</a></li></ol></li><li class="chapter-item "><a href="../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../music/wave.html">*wave</a></li></ol></li><li class="chapter-item "><a href="../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/checklists/travel.html">Travel</a></li></ol></li><li class="chapter-item "><a href="../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li><li class="chapter-item "><a href="../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../misc/cooking/pancakes.html">Pancakes</a></li></ol></li><li class="chapter-item "><a href="../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../misc/library.html">My library</a></li><li class="chapter-item "><a href="../misc/sampler.html">Sampler</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="historia-del-pais-vasco-y-del-euskera"><a class="header" href="#historia-del-pais-vasco-y-del-euskera">Historia del Pais Vasco y del Euskera</a></h1>
+<ul>
+<li><a href="#historia-general-del-pais-vasco">Historia general del Pais Vasco</a>
+<ul>
+<li><a href="#prologo">Prologo</a></li>
+<li><a href="#la-prehistoria">La Prehistoria</a>
+<ul>
+<li><a href="#la-prehistoria-del-pais-vasco">La Prehistoria del Pais Vasco</a></li>
+</ul>
+</li>
+<li><a href="#la-antiguedad">La Antiguedad</a>
+<ul>
+<li><a href="#la-presencia-de-roma">La Presencia de Roma</a></li>
+</ul>
+</li>
+<li><a href="#los-siglos-medievales">Los Siglos Medievales</a>
+<ul>
+<li><a href="#el-contacto-con-barbaros-y-arabes">El contacto con barbaros y arabes</a></li>
+<li><a href="#la-cristianizacion">La cristianizacion</a></li>
+<li><a href="#la-alta-edad-media-la-aparicion-de-las-demarcaciones-territoriales">La Alta Edad Media. La aparicion de las demarcaciones territoriales</a></li>
+<li><a href="#poblacion-economia-y-sociedad-del-pais-vasco-durante-la-edad-media">Poblacion, economia y sociedad del Pais Vasco durante la Edad Media</a></li>
+<li><a href="#la-fundacion-de-villas">La fundacion de villas</a></li>
+<li><a href="#la-crisis-bajomedieval-la-guerra-de-los-bandos">La crisis bajomedieval. La guerra de los bandos</a></li>
+<li><a href="#la-formacion-de-las-unidades-politicas-forales">La formacion de las unidades politicas forales</a></li>
+</ul>
+</li>
+<li><a href="#la-edad-moderna">La Edad Moderna</a>
+<ul>
+<li><a href="#el-antiguo-regimen-en-el-pais-vasco-el-sistema-foral">El Antiguo Regimen en el PAis Vasco: el sistema foral</a></li>
+<li><a href="#los-fueros">Los fueros</a></li>
+<li><a href="#politica-e-ideologia-foral">Politica e ideologia foral</a></li>
+<li><a href="#economia-y-sociedad-en-la-edad-moderna">Economia y sociedad en la Edad Moderna</a></li>
+<li><a href="#expansion-economica-y-demografica-a-comienzos-de-la-edad-moderna">Expansion economica y demografica a comienzos de la Edad Moderna</a></li>
+<li><a href="#la-crisis-del-xvii">La crisis del XVII</a></li>
+<li><a href="#el-siglo-del-capitalismo-comercial">El siglo del capitalismo comercial</a></li>
+</ul>
+</li>
+<li><a href="#el-periodo-contemporaneo">El Periodo Contemporaneo</a>
+<ul>
+<li><a href="#la-crisis-del-antiguo-regimen">La crisis del Antiguo Regimen</a></li>
+<li><a href="#la-ultima-etapa-foral">La ultima etapa foral</a></li>
+<li><a href="#la-insercion-del-pais-vasco-en-el-regimen-liberal">La insercion del Pais Vasco en el regimen liberal</a></li>
+<li><a href="#la-industrializacion">La industrializacion</a></li>
+<li><a href="#la-vida-politica-en-el-regimen-de-la-restauracion">La vida politica en el regimen de la Restauracion</a></li>
+<li><a href="#la-renovacion-politica-el-proteccionismo">La renovacion politica. El proteccionismo</a></li>
+<li><a href="#el-nacionalismo-vasco">El nacionalismo vasco</a></li>
+<li><a href="#el-movimiento-obrero-socialista">El movimiento obrero socialista</a></li>
+<li><a href="#el-desarrollo-de-la-sociedad-capitalista">El desarrollo de la sociedad capitalista</a></li>
+<li><a href="#sociedad-y-politica-durante-el-primer-tercio-del-siglo-xx">Sociedad y politica durante el primer tercio del siglo XX</a></li>
+<li><a href="#la-ii-republica">La II Republica</a></li>
+<li><a href="#la-guerra-civil">La guerra civil</a></li>
+<li><a href="#el-franquismo">El franquismo</a></li>
+<li><a href="#la-transicion">La transicion</a></li>
+<li><a href="#democracia-y-autonomia">Democracia y autonomia</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#de-tubal-a-aitor">De Tubal a Aitor</a>
+<ul>
+<li><a href="#primera-parte-de-bestias-miticas-y-monta%C3%B1as-infranqueables-el-largo-proceso-de-ocupacion-de-un-territorio-desde-la-prehistoria-al-final-del-mundo-romano">Primera Parte: De bestias miticas y montañas infranqueables... el largo proceso de ocupacion de un territorio (desde la prehistoria al final del mundo romano)</a>
+<ul>
+<li><a href="#de-las-cavernas-a-los-poblados-150000ac---cambio-de-era">De las cavernas a los poblados (150000ac - cambio de era)</a>
+<ul>
+<li><a href="#el-escenario-de-la-ocupacion-humana-del-territorio">El escenario de la ocupacion humana del territorio</a>
+<ul>
+<li><a href="#bajo-el-blanco-manto-de-los-hielos-los-tiempos-del-pleistoceno">Bajo el blanco manto de los hielos (los tiempos del Pleistoceno)</a></li>
+<li><a href="#un-nuevo-paisaje-y-nuevas-culturas-del-tardiglacial-a-las-edades-de-los-metales">Un nuevo paisaje y nuevas culturas (del Tardiglacial a las Edades de los Metales)</a></li>
+</ul>
+</li>
+<li><a href="#las-primeras-formas-de-habitat-y-su-evolucion">Las primeras formas de habitat y su evolucion</a></li>
+<li><a href="#los-protagonistas-de-la-primera-ocupacion-del-territorio-los-tipos-humanos-y-su-evolucion">Los protagonistas de la primera ocupacion del territorio: los tipos humanos y su evolucion</a></li>
+<li><a href="#las-bases-de-subsistencia-y-el-desarrollo-de-los-grupos-humanos">Las bases de subsistencia y el desarrollo de los grupos humanos</a></li>
+<li><a href="#modus-vivendo-y-mundo-cotidiano">Modus vivendo y mundo cotidiano</a>
+<ul>
+<li><a href="#el-utillaje-de-la-piedra-tallada-a-la-metalurgia-del-hierro">El utillaje (de la piedra tallada a la metalurgia del hierro)</a></li>
+<li><a href="#adorno-e-indumentaria-personal-de-las-pieles-y-el-hueso-a-los-tejidos-y-el-metal">Adorno e indumentaria personal (de las pieles y el hueso a los tejidos y el metal)</a></li>
+<li><a href="#los-primeros-impulsos-artisticos">Los primeros impulsos artisticos</a></li>
+<li><a href="#el-mundo-de-la-ultratumba-creencias-y-rituales-funerarios">El mundo de la ultratumba. Creencias y rituales funerarios</a></li>
+<li><a href="#el--de-la-hoya-o-como-una-antigua-desgracia-aporta-informacion-a-la-ciencia">El  de La Hoya (o como una antigua desgracia aporta informacion a la ciencia)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#de-los-poblados-a-las-ciudades-del-siglo-iii-ac-al-siglo-v">De los poblados a las ciudades (del siglo III ac al siglo V)</a>
+<ul>
+<li><a href="#los-primeros-contactos-y-la-anexion-de-de-los-territorios-de-vasconia-por-roma">Los primeros contactos y la anexion de de los territorios de Vasconia por Roma</a></li>
+<li><a href="#de-los-oppida-indigenas-a-la-organizacion-provincial-romana">De los oppida indigenas a la organizacion provincial romana</a></li>
+<li><a href="#la-nueva-planificacion-y-ocupacion-del-espacio">La nueva planificacion y ocupacion del espacio</a></li>
+<li><a href="#la-crisis-del-sistema">La crisis del sistema</a></li>
+<li><a href="#algunos-datos-sobre-los-efectivos-poblacionales">Algunos datos sobre los efectivos poblacionales</a></li>
+<li><a href="#las-bases-agropecuarias-del-sistema-la-explotacion-de-las-materias-primas-y-el-consumo">Las bases agropecuarias del sistema, la explotacion de las materias primas y el consumo</a></li>
+<li><a href="#algunos-aspectos-de-la-organizacion-social">Algunos aspectos de la organizacion social</a>
+<ul>
+<li><a href="#el-ejercito-instrumento-de-conquista-y-vector-de-romanizacion">El ejercito, instrumento de conquista y vector de romanizacion</a></li>
+</ul>
+</li>
+<li><a href="#civilizacion-y-cultura-en-la-vasconia-romana">Civilizacion y cultura en la Vasconia romana</a>
+<ul>
+<li><a href="#las-creencias-en-epoca-romana">Las creencias en epoca romana</a></li>
+<li><a href="#la-lengua-y-la-escritura">La lengua y la escritura</a></li>
+<li><a href="#la-mesa-y-la-cocina-vajilla-y-dieta-mediterranea">La mesa y la cocina. Vajilla y dieta mediterranea</a></li>
+<li><a href="#el-adorno-y-la-indumentaria-personal">El adorno y la indumentaria personal</a></li>
+<li><a href="#las-viviendas-en-la-vasconia-romana">Las viviendas en la Vasconia romana</a></li>
+<li><a href="#medicina-e-higiene">Medicina e higiene</a></li>
+<li><a href="#juegos-y-espectaculos">Juegos y espectaculos</a></li>
+<li><a href="#rituales-y-manifestaciones-funerarias">Rituales y manifestaciones funerarias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#segunda-parte-de-los-tiempos-oscuros-al-esplendor-foral-siglos-v-al-xvi">Segunda Parte: De los tiempos oscuros al esplendor foral (siglos V al XVI)</a>
+<ul>
+<li><a href="#el-pulso-del-poder-y-la-definicion-de-los-espacios-politicos">El pulso del poder y la definicion de los espacios politicos</a>
+<ul>
+<li><a href="#del-reino-de-pamplona-al-de-navarra">Del reino de Pamplona al de Navarra</a></li>
+<li><a href="#el-pais-vasco-peninsular">El Pais Vasco peninsular</a>
+<ul>
+<li><a href="#la-formacion-de-alava">La formacion de Alava</a></li>
+<li><a href="#la-formacion-de-gipuzkoa">La formacion de Gipuzkoa</a></li>
+<li><a href="#la-formacion-del-se%C3%B1oria-de-vizcaya">La formacion del señoria de Vizcaya</a></li>
+</ul>
+</li>
+<li><a href="#del-ducado-de-vasconia-a-los-vizcondados-de-labourd-y-soule">Del ducado de vasconia a los vizcondados de Labourd y Soule</a></li>
+</ul>
+</li>
+<li><a href="#la-construccion-del-marco-juridico-institucional-la-foralidad">La construccion del marco juridico-institucional: la foralidad</a>
+<ul>
+<li><a href="#sea-obedecida-y-no-cumplida-como-cosa-desaforada-de-la-tierra">&lt;Sea obedecida y no cumplida, como cosa desaforada de la tierra&gt;</a></li>
+<li><a href="#que-habian-de-fuero-uso-y-costumbre">&lt;Que habian de fuero, uso y costumbre&gt;</a></li>
+<li><a href="#juntas-diputaciones-y-cortes">Juntas, Diputaciones, y Cortes</a>
+<ul>
+<li><a href="#alava">Alava</a></li>
+<li><a href="#guipuzcoa">Guipuzcoa</a></li>
+<li><a href="#vizcaya">Vizcaya</a></li>
+<li><a href="#navarra">Navarra</a></li>
+<li><a href="#baja-navarra">Baja Navarra</a></li>
+<li><a href="#labourd">Labourd</a></li>
+<li><a href="#pais-de-soule">Pais de Soule</a></li>
+</ul>
+</li>
+<li><a href="#organizacion-diocesana">Organizacion diocesana</a></li>
+</ul>
+</li>
+<li><a href="#los-fundamentos-materiales-de-la-sociedad-una-aproximacion-desde-abajo">Los fundamentos materiales de la sociedad: una aproximacion desde abajo</a>
+<ul>
+<li><a href="#los-efectivos-humanos">Los efectivos humanos</a></li>
+<li><a href="#de-un-mundo-agropastoril-a-otro-industrial-y-comercial">De un mundo agropastoril a otro industrial y comercial</a></li>
+<li><a href="#curas-guerreros-y-campesinos">Curas, guerreros y campesinos</a></li>
+<li><a href="#un-nuevo-grupo-social-los-burgueses-o-ruanos">Un nuevo grupo social: los burgueses o ruanos</a></li>
+<li><a href="#el-pueblo-de-yahve-y-los-seguidores-de-ala">El pueblo de Yahve y los seguidores de Ala</a></li>
+<li><a href="#una-sociedad-en-crisis">Una sociedad en crisis</a></li>
+</ul>
+</li>
+<li><a href="#la-civilizacion-vasca-medieval-y-renacentista">La civilizacion vasca medieval y renacentista</a>
+<ul>
+<li><a href="#cristianizacions-versus-paganismo">Cristianizacions versus paganismo</a></li>
+<li><a href="#la-lingua-navarrorum">La lingua navarrorum</a></li>
+<li><a href="#la-transmision-de-la-cultura">La transmision de la cultura</a></li>
+<li><a href="#"></a></li>
+<li><a href="#las-manifestaciones-artisticas">Las manifestaciones artisticas</a></li>
+<li><a href="#el-yantar-el-atuendo-y-la-morada">El yantar, el atuendo y la morada</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tercera-parte-crisis-cambios-y-rupturas-1602---1876">Tercera Parte: Crisis, cambios y rupturas (1602 - 1876)</a>
+<ul>
+<li><a href="#convulsa-y-violenta-agonia-del-sistema-politico-tradicional">Convulsa y violenta agonia del sistema politico tradicional</a>
+<ul>
+<li><a href="#madurez-y-poda-del-arbol-foral">Madurez y poda del arbol foral</a></li>
+<li><a href="#es-una-revuelta-no-sire-es-una-revolucion">Es una revuelta? No Sire, es una revolucion</a></li>
+<li><a href="#un-ciclo-politico-y-belico-conflictivo-1789-1876">Un ciclo politico y belico conflictivo, 1789-1876</a></li>
+</ul>
+</li>
+<li><a href="#un-pais-peque%C3%B1o-y-pobre-cada-vez-mas-poblado-o-los-equilibrios-para-subsistir">Un pais pequeño y pobre, cada vez mas poblado o los equilibrios para subsistir</a>
+<ul>
+<li><a href="#auemnto-de-almas-problemas-para-alimentar-los-cuerpos">Auemnto de almas, problemas para alimentar los cuerpos</a></li>
+<li><a href="#vasconia-camina-hacia-la-reurbanizacion">Vasconia camina hacia la reurbanizacion</a></li>
+<li><a href="#de-la-ferreria-al-alto-horno">De la ferreria al alto horno</a></li>
+<li><a href="#peru-y-maisu-juan-o-las-mil-caras-de-una-sociedad-poliedrica">Peru y Maisu Juan o las mil caras de una sociedad poliedrica</a></li>
+</ul>
+</li>
+<li><a href="#cotidianidad-y-cultura-en-tiempo-de-cambios">Cotidianidad y cultura en tiempo de cambios</a>
+<ul>
+<li><a href="#los-trabajos-y-los-dias">Los trabajos y los dias</a></li>
+<li><a href="#politizacion-y-retroceso-de-la-lengua-vasca">Politizacion y retroceso de la lengua vasca</a></li>
+<li><a href="#nuevas-formas-de-difusion-de-la-cultura">Nuevas formas de difusion de la cultura</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cuarta-parta-la-contemporaneidad-1876---1979">Cuarta Parta: La contemporaneidad (1876 - 1979)</a>
+<ul>
+<li><a href="#paz-entre-dos-guerras-civiles-1876---19361937">Paz entre dos guerras civiles (1876 - 1936/1937)</a>
+<ul>
+<li><a href="#el-pluralismo-politico">El pluralismo politico</a>
+<ul>
+<li><a href="#la-restauracion-de-los-fueros-a-los-conciertos-economicos">La Restauracion: de los Fueros a los Conciertos economicos</a></li>
+<li><a href="#la-configuracion-de-un-sistema-politico-pluralista">La configuracion de un sistema politico pluralista</a></li>
+<li><a href="#el-tradicionalismo-de-los-nocedal-a-pradera">El tradicionalismo: de los Nocedal a Pradera</a></li>
+<li><a href="#el-monarquismo-alfonsino-de-chavarri-a-lequerica">El monarquismo alfonsino: de Chavarri a Lequerica</a></li>
+<li><a href="#el-nacionalismo-vasco-de-arana-a-kizkitza">El nacionalismo vasco: de Arana a Kizkitza</a></li>
+<li><a href="#las-izquierdas-de-perezagua-a-prieto">Las izquierdas: de Perezagua a Prieto</a></li>
+<li><a href="#de-la-dictadura-a-la-republica">De la dictadura a la Republica</a></li>
+<li><a href="#la-ii-republica-el-pluralismo-polarizado">La II Republica: el pluralismo polarizado</a></li>
+<li><a href="#la-lucha-por-la-autonomia">La lucha por la autonomia</a></li>
+<li><a href="#las-elecciones-a-cortes">Las elecciones a Cortes</a></li>
+<li><a href="#la-guerra-civil-revolucion-o-contrarrevolucion">La guerra civil: revolucion o contrarrevolucion</a></li>
+<li><a href="#el-nacimiento-de-euskadi-el-estatuto-y-el-primero-gobierno-vasco">El nacimiento de Euskadi: el Estatuto y el primero Gobierno vasco</a></li>
+</ul>
+</li>
+<li><a href="#la-modernizacion-socioeconomica">La modernizacion socioeconomica</a>
+<ul>
+<li><a href="#la-revolucion-demografica">La revolucion demografica</a></li>
+<li><a href="#la-revolucion-industrial-vizcaina">La revolucion industrial vizcaina</a></li>
+<li><a href="#el-proceso-industrializador-guipuzcoano">El proceso industrializador guipuzcoano</a></li>
+<li><a href="#la-crisis-economica-de-los-a%C3%B1os-treinta">La crisis economica de los años treinta</a></li>
+<li><a href="#los-condes-siderurgicos">Los condes siderurgicos</a></li>
+<li><a href="#el-movimiento-obrero-y-la-conflictividad-social">El movimiento obrero y la conflictividad social</a></li>
+</ul>
+</li>
+<li><a href="#entre-la-tradicion-y-la-modernidad-religion-y-cultura">Entre la tradicion y la modernidad: religion y cultura</a>
+<ul>
+<li><a href="#la-cuestion-religiosa">La cuestion religiosa</a></li>
+<li><a href="#el-polimorfismo-cultural">El polimorfismo cultural</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#de-la-guerra-civil-al-estatuto-de-guernica-1937---1979">De la guerra civil al estatuto de Guernica (1937 - 1979)</a>
+<ul>
+<li><a href="#la-posguerra-una-etapa-en-blanco-y-negro">La posguerra: una etapa en blanco y negro</a>
+<ul>
+<li><a href="#dos-provincias-castigadas-dos-premiadas">Dos provincias castigadas, dos premiadas</a></li>
+<li><a href="#la-implantacion-del-movimiento-carlistas-y-falangistas-juntos-pero-no-revueltos">La implantacion del Movimiento. Carlistas y falangistas: juntos pero no revueltos</a></li>
+</ul>
+</li>
+<li><a href="#un-horizonte-muy-lejano-el-exilio-y-la-primera-oposicion">Un horizonte muy lejano: el exilio y la primera oposicion</a>
+<ul>
+<li><a href="#a%C3%B1os-de-guerra-mundial-ayudar-a-los-aliados">Años de guerra mundial: ayudar a los aliados</a></li>
+<li><a href="#de-la-esperanza-al-desaliento">De la esperanza al desaliento</a></li>
+</ul>
+</li>
+<li><a href="#desarrollismo-y-tardofranquismo-dias-de-viejo-color">Desarrollismo y tardofranquismo: dias de viejo color</a>
+<ul>
+<li><a href="#renovarse-o-morir">Renovarse o morir</a></li>
+<li><a href="#eta-la-alternativa-del-diablo">ETA: la alternativa del diablo</a></li>
+</ul>
+</li>
+<li><a href="#la-gran-ilusion-transicion-y-autonomia">La gran ilusion: transicion y autonomia</a>
+<ul>
+<li><a href="#la-violencia-que-no-cesa">La violencia que no cesa</a></li>
+<li><a href="#la-preautonomia">La preautonomia</a></li>
+<li><a href="#la-cuestion-vasca-en-la-constitucion">La cuestion vasca en la Constitucion</a></li>
+<li><a href="#por-fin-el-estatuto">Por fin, el Estatuto</a></li>
+</ul>
+</li>
+<li><a href="#de-la-miseria-al-desarrollo-a-pesar-de-la-crisis">De la miseria al desarrollo, a pesar de la crisis</a>
+<ul>
+<li><a href="#las-dificultades-de-la-posguerra">Las dificultades de la posguerra</a></li>
+<li><a href="#del-despliegue-a-la-crisis-del-petroleo">Del despliegue a la crisis del petroleo</a></li>
+</ul>
+</li>
+<li><a href="#como-hemos-cambiado-religion-cultura-y-vida-cotidiana">Como hemos cambiado: religion, cultura, y vida cotidiana</a>
+<ul>
+<li><a href="#a%C3%B1os-oscuros">Años oscuros</a></li>
+<li><a href="#algo-se-mueve">Algo se mueve</a></li>
+<li><a href="#vivir-en-libertad">Vivir en libertad</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#la-vasconia-continental-entre-la-iii-y-la-v-republica-francesa">La Vasconia Continental: entre la III y la V Republica Francesa</a>
+<ul>
+<li><a href="#politica-conservadora-gran-nacion-peque%C3%B1o-pais">Politica conservadora, gran nacion, pequeño pais</a></li>
+<li><a href="#una-economia-dual-en-lenta-transformacion">Una economia dual en lenta transformacion</a></li>
+<li><a href="#una-cultura-en-clave-de-cambio">Una cultura en clave de cambio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#historia-del-euskera">Historia del Euskera</a>
+<ul>
+<li><a href="#introduccion-sobre-la-historia-de-la-lengua-vasca">Introduccion. Sobre la historia de la lengua vasca</a>
+<ul>
+<li><a href="#preliminares">Preliminares</a></li>
+<li><a href="#antecedentes">Antecedentes</a></li>
+<li><a href="#la-estructura-de-la-historia-de-la-lengua-vasca">La estructura de la Historia de la lengua vasca</a></li>
+<li><a href="#divisiones-cronologicas">Divisiones cronologicas</a></li>
+<li><a href="#autoria">Autoria</a></li>
+<li><a href="#objetivo">Objetivo</a></li>
+</ul>
+</li>
+<li><a href="#la-prehistoria-de-la-lengua-vasca">La prehistoria de la lengua vasca</a>
+<ul>
+<li><a href="#introduccion">Introduccion</a>
+<ul>
+<li><a href="#sobre-el-cambio-linguistico">Sobre el cambio linguistico</a></li>
+<li><a href="#la-prehistoria-de-las-lenguas-y-la-del-euskera">La prehistoria de las lenguas y la del euskera</a></li>
+<li><a href="#sobre-la-naturaleza-y-la-funcion-de-las-protolenguas">Sobre la naturaleza y la funcion de las protolenguas</a></li>
+<li><a href="#sobre-busqueda-de-parentescos">Sobre busqueda de parentescos</a></li>
+<li><a href="#la-reconstruccion">La reconstruccion</a></li>
+</ul>
+</li>
+<li><a href="#teorias-sobre-parentescos-del-euskera">Teorias sobre parentescos del euskera</a>
+<ul>
+<li><a href="#vasco-iberismo">Vasco-iberismo</a></li>
+<li><a href="#vasco-hamitico">Vasco-hamitico</a></li>
+<li><a href="#guanche-y-euskera">Guanche y euskera</a></li>
+<li><a href="#vasco-caucasico">Vasco-caucasico</a></li>
+<li><a href="#supuesta-alternativa-al-metodo-comparativo">Supuesta alternativa al metodo comparativo</a>
+<ul>
+<li><a href="#la-glotocronologia">La glotocronologia</a></li>
+<li><a href="#la-comparacion-masiva">La comparacion masiva</a></li>
+</ul>
+</li>
+<li><a href="#europeo-antiguo">Europeo antiguo</a></li>
+<li><a href="#el-uroaltaico-ampliado">El uroaltaico ampliado</a></li>
+<li><a href="#sobre-el-paleo-vasco-sardo">Sobre el paleo-vasco-sardo</a></li>
+<li><a href="#vasco-e-indoeuropeo">Vasco e indoeuropeo</a>
+<ul>
+<li><a href="#forni">Forni</a></li>
+<li><a href="#blevins">Blevins</a></li>
+</ul>
+</li>
+<li><a href="#la-comparacion-y-el-estudio-del-pasado-de-la-lengua-vasca">La comparacion y el estudio del pasado de la lengua vasca</a></li>
+</ul>
+</li>
+<li><a href="#analisis-del-euskera-prehistorico-i-la-reconstruccion-del-protovasco-tardio">Analisis del euskera prehistorico I La reconstruccion del protovasco tardio</a>
+<ul>
+<li><a href="#antes-de-martinet-schuchardt-gavel-y-otros">Antes de Martinet: Schuchardt, Gavel, y otros</a></li>
+<li><a href="#martinet-y-las-oclusivas-antiguas">Martinet y las oclusivas antiguas</a></li>
+<li><a href="#el-analisis-de-mitxelena">El analisis de Mitxelena</a></li>
+<li><a href="#propuestas-posteriores-sobre-las-oclusivas-protovascas">Propuestas posteriores sobre las oclusivas protovascas</a></li>
+<li><a href="#haches-historicas">Haches historicas</a></li>
+<li><a href="#algunos-avances-en-la-reconstruccion-morfosintactica">Algunos avances en la reconstruccion morfosintactica</a></li>
+</ul>
+</li>
+<li><a href="#analisis-del-euskera-prehistorico-ii-la-reconstruccion-del-protovasco-antiguo">Analisis del euskera prehistorico II La reconstruccion del protovasco antiguo</a>
+<ul>
+<li><a href="#sobre-la-formacion-canonica-de-la-raiz">Sobre la formacion canonica de la raiz</a></li>
+<li><a href="#extensiones-del-analisis-de-la-forma-canonica-radical">Extensiones del analisis de la Forma Canonica Radical</a></li>
+<li><a href="#hacia-la-fonologia-del-pva">Hacia la fonologia del PVA</a>
+<ul>
+<li><a href="#sibilantes-y-sonantes-finales-revision-interna-del-sistema-mitxeleniano">Sibilantes y sonantes finales: revision interna del sistema mitxeleniano</a></li>
+<li><a href="#sonantes-y-sibilantes">Sonantes y sibilantes</a></li>
+<li><a href="#aumentos-en-el-inventario-consonantico-pva--pvm--vasc-mod-el-paralelo-dravidico">Aumentos en el inventario consonantico (PVA &gt; PVM &gt; Vasc. Mod.): el paralelo dravidico</a></li>
+<li><a href="#las-vocales">Las vocales</a></li>
+<li><a href="#vocales-iniciales">Vocales iniciales</a></li>
+<li><a href="#la-ley-martinet-a-la-busqueda-de-nuevos-casos">La Ley Martinet: a la busqueda de nuevos casos</a></li>
+<li><a href="#acento-y-raiz">Acento y raiz</a></li>
+<li><a href="#cambios-de-la-forma-canonica-radical">Cambios de la forma canonica radical</a></li>
+</ul>
+</li>
+<li><a href="#gramatica-del-protovasco-antiguo">Gramatica del protovasco antiguo</a>
+<ul>
+<li><a href="#antecedentes-1">Antecedentes</a></li>
+<li><a href="#fonologizacion-de-la-morfologia">Fonologizacion de la morfologia</a></li>
+<li><a href="#gramaticalizacion-y-reconstruccion">Gramaticalizacion y reconstruccion</a></li>
+<li><a href="#el-pva-una-lengua-sin-clase-abierta-de-adjetivos">El PVA, una lengua sin clase abierta de adjetivos</a></li>
+<li><a href="#flexion-nominal">Flexion nominal</a></li>
+<li><a href="#el-verbo-en-protovasco-antiguo">El verbo en protovasco antiguo</a></li>
+</ul>
+</li>
+<li><a href="#sobre-el-cambio-tipologico-del-protovasco">Sobre el cambio tipologico del protovasco</a></li>
+<li><a href="#para-el-estudio-del-lexico-protovasco">Para el estudio del lexico protovasco</a>
+<ul>
+<li><a href="#consideraciones-iniciales">Consideraciones iniciales</a></li>
+<li><a href="#sobre-protopatria-y-protocultura">Sobre protopatria y protocultura</a></li>
+<li><a href="#sobre-el-analisis-de-prestamos">Sobre el analisis de prestamos</a></li>
+<li><a href="#celta-y-euskera">Celta y euskera</a></li>
+<li><a href="#nota-sobre-estratos-y-cronologia">Nota sobre estratos y cronologia</a></li>
+<li><a href="#reconstruyendo-el-lexicon-i-la-obra-de-mitxelena">Reconstruyendo el lexicon: I La obra de mitxelena</a></li>
+<li><a href="#reconstruyendo-el-lexicon-ii-nuevas-investigaciones-etimologicas">Reconstruyendo el lexicon: II Nuevas investigaciones etimologicas</a></li>
+<li><a href="#familias-lexicas">Familias lexicas</a></li>
+<li><a href="#para-la-reconstruccion-de-nuevas-y-mas-extensas-familias-lexicas">Para la reconstruccion de nuevas y mas extensas familias lexicas</a></li>
+<li><a href="#algunos-campos-semanticos">Algunos campos semanticos</a></li>
+<li><a href="#avanzando-en-la-etimologia-y-fortaleciendo-la-reconstruccion">Avanzando en la etimologia y fortaleciendo la reconstruccion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#protovasco-y-vasco-comun-antiguo">Protovasco y Vasco Comun Antiguo</a>
+<ul>
+<li><a href="#la-dialectologia-diacronica-anterior-a-1981">La dialectologia diacronica anterior a 1981</a></li>
+<li><a href="#mitxelena-sobre-el-vasco-comun-antiguo">Mitxelena sobre el Vasco Comun Antiguo</a></li>
+<li><a href="#divisiones-binarias-y-de-otro-tipo">Divisiones binarias y de otro tipo</a></li>
+<li><a href="#elecciones-o-cadenas-de-innovaciones">Elecciones o cadenas de innovaciones?</a></li>
+<li><a href="#sobre-la-necesidad-de-un-vasco-comun-antiguo">Sobre la necesidad de un Vasco Comun Antiguo</a></li>
+<li><a href="#del-protovasco-tardio-al-vasco-comun-antiguo">Del Protovasco Tardio al Vasco Comun Antiguo</a></li>
+<li><a href="#diversificaciones-binarias-sobre-la-escision-inicial">Diversificaciones binarias: sobre la escision inicial</a></li>
+<li><a href="#particiones-binarias-nudos-intermedios-y-dialectos-modernos">Particiones binarias: nudos intermedios y dialectos modernos</a></li>
+<li><a href="#division-binaria-isoglosas-antiguas-y-la-proto-patria-del-vca">Division binaria, isoglosas antiguas y la proto-patria del VCA</a></li>
+<li><a href="#apendice-apostilla-tardia-sobre-vasconizacion-tardia-y-vasco-comun-antiguo">Apendice: Apostilla tardia sobre vasconizacion tardia y Vasco Comun Antiguo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#la-lengua-vasca-en-la-antig%C3%BCedad-inmediatamente-anterior-y-posterior-a-la-llegada-de-los-romanos">La lengua vasca en la Antigüedad (inmediatamente anterior y posterior a la llegada de los romanos)</a></li>
+<li><a href="#el-eeuskera-en-la-edad-media-711---1400">El Eeuskera en la Edad Media (711 - 1400)</a></li>
+<li><a href="#el-euskera-arcaico-1400---1600">El Euskera Arcaico (1400 - 1600)</a></li>
+<li><a href="#euskera-antiguo-y-clasico-1600---1745">Euskera Antiguo y Clasico (1600 - 1745)</a></li>
+<li><a href="#primer-vasco-moderno-1745---1876">Primer Vasco Moderno (1745 - 1876)</a></li>
+<li><a href="#ultimo-vasco-moderno-1876---1968">Ultimo Vasco Moderno (1876 - 1968)</a></li>
+<li><a href="#el-euskera-contemporaneo-el-largo-camino-de-la-unificacion-literaria">El Euskera Contemporaneo. El largo camino de la unificacion literaria</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="historia-general-del-pais-vasco"><a class="header" href="#historia-general-del-pais-vasco">Historia general del Pais Vasco</a></h2>
+<h3 id="prologo"><a class="header" href="#prologo">Prologo</a></h3>
+<h3 id="la-prehistoria"><a class="header" href="#la-prehistoria">La Prehistoria</a></h3>
+<h4 id="la-prehistoria-del-pais-vasco"><a class="header" href="#la-prehistoria-del-pais-vasco">La Prehistoria del Pais Vasco</a></h4>
+<h3 id="la-antiguedad"><a class="header" href="#la-antiguedad">La Antiguedad</a></h3>
+<h4 id="la-presencia-de-roma"><a class="header" href="#la-presencia-de-roma">La Presencia de Roma</a></h4>
+<h3 id="los-siglos-medievales"><a class="header" href="#los-siglos-medievales">Los Siglos Medievales</a></h3>
+<h4 id="el-contacto-con-barbaros-y-arabes"><a class="header" href="#el-contacto-con-barbaros-y-arabes">El contacto con barbaros y arabes</a></h4>
+<h4 id="la-cristianizacion"><a class="header" href="#la-cristianizacion">La cristianizacion</a></h4>
+<h4 id="la-alta-edad-media-la-aparicion-de-las-demarcaciones-territoriales"><a class="header" href="#la-alta-edad-media-la-aparicion-de-las-demarcaciones-territoriales">La Alta Edad Media. La aparicion de las demarcaciones territoriales</a></h4>
+<h4 id="poblacion-economia-y-sociedad-del-pais-vasco-durante-la-edad-media"><a class="header" href="#poblacion-economia-y-sociedad-del-pais-vasco-durante-la-edad-media">Poblacion, economia y sociedad del Pais Vasco durante la Edad Media</a></h4>
+<h4 id="la-fundacion-de-villas"><a class="header" href="#la-fundacion-de-villas">La fundacion de villas</a></h4>
+<h4 id="la-crisis-bajomedieval-la-guerra-de-los-bandos"><a class="header" href="#la-crisis-bajomedieval-la-guerra-de-los-bandos">La crisis bajomedieval. La guerra de los bandos</a></h4>
+<h4 id="la-formacion-de-las-unidades-politicas-forales"><a class="header" href="#la-formacion-de-las-unidades-politicas-forales">La formacion de las unidades politicas forales</a></h4>
+<h3 id="la-edad-moderna"><a class="header" href="#la-edad-moderna">La Edad Moderna</a></h3>
+<h4 id="el-antiguo-regimen-en-el-pais-vasco-el-sistema-foral"><a class="header" href="#el-antiguo-regimen-en-el-pais-vasco-el-sistema-foral">El Antiguo Regimen en el PAis Vasco: el sistema foral</a></h4>
+<h4 id="los-fueros"><a class="header" href="#los-fueros">Los fueros</a></h4>
+<h4 id="politica-e-ideologia-foral"><a class="header" href="#politica-e-ideologia-foral">Politica e ideologia foral</a></h4>
+<h4 id="economia-y-sociedad-en-la-edad-moderna"><a class="header" href="#economia-y-sociedad-en-la-edad-moderna">Economia y sociedad en la Edad Moderna</a></h4>
+<h4 id="expansion-economica-y-demografica-a-comienzos-de-la-edad-moderna"><a class="header" href="#expansion-economica-y-demografica-a-comienzos-de-la-edad-moderna">Expansion economica y demografica a comienzos de la Edad Moderna</a></h4>
+<h4 id="la-crisis-del-xvii"><a class="header" href="#la-crisis-del-xvii">La crisis del XVII</a></h4>
+<h4 id="el-siglo-del-capitalismo-comercial"><a class="header" href="#el-siglo-del-capitalismo-comercial">El siglo del capitalismo comercial</a></h4>
+<h3 id="el-periodo-contemporaneo"><a class="header" href="#el-periodo-contemporaneo">El Periodo Contemporaneo</a></h3>
+<h4 id="la-crisis-del-antiguo-regimen"><a class="header" href="#la-crisis-del-antiguo-regimen">La crisis del Antiguo Regimen</a></h4>
+<h4 id="la-ultima-etapa-foral"><a class="header" href="#la-ultima-etapa-foral">La ultima etapa foral</a></h4>
+<h4 id="la-insercion-del-pais-vasco-en-el-regimen-liberal"><a class="header" href="#la-insercion-del-pais-vasco-en-el-regimen-liberal">La insercion del Pais Vasco en el regimen liberal</a></h4>
+<h4 id="la-industrializacion"><a class="header" href="#la-industrializacion">La industrializacion</a></h4>
+<h4 id="la-vida-politica-en-el-regimen-de-la-restauracion"><a class="header" href="#la-vida-politica-en-el-regimen-de-la-restauracion">La vida politica en el regimen de la Restauracion</a></h4>
+<h4 id="la-renovacion-politica-el-proteccionismo"><a class="header" href="#la-renovacion-politica-el-proteccionismo">La renovacion politica. El proteccionismo</a></h4>
+<h4 id="el-nacionalismo-vasco"><a class="header" href="#el-nacionalismo-vasco">El nacionalismo vasco</a></h4>
+<h4 id="el-movimiento-obrero-socialista"><a class="header" href="#el-movimiento-obrero-socialista">El movimiento obrero socialista</a></h4>
+<h4 id="el-desarrollo-de-la-sociedad-capitalista"><a class="header" href="#el-desarrollo-de-la-sociedad-capitalista">El desarrollo de la sociedad capitalista</a></h4>
+<h4 id="sociedad-y-politica-durante-el-primer-tercio-del-siglo-xx"><a class="header" href="#sociedad-y-politica-durante-el-primer-tercio-del-siglo-xx">Sociedad y politica durante el primer tercio del siglo XX</a></h4>
+<h4 id="la-ii-republica"><a class="header" href="#la-ii-republica">La II Republica</a></h4>
+<h4 id="la-guerra-civil"><a class="header" href="#la-guerra-civil">La guerra civil</a></h4>
+<h4 id="el-franquismo"><a class="header" href="#el-franquismo">El franquismo</a></h4>
+<h4 id="la-transicion"><a class="header" href="#la-transicion">La transicion</a></h4>
+<h4 id="democracia-y-autonomia"><a class="header" href="#democracia-y-autonomia">Democracia y autonomia</a></h4>
+<hr />
+<h2 id="de-tubal-a-aitor"><a class="header" href="#de-tubal-a-aitor">De Tubal a Aitor</a></h2>
+<h3 id="primera-parte-de-bestias-miticas-y-montañas-infranqueables-el-largo-proceso-de-ocupacion-de-un-territorio-desde-la-prehistoria-al-final-del-mundo-romano"><a class="header" href="#primera-parte-de-bestias-miticas-y-montañas-infranqueables-el-largo-proceso-de-ocupacion-de-un-territorio-desde-la-prehistoria-al-final-del-mundo-romano">Primera Parte: De bestias miticas y montañas infranqueables... el largo proceso de ocupacion de un territorio (desde la prehistoria al final del mundo romano)</a></h3>
+<h4 id="de-las-cavernas-a-los-poblados-150000ac---cambio-de-era"><a class="header" href="#de-las-cavernas-a-los-poblados-150000ac---cambio-de-era">De las cavernas a los poblados (150000ac - cambio de era)</a></h4>
+<h5 id="el-escenario-de-la-ocupacion-humana-del-territorio"><a class="header" href="#el-escenario-de-la-ocupacion-humana-del-territorio">El escenario de la ocupacion humana del territorio</a></h5>
+<h6 id="bajo-el-blanco-manto-de-los-hielos-los-tiempos-del-pleistoceno"><a class="header" href="#bajo-el-blanco-manto-de-los-hielos-los-tiempos-del-pleistoceno">Bajo el blanco manto de los hielos (los tiempos del Pleistoceno)</a></h6>
+<h6 id="un-nuevo-paisaje-y-nuevas-culturas-del-tardiglacial-a-las-edades-de-los-metales"><a class="header" href="#un-nuevo-paisaje-y-nuevas-culturas-del-tardiglacial-a-las-edades-de-los-metales">Un nuevo paisaje y nuevas culturas (del Tardiglacial a las Edades de los Metales)</a></h6>
+<h5 id="las-primeras-formas-de-habitat-y-su-evolucion"><a class="header" href="#las-primeras-formas-de-habitat-y-su-evolucion">Las primeras formas de habitat y su evolucion</a></h5>
+<h5 id="los-protagonistas-de-la-primera-ocupacion-del-territorio-los-tipos-humanos-y-su-evolucion"><a class="header" href="#los-protagonistas-de-la-primera-ocupacion-del-territorio-los-tipos-humanos-y-su-evolucion">Los protagonistas de la primera ocupacion del territorio: los tipos humanos y su evolucion</a></h5>
+<h5 id="las-bases-de-subsistencia-y-el-desarrollo-de-los-grupos-humanos"><a class="header" href="#las-bases-de-subsistencia-y-el-desarrollo-de-los-grupos-humanos">Las bases de subsistencia y el desarrollo de los grupos humanos</a></h5>
+<h5 id="modus-vivendo-y-mundo-cotidiano"><a class="header" href="#modus-vivendo-y-mundo-cotidiano">Modus vivendo y mundo cotidiano</a></h5>
+<h6 id="el-utillaje-de-la-piedra-tallada-a-la-metalurgia-del-hierro"><a class="header" href="#el-utillaje-de-la-piedra-tallada-a-la-metalurgia-del-hierro">El utillaje (de la piedra tallada a la metalurgia del hierro)</a></h6>
+<h6 id="adorno-e-indumentaria-personal-de-las-pieles-y-el-hueso-a-los-tejidos-y-el-metal"><a class="header" href="#adorno-e-indumentaria-personal-de-las-pieles-y-el-hueso-a-los-tejidos-y-el-metal">Adorno e indumentaria personal (de las pieles y el hueso a los tejidos y el metal)</a></h6>
+<h6 id="los-primeros-impulsos-artisticos"><a class="header" href="#los-primeros-impulsos-artisticos">Los primeros impulsos artisticos</a></h6>
+<h6 id="el-mundo-de-la-ultratumba-creencias-y-rituales-funerarios"><a class="header" href="#el-mundo-de-la-ultratumba-creencias-y-rituales-funerarios">El mundo de la ultratumba. Creencias y rituales funerarios</a></h6>
+<h6 id="el--de-la-hoya-o-como-una-antigua-desgracia-aporta-informacion-a-la-ciencia"><a class="header" href="#el--de-la-hoya-o-como-una-antigua-desgracia-aporta-informacion-a-la-ciencia">El <episodio> de La Hoya (o como una antigua desgracia aporta informacion a la ciencia)</a></h6>
+<h4 id="de-los-poblados-a-las-ciudades-del-siglo-iii-ac-al-siglo-v"><a class="header" href="#de-los-poblados-a-las-ciudades-del-siglo-iii-ac-al-siglo-v">De los poblados a las ciudades (del siglo III ac al siglo V)</a></h4>
+<h5 id="los-primeros-contactos-y-la-anexion-de-de-los-territorios-de-vasconia-por-roma"><a class="header" href="#los-primeros-contactos-y-la-anexion-de-de-los-territorios-de-vasconia-por-roma">Los primeros contactos y la anexion de de los territorios de Vasconia por Roma</a></h5>
+<h5 id="de-los-oppida-indigenas-a-la-organizacion-provincial-romana"><a class="header" href="#de-los-oppida-indigenas-a-la-organizacion-provincial-romana">De los oppida indigenas a la organizacion provincial romana</a></h5>
+<h5 id="la-nueva-planificacion-y-ocupacion-del-espacio"><a class="header" href="#la-nueva-planificacion-y-ocupacion-del-espacio">La nueva planificacion y ocupacion del espacio</a></h5>
+<h5 id="la-crisis-del-sistema"><a class="header" href="#la-crisis-del-sistema">La crisis del sistema</a></h5>
+<h5 id="algunos-datos-sobre-los-efectivos-poblacionales"><a class="header" href="#algunos-datos-sobre-los-efectivos-poblacionales">Algunos datos sobre los efectivos poblacionales</a></h5>
+<h5 id="las-bases-agropecuarias-del-sistema-la-explotacion-de-las-materias-primas-y-el-consumo"><a class="header" href="#las-bases-agropecuarias-del-sistema-la-explotacion-de-las-materias-primas-y-el-consumo">Las bases agropecuarias del sistema, la explotacion de las materias primas y el consumo</a></h5>
+<h5 id="algunos-aspectos-de-la-organizacion-social"><a class="header" href="#algunos-aspectos-de-la-organizacion-social">Algunos aspectos de la organizacion social</a></h5>
+<h6 id="el-ejercito-instrumento-de-conquista-y-vector-de-romanizacion"><a class="header" href="#el-ejercito-instrumento-de-conquista-y-vector-de-romanizacion">El ejercito, instrumento de conquista y vector de romanizacion</a></h6>
+<h5 id="civilizacion-y-cultura-en-la-vasconia-romana"><a class="header" href="#civilizacion-y-cultura-en-la-vasconia-romana">Civilizacion y cultura en la Vasconia romana</a></h5>
+<h6 id="las-creencias-en-epoca-romana"><a class="header" href="#las-creencias-en-epoca-romana">Las creencias en epoca romana</a></h6>
+<h6 id="la-lengua-y-la-escritura"><a class="header" href="#la-lengua-y-la-escritura">La lengua y la escritura</a></h6>
+<h6 id="la-mesa-y-la-cocina-vajilla-y-dieta-mediterranea"><a class="header" href="#la-mesa-y-la-cocina-vajilla-y-dieta-mediterranea">La mesa y la cocina. Vajilla y dieta mediterranea</a></h6>
+<h6 id="el-adorno-y-la-indumentaria-personal"><a class="header" href="#el-adorno-y-la-indumentaria-personal">El adorno y la indumentaria personal</a></h6>
+<h6 id="las-viviendas-en-la-vasconia-romana"><a class="header" href="#las-viviendas-en-la-vasconia-romana">Las viviendas en la Vasconia romana</a></h6>
+<h6 id="medicina-e-higiene"><a class="header" href="#medicina-e-higiene">Medicina e higiene</a></h6>
+<h6 id="juegos-y-espectaculos"><a class="header" href="#juegos-y-espectaculos">Juegos y espectaculos</a></h6>
+<h6 id="rituales-y-manifestaciones-funerarias"><a class="header" href="#rituales-y-manifestaciones-funerarias">Rituales y manifestaciones funerarias</a></h6>
+<h3 id="segunda-parte-de-los-tiempos-oscuros-al-esplendor-foral-siglos-v-al-xvi"><a class="header" href="#segunda-parte-de-los-tiempos-oscuros-al-esplendor-foral-siglos-v-al-xvi">Segunda Parte: De los tiempos oscuros al esplendor foral (siglos V al XVI)</a></h3>
+<h4 id="el-pulso-del-poder-y-la-definicion-de-los-espacios-politicos"><a class="header" href="#el-pulso-del-poder-y-la-definicion-de-los-espacios-politicos">El pulso del poder y la definicion de los espacios politicos</a></h4>
+<h5 id="del-reino-de-pamplona-al-de-navarra"><a class="header" href="#del-reino-de-pamplona-al-de-navarra">Del reino de Pamplona al de Navarra</a></h5>
+<h5 id="el-pais-vasco-peninsular"><a class="header" href="#el-pais-vasco-peninsular">El Pais Vasco peninsular</a></h5>
+<h6 id="la-formacion-de-alava"><a class="header" href="#la-formacion-de-alava">La formacion de Alava</a></h6>
+<h6 id="la-formacion-de-gipuzkoa"><a class="header" href="#la-formacion-de-gipuzkoa">La formacion de Gipuzkoa</a></h6>
+<h6 id="la-formacion-del-señoria-de-vizcaya"><a class="header" href="#la-formacion-del-señoria-de-vizcaya">La formacion del señoria de Vizcaya</a></h6>
+<h5 id="del-ducado-de-vasconia-a-los-vizcondados-de-labourd-y-soule"><a class="header" href="#del-ducado-de-vasconia-a-los-vizcondados-de-labourd-y-soule">Del ducado de vasconia a los vizcondados de Labourd y Soule</a></h5>
+<h4 id="la-construccion-del-marco-juridico-institucional-la-foralidad"><a class="header" href="#la-construccion-del-marco-juridico-institucional-la-foralidad">La construccion del marco juridico-institucional: la foralidad</a></h4>
+<h5 id="sea-obedecida-y-no-cumplida-como-cosa-desaforada-de-la-tierra"><a class="header" href="#sea-obedecida-y-no-cumplida-como-cosa-desaforada-de-la-tierra">&lt;Sea obedecida y no cumplida, como cosa desaforada de la tierra&gt;</a></h5>
+<h5 id="que-habian-de-fuero-uso-y-costumbre"><a class="header" href="#que-habian-de-fuero-uso-y-costumbre">&lt;Que habian de fuero, uso y costumbre&gt;</a></h5>
+<h5 id="juntas-diputaciones-y-cortes"><a class="header" href="#juntas-diputaciones-y-cortes">Juntas, Diputaciones, y Cortes</a></h5>
+<h6 id="alava"><a class="header" href="#alava">Alava</a></h6>
+<h6 id="guipuzcoa"><a class="header" href="#guipuzcoa">Guipuzcoa</a></h6>
+<h6 id="vizcaya"><a class="header" href="#vizcaya">Vizcaya</a></h6>
+<h6 id="navarra"><a class="header" href="#navarra">Navarra</a></h6>
+<h6 id="baja-navarra"><a class="header" href="#baja-navarra">Baja Navarra</a></h6>
+<h6 id="labourd"><a class="header" href="#labourd">Labourd</a></h6>
+<h6 id="pais-de-soule"><a class="header" href="#pais-de-soule">Pais de Soule</a></h6>
+<h5 id="organizacion-diocesana"><a class="header" href="#organizacion-diocesana">Organizacion diocesana</a></h5>
+<h4 id="los-fundamentos-materiales-de-la-sociedad-una-aproximacion-desde-abajo"><a class="header" href="#los-fundamentos-materiales-de-la-sociedad-una-aproximacion-desde-abajo">Los fundamentos materiales de la sociedad: una aproximacion desde abajo</a></h4>
+<h5 id="los-efectivos-humanos"><a class="header" href="#los-efectivos-humanos">Los efectivos humanos</a></h5>
+<h5 id="de-un-mundo-agropastoril-a-otro-industrial-y-comercial"><a class="header" href="#de-un-mundo-agropastoril-a-otro-industrial-y-comercial">De un mundo agropastoril a otro industrial y comercial</a></h5>
+<h5 id="curas-guerreros-y-campesinos"><a class="header" href="#curas-guerreros-y-campesinos">Curas, guerreros y campesinos</a></h5>
+<h5 id="un-nuevo-grupo-social-los-burgueses-o-ruanos"><a class="header" href="#un-nuevo-grupo-social-los-burgueses-o-ruanos">Un nuevo grupo social: los burgueses o ruanos</a></h5>
+<h5 id="el-pueblo-de-yahve-y-los-seguidores-de-ala"><a class="header" href="#el-pueblo-de-yahve-y-los-seguidores-de-ala">El pueblo de Yahve y los seguidores de Ala</a></h5>
+<h5 id="una-sociedad-en-crisis"><a class="header" href="#una-sociedad-en-crisis">Una sociedad en crisis</a></h5>
+<h4 id="la-civilizacion-vasca-medieval-y-renacentista"><a class="header" href="#la-civilizacion-vasca-medieval-y-renacentista">La civilizacion vasca medieval y renacentista</a></h4>
+<h5 id="cristianizacions-versus-paganismo"><a class="header" href="#cristianizacions-versus-paganismo">Cristianizacions versus paganismo</a></h5>
+<h5 id="la-lingua-navarrorum"><a class="header" href="#la-lingua-navarrorum">La lingua navarrorum</a></h5>
+<h5 id="la-transmision-de-la-cultura"><a class="header" href="#la-transmision-de-la-cultura">La transmision de la cultura</a></h5>
+<h5 id=""><a class="header" href="#"><Por este camino pasagero de los que vienen en romeria a Santiago></a></h5>
+<h5 id="las-manifestaciones-artisticas"><a class="header" href="#las-manifestaciones-artisticas">Las manifestaciones artisticas</a></h5>
+<h5 id="el-yantar-el-atuendo-y-la-morada"><a class="header" href="#el-yantar-el-atuendo-y-la-morada">El yantar, el atuendo y la morada</a></h5>
+<h3 id="tercera-parte-crisis-cambios-y-rupturas-1602---1876"><a class="header" href="#tercera-parte-crisis-cambios-y-rupturas-1602---1876">Tercera Parte: Crisis, cambios y rupturas (1602 - 1876)</a></h3>
+<h4 id="convulsa-y-violenta-agonia-del-sistema-politico-tradicional"><a class="header" href="#convulsa-y-violenta-agonia-del-sistema-politico-tradicional">Convulsa y violenta agonia del sistema politico tradicional</a></h4>
+<h5 id="madurez-y-poda-del-arbol-foral"><a class="header" href="#madurez-y-poda-del-arbol-foral">Madurez y poda del arbol foral</a></h5>
+<h5 id="es-una-revuelta-no-sire-es-una-revolucion"><a class="header" href="#es-una-revuelta-no-sire-es-una-revolucion">Es una revuelta? No Sire, es una revolucion</a></h5>
+<h5 id="un-ciclo-politico-y-belico-conflictivo-1789-1876"><a class="header" href="#un-ciclo-politico-y-belico-conflictivo-1789-1876">Un ciclo politico y belico conflictivo, 1789-1876</a></h5>
+<h4 id="un-pais-pequeño-y-pobre-cada-vez-mas-poblado-o-los-equilibrios-para-subsistir"><a class="header" href="#un-pais-pequeño-y-pobre-cada-vez-mas-poblado-o-los-equilibrios-para-subsistir">Un pais pequeño y pobre, cada vez mas poblado o los equilibrios para subsistir</a></h4>
+<h5 id="auemnto-de-almas-problemas-para-alimentar-los-cuerpos"><a class="header" href="#auemnto-de-almas-problemas-para-alimentar-los-cuerpos">Auemnto de almas, problemas para alimentar los cuerpos</a></h5>
+<h5 id="vasconia-camina-hacia-la-reurbanizacion"><a class="header" href="#vasconia-camina-hacia-la-reurbanizacion">Vasconia camina hacia la reurbanizacion</a></h5>
+<h5 id="de-la-ferreria-al-alto-horno"><a class="header" href="#de-la-ferreria-al-alto-horno">De la ferreria al alto horno</a></h5>
+<h5 id="peru-y-maisu-juan-o-las-mil-caras-de-una-sociedad-poliedrica"><a class="header" href="#peru-y-maisu-juan-o-las-mil-caras-de-una-sociedad-poliedrica">Peru y Maisu Juan o las mil caras de una sociedad poliedrica</a></h5>
+<h4 id="cotidianidad-y-cultura-en-tiempo-de-cambios"><a class="header" href="#cotidianidad-y-cultura-en-tiempo-de-cambios">Cotidianidad y cultura en tiempo de cambios</a></h4>
+<h5 id="los-trabajos-y-los-dias"><a class="header" href="#los-trabajos-y-los-dias">Los trabajos y los dias</a></h5>
+<h5 id="politizacion-y-retroceso-de-la-lengua-vasca"><a class="header" href="#politizacion-y-retroceso-de-la-lengua-vasca">Politizacion y retroceso de la lengua vasca</a></h5>
+<h5 id="nuevas-formas-de-difusion-de-la-cultura"><a class="header" href="#nuevas-formas-de-difusion-de-la-cultura">Nuevas formas de difusion de la cultura</a></h5>
+<h3 id="cuarta-parta-la-contemporaneidad-1876---1979"><a class="header" href="#cuarta-parta-la-contemporaneidad-1876---1979">Cuarta Parta: La contemporaneidad (1876 - 1979)</a></h3>
+<h4 id="paz-entre-dos-guerras-civiles-1876---19361937"><a class="header" href="#paz-entre-dos-guerras-civiles-1876---19361937">Paz entre dos guerras civiles (1876 - 1936/1937)</a></h4>
+<h5 id="el-pluralismo-politico"><a class="header" href="#el-pluralismo-politico">El pluralismo politico</a></h5>
+<h6 id="la-restauracion-de-los-fueros-a-los-conciertos-economicos"><a class="header" href="#la-restauracion-de-los-fueros-a-los-conciertos-economicos">La Restauracion: de los Fueros a los Conciertos economicos</a></h6>
+<h6 id="la-configuracion-de-un-sistema-politico-pluralista"><a class="header" href="#la-configuracion-de-un-sistema-politico-pluralista">La configuracion de un sistema politico pluralista</a></h6>
+<h6 id="el-tradicionalismo-de-los-nocedal-a-pradera"><a class="header" href="#el-tradicionalismo-de-los-nocedal-a-pradera">El tradicionalismo: de los Nocedal a Pradera</a></h6>
+<h6 id="el-monarquismo-alfonsino-de-chavarri-a-lequerica"><a class="header" href="#el-monarquismo-alfonsino-de-chavarri-a-lequerica">El monarquismo alfonsino: de Chavarri a Lequerica</a></h6>
+<h6 id="el-nacionalismo-vasco-de-arana-a-kizkitza"><a class="header" href="#el-nacionalismo-vasco-de-arana-a-kizkitza">El nacionalismo vasco: de Arana a Kizkitza</a></h6>
+<h6 id="las-izquierdas-de-perezagua-a-prieto"><a class="header" href="#las-izquierdas-de-perezagua-a-prieto">Las izquierdas: de Perezagua a Prieto</a></h6>
+<h6 id="de-la-dictadura-a-la-republica"><a class="header" href="#de-la-dictadura-a-la-republica">De la dictadura a la Republica</a></h6>
+<h6 id="la-ii-republica-el-pluralismo-polarizado"><a class="header" href="#la-ii-republica-el-pluralismo-polarizado">La II Republica: el pluralismo polarizado</a></h6>
+<h6 id="la-lucha-por-la-autonomia"><a class="header" href="#la-lucha-por-la-autonomia">La lucha por la autonomia</a></h6>
+<h6 id="las-elecciones-a-cortes"><a class="header" href="#las-elecciones-a-cortes">Las elecciones a Cortes</a></h6>
+<h6 id="la-guerra-civil-revolucion-o-contrarrevolucion"><a class="header" href="#la-guerra-civil-revolucion-o-contrarrevolucion">La guerra civil: revolucion o contrarrevolucion</a></h6>
+<h6 id="el-nacimiento-de-euskadi-el-estatuto-y-el-primero-gobierno-vasco"><a class="header" href="#el-nacimiento-de-euskadi-el-estatuto-y-el-primero-gobierno-vasco">El nacimiento de Euskadi: el Estatuto y el primero Gobierno vasco</a></h6>
+<h5 id="la-modernizacion-socioeconomica"><a class="header" href="#la-modernizacion-socioeconomica">La modernizacion socioeconomica</a></h5>
+<h6 id="la-revolucion-demografica"><a class="header" href="#la-revolucion-demografica">La revolucion demografica</a></h6>
+<h6 id="la-revolucion-industrial-vizcaina"><a class="header" href="#la-revolucion-industrial-vizcaina">La revolucion industrial vizcaina</a></h6>
+<h6 id="el-proceso-industrializador-guipuzcoano"><a class="header" href="#el-proceso-industrializador-guipuzcoano">El proceso industrializador guipuzcoano</a></h6>
+<h6 id="la-crisis-economica-de-los-años-treinta"><a class="header" href="#la-crisis-economica-de-los-años-treinta">La crisis economica de los años treinta</a></h6>
+<h6 id="los-condes-siderurgicos"><a class="header" href="#los-condes-siderurgicos">Los condes siderurgicos</a></h6>
+<h6 id="el-movimiento-obrero-y-la-conflictividad-social"><a class="header" href="#el-movimiento-obrero-y-la-conflictividad-social">El movimiento obrero y la conflictividad social</a></h6>
+<h5 id="entre-la-tradicion-y-la-modernidad-religion-y-cultura"><a class="header" href="#entre-la-tradicion-y-la-modernidad-religion-y-cultura">Entre la tradicion y la modernidad: religion y cultura</a></h5>
+<h6 id="la-cuestion-religiosa"><a class="header" href="#la-cuestion-religiosa">La cuestion religiosa</a></h6>
+<h6 id="el-polimorfismo-cultural"><a class="header" href="#el-polimorfismo-cultural">El polimorfismo cultural</a></h6>
+<h4 id="de-la-guerra-civil-al-estatuto-de-guernica-1937---1979"><a class="header" href="#de-la-guerra-civil-al-estatuto-de-guernica-1937---1979">De la guerra civil al estatuto de Guernica (1937 - 1979)</a></h4>
+<h5 id="la-posguerra-una-etapa-en-blanco-y-negro"><a class="header" href="#la-posguerra-una-etapa-en-blanco-y-negro">La posguerra: una etapa en blanco y negro</a></h5>
+<h6 id="dos-provincias-castigadas-dos-premiadas"><a class="header" href="#dos-provincias-castigadas-dos-premiadas">Dos provincias castigadas, dos premiadas</a></h6>
+<h6 id="la-implantacion-del-movimiento-carlistas-y-falangistas-juntos-pero-no-revueltos"><a class="header" href="#la-implantacion-del-movimiento-carlistas-y-falangistas-juntos-pero-no-revueltos">La implantacion del Movimiento. Carlistas y falangistas: juntos pero no revueltos</a></h6>
+<h5 id="un-horizonte-muy-lejano-el-exilio-y-la-primera-oposicion"><a class="header" href="#un-horizonte-muy-lejano-el-exilio-y-la-primera-oposicion">Un horizonte muy lejano: el exilio y la primera oposicion</a></h5>
+<h6 id="años-de-guerra-mundial-ayudar-a-los-aliados"><a class="header" href="#años-de-guerra-mundial-ayudar-a-los-aliados">Años de guerra mundial: ayudar a los aliados</a></h6>
+<h6 id="de-la-esperanza-al-desaliento"><a class="header" href="#de-la-esperanza-al-desaliento">De la esperanza al desaliento</a></h6>
+<h5 id="desarrollismo-y-tardofranquismo-dias-de-viejo-color"><a class="header" href="#desarrollismo-y-tardofranquismo-dias-de-viejo-color">Desarrollismo y tardofranquismo: dias de viejo color</a></h5>
+<h6 id="renovarse-o-morir"><a class="header" href="#renovarse-o-morir">Renovarse o morir</a></h6>
+<h6 id="eta-la-alternativa-del-diablo"><a class="header" href="#eta-la-alternativa-del-diablo">ETA: la alternativa del diablo</a></h6>
+<h5 id="la-gran-ilusion-transicion-y-autonomia"><a class="header" href="#la-gran-ilusion-transicion-y-autonomia">La gran ilusion: transicion y autonomia</a></h5>
+<h6 id="la-violencia-que-no-cesa"><a class="header" href="#la-violencia-que-no-cesa">La violencia que no cesa</a></h6>
+<h6 id="la-preautonomia"><a class="header" href="#la-preautonomia">La preautonomia</a></h6>
+<h6 id="la-cuestion-vasca-en-la-constitucion"><a class="header" href="#la-cuestion-vasca-en-la-constitucion">La cuestion vasca en la Constitucion</a></h6>
+<h6 id="por-fin-el-estatuto"><a class="header" href="#por-fin-el-estatuto">Por fin, el Estatuto</a></h6>
+<h5 id="de-la-miseria-al-desarrollo-a-pesar-de-la-crisis"><a class="header" href="#de-la-miseria-al-desarrollo-a-pesar-de-la-crisis">De la miseria al desarrollo, a pesar de la crisis</a></h5>
+<h6 id="las-dificultades-de-la-posguerra"><a class="header" href="#las-dificultades-de-la-posguerra">Las dificultades de la posguerra</a></h6>
+<h6 id="del-despliegue-a-la-crisis-del-petroleo"><a class="header" href="#del-despliegue-a-la-crisis-del-petroleo">Del despliegue a la crisis del petroleo</a></h6>
+<h5 id="como-hemos-cambiado-religion-cultura-y-vida-cotidiana"><a class="header" href="#como-hemos-cambiado-religion-cultura-y-vida-cotidiana">Como hemos cambiado: religion, cultura, y vida cotidiana</a></h5>
+<h6 id="años-oscuros"><a class="header" href="#años-oscuros">Años oscuros</a></h6>
+<h6 id="algo-se-mueve"><a class="header" href="#algo-se-mueve">Algo se mueve</a></h6>
+<h6 id="vivir-en-libertad"><a class="header" href="#vivir-en-libertad">Vivir en libertad</a></h6>
+<h4 id="la-vasconia-continental-entre-la-iii-y-la-v-republica-francesa"><a class="header" href="#la-vasconia-continental-entre-la-iii-y-la-v-republica-francesa">La Vasconia Continental: entre la III y la V Republica Francesa</a></h4>
+<h5 id="politica-conservadora-gran-nacion-pequeño-pais"><a class="header" href="#politica-conservadora-gran-nacion-pequeño-pais">Politica conservadora, gran nacion, pequeño pais</a></h5>
+<h5 id="una-economia-dual-en-lenta-transformacion"><a class="header" href="#una-economia-dual-en-lenta-transformacion">Una economia dual en lenta transformacion</a></h5>
+<h5 id="una-cultura-en-clave-de-cambio"><a class="header" href="#una-cultura-en-clave-de-cambio">Una cultura en clave de cambio</a></h5>
+<hr />
+<h2 id="historia-del-euskera"><a class="header" href="#historia-del-euskera">Historia del Euskera</a></h2>
+<h3 id="introduccion-sobre-la-historia-de-la-lengua-vasca"><a class="header" href="#introduccion-sobre-la-historia-de-la-lengua-vasca">Introduccion. Sobre la historia de la lengua vasca</a></h3>
+<h4 id="preliminares"><a class="header" href="#preliminares">Preliminares</a></h4>
+<h4 id="antecedentes"><a class="header" href="#antecedentes">Antecedentes</a></h4>
+<h4 id="la-estructura-de-la-historia-de-la-lengua-vasca"><a class="header" href="#la-estructura-de-la-historia-de-la-lengua-vasca">La estructura de la Historia de la lengua vasca</a></h4>
+<h4 id="divisiones-cronologicas"><a class="header" href="#divisiones-cronologicas">Divisiones cronologicas</a></h4>
+<h4 id="autoria"><a class="header" href="#autoria">Autoria</a></h4>
+<h4 id="objetivo"><a class="header" href="#objetivo">Objetivo</a></h4>
+<h3 id="la-prehistoria-de-la-lengua-vasca"><a class="header" href="#la-prehistoria-de-la-lengua-vasca">La prehistoria de la lengua vasca</a></h3>
+<h4 id="introduccion"><a class="header" href="#introduccion">Introduccion</a></h4>
+<h5 id="sobre-el-cambio-linguistico"><a class="header" href="#sobre-el-cambio-linguistico">Sobre el cambio linguistico</a></h5>
+<h5 id="la-prehistoria-de-las-lenguas-y-la-del-euskera"><a class="header" href="#la-prehistoria-de-las-lenguas-y-la-del-euskera">La prehistoria de las lenguas y la del euskera</a></h5>
+<h5 id="sobre-la-naturaleza-y-la-funcion-de-las-protolenguas"><a class="header" href="#sobre-la-naturaleza-y-la-funcion-de-las-protolenguas">Sobre la naturaleza y la funcion de las protolenguas</a></h5>
+<h5 id="sobre-busqueda-de-parentescos"><a class="header" href="#sobre-busqueda-de-parentescos">Sobre busqueda de parentescos</a></h5>
+<h5 id="la-reconstruccion"><a class="header" href="#la-reconstruccion">La reconstruccion</a></h5>
+<h4 id="teorias-sobre-parentescos-del-euskera"><a class="header" href="#teorias-sobre-parentescos-del-euskera">Teorias sobre parentescos del euskera</a></h4>
+<h5 id="vasco-iberismo"><a class="header" href="#vasco-iberismo">Vasco-iberismo</a></h5>
+<h5 id="vasco-hamitico"><a class="header" href="#vasco-hamitico">Vasco-hamitico</a></h5>
+<h5 id="guanche-y-euskera"><a class="header" href="#guanche-y-euskera">Guanche y euskera</a></h5>
+<h5 id="vasco-caucasico"><a class="header" href="#vasco-caucasico">Vasco-caucasico</a></h5>
+<h5 id="supuesta-alternativa-al-metodo-comparativo"><a class="header" href="#supuesta-alternativa-al-metodo-comparativo">Supuesta alternativa al metodo comparativo</a></h5>
+<h6 id="la-glotocronologia"><a class="header" href="#la-glotocronologia">La glotocronologia</a></h6>
+<h6 id="la-comparacion-masiva"><a class="header" href="#la-comparacion-masiva">La comparacion masiva</a></h6>
+<h5 id="europeo-antiguo"><a class="header" href="#europeo-antiguo">Europeo antiguo</a></h5>
+<h5 id="el-uroaltaico-ampliado"><a class="header" href="#el-uroaltaico-ampliado">El uroaltaico ampliado</a></h5>
+<h5 id="sobre-el-paleo-vasco-sardo"><a class="header" href="#sobre-el-paleo-vasco-sardo">Sobre el paleo-vasco-sardo</a></h5>
+<h5 id="vasco-e-indoeuropeo"><a class="header" href="#vasco-e-indoeuropeo">Vasco e indoeuropeo</a></h5>
+<h6 id="forni"><a class="header" href="#forni">Forni</a></h6>
+<h6 id="blevins"><a class="header" href="#blevins">Blevins</a></h6>
+<h5 id="la-comparacion-y-el-estudio-del-pasado-de-la-lengua-vasca"><a class="header" href="#la-comparacion-y-el-estudio-del-pasado-de-la-lengua-vasca">La comparacion y el estudio del pasado de la lengua vasca</a></h5>
+<h4 id="analisis-del-euskera-prehistorico-i-la-reconstruccion-del-protovasco-tardio"><a class="header" href="#analisis-del-euskera-prehistorico-i-la-reconstruccion-del-protovasco-tardio">Analisis del euskera prehistorico I La reconstruccion del protovasco tardio</a></h4>
+<h5 id="antes-de-martinet-schuchardt-gavel-y-otros"><a class="header" href="#antes-de-martinet-schuchardt-gavel-y-otros">Antes de Martinet: Schuchardt, Gavel, y otros</a></h5>
+<h5 id="martinet-y-las-oclusivas-antiguas"><a class="header" href="#martinet-y-las-oclusivas-antiguas">Martinet y las oclusivas antiguas</a></h5>
+<h5 id="el-analisis-de-mitxelena"><a class="header" href="#el-analisis-de-mitxelena">El analisis de Mitxelena</a></h5>
+<h5 id="propuestas-posteriores-sobre-las-oclusivas-protovascas"><a class="header" href="#propuestas-posteriores-sobre-las-oclusivas-protovascas">Propuestas posteriores sobre las oclusivas protovascas</a></h5>
+<h5 id="haches-historicas"><a class="header" href="#haches-historicas">Haches historicas</a></h5>
+<h5 id="algunos-avances-en-la-reconstruccion-morfosintactica"><a class="header" href="#algunos-avances-en-la-reconstruccion-morfosintactica">Algunos avances en la reconstruccion morfosintactica</a></h5>
+<h4 id="analisis-del-euskera-prehistorico-ii-la-reconstruccion-del-protovasco-antiguo"><a class="header" href="#analisis-del-euskera-prehistorico-ii-la-reconstruccion-del-protovasco-antiguo">Analisis del euskera prehistorico II La reconstruccion del protovasco antiguo</a></h4>
+<h5 id="sobre-la-formacion-canonica-de-la-raiz"><a class="header" href="#sobre-la-formacion-canonica-de-la-raiz">Sobre la formacion canonica de la raiz</a></h5>
+<h5 id="extensiones-del-analisis-de-la-forma-canonica-radical"><a class="header" href="#extensiones-del-analisis-de-la-forma-canonica-radical">Extensiones del analisis de la Forma Canonica Radical</a></h5>
+<h5 id="hacia-la-fonologia-del-pva"><a class="header" href="#hacia-la-fonologia-del-pva">Hacia la fonologia del PVA</a></h5>
+<h6 id="sibilantes-y-sonantes-finales-revision-interna-del-sistema-mitxeleniano"><a class="header" href="#sibilantes-y-sonantes-finales-revision-interna-del-sistema-mitxeleniano">Sibilantes y sonantes finales: revision interna del sistema mitxeleniano</a></h6>
+<h6 id="sonantes-y-sibilantes"><a class="header" href="#sonantes-y-sibilantes">Sonantes y sibilantes</a></h6>
+<h6 id="aumentos-en-el-inventario-consonantico-pva--pvm--vasc-mod-el-paralelo-dravidico"><a class="header" href="#aumentos-en-el-inventario-consonantico-pva--pvm--vasc-mod-el-paralelo-dravidico">Aumentos en el inventario consonantico (PVA &gt; PVM &gt; Vasc. Mod.): el paralelo dravidico</a></h6>
+<h6 id="las-vocales"><a class="header" href="#las-vocales">Las vocales</a></h6>
+<h6 id="vocales-iniciales"><a class="header" href="#vocales-iniciales">Vocales iniciales</a></h6>
+<h6 id="la-ley-martinet-a-la-busqueda-de-nuevos-casos"><a class="header" href="#la-ley-martinet-a-la-busqueda-de-nuevos-casos">La Ley Martinet: a la busqueda de nuevos casos</a></h6>
+<h6 id="acento-y-raiz"><a class="header" href="#acento-y-raiz">Acento y raiz</a></h6>
+<h6 id="cambios-de-la-forma-canonica-radical"><a class="header" href="#cambios-de-la-forma-canonica-radical">Cambios de la forma canonica radical</a></h6>
+<h5 id="gramatica-del-protovasco-antiguo"><a class="header" href="#gramatica-del-protovasco-antiguo">Gramatica del protovasco antiguo</a></h5>
+<h6 id="antecedentes-1"><a class="header" href="#antecedentes-1">Antecedentes</a></h6>
+<h6 id="fonologizacion-de-la-morfologia"><a class="header" href="#fonologizacion-de-la-morfologia">Fonologizacion de la morfologia</a></h6>
+<h6 id="gramaticalizacion-y-reconstruccion"><a class="header" href="#gramaticalizacion-y-reconstruccion">Gramaticalizacion y reconstruccion</a></h6>
+<h6 id="el-pva-una-lengua-sin-clase-abierta-de-adjetivos"><a class="header" href="#el-pva-una-lengua-sin-clase-abierta-de-adjetivos">El PVA, una lengua sin clase abierta de adjetivos</a></h6>
+<h6 id="flexion-nominal"><a class="header" href="#flexion-nominal">Flexion nominal</a></h6>
+<h6 id="el-verbo-en-protovasco-antiguo"><a class="header" href="#el-verbo-en-protovasco-antiguo">El verbo en protovasco antiguo</a></h6>
+<h5 id="sobre-el-cambio-tipologico-del-protovasco"><a class="header" href="#sobre-el-cambio-tipologico-del-protovasco">Sobre el cambio tipologico del protovasco</a></h5>
+<h5 id="para-el-estudio-del-lexico-protovasco"><a class="header" href="#para-el-estudio-del-lexico-protovasco">Para el estudio del lexico protovasco</a></h5>
+<h6 id="consideraciones-iniciales"><a class="header" href="#consideraciones-iniciales">Consideraciones iniciales</a></h6>
+<h6 id="sobre-protopatria-y-protocultura"><a class="header" href="#sobre-protopatria-y-protocultura">Sobre protopatria y protocultura</a></h6>
+<h6 id="sobre-el-analisis-de-prestamos"><a class="header" href="#sobre-el-analisis-de-prestamos">Sobre el analisis de prestamos</a></h6>
+<h6 id="celta-y-euskera"><a class="header" href="#celta-y-euskera">Celta y euskera</a></h6>
+<h6 id="nota-sobre-estratos-y-cronologia"><a class="header" href="#nota-sobre-estratos-y-cronologia">Nota sobre estratos y cronologia</a></h6>
+<h6 id="reconstruyendo-el-lexicon-i-la-obra-de-mitxelena"><a class="header" href="#reconstruyendo-el-lexicon-i-la-obra-de-mitxelena">Reconstruyendo el lexicon: I La obra de mitxelena</a></h6>
+<h6 id="reconstruyendo-el-lexicon-ii-nuevas-investigaciones-etimologicas"><a class="header" href="#reconstruyendo-el-lexicon-ii-nuevas-investigaciones-etimologicas">Reconstruyendo el lexicon: II Nuevas investigaciones etimologicas</a></h6>
+<h6 id="familias-lexicas"><a class="header" href="#familias-lexicas">Familias lexicas</a></h6>
+<h6 id="para-la-reconstruccion-de-nuevas-y-mas-extensas-familias-lexicas"><a class="header" href="#para-la-reconstruccion-de-nuevas-y-mas-extensas-familias-lexicas">Para la reconstruccion de nuevas y mas extensas familias lexicas</a></h6>
+<h6 id="algunos-campos-semanticos"><a class="header" href="#algunos-campos-semanticos">Algunos campos semanticos</a></h6>
+<h6 id="avanzando-en-la-etimologia-y-fortaleciendo-la-reconstruccion"><a class="header" href="#avanzando-en-la-etimologia-y-fortaleciendo-la-reconstruccion">Avanzando en la etimologia y fortaleciendo la reconstruccion</a></h6>
+<h4 id="protovasco-y-vasco-comun-antiguo"><a class="header" href="#protovasco-y-vasco-comun-antiguo">Protovasco y Vasco Comun Antiguo</a></h4>
+<h5 id="la-dialectologia-diacronica-anterior-a-1981"><a class="header" href="#la-dialectologia-diacronica-anterior-a-1981">La dialectologia diacronica anterior a 1981</a></h5>
+<h5 id="mitxelena-sobre-el-vasco-comun-antiguo"><a class="header" href="#mitxelena-sobre-el-vasco-comun-antiguo">Mitxelena sobre el Vasco Comun Antiguo</a></h5>
+<h5 id="divisiones-binarias-y-de-otro-tipo"><a class="header" href="#divisiones-binarias-y-de-otro-tipo">Divisiones binarias y de otro tipo</a></h5>
+<h5 id="elecciones-o-cadenas-de-innovaciones"><a class="header" href="#elecciones-o-cadenas-de-innovaciones">Elecciones o cadenas de innovaciones?</a></h5>
+<h5 id="sobre-la-necesidad-de-un-vasco-comun-antiguo"><a class="header" href="#sobre-la-necesidad-de-un-vasco-comun-antiguo">Sobre la necesidad de un Vasco Comun Antiguo</a></h5>
+<h5 id="del-protovasco-tardio-al-vasco-comun-antiguo"><a class="header" href="#del-protovasco-tardio-al-vasco-comun-antiguo">Del Protovasco Tardio al Vasco Comun Antiguo</a></h5>
+<h5 id="diversificaciones-binarias-sobre-la-escision-inicial"><a class="header" href="#diversificaciones-binarias-sobre-la-escision-inicial">Diversificaciones binarias: sobre la escision inicial</a></h5>
+<h5 id="particiones-binarias-nudos-intermedios-y-dialectos-modernos"><a class="header" href="#particiones-binarias-nudos-intermedios-y-dialectos-modernos">Particiones binarias: nudos intermedios y dialectos modernos</a></h5>
+<h5 id="division-binaria-isoglosas-antiguas-y-la-proto-patria-del-vca"><a class="header" href="#division-binaria-isoglosas-antiguas-y-la-proto-patria-del-vca">Division binaria, isoglosas antiguas y la proto-patria del VCA</a></h5>
+<h5 id="apendice-apostilla-tardia-sobre-vasconizacion-tardia-y-vasco-comun-antiguo"><a class="header" href="#apendice-apostilla-tardia-sobre-vasconizacion-tardia-y-vasco-comun-antiguo">Apendice: Apostilla tardia sobre vasconizacion tardia y Vasco Comun Antiguo</a></h5>
+<h3 id="la-lengua-vasca-en-la-antigüedad-inmediatamente-anterior-y-posterior-a-la-llegada-de-los-romanos"><a class="header" href="#la-lengua-vasca-en-la-antigüedad-inmediatamente-anterior-y-posterior-a-la-llegada-de-los-romanos">La lengua vasca en la Antigüedad (inmediatamente anterior y posterior a la llegada de los romanos)</a></h3>
+<h3 id="el-eeuskera-en-la-edad-media-711---1400"><a class="header" href="#el-eeuskera-en-la-edad-media-711---1400">El Eeuskera en la Edad Media (711 - 1400)</a></h3>
+<h3 id="el-euskera-arcaico-1400---1600"><a class="header" href="#el-euskera-arcaico-1400---1600">El Euskera Arcaico (1400 - 1600)</a></h3>
+<h3 id="euskera-antiguo-y-clasico-1600---1745"><a class="header" href="#euskera-antiguo-y-clasico-1600---1745">Euskera Antiguo y Clasico (1600 - 1745)</a></h3>
+<h3 id="primer-vasco-moderno-1745---1876"><a class="header" href="#primer-vasco-moderno-1745---1876">Primer Vasco Moderno (1745 - 1876)</a></h3>
+<h3 id="ultimo-vasco-moderno-1876---1968"><a class="header" href="#ultimo-vasco-moderno-1876---1968">Ultimo Vasco Moderno (1876 - 1968)</a></h3>
+<h3 id="el-euskera-contemporaneo-el-largo-camino-de-la-unificacion-literaria"><a class="header" href="#el-euskera-contemporaneo-el-largo-camino-de-la-unificacion-literaria">El Euskera Contemporaneo. El largo camino de la unificacion literaria</a></h3>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../euskera/baldintzak.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../mind/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../euskera/baldintzak.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../mind/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1007 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lexiko - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li><li class="chapter-item "><a href="../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../comp.sci.eng/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item expanded "><a href="../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item expanded "><a href="../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../euskera/lexiko.html" class="active">Lexiko</a></li><li class="chapter-item "><a href="../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../music/wave.html">*wave</a></li></ol></li><li class="chapter-item "><a href="../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/checklists/travel.html">Travel</a></li></ol></li><li class="chapter-item "><a href="../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li><li class="chapter-item "><a href="../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../misc/cooking/pancakes.html">Pancakes</a></li></ol></li><li class="chapter-item "><a href="../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../misc/library.html">My library</a></li><li class="chapter-item "><a href="../misc/sampler.html">Sampler</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="lexiko-vocabulario"><a class="header" href="#lexiko-vocabulario">Lexiko (Vocabulario)</a></h1>
+<ul>
+<li><a href="#personas">Personas</a></li>
+<li><a href="#familia">Familia</a></li>
+<li><a href="#sustantivos">Sustantivos</a>
+<ul>
+<li><a href="#comida">Comida</a></li>
+<li><a href="#vajilla">Vajilla</a></li>
+<li><a href="#muebles">Muebles</a></li>
+</ul>
+</li>
+<li><a href="#herramientas">Herramientas</a></li>
+<li><a href="#lugares">Lugares</a></li>
+<li><a href="#adjetivos">Adjetivos</a>
+<ul>
+<li><a href="#sabores">Sabores</a></li>
+<li><a href="#caracteristicas-fisicas">Caracteristicas fisicas</a></li>
+<li><a href="#colores">Colores</a></li>
+</ul>
+</li>
+<li><a href="#verbos">Verbos</a></li>
+<li><a href="#adverbios-de-lugar">Adverbios de lugar</a></li>
+<li><a href="#partes-del-cuerpo">Partes del cuerpo</a></li>
+<li><a href="#expresiones">Expresiones</a></li>
+</ul>
+<h2 id="personas"><a class="header" href="#personas">Personas</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Masculinos</th><th>Femeninos</th></tr></thead><tbody>
+<tr><td>Iñaki</td><td>Ainhoa</td></tr>
+<tr><td>Koldo</td><td>Uxue</td></tr>
+<tr><td>Gorka</td><td>Maite</td></tr>
+</tbody></table>
+</div>
+<h2 id="familia"><a class="header" href="#familia">Familia</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody>
+<tr><td>aitona</td><td>abuelo</td><td>amona</td><td>abuela</td><td>aitona-amonak</td></tr>
+<tr><td>aita</td><td>padre</td><td>ama</td><td>madre</td><td>gurasoak</td></tr>
+<tr><td>seme</td><td>hijo</td><td>alaba</td><td>hija</td><td>seme-alabak</td></tr>
+<tr><td>biloba</td><td>nieto/a</td><td></td><td></td><td></td></tr>
+<tr><td>anaia</td><td>hermano de varon</td><td></td><td></td><td></td></tr>
+<tr><td>neba</td><td>hermano de mujer</td><td></td><td></td><td></td></tr>
+<tr><td>ahizpa</td><td>hermana de mujer</td><td></td><td></td><td></td></tr>
+<tr><td>arreba</td><td>hermana de varon</td><td></td><td></td><td></td></tr>
+<tr><td>osaba</td><td>tio</td><td>izeba</td><td>tia</td><td></td></tr>
+<tr><td>iloba</td><td>sobrino/a</td><td></td><td></td><td></td></tr>
+<tr><td>lengusu</td><td>primo</td><td>lengusin</td><td>prima</td><td></td></tr>
+<tr><td>sena</td><td>esposo</td><td>emazte</td><td>esposa</td><td>senar-emazteak</td></tr>
+<tr><td>aitaginarreba</td><td>suegro</td><td>amaginarreba</td><td>suegra</td><td>aita-amaginarrebak</td></tr>
+<tr><td>suhi</td><td>yerno</td><td>erraina</td><td>nuera</td><td></td></tr>
+<tr><td>koinatu</td><td>cuñado</td><td>koinata</td><td>cuñada</td><td></td></tr>
+</tbody></table>
+</div>
+<h2 id="sustantivos"><a class="header" href="#sustantivos">Sustantivos</a></h2>
+<h3 id="comida"><a class="header" href="#comida">Comida</a></h3>
+<ul>
+<li>
+<p>Fruta</p>
+<ul>
+<li>Banana: banana</li>
+<li>Manzana: sagar</li>
+<li>Naranja: laranja</li>
+<li>Mandarina: mandarina</li>
+<li>Limon: limoi, zitroin</li>
+<li>Pera: udare, madari</li>
+<li>Durazno:</li>
+<li>Ciruela: aran, okaran</li>
+<li>Frutilla: marrubi, arrega</li>
+<li>Cereza: gerezi</li>
+<li>Mora: masusta</li>
+<li>Frambuesa: mugurdi, masustia gorri, martxuka gorri</li>
+<li>Tomate: tomate</li>
+</ul>
+</li>
+<li>
+<p>Verdura</p>
+<ul>
+<li>Papa: patata</li>
+<li>Batata: batata</li>
+<li>Zapallo:</li>
+<li>Cebolla: tipula</li>
+<li>Cebolla de verdeo:</li>
+<li>Lechuga: uraza, letxuga</li>
+<li>Acelga: zerba</li>
+<li>Espinaca: ziazerba, espinaka, espinagre</li>
+<li>Rucula: errukula</li>
+</ul>
+</li>
+<li>
+<p>Carne</p>
+<ul>
+<li>Bife: xerra</li>
+<li>Pescado: arrain</li>
+<li>Filet: xerra</li>
+<li>Pollo: oilo</li>
+<li>Pechuga: bularki</li>
+</ul>
+</li>
+<li>
+<p>Cereales</p>
+<ul>
+<li>Pan: ogi</li>
+<li>Trigo: gari</li>
+<li>Avena: olo</li>
+<li>Cebada: garagar</li>
+<li>Centeno: zikirio, zekale</li>
+</ul>
+</li>
+<li>
+<p>Lacteos</p>
+<ul>
+<li>Vaca: behia</li>
+<li>Leche: esne</li>
+<li>Crema: esne-gain, krema</li>
+<li>Manteca: gurin</li>
+<li>Queso: gazta</li>
+</ul>
+</li>
+<li>
+<p>Hierbas</p>
+<ul>
+<li>Oregano: loragino</li>
+<li>Perejil: perrexil</li>
+<li>Laurel: ereinotz, erramu</li>
+<li>Tomillo: ezkai, xarbot, elar, erle-belar</li>
+</ul>
+</li>
+<li>
+<p>Especias</p>
+<ul>
+<li>Canela: kanela</li>
+<li>Jengibre: jengibre</li>
+<li>Clavo de olor:</li>
+<li>Pimienta negra: piperbeltz beltz</li>
+<li>Pimienta blanca: piperbeltz zuri</li>
+<li>Anis: anis-belar</li>
+<li>Aji:</li>
+<li>Pimenton: piperrauts</li>
+<li>Curcuma:</li>
+</ul>
+</li>
+<li>
+<p>Condimentos</p>
+<ul>
+<li>Sal: gatz</li>
+<li>Azucar: azukre</li>
+</ul>
+</li>
+<li>
+<p>Euskalerriko Itsas Abereak  (peces)</p>
+<ul>
+<li>Aguja, saltón = Akula</li>
+<li>Almeja = Almeja</li>
+<li>Anchoa, bocarta = Bokarta, albokartia, antxua</li>
+<li>Anguila, martina = Aingira</li>
+<li>Arenque = Sardin igarra</li>
+<li>Babosa = Itsas bare</li>
+<li>Bacalao, abadejo = Bakalloa</li>
+<li>Balano = Itsas-ezkur</li>
+<li>Breca, alitán = Momarra, lamotia</li>
+<li>Caballito de mar = itxas zaldia</li>
+<li>Cangrejo = Kamarroa, txangurroa, amarrete</li>
+<li>Capatón = Lizarra</li>
+<li>Carpa = Zamo</li>
+<li>Castañola, palometa = Papalardu, lanpua</li>
+<li>Cazón, mozuela = Tolla, katuarraia</li>
+<li>Centollo = Armiarma, txangurro</li>
+<li>Cherna = Meru</li>
+<li>Chicharro = Txitxarro</li>
+<li>Chucho, rata = Tramana</li>
+<li>Cigala, maganto = Zigala, amarratza</li>
+<li>Congrio = Kongrioa, itsas aingira</li>
+<li>Coquina, tellina = Tellina, txirla</li>
+<li>Corcón, albura = Korrokoi</li>
+<li>Dabeta, alisa = Korkoi, dabeta</li>
+<li>Esturión, sollo = Gaizkata</li>
+<li>Faneca, capellán = Palenka, paneka</li>
+<li>Garrabota, boquidulce = Kardia</li>
+<li>Golayo, colayo = Pinpiñua, itxugia</li>
+<li>Lacha, sardina = Kalaka, kokuta</li>
+<li>Lamprea marina = Lanparda, lanpardi</li>
+<li>Langosta = Otarraina</li>
+<li>Langostino = Otarraintxoa</li>
+<li>Lija = Pikua, katea</li>
+<li>Madrilla, boga = Loina</li>
+<li>Marrajo, tiburón = Itsas-otso, tintoleta</li>
+<li>Mejillón = Muskullu</li>
+<li>Merillo, serrano = Karraspio</li>
+<li>Merlán sarreta = Letxera</li>
+<li>Merluza, pescadilla = Legatza, legazkume</li>
+<li>Mero de roca, cherna = Kabra</li>
+<li>Mielga, ferrón = Melga</li>
+<li>Morena, murena = Aingira, itsas-suge</li>
+<li>Nécora, andarico = Txamarra</li>
+<li>Palometa blanca = Lanpua, lintxa</li>
+<li>Paparda, aguja = Balaon</li>
+<li>Percebe = Lanperna</li>
+<li>Peregrino, tiburón, ballena = Kolayua</li>
+<li>Pez ángel, angelote = Aingeru goardakoa</li>
+<li>Pez luna = Atalua, ilargi arraia</li>
+<li>Pez martillo = Maillu arrain</li>
+<li>Pez pero, pintaroja, toll = Katuarraya, moratxa</li>
+<li>Pez plata = Abixui</li>
+<li>Pez volador = Ega-arrain, txoriarrain</li>
+<li>Pez zorra, rabosa = Itsas-azari</li>
+<li>Pota, volador, lora = Egatxubia, kalmarra</li>
+<li>Pulpo común = Amarrete, olagarroa</li>
+<li>Quisquilla, camarón = Izkira</li>
+<li>Rata de mar = Itsaskatua</li>
+<li>Rata, ratón = Fosforua</li>
+<li>Raya = Aluba</li>
+<li>Raya = Anai zabala, gastaka</li>
+<li>Salmón común = Izokia, ixokia</li>
+<li>Salmonete, barbarín = Barbariña, izokia semea</li>
+<li>San Martín, pez de San Pedro = Mutxu martin, martiña</li>
+<li>Sardina, parrocha = Txardiña, parritxa</li>
+<li>Tenca = Zaparda</li>
+<li>Tremielga, vaca, torjedo = Eskuikari, ikaraiua</li>
+<li>Trucha = Amuarraya, arraukari, amorroia</li>
+</ul>
+</li>
+<li>
+<p>Hegaztiak  (aves)</p>
+<ul>
+<li>Abubilla = Argi oilar</li>
+<li>Agachadiza común = Istingor arrunta</li>
+<li>Alca común = Pottorro</li>
+<li>Anade real = Basahate</li>
+<li>Andarríos chico = Kuliska txiki</li>
+<li>Ansar común = Antzara</li>
+<li>Ave fría = Hegabera</li>
+<li>Buitre = Sai arre</li>
+<li>Carbonero = Kaskabeltz</li>
+<li>Chocha-perdiz = Oilagorra</li>
+<li>Chochín = Txepetx</li>
+<li>Chorlitos = Txirriak</li>
+<li>Chovas = Belantxingak</li>
+<li>Cigüeña común = Amiamoko zuria</li>
+<li>Codorniz = Galeper</li>
+<li>Cogujada común = Hegatxabal ttonttordun</li>
+<li>Cuco = Kuku</li>
+<li>Cuervo = Bele</li>
+<li>Estorninos = Araba zozoak</li>
+<li>Ganso = Antzarra</li>
+<li>Gaviota = Kaio, antxeta</li>
+<li>Golondrina = Enara</li>
+<li>Gorrión = Txolarre, lapur-txori</li>
+<li>Grulla = Kurrilloa</li>
+<li>Halcón = Belatzandi</li>
+<li>Halcón abejero = Sapelats liztorjale</li>
+<li>Jilguero = Karnaba</li>
+<li>Lechuza = Hontza</li>
+<li>Martín pescador = Martin arrantzale</li>
+<li>Milano negro = Miru beltz</li>
+<li>Mirlo = Zozoa</li>
+<li>Mochuelo = Mozolo</li>
+<li>Paloma torcaz = Pagauso</li>
+<li>Perdiz roja = Eper gorri</li>
+<li>Petirrojo = Txantxangorri</li>
+<li>Polla de agua = Uroilo</li>
+<li>Ruiseñor = Urretxindor, errusinol</li>
+<li>Ruiseñor bastardo = Errekatxindor</li>
+<li>Tórtola = Usapal</li>
+<li>Urraca = Mika</li>
+<li>Vencejo = Sorbeltz arrunt</li>
+<li>Verderón = Txorru</li>
+<li>Zorzal = Birigarro</li>
+</ul>
+</li>
+<li>
+<p>Zuhaitzak (árboles)</p>
+<ul>
+<li>Abedul = Urki</li>
+<li>Acebo = Gorosti</li>
+<li>Aliso = Haltz</li>
+<li>Arce = Astigar</li>
+<li>Avellano = Urritz</li>
+<li>Boj = Ezpel</li>
+<li>Castaño = Gaztain</li>
+<li>Cerezo = Gereziondo</li>
+<li>Chopo = Makal</li>
+<li>Ciruelo = Aranondoa</li>
+<li>Encina = Arte</li>
+<li>Enebro = Epuru</li>
+<li>Espino blanco = Elorri</li>
+<li>Fresno = Lizar</li>
+<li>Haya = Pago</li>
+<li>Higuera = Pikondo</li>
+<li>Laurel = Erenoitz</li>
+<li>Madroño = Urbi</li>
+<li>Manzano = Sagarrondo</li>
+<li>Níspero = Mizpirondo</li>
+<li>Nogal = Intxaurrondo</li>
+<li>Olmo = Zumar</li>
+<li>Peral = Udarondo, madariondo</li>
+<li>Pino = Pinu</li>
+<li>Plátano = Albo</li>
+<li>Roble = Haritz</li>
+<li>Sauce = Sarats</li>
+<li>Sauco = Intsusa</li>
+<li>Tejo = Hagin</li>
+<li>Tilo = Ezki</li>
+</ul>
+</li>
+</ul>
+<p>Oilasko-bularkiak erosi ditut</p>
+<blockquote>
+<p>He comprado pechugas de pollo</p>
+</blockquote>
+<h3 id="vajilla"><a class="header" href="#vajilla">Vajilla</a></h3>
+<ul>
+<li>Plato: plater</li>
+<li>Vaso: edalontzi, baso</li>
+<li>Cuchillo: aizto, ganibet, labana</li>
+<li>Tenedor: sardexka, tenedore</li>
+<li>Cuchara: koilara</li>
+</ul>
+<h3 id="muebles"><a class="header" href="#muebles">Muebles</a></h3>
+<ul>
+<li>Mesa: mahai</li>
+<li>Silla: aulki</li>
+<li>Sillon: besaulki</li>
+<li>Sofa: sofa</li>
+<li>Cama: ohe, ohatze</li>
+<li>Ropero: arropategi, jantzitegi</li>
+<li>Biblioteca: liburutegi</li>
+<li>Estanteria: apalategi</li>
+</ul>
+<h2 id="herramientas"><a class="header" href="#herramientas">Herramientas</a></h2>
+<ul>
+<li>Martillo</li>
+<li>Pinza</li>
+<li>Hacha</li>
+<li>Sierra</li>
+</ul>
+<h2 id="lugares"><a class="header" href="#lugares">Lugares</a></h2>
+<ul>
+<li>Casa</li>
+<li>Cocina</li>
+</ul>
+<h2 id="adjetivos"><a class="header" href="#adjetivos">Adjetivos</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Euskera</th><th>Castellano</th></tr></thead><tbody>
+<tr><td>berri</td><td>nuevo</td></tr>
+<tr><td>gaxte</td><td>joven</td></tr>
+<tr><td>zahar</td><td>viejo</td></tr>
+<tr><td>polit</td><td>bonito</td></tr>
+<tr><td>itsusi</td><td>feo</td></tr>
+<tr><td>handi</td><td>grande</td></tr>
+<tr><td>txiki</td><td>chico</td></tr>
+<tr><td>zabal</td><td>ancho</td></tr>
+<tr><td>estu</td><td>angosto</td></tr>
+<tr><td>luze</td><td>largo</td></tr>
+<tr><td>labur</td><td>corto</td></tr>
+<tr><td>altu</td><td>alto</td></tr>
+<tr><td>baxu</td><td>bajo</td></tr>
+<tr><td>langile</td><td>trabajador</td></tr>
+<tr><td>alfer</td><td>vago</td></tr>
+<tr><td>garbi</td><td>limpio</td></tr>
+<tr><td>zikin</td><td>sucio</td></tr>
+<tr><td>alai</td><td>alegre</td></tr>
+<tr><td>triste</td><td>triste</td></tr>
+<tr><td>atsegin</td><td>agradable</td></tr>
+<tr><td>jator</td><td>macanudo</td></tr>
+<tr><td>lasai</td><td>tranquilo</td></tr>
+<tr><td>urdin</td><td>nervioso</td></tr>
+<tr><td>ilehori</td><td>rubio</td></tr>
+<tr><td>ilegorri</td><td>pelirrojo</td></tr>
+<tr><td>beltzaran</td><td>morocho</td></tr>
+<tr><td>burusoil</td><td>pelado</td></tr>
+</tbody></table>
+</div>
+<h3 id="sabores"><a class="header" href="#sabores">Sabores</a></h3>
+<ul>
+<li>Salado: gazi</li>
+<li>Dulce: gozo, goxo</li>
+<li>Picante: min, pikante</li>
+<li>Amargo: mingots, mikatz, mingar, karmin</li>
+</ul>
+<h3 id="caracteristicas-fisicas"><a class="header" href="#caracteristicas-fisicas">Caracteristicas fisicas</a></h3>
+<ul>
+<li>Grande:</li>
+<li>Chico:</li>
+<li>Largo:</li>
+<li>Corto:</li>
+<li>Fino:</li>
+<li>Grueso:</li>
+<li>Ancho:</li>
+<li>Delgado:</li>
+<li>Gordo:</li>
+</ul>
+<h3 id="colores"><a class="header" href="#colores">Colores</a></h3>
+<ul>
+<li>Rojo;</li>
+<li>Naranja:</li>
+<li>Amarillo:</li>
+<li>Verde:</li>
+<li>Azul:</li>
+<li>Violeta:</li>
+<li>Marron:</li>
+<li>Negro:</li>
+<li>Blanco:</li>
+<li>Gris:</li>
+</ul>
+<h2 id="verbos"><a class="header" href="#verbos">Verbos</a></h2>
+<ul>
+<li>Ir: joan</li>
+<li>Venir: etorri</li>
+<li>Llevar: eraman</li>
+<li>Traer: ekarri</li>
+<li>Levantar: altxatu</li>
+<li>Apoyar: bermatu</li>
+<li>Caminar: ibili</li>
+<li>Correr: korrika egin</li>
+<li>Dormir: lo egin</li>
+<li>Despertar: esnatu</li>
+<li>Comer: jan</li>
+<li>Beber: edan</li>
+<li>Leer: irakurri</li>
+<li>Escribir: idatzi</li>
+<li>Estudiar: ikasi</li>
+</ul>
+<h2 id="adverbios-de-lugar"><a class="header" href="#adverbios-de-lugar">Adverbios de lugar</a></h2>
+<ul>
+<li>Sobre / arriba de:</li>
+<li>Debajo</li>
+<li>Al lado</li>
+<li>Delante</li>
+<li>Detras</li>
+</ul>
+<h2 id="partes-del-cuerpo"><a class="header" href="#partes-del-cuerpo">Partes del cuerpo</a></h2>
+<ul>
+<li>Cabeza: buru</li>
+<li>Pelo: ile</li>
+<li>Cara: aurpegi</li>
+<li>Ojos: begi</li>
+<li>Nariz: sudurra</li>
+<li>Labio: ezpain</li>
+<li>Oreja: belarri</li>
+<li>Hombro: sorbalda</li>
+<li>Brazo: beso</li>
+<li>Codo: ukondo</li>
+<li>Mano: esku</li>
+<li>Dedo: hatz, eri, atzamar, behatz
+<ul>
+<li>meñique: hatz txiki</li>
+<li>dedo anular: hatz nagi</li>
+<li>dedo medio: hatz luze, erdiko eri</li>
+<li>dedo indice: hatz/eri erakusle</li>
+<li>pulgar: hatz lodi, eri handi</li>
+</ul>
+</li>
+<li>Pecho: bular</li>
+<li>Espalda: bizkar</li>
+<li>Cintura: gerri</li>
+<li>Falda: magal</li>
+<li>Piernas: zango
+<ul>
+<li>entre rodilla y talon: berna</li>
+</ul>
+</li>
+<li>Pies: oin</li>
+<li>Codo: Ukondo</li>
+</ul>
+<h2 id="expresiones"><a class="header" href="#expresiones">Expresiones</a></h2>
+<p>Oculista = Okulista
+Dentista = Haginlari
+Ardilla = Urtxintxa
+Moneda = Txanpona
+Estafa = Maula/Iruzurra
+Cementerio = Hilerria
+Luz = Argia
+Luciérnaga = Ipurtargia
+Pueblo abandonado = Herri hutsa
+Pueblo deshabitado = Herri soila
+Ayuntamiento = Udala
+Pato = Ahatea
+Ganso = Antzara
+Barrer = Ekortu
+Seso = Garuna
+Cena = Afaria
+Conocimiento = Jakintza
+Corredor = Korrikalari
+Atleta = Atleta
+Trastero= Trasteleku
+Cordón = Lokarria
+Demasiado = Gehiegi
+Abundante = Ugari</p>
+<ul>
+<li>Tirar = Bota</li>
+<li>Comba = Soka</li>
+<li>Columpio = Zabua</li>
+<li>Cocina = Sukaldea</li>
+<li>Encimera = Gainekoa</li>
+<li>Arcón = Kutxatzar</li>
+<li>Aire acondicionado = Aire girotua</li>
+<li>Abanico = Haizemailea</li>
+<li>Esperando = Itxaroten</li>
+<li>Descansando = Atseden hartzen</li>
+<li>Impaciente = Zazpikia/Egonagarri</li>
+<li>Enroscar = Kiribildu</li>
+<li>Desafío = Erronka</li>
+<li>Apuesta = Apustua</li>
+<li>Guisar = Janaria prestatu</li>
+<li>Aplanar = Lautu</li>
+<li>Despreciar = Mespretxatu</li>
+<li>Repartir = Banatu</li>
+<li>Grasa = Koipea</li>
+<li>Intriga = Jakin mina</li>
+<li>Picadura = Ziztada</li>
+<li>Tendero = Dendari</li>
+<li>Sastreria = Joskintza</li>
+<li>Sindicatos = Sindikatua</li>
+<li>Semana Santa = Aste santua</li>
+<li>Armónica = Harmonika</li>
+<li>Collar = Lepokoa</li>
+<li>Cadena = Katea</li>
+<li>Dependiente = Saltzailea</li>
+<li>Temporal = Ekaitza</li>
+<li>Quiosquero = Kioskoko saltzailea</li>
+<li>Crecimiento = Hazkundea</li>
+<li>Abandonar = Utzi/Alde bateta utzi</li>
+<li>Bordillo = Zintarria</li>
+<li>Oleaje = Tirain</li>
+<li>Marea = Itsasaldia</li>
+<li>Marejada = Sagailoa</li>
+<li>Oriente = Ekialdea</li>
+<li>Horno = Labea</li>
+<li>Brasero = Su ontzi</li>
+<li>Sauna = Sauna</li>
+<li>Polea = Polea/Txirrika</li>
+<li>Ascensión = Igoera</li>
+<li>Levantar = Altxatu</li>
+<li>Caer = Erori</li>
+<li>Bailar = Dantzatu</li>
+<li>Soplar = Putz egin</li>
+<li>Retrete = Komuna/Komun ontzia</li>
+<li>Bidé = Bidet</li>
+<li>Fogata = Sutzar</li>
+<li>Egutegia = Calendario</li>
+<li>Itzala = Sombra</li>
+<li>Eskutitza = Carta</li>
+<li>Disfraz = Mozorroa</li>
+<li>Lectura = Irakurketa</li>
+<li>Olfato = Usaimena</li>
+<li>Hormiguero = Inurritegia</li>
+<li>Madriguera = Gordelekua</li>
+<li>Cueva = Haitzulo/Kobazulo</li>
+<li>Dulce = Gozo/Geza</li>
+<li>Sabroso =Zaporetsua</li>
+<li>Sed = Egarri</li>
+<li>Ruidoso = Zaratatsua</li>
+<li>Silencioso = Isila</li>
+<li>Madrugar = Goiz jaiki</li>
+<li>Asma = Asma/Txurrun</li>
+<li>Asmatico = Asmatikoa</li>
+<li>Inventar = Asmatu/Sortu</li>
+<li>Contador = Kontagailua</li>
+<li>Contable = Kontulari</li>
+<li>Locutor = Esatari</li>
+<li>Caseta = Etxola/Txabola</li>
+<li>Abogacia = Abokatutza</li>
+<li>Ganadero = Abeltzaina</li>
+<li>Manzano = Sagarrondo</li>
+<li>Peral = Madariondo</li>
+<li>Platanero Bananaondo</li>
+<li>Muñequera = Eskumuturrekoa</li>
+<li>Pulsera = Eskumuturrekoa</li>
+<li>Reloj de mano = Eskuko erlojua</li>
+<li>Delicioso = Oso gozoa</li>
+<li>Delicado = Fina/Leuna</li>
+<li>Frágil = Hauskorra</li>
+<li>Humedo = Hezea</li>
+<li>Solido = Sendoa, Gogorra</li>
+<li>Líquido = Likidoa</li>
+<li>Tranquilo = Lasaia</li>
+<li>Cabreado = Haserre</li>
+<li>Triston = Triste samar</li>
+<li>Buzón = Gutunontzia</li>
+<li>Consejero = Aholkulari</li>
+<li>Diplomatico = Diplomazialari</li>
+<li>Niebla = Lainoa</li>
+<li>Festivo = Jaieguna</li>
+<li>Nieve = Elurra</li>
+<li>O que = Edo zer</li>
+<li>Novillo = Txahala</li>
+<li>Es posible = Beharbada/Agian</li>
+<li>Roto = Apurtuta</li>
+<li>Rotura = Pitzadura</li>
+<li>Rompecabezas = Buruhausgarria</li>
+<li>Pesado = Astuna</li>
+<li>Papeletas = Txartelak/Boto papera</li>
+<li>Opiniones = Iritziak</li>
+<li>No creo = Ez dut uste</li>
+<li>Quien sabe = Auskalo</li>
+<li>Comer = Jan</li>
+<li>Hacer = Egin</li>
+<li>Deshacer= Desegin</li>
+<li>Amor = Maitasuna</li>
+<li>Querid@ = Laztana</li>
+<li>Romantico = Erromantikoa</li>
+<li>Riachuelo = Errekasto/errekatxo</li>
+<li>Lejano = Urrun</li>
+<li>Variado = Askotarikoa</li>
+<li>Hotel = Hotel</li>
+<li>Hostal = Ostatu</li>
+<li>Parecer = Uste/Iritzi</li>
+<li>Huella = Oinatza</li>
+<li>Ofrecer = Eskaini</li>
+<li>Portavoz = Bozeramailea</li>
+<li>Una vez = Behin/Behin bakarrik</li>
+<li>Decidió = Erabaki zuen</li>
+<li>Noticias comunes = Albiste arruntak</li>
+<li>Noticias frescas = Albiste freskoak</li>
+<li>Noticias confidenciales = Isilpeko albisteak</li>
+<li>Noticias de boca a boca = Ahoz ahoko albisteak</li>
+<li>Decirselo a la cara = Aurpegira esan</li>
+<li>En la cara = Aurpegira</li>
+<li>De frente = Aurrez aurre</li>
+<li>Vaca = Behia</li>
+<li>Molesto = Gogaikarria</li>
+<li>Leña = Egurra</li>
+<li>Aparta =Baztertu</li>
+<li>Apartar = Baztertu/Gorde(Apartar para guardar) /Banandu (para repartir)</li>
+<li>Decepciónante = Etsigarria</li>
+<li>Expropiar = Desjabetu</li>
+<li>Atraer = Erakarri</li>
+<li>Sabelotodo = Orojakilea</li>
+<li>Empollón = Ikastun</li>
+<li>Subconsciente = Subkontziente</li>
+<li>Dios = Jainkoa :angel:</li>
+<li>Algo = Zerbait</li>
+<li>Fuera = Ospa</li>
+<li>Fortuna = Zoria</li>
+<li>Suertudo = Zorte onekoa/potroso</li>
+<li>Desear = Desiratu</li>
+<li>Demanda = Eskaera</li>
+<li>Evitar = Saihestu</li>
+<li>Escrito = Idazkia</li>
+<li>Buen dia = Egun ona</li>
+<li>Dia soleado = Egun eguzkitsua</li>
+<li>Dia caluroso = Egun beroa</li>
+<li>Envejecido = Zahartuta</li>
+<li>Envejecimiento = Zahartze</li>
+<li>Envejecer = Zahartu/Adindu</li>
+<li>Monte Mendia</li>
+<li>Aparcamiento = Aparkalekua</li>
+<li>Huerto = Baratza</li>
+<li>Mentiroso = Gezurtia</li>
+<li>Culpabilidad = Erruduntasuna</li>
+<li>Excusa = Aitzakia</li>
+<li>Cuadra = Ukuilua</li>
+<li>Garaje = Garaje</li>
+<li>Caserio = Baserria</li>
+<li>Funcional = Funtzionala</li>
+<li>Fácil = Erraza</li>
+<li>Fundamento = Oinarria</li>
+<li>Pierde = Galdu egiten du</li>
+<li>Calcetínes = Galtzerdiak</li>
+<li>Olvidalo = Ahaztu</li>
+<li>Salado = Gazia</li>
+<li>Dulce = Gozoa</li>
+<li>Transportar = Garraiatu</li>
+<li>Limpio = Garbia</li>
+<li>Brillante = Distiratsua</li>
+<li>Jardin = Lorategia</li>
+<li>Vendedor = Saltzailea</li>
+<li>Nuestro = Gurea/Geurea</li>
+<li>Levantar = Jaso/Altxatu</li>
+<li>Despacio = Astiro</li>
+<li>Patoso = Baldarra/Traketsa</li>
+<li>Libertad = Askatasuna</li>
+<li>En el descanso = Atsedenaldian</li>
+<li>Tiempo libre = Aisialdia</li>
+<li>Zona de ocio = Aisialdirako gunea</li>
+<li>Dolor = Mina</li>
+<li>Herida = Zauria</li>
+<li>Grillo = Kilkerra</li>
+<li>Respirar = Arnastu</li>
+<li>Debatir = Eztabaidatu</li>
+<li>Elegir = Aukeratu</li>
+<li>Resbalar = Irristatu</li>
+<li>Onda = Uhina</li>
+<li>Datos técnicos = Datu teknikoak</li>
+<li>Panaderia = Okindegia</li>
+<li>Reparación = Konponketa</li>
+<li>Buenisimo= Oso ona</li>
+<li>Cima = Gailurra</li>
+<li>Montañoso = Menditsua</li>
+<li>Monte rocoso = Mendi harritsua</li>
+<li>Que aproveche = On egin</li>
+<li>Delicioso = Oso gozoa</li>
+<li>Común = Arrunta</li>
+<li>Unión = Batasuna/Elkartasuna</li>
+<li>Recoger = Jaso</li>
+<li>Bombear = Ponpatu</li>
+<li>Enterarse = Jabetu</li>
+<li>Pasado mañana = Etzi</li>
+<li>Antes de ayer = Herenegun</li>
+<li>Maquillarse = Maquillatu</li>
+<li>Prepararse = Prestatu</li>
+<li>Ponerse en forma = Sasoian jarri</li>
+<li>Hondoratu = Hundirse</li>
+<li>Ingenioso = Argia</li>
+<li>Incompleto = Osatugabea</li>
+<li>Ingeniudad = Sineskorra</li>
+<li>Presente = Orainaldia</li>
+<li>Futuro = Etorkizuna</li>
+<li>Concentración = Kontzentrazioa</li>
+<li>Saber = Jakin</li>
+<li>Conocimiento = Ezaguera</li>
+<li>Inteligencia = Adimena</li>
+<li>Jauzi = Saltar</li>
+<li>Alarma = Alarma</li>
+<li>Escoba = Erratza</li>
+<li>Recogedor = Biltzailea/Bilgailua</li>
+<li>Zorro = Azeria</li>
+<li>Bolsillo = Poltsikoa</li>
+<li>Ingreso = Onarpena/ Diru sarketa</li>
+<li>Tuyo = Zurea/Zeurea</li>
+<li>A ti = Zuri/Zeuri</li>
+<li>Llevarte = Eraman</li>
+<li>Espantapájaros = Txorimalo</li>
+<li>Imitar = Antzeratu</li>
+<li>Marear = Zoriabiatu</li>
+<li>Tocar = Ukitu</li>
+<li>Rozar = Urratu</li>
+<li>Archivar = Artxibatu</li>
+<li>Amistad = Adiskidetasuna</li>
+<li>Amabilidad = Adeitasuna</li>
+<li>Empatia = Enpatia</li>
+<li>Charco = Putzua</li>
+<li>Fango = Lokatza</li>
+<li>Soplar = Putz egin</li>
+<li>Soñar = Amets egin</li>
+<li>Sonámbulo = Somnanbulua/Lo ibiltaria</li>
+<li>Guarro = Zikina</li>
+<li>Toro = Zezena</li>
+<li>Donar = Eman</li>
+<li>Debil = Ahula</li>
+<li>Polvoriento = Hautsez beteta</li>
+<li>Veloz = Azkarra</li>
+<li>Oculto = Ezkututa</li>
+<li>Vacio = Hutsik</li>
+<li>Nada = Ezer, ezer ere ez</li>
+<li>Cementerio = Hilerria</li>
+<li>Muerte = Heriotza</li>
+<li>Duradero = Iraunkorra</li>
+<li>Conciencia = Kontzientzia</li>
+<li>Seda = Zeta</li>
+<li>Tos = Eztula</li>
+<li>Descontar = Deskontatu</li>
+<li>Relajarse = Erlaxatu</li>
+<li>Pesadez = Astuntasuna</li>
+<li>Dame un trozo = Emaidazu zati bat</li>
+<li>Dame un cigarro = Emaidazu zigarro bat</li>
+<li>Dame bastante = Emaidazu nahikoa</li>
+<li>Ese oro = Urre hori</li>
+<li>En perspectiva = Eginkizun</li>
+<li>De otra manera = Beste moduz</li>
+<li>Señalar = Seinalatu</li>
+<li>Observar = Behatu</li>
+<li>Medir = Neurtu</li>
+<li>Sanidad =  Osasuna</li>
+<li>Defensa = Babesa/Defentsa</li>
+<li>Cultura = Kultura</li>
+<li>Extraño = Arraro/Bitxia</li>
+<li>Diferente = Desberdina</li>
+<li>Ganso = Antzara</li>
+<li>Indecisión = Zalantza/Zalantzaldi</li>
+<li>Indeciso = Zalantzatia</li>
+<li>Evitar = Saihestu</li>
+<li>Hacer = Egin</li>
+<li>Repetir = Errepikatu</li>
+<li>Insistir = Ekin eta ekin/Tematu</li>
+<li>Donde quieras = Nahi duzun lekuan</li>
+<li>Cuando quieras = Nahi duzunean</li>
+<li>Como dices?  =  Nola diozu? /Nola esaten duzu?</li>
+<li>Especial = Berezia</li>
+<li>Encantado = Poz pozik (estar) /Pozten naiz (Saludar)</li>
+<li>Diferente Ezberdina</li>
+<li>Asignaturas = Irakasgaiak</li>
+<li>Completar = Osatu</li>
+<li>Complementos = Osagarriak</li>
+<li>Comodidad = Erosotasuna</li>
+<li>Adaptarse = Egokitu</li>
+<li>Robustez = Sendotasuna</li>
+<li>Divetido = Dibertigarria</li>
+<li>Entretenido = Entretenigarria</li>
+<li>Educativo = Hezigarria</li>
+<li>Echar poco = Gutxi bota</li>
+<li>Echar de menos = -en falta sentitu/-en mira izan:
+<ul>
+<li>echo de menos el café que tomábamos a la tarde</li>
+<li>arratsaldean hartzen genuen kafearen mira dut</li>
+</ul>
+</li>
+<li>Rendirse = Amore eman</li>
+<li>Fuente = Iturria</li>
+<li>Desagüe = Ustubide/Isurbide</li>
+<li>Lavabo = Konketa</li>
+<li>Recoger = Jaso</li>
+<li>Pelear = Borrokatu  :facepunch:</li>
+<li>Entretenimiento = Denbora pasa :tv:</li>
+<li>Pegar = Jo (puñetazo) / Itsatsi (pegar con pegamento)</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>mila esker partekatzeagatik!</td><td>muchas gracias por compartir!</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../euskera/nire_apunteak.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../euskera/euskarazko_hiztegi_txikia.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../euskera/nire_apunteak.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../euskera/euskarazko_hiztegi_txikia.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

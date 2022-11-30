@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tracing - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../comp.sci.eng/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../comp.sci.eng/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../comp.sci.eng/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/distributed_systems/index.html">Distributed Systems</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item expanded "><a href="../../comp.sci.eng/rust/rust_tracing.html" class="active">Tracing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../comp.sci.eng/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li><li class="chapter-item "><a href="../../comp.sci.eng/software_engineering/performance_engineering.html">Performance Engineering</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/tools/cli.html">CLI</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/rsync.html">RSync</a></li><li class="chapter-item "><a href="../../comp.sci.eng/tools/vim.html">Vim</a></li></ol></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../comp.sci.eng/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/technical_and_scientific_writing.html">Technical and Scientific Writing</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../comp.sci.eng/misc/zen_python.html">The Zen of Python</a></li></ol></li><li class="chapter-item "><li class="part-title">Other Stuff</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../mind/index.html">Mind</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../mind/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../society/index.html">Society</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../society/historia_argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../society/historia_euskal_herria.html">Historia de Vasconia</a></li><li class="chapter-item "><a href="../../society/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/index.html">2014 Denbora da poligrafo bakarra I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/index.html">2014 Denbora da poligrafo bakarra II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/index.html">2014 Denbora da poligrafo bakarra III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra_iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/checklists/travel.html">Travel</a></li></ol></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../misc/cooking/pancakes.html">Pancakes</a></li></ol></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/library.html">My library</a></li><li class="chapter-item "><a href="../../misc/sampler.html">Sampler</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="rust-logging-and-tracingrs"><a class="header" href="#rust-logging-and-tracingrs">Rust logging and <code>tracing.rs</code></a></h1>
+<!-- 
+TRACING
+  https://github.com/env-logger-rs/env_logger
+  https://github.com/env-logger-rs/env_logger/tree/master/examples
+  https://docs.rs/env_logger/0.8.2/env_logger/
+  https://docs.rs/log/0.4.6/log/
+  https://docs.rs/env_logger/0.8.2/env_logger/
+  https://tracing.rs/tracing/index.html#using-the-macros
+  https://github.com/jonhoo/tracing-timing
+  https://www.c-sharpcorner.com/interview-question/what-is-difference-between-debug-and-tracing
+  https://docs.microsoft.com/en-us/dotnet/core/diagnostics/logging-tracing
+  https://softwareengineering.stackexchange.com/questions/279690/why-does-the-trace-level-exist-and-when-should-i-use-it-rather-than-debug
+  https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+  https://jhall.io/posts/6-logging-mistakes/
+-->
+<!--
+  Logging differs slightly depending on you are working on a library or a binary.
+
+  ```
+  ---
+  There is log that is a de-facto standard logging facade.
+  If you logging needs are rather standard and you expect a global logger that you
+  write everything to, you probably want to use it.
+  In your binary, you need to pair it with a backend logging crate (like envlogger)
+  that will actually handle all the logging messages and write or send them somewhere.
+  There's also slog ecosystem which has many features that were/are missing from log.
+  It's quite powerful, but it is more like "lego for logging" - you combine many
+  things together to get ultimate logging solution.
+  It supports structural, composable, contextual logging.
+  If your logging needs are more sophisticated or "enterprise-y", you might want
+  to spend some effort and give it a try. It comes with a lot of feature crates
+  that implement pieces of functionality, and utility crates: eg. sloggers that
+  makes basic usage much easier, and has two way compatibility with log.
+  There is a bunch of other logging crates: most are backends for log, with some
+  selected functionality.
+
+  So basically I can use either slog (with slog-stdlog) or log without backend in
+  my library and consumer will decide what to do, right?
+
+  In libraries, it's either slog or log, yes. slog-stdlog is mostly for binaries.
+  You use slog-scope to "catch" log logging messages from the libraries that your
+  library is using when they don't support slog.
+
+  ---
+  I was asking the same questions a little while ago.
+  I wanted to write a command-line tool that could print messages to stderr, and
+  would support command-line options like --verbose and --quiet to show more or
+  less detailed information.
+  I wound up using the log crate to provide the warn!(), info!(), debug!(), etc.
+  macros, which I called at various places in my code to describe what was going on.
+  I also used the fern crate to format my log messages and send them to stderr.
+  When you set up logging with fern, you can tell it to only show messages of a
+  certain level or higher, so I hooked up my --verbose and --quiet options to
+  choose a log level and fed that in.
+
+  ---
+  The defacto standard is log, and even if you opt for some other logging solution,
+  you need a way to handle output from log-compatible dependencies so that it adds
+  to the final logs produces by your application (and written to whatever output
+  you wish).
+  Like it is mentioned by /u/dpc_pw, slog takes a more ecosystem-like approach
+  with a lot of small crates that you need to assemble yourself into a functioning
+  solution. However, I'd argue that using slog directly isn't really logging --
+  it's producing a labeled event stream, i.e. something that should be handled by
+  more specialized monitoring/metrics' libraries and not logging systems.
+  ```
+-->
+<p>February 10th, 2021: WIP</p>
+<p>Let's take a dive into how to use the <code>tracing.rs</code> logging framework in a single-process application.
+There are some very good articles on this, such as the announcement post on the tokio blog <a href="https://tokio.rs/blog/2019-08-tracing">Diagnostics with Tracing</a> by <a href="https://twitter.com/mycoliza">Eliza Weisman</a>, and <a href="https://medium.com/better-programming/production-grade-logging-in-rust-applications-2c7fffd108a6">Production-Grade Logging in Rust Applications</a> by <a href="https://twitter.com/eckyputrady">Ecky Putrady</a>. You should also, if you have not done so already, watch Eliza's excellent presentation of <code>tracing.rs</code> at <a href="https://www.youtube.com/watch?v=JjItsfqFIdo">RustConf 2019</a>.</p>
+<p>These are great for getting started but <code>tracing.rs</code> has a lot of moving parts and we want to understand how they connect.
+In addition, I don't just want to show how certain things are done with <code>tracing.rs</code>, but also walk through the mental process and skills involved in learning and researching a Rust library.</p>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents:</a></h2>
+<ul>
+<li><a href="#logging-and-tracingrs-basics">Logging and <code>tracing.rs</code> basics</a></li>
+<li><a href="#starting-out">Starting out</a></li>
+<li><a href="#logging-levels">Logging levels</a></li>
+<li><a href="#using-tracing-with-the-log-and-env-logger-crates">Using tracing with the <code>log</code> and <code>env-logger</code> crates</a></li>
+<li><a href="#beyond-the-tracingfmt-subscriber-defaults">Beyond the <code>tracing::fmt</code> subscriber defaults</a></li>
+<li><a href="#using-the-rust_log-environment-variable">Using the <code>RUST_LOG</code> environment variable</a></li>
+<li><a href="#structured-logging">Structured logging</a></li>
+<li><a href="#using-spans-manually">Using spans manually</a></li>
+<li><a href="#using-the-tracinginstrument-attribute">Using the <code>#[tracing::instrument]</code> attribute</a></li>
+<li><a href="#using-tracing-tree">Using <code>tracing-tree</code></a></li>
+<li><a href="#using-async">Using async</a></li>
+<li><a href="#changing-the-filter-at-run-time">Changing the filter at run-time</a></li>
+<li><a href="#logging-in-a-library">Logging in a library</a></li>
+<li><a href="#logging-in-an-actix-application">Logging in an actix application</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+</ul>
+<h2 id="logging-and-tracingrs-basics"><a class="header" href="#logging-and-tracingrs-basics">Logging and <code>tracing.rs</code> basics</a></h2>
+<p>In case you haven't already read those articles, or don't have half a decade of caring for production systems serving network traffic, we'll go over some basic concepts, but if you've read them and seen the tracing documentation, you can skip this section.</p>
+<p>As the documentation states:</p>
+<blockquote>
+<p><code>tracing</code> is a framework for instrumenting Rust programs to collect structured, event-based diagnostic information.</p>
+</blockquote>
+<p>What does all this mean?</p>
+<p>TODO: reiterate a summary of tracing's core concepts.</p>
+<h2 id="starting-out"><a class="header" href="#starting-out">Starting out</a></h2>
+<p>We need a playground, so create a new binary create with cargo:</p>
+<pre><code class="language-bash">$ cargo new testapp
+$ cd testapp
+</code></pre>
+<p>Edit your <code>Cargo.toml</code>and add the <code>tracing</code> dependency.
+As of January 2021, the latest version is <code>0.1.22</code>.</p>
+<pre><code class="language-bash">$ cat Cargo.toml
+</code></pre>
+<pre><code class="language-toml">...
+[dependencies]
+tracing = &quot;0.1.22&quot;
+</code></pre>
+<p>Edit your default <code>src/main.rs</code> file so that it looks like this:</p>
+<pre><pre class="playground"><code class="language-rust">use tracing;
+
+fn main() {
+    debug!(&quot;Hello, world!&quot;);
+}</code></pre></pre>
+<p>And now build and run:</p>
+<pre><code class="language-bash">$ cargo build
+    Updating crates.io index
+    ...
+    Finished dev [unoptimized + debuginfo] target(s) in 9.36s
+$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/testapp`
+</code></pre>
+<p>Nothing happened!
+This is because <code>tracing</code>, by itself, doesn't provide or say anything about how log events should be collected, processed, formatted, written to disk or sent over the network, nothing.
+That's a lot of design decisions which change depending on your logging needs, and in order to be flexible, <code>tracing</code> just provides an interface with which we can specify events and spans, and talk to subscribers which do all of the above.</p>
+<p>TODO: WIP</p>
+<p>The most basic logging, what would be functionally equivalent to using <code>println!</code>, would be to install a</p>
+<p>To get some method of doing</p>
+<p>Let's add the <code>tracing-subscriber</code> dependency to our <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">tracing-subscriber = &quot;0.2.15&quot;
+</code></pre>
+<p>We'll have to import it and call a function in <code>main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use tracing::debug;
+use tracing_subscriber;
+
+fn main() {
+    tracing_subscriber::fmt::init();
+    debug!(&quot;Hello, world!&quot;);
+}</code></pre></pre>
+<pre><code class="language-bash">$ cargo run
+</code></pre>
+<p>Still nothing! This is rather unfortunate, but what's happening is that we are the victims of our own doing, because we didn't quite read the documentation, did we?
+Let's go on over to <code>docs.rs</code> and search for the <a href="https://docs.rs/tracing-subscriber/0.2.15/"><code>tracing_subscriber</code> crate docs</a>.
+If we type <code>fmt::init</code> in the search box, we get the result we wanted: <a href="https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/fmt/fn.init.html">the init function documentation</a>.</p>
+<p>Which state that this functions will:</p>
+<pre><code>Install a global tracing subscriber that listens for events and filters based
+on the value of the RUST_LOG environment variable.
+If the tracing-log feature is enabled, this will also install the LogTracer
+to convert Log records into tracing Events.
+</code></pre>
+<p>So now we know that the subscriber we installed is controlled by the value of a <code>RUST_LOG</code>environment variable, which is a common way of specifying the logging level.
+Since we did not set it's value, and can assume that it will have a default value, we can theorize that perhaps if we did set it to some appropriate value, we would get output.
+It would be nice if these default values were documented.</p>
+<pre><code class="language-bash">$ RUST_LOG=debug cargo run
+Jan 03 19:55:00.784 DEBUG testapp: Hello, world!
+</code></pre>
+<p>Aha! Finally some output</p>
+<h2 id="logging-levels"><a class="header" href="#logging-levels">Logging levels</a></h2>
+<p>Great, so now we can emit information to the console as with <code>println!</code>, and we get some more stuff for our trouble: timestamps, the logging level, and nice colors.
+Let's see what else we can use.</p>
+<p><code>tracing</code> provides the trace, debug, info, warning, and error logging levels, which you can see in the <a href="https://docs.rs/tracing/0.1.22/tracing/struct.Level.html">Level documentation</a>.</p>
+<p>Let's edit our <code>main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use tracing::{trace, debug, info, warn, error};
+use tracing_subscriber;
+
+fn main() {
+    tracing_subscriber::fmt::init();
+    trace!(&quot;trace&quot;);
+    debug!(&quot;debug&quot;);
+    info!(&quot;info&quot;);
+    warn!(&quot;warn&quot;);
+    error!(&quot;error&quot;);
+}</code></pre></pre>
+<pre><code class="language-bash">% RUST_LOG=trace cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/testapp`
+Jan 03 20:13:55.633 TRACE testapp: trace
+Jan 03 20:13:55.633 DEBUG testapp: debug
+Jan 03 20:13:55.633  INFO testapp: info
+Jan 03 20:13:55.633  WARN testapp: warn
+Jan 03 20:13:55.633 ERROR testapp: error
+</code></pre>
+<pre><code class="language-bash">% RUST_LOG=debug cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/testapp`
+Jan 03 20:13:55.633 DEBUG testapp: debug
+Jan 03 20:13:55.633  INFO testapp: info
+Jan 03 20:13:55.633  WARN testapp: warn
+Jan 03 20:13:55.633 ERROR testapp: error
+</code></pre>
+<pre><code class="language-bash">% RUST_LOG=info cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/testapp`
+Jan 03 20:13:55.633  INFO testapp: info
+Jan 03 20:13:55.633  WARN testapp: warn
+Jan 03 20:13:55.633 ERROR testapp: error
+</code></pre>
+<pre><code class="language-bash">% RUST_LOG=warn cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/testapp`
+Jan 03 20:13:55.633  WARN testapp: warn
+Jan 03 20:13:55.633 ERROR testapp: error
+</code></pre>
+<pre><code class="language-bash">% RUST_LOG=error cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/testapp`
+Jan 03 20:13:55.633 ERROR testapp: error
+</code></pre>
+<h2 id="using-tracing-with-the-log-and-env-logger-crates"><a class="header" href="#using-tracing-with-the-log-and-env-logger-crates">Using tracing with the <code>log</code> and <code>env-logger</code> crates</a></h2>
+<p>So to recap so far, to get our logging we had to</p>
+<ol>
+<li>Include the tracing crate as a dependency</li>
+<li>Declare we wanted to use it</li>
+<li>Install a subscriber to actually do something to the events we emit.</li>
+</ol>
+<p>TODO: explain how to use env-logger instead of tracing-subscriber.</p>
+<h2 id="beyond-the-tracingfmt-subscriber-defaults"><a class="header" href="#beyond-the-tracingfmt-subscriber-defaults">Beyond the <code>tracing::fmt</code> subscriber defaults</a></h2>
+<p>TODO: explain the defaults that fmt brings and how to change them</p>
+<h2 id="using-the-rust_log-environment-variable"><a class="header" href="#using-the-rust_log-environment-variable">Using the <code>RUST_LOG</code> environment variable</a></h2>
+<p>TODO: explain env-loggers filtering syntax and tracing's extensions</p>
+<h2 id="structured-logging"><a class="header" href="#structured-logging">Structured logging</a></h2>
+<p>TODO: explain how to include type-safe data in the log events.</p>
+<h2 id="using-spans-manually"><a class="header" href="#using-spans-manually">Using spans manually</a></h2>
+<p>TODO: explain how to use manual spans and their use cases vs the instrument attribute.</p>
+<h2 id="using-the-tracinginstrument-attribute"><a class="header" href="#using-the-tracinginstrument-attribute">Using the <code>#[tracing::instrument]</code> attribute</a></h2>
+<p>TODO: explain how to use the instrument attribute instead of doing it manually for functions.</p>
+<h2 id="using-tracing-tree"><a class="header" href="#using-tracing-tree">Using <code>tracing-tree</code></a></h2>
+<p>TODO: explain how to use the tracing-tree dependency and subcriber implementation to log execution traces in tree formats, for understanding code flow.</p>
+<h2 id="using-async"><a class="header" href="#using-async">Using async</a></h2>
+<p>TODO</p>
+<h2 id="changing-the-filter-at-run-time"><a class="header" href="#changing-the-filter-at-run-time">Changing the filter at run-time</a></h2>
+<p>TODO</p>
+<h2 id="logging-in-a-library"><a class="header" href="#logging-in-a-library">Logging in a library</a></h2>
+<p>TODO</p>
+<h2 id="logging-in-an-actix-application"><a class="header" href="#logging-in-an-actix-application">Logging in an actix application</a></h2>
+<p>TODO</p>
+<h2 id="conclusions"><a class="header" href="#conclusions">Conclusions</a></h2>
+<p>TODO</p>
+<!--
+
+- PR to tracing_subcrcriber documenting the default values of the fmt::init subscriber
+- PR to correct Registry example code
+- PR to tracing-tree to correct example code
+
+- [Update logging for `tracing` #892](https://github.com/rust-lang/rustc-dev-guide/issues/892)
+
+- [Add logging in rustc itself that links to the dev-guide #949](https://github.com/rust-lang/rustc-dev-guide/issues/949)
+  https://github.com/rust-lang/rustc-dev-guide/compare/master...igaray:892.update_logging_for_tracing
+
+- [ ] clean up, summarize and incorporate to RDG: eliza's talk on tracing
+  - [RustConf 2019 - Tokio-Trace: Scoped, Structured, Async-Aware Diagnostics by Eliza Weisman](https://www.youtube.com/watch?v=JjItsfqFIdo)
+
+- [ ] clean up, summarize and incorporate to RDG: tokio blog's post on tracing
+  - [Diagnostics with Tracing](https://tokio.rs/blog/2019-08-tracing)
+
+- [ ] GITHUB
+  - [ ] [Use `tracing` instead of `log` #331](https://github.com/rust-lang/compiler-team/issues/331)
+    Note that because tracing has an adapter for converting log::Records into tracing Events, it's also possible to do the migration incrementally, crate-by-crate.
+    https://docs.rs/tracing-log/0.1.1/tracing_log/#convert-log-records-to-tracing-events
+    https://github.com/tokio-rs/tokio/pull/2655
+    https://github.com/seanmonstar/warp/pull/655
+    https://github.com/seanmonstar/warp/pull/656
+  - [ ] [Move from `log` to `tracing` #74726](https://github.com/rust-lang/rust/pull/74726)
+    ```
+    The only visible change is that we now get timestamps in our logs:
+
+    Jul 24 18:41:01.065 TRACE rustc_mir::transform::const_prop: skipping replace of Rvalue::Use(const () because it is already a const
+    Jul 24 18:41:01.065 TRACE rustc_mir::transform::const_prop: propagated into _2
+    Jul 24 18:41:01.065 TRACE rustc_mir::transform::const_prop: visit_constant: const ()
+
+    This PR was explicitly designed to be as low-impact as possible. We can now move to using the name tracing insteads of log on a crate-by-crate basis and use any of the other tracing features where desirable.
+
+    As far as I can tell this will allow tools to seamlessly keep working (since they are using rustc_driver::init_log...).
+
+    tracing doesn't have something equivalent to log_enabled!, as control over where a log/span is enabled is the responsibility of the Subscriber, not the lexically-scoped callsite.
+    ```
+  - [ ] [RUSTC_LOG shows output prefixed with `2:rustc` #78931](https://github.com/rust-lang/rust/issues/78931)
+  - [ ] [Don't print thread ids and names in `tracing` logs #78933](https://github.com/rust-lang/rust/pull/78933)
+  - [ ] [Use `tracing` spans to trace the entire MIR interp stack #75143](https://github.com/rust-lang/rust/pull/75143)
+    explores span rendering, please look at it and leave opinions.
+  - [ ] [driver: Only output ANSI logging if connected to a terminal #78548](https://github.com/rust-lang/rust/pull/78548#issuecomment-732537267)
+  - [ ] [add config option to add only debug! (and not trace!) calls #76752](https://github.com/rust-lang/rust/pull/76752)
+  - [Search for issues/prs with tracing: 187](https://github.com/rust-lang/rust/pulls?q=is%3Apr+tracing)
+  - [Search for issues/prs with logging: 310](https://github.com/rust-lang/rust/pulls?q=is%3Apr+logging+)
+  - [Search for code with tracing](https://github.com/rust-lang/rust/search?q=tracing)
+  - [Search for code with logging](https://github.com/rust-lang/rust/search?q=logging)
+- [ ] ZULIP
+  - [ ] [Use `tracing` instead of `log` compiler-team#331](https://rust-lang.zulipchat.com/#narrow/stream/233931-t-compiler.2Fmajor-changes/topic/Use.20.60tracing.60.20instead.20of.20.60log.60.20compiler-team.23331)
+  - [ ] [Use `tracing` instead of `log` compiler-team#331](https://rust-lang.zulipchat.com/#narrow/stream/233931-xxx/topic/Use.20.60tracing.60.20instead.20of.20.60log.60.20compiler-team.23331)
+  - [ ] [tracing](https://rust-lang.zulipchat.com/#narrow/stream/185405-t-compiler.2Fwg-rls-2.2E0/topic/tracing)
+  - [ ] [Tracing](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/tracing)
+  - [ ] [tracing in chalk](https://rust-lang.zulipchat.com/#narrow/stream/144729-wg-traits/topic/tracing.20in.20chalk)
+  - [ ] [switch to tracing broke my logging :(](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/switch.20to.20tracing.20broke.20my.20logging.20.3A()
+  - [ ] [tracing to stderr](https://rust-lang.zulipchat.com/#narrow/stream/131828-t-compiler/topic/tracing.20to.20stderr)
+  - [ ] [meeting 2020.10.06](https://rust-lang.zulipchat.com/#narrow/stream/196385-t-compiler.2Fwg-rustc-dev-guide/topic/meeting.202020.2E10.2E06)
+  - [ ] [rustdoc debug logging](https://rust-lang.zulipchat.com/#narrow/stream/122651-general/topic/rustdoc.20debug.20logging)
+  - [ ] [Tracing in rustc](https://rust-lang.zulipchat.com/#narrow/stream/131828-t-compiler/topic/Tracing.20in.20rustc)
+  - [ ] [use `debug!` in rustc_codegen_llvm/src/context.rs](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/use.20.60debug!.60.20in.20rustc_codegen_llvm.2Fsrc.2Fcontext.2Ers)
+  - [ ] [logging when using x.py](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/logging.20when.20using.20x.2Epy)
+  - [ ] [enabling debug logging for rustc in-tree tests](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/enabling.20debug.20logging.20for.20rustc.20in-tree.20tests)
+  - [ ] [Extract callgraph of a crate](https://rust-lang.zulipchat.com/#narrow/stream/182449-t-compiler.2Fhelp/topic/Extract.20callgraph.20of.20a.20crate)
+  - [ ] [tracing assembly](https://rust-lang.zulipchat.com/#narrow/stream/131828-t-compiler/topic/tracing.20assembly)
+  - [ ] [Small pitfall that tripped me over](https://rust-lang.zulipchat.com/#narrow/stream/185405-t-compiler.2Fwg-rls-2.2E0/topic/Small.20pitfall.20that.20tripped.20me.20over)
+  - [ ] [Tracing subscriber](https://rust-lang.zulipchat.com/#narrow/stream/187831-t-compiler.2Fwg-self-profile/topic/Tracing.20subscriber)
+  - [ ] [tracing-tree](https://rust-lang.zulipchat.com/#narrow/stream/144729-wg-traits/topic/tracing-tree)
+  - [ ] [meeting 2020-07-07](https://rust-lang.zulipchat.com/#narrow/stream/144729-wg-traits/topic/meeting.202020-07-07)
+  - [ ] [tracy](https://rust-lang.zulipchat.com/#narrow/stream/187831-t-compiler.2Fwg-self-profile/topic/tracy)
+  - [ ] [meeting 06.16.2020](https://rust-lang.zulipchat.com/#narrow/stream/144729-wg-traits/topic/meeting.2006.2E16.2E2020)
+  - [ ] [tracing assertions](https://rust-lang.zulipchat.com/#narrow/stream/187780-t-compiler.2Fwg-llvm/topic/tracing.20assertions)
+  - [ ] [Tracing doc (#409)](https://rust-lang.zulipchat.com/#narrow/stream/144729-wg-traits/topic/Tracing.20doc.20(.23409))
+
+- [2020-10-15 sync](https://www.youtube.com/watch?v=yEq7pfBFwYQ&list=PL85XCvVPmGQhm3Q8Yl-8s8PoI3NkECiig)
+  this sync with niko has good debugging techniques
+
+https://www.youtube.com/watch?v=Hj86QHj1xN8
+https://www.youtube.com/watch?v=NHaWAWLgtAw&t=502s
+https://www.youtube.com/watch?v=Fl0bQP-Rua0
+
+https://github.com/tokio-rs/tracing
+https://tokio.rs/blog/2019-08-tracing
+https://medium.com/better-programming/production-grade-logging-in-rust-applications-2c7fffd108a6
+https://docs.rs/tracing/0.1.22/tracing/struct.Level.html
+https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/index.html
+https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/fmt/fn.init.html
+https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/fmt/index.html
+https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/registry/index.html
+https://docs.rs/tracing-tree/0.1.6/tracing_tree/struct.HierarchicalLayer.html#method.new
+https://github.com/davidbarsky/tracing-tree
+https://docs.rs/env_logger/0.8.2/env_logger/
+https://docs.rs/tracing/0.1.22/tracing/
+https://docs.rs/tracing-subscriber/0.2.15/tracing_subscriber/
+https://docs.rs/tracing-log/0.1.1/tracing_log/
+https://github.com/tokio-rs/tracing/tree/master/examples
+
+- [](https://docs.rs/env_logger/)
+- [](https://crates.io/crates/log)
+- [](https://tracing.rs/tracing/)
+- [](https://docs.rs/log/0.4.11/log/index.html)
+- [](https://docs.rs/tracing/0.1.22/tracing/index.html)
+- [](https://docs.rs/tracing-log/0.1.1/tracing_log/#convert-log-records-to-tracing-events)
+- [](https://docs.rs/tracing-tracy/0.1.2/tracing_tracy/)
+- [](https://github.com/tokio-rs/tracing/tree/HEAD/tracing)
+- [](https://github.com/tokio-rs/tracing/tree/master/examples)
+- [](https://github.com/jonathanj/eliottree)
+- [](https://gist.github.com/eddyb/e727bcb2af8ffc2a32e6)
+- [](https://gist.githubusercontent.com/eddyb/bd193e8ababd144fb8b9/raw/d27d0a76657c1c7e75e0d9105a4f5f28ce856734/trace.cc)
+- [](https://gist.githubusercontent.com/eddyb/05a9490eb50396754cee14967c485567/raw/6c75bf462bf66cc271bc6c4ab6b4ae6313c5a973/tracing-box-drawing-3)
+- [](https://github.com/tokio-rs/console/)
+- [](https://github.com/davidbarsky/tracing-tree/)
+- [](https://github.com/davidbarsky/tracing-tree/issues/4)
+- [](https://github.com/rust-lang/chalk/issues/337)
+- [](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_ast_pretty/pp/index.html)
+
+## Issue 892
+
+  I don't actually know why it was changed, what the differences are, or what the motivation was.
+  rust-lang/compiler-team#331 and rust-lang/rust#74726 don't really say.
+  Is there anything I need to know about the differences?
+  Are there any examples of when using spans or #[instrument] would be useful?
+  Should messages use structured fields (and how or why is that useful)?
+
+  We are not using spans or #[instrument] yet.
+  There are no differences in usage yet.
+  Before we can start using awesome tracing features we'll need to benchmark them and agree on a span rendering strategy.
+  rust-lang/rust#75143 explores span rendering, please look at it and leave opinions.
+
+  But yea, some minimal updating of the logging section would be a good thing.
+  I'll try to find some time, but won't complain if someone grabs it
+
+## Log
+
+## Tracing Talk by Eliza
+
+  Why?
+
+    Rust already has a robust logging ecosystem based around the log crate's logging facade, with libraries such as env_logger and fern in widespread use. This raises reasonable questions– why is tracing necessary, and what benefit does it provide that existing libraries don't?
+
+    Effectively developing systems and operating them in production requires visibility into their behavior at runtime. While conventional logging can provide some of this visibility, asynchronous software — like applications using the Tokio runtime — introduces new challenges.
+
+
+    In synchronous code, we can simply log individual messages as the program executes, and expect them to be printed in order. A programmer can interpret the logs fairly easily, since the log records are output sequentially.
+    The context is implied by previous messages
+
+    In async code, we can no longer rely on events happening in order,
+    if were loggin in these async tasks, those log messages come out interleaved or we see different contexts logging information that might be very similar and we cant easily trace whats going on between those log records by looking at the order in which they were displayed.
+
+    How do we get good usable diagnostics from async systems?
+
+    Three big pillars we reqwuire if we want diagnostics in async systems to make sense.
+    We need to capture:
+
+    - context
+      when we record some event has, we dont just need to know where it happened in the source code, which existing tools are very good at, we have information about line numbers, modules, files, but it doesnt tell us the runtime context in which some event occured in.
+      e.g. we have some http thats processing requests, context mnight include what client did this reques come from, what was the http method, its path, the headers, etc.
+      in sync code, we can infer that context from looking at the order.
+      if we see 'accepted request from this ip', and then 'parsed a req with these headers' then we know 'this is the ip that sent this req'
+      but in async code we're switching between multiplexed tasks based on readyness of IO and other resources
+      we swtich  between those contexts very rapidly and we cant rely on order to determine context
+
+    - causality
+      there is complex chains of cause and effect in async systems
+      if there are tasks running in the background like a dns lookup, or a database connection, what caused them to start?
+      what caused them to start some work?
+      we can't rely on log ordering to determine that kind of causality either, so we need to record it explicitly
+
+    - some form of structure
+      traditional logging is based on human readable textual messages
+      we prefer diagnostics that are machine readable so we can interact with them programmatically
+      sure, you can programmatically interact with unstructured logs if you use awk or grep, but its not good
+      you can record type data as type values, and you can interact with that as type data
+
+      tracing is a framework for instrumenting rust programs with contextual, causal and structured diagnostics
+      tracing is a collection of libraries that provide a framework for instrumenting Rust programs to collect structured, context-aware, event driven diagnostics.
+
+      it's part of the tokio project but doesn't require the tokio runtime,
+      so you can use it in sync programs, in async programs that use tokio, in async programs that use other runtimes, in wasm, on baremetal with nostd (with some caveats)
+
+  DEMO
+    superset of env_logger crate syntax
+    pairs of log targets and verbosity levels
+    square brackes indicate that you want to filter on a dynamic context
+
+  How does tracing actually work
+
+    - in-process tracing
+      distributed tracing technologies: opentracing, opentelemetry, zipkin, jaeger
+      they are designed to allow you to track context as they move across nodes in a distributed system
+      so you have requests to one server that cause requests to another server
+      they way that works is we propagate some headers that have some identifier that identifies the context called the span
+      the insight behind the tracing crate is that async programs are kind of analogoues to distributed systems
+      async apps in rust has concurrently running tasks that communicate through message passing, message passing is async , fallible
+      kind of like in a network, the netowrk is worse, even more async, more fallible, but a similar concept
+      the only difference is that everything is running in the same address space
+      we can apply the same ideas for tracing in distributed systems to systesm running in a single process
+
+    - so we introduce some core primitives in tracing:
+
+      - spans: represents a period of time in the execution of a program,
+        it has a time when it starts and a time when it ends, so a time period between those two points
+        spans can also be entered and exit, independently from being created and ending,
+        and we can can enter and exit them multiple times,
+        this is how we track the async execution that moves between tasks contexts,
+        and a task might be executed within that context for a period of time, then we yield, we execute some other task, we yield, we execute some other taks
+        over the lifetime of a task, it might be entered multiple times, so we can record both how long it existed for, and how long it was being actively driven or executed.
+        we also can separete between the existence and when we are in the context of that work
+
+        we make a span with the span macro, you get back a span object
+        then we have an enter method on this object, and this gives you an RAII guard, so you can scope the entry of the span to a stack fgrame or inside of the scope in a function, and as long yas you hold this guard, you are considered to be executing inside this span, when you drop the guard, you exit the span
+
+        another tool is the instrument procedural macro, its an attribute you can put on a function and when you call that function you create a span for that funcction and it records all the arguments, and it works on async functions
+        async functions desugar to a future, thats driven when you await the return type from the async function
+        so that returned future is instrumented so that when we poll the future we entere thee span, when we stop polling the future we exit that span, and that span can persist as long as the future that is returned by the async function exists
+
+      - event: singular moments in time, like a log record, but more structured
+        fields add structured data,, they are key value pairs
+        tracing subscribers can consume these pairs as a subset of rust primitives, ints, strings, etc
+        so you can interact with them as those types, instead of as one big string with stuff in it
+        so you dont need grep because we have structured fields of typed values
+
+      - subcribers: collect trace
+          a subscriber is the interface for a component that collects trace data
+          it's basically like a logger, but the log trait has two methods
+          subscriber has a few more methods because it does a lot more than a logger
+          but it's basically the same thing in that its the main extension point for tracing
+          and it actuyally collects the data that's emitted
+          so libraries can provide subscriber implementations that do all kinds of different stuff like recording metrics, printing logs to stdout, etc
+
+    How do I use it?
+
+      create a span,
+      annotate with contextual information
+      enter the span
+
+      create another span, child of the previously entered span, it inherits the context from that span
+      instrument combinator, attaches a span to a future, so that whenever we poll this future we enter that span and when we finish polling we exit
+      we can also put that on async blocks
+      tree of scopes in our program that represents the context in which we're executing
+      we can record errors as structured value, so its an instance of the std error error type, i
+      we're not just printing it or formatting it to a string, the tracing subscriber can look at it and downcast it, look at the source, format it with debug, display, when the std library adds backtraces we can look at its backtrace, etc
+
+    Works with log
+
+      tracing works very nicely with the log crate
+      traciing macros are a superset of the log crate macros
+
+      we have adapters, that let you record log recordsas tracing events and tracing events as log records
+      so if you have a dependency that emits log records you can record them as tracing events that are within that span hierarchy, even though the dependency doesnt know about tracing
+
+      similarly if you have a library that many people depend on, some of them are using tracing, some of them are using log,
+      we have a feature that when you enable it all of the tracing macros also emit log records, so youre users who depend on log records being there still have their log records
+
+    Only pay for what you use.
+
+      disabled instrumentation is nearly free
+      one atomic load in a branch
+      about the same cost as skipping a disabled log line in the log crate
+      we cache the evaluation of filters, so if you have a regex that determines if something's enabled you dont have to run the regex over and over if its for the same thing
+
+      subscriber api is designed so that you don't pay costs by default
+      dependning on the use, a subscriber thats recording trace events mniught do a lot of different things
+      if youre doing time proifiling and theres a crate that does time profiling on top of tracing, you need to make syscalls to get timestamps, if you dont need those timestamps, you dont need to make that syscall
+      if you want tro trap persistent data you have to allocate, but if you dont need that persistent data you dont have to allocate
+      tracing doesnt do any of those things
+      the subscriber can make the syscalls, allocate the storage if it needs to for specific behaviour that it implements
+      tracing itself will never do this
+
+## Diagnostics with Tracing
+
+  Why do we need another logging library?
+
+    Rust already has a robust logging ecosystem based around the log crate's logging facade, with libraries such as env_logger and fern in widespread use.
+    Consider the challenges introduced by diagnostics in asynchronous systems.
+
+    In synchronous code, we can simply log individual messages as the program executes, and expect them to be printed in order.
+    A programmer can interpret the logs fairly easily, since the log records are output sequentially.
+
+    EXAMPLE
+      For example, in a synchronous system, if I see a group of log messages like this:
+
+      DEBUG server: accepted connection from 106.42.126.8:56975
+      DEBUG server::http: received request
+       WARN server::http: invalid request headers
+      DEBUG server: closing connection
+
+      I can infer that the request from the client with the IP address 106.42.126.8 was the one that failed, and that the connection from that client was then closed by the server.
+
+    The context is implied by previous messages: because the synchronous server must serve each request before accepting the next connection.
+
+    However, in asynchronous systems like Tokio, interpreting traditional log messages can often be quite challenging.
+    A single thread in an asynchronous system might be executing any number of tasks, switching between them as IO resources become available, and an application might consist of a number of such worker threads running concurrently.
+    In this world, we can no longer rely on the ordering of log messages to determine context or cause and effect.
+    A task might log some messages and yield, allowing the executor to poll another task that logs its own unrelated messages.
+    Log messages from threads running concurrently might be printed out interleaved.
+    To understand asynchronous systems, the contextual and causal relationships must be recorded explicitly, rather than implied by sequential ordering.
+
+    EXAMPLE
+      If the log lines in the above example were emitted by a asynchronous application, the server task may continue accepting new connections while previously-accepted ones are being processed by other tasks; multiple requests might be processed concurrently by worker threads. We might see something like this:
+
+      DEBUG server: accepted connection from 106.42.126.8:56975
+      DEBUG server: closing connection
+      DEBUG server::http: received request
+      DEBUG server: accepted connection from 11.103.8.9:49123
+      DEBUG server::http: received request
+      DEBUG server: accepted connection from 102.12.37.105:51342
+       WARN server::http: invalid request headers
+      TRACE server: closing connection
+
+      We don't know that the request with invalid headers was received from 106.42.126.8 any longer.
+      Since multiple connections are being processed concurrently, the invalid headers might have been sent on another connection while we waited to receive more data from that client.
+      What can we do to make sense of this mess?
+
+    Conventional logging often captures static contexts about the program — such as what file, module, or function an event was recorded in — but that's of limited use to us in understanding the program's runtime behavior.
+    Instead, visibility into asynchronous code requires diagnostics that track the dynamic runtime contexts in which events occur.
+
+  Application-Level Tracing
+
+    tracing is more than a logging library: it implements scoped, contextual, and structured diagnostic instrumentation.
+    This allows users to trace logical contexts in the application through time, even as the actual flow of execution moves between those contexts.
+
+    Spans
+
+      To record the flow of execution, tracing introduces the concept of spans.
+      Unlike a log line that represents a moment in time, a span models a period of time with a beginning and an end.
+      When a program begins executing in a context or performing a unit of work, it enters a span, and when it stops executing in that context, it exits the span.
+
+      Any events that occur between when a span is entered and when it is exited are considered to have occurred within that span. Similarly, spans may be nested: when a thread enters a span inside of another span, it is in both spans, with the newly-entered span considered the child and the outer span the parent. We can then construct a tree of nested spans and follow them throughout different parts of a program.
+
+      tracing also supports events, which model instantaneous points in time.
+      Events are similar to traditional log messages, but exist within the tree of spans as well.
+      When we record an event, we can pinpoint the context in which it occurred.
+
+    Structure
+
+      By attaching structured data to spans, we can model contexts.
+      Rather than simply recording unstructured, human-readable messages, tracing instrumentation points record typed key-value data called fields.
+
+      EXAMPLE
+        For example, in an HTTP server, a span representing an accepted connection might record fields such as the client's IP address, the requested path, request method, headers, and so on. If we revisit the example above, with the addition of spans, we might see something like this:
+
+        DEBUG server{client.addr=106.42.126.8:56975}: accepted connection
+        DEBUG server{client.addr=82.5.70.2:53121}: closing connection
+        DEBUG server{client.addr=89.56.1.12:55601} request{path="/posts/tracing" method=GET}: received request
+        DEBUG server{client.addr=111.103.8.9:49123}: accepted connection
+        DEBUG server{client.addr=106.42.126.8:56975} request{path="/" method=PUT}: received request
+        DEBUG server{client.addr=113.12.37.105:51342}: accepted connection
+         WARN server{client.addr=106.42.126.8:56975} request{path="/" method=PUT}: invalid request headers
+        TRACE server{client.addr=106.42.126.8:56975} request{path="/" method=PUT}: closing connection
+
+        Notice how the events are annotated with spans that record the client IP address, and the request's path and method.
+        Although multiple events are happening concurrently in different contexts, we can now follow the flow of the request from 106.42.126.8 through the system, and determine that it was the request containing the invalid headers that generated the warning.
+
+      This machine-readable structured data also gives us the ability to consume diagnostic data in more sophisticated ways than simply formatting it to be read by a human.
+
+      EXAMPLE
+        For example, we might also consume the above data by counting the number of requests recieved for different paths or HTTP methods.
+
+      By looking at the structure of the span tree as well as at key-value data, we can even do things like recording the entire lifespan of a request only when it ended with an error.
+
+  A Worked Example
+
+    EXAMPLE
+      To demonstrate the value of this kind of diagnostics, let's take a look at an example.
+      In this example, we've written a small HTTP service, using tower, that implements "character repetition as a service".
+      The service recieves requests for paths consisting of a single ASCII character, and responds with that character duplicated a number of times equal to the value of the Content-Length header.
+
+      We've instrumented the example service using tracing, and used the tracing-subscriber crate to implement an admin endpoint that allows us to change the filter configuration that determines what tracing instrumentation is enabled at runtime.
+      A load generator runs in the background that constantly sends requests for random alphabetic characters to the demo service.
+
+      With a version of the example service instrumented using the log and env_logger crates, we get output like this:
+
+      ...
+      [DEBUG load_log] accepted connection from [::1]:55257
+      [DEBUG load_log] received request for path "/z"
+      [DEBUG load_log] accepted connection from [::1]:55258
+      [DEBUG load_log] received request for path "/Z"
+      [ERROR load_log] error received from server! status: 500
+      [DEBUG load_log] accepted connection from [::1]:55259
+      [DEBUG load_log] accepted connection from [::1]:55260
+      [DEBUG load_log] received request for path "/H"
+      [DEBUG load_log] accepted connection from [::1]:55261
+      [DEBUG load_log] received request for path "/S"
+      [DEBUG load_log] received request for path "/C"
+      [DEBUG load_log] accepted connection from [::1]:55262
+      [DEBUG load_log] received request for path "/x"
+      [DEBUG load_log] accepted connection from [::1]:55263
+      [DEBUG load_log] accepted connection from [::1]:55264
+      [WARN  load_log] path "/" not found; returning 404
+      [DEBUG load_log] accepted connection from [::1]:55265
+      [ERROR load_log] error received from server! status: 404
+      [DEBUG load_log] received request for path "/Q"
+      [DEBUG load_log] accepted connection from [::1]:55266
+      [DEBUG load_log] received request for path "/l"
+      ...
+
+      Because the service is under load, these messages scroll past very fast.
+      I've included just a small sample of the output here.
+
+      Although the errors do show up in the logs, it's difficult to associate them with any context that might help us determine their cause.
+      For the 404 error, we're lucky enough that whomever added the warning line logged by the server thought to include the path in the human-readable log message, but for the 500 error, we're flying blind.
+
+      Now, let's switch to a version of the demo application that's instrumented with tracing:
+
+      ...
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60891}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60890}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60891}:request{req.method=GET req.path="/I"}: load: received request. req.headers={"content-length": "18", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60890}:request{req.method=GET req.path="/T"}: load: received request. req.headers={"content-length": "4", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60892}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60892}:request{req.method=GET req.path="/x"}: load: received request. req.headers={"content-length": "6", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60893}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60895}:request{req.method=GET req.path="/"}: load: received request. req.headers={"content-length": "13", "host": "[::1]:3000"} req.version=HTTP/1.1
+       WARN server{name=serve local=[::1]:3000}:conn{remote=[::1]:60895}:request{req.method=GET req.path="/"}: load: rsp.status=404
+      ERROR gen: error received from server! status=404
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60893}:request{req.method=GET req.path="/a"}: load: received request. req.headers={"content-length": "11", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60894}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60894}:request{req.method=GET req.path="/V"}: load: received request. req.headers={"content-length": "12", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60896}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60998}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60996}:request{req.method=GET req.path="/z"}: load: received request. req.headers={"content-length": "17", "host": "[::1]:3000"} req.version=HTTP/1.1
+      ERROR gen: error received from server! status=500
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60987}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60911}: load: accepted connection
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60911}:request{req.method=GET req.path="/m"}: load: received request. req.headers={"content-length": "7", "host": "[::1]:3000"} req.version=HTTP/1.1
+      DEBUG server{name=serve local=[::1]:3000}:conn{remote=[::1]:60912}: load: accepted connection
+      ...
+
+      Notice how in addition to printing individual events, the span contexts in which they occurred are also printed.
+      In particular, each connection and request creates its own span.
+      However, these events are recorded very frequently, so the logs are still scrolling by quite fast.
+
+      If we send a request to the demo app's admin endpoint, we can reload the filter configuration to look only at the events recorded by the load generators:
+
+      :; curl -X PUT localhost:3001/filter -d "gen=debug"
+
+    > These filters are specified using a syntax similar to that of the env_logger crate.
+
+    EXAMPLE
+      The rate at which the logs scroll by slows down significantly, and we see output like this:
+
+      ...
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      ...
+
+      Looking at the request spans output by the load generator, we start to notice a pattern.
+      The value of the req.path field is always either "/" or "/z".
+
+      We can reload the filter configuration again, setting the verbosity to maximum only when we're inside a span with the field req.path with the value "/":
+
+      :; curl -X PUT localhost:3001/filter -d "[{req.path=\"/\"}]=trace"
+
+      The [] indicates that we wish to filter on tracing spans rather than on static targets, and the {} indicate that we want to match span fields.
+
+      ...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/"}: load: received request. req.headers={"content-length": "21", "host": "[::1]:3000"} req.version=HTTP/1.1
+      TRACE request{req.method=GET req.path="/"}: load: handling request...
+      TRACE request{req.method=GET req.path="/"}: load: rsp.error=path must be a single ASCII character
+       WARN request{req.method=GET req.path="/"}: load: rsp.status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: response complete. rsp.body=path must be a single ASCII character
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/"}: load: received request. req.headers={"content-length": "18", "host": "[::1]:3000"} req.version=HTTP/1.1
+      TRACE request{req.method=GET req.path="/"}: load: handling request...
+      TRACE request{req.method=GET req.path="/"}: load: rsp.error=path must be a single ASCII character
+       WARN request{req.method=GET req.path="/"}: load: rsp.status=404
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: error received from server! status=404
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: response complete. rsp.body=path must be a single ASCII character
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/"}: load: received request. req.headers={"content-length": "2", "host": "[::1]:3000"} req.version=HTTP/1.1
+      ...
+
+      Now we see what's going on.
+      The service doesn't support requests to / and is, quite correctly, responding with a 404.
+      But what about those 500 errors?
+      We remember that they seemed to only occur when the requested path is "/z"...
+
+      :; curl -X PUT localhost:3001/filter -d "[{req.path=\"/z\"}]=trace"
+
+      ...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/z"}: load: received request. req.headers={"content-length": "0", "host": "[::1]:3000"} req.version=HTTP/1.1
+      TRACE request{req.method=GET req.path="/z"}: load: handling request...
+      TRACE request{req.method=GET req.path="/z"}: load: error=i don't like this letter. letter="z"
+      TRACE request{req.method=GET req.path="/z"}: load: rsp.error=unknown internal error
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: response complete. rsp.body=unknown internal error
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/z"}: load: received request. req.headers={"content-length": "16", "host": "[::1]:3000"} req.version=HTTP/1.1
+      TRACE request{req.method=GET req.path="/z"}: load: handling request...
+      TRACE request{req.method=GET req.path="/z"}: load: error=i don't like this letter. letter="z"
+      TRACE request{req.method=GET req.path="/z"}: load: rsp.error=unknown internal error
+      ERROR load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: error received from server! status=500
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: response complete. rsp.body=unknown internal error
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: gen: sending request...
+      TRACE load_gen{remote.addr=[::1]:3000}:request{req.method=GET req.path="/z"}: tower_buffer::service: sending request to buffer worker
+      DEBUG request{req.method=GET req.path="/z"}: load: received request. req.headers={"content-length": "24", "host": "[::1]:3000"} req.version=HTTP/1.1
+      TRACE request{req.method=GET req.path="/z"}: load: handling request...
+      TRACE request{req.method=GET req.path="/z"}: load: error=i don't like this letter. letter="z"
+      TRACE request{req.method=GET req.path="/z"}: load: rsp.error=unknown internal error
+      ...
+
+      We can now trace the entire life-cycle of a request to /z, ignoring everything else that's happening concurrently.
+      And, looking at the logged events, we see that the service records that "I don't like this letter" and returns an internal error.
+      We've found the (admittedly, entirely fake) bug!
+
+      This kind of dynamic filtering is only possible with context-aware, structured diagnostic instrumentation.
+
+    > Because nesting spans and events lets us construct a tree of related contexts, we can interpret the diagnostics in terms of events that are logically or causally linked (e.g., they occurred while handling the same request) rather than those that are temporally linked (they occurred near each other in time).
+
+  Getting Started with Tracing
+
+    The easiest way to get started with tracing is to use the tracing::instrument attribute on a function.
+    This attribute will instrument the function to create and enter a new span when the function is called, with the function's arguments recorded as fields on that span.
+
+    For example:
+
+      use tracing::instrument;
+
+      #[instrument]
+      pub async fn connect_to(remote: SocketAddr) -> io::Result<TcpStream> {
+          // ...
+      }
+
+    tracing also provides a set of function-like macros for constructing spans and events.
+    Users of the log crate should note that tracing's trace!, debug!, info!, warn! and error! macros are a superset of the similarly-named macros in log and should be drop-in compatible:
+
+      use log::info;
+      info!("hello world!");
+
+      use tracing::info;
+      info!("hello world!");
+
+    The more idiomatic style, however, is to use these macros to record structured data rather than unstructured messages.
+
+    For example:
+
+      use tracing::trace;
+
+      let bytes_read = ...;
+      let num_processed = ...;
+
+      // ...
+
+      trace!(bytes_read, messages = num_processed);
+
+    A Subscriber implementation collects and records trace data, similarly to a logger in conventional logging.
+    Applications must set up a default subscriber.
+
+    The Subscriber interface is tracing's main extension point; different methods and policies for recording and processing trace data can be represented as Subscriber implementations.
+    Currently, the tracing-fmt crate provides a Subscriber implementation that logs trace data to the console, and more implementations are soon to come.
+
+  Building an Ecosystem
+
+    The tracing ecosystem is centered around
+    - the tracing crate, which provides the API used to instrument libraries and applications,
+    - and the tracing-core, which provides the minimal, stable kernel of functionality necessary to connect that instrumentation with Subscribers.
+    However, this is just the tip of the iceberg.
+    The tokio-rs/tracing repository contains a number of additional crates, in varying degrees of stability.
+
+    These crates include:
+        Compatibility layers with other libraries, such as tracing-tower and tracing-log.
+        Subscriber implementations, such as tracing-fmt.
+        The tracing-subscriber crate, which provides utilities for implementing and composing Subscribers.
+
+    However, there is a lot of future work, including:
+
+        Integrating with distributed tracing systems such as OpenTelemetry or Jaeger.
+        Building out richer instrumentation in the Tokio runtime.
+        Integration with more libraries and frameworks.
+        Writing Subscribers to implement more ways of collecting trace data, such as metrics, profiling, et cetera.
+        Helping to stabilize experimental crates.
+
+-->
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../comp.sci.eng/rust/rust_debugging.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../comp.sci.eng/rust/rust_resources_books.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../comp.sci.eng/rust/rust_debugging.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../comp.sci.eng/rust/rust_resources_books.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,138 @@
+{
+  "main": {
+    "id": "eece7db21800cd5d",
+    "type": "split",
+    "children": [
+      {
+        "id": "987195d5b054dc3b",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "comp.sci.eng/index.md",
+            "mode": "preview",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8fda315f6178e432",
+    "type": "split",
+    "children": [
+      {
+        "id": "995fba5cacbab2a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dd6b602bb398c13b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "a13d39aee9b28b0c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8aba28d1c2fcc0ab",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "79621d8a3ab86c78",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e0aed794fb76274",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ebe1194c6b6879ab",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "comp.sci.eng/index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "52463add3c0b4a4a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "comp.sci.eng/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a4e89694b977519a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "4520a09d7bcbadea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "comp.sci.eng/index.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "987195d5b054dc3b",
+  "lastOpenFiles": [
+    "comp.sci.eng/ai/index.md",
+    "Home.md",
+    "society/_cyberpunk.md",
+    "society/_anarchism.md"
+  ]
+}
