@@ -15,11 +15,6 @@
        url('open-sans-v17-all-charsets-300.woff2') format('woff2');
 }
 
-@font-face { 
-    font-family: "gohu"; 
-    src: url("../fonts/gohu.woff") format('woff'); 
-}
-
 .two-column-text-layout {
     width: 100%;
     padding: 0px;
