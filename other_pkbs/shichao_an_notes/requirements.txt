@@ -12,7 +12,7 @@ feedgen==0.3.2
 ghp-import==0.4.1
 livereload==2.4.0
 lxml==3.5.0
-mkdocs==0.14.0
+mkdocs==1.2.3
 python-dateutil==2.4.2
 python-markdown-math==0.2
 pytz==2015.7
