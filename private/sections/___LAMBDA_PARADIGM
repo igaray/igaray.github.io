@@ -1,0 +1,215 @@
+___LAMBDA_PARADIGM
+
+PROJECTS
+
+- benchmark
+- optimizacion
+- definir metricas
+- mitad de enero: para lanzar? (fin de febrero)
+
+- bitcoin, ethereum, starknet
+1. escribir doco sobre perf eng
+2. equipo matias g, chaja, bono, marian, pelito, arjovsky
+
+- reth
+- moon / bitcoin-core zkp
+
+- no hay claridad de objetivo
+- eth nodes: consensus + execution
+- ver
+  - akula
+  - rust-evm
+  - foundry
+
+zkp systems
+- groth16
+- marlin
+- plonk (=starks)
+
+---
+thoughts
+	api <-> protocol <-> fsm <-> formal methods
+
+---
+PERF ENG PLAN
+
+- read the benchmarking channel in discord
+- how benchmarking is done in lambda
+- establish baseline
+	- where does the program spend it's time?
+
+---
+Kevin Bowers - Jump's New Validator 
+
+- what firedancer is
+	- a new solana validator under development
+- give background on me
+- give background on jump
+- describe development approach
+	- 
+- show progress just far
+
+---
+
+
+why is the description for the db and staged crates the same?
+
+why is the transaction pool transaction.rs empty?
+
+why are the rpc types in a separate crate than the rpc implementation?
+
+
+
+
+
+
+
+do:
+- read reth code and comment
+	- modular
+	- 
+- read reth docs
+- try converting graphml to mermaid
+- how becnhmarking is done at lambda
+- how benchmarking is currently done in reth
+read:
+- crypto.md & awesome crypto
+- eth docs
+- read systems performance
+
+---
+LAMBDA
+- meetup rust
+- book club
+	- matm de estudio vs ejercicios vs mat de ref
+- learning path a mdboko
+= learning path para nonjuniors	 
+- hackathons
+
+
+
+---
+discord
+
+reth
+- general
+	- remaining work
+		https://github.com/foundry-rs/reth/issues/341
+		So did another pass at the codebase. My understanding of what we're missing for full sync:
+		1. PoW and PoS consensus verification
+		2. Certain verification checks during execution (or statetests)
+		3. Wiring up each component in the stages loop in a CLI to perform a full sync
+		4. Ensure the P2P network works properly during syncing at the tip or while gossiping mempool transactions.
+		5. Ensure the JSON-RPC responses work as expected and are highly performant.
+		Is that right?
+		And we have built from scratch:
+		1. generic headers & block bodies downloaders,
+		2. generic database and codec abstractions,
+		3. a generic mempool,
+		4. a new p2p stack,
+		5. a blazing-fast EVM executor,
+		6. the “core” syncing stages (headers/bodies/senders/execution)
+		7. the foundations for fuzzing and benchmarking every package
+		Is that right? Am I forgetting anything?
+		Tring to communicate "how far along" are we
+		(That is to reach 'feature parity' not to optimize etc.)
+
+	- 
+	Rjected — 12/05/2022 8:39 PM
+	the doc comment in pool/mod.rs is pretty awesome 
+	I basically looked at the parked, pending, alltransaction pools, then checked out txpool.rs
+	TransactionsManager<Pool> (in net/network) is good to look at if you'd like to learn how the networking components and txpool interact
+
+	wokring on a "map" / "how to get started"-type doc for eahc component
+	which combined with the top level map above by lambda is gonna be v helpful
+
+- docs
+- benchmarking
+- p2p
+- evm
+- db
+- consensus
+- rpc
+- txpool
+- staged-sync
+- downloaders
+
+rust
+- rust eng
+- ether-rs
+- rust-learning
+- revm
+
+---
+# Background Knowledge
+- paradigm
+	- https://twitter.com/paradigm
+	- https://github.com/paradigm/
+	- https://twitter.com/FrankResearcher
+	- https://twitter.com/gakonst
+	- https://github.com/gakonst
+	- https://www.gakonst.com/
+	- https://twitter.com/onbjerg
+	- https://github.com/onbjerg?tab=stars
+- https://twitter.com/gakonst/status/1595648232226291712
+	@paradigm is building Reth, a Rust Ethereum Execution Layer.
+	focused on contributor friendliness, modularity, and performance
+	A core goal of Reth is modularity and open-source friendliness.
+	Every component is built to be used as a library: well-tested, heavily documented and benchmarked.
+	Another goal is performance, which is why we used Rust and the Erigon node architecture.
+	We also use our Ethereum libraries which we’ve battle-tested via Foundry.
+	Like with Foundry, tests, and documentation are a core part of our team’s culture.
+- erigon
+	- [Erigon](https://github.com/ledgerwatch/erigon) Ethereum implementation on the efficiency frontier 
+- [Hive](https://github.com/ethereum/hive/) Ethereum end-to-end test harness 
+- [Ethereum Execution Specs](https://github.com/ethereum/execution-specs/) Specification for the Execution Layer. Tracking network upgrades. 
+- helios
+	- https://twitter.com/NoahCitron/status/1589739389545914368
+	- https://a16zcrypto.com/building-helios-ethereum-light-client/
+	- https://github.com/a16z/helios
+- uncloak
+	Welcome to Uncloak, a community-maintained knowledge wiki experiment, aiming to increase the accessibility of cryptography for developers, researchers, and everyone else.
+  - https://uncloak.org/README
+  - https://twitter.com/uncloakcrypto/status/1591117127196749825
+
+---
+pacman -Ss heaptrack
+pacman -Ss perf-utils
+pacman -Ss linux-utils
+pacman -Ss util-linux
+pacman -Ss perf
+
+heaptrack ls
+ls
+rm heaptrack.ls.25913.zst 
+
+heaptrack /usr/bin/systemctl
+heaptrack --analyze "/root/heaptrack.systemctl.26102.zst"
+heaptrack_print --help
+heaptrack_print -p "/root/heaptrack.systemctl.26102.zst"
+heaptrack_print -f "/root/heaptrack.systemctl.26102.zst"
+
+cargo install cargo-binstall cargo-flamegraph inferno
+
+heaptrack /usr/bin/test
+heaptrack_print --help
+heaptrack_print -f sarasa.txt -F heaptrack.test.fg heaptrack.test.30907.zst 
+heaptrack_print -F heaptrack.test.fg heaptrack.test.30907.zst 
+
+inferno-flamegraph heaptrack.test.fg > heaptrack.test.svg
+
+hyperfine -h
+
+cargo flamegraph --output trace.svg -- --trace_file /dev/null ../cair
+cargo flamegraph --output trace.svg -- --trace_file /dev/null cairo_programs/benchmarks/compare_arrays_200000.json 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- --trace_file /dev/null cairo_programs/benchmarks/compare_arrays_200000.json 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- --trace_file /dev/null ./cairo_programs/benchmarks/compare_arrays_200000.json 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- cairo_programs/benchmarks/compare_arrays_200000.json 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- ./target/release/cleopatra-run cairo_programs/benchmarks/compare_arrays_200000.json 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- cairo_programs/benchmarks/compare_arrays_200000.json 
+git checkout src/vm/vm_core.rs 
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- cairo_programs/benchmarks/compare_arrays_200000.json 
+cargo install cargo-flamegraph
+cargo install flamegraph
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --output trace.svg -- cairo_programs/benchmarks/compare_arrays_200000.json 
+

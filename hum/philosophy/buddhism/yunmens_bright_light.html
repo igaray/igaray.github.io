@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>yunmens_bright_light - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../../cse/mathematics/index.html">Mathematics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>Combinatorics</div></li></ol></li><li class="chapter-item "><a href="../../../cse/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../../cse/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../../cse/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping a Simple Compiler From Nothing</a></li><li class="chapter-item "><a href="../../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../../cse/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item "><a href="../../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><div>Domain Driven Design</div></li><li class="chapter-item "><div>SOLID</div></li><li class="chapter-item "><a href="../../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency_quality/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../../cse/tools/cli.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/git.html">git</a></li><li class="chapter-item "><a href="../../../cse/tools/nix.html">nix</a></li><li class="chapter-item "><a href="../../../cse/tools/nnn.html">nnn</a></li><li class="chapter-item "><a href="../../../cse/tools/prometheus.html">prometheus</a></li><li class="chapter-item "><a href="../../../cse/tools/rsync.html">rsync</a></li><li class="chapter-item "><a href="../../../cse/tools/sed.html">sed</a></li><li class="chapter-item "><a href="../../../cse/tools/ssh.html">ssh</a></li><li class="chapter-item "><div>taskwarrior</div></li><li class="chapter-item "><div>timewarrior</div></li><li class="chapter-item "><a href="../../../cse/tools/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../../cse/tools/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../../cse/tools/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><div>Nomad</div></li><li class="chapter-item "><a href="../../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../../cse/tools/kakoune.html">Kakoune</a></li><li class="chapter-item "><div>Kubernetes</div></li><li class="chapter-item "><a href="../../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../../cse/tools/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/proglangs/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../../cse/lisp/index.html">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../../cse/lisp/the_lisp_curse.html">The Lisp Curse</a></li></ol></li><li class="chapter-item "><a href="../../../cse/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../../cse/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/proglangs/sql.html">SQL</a></li></ol></li><li class="chapter-item "><a href="../../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><div>Art</div></li><li class="chapter-item "><div>History</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item expanded "><a href="../../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/anapanasanti.html">anapanasanti</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/ascending_the_mountain.html">ascending_the_mountain</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/beginning_anew.html">beginning_anew</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddha_the_word.html">buddha_the_word</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">buddhas_way_and_abortion</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/death_is_a_sacrament.html">death_is_a_sacrament</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/detachment.html">detachment</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/dokkodo.html">dokkodo</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_dalai_lama.html">emptiness_dalai_lama</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/gassho_and_bowing.html">gassho_and_bowing</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/heart_to_heart_zen_and_religion_the_roots_and_the_shape.html">heart_to_heart_zen_and_religion_the_roots_and_the_shape</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/realizing_our_true_nature.html">realizing_our_true_nature</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/rules_of_chado.html">rules_of_chado</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_mind_illuminated.html">the_mind_illuminated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item expanded "><a href="../../../hum/philosophy/buddhism/yunmens_bright_light.html" class="active">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../../human_manual/index.html">Human Manual</a></li><li class="chapter-item "><a href="../../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../../music/wave.html">*wave</a></li><li class="chapter-item "><div>Classical Music</div></li><li class="chapter-item "><div>Jazz</div></li><li class="chapter-item "><div>Japanese Jazz</div></li></ol></li><li class="chapter-item "><a href="../../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../../misc/library/index.html">Library</a></li><li class="chapter-item "><a href="../../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<p>This document was originally distributed on Internet as a part of the 
+Electronic Buddhist Archives, available via anonymous FTP on the node 
+COOMBS.ANU.EDU.AU</p>
+<p>The document's ftp filename and the full directory path are given in the 
+coombspapers top level INDEX file.</p>
+<p>This version of the document has been reformatted by Barry Kapke and is 
+being distributed, with permission, via the DharmaNet Buddhist File 
+Distribution Network.</p>
+<h2 id="last-updated-29-september-1993"><a class="header" href="#last-updated-29-september-1993">[Last updated: 29 September 1993]</a></h2>
+<pre><code>                    &quot;YUNMEN'S BRIGHT LIGHT&quot;.
+</code></pre>
+<p>[this text was first published in the MIND MOON CIRCLE, Summer 1991 pp 
+6-10]</p>
+<p>This text addresses some of the most fundamental and delicate religious 
+issues. Therefore, it should be read, quoted and analysed in a mindful 
+way.</p>
+<h2>All copyrights to this document belong to Ross Bolleter Sensei, Zen 
+Center of Western Australia, Perth, WA, Australia
+Enquiries: The Editor, &quot;Mind Moon Circle&quot;, Sydney Zen Centre, 251 Young 
+St., Annandale, Sydney, NSW 2038, Australia. Tel: + 61 2 660 2993</h2>
+<pre><code>                     YUNMEN'S BRIGHT LIGHT
+                     ROSS BOLLETER, Sensei
+                          Spring 1991
+</code></pre>
+<p>Yunmen gave instruction saying, &quot;Everyone has their own light. If you 
+want to see it you can't. The darkness is dark, dark. Now what is your 
+light?&quot;</p>
+<p>He himself answered, &quot;The storeroom. The gate.&quot; Again he said, &quot;It would 
+be better to have nothing that to have something good.&quot;</p>
+<p>Although Yunmen was a student of Hsueh Feng he was in fact enlightened 
+by the ancient and eccentric teacher Mu-Chou (Chen Tsun-Su). It is said 
+that Mu-Chou lived alone in a hut near the high road travelled by monks 
+when they were going on pilgrimage from monastery to monastery. Mu-Chou 
+would make grass sandals and leave them on the side of the road so that 
+monks could replace their old worn out footwear. Mu-Chou was most 
+secretive about this and it took years to find out who was responsible 
+for the generous actions.</p>
+<p>Mu-Chou's teaching methods were extremely rough, utterly abrupt. It is 
+said that he would listen to the sound of the footsteps of approaching 
+monks and if they didn't indicate the Way he would refuse to open his 
+door. Yunmen came to him twice and Mu- Chou refused to open the door; 
+the third time, Yunmen succeeded in getting his foot in. Mu-Chou grabbed 
+him and urged him, &quot;Speak! Speak!&quot; As Yun-men was about to say 
+something, Mu-Chou threw him out, slammed the door on him, breaking one 
+of his legs. The intense pain awakened Yunmen instantly.</p>
+<p>Yunmen went on to become a great teacher with over sixty enlightened 
+disciples, unwittingly becoming the founder of the Yunmen School which 
+lasted into the thirteenth century in China until it was absorbed into 
+the Linchi (Rinzai) School. The Yunmen school was responsible for the 
+creation and preservation of some of the great masterpieces of Ch'an 
+literature in this period, including the book of one hundred koans 
+entitled The Blue Cliff Record. from which this case is taken Apart from 
+Yunmen's Bright Light, there are thirteen other koans which have Yunmen 
+as their protagonist in The Blue Cliff Record.</p>
+<p>Yunmen's style is splendidly incisive and he became celebrated for his 
+one word responses, which became known as &quot;The One Word Barrier&quot;.</p>
+<pre><code> A monk asked, &quot;What is the straight path to Yunmen Mountain?&quot;
+ Yunmen replied, &quot;Chi'in!&quot; (intimacy)      (1)
+
+ A monk asked Yunmen, &quot;What are the words that transcend the Buddha
+ and the Patriarchs?&quot;
+ Yunmen said, &quot;Kobyo!&quot; (sesame rice cake) (2)
+
+ A monk asked Yunmen, &quot;What is Buddha?&quot;
+ Yunmen said, &quot;Kanshiketsu!&quot; (dried shitstick) (3)
+</code></pre>
+<p>With &quot;Ch'in!&quot;, &quot;Kobyo!&quot;, &quot;Kanshiketsu&quot;, Yunmen vividly reveals the Great 
+Way. He uses words in a way utterly unclouded with notions and concepts 
+of meaning or no-meaning. The One Word Barrier, while powerful and 
+penetrating, is never merely rough, and the spirit of his way is lofty 
+yet accomodating; uncompromising, yet utterly generous.</p>
+<p>Yunmen said to the assembly, &quot;Within heaven and earth, in the midst of 
+the cosmos, there is one treasure hidden in the body. Holding a lantern 
+it goes towards the Buddha hall. It brings the great triple gate and 
+puts it on the lantern.&quot; (4)</p>
+<p>A monk asked, &quot;What is the roar of the earthen ox on top of the snow 
+ridge?&quot;
+Yunmen replied, &quot;Heaven and earth darkened red.&quot; (5)</p>
+<p>There is weird splendour in these koans which show the unclouded depths 
+of Yunmen's vision as poet and Zen teacher. Yuan Wu in his comment on 
+&quot;Yunmen's One Treasure&quot; in The Blue Cliff Record says if Yunmen,&quot;by 
+means of unconditional compassion he acts unasked as an excellent 
+friend!&quot; (6)</p>
+<p>Yunmen said that if we want to see our light, we can't. When we turn 
+inward to see the source of our being, to discover the light of self- 
+nature, everything is dark and there is nothing to be seen. Searching 
+inwardly for our true self is like the eye trying to look at itself, 
+like the sun trying to shine on the sun.</p>
+<p>In this condition the darkness is dark, dark. If we look at this from 
+one angle, this seems to be the darkness of a dead end where our whole 
+enterprise seems to have foundered in despair and delusion. Yet this 
+condition, no less than opening fresh eyes to the Morning Star, or 
+sighting distant peach blossoms, is the Way itself, conveying our 
+essential nature. When the practice feels dry and fruitless and we seem 
+to scoop from the same empty waterhole, when &quot;the tree withers and the 
+leaves fall&quot;, (7) we find everything right there.</p>
+<p>If we continue to practise and to carry the koan in the place where &quot;the 
+darkness is dark, dark,&quot; then inside and outside become one; there is no 
+gap between self and other and there is nowhere to search. This is a 
+familiar place in practice and is referred to over and over again in Zen 
+literature. Here is Bassui Zenji, a 14th century Japanese Rinzai 
+teacher, whose natural koan was &quot;Who is (the Master of) hearing that 
+sound?&quot;, showing how to work with this condition:</p>
+<p>At last every vestige of self-awareness will disappear and you will feel 
+like a cloudless sky. Within yourself you will find no &quot;I&quot;, nor will you 
+discover anyone who hears. This Mind is like the void, yet it hasn't a 
+single spot that can be called empty. Do not mistake this state for 
+self-realisation, but continue to ask yourself even more intensely, &quot;Now 
+who is it that hears?&quot; If you bore and bore into this question, 
+oblivious to anything else, even this feeling of voidness will vanish 
+and you won't be aware of anything - total darkness will prevail. (Don't 
+stop here, but ) keep asking with all your strength, &quot;What is it that 
+hears?&quot; Only when you have completely exhausted the questioning will the 
+question burst; now you will feel like a person that has come back from 
+the dead. This is true realisation. You will see the Buddhas of all the 
+Universes face to face and the Patriarchs past and present. (8)</p>
+<p>Even when our resources are utterly depleted we don't give up but 
+steadily return to the koan using all the energy we have at that time, 
+but not straining, not forcing. For Bassui it was &quot;Who is it who 
+hears?&quot;, for us it is most likely to be Mu, but the procedure is the 
+same, the same light, steady, unfaltering vigilance.</p>
+<p>The vigil of working with the koan and the koan working with us prepares 
+the ground, and in the most fundamental sense, is the ground of 
+realisation. In that deepened condition, unknowingly we ready ourselves 
+and any spark can light up the cave. For Yunmen it was the pain of his 
+leg being broken by the door as Mu-Chou slammed it; for Wu-men it was 
+the sound of the drum announcing the noonday meal; for Ling-Yun, after 
+thirty years of practice, it was the sight of the pink blossoms of 
+distant peach trees; for Kyogen it was the sound of the stone striking 
+the bamboo - &quot;duk&quot;.</p>
+<p>&quot;The storeroom. The gate.&quot; For Yunmen these are our lights and when we 
+are ready and utterly open they shine with our true nature. Not only the 
+storehouse, the gate, but the star and the wattle, the drunk enveloping 
+us with his beery breath at the party, the shit in the toilet; all these 
+are our own lights. And not only the sharp and crystalline calls of the 
+world, but also the boring, the infuriating and the painful voices that 
+arise in our zazen; all the states and conditions which generate and 
+compose our emotional weather; all the homeless and rejected parts of 
+the self that cry out and long to take us in and be taken in, to give 
+and receive refuge. These too, with the store house, the gate, our own 
+own lights.</p>
+<p>However, if we search for our true nature in the world of colour and 
+form we can't find it. Searching for the flower, the star, the 
+storeroom, the gate that will be the agent of our enlightenment is as 
+futile as the inward introspective search for our own light. If we try 
+to turn towards it, we deviate. Seen one way, our trying cannot discover 
+or confirm our own bright light; from the other side the searching and 
+striving is itself the whole matter. This is conveyed in a telling and 
+lovely way in the first of Tosotsu's Three Barriers:</p>
+<p>The purpose of going to abandoned, grassy places and doing zazen is to 
+search for my self-nature. Now, at such a time, where is my self 
+nature?&quot; (9)</p>
+<p>The lonely figure that searches in the undergrowth provides its light no 
+less than the storeroom, the gate.</p>
+<p>&quot;It would be better to have nothing than to have something good. In 
+saying this, Yunmen warns us against clinging to enlightenment and 
+getting caught up with attainment; better, he says, to live without a 
+trace of have and have not, then the planes roar through, the birdsong 
+penetrates everywhere, we laugh and cry, get up, forget to get up, make 
+love, put on clothes, go to the beach, get born, die; all this without 
+the impediments of ownership. However, unfortunately, there is no 
+trouble in recognising whose telephone bill it is when it lands on the 
+hall table!</p>
+<p>Again, in saying, &quot;It would be better to have nothing than to have 
+something good&quot;, Yunmen warns us not to go on clinging to his words. 
+There are grave dangers in utilising &quot;The storeroom, the gate&quot; or &quot;dried 
+shitstick, or &quot;sesame rice cake&quot; as mechanical koan responses that 
+neither illuminate the Way or succeed in propping up the gate. Better to 
+show the whole empty universe in our silence than to formally reiterate 
+his words. One moment their flash illuminates the whole world, the next 
+we drag them around like carcases. Even worse, they get handed onto 
+others. Once is enough. Enough is enough.</p>
+<p>Yunmen refused to allow his listeners to take notes during his talks. 
+&quot;What is the use of recording my words and tying up your tongues?&quot; he is 
+said to have cried as he chased away those who wanted to memorise his 
+sayings. It is thanks to Hsian-lin Ch'eng-Yuan who dressed himself in a 
+paper robe and wrote down Yunmen's sayings and dialogues on it, that we 
+have the substantial collection of koans and stories that nourish Zen 
+practice in our times. (10)</p>
+<p>In the flickering, unsteady darkness of the practice we come up to the 
+gate a thousand times and judder at the final step. Likewise the 
+Universe itself presents the whole matter over and over again till 
+ordinary things gleam with the allure of our self-nature.</p>
+<p>As practice deepens we just accept the fear and hesitation as we come up 
+to the gate but don't go through; on each occasion we just resume our 
+vigil with the koan. In time, the &quot;inner&quot; world of yearning and striving 
+and the &quot;outer&quot; world of 'the storeroom and the gate&quot; fall into deeper 
+and deeper affinity. Unaided, the Way is seeking the Way.</p>
+<p>Yunmen speaks of us wanting to see our own light: Rilke, the great 
+German poet of the early twentieth century whose later work (especially 
+the Ninth Duino Elegy) inhabits a realm which has a considerable overlap 
+with Zen, leans on the other side when he writes of the yearning of 
+things for us to notice and include them:</p>
+<p>Yes, the springtimes needed you. Often a star was waiting for you to 
+notice it. A wave rolled towards you out of the distant past, or as you 
+walked under an open window, a violin yielded itself to your hearing 
+.....(11).</p>
+<p>This is the fleeting world that needs us and in some strange way keeps 
+calling to us, as Rilke puts it, the most fleeting of all. (12) As we 
+yearn and search, so too do the star, the wave, the violin. The fleeting 
+world shines out moment by moment as the fallen jacaranda blossoms 
+staring up from the back lawn, the cark cark of the crows, the son or 
+daughter arguing back, challenging our authority - each calls out to be 
+included.</p>
+<p>We find this calling, this beckoning in our tradition when in the first 
+Oxherding picture, the herdsman is fruitlessly searching for the Ox 
+(which in the series of ten pictures depicting particular stages on the 
+Way, stands for the Mind of Realisation). It is evening and the herdsman 
+is exhausted and unable to find any trace of the Ox, hearing only the 
+cicadas in the trees.</p>
+<p>The cicadas chirp chirp with all their might; the Ox is right there, but 
+the herdsman is not ready for this and the journey and the search for 
+refuge continue. Yet the cicadas continue to call and, moment after 
+moment, each thing longs to be included; the cat comes up to the back 
+door for its evening meal, someone turns on a radio next door. Events 
+scuffle, jostle to be taken in. &quot;Here I am!&quot; they shout.</p>
+<p>Dogen saw this clearly when he wrote: &quot;The Dharma wheel turns from the 
+beginning. There is neither surplus nor lack. The whole universe is 
+moistened with nectar, and the truth is ready to harvest.&quot; (13)</p>
+<p>When we accept the invitation, the self and the Universe find refuge 
+when there is no self, no other. In this realm, all beings are saved, as 
+they have been from the beginning. When Shakyamuni having sat all night 
+under the Bodhi tree looked up and saw the Morning Star with fresh eyes, 
+the Morning Star, no less than Shakyamuni, found its true home: each was 
+the other's own bright light.</p>
+<p>Yunmen put it this way: &quot;Medicine and sickness mutually correspond to 
+each other. The whole universe is medicine. What is the self?&quot; In asking 
+what is the self, Yunmen is asking a similar question to &quot;What is our 
+own light?&quot;</p>
+<p>The night is full of cicadas; the fan hums loudly, shivering stars cover 
+the sky at midnight; we sit nodding off, turning back over and over 
+again to the koan. Depth calls to depth. Each person, each being, each 
+thing longs to be included.</p>
+<p>At such a time, what is our own light?</p>
+<p>References</p>
+<ol>
+<li>
+<p>Chang Chung-Yuan, Original Teachings of Ch'an Buddhism (Vintage 
+Books, Random House, New York, 1971, p. 268.</p>
+</li>
+<li>
+<p>Yamada and Aitken (transl) Ihe Blue Cliff Record. Case 77, 
+(unpublished ms).</p>
+</li>
+<li>
+<p>Yamada and Aitken (transl) Mumonkan, Case 21 (unpublished ms).</p>
+</li>
+<li>
+<p>Yamada and Aitken, The Blue Cliff Record, Case 62 (unpublished ms).</p>
+</li>
+<li>
+<p>Chang Chung-Yuan, ibid, p 293.</p>
+</li>
+<li>
+<p>Cleary, Thomas and J.C. (transl) The Blue Cliff Record (Shambhala, 
+Boulder and London, 1977) Case 62, p. 400.</p>
+</li>
+<li>
+<p>Yamada and Aitken (transl) The Blue Cliff Record, Case 27, &quot;Unmon's 
+Manifestation&quot; .</p>
+</li>
+<li>
+<p>Bassui Zenji, &quot;The Talk on One Mind&quot; from Kapleau, Philip (ed), The 
+Three Pillars of Zen (Anchor Books, Doubleday, Garden City, New York, </p>
+</li>
+</ol>
+<ol start="1980">
+<li>p. 272.</li>
+</ol>
+<ol start="9">
+<li>
+<p>Yamada and Aitken (transl), Mumonkan, Case 37.</p>
+</li>
+<li>
+<p>Chang Chung-Yuan, ibid, p. 267.</p>
+</li>
+<li>
+<p>Rilke, R.M., &quot;The First Duino Elegy&quot; from Mitchell, Stephen (trans), 
+The Selected Poetry of Rainer Maria Rilke, Vintage Books, Random House, 
+New York, 1984), p. 151.</p>
+</li>
+<li>
+<p>Mitchell, Stephen (transl) ibid, p 199 (from the Ninth Duino Elegy).</p>
+</li>
+<li>
+<p>Aitken Roshi, Robert, The Mind of Clover (North Point Press, San 
+Francisco, 1984).</p>
+</li>
+</ol>
+<hr />
+<p>end of file</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../hum/philosophy/buddhism/zen_buddhism.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../hum/philosophy/buddhism/zen_buddhism.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

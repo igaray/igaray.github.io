@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/bd/ch3/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>Chapter 3. Data model for Big Data: Illustration - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../gopl/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch3/">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch4/">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch9/">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch12/">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/bd/ch3.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#chapter-3-data-model-for-big-data-illustration">Chapter 3. Data model for Big Data: Illustration</a></li>
+        
+    
+        <li class="main "><a href="#why-a-serialization-framework">Why a serialization framework?</a></li>
+        
+            <li><a href="#data-corruption">Data corruption *</a></li>
+        
+            <li><a href="#enforcing-schema">Enforcing schema *</a></li>
+        
+    
+        <li class="main "><a href="#apache-thrift">Apache Thrift</a></li>
+        
+            <li><a href="#nodes">Nodes</a></li>
+        
+            <li><a href="#edges">Edges</a></li>
+        
+            <li><a href="#properties">Properties</a></li>
+        
+            <li><a href="#tying-everything-together-into-data-objects">Tying everything together into data objects</a></li>
+        
+            <li><a href="#evolving-your-schema">Evolving your schema</a></li>
+        
+    
+        <li class="main "><a href="#limitations-of-serialization-frameworks">Limitations of serialization frameworks</a></li>
+        
+    
+        <li class="main "><a href="#summary">Summary</a></li>
+        
+    
+        <li class="main "><a href="#doubts-and-solutions">Doubts and Solutions</a></li>
+        
+            <li><a href="#verbatim">Verbatim</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="chapter-3-data-model-for-big-data-illustration"><strong>Chapter 3. Data model for Big Data: Illustration</strong><a class="headerlink" href="#chapter-3-data-model-for-big-data-illustration" title="Permanent link">&para;</a></h3>
+<p>The last chapter discusses the principles of forming a data model:</p>
+<ul>
+<li>The value of raw data</li>
+<li>Semantic normalization</li>
+<li>Importance of immutability</li>
+</ul>
+<p>This chapter is the first <em>illustration chapter</em>, which demonstrates the concepts of the previous chapter using real-world tools.</p>
+<h3 id="why-a-serialization-framework">Why a serialization framework?<a class="headerlink" href="#why-a-serialization-framework" title="Permanent link">&para;</a></h3>
+<p>Schemaless format, like JSON, is easy to get started. However, it quickly leads to problems due to bugs or misunderstandings between different developer and data corruption inevitably occurs. Data corruption errors are some of the most time-consuming to debug.</p>
+<h4 id="data-corruption">Data corruption *<a class="headerlink" href="#data-corruption" title="Permanent link">&para;</a></h4>
+<p>Data corruption issues are hard to debug because there's very little context on how the corruption occurred. Typically the problem is noticed when there's an error downstream in the processing, long after the corrupt data was written.</p>
+<p>For example, you might get a null pointer exception due to a mandatory field being missing. You'll quickly realize that the problem is a missing field, but you'll have absolutely no information about how that data got there in the first place.</p>
+<h4 id="enforcing-schema">Enforcing schema *<a class="headerlink" href="#enforcing-schema" title="Permanent link">&para;</a></h4>
+<p>Creating an enforceable schema is good because:</p>
+<ul>
+<li>You get errors at the time of writing the data, giving you full context as to how and why the data became invalid (like a <a href="https://en.wikipedia.org/wiki/Stack_trace">stack trace</a>).</li>
+<li>The error prevents the program from corrupting the master dataset by writing that data.</li>
+</ul>
+<p>Serialization frameworks are an easy approach to making an enforceable schema. They generate code for any languages for reading, writing, and validating objects that match your schema.</p>
+<h3 id="apache-thrift">Apache Thrift<a class="headerlink" href="#apache-thrift" title="Permanent link">&para;</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Apache_Thrift">Apache Thrift</a> (<a href="http://thrift.apache.org/">http://thrift.apache.org/</a>) is a tool that can be used to define statically typed, enforceable schemas. It provides an interface definition language to describe the schema in terms of generic data types, and this description can later be used to automatically generate the actual implementation in multiple programming languages.</p>
+<p>Other tools similar to Apache Thrift include <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a> and <a href="https://en.wikipedia.org/wiki/Apache_Avro">Avro</a>.</p>
+<p>The primary elements of Thrif are <em>struct</em> and <em>union</em> <a href="https://thrift.apache.org/docs/idl#definition">type definitions</a>. They're composed
+of other fields, such as:</p>
+<ul>
+<li>Primitive data types (strings, integers, longs, and doubles)</li>
+<li>Collections of other types (lists, maps, and sets)</li>
+<li>Other structs and unions</li>
+</ul>
+<p>The general usage is:</p>
+<ul>
+<li>Nodes: unions are useful for representing nodes.</li>
+<li>Edges: structs are natural representations of edges.</li>
+<li>Properties: combination of both.</li>
+</ul>
+<h4 id="nodes">Nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h4>
+<p>In the SuperWebAnalytics.com example, an individual is identified either by a user ID or a browser cookie, but not both. This pattern is common for nodes matches with a union data type: a single value that may have any of several representations.  In Thrift, unions are defined by listing all possible representations. For example:</p>
+<div class="codehilite"><pre><span class="kd">union</span><span class="w"> </span><span class="nc">PersonID</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cookie</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="n">user_id</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">union</span><span class="w"> </span><span class="nc">PageID</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">url</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>Unions can also be used for nodes with a single representation, which allows the schema to evolve as the data evolves.</p>
+<h4 id="edges">Edges<a class="headerlink" href="#edges" title="Permanent link">&para;</a></h4>
+<p><u>Each edge can be represented as a struct containing two nodes.</u> The name of an edge struct indicates the relationship it represents, and the fields in the edge struct contain the entities involved in the relationship. For example:</p>
+<div class="codehilite"><pre><span class="kd">struct</span><span class="w"> </span><span class="nc">EquivEdge</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PersonID</span><span class="w"> </span><span class="n">id1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PersonID</span><span class="w"> </span><span class="n">id2</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">PageViewEdge</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PersonID</span><span class="w"> </span><span class="n">person</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PageID</span><span class="w"> </span><span class="n">page</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="n">nonce</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>The fields of a Thrift struct can be denoted as <code>required</code> or <code>optional</code>. If a field is defined as required, then a value for that field must be provided, or else Thrift will give an error upon serialization or deserialization. Because each edge in a graph schema must have two nodes, they are required fields in this example.</p>
+<h4 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h4>
+<p>A property contains a node and a value for the property. The value can be one of many types, so it's best represented using a union structure. For example:</p>
+<div class="codehilite"><pre><span class="kd">union</span><span class="w"> </span><span class="nc">PagePropertyValue</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="n">page_views</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">PageProperty</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PageID</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PagePropertyValue</span><span class="w"> </span><span class="n">property</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>The following example defines the properties for people. The location property is more complex and requires another struct (location) to be defined:</p>
+<div class="codehilite"><pre><span class="kd">struct</span><span class="w"> </span><span class="nc">Location</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">city</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">country</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">enum</span><span class="w"> </span><span class="nc">GenderType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">MALE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">FEMALE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">union</span><span class="w"> </span><span class="nc">PersonPropertyValue</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">full_name</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">GenderType</span><span class="w"> </span><span class="n">gender</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">PersonProperty</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PersonID</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">PersonPropertyValue</span><span class="w"> </span><span class="n">property</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+
+<p>In the location struct, the city, state, and country fields could have been stored as separate pieces of data. In this case, they're closely related so it makes sense to put them all into one struct as optional fields.</p>
+<h4 id="tying-everything-together-into-data-objects">Tying everything together into data objects<a class="headerlink" href="#tying-everything-together-into-data-objects" title="Permanent link">&para;</a></h4>
+<p>At this point, the edges and properties are defined as separate types. However, it is ideal to store all of the data together because:</p>
+<ol>
+<li>It provides a single interface to access your information.</li>
+<li>It makes your data easier to manage if it's stored in a single dataset.</li>
+</ol>
+<p>This is accomplished by wrapping every property and edge type into a <code>DataUnit</code> union:</p>
+<div class="codehilite"><pre><span class="kd">union</span><span class="w"> </span><span class="nc">DataUnit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="n">PersonProperty</span><span class="w"> </span><span class="n">person_property</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="n">PageProperty</span><span class="w"> </span><span class="n">page_property</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="n">EquivEdge</span><span class="w"> </span><span class="n">equiv</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="n">PageViewEdge</span><span class="w"> </span><span class="n">page_view</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">Pedigree</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="n">true_as_of_secs</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">Data</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">Pedigree</span><span class="w"> </span><span class="n">pedigree</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">DataUnit</span><span class="w"> </span><span class="n">dataunit</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+
+<ul>
+<li>Each <code>DataUnit</code> is paired with its metadata kept in a <code>Pedigree</code> struct.</li>
+<li>The pedigree contains the timestamp for the information, but could also potentially contain debugging information or the source of the data.</li>
+<li>The final <code>Data</code> struct corresponds to a fact from the fact-based model.</li>
+</ul>
+<h4 id="evolving-your-schema">Evolving your schema<a class="headerlink" href="#evolving-your-schema" title="Permanent link">&para;</a></h4>
+<p>Thrift is designed so that schemas can evolve over time. The key to evolving Thrift schemas is the numeric identifiers associated with each field. Those IDs are used to identify fields in their serialized form. When you want to change the schema but still be backward compatible with existing data, you must obey the following rules:</p>
+<ul>
+<li><strong>Fields may be renamed</strong>, because the serialized form of an object uses the field IDs, not the names, to identify fields.</li>
+<li><strong>A field may be removed, but you must never reuse that field ID</strong>.<ul>
+<li>When deserializing existing data, Thrift will ignore all fields with field IDs not included in the schema.</li>
+<li>If you were to reuse a previously removed field ID, Thrift would try to deserialize that old data into the new field, which will lead to either invalid or incorrect data.</li>
+</ul>
+</li>
+<li><strong>Only optional fields can be added to existing structs</strong>.<ul>
+<li>You can't add required fields because existing data won't have those fields and thus won't be deserializable.</li>
+<li>This doesn't apply to unions, because unions have no notion of required and optional fields.</li>
+</ul>
+</li>
+</ul>
+<p>The following example shows changes to the SuperWebAnalytics.com schema to store a person's age and the links between web page (changes in bold font).</p>
+<pre>
+union PersonPropertyValue {
+  1: string full_name;
+  2: GenderType gender;
+  3: Location location;
+  <b>4: i16 age;</b>
+}
+
+<b>struct LinkedEdge {
+  1: required PageID source;
+  2: required PageID target;
+}</b>
+
+union DataUnit {
+  1: PersonProperty person_property;
+  2: PageProperty page_property;
+  3: EquivEdge equiv;
+  4: PageViewEdge page_view;
+  <b>5: LinkedEdge page_link;</b>
+}
+</pre>
+
+<p>Adding a new age property is done by adding it to the corresponding union structure, and a new edge is incorporated by adding it into the <code>DataUnit</code> union.</p>
+<h3 id="limitations-of-serialization-frameworks">Limitations of serialization frameworks<a class="headerlink" href="#limitations-of-serialization-frameworks" title="Permanent link">&para;</a></h3>
+<p>Serialization frameworks only check that all required fields are present and are of the expected type, but are unable to check richer properties like "Ages should be nonnegative" or "true-as-of timestamps should not be in the future". Data not matching these properties would indicate a problem in your system, and you wouldn't want them written to your master dataset.</p>
+<p>[p52-53]</p>
+<p>There are two approaches you can take to work around these limitations with a serialization framework like Apache Thrift:</p>
+<ul>
+<li><strong>Wrap your generated code in additional code that checks the additional properties you care about</strong>, e.g. ages being non-negative.<ul>
+<li>This approach works well as long as you’re only reading/writing data from/to a single language. If you use multiple languages, you have to duplicate the logic in many languages.</li>
+</ul>
+</li>
+<li><strong>Check the extra properties at the very beginning of your batch-processing workflow</strong>. This step would split your dataset into "valid data" and "invalid data" and send a notification if any invalid data was found.<ul>
+<li>This approach makes it easier to implement the rest of your workflow, because anything getting past the validity check can be assumed to have the stricter properties you care about.</li>
+<li>However, this approach doesn't prevent the invalid data from being written to the master dataset and doesn't help with determining the context in which the corruption happened.</li>
+</ul>
+</li>
+</ul>
+<p>Neither approach is ideal, and you have to decide whether you'd rather maintain the same logic in multiple languages or lose the context in which corruption was introduced. [p53]</p>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
+<p>Implementing the enforceable graph schema for SuperWebAnalytics.com was mostly straightforward. The friction appears when using a serialization framework for this purpose: the inability to enforce every property you care about. The tooling will rarely work perfectly, but <u>it's important to know what would be possible with ideal tools, so you're cognizant of the trade-offs you're making and can keep an eye out for better tools (or make your own).</u></p>
+<p>The next chapter discusses how to physically store a master dataset in the batch layer so that it can be processed easily and efficiently.</p>
+<h3 id="doubts-and-solutions">Doubts and Solutions<a class="headerlink" href="#doubts-and-solutions" title="Permanent link">&para;</a></h3>
+<h4 id="verbatim">Verbatim<a class="headerlink" href="#verbatim" title="Permanent link">&para;</a></h4>
+<h5 id="p54-on-limitations-of-serialization-frameworks"><strong>p54 on limitations of serialization frameworks </strong><a class="headerlink" href="#p54-on-limitations-of-serialization-frameworks" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>This approach doesn't prevent the invalid data from being written to the master dataset and doesn't help with determining the context in which the corruption happened.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: What is "the context in which the corruption happened"?</p>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

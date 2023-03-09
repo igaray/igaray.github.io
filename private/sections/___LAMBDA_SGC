@@ -1,0 +1,188 @@
+--- SGC
+
+administracion
+	juan
+	tomas
+	martina
+	ezequiel
+	pity
+	gonzalo
+
+data science
+	- libro julia en desarrollo
+	- mesurer
+	herman obst demaestri
+	mariano nicolini
+	pedro fontana
+
+producto
+	- mevaterapia en desarrollo
+		amin arria
+		javier chatruc
+		juan pablo amoroso
+		joaquin perez centeno
+		gonzalo
+
+---
+
+fiuba pagina web en modo mantenimiento
+	gonzalo
+
+fiuba inscripciones en modo mantenimiento
+	amin
+	juan bono
+	javier
+	juan pablo
+
+fiuba requerimientos en modo mantenimiento
+	equipo de producto
+	gonzalo
+
+---
+
+competencia:
+	presentacion mesurer
+	hackweeks
+	cursos udemy
+	libros
+	book club
+
+---
+
+clickups:
+	administracion
+	lambdaclass workspace
+
+	research
+	apps
+	ergodicity argentina
+	data science
+
+---  
+# SGC
+
+- Para todas las tareas de Mevaterapia de los ultimos dos meses, registrar la duracion y generar una estimacion.
+- Donde tiene que estar registrado estas duraciones y estimaciones?
+- Donde registrar que se puso como objetivo de calidad estimar las tareas y no tener mas de 30% de divergencia entre la estimacion y la duracion de la tarea?
+
+buzzconf
+  preguntar si cada charla vale como capacitacion
+meetups
+  papers we love
+  sciencia y covid
+
+curso de github
+  herman, marian, pedro
+
+de julia academy
+
+bookclub
+
+charla mesurer
+
+
+preguntarle a bono
+
+
+
+SGC
+  - Manual de Calidad
+    - Manual de Calidad
+    - Politica de Gestion de la Calidad
+  - Manual de Procedimientos
+    - Instructivo de Desarrollo
+    - Procedimiento de Auditoria Interna
+    - Procedimiento de Conocimiento de la Organizacion
+    - Procedimiento de Desarrollo
+    - Procedimiento de Gestion de Informacion Documentada
+    - Procedimiento de Revision por la Direccion
+    - Procedimiento de Seguimiento y Medicion
+    - Procedimiento de Gestion de las No Conformidades
+  - Mapa de Procesos
+    - Mapa de Procesos
+  - Plan Estrategico
+    - Plan Estrategico 2020
+    - Plan Estrategico 2021
+    - Matriz de Riesgos de Negocio
+    - Matriz de Partes Interesadas
+  - Proyectos
+  - Registros
+    - Auditorias
+    - Encuesta de Satisfaccion de Clientes
+    - Evaluacion de Proveedores
+    - Indicadores
+    - Informacion Documentada
+    - Matriz de Comunicacion
+    - Matriz ISO 90003
+    - No Conformidades
+    - Recursos Humanos
+    - Revision por la Direccion
+
+TODO
+- [x] matriz de correlacion entre nomrba iso y guia iso con procesos de lambda
+- [x] matriz de riesgos de negocios actualizar riesgo 9 clausula de no competencia
+- [ ] crear un documento con cada tecnologia adoptada y la razon por la cual se adopto, con comparaciones con las alternativas.
+- [ ] escribir en algun lado que usamos el AVG antivirus en maquina windows, y que en mac osx no es obligatorio
+- [ ] crear un documento de plan de calidad (8.1.1)
+- [ ] reunion con todos para hacer la capacitacion de iso9001, registrar atendencia
+- [ ] poblar la carpeta de mevaterapia con contenido
+- [ ] manual de procedimientos:
+  - revisar los manuales
+    - instructivo de desarrollo
+    - procedimiento de desarrollo
+- [ ] generar registros de reuniones 1:1
+- [ ] actualizar la matriz de riesgos de nextroll
+- [x] sacar los proyectos viejos
+
+-  plan estrategico
+    actualizar
+      analisis de competencia
+      clientes nuevos
+      foda
+
+- matriz de partes interesadas
+
+- EZE evaluacion de proveedores
+
+- objetivos e indicadores
+
+- tablero de control directivo
+    IMPORTANTE
+    - completar los meses, revisar estrategias
+
+- manual de calidad
+
+
+- recursos humanos
+  - EZE TOMAS perfiles y funciones
+
+- encuesta de satisfaccion de personal (clima laboral)
+  IMPORTANTE
+
+- reportar hallazgos de calidad
+  IMPORTANTE
+
+Mevaterapia
+- no hay versiones
+  el producto esta en beta, en desarrollo
+- trackeo de issues y codigo esta
+- hay testing
+- test correctos previo a mergear esta
+- meva tiene ambiente de teste
+- se hacen tests de aceptacion pero no hay registro de ello
+  informal, en slack
+- los bugs estan marcados
+- martu hasce un informa semanal al cliente por mail y en el drive
+- no hay sprints
+- no hay retros
+
+FIUBA
+- no hay versiones
+  pr se mergea, se corren los tests, si pasan se tira la imagen y se redeployea, es automatico
+- hay sprints pero no se refleja en clickup
+- hay ambientes de pruebas, no hay produccion
+- se hacen tests de aceptacion pero no hay registro de ello
+- el tema de que el lider de equipo hace los tests de aceptacion: si se cambia a que los tests los realiza alguien que no es el desarrollador peer review, entonces podria decirse que esos son los tests de aceptacion
+- los bugs estan marcados
+- no hay retros
+

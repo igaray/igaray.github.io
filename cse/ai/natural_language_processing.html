@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Natural Language Processing - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../cse/mathematics/index.html">Mathematics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>Combinatorics</div></li></ol></li><li class="chapter-item expanded "><a href="../../cse/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item expanded "><a href="../../cse/ai/natural_language_processing.html" class="active">Natural Language Processing</a></li><li class="chapter-item "><a href="../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../cse/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping a Simple Compiler From Nothing</a></li><li class="chapter-item "><a href="../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../cse/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item "><a href="../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../cse/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><div>Domain Driven Design</div></li><li class="chapter-item "><div>SOLID</div></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><a href="../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../cse/tools/cli.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/git.html">git</a></li><li class="chapter-item "><a href="../../cse/tools/nix.html">nix</a></li><li class="chapter-item "><a href="../../cse/tools/nnn.html">nnn</a></li><li class="chapter-item "><a href="../../cse/tools/prometheus.html">prometheus</a></li><li class="chapter-item "><a href="../../cse/tools/rsync.html">rsync</a></li><li class="chapter-item "><a href="../../cse/tools/sed.html">sed</a></li><li class="chapter-item "><a href="../../cse/tools/ssh.html">ssh</a></li><li class="chapter-item "><div>taskwarrior</div></li><li class="chapter-item "><div>timewarrior</div></li><li class="chapter-item "><a href="../../cse/tools/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../cse/tools/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../cse/tools/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><div>Nomad</div></li><li class="chapter-item "><a href="../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../cse/tools/kakoune.html">Kakoune</a></li><li class="chapter-item "><div>Kubernetes</div></li><li class="chapter-item "><a href="../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../cse/tools/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../cse/lisp/index.html">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../cse/lisp/the_lisp_curse.html">The Lisp Curse</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/sql.html">SQL</a></li></ol></li><li class="chapter-item "><a href="../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><div>Art</div></li><li class="chapter-item "><div>History</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/anapanasanti.html">anapanasanti</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/ascending_the_mountain.html">ascending_the_mountain</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/beginning_anew.html">beginning_anew</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddha_the_word.html">buddha_the_word</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">buddhas_way_and_abortion</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/death_is_a_sacrament.html">death_is_a_sacrament</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/detachment.html">detachment</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/dokkodo.html">dokkodo</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_dalai_lama.html">emptiness_dalai_lama</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/gassho_and_bowing.html">gassho_and_bowing</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/heart_to_heart_zen_and_religion_the_roots_and_the_shape.html">heart_to_heart_zen_and_religion_the_roots_and_the_shape</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/realizing_our_true_nature.html">realizing_our_true_nature</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/rules_of_chado.html">rules_of_chado</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">the_mind_illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yunmens_bright_light.html">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../human_manual/index.html">Human Manual</a></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li><li class="chapter-item "><div>Classical Music</div></li><li class="chapter-item "><div>Jazz</div></li><li class="chapter-item "><div>Japanese Jazz</div></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../misc/library/index.html">Library</a></li><li class="chapter-item "><a href="../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="natural-language-processing"><a class="header" href="#natural-language-processing">Natural Language Processing</a></h1>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#books">Books</a>
+<ul>
+<li><a href="#speech-and-language-processing-2nd-ed-daniel-jurafsky-james-h-martin">Speech and Language Processing 2nd Ed (Daniel Jurafsky, James H. Martin)</a></li>
+<li><a href="#natural-language-understanding-2nd-ed-james-allen">Natural Language Understanding 2nd Ed (James Allen)</a></li>
+<li><a href="#handbook-of-natural-language-processing-indurkhya-damerau">Handbook of Natural Language Processing (Indurkhya, Damerau)</a></li>
+<li><a href="#the-handbook-of-computational-linguistics-and-natural-language-processing-clark-fox-lappin">The Handbook of Computational Linguistics and Natural Language Processing (Clark, Fox, Lappin)</a></li>
+<li><a href="#the-oxford-handbook-of-computational-linguistics-mitkov">The Oxford Handbook of Computational Linguistics (Mitkov)</a></li>
+<li><a href="#foundations-of-statistical-natural-language-processing-manning-schuetze">Foundations of Statistical Natural Language Processing (Manning, Schuetze)</a></li>
+<li><a href="#big-data-analytics-methods-modern-analytics-techniques-for-the-21st-century-the-data-scientists-manual-to-data-mining-deep-learning--natural-language-processing-ghavami">Big Data Analytics Methods: Modern Analytics Techniques for the 21st Century: The Data Scientist’s Manual to Data Mining, Deep Learning &amp; Natural Language Processing (Ghavami)</a></li>
+<li><a href="#natural-language-processing-with-python-analyzing-text-with-the-natural-language-toolkit-bird-klein-loper">Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit (Bird, Klein, Loper)</a></li>
+<li><a href="#natural-language-processing-with-pytorch-rao-mcmahan">Natural Language Processing with PyTorch (Rao, McMahan)</a></li>
+<li><a href="#neural-network-methods-for-natural-language-processing-goldberg">Neural Network Methods for Natural Language Processing (Goldberg)</a></li>
+<li><a href="#linguistic-fundamentals-for-natural-language-processing-bender">Linguistic Fundamentals for Natural Language Processing (Bender)</a></li>
+<li><a href="#natural-language-processing-in-action-lane-hapke-howard">Natural Language Processing in Action (Lane, Hapke, Howard)</a></li>
+<li><a href="#practical-natural-language-processing-a-comprehensive-guide-to-building-real-world-nlp-systems-majumder-gupta-surana">Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems (Majumder, Gupta, Surana)</a></li>
+<li><a href="#introduction-to-natural-language-processing-eisenstein">Introduction to Natural Language Processing (Eisenstein)</a></li>
+<li><a href="#statistical-machine-translation-koehn">Statistical Machine Translation (Koehn)</a></li>
+<li><a href="#statistical-methods-for-speech-recognition-jelinek">Statistical Methods for Speech Recognition (Jelinek)</a></li>
+<li><a href="#applied-text-analysis-with-python-bengfort-bilbro-ojeda">Applied Text Analysis with Python (Bengfort, Bilbro, Ojeda)</a></li>
+</ul>
+</li>
+<li><a href="#courses">Courses</a></li>
+</ul>
+<hr />
+<h2 id="books"><a class="header" href="#books">Books</a></h2>
+<h3 id="speech-and-language-processing-2nd-ed-daniel-jurafsky-james-h-martin"><a class="header" href="#speech-and-language-processing-2nd-ed-daniel-jurafsky-james-h-martin">Speech and Language Processing 2nd Ed (Daniel Jurafsky, James H. Martin)</a></h3>
+<ul>
+<li><a href="https://web.stanford.edu/~jurafsky/slp3/">Site</a></li>
+</ul>
+<p>One of the most widely referenced and recommended NLP books, written by Stanford University professor Dan Jurafsky and University of Colorado professor James Martin, provides a deep-dive guide on the subject of language processing.
+It’s intended to accompany undergraduate or advanced graduate courses in NLP or Computational Linguistics.
+However, it’s a must-read for anyone diving into the theory and application of language processing as they grow and strengthen their analytics capabilities.</p>
+<p>It is one of the most sought after and famously referenced and recommended books in the field of NLP. It is authored by Professor Dan Jurafsky from Stanford and James Martin from the University of Colorado. It will give you a deep understanding of the subject of natural language processing. It’s focused on supporting undergraduate or master’s courses in NLP or Computational Linguistics. It is considered as a must-read for those who are diving into the theory and it’s application part of language processing as they rise towards acquiring the skills necessary to strengthen their analytics abilities. A deep focus on web-based language approach, distinct field merging phone-based systems for dialogues, etc. Practical applications are emphasized with technical evaluation. This second edition is much more goal-oriented and can be considered as an extended version of the previous book.</p>
+<p>This book provides coverage of NLP from both speech and text perspectives with a strong focus on applications (one in each chapter).</p>
+<p>Coverage of the topic feels exhaustive.</p>
+<p>Book Contents:</p>
+<ul>
+<li>Introduction</li>
+<li>Regular Expressions and Automata</li>
+<li>Words and Transducers</li>
+<li>N-grams</li>
+<li>Part-of-Speech Tagging</li>
+<li>Hidden Markov and Maximum Entropy Models</li>
+<li>Phonetics</li>
+<li>Speech Synthesis</li>
+<li>Automatic Speech Recognition</li>
+<li>Speech Recognition: Advanced Topics</li>
+<li>Computational Phonology</li>
+<li>Formal Grammars of English</li>
+<li>Syntactic Parsing</li>
+<li>Statistical Parsing</li>
+<li>Features and Unification</li>
+<li>Language and Complexity</li>
+<li>The Representation of Meaning</li>
+<li>Computational Semantics</li>
+<li>Lexical Semantics</li>
+<li>Computational Lexical Semantics</li>
+<li>Computational Discourse</li>
+<li>Information Extraction</li>
+<li>Question Answering and Summarization</li>
+<li>Dialog and Conversational Agents</li>
+<li>Machine Translation</li>
+</ul>
+<hr />
+<h3 id="natural-language-understanding-2nd-ed-james-allen"><a class="header" href="#natural-language-understanding-2nd-ed-james-allen">Natural Language Understanding 2nd Ed (James Allen)</a></h3>
+<p>This book is another introductory guide to NLP and considered a classic.
+While it was published in 1994, it’s highly relevant to today’s discussions and analytics activities and lauded by generations of NLP researchers and educators.
+It introduces major techniques and concepts required to build NLP systems, and goes into the background and theory of each without overwhelming readers in technical jargon.</p>
+<p>This book is a classic material on this subject of NLP. This is a revision of the original book that offers a comprehensive introductory information to natural language understanding with the latest research and developments in the field today. When compared with the first edition of superior understanding and subjective foundation, the new edition provides the learners and readers with the same kind of balanced description of syntax, semantics, and discourse, and concentrates on a uniform framework determined on feature-based context-free grammar and chart Parsers utilized for semantic and syntactic processing. Extensive treatment of problems and issues in discourse and context-dependent explanation is also given.</p>
+<hr />
+<h3 id="handbook-of-natural-language-processing-indurkhya-damerau"><a class="header" href="#handbook-of-natural-language-processing-indurkhya-damerau">Handbook of Natural Language Processing (Indurkhya, Damerau)</a></h3>
+<p>This comprehensive, modern “Handbook of Natural Language Processing” offers tools and techniques for developing and implementing practical NLP in computer systems.
+There are three sections to the book: classical techniques (including symbolic and empirical approaches), statistical approaches in NLP, and multiple applications—from information visualization to ontology construction and biomedical text mining.</p>
+<p>The second edition has a multilingual scope, accommodating European and Asian languages besides English, plus there’s greater emphasis on statistical approaches.
+Furthermore, it features a new applications section discussing emerging areas such as sentiment analysis.
+It’s a great start to learn how to apply NLP to computer systems.</p>
+<hr />
+<h3 id="the-handbook-of-computational-linguistics-and-natural-language-processing-clark-fox-lappin"><a class="header" href="#the-handbook-of-computational-linguistics-and-natural-language-processing-clark-fox-lappin">The Handbook of Computational Linguistics and Natural Language Processing (Clark, Fox, Lappin)</a></h3>
+<p>Similar to the “Handbook of Natural Language Processing,” this book includes an overview of concepts, methodologies, and applications in NLP and Computational Linguistics, presented in an accessible, easy-to-understand way.
+It features an introduction to major theoretical issues and the central engineering applications that NLP work has produced to drive the discipline forward.
+Theories and applications work hand in hand to show the relationship in language research as noted by top NLP researchers.
+It’s a great resource for NLP students and engineers developing NLP applications in labs at software companies.</p>
+<hr />
+<h3 id="the-oxford-handbook-of-computational-linguistics-mitkov"><a class="header" href="#the-oxford-handbook-of-computational-linguistics-mitkov">The Oxford Handbook of Computational Linguistics (Mitkov)</a></h3>
+<p>This handbook describes major concepts, methods, and applications in computational linguistics in a way that undergraduates and non-specialists can comprehend.
+It’s a state-of-the-art reference to one of the most active and productive fields in linguistics.
+A wide range of linguists and researchers in fields such as informatics, artificial intelligence, language engineering, and cognitive science will find it interesting and practical.
+It begins with linguistic fundamentals, followed by an overview of current tasks, techniques, and tools in Natural Language Processing that target more experienced computational language researchers.</p>
+<hr />
+<h3 id="foundations-of-statistical-natural-language-processing-manning-schuetze"><a class="header" href="#foundations-of-statistical-natural-language-processing-manning-schuetze">Foundations of Statistical Natural Language Processing (Manning, Schuetze)</a></h3>
+<p>Another book that hails from Stanford educators, this one is written by Jurafsky’s colleague, Christopher Manning. They’ve taught the popular NLP introductory course at Stanford. Manning’s co-author is a professor of Computational Linguistics at the German Ludwig-Maximilians-Universität.</p>
+<p>The book provides an introduction to statistical methods for NLP and a decent foundation to comprehend new NLP methods and support the creation of NLP tools. Mathematical and linguistic foundations, plus statistical methods, are equally represented in a way that supports readers in creating language processing applications.</p>
+<p>This foundational book is the first detailed oriented introductory book of statistical natural language processing (NLP) to occur in the market. This book has all the theory and algorithms required for developing NLP tools. Statistical natural-language processing is, one of the most fast-moving and exciting branches of computer science nowadays. Learners or Practitioners and students who want to know this field would be advised to buy this book. It can be called as the most well-thumbed books to be considered for this topic. It gives a broad and deep coverage of mathematical and linguistic basics, as well as in-detail discussions of statistical methods, allowing all the students, learners, and researchers to construct their implementations. The book details the concepts of collocation findings, probabilistic parsing, data retrieval, and other applications.</p>
+<p>This book provides an introduction to statistical methods for natural language processing covering both the required linguistics and the newer (at the time, circa 1999) statistical methods.</p>
+<p>This book provides a strong foundation to better grasp the newer methods and encodings.</p>
+<p>Book contents:</p>
+<ul>
+<li>Introduction</li>
+<li>Mathematical Foundations</li>
+<li>Linguistic Essentials</li>
+<li>Corpus-Based Work</li>
+<li>Collocations</li>
+<li>Statistical Inference: n-gram Models over Sparse Data</li>
+<li>Word Sense Disambiguation</li>
+<li>Lexical Acquisition</li>
+<li>Markov Models</li>
+<li>Part-of-Speech Tagging</li>
+<li>Probabilistic Context Free Grammars</li>
+<li>Probabilistic Parsing</li>
+<li>Statistical Alignment and Machine Translation</li>
+<li>Clustering</li>
+<li>Topics in Information Retrieval</li>
+<li>Text Categorization</li>
+</ul>
+<hr />
+<h3 id="big-data-analytics-methods-modern-analytics-techniques-for-the-21st-century-the-data-scientists-manual-to-data-mining-deep-learning--natural-language-processing-ghavami"><a class="header" href="#big-data-analytics-methods-modern-analytics-techniques-for-the-21st-century-the-data-scientists-manual-to-data-mining-deep-learning--natural-language-processing-ghavami">Big Data Analytics Methods: Modern Analytics Techniques for the 21st Century: The Data Scientist’s Manual to Data Mining, Deep Learning &amp; Natural Language Processing (Ghavami)</a></h3>
+<p>Peter’s book might seem daunting to a NLP newcomer, but it’s useful as a comprehensive manual for those familiar with NLP and how big data relates in today’s world. It also works as a helpful reference for data scientists, analysts, business managers, and Business Intelligence practitioners. With more than a hundred analytics techniques and methods included, we think this will be a favorite for seasoned analytics practitioners.</p>
+<p>Chapters cover everything from machine learning to predictive modeling and cluster analysis. Data science topics including data visualization, prediction, and regression analysis, plus NLP-related fields such as neural networks, deep learning, and artificial intelligence are also discussed. These come with a broad explanation, but Peter goes into more detail about terminology and mathematical foundations, too.</p>
+<hr />
+<h3 id="natural-language-processing-with-python-analyzing-text-with-the-natural-language-toolkit-bird-klein-loper"><a class="header" href="#natural-language-processing-with-python-analyzing-text-with-the-natural-language-toolkit-bird-klein-loper">Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit (Bird, Klein, Loper)</a></h3>
+<ul>
+<li><a href="http://www.nltk.org/book/">Site</a></li>
+</ul>
+<p>This book is a helpful introduction to the NLP field with a focus on programming.
+If you want have a practical source on your shelf or desk, whether you’re a NLP beginner, computational linguist or AI developer, it contains hundreds of fully-worked examples and graded exercises that bring NLP to life.
+It can be used for individual study, as a course textbook when studying NLP or computational linguistics, or in complement with artificial intelligence, text mining, or corpus linguistics courses.</p>
+<p>Curious about Python programming language?
+It will walk you through creating Python programs that parse unstructured data like language and recommends downloading Python and the Natural Language Toolkit.
+On a companion site, the authors have actually updated the book to work with Python 3 and NLTK 3.</p>
+<p>A great starting spot for learning the practical basics of natural language processing from the point of view of the Python ecosystem.
+Also known as the NLTK Book, Natural Language Processing with Python leans heavily on the NLTK library throughout, which is a useful piece of software for learning purposes.</p>
+<p>From the book's preface:</p>
+<blockquote>
+<ul>
+<li>This book provides a highly accessible introduction to the field of NLP.</li>
+<li>It can be used for individual study or as the textbook for a course on natural language processing or computational linguistics, or as a supplement to courses in artificial intelligence, text mining, or corpus linguistics. The book is intensely practical, containing hundreds of fully-worked examples and graded exercises.</li>
+<li>[...]</li>
+<li>This book is intended for a diverse range of people who want to learn how to write programs that analyze written language, regardless of previous programming experience.</li>
+</ul>
+</blockquote>
+<p>The book is definitely of a practical nature.
+While you will assuredly have concepts explained as you go, there is little doubt that the book is crafted as a launchpad for those looking to get going with implementing NLP solutions with Python, and doing so now.</p>
+<p>This is one of the Best book for Natural Language Processing.
+This book will give you introduction to Natural Language Processing using Python and Python NLTK Library.</p>
+<p>With the help of this book, you will learn how to write Python programs that work with large collections of unstructured text.</p>
+<p>Book contents:</p>
+<ul>
+<li>Language Processing and Python</li>
+<li>Accessing Text Corpora and Lexical Resources</li>
+<li>Processing Raw Text</li>
+<li>Writing Structured Programs</li>
+<li>Categorizing and Tagging Words</li>
+<li>Learning to Classify Text</li>
+<li>Extracting Information from Text</li>
+<li>Analyzing Sentence Structure</li>
+<li>Building Feature-Based GRammars</li>
+<li>Analyzing the Meaning of Sentences</li>
+<li>Managing Linguistic Data</li>
+</ul>
+<hr />
+<h3 id="natural-language-processing-with-pytorch-rao-mcmahan"><a class="header" href="#natural-language-processing-with-pytorch-rao-mcmahan">Natural Language Processing with PyTorch (Rao, McMahan)</a></h3>
+<p>This book moves on from traditional NLP techniques to those using neural networks.
+A practical approach to the subject, it jumps straight into applying neural network NLP methods using PyTorch.</p>
+<p>Directly from the book's website, some of the topics covered include:</p>
+<blockquote>
+<ul>
+<li>Explore computational graphs and the supervised learning paradigm</li>
+<li>Master the basics of the PyTorch optimized tensor manipulation library</li>
+<li>Get an overview of traditional NLP concepts and methods</li>
+<li>Learn the basic ideas involved in building neural networks</li>
+<li>Use embeddings to represent words, sentences, documents, and other features</li>
+<li>Explore sequence prediction and generate sequence-to-sequence models</li>
+<li>Learn design patterns for building production NLP systems</li>
+</ul>
+</blockquote>
+<p>This is a great starting point for transitioning from more traditional (non-neural network based) NLP techniques to those which have consumed the field in the past few years, which are heavily reliant on deep learning.</p>
+<hr />
+<h3 id="neural-network-methods-for-natural-language-processing-goldberg"><a class="header" href="#neural-network-methods-for-natural-language-processing-goldberg">Neural Network Methods for Natural Language Processing (Goldberg)</a></h3>
+<p>This book is authored by Yoav Goldberg and can be considered only as an Introductory textbook. Neural networks are known as a family of powerful machine learning models. This book sole emphasis is on the application of neural network models to natural language data. The first 50 percent of the book covers all the basics of supervised machine learning and feed-forward neural networks, the fundamentals of working with machine learning over language-based data, and the usage of vector-based data rather than symbolic rendering for words. It also focuses on the computation-graph abstraction, that allows to define and train arbitrary neural networks with ease and is the important basis behind the design of modern neural network software libraries.</p>
+<p>Yoav Goldberg writes this book on neural network methods for NLP.
+You may have begun implementing such methods using the previous book, and while &quot;Natural Language Processing with PyTorch&quot; does a fine job of outlining the intuitions behind its methods, Goldberg's book takes a deeper dive into explaining these concepts without the burden of implementing them in code.</p>
+<p>From the book's website:</p>
+<blockquote>
+<ul>
+<li>This book focuses on the application of neural network models to natural language data.</li>
+<li>The first half of the book (Parts I and II) covers the basics of supervised machine learning and feed-forward neural networks, the basics of working with machine learning over language data, and the use of vector-based rather than
+symbolic representations for words.</li>
+<li>[...]</li>
+<li>The second part of the book (Parts III and IV) introduces more specialized neural network architectures, including 1D convolutional neural networks, recurrent neural networks, conditioned-generation models, and attention-based models. These architectures and techniques are the driving force behind state-of-the-art algorithms for machine translation, syntactic parsing, and many other applications.</li>
+</ul>
+</blockquote>
+<p>Firmly in the realm of the theoretical or explanatory, Neural Network Methods for Natural Language Processing will go a long way to shoring up your understanding of how modern neural network based approaches to NLP work, and why they are employed.</p>
+<p>This book covers the application of neural network models to natural language processing tasks. In that book, you will learn about basics of supervised machine learning and feed-forward neural networks.</p>
+<p>Along with that, you will also learn neural network architectures, including 1D convolutional neural networks, recurrent neural networks, conditioned-generation models, and attention-based models.</p>
+<hr />
+<h3 id="linguistic-fundamentals-for-natural-language-processing-bender"><a class="header" href="#linguistic-fundamentals-for-natural-language-processing-bender">Linguistic Fundamentals for Natural Language Processing (Bender)</a></h3>
+<p>Of course, flying blind with respect to linguistic fundamentals is not a great idea when working with NLP, and can be of special concern when approaching NLP or computational linguistics from the purely computational side, lacking any formal study in linguistics.
+This book by Emily M. Bender seeks to help bridge this gap.</p>
+<p>The book's website describes the book's purpose as such:</p>
+<blockquote>
+<p>The purpose of this book is to present in a succinct and accessible fashion information about the morphological and syntactic structure of human languages that can be useful in creating more linguistically sophisticated, more language-independent, and thus more successful NLP systems.</p>
+</blockquote>
+<p>Bender backs this up with the following from Chapter 1:</p>
+<blockquote>
+<p>[K]nowledge about linguistic structures can inform the design of features for machine learning approaches to NLP. Put more strongly: knowledge of linguistic structure will lead to the design of better features for machine learning.</p>
+</blockquote>
+<p>The book is organized as 100 individual &quot;essentials&quot; for better understanding morphology and syntax, with the essentials grouped into chapters of related topics. If you do not have a linguistics background (I do not), this book may be a painstaking read (it is supposed to be) but will undoubtedly lead to a better linguistic understanding you can put to use in your NLP career.</p>
+<hr />
+<h3 id="natural-language-processing-in-action-lane-hapke-howard"><a class="header" href="#natural-language-processing-in-action-lane-hapke-howard">Natural Language Processing in Action (Lane, Hapke, Howard)</a></h3>
+<p>This book Natural Language Processing in Action is your guide to developing machines that can read and interpret the language used by humans. Within this, you’ll use obtainable Python packages to encapsulate the understanding in text and react to it. This book extends conventional NLP ways to include neural networks, modern deep learning algorithms, and major generative techniques when you tackle real-world issues like extracting names, places and dates, text composing, and free-form answering of listed questionnaires. You will just need a basic understanding of deep learning and intermediate-level Python knowledge. This book also shows how to work with Keras, TensorFlow, Gensim, and SCIkit including scalable pipelines and rule-based NLP. So get this book and Learn all the theory and practical skills necessary to go further by merely understanding the inner functioning of NLP, and start developing your own algorithms and models.</p>
+<p>This book is a return to the practical.
+Covering both traditional and neural network based approaches to NLP, Natural Language Processing in Action could be considered a combination of the first 2 books in this list, covering practical coding solutions using modern tools such as TensorFlow and Keras, among others.</p>
+<p>From the book's website:</p>
+<blockquote>
+<ul>
+<li>Natural Language Processing in Action is your guide to building machines that can read and interpret human language.</li>
+<li>In it, you’ll use readily available Python packages to capture the meaning in text and react accordingly.</li>
+<li>The book expands traditional NLP approaches to include neural networks, modern deep learning algorithms, and generative techniques as you tackle real-world problems like extracting dates and names, composing text, and answering free-form questions.</li>
+</ul>
+</blockquote>
+<p>As a consequence of being the most recently released book in this list (just narrowly edging out Natural Language Processing with PyTorch) as well as that with the most pages, it is likely the most up-to-date and comprehensive practical book in this list, and perhaps even currently available on the market. But that doesn't mean it should be your default choice here either; it depends on the ecosystem you want to work in, and the level of detail you are looking to gain, among other considerations.</p>
+<p>As its name suggests “Natural Language Processing in Action”, it’s another best practical approach book for NLP. In that book, you will learn how to build machines that can read and interpret human language.</p>
+<p>The authors of this books are experienced NLP engineers. In that book, you will learn how to use readily available Python packages to capture the meaning in text and react accordingly.</p>
+<p>Book contents:</p>
+<ul>
+<li>PART 1 – WORDY MACHINES
+<ul>
+<li>Packets of thought (NLP overview)</li>
+<li>Build your vocabulary (word tokenization)</li>
+<li>Math with words (TF-IDF vectors)</li>
+<li>Finding meaning in word counts (semantic analysis)</li>
+</ul>
+</li>
+<li>PART 2 – DEEPER LEARNING (NEURAL NETWORKS)
+<ul>
+<li>Baby steps with neural networks (perceptrons and backpropagation)</li>
+<li>Reasoning with word vectors (Word2vec)</li>
+<li>Getting words in order with convolutional neural networks (CNNs)</li>
+<li>Loopy (recurrent) neural networks (RNNs)</li>
+<li>Improving retention with long short-term memory networks</li>
+<li>Sequence-to-sequence models and attention</li>
+</ul>
+</li>
+<li>PART 3 – GETTING REAL (REAL-WORLD NLP CHALLENGES)
+<ul>
+<li>Information extraction (named entity extraction and question answering)</li>
+<li>Getting chatty (dialog engines)</li>
+<li>Scaling up (optimization, parallelization, and batch processing)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="practical-natural-language-processing-a-comprehensive-guide-to-building-real-world-nlp-systems-majumder-gupta-surana"><a class="header" href="#practical-natural-language-processing-a-comprehensive-guide-to-building-real-world-nlp-systems-majumder-gupta-surana">Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems (Majumder, Gupta, Surana)</a></h3>
+<p>This book provides a comprehensive point-based description of building real-world NLP applications. It will guide you through the process of developing Authentic NLP solutions placed and used in a larger product system. This guide is practical for people who want to develop, manage, and scale NLP systems in a major business environment and modify them for niche industries. You will also learn how to adapt to the various industry verticals such as healthcare, Media, and retail, etc. At the end of this book, you will Understand the wide range of problems, tasks, and different approaches within NLP. Also, you will learn to Perfectly Implement and evaluate different NLP applications machine learning methods. Evaluate all the different algorithms and approaches for NLP product tasks and datasets. Develop and create software solutions by maintaining the best practices during release, deployment, and DevOps for Natural Language Processing systems.</p>
+<hr />
+<h3 id="introduction-to-natural-language-processing-eisenstein"><a class="header" href="#introduction-to-natural-language-processing-eisenstein">Introduction to Natural Language Processing (Eisenstein)</a></h3>
+<p>This book gives a technical direction on the subject of natural language processing―the different ways for developing computer software that understands, produces, and manipulates the language of humans. It emphasizes recent data-driven approaches, attentive towards the techniques from supervised and non-supervised machine learning. Starting with the first section of the book that creates a basic ideation into machine learning by developing a set of tools that can be used throughout the book and application of those for practical word-based textual analysis. This book provides a superb introduction to natural language processing, with the main emphasis on foundational method building and algorithms.</p>
+<hr />
+<h3 id="statistical-machine-translation-koehn"><a class="header" href="#statistical-machine-translation-koehn">Statistical Machine Translation (Koehn)</a></h3>
+<p>This book will give you an introduction to statistical machine translation that is a sub-field of Natural Language Processing.</p>
+<p>Book contents:</p>
+<ul>
+<li>Introduction</li>
+<li>Words, Sentences, Corpa</li>
+<li>Probability Theory</li>
+<li>Word-Based Models</li>
+<li>Phrase-Based Models</li>
+<li>Decoding</li>
+<li>Language Models</li>
+<li>Evaluation</li>
+<li>Discriminative Training</li>
+<li>Integrating Linguistic Information</li>
+<li>Tree-Based Methods</li>
+</ul>
+<hr />
+<h3 id="statistical-methods-for-speech-recognition-jelinek"><a class="header" href="#statistical-methods-for-speech-recognition-jelinek">Statistical Methods for Speech Recognition (Jelinek)</a></h3>
+<p>This book will give you an introduction to the topic of statistical speech recognition, another most popular application of Natural Language Processing. In that book, you will find a thorough introduction to speech recognition.</p>
+<p>Book contents:</p>
+<ul>
+<li>The Speech Recognition Problem</li>
+<li>Hidden Markov Models</li>
+<li>The Acoustic Model</li>
+<li>Basic Language Modeling</li>
+<li>The Viterbi Search</li>
+<li>Hypothesis Search on a Tree and the Fast Match</li>
+<li>Elements of Information Theory</li>
+<li>The Complexity of Tasks – The Quality of Language Models</li>
+<li>The Expectation-Maximization Algorithm and Its Consequences</li>
+<li>Decision Trees and Tree Language Models</li>
+<li>Phonetics from Orthography: Spelling-to-Base Form Mappings</li>
+<li>Triphones and Allophones</li>
+<li>Maximum Entropy Probability Estimation and Language Models</li>
+<li>Tree Applications of Maximum Entropy Estimation to Language Modeling</li>
+<li>Estimation of Probabilities from Counts and the Back-Off Method</li>
+</ul>
+<hr />
+<h3 id="applied-text-analysis-with-python-bengfort-bilbro-ojeda"><a class="header" href="#applied-text-analysis-with-python-bengfort-bilbro-ojeda">Applied Text Analysis with Python (Bengfort, Bilbro, Ojeda)</a></h3>
+<p>In this book, you will learn robust, repeatable, and scalable techniques for text analysis with Python, including contextual and linguistic feature engineering, vectorization, classification, topic modeling, entity resolution, graph analysis, and visual steering.</p>
+<p>Along with that, you will also learn how to perform document classification and topic modeling. This book will teach you how to build a dialog framework to enable chatbots and language-driven interaction.
+Why this Book is Good?</p>
+<p>This book will give you a data scientist’s perspective on building language-aware products with applied machine learning techniques.</p>
+<h2 id="courses"><a class="header" href="#courses">Courses</a></h2>
+<ul>
+<li><a href="https://web.stanford.edu/class/cs224n/">Stanford's Natural Language Processing with Deep Learning (CS224n)</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../cse/ai/bdi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../cse/ai/richard_sutton.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../cse/ai/bdi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../cse/ai/richard_sutton.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

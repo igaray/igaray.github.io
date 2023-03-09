@@ -1,0 +1,1066 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kakoune - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../cse/mathematics/index.html">Mathematics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>Combinatorics</div></li></ol></li><li class="chapter-item "><a href="../../cse/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../cse/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../cse/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping a Simple Compiler From Nothing</a></li><li class="chapter-item "><a href="../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../cse/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item "><a href="../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../cse/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><div>Domain Driven Design</div></li><li class="chapter-item "><div>SOLID</div></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><a href="../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../cse/tools/cli.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/git.html">git</a></li><li class="chapter-item "><a href="../../cse/tools/nix.html">nix</a></li><li class="chapter-item "><a href="../../cse/tools/nnn.html">nnn</a></li><li class="chapter-item "><a href="../../cse/tools/prometheus.html">prometheus</a></li><li class="chapter-item "><a href="../../cse/tools/rsync.html">rsync</a></li><li class="chapter-item "><a href="../../cse/tools/sed.html">sed</a></li><li class="chapter-item "><a href="../../cse/tools/ssh.html">ssh</a></li><li class="chapter-item "><div>taskwarrior</div></li><li class="chapter-item "><div>timewarrior</div></li><li class="chapter-item "><a href="../../cse/tools/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../cse/tools/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../cse/tools/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><div>Nomad</div></li><li class="chapter-item "><a href="../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item expanded "><a href="../../cse/tools/kakoune.html" class="active">Kakoune</a></li><li class="chapter-item "><div>Kubernetes</div></li><li class="chapter-item "><a href="../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../cse/tools/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../cse/lisp/index.html">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../cse/lisp/the_lisp_curse.html">The Lisp Curse</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/sql.html">SQL</a></li></ol></li><li class="chapter-item "><a href="../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><div>Art</div></li><li class="chapter-item "><div>History</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/anapanasanti.html">anapanasanti</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/ascending_the_mountain.html">ascending_the_mountain</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/beginning_anew.html">beginning_anew</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddha_the_word.html">buddha_the_word</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">buddhas_way_and_abortion</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/death_is_a_sacrament.html">death_is_a_sacrament</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/detachment.html">detachment</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/dokkodo.html">dokkodo</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_dalai_lama.html">emptiness_dalai_lama</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/gassho_and_bowing.html">gassho_and_bowing</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/heart_to_heart_zen_and_religion_the_roots_and_the_shape.html">heart_to_heart_zen_and_religion_the_roots_and_the_shape</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/realizing_our_true_nature.html">realizing_our_true_nature</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/rules_of_chado.html">rules_of_chado</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">the_mind_illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yunmens_bright_light.html">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../human_manual/index.html">Human Manual</a></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li><li class="chapter-item "><div>Classical Music</div></li><li class="chapter-item "><div>Jazz</div></li><li class="chapter-item "><div>Japanese Jazz</div></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../misc/library/index.html">Library</a></li><li class="chapter-item "><a href="../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="kakoune"><a class="header" href="#kakoune">Kakoune</a></h1>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#insert-mode">Insert Mode</a></li>
+<li><a href="#selections">Selections</a></li>
+<li><a href="#goto">Goto</a></li>
+<li><a href="#movement">MOVEMENT</a></li>
+<li><a href="#search">SEARCH</a></li>
+<li><a href="#multi-selection">MULTI SELECTION</a></li>
+<li><a href="#object-selection">OBJECT SELECTION</a></li>
+<li><a href="#changes">CHANGES</a></li>
+<li><a href="#view">VIEW</a></li>
+<li><a href="#marks">MARKS</a></li>
+<li><a href="#jump-list">JUMP LIST</a></li>
+<li><a href="#commands">COMMANDS</a></li>
+<li><a href="#strings">STRINGS</a></li>
+<li><a href="#string-expansions">STRING EXPANSIONS</a></li>
+<li><a href="#shell-expansion">SHELL EXPANSION</a></li>
+<li><a href="#markup-strings">MARKUP STRINGS</a></li>
+<li><a href="#registers">REGISTERS</a></li>
+<li><a href="#macros">MACROS</a></li>
+<li><a href="#features">FEATURES</a></li>
+<li><a href="#resources">RESOURCES</a></li>
+<li><a href="#examples">EXAMPLES</a></li>
+<li><a href="#cli-options">CLI OPTIONS</a></li>
+<li><a href="#configuration">CONFIGURATION</a></li>
+<li><a href="#configuration-options">CONFIGURATION OPTIONS</a></li>
+<li><a href="#notes">Notes</a>
+<ul>
+<li><a href="#auto-completion">Auto-completion</a></li>
+<li><a href="#use-kakoune-as-an-ide">Use kakoune as an IDE</a></li>
+<li><a href="#how-to-make-x-select-lines-downward-and-x---select-lines-upward">How to make x select lines downward, and X - select lines upward.</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>Operation
+<ul>
+<li>two modes: normal and insertion</li>
+<li>kakoune's grammar is object followed by verb: <code>&lt;count&gt;</code> <code>&lt;selection&gt;</code> <code>&lt;change&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="insert-mode"><a class="header" href="#insert-mode">Insert Mode</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>&lt;backspace&gt;</code> / <code>&lt;del&gt;</code></td><td>delete characters before / under cursors</td></tr>
+<tr><td><code>&lt;home&gt;</code> / <code>&lt;end&gt;</code></td><td>move cursors to line begin</td></tr>
+<tr><td><code>c-n</code> / <code>c-p</code></td><td>select next/previous completion candidate</td></tr>
+<tr><td><code>c-x</code></td><td>explicit insert completion query, followed by</td></tr>
+<tr><td><code>    f</code></td><td>explicit file completion</td></tr>
+<tr><td><code>    w</code></td><td>explicit word completion</td></tr>
+<tr><td><code>    l</code></td><td>explicit line completion</td></tr>
+<tr><td><code>c-o</code></td><td>disable automatic completion for this insert session</td></tr>
+<tr><td><code>c-r &lt;R&gt;</code></td><td>insert contents of the register R given by next key</td></tr>
+<tr><td><code>c-v</code></td><td>insert next keystroke directly into the buffer,</td></tr>
+<tr><td></td><td>without interpreting it.</td></tr>
+<tr><td><code>c-u</code></td><td>commit changes up to now as a single undo group.</td></tr>
+<tr><td><code>a-;</code></td><td>escape to normal mode for a single command</td></tr>
+</tbody></table>
+</div>
+<h2 id="selections"><a class="header" href="#selections">Selections</a></h2>
+<ul>
+<li>Kak works on selections: oriented/directed, inclusive range of characters.</li>
+<li>Selections have two ends: an anchor and a cursor character.</li>
+<li>Most commands move both of them, except when extending selection where the
+anchor character stays fixed and the cursor one moves around.</li>
+<li>There is always at least one selection, and a selection is always at least
+one character (in which case the anchor and cursor of the selections are on
+the same character).</li>
+<li>Most selection commands also support counts, which are entered before the
+command itself.</li>
+</ul>
+<h2 id="goto"><a class="header" href="#goto">Goto</a></h2>
+<ul>
+<li>Commands beginning with g are used to goto certain position and or buffer:</li>
+</ul>
+<pre><code>  gh       gl        go to line begin/end
+  Gh       Gl        select to line begin/end
+  &lt;a-h&gt;    &lt;a-l&gt;     select to line begin/end
+  gi                 go to line begin (non blank)
+  gg, gk / gj        go to the first/last line
+  ge                 go to last char of last line
+  gt / gc / gb       go to the first / middle / last displayed line
+  ga                 go to the previous (alternate) buffer
+  gf                 open the file whose name is selected
+  g.                 go to last buffer modification position
+  &lt;N&gt;g               go to line N
+</code></pre>
+<p>If a count is given prior to hitting g, g will jump to the given line.
+Using G will extend the selection rather than jump.</p>
+<h2 id="movement"><a class="header" href="#movement">MOVEMENT</a></h2>
+<pre><code>
+  A word is a sequence of alphanumeric characters or underscore,
+  A WORD is a sequence of non whitespace characters.
+
+  For most selection commands, using shift permits extending current selection
+  instead of replacing it.
+
+  h / j / k / l      select the character on the left/below/above/on the right of selection end
+  w                  select [word + following whitespaces] [right] of selection end
+  b                  select [preceding whitespaces + word] [left]  of selection end
+  e                  select [preceding whitespaces + word] [right] of selection end
+  &lt;a-[wbe]&gt;          same as [wbe] but select WORD instead of word
+  f / t &lt;C&gt;          select to/until the next occurence of given character C
+  &lt;a-[ft]&gt; &lt;C&gt;       same as [ft] but in the other direction
+  m / M &lt;C&gt;          select / extend selection to matching character C
+  x / X              select / extend selection to line on which selection end lies
+                     (or next line when end lies on an end-of-line)
+  &lt;a-x&gt;              expand selections to contain full lines (including end-of-lines)
+  &lt;a-X&gt;              trim selections to only contain full lines (not including last end-of-line)
+  %                  select whole buffer
+  pageup   pagedown  scroll up / down
+  '                  rotate selections (the main selection becomes the next one)
+  &lt;a-'&gt;              rotate selections backwards
+  ;                  reduce selections to their cursor
+  &lt;a-;&gt;              flip the selections' direction
+  &lt;a-:&gt;              ensure selections are in forward direction (cursor after anchor)
+  &lt;a-.&gt;              repeat last object or f/t selection command.
+</code></pre>
+<h2 id="search"><a class="header" href="#search">SEARCH</a></h2>
+<pre><code>     /     &lt;a-/&gt;     search (select next/previous match)
+     ?     &lt;a-?&gt;     search (extend to next/previous match)
+     n        N      [select / add a new selection to] next match
+  &lt;a-n&gt;    &lt;a-N&gt;     [select / add a new selection to] previous match
+</code></pre>
+<h2 id="multi-selection"><a class="header" href="#multi-selection">MULTI SELECTION</a></h2>
+<pre><code>  One way to get a multiselection is via the s key.
+
+  A multiselection can also be obtained with S, which splits the current
+  selection according to the regex entered.
+  To split a comma separated list, use S then ', *'
+
+  s and S share the search pattern with /, and hence entering an empty pattern
+  uses the last one.
+
+  As a convenience, &lt;a-s&gt; allows you to split the current selections on line
+  boundaries.
+
+  To clear multiple selections, use space.
+  To keep only the nth selection use n followed by space, in order to remove a
+  selection, use &lt;a-space&gt;.
+
+  &lt;a-k&gt; allows you to enter a regex and keep only the selections that contains
+  a match for this regex.
+  Using &lt;a-K&gt; you can keep the selections not containing a match.
+
+  C copies the current selection to the next line (or lines if a count is given)
+  &lt;a-C&gt; does the same to previous lines.
+
+  $ allows you to enter a shell command and pipe each selection to it.
+  Selections whose shell command returns 0 will be kept, other will be dropped.
+
+  s
+  &lt;a-s&gt;         split current selection on line boundaries
+  S&lt;re&gt;         split current selection according to regexp &lt;re&gt;
+  S,&lt;space&gt;*    split a comma-separated list
+  &lt;space&gt;       clear multiple selections
+  &lt;N&gt;&lt;space&gt;    keep only &lt;N&gt;th selection
+  &lt;N&gt;&lt;a-space&gt;  remove &lt;N&gt;th selection
+  &lt;a-k&gt;         enter a regex and keep only the match
+  &lt;a-K&gt;         enter a regex and keep selections not containing the match
+  &lt;C&gt; &lt;a-C&gt;     copy the selection to the next/previos line
+                (lines if count is given)
+  $             enter shell command and pipe each selection to it
+                selections whose command return 0 are kept
+</code></pre>
+<h2 id="object-selection"><a class="header" href="#object-selection">OBJECT SELECTION</a></h2>
+<pre><code>
+  Some keys allow you to select a text object:
+
+  &lt;a-a&gt;   selects the whole object
+  &lt;a-i&gt;   selects the inner object, that is the object excluding its surrounder.
+          For example, for a quoted string, this will not select the quote,
+          and for a word this will not select trailing spaces.
+  [       selects to object start
+  ]       selects to object end
+  {       extends selections to object start
+  }       extends selections to object end
+
+  After this key, you need to enter a second key in order to specify which
+  object you want.
+
+  b, ( or )   select the enclosing parenthesis
+  B, { or }   select the enclosing {} block
+  r, [ or ]   select the enclosing [] block
+  a, &lt; or &gt;   select the enclosing &lt;&gt; block
+  &quot; or Q      select the enclosing double quoted string
+  ' or q      select the enclosing single quoted string
+  ` or g      select the enclosing grave quoted string
+  w           select the whole word
+  W           select the whole WORD
+  s           select the sentence
+  p           select the paragraph
+  ␣           select the whitespaces
+  i           select the current indentation block
+  n           select the number
+  u           select the argument
+  :           select user defined object, will prompt for open and close text.
+
+  For nestable objects, a count can be used in order to specify which
+  surrounding level to select.
+</code></pre>
+<h2 id="changes"><a class="header" href="#changes">CHANGES</a></h2>
+<pre><code>  i a       enter insert mode before/after current selection
+  I A       enter insert mode at current selection begin line start/end
+  o O       enter insert mode in one (or given count) new lines below/above
+            current selection end/begin
+  y         yank selections
+  d         yank and delete current selection
+  c         yank and delete current selection and enter insert mode
+  .         repeat last insert mode change
+            (i, a, or c, including the inserted text)
+  p P       paste after/before current selection end/begin
+  &lt;a-p&gt;     paste all after current selection end, and select each pasted string.
+  &lt;a-P&gt;     paste all before current selection begin, and select each pasted
+            string.
+  R         replace current selection with yanked text
+  r &lt;C&gt;     replace each character with the next entered one C
+  &lt;a-j&gt;     join selected lines
+  &lt;a-J&gt;     join selected lines and select spaces inserted in place of line breaks
+  &lt;a-m&gt;     merge contiguous selections together (works across lines as well)
+
+  &lt;gt&gt; (&gt;)  indent selected lines
+  &lt;a-gt&gt;    indent selected lines, including empty lines
+
+  &lt;lt&gt; (&lt;)  deindent selected lines
+  &lt;a-lt&gt;    deindent selected lines, do not remove incomplete indent (3 leading
+            spaces when indent is 4)
+
+  |         pipe each selection through the given external filter program and
+            replace the selection with it’s output.
+  &lt;a-|&gt;     pipe each selection through the given external filter program and
+            ignore its output
+
+  !         insert command output before selection
+  a-!       append command output after selection
+
+  u         undo last change
+  a-u       move backward in history
+  U         redo last change
+  a-U       move forward in history
+
+  &amp;         align selection, align the cursor of selections by inserting spaces
+            before the first character of the selection
+  &lt;a-&amp;&gt;     copy indent, copy the indentation of the main selection (or the
+            count one if a count is given) to all other ones
+
+  `         to lower case
+  ~         to upper case
+  &lt;a-&gt;`     swap case
+  @         convert tabs to spaces in current selections, uses the buffer
+            tabstop option or the count parameter for tabstop.
+  &lt;a-@&gt;     convert spaces to tabs in current selections, uses the buffer
+            tabstop option or the count parameter for tabstop.
+  &lt;a-&quot;&gt;     rotate selections content, if specified, the count groups
+            selections, so 3&lt;a-&quot;&gt; rotate (1, 2, 3) and (3, 4, 6) independently.
+</code></pre>
+<h2 id="view"><a class="header" href="#view">VIEW</a></h2>
+<pre><code>
+  Some commands, all beginning with v permit to manipulate the current view.
+
+  vv or vc  center the main selection in the window
+  vt  scroll to put the main selection on the top line of the window
+  vb  scroll to put the main selection on the bottom line of the window
+  vh  scroll the window count columns left
+  vj  scroll the window count line downward
+  vk  scroll the window count line upward
+  vl  scroll the window count columns right
+
+  Using V will lock view mode until &lt;esc&gt; is hit
+</code></pre>
+<h2 id="marks"><a class="header" href="#marks">MARKS</a></h2>
+<pre><code>
+  Current selections position can be saved in a register and restored later on.
+  By default, marks use the '^' register, but using the register can be set
+  using &quot;&lt;reg&gt; prefix.
+
+  Z will save the current selections to the register. &lt;a-Z&gt; will append the
+  current selections to the register. z will restore the selections from the
+  register. &lt;a-z&gt; will add the selections from the register to the existing ones.
+</code></pre>
+<h2 id="jump-list"><a class="header" href="#jump-list">JUMP LIST</a></h2>
+<pre><code>  Some commands, like the goto commands, buffer switch or search commands,
+  push the previous selections to the client’s jump list. It is possible to
+  forward or backward in the jump list using:
+
+  &lt;c-i&gt;  Jump forward
+  &lt;c-o&gt;  Jump backward
+  &lt;c-s&gt;  save current selections
+</code></pre>
+<h2 id="commands"><a class="header" href="#commands">COMMANDS</a></h2>
+<pre><code>  When pressing : in normal mode, Kakoune will open a prompt to enter a command.
+  Commands are used for non editing tasks, such as opening a buffer, writing the
+  current one, quitting, etc.
+
+  A few keys are recognized by prompt mode to help edit a command:
+
+  &lt;ret&gt;                 validate prompt
+  &lt;esc&gt;                 abandon without
+  &lt;left&gt; or &lt;a-h&gt;       move cursor to previous character
+  &lt;right&gt; or &lt;a-l&gt;      move cursor to previous character
+  &lt;home&gt;                move cursor to first character
+  &lt;end&gt;                 move cursor past the last character
+  &lt;backspace&gt; or &lt;a-x&gt;  erase character before cursor
+  &lt;del&gt; or &lt;a-d&gt;        erase character under cursor
+  &lt;c-w&gt;                 advance to next word begin
+  &lt;c-a-w&gt;               advance to next WORD begin
+  &lt;c-b&gt;                 go back to previous word begin
+  &lt;c-a-b&gt;               go back to previous WORD begin
+  &lt;c-e&gt;                 advance to next word end
+  &lt;c-a-e&gt;               advance to next word end
+  &lt;up&gt; or &lt;c-p&gt;         select previous entry in history
+  &lt;down&gt; or &lt;c-n&gt;       select next entry in history
+  &lt;tab&gt;                 select next completion candidate
+  &lt;backtab&gt;             select previous completion candidate
+  &lt;c-r&gt;                 insert then content of the register given by next key.
+  &lt;c-v&gt;                 insert next keystroke without interpreting it
+  &lt;c-o&gt;                 disable auto completion for this prompt
+
+  Commands starting with horizontal whitespace (e.g. a space) will not be saved
+  in the command history.
+
+  Some commands take an exclamation mark (!), which can be used to force the
+  execution of the command (i.e. to quit a modified buffer, the command q! has
+  to be used).
+
+  cd [&lt;directory&gt;]                          change the current directory to
+                                            &lt;directory&gt;, or the home directory
+                                            if unspecified
+  doc &lt;topic&gt;                               display documentation about a topic.
+                                            The completion list displays the
+                                            available topics.
+  e[dit][!] &lt;filename&gt; [&lt;line&gt; [&lt;column&gt;]]  open buffer on file, go to given
+                                            line and column. If file is already
+                                            opened, just switch to this file.
+                                            Use edit! to force reloading.
+  w[rite][!] [&lt;filename&gt;]                   write buffer to &lt;filename&gt; or use
+                                            its name if filename is not given.
+                                            If the file is write-protected, its
+                                            permissions are temporarily changed
+                                            to allow saving the buffer and
+                                            restored afterwards when the write!
+                                            command is used.
+  w[rite]a[ll]                              write all buffers that are
+                                            associated to a file.
+  q[uit][!]                                 exit Kakoune, use quit! to force
+                                            quitting even if there is some
+                                            unsaved buffers remaining.
+  kill[!]                                   terminate the current session, all
+                                            the clients as well as the server,
+                                            use kill! to ignore unsaved buffers
+  w[a]q[!]                                  write the current buffer (or all
+                                            buffers when waq is used) and quit
+  b[uffer] &lt;name&gt;                           switch to buffer &lt;name&gt;
+  b[uffer]n[ext]                            switch to the next buffer
+  b[uffer]p[rev]                            switch to the previous buffer
+  d[el]b[uf][!] [&lt;name&gt;]                    delete the buffer &lt;name&gt;
+  source &lt;filename&gt;                         execute commands in &lt;filename&gt;
+  colorscheme &lt;name&gt;                        load named colorscheme.
+  rename-client &lt;name&gt;                      set current client name
+  rename-buffer &lt;name&gt;                      set current buffer name
+  rename-session &lt;name&gt;                     set current session name
+  echo [options] &lt;text&gt;                     show &lt;text&gt; in status line, with the
+                                            following options:
+      -color &lt;face&gt;                         print the given text with &lt;face&gt;,
+                                            most commonly Error or Information
+      -markup                               expand the markup strings in &lt;text&gt;
+      -debug                                print the given text to the
+                                            *debug* buffer
+  nop                                       does nothing, but as with every
+                                            other commands, arguments may be
+                                            evaluated. So nop can be used for
+                                            example to execute a shell command
+                                            while being sure that it’s output
+                                            will not be interpreted by kak.
+                                            :%sh{ echo echo tchou } will echo
+                                            tchou in Kakoune, whereas
+                                            :nop %sh{ echo echo tchou } will
+                                            not, but both will execute the shell
+                                            command.
+
+  Multiple commands can be separated either by new lines or by semicolons, as
+  such a semicolon must be escaped with \; to be considered as a literal
+  semicolon argument.
+</code></pre>
+<h2 id="strings"><a class="header" href="#strings">STRINGS</a></h2>
+<pre><code>  When entering a command, parameters are separated by whitespace (shell like),
+  if you want to give parameters with spaces, you should quote them.
+
+  'strings'   uninterpreted strings, you can use \' to escape the separator,
+              every other char is itself.
+  &quot;strings&quot;   expanded strings, % strings (see Expansions) contained are
+              expended. Use \% to escape a % inside them, and \\ to escape a
+              slash.
+  %{strings}  these strings are very useful when entering commands
+
+  the { and } delimiters are configurable: you can use any non alphanumeric
+  character, e.g. %[string], %&lt;string&gt;, %(string), %~string~, %!string!.
+
+  if the character following the % is one of {[(&lt;,
+  then the closing one is the matching }])&gt; and the delimiters are not escapable
+  but are nestable.
+</code></pre>
+<h2 id="string-expansions"><a class="header" href="#string-expansions">STRING EXPANSIONS</a></h2>
+<pre><code>  A special kind of %{strings} can be used, with a type between % and the
+  opening delimiter (which cannot be alphanumeric).
+  These strings are expanded according to their type.
+
+  For example %opt{autoinfo} is of type 'opt'.
+  'opt' expansions are replaced by the value of the given option (here autoinfo).
+
+  Supported types are:
+
+    sh   shell expansion, similar to posix shell $(…​) construct
+    reg  register expansion, will be replaced by the content of the given register
+    opt  option expansion, will be replaced with the value of the given option
+    val  value expansion, gives access to the environment variable available to
+         the Shell expansion. The kak_ prefix is not used there
+    arg  argument expansion, gives access to the arguments of the current
+         command, the content can be a number, or @ for all arguments
+</code></pre>
+<h2 id="shell-expansion"><a class="header" href="#shell-expansion">SHELL EXPANSION</a></h2>
+<pre><code>  The %sh{…​} expansion replaces its content with the output of the shell
+  commands in it. It is similar to the shell $(…​) syntax and is evaluated only
+  when needed.
+
+  For example: %sh{ ls } is replaced with the output of the ls command.
+
+  Some of Kakoune state is available through environment variables:
+
+    kak_selection             content of the main selection
+    kak_selections            content of the selection separated by colons,
+                              colons and backslashes in the selection contents
+                              are escaped with a backslash.
+    kak_selection_desc        range of the main selection, represented as
+                              anchor,cursor; anchor and cursor are in this
+                              format: line.column
+    kak_selections_desc       range of the selecations separated by colons
+    kak_bufname               name of the current buffer
+    kak_buffile               full path of the file or same as kak_bufname when
+                              there’s no associated file
+    kak_buflist               the current buffer list, each buffer separated by
+                              a colon
+    kak_timestamp             timestamp of the current buffer, the timestamp is
+                              an integer value which is incremented each time
+                              the buffer is modified.
+    kak_runtime               directory containing the kak binary
+    kak_count                 count parameter passed to the command
+    kak_opt_&lt;name&gt;            value of option &lt;name&gt;
+    kak_reg_&lt;r&gt;               value of register &lt;r&gt;
+    kak_session               name of the current session
+    kak_client                name of current client
+    kak_source                path of the file currently getting executed
+                              (through the source command)
+    kak_cursor_line           line of the end of the main selection
+    kak_cursor_column         column of the end of the main selection (in byte)
+    kak_cursor_char_column    column of the end of the main selection (in character)
+    kak_cursor_byte_offset    offset of the main selection from the beginning
+                              of the buffer (in byte).
+    kak_window_width          width of the current kakoune window
+    kak_window_height         height of the current kakoune window
+    kak_hook_param            filtering text passed to the currently executing hook
+    kak_hook_param_capture_N  text captured by the hook filter regex capture N
+    kak_client_env_&lt;name&gt;     value of the &lt;name&gt; variable in the client
+                              environment.
+                              Example: $kak_client_env_SHELL is the SHELL variable
+
+  Note that in order to make only needed information available, Kakoune needs to
+  find the environment variable reference in the shell script executed.
+  Hence, %sh{ ./script.sh } with script.sh referencing an environment variable
+  will not work.
+</code></pre>
+<h2 id="markup-strings"><a class="header" href="#markup-strings">MARKUP STRINGS</a></h2>
+<pre><code>  In certain context, kakoune can take a markup string, which is a string
+  containing formatting informations. In these strings, syntax {facename} will
+  enable the face facename until another face gets activated (or the end of the
+  string.
+  Literal { shall be written \{, and literal \ that precede a { shall be written \\
+</code></pre>
+<h2 id="registers"><a class="header" href="#registers">REGISTERS</a></h2>
+<pre><code>  Registers are named lists of text.
+  They are used for various purposes, like storing the last yanked text, or
+  the captured groups associated with the selections.
+
+  Yanking and pasting uses the register &quot;, however most commands using a
+  register can have their default register overridden by using the &quot; key
+  followed by the register. For example &quot;sy will yank (y command) in the s
+  register. &quot;sp will paste from the s register.
+
+  While in insert mode or in a prompt, &lt;c-r&gt; followed by a register name
+  (one character) inserts it.
+
+  For example,
+  &lt;c-r&gt; followed by &quot; will insert the currently yanked text.
+  &lt;c-r&gt; followed by 2 will insert the second capture group from the last regex selection.
+
+  Registers are lists, instead of simply text in order to interact well with
+  multiselection. Each selection has its own captures or yank buffer.
+
+  Alternate names
+    Non alphanumeric registers have an alternative name that can be used in
+    contexts where only alphanumeric identifiers are possible.
+
+  Special registers
+    Some registers are not general purposes, they cannot be written to, but they
+    contain some special data:
+
+    % (percent)  current buffer name
+    . (dot)  current selection contents
+    # (hash)  selection indices (first selection has 1, second has 2, …​)
+    _ (underscore)  null register, always empty
+
+  Default registers
+
+    Most commands using a register default to a specific one if not specified:
+
+    &quot; (dquote)   default yank register, used by yanking and pasting commands
+                 like y, p and R
+    / (slash)    default search register, used by regex based commands like
+                 s, * or /
+    @ (arobase)  default macro register, used by q and Q
+    ^ (caret)    default mark register, used by z and Z
+    | (pipe)     default shell command register, used by command that spawn a
+                 subshell such as |, &lt;a-|&gt;, ! or &lt;a-!&gt;
+</code></pre>
+<h2 id="macros"><a class="header" href="#macros">MACROS</a></h2>
+<pre><code>  Macros are recorded with the Q key, and are stored by default in the @
+  register. Another register can be chosen by with hitting &quot;&lt;reg&gt; before the Q
+  key.
+
+  To replay a macro, use the q key.
+</code></pre>
+<h2 id="features"><a class="header" href="#features">FEATURES</a></h2>
+<pre><code>  Multiple selections as a central way of interacting
+  Powerful selection manipulation primitives
+  Select all regex matches in current selections
+  Keep selections containing/not containing a match for a given regex
+  Split current selections with a regex
+  Text objects (paragraph, sentence, nestable blocks)
+  Powerful text manipulation primitives
+  Align selections
+  Rotate selection contents
+  Case manipulation
+  Indentation
+  Piping each selection to external filter
+  Client-Server architecture
+  Multiple clients on the same editing session
+  Use tmux or your X11 window manager to manage windows
+  Simple interaction with external programs
+  Automatic contextual help
+  Automatic as you type completion
+  Macros
+  Hooks
+  Syntax Highlighting
+  Supports multiple languages in the same buffer
+  Highlight a buffer differently in different windows
+</code></pre>
+<h2 id="resources"><a class="header" href="#resources">RESOURCES</a></h2>
+<ul>
+<li>http://kakoune.org/</li>
+<li>http://kakoune.org/why-kakoune/why-kakoune.html</li>
+<li>https://github.com/danr/libkak</li>
+<li>https://github.com/hiberno/kakrc/tree/master/.config/kak</li>
+<li>https://github.com/mawww/config</li>
+<li>https://github.com/mawww/golf</li>
+<li>https://github.com/mawww/kak-ycmd</li>
+<li>https://github.com/mawww/kakoune</li>
+<li>https://github.com/mawww/kakoune#key-mapping</li>
+<li>https://github.com/mawww/kakoune/blob/master/doc/design.asciidoc</li>
+<li>https://github.com/mawww/kakoune/issues/249</li>
+<li>https://github.com/mawww/kakoune/wiki</li>
+<li>https://github.com/mawww/kakoune/wiki/Avoid-the-escape-key</li>
+<li>https://github.com/mawww/kakoune/wiki/How-To</li>
+<li>https://github.com/mawww/kakoune/wiki/Implementing-user-mode</li>
+<li>https://github.com/mawww/kakoune/wiki/Migrating-from-Vim</li>
+<li>https://github.com/mawww/kakoune/wiki/Migrating-from-Vim-popular-plugins</li>
+<li>https://github.com/mawww/kakoune/wiki/Normal-mode-commands</li>
+<li>https://github.com/search?q=kakrc&amp;type=Code&amp;utf8=%E2%9C%93</li>
+<li>https://lobste.rs/s/gwdwjb/why_kakoune_quest_for_better_code_editor</li>
+<li>https://www.reddit.com/r/kakoune/</li>
+</ul>
+<h2 id="examples"><a class="header" href="#examples">EXAMPLES</a></h2>
+<pre><code>  %sword&lt;ret&gt;creplacement&lt;esc&gt;    Global replace
+                                  % selects the entire buffer,
+                                  s opens a prompt for a regex
+                                  &lt;ret&gt; validates the regex and replaces the
+                                  selection with one per matches
+                                  (hence, all occurences of word are selected)
+                                  c deletes the selection contents and enters
+                                  insert mode, replacement is typed and goes
+                                  back to normal mode.
+
+  replace in current curly braces block:
+
+  &lt;a-i&gt;Bsword&lt;ret&gt;creplacement&lt;esc&gt;
+
+  delete to line end
+  alt-ld or Gld
+</code></pre>
+<h2 id="cli-options"><a class="header" href="#cli-options">CLI OPTIONS</a></h2>
+<pre><code>
+  +line[:column]    open at line:column
+  +:                open and send cursor to the last line
+  -n                do not load resource
+  -l                list existing sessions
+  -d                run as a headless session
+  -e &lt;command&gt;      execute command after initialization fase
+  -f &lt;keys&gt;         enter filter mode and execute keys on the files passed as
+                    argument
+  -q                when in filter mode, don't print any errors
+  -p &lt;session_id&gt;   send the commands written on the standard input to the session
+  -c &lt;session_id&gt;   connect to the session
+  -s &lt;session_id&gt;   set the current session name to session_id
+  -ui &lt;type&gt;        select the user interface
+                      ncurses: default terminal user interface
+                      dummy:   empty user interface not displaying anything
+                      json:    json-rpc based user interface that writes json on
+                               stdout and read keystrokes as json on stdin.
+  -clear            remove sessions that terminated in an incorrect state
+  -ro               enter in readonly mode
+</code></pre>
+<h2 id="configuration"><a class="header" href="#configuration">CONFIGURATION</a></h2>
+<pre><code>  two directories containing Kakoune’s scripts:
+    runtime:  located in ../share/kak/ relative to the kak binary contains the
+              system scripts
+    userconf: located in $XDG_CONFIG_HOME/kak/, which defaults to
+              $HOME/.config/kak/ on most systems, containing the user
+              configuration
+
+  1 ../share/kak/kakrc
+  2 $XDG_CONFIG_HOME/kak/autoload/*.kak
+  3 ../share/kak/autoload/*.kak
+  4 $XDG_CONFIG_HOME/kak/kakrc
+
+  1 Unless -n is specified, Kakoune will load its startup script located at
+    ${runtime}/kakrc relative to the kak binary. This startup script is
+    responsible for loading the user configuration.
+  2 First, Kakoune will search recursively for .kak files in the autoload
+    directory. It will first look for an autoload directory at
+    ${userconf}/autoload and will fallback to ${runtime}/autoload if it does
+    not exist.
+  3 Once all those files are loaded, Kakoune will try to source
+    ${runtime}/kakrc.local which is expected to contain distribution provided
+    configuration.
+  4 And finally, the user configuration will be loaded from ${userconf}/kakrc.
+
+  If you create a user autoload directory in ${userconf}/autoload,
+  the system one at ${runtime}/autoload will not be loaded anymore.
+  You can add a symbolic link to it (or to individual scripts) inside
+  ${userconf}/autoload to keep loading system scripts.
+</code></pre>
+<h2 id="configuration-options"><a class="header" href="#configuration-options">CONFIGURATION OPTIONS</a></h2>
+<pre><code>  Options are typed, their type can be
+
+    int                     an integer number
+    bool                    a boolean value, yes/true or no/false
+    str                     a string, some freeform text
+    coord                   a line,column pair (separated by comma)
+    regex                   as a string but the set commands will complain if
+                            the entered text is not a valid regex.
+    {int,str}-list          a list, elements are separated by a colon ( ) if an
+                            element needs to contain a colon, it can be escaped
+                            with a backslash.
+    range-faces             a : separated list of a pair of a buffer range
+                            (&lt;begin line&gt;.&lt;begin column&gt;,&lt;end line&gt;.&lt;end column&gt;
+                            or &lt;begin line&gt;.&lt;end line&gt;+&lt;length&gt;) and a face
+                            (separated by |), except for the first element which
+                            is just the timestamp of the buffer.
+    completions             a : separated list of &lt;text&gt;|&lt;docstring&gt;|&lt;menu text&gt;
+                            candidates, except for the first element which
+                            follows the &lt;line&gt;.&lt;column&gt;[+&lt;length&gt;]@&lt;timestamp&gt;
+                            format to define where the completion apply in the
+                            buffer.
+    enum(value1|value2|…​)   an enum, taking on of the given values
+    flags(value1|value2|…​)  a set of flags, taking a combination of the given
+                            values joined by |.
+
+  Options value can be changed using the set commands:
+
+  :set [global,buffer,window] &lt;option&gt; &lt;value&gt; # buffer, window, or global scope
+
+  Option values can be different by scope, an option can have a global value, a
+  buffer value and a window value. The effective value of an option depends on
+  the current context. If we have a window in the context (interactive edition
+  for example), then the window value (if any) is used, if not we try the buffer
+  value (if we have a buffer in the context), and if not we use the global
+  value.
+
+  That means that two windows on the same buffer can use different options (like
+  different filetype, or different tabstop). However, some options might end up
+  ignored if their scope is not in the command context
+
+  Writing a file never uses the window options for example, so any options
+  related to writing won’t be taken into account if set in the window scope (BOM
+  or eolformat for example).
+
+  New options can be declared using the :decl command
+
+  :decl [-hidden] &lt;type&gt; &lt;name&gt; [&lt;value&gt;]
+
+  The -hidden parameter makes the option invisible in completion, but still
+  modifiable.
+
+  Some options are built in Kakoune, and can be used to control its behaviour
+
+  tabstop int                           width of a tab character.
+  indentwidth int                       width (in spaces) used for indentation.
+                                        0 means a tab character.
+  scrolloff coord                       number of lines,columns to keep visible
+                                        around the cursor when scrolling.
+  eolformat enum(lf|crlf)               the format of end of lines when writing
+                                        a buffer, this is autodetected on load;
+                                        values of this option assigned to the
+                                        window scope are ignored
+  BOM enum(none|utf8)                   define if the file should be written
+                                        with a unicode byte order mark.
+                                        Values of this option assigned to the
+                                        window scope are ignored
+  readonly bool                         prevent modifications from being saved
+                                        to disk, all buffers if set to true in
+                                        the global scope, or current buffer if
+                                        set in the buffer scope; values of this
+                                        option assigned to the window scope are
+                                        ignored
+  incsearch bool                        execute search as it is typed
+  aligntab bool                         use tabs for alignment command
+  autoinfo flags(command|onkey|normal)  display automatic information box in the
+                                        enabled contexts.
+  autoshowcompl bool                    automatically display possible
+                                        completions when editing a prompt.
+  ignored_files regex                   filenames matching this regex won’t be
+                                        considered as candidates on filename
+                                        completion (except if the text being
+                                        completed already matches it).
+  disabled_hooks regex                  hooks whose group matches this regex
+                                        won’t be executed.
+                                        For example indentation hooks can be
+                                        disabled with '.*-indent'.
+  filetype str                          arbitrary string defining the type of
+                                        the file filetype dependant actions
+                                        should hook on this option changing for
+                                        activation/deactivation.
+  path str-list                         directories to search for gf command.
+  completers str-list                   completion systems to use for insert
+                                        mode completion. The given completers
+                                        are tried in order until one generate
+                                        some completion candidates.
+                                        Existing completers are:
+                                          word=all    complete using words in
+                                                      all buffers
+                                          word=buffer complete using words in
+                                                      only the current one
+                                          filename    tries to detect when a
+                                                      filename is being entered
+                                                      and provides completion
+                                                      based on local filesystem.
+                                          option=&lt;opt-name&gt;
+                                                      where &lt;opt-name&gt; is a
+                                                      completions option.
+  static_words str-list                 list of words that are always added to
+                                        completion candidates when completing
+                                        words in insert mode.
+  completions_extra_word_chars str      a string containing all additional
+                                        character that should be considered as
+                                        word character for the purpose of insert
+                                        mode completion.
+  autoreload enum(yes|no|ask)           auto reload the buffers when an external
+                                        modification is detected.
+  debug flags(hooks|shell|profile)      dump various debug information in the
+                                        debug buffer.
+  idle_timeout int                      timeout, in milliseconds, with no user
+                                        input that will trigger the InsertIdle
+                                        and NormalIdle hooks.
+  fs_checkout_timeout int               timeout, in milliseconds, between checks
+                                        in normal mode of modifications of the
+                                        file associated with the current buffer
+                                        on the filesystem.
+  modelinefmt string                    A format string used to generate the
+                                        mode line, that string is first expanded
+                                        as a command line would be (expanding
+                                        %…​{…​} strings), then markup tags are
+                                        applied (see Markup strings). Two
+                                        special atoms are available as markup:
+                                        {{mode_info}} with information about the
+                                        current mode (example insert 3 sel), and
+                                        {{context_info}} with information such
+                                        as if the file has been modified
+                                        (with [+]), or if it is new
+                                        (with [new file]).
+  ui_options                            colon separated list of key=value pairs
+                                        that are forwarded to the user interface
+                                        implementation.
+                                        The NCurses UI supports the following
+                                        options:
+    ncurses_set_title                     if yes or true, the terminal emulator
+                                          title will be changed.
+    ncurses_status_on_top                 if yes, or true the status line will
+                                          be placed at the top of the terminal
+                                          rather than at the bottom.
+    ncurses_assistant                     specify the nice assistant you get in
+                                          info boxes, can be 'clippy', 'cat',
+                                          'dilbert' or 'none'
+    ncurses_enable_mouse                  boolean option that enables mouse
+    ncurses_change_colors                 boolean option that can disable color
+                                          palette changing if the terminfo
+                                          enables it but the terminal does not
+                                          support it.
+    ncurses_wheel_down_button             specify which button send for wheel
+                                          down events.
+    ncurses_wheel_up_button               specify which button send for wheel
+                                          up events.
+</code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<h3 id="auto-completion"><a class="header" href="#auto-completion">Auto-completion</a></h3>
+<pre><code>    I use kak for writing emails, and I store all my email adress contacts in a file, on per line, like
+
+    Joe Bla &lt;joe.bla@gmail.com&gt;
+    G z &lt;g.z@a.com&gt;
+    I'd like each line to appear as a possible auto-completion candidate. Is this possible?
+
+    i use something like this:
+    execute
+
+    set window static_words &quot;%sh{tr '\n' ':' &lt; ~/.contacts | cut -b 1-}&quot;
+    set window completion_extra_word_char @
+    for your desired filetype.
+
+    starting with @ in insert mode will give you the complete list to cycle through.
+</code></pre>
+<h3 id="use-kakoune-as-an-ide"><a class="header" href="#use-kakoune-as-an-ide">Use kakoune as an IDE</a></h3>
+<pre><code>    As a convention, many commands respect the toolsclient, docsclient and jumpclient options. These string options store the name of the client to use. toolsclient will be used for :make and :grep commands, when an entry is selected in them, they will try to open the file in the jumpclient client. The :man and :doc commands will display their content in the docsclient.
+
+    If neither of those options are defined, it will fallback on the current client.
+
+    Here’s a small snippet you can trigger to launch multiple clients and bind them to the right options:
+
+    def ide %{
+        rename-client main
+        set global jumpclient main
+
+        new rename-client tools
+        set global toolsclient tools
+
+        new rename-client docs
+        set global docsclient docs
+    }
+    Then it’s up to tmux or your window manager to fit them correctly on your monitor.
+    https://github.com/mawww/config/blob/bd58ee3f0314be8561846681d2e837d9545fdde6/ide.kak
+</code></pre>
+<h3 id="how-to-make-x-select-lines-downward-and-x---select-lines-upward"><a class="header" href="#how-to-make-x-select-lines-downward-and-x---select-lines-upward">How to make x select lines downward, and X - select lines upward.</a></h3>
+<pre><code>    more here https://github.com/mawww/kakoune/issues/1285
+
+    def -hidden -params 1 extend-line-down %{
+      exec &quot;&lt;a-:&gt;%arg{1}X&quot;
+    }
+    def -hidden -params 1 extend-line-up %{
+      exec &quot;&lt;a-:&gt;&lt;a-;&gt;%arg{1}K&lt;a-x&gt;&quot;
+    }
+    map global normal x &quot;:extend-line-down %val{count}&lt;ret&gt;&quot;
+    map global normal X &quot;:extend-line-up %val{count}&lt;ret&gt;&quot;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../cse/tools/elasticsearch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../cse/tools/latex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../cse/tools/elasticsearch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../cse/tools/latex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

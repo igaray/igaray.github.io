@@ -1,0 +1,1762 @@
+* Structure And Interpretation of Computer Programs
+** Foreword
+
+The subject matter of this book has focus on 3 phenomena:
+- the human mind
+- collections of computer programs
+- the computer
+
+
+Since it is very difficult to formally prove the correctness of large programs, what we end up doing us having a large number of small programs of whose correctness we have become sure and then learn the art of combining them into larger structures using organization techniques of proven value.
+
+These techniques of combining these small programs is discussed at length in this book. 
+We can learn a great deal of this organization technique by studying the programs that convert the code programmers write to "machine" programs, what the hardware understands. 
+
+"It is better to have 100 functions operate on one data structure than to have 10 functions operate on 10 data structures." -> echoes Pike's "Bigger the interface, weaker the abstraction"
+
+** Chapter 1 - Building Abstractions with Procedures
+
+The acts of mind, on simple ideas are 3:
+- taking simple ideas and combining them to form a compound idea
+- being able to join 2 compound (or simple) ideas without making them one
+- recognizing the joined ideas as separate ideas from other ideas
+
+We will study the "computational process" - they aren't the unix processes etc, they are the abstract beings that inhabit the computers.
+
+They manipulate "data", their evolution is governed by pattern of rules called programs - so, programs are just things humans create to direct processes.
+
+The programs are the spells which create and control these processes - the aatma.
+
+#+BEGIN_QUOTE
+Well-designed computational systems, like well-designed automobiles or nuclear reactors, are designed in a modular manner
+#+END_QUOTE
+
+"Recursive equations" are a kind of logical expressions. They can be used as a model for computation. 
+Lisp was invented to explore the use of recursive equations for modeling computation.
+
+Lisp's description of processes, or as Lisp likes to call them, "procedures" can be represented and manipulated as data - rephrasing, it has the ability of handling procedures as data. It blurs the distinction between "passive" data and "active" processes - this enables powerful programming paradigms.
+
+Since we can treat procedures as data, Lisp is great for writing programs that manipulate other programs as data, which is something that must be done by, compilers and interpreters.
+
+*** 1.1 The Elements of Programming
+
+The programming language serves as a framework within which we organize our ideas about processes (the broader process we talked about in the last section)
+
+Languages provides us means of combining simple ideas to form complex ones.
+There are 3 mechanisms for doing that:
+
+- primitive expressions
+  - which represent the simplest entities the language is concerned with
+- means of combination
+  - by which compound elements are built from simpler ones
+- means of abstraction
+  - by which compound elements can be *named and manipulated as units*
+
+
+There are 2 kinds of elements, "procedures" and "data". 
+Data is the stuff we want to manipulate, procedures are the things that manipulate it.
+
+Why Scheme?
+#+BEGIN_QUOTE
+Scheme, the dialect of Lisp that we use, is an attempt to bring together the power and elegance of Lisp and Algol. From Lisp we take:
+- the metalinguistic power that derives from the simple syntax
+- the uniform representation of programs as data objects
+- the garbage-collected heap-allocated data. 
+
+From Algol we take:
+- lexical scoping and block structure
+#+END_QUOTE
+
+**** 1.1.1 Expressions
+We can try out some basic expressions.
+The interpreter can "evaluate" the expression and return the result of evaluating that expression.
+
+One kind of expression can be ~55~, on evaluation, it returns the same number back ~55~
+
+#+begin_src scheme
+55
+;Value: 55
+
+3 error> (+ 12 12)
+
+;Value: 24
+
+3 error> (/ 10 5)
+
+;Value: 2
+#+end_src
+
+There expressions :top:, formed by delimiting a "list of expressions" within parentheses are called "combinations"
+
+The leftmost expressions is called "operator", and the remaining elements(expressions) are called "operands"
+
+The value of the "combination" is obtained by applying the procedure specified by the operator to the arguments that are the values of the operands.
+
+
+The convention of placing the operand on the left is called prefix notation.
+This has the advantage of accepting variable number of operands and that each operand can be an expression
+
+Eg: ~(+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))~
+
+
+**** 1.1.2 Naming and the Environment
+
+One important feature of programming languages is that they provide us with the option to refer to computational objects with names
+
+*The name identifies a _variable_ whose _value_ is the object*
+
+In scheme, we use ~define~ to name things.
+
+~(define size 2)~
+
+Now, we have a expression with value 2, which can be referred to by the variable ~size~
+
+This allows us to do:
+
+~(* 5 size)~
+
+More eg:
+
+#+begin_src scheme
+(define pi 3.14159)
+(define radius 10)
+(* pi (* radius radius))
+314.159
+(define circumference (* 2 pi radius)) circumference
+62.8318
+#+end_src
+
+#+BEGIN_QUOTE
+~Define~ is our language’s simplest means of abstraction, for it allows us to use simple names to refer to the results of compound operations, such as the circumference computed above
+#+END_QUOTE
+
+Complex programs are created by building step-by-step computational objects of increasing complexity. 
+This leads to incremental development and testing of programs.
+
+Note, the interpreter needs to maintain this mapping between names and values - this is called the environment.
+
+**** 1.1.3 Evaluating Combinations
+
+Evaluating combinations is inherently a recursive operation. To evaluate an expression, the interpreter has to recursively evaluate each operand expression.
+
+Consider:
+
+#+begin_src scheme
+(* (+ 2 (* 4 6))
+   (+ 3 5 7))
+#+end_src
+
+This can be represented with:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-08 18:49:33
+[[file:assets/screenshot_2018-11-08_18-49-33.png]]
+
+Here, the combination is represented as a tree. Each combination (that makes up the overall combination --> recall, combinations are just operator and operand expressions) can be represented as a node. The branches of the node are the operator and operands. 
+
+The terminal nodes are the original expressions( --> recall, expressions = operands/operators), and the internal ones are derived expressions.
+
+Note how the value of the operands percolate upwards, from the terminal nodes to higher levels. 
+
+#+BEGIN_QUOTE
+In general, we shall see that recursion is a very powerful technique for dealing with hierarchical, treelike objects 
+#+END_QUOTE
+
+The "percolate values upward" form of evaluation is an example of a general kind of precess known as "*tree accumulation*"
+
+We have to evaluate the expressions recursively. To end somewhere, we make these assumptions for the primitive cases, the terminal nodes:
+
+
+- values of numerals are the numbers they name
+- values of built-in operators are the machine instructions sequences that carry out the corresponding operations
+- values of other names are the objects associated with those names in the environment
+
+These are the *General Evaluation Rules*
+
+"the general notion of the environment as providing a context in which evaluation takes place will play an important role in our understanding of program execution."
+
+Note, there are some exceptions to the general evaluation rules mentioned above. ~define~ for example, ~(define x 3)~ does not apply ~define~ to 2 arguments ~x~ and ~3~, but does something special of associating the value of ~3~ with variable name ~x~. That is, ~(define x 3)~ is not a combination.
+
+Such exceptions are "special forms". They have their own evaluation rules.
+
+
+#+BEGIN_QUOTE
+The various kinds of expressions (each with its associated evaluation rule) constitute the syntax of the programming language.
+#+END_QUOTE
+
+Lisp has a simple syntax because the evaluation rule for ALL expressions in the language can be described by the above 3 general rules and a small number of special forms.
+
+**** 1.1.4 Compound Procedures
+
+Procedure definitions are a more powerful abstraction technique by which *a _compound operation_ can be give a name and then referred to as a unit*.
+
+Eg:
+
+#+begin_src scheme
+(define (square x) (* x x))
+#+end_src
+
+Here, we associated the procedure ~square~ with the expression ~(* x x)~, which is a compound operation.
+
+Here, ~x~ in the compound expression ~(* x x)~ is a local name. 
+
+General syntax:
+
+#+begin_src scheme
+(define (<name> <formal parameters>) <body>)
+#+end_src
+
+#+BEGIN_QUOTE
+The <name> is a symbol to be associated with the procedure definition in the environment. 
+The <formal parameters> are the names used within the body of the procedure to refer to the corresponding arguments of the procedure. 
+The <body> is an expression that will yield the value of the procedure application when the formal parameters are replaced by the actual arguments to which the procedure is applied
+#+END_QUOTE
+
+Usage:
+
+#+begin_src scheme
+(square (+ 2 5))
+49
+#+end_src
+
+One cannot tell by looking at the conditional if it is a compound procedure or built into the interpreter (primitive procedure).
+
+**** 1.1.5 The Substitution Model for Procedure Application
+Evaluation of both primitive and compound procedures is the same for the interpreter. In both cases, recursively evaluate the operands and apply them to the operator.
+
+Here, the value of the operator = procedure (primitive or compound)
+value of the operands = arguments
+
+How to apply the compound procedure to arguments?
+- evaluate the body of the procedure with each formal parameter replaced by the corresponding argument (using the general evaluation rules)
+
+Example:
+
+#+begin_src scheme
+(f 5) ;; defination of (define (f a)) is (sum-of-squares (+ a 1) (* a 2))
+(sum-of-squares (+ 5 1) (* 5 2)) ;; dfination of (define (sum-of-squares x y)) is (+ (square x) (square y))
+(+ (square 6) (square 10))
+(+ (* 6 6) (* 10 10))
+(+ 36 100)
+136
+#+end_src
+
+This :top: model of evaluating a procedure is called *substitution model*
+It is a simple model of evaluating which is okay for now. Later we'll study more complex models. The substitution model breaks down for procedures with "mutable data"
+
+We saw earlier that the interpreter first evaluates the operator and operands and then applies the resulting procedures to the resulting arguments.
+
+An alternative way can be, first simplify the expressions - both operator and operands by replacing them with their definitions till only primitive operators are left and then perform the evaluation.
+
+In this case,
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-08 20:38:52
+[[file:assets/screenshot_2018-11-08_20-38-52.png]]
+Note: in this approach, we performed ~(+ 5 1)~ twice, same with ~(* 5 2)~
+If we have evaluated (+ 5 1) first, we could substitute to get (square 6), avoiding the double computation
+
+This, :top: "fully expand then reduce" evaluation model is called "normal-order evaluation"
+earlier we had studied "evaluate the arguments and then apply" - which the interpreter actually uses - which is called "applicative order evaluation"
+
+Lisp uses applicative order evaluation (evaluate the args, then apply) because it is more efficient (see above) and also because normal order evaluation fails when you have procedures that can't be modeled by direct substitution till you get primitive operands.
+
+**** 1.1.6 Conditional Expressions and Predicates
+
+Till now, we don't have predicates in our procedures. 
+Lisp has a special form for this, called ~cond~
+
+Eg:
+
+#+begin_src scheme
+    (define (abs x)
+     (cond ((> x 0) x)
+           ((= x 0) 0)
+           ((> x 0) (- x))
+           )
+  )
+#+end_src
+
+The general form is:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-08 21:52:37
+[[file:assets/screenshot_2018-11-08_21-52-37.png]]
+
+p_{1} is the predicate and e is the expression to be returned.
+
+So, syntax is, cond followed by pairs of ~(<p> <e>)~ (called clauses)
+The order of the clauses is important, the first predicate to evaluate to true succeeds. 
+
+The word predicate is used for procedures(or expressions) that return true or false
+
+#+begin_src scheme
+(define (abs x) 
+  (cond ((< x 0) (- x)) (else x)))
+#+end_src
+
+Here, ~else~ is a special symbol that can be used in place of ~p~ in the final clause of a cond (only in the final clause, in fact - anything that always evaluates to true can be used)
+
+Lisp has some more syntactic sugar here:
+
+#+begin_src scheme
+(define (abs x)
+  (if (< x 0) 
+      (- x) 
+       x))
+#+end_src
+
+So, syntax for if is:
+
+~(if <predicate> <consequent> <alternative>)~
+
+If the predicate evaluates to true, consequent is returned, else the alternative is returned - (evaluated and returned)
+
+Apart from <, >, = we have more predicates: 
+- (and e_{1} ... e_{n}) ;; start l to r, if any e evaluates to false, return false
+- (or e_{1} ... e_{n}) ;; start l to r, if any e evaluates to true, return false - don't evaluate the rest of the expressions
+- (not e_{1})
+
+~and~ and ~or~ are special forms, since not all expressions are necessarily evaluated. ~not~ is an ordinary procedure.
+
+
+#+begin_src scheme
+(define (square a) (* a a))
+
+(define (ex1.3v2 x y z)
+  (if (> x y)
+      (if (> y z) (+ (square x) (square y)) (+ (square x) (square z)))
+      (if (> x z) (+ (square x) (square y)) (+ (square y) (square z)))
+      )
+  )
+
+(ex1.3v2 5 2 3)
+;; 34
+
+
+;; Basically, look for any repetition of code, and make it a procedure
+
+;; 1.4
+(define (a+|b| a b)
+  ((if (> b 0) + -) a b))
+
+(a+|b| 2 3)
+
+;; here, we see that we can return a operator/procedure as well
+
+;; 1.5
+;; In a applicative order evaluation, the intrepreter will be stuck because p is defined recursively as itself - so when the interpreter tries to evaluate the operands, it'll stall. 
+;; There will be no stack overflow however, since the same frame is popped and put back. 
+;; In normal order, the procedure will return with 0, since the predicate evaluates to true and the subsequent expression is returned
+#+end_src
+
+
+Evaluation rule for special form ~if~:
+#+BEGIN_QUOTE
+The evaluation rule for the special form if is the same whether the interpreter is using normal or applicative order: The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression.
+#+END_QUOTE
+
+**** 1.1.7 Example: Square Roots by Newton’s Method
+
+#+BEGIN_QUOTE
+There is an important difference between _mathematical functions_ and _computer procedures_. Procedures must be effective.
+#+END_QUOTE
+
+We can define the square root as:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-08 23:04:36
+[[file:assets/screenshot_2018-11-08_23-04-36.png]]
+
+This allows us to study the properties of the square root etc, but it does not tell us how to find the square root.
+
+This contrast b/w "functions" and "procedures" is a reflection of a general distinction b/w declarative knowledge and imperative knowledge. 
+
+Mathematics is usually concerned with declarative (what is) descriptions. CS is usually concerned with imperative (how to) descriptions.
+
+So, how do we compute the roots? One way is using Newton's method.
+
+Take an initial guess y, and while it is not good enough, update it to be average of y and x/y where x is the number you are trying to find root of
+
+#+begin_src
+;; 1.6
+The procedure enters into an infinite loop because, if the new-if, which is a regular procedure, the interpreter evaluates the operands first and then it enters to new-if (as specified in the applicative order evaluation). However, when the 2nd expression is evaluated, which is defined recursively, it goes in an infinite loop.
+
+The built-in special form ~if~ solves this problem by first evaluating the predicate and only then evaluating the subsequent OR alternative clauses
+#+end_src
+
+
+#+begin_src scheme
+;; 1.7
+(define (sqrt x)
+  (sqrt-iter 1.0 10.0 x)
+  )
+
+(define (sqrt-iter guess old-guess x)
+  (if (good-enough? guess old-guess)
+      guess
+      (sqrt-iter (improve-guess guess x) guess x)
+      ))
+
+(define (good-enough? guess old-guess)
+  (< (abs (- guess old-guess)) 0.001))
+
+(define (improve-guess guess x)
+  (average guess (/ x guess))
+  )
+
+
+(define (average a b)
+  (/ (+ a b) 2)
+  )
+
+;; 1.8
+
+(define (cube-root x)
+  (cube-root-iter 1.0 10.0 x)
+  )
+
+(define (cube-root-iter guess old-guess x)
+  (if (good-enough? guess old-guess)
+      guess
+      (cube-root-iter (improve-cubic-guess guess x) guess x)
+      )
+  )
+
+(define (improve-cubic-guess guess x)
+  (/ (+ (/ x (* guess guess)) (* 2 guess)) 3)
+  )
+
+#+end_src
+
+**** 1.1.8 Procedures as Black-Box Abstractions
+Appreciate how the entire program can be broken down into simple procedures.
+
+Note how in the above example, the procedure ~good-enough?~ does not need to worry about the ~sqrt-iter~ procedure that uses it. For it, the ~sqrt-iter~ is not even a real procedure, it is a ~procedure abstraction~ denoting the idea that someone uses it to compute squares.
+
+This ability of being dividing the program into small pieces and treat each one as a "black box" is very powerful since it leads to more composability. You can use the different pieces independently etc.
+
+So, given a procedure ~(square x)~, the user should not have to worry about the implementation of how ~square~ is implemented, it could be any of the millions of possible ways.
+
+*~The arguments that the procedure takes are called the formal parameters of the procedure.~*
+
+This principle -- that the meaning of a procedure should be independent of the parameter names used by its author -- seems on the surface to be self-evident, but its consequences are profound.
+
+Formal parameters being local to the procedure allow us to use the procedure as a black box. 
+The formal parameters of the procedure are *bounded variables*, we say that the procedure binds its *formal parameters*
+~If a variable is not bound, we say that it is free.~ The set of expressions for which the binding defines the value of the parameter is called the *scope* of the variable. 
+
+The procedure ~good-enough?~ is not affected by the names of the bounded variables, they can be changed without changing the behavior of ~good-enough?~. However, if you change the names of the *free* variables, the behavior changes. For, eg, it uses ~abs~, it matters what the procedure ~abs~ is.
+
+If you use the name ~abs~ to refer to a formal parameter of the procedure ~good-enough?~, it is called ~capturing~ the variable.
+
+Using bound variables is the first solution for the problem of name isolation we have seen. 
+In ~sqrt~, we can put the various procedures into the defination of ~sqrt~ itself so that we don't pollute the global namespace with internal procedures. 
+
+
+#+begin_src scheme
+(define (sqrt x)
+  (define (good-enough? guess x)
+    (< (abs (- (square guess) x)) 0.001))
+  (define (improve guess x)
+    (average guess (/ x guess)))
+  (define (sqrt-iter guess x)
+    (if (good-enough? guess x)
+        guess
+        (sqrt-iter (improve guess x) x)))
+  (sqrt-iter 1.0 x))
+#+end_src
+
+This nesting of definitions is called ~block structure~. It is the easiest solution to the "name-packaging" problem. Also, we can consider ~x~ to be a free variable inside the ~good-enough?~ defination and avoid passing it to all the internal procedures. This is called ~lexical scoping~
+
+Lexical scoping dictates that free variables in a procedure are taken (assumed) to refer to bindings made by enclosing procedure definitions; that is, they are looked up in the environment in which the procedure was defined -> which is the environment of the enclosing procedure. 
+
+#+begin_src scheme
+(define (sqrt x)
+  (define (good-enough? guess)
+    (< (abs (- (square guess) x)) 0.001))
+  (define (improve guess)
+    (average guess (/ x guess)))
+  (define (sqrt-iter guess)
+    (if (good-enough? guess)
+        guess
+        (sqrt-iter (improve guess) x)))
+  (sqrt-iter 1.0))
+#+end_src
+
+The idea of block structure came first in Algo 60, and it allows us to break large problems into tractable pieces (not a million small pieces)
+
+
+*** 1.2 Procedures and the Processes They Generate
+
+Being able to visualize how the processes you write will play out is important. 
+
+#+BEGIN_QUOTE
+A procedure is a pattern for the ~local evolution~ of a computational process. It specifies how each stage of the process is built upon the previous stage. 
+
+We would like to be able to make statements about the overall, or ~global~, behavior of a process whose local evolution has been specified by a procedure.
+#+END_QUOTE
+
+**** 1.2.1 Linear Recursion and Iteration
+
+Consider the factorial.
+
+It is defined as:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-16 16:42:50
+[[file:assets/screenshot_2018-11-16_16-42-50.png]]
+
+We can directly translate this to a procedure:
+
+#+begin_src scheme
+
+(define (fac product n)
+  (cond ((= n 1) product)
+        (else (fac (* product n) (- n 1)))
+  )
+  )
+
+(define (fact n)
+  (fac 1 n)
+  )
+
+
+;; alternative implementation
+(define (factorial n)
+  (fact-iter 1 1 n))
+(define (fact-iter product counter max-count)
+  (if (> counter max-count)
+      product
+      (fact-iter (* counter product)
+                 (+ counter 1)
+                 max-count)))
+
+#+end_src
+
+Here, the process looks like this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-17 22:51:15
+[[file:assets/screenshot_2018-11-17_22-51-15.png]]
+
+
+This is called an *linear iterative process*
+
+It can also be written as:
+
+#+begin_src scheme
+(define (fact-rec n)
+  (if (= n 1) n
+      (* (fact-rec (- n 1)) n)
+      )
+  )
+
+#+end_src
+
+This creates a series of deferred operations. This type of process, characterized by a chain of deferred operations is called a ~recursive process~
+
+The interpreter needs to keep a track of the deferred processes.
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-17 22:49:49
+[[file:assets/screenshot_2018-11-17_22-49-49.png]]
+
+This is a *linear recursive process.* 
+
+One more difference between the 2 is that in the iterative case, the program variables provide a complete description of the state of the process at any point.
+In the recursive case, there is some hidden information maintained by the interpreter and not contained in the program variables which indicates ‘‘where the process is’’ in negotiating the chain of deferred operations. 
+
+Also, note that a *recursive process* is different from a *recursive procedure*. 
+- The recursive procedure is just based on the syntactic fact that the procedure definition refers to itself.
+- The recursive process is about how the process evolves - weather as a series of growing and contracting operations
+
+Note here that ~fact-iter~ is a recursive procedure but it is generating a iterative process.
+
+
+#+BEGIN_QUOTE
+One reason that the distinction between process and procedure may be confusing is that most implementations of common languages (including Ada, Pascal, and C) are designed in such a way that the interpretation of any recursive procedure consumes an amount of memory that grows with the number of procedure calls, even when the process described is, in principle, iterative. 
+
+As a consequence, these languages can describe iterative processes only by resorting to special-purpose ‘‘looping constructs’’ such as ~do,repeat,until,for~, and ~while~. The implementation of Scheme we shall consider in chapter 5 does not share this defect. *It will execute an iterative process in constant space, even if the iterative process is described by a recursive procedure*. An implementation with this property is called *tail-recursive*. With a tail-recursive implementation, iteration can be expressed using the ordinary procedure call mechanism, so that special iteration constructs are useful only as syntactic sugar.
+#+END_QUOTE
+
+#+begin_src scheme
+;; 1.9
+(define (+ a b)
+  (if (= a 0)
+      b
+      (inc (+ (dec a) b))
+      )
+  )
+
+;; this is recursive process since the operations are deferred. 
+;; it is like taking 1 from ~a~ stack to add later
+
+
+(define (+ a b)
+  (if (= a b)
+      b
+      (+ (dec a) (inc b)))
+  )
+;; this is an iterative process, but a recursive procedure. 
+;; it is like moving 1 element from stack ~a~ to stack ~b~
+#+end_src
+
+**** 1.2.2 Tree Recursion
+
+Apart from the linearly recursive process, there is also tree recursion. This happens when each operation does not create 1 deferred operation, but multiple.
+
+We can define it as:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 06:44:19
+[[file:assets/screenshot_2018-11-18_06-44-19.png]]
+
+#+begin_src scheme
+(define (fib x)
+  (cond ((= x 0) 0)
+        ((= x 1) 1)
+        (else (+ (fib (- x 1)) (fib(- x 2))))
+  ))
+#+end_src 
+
+Consider ~(fib 5)~, this leads to a tree:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 06:44:59
+[[file:assets/screenshot_2018-11-18_06-44-59.png]]
+
+This is wasteful since we are doing the same computation multiple times. 
+Since Fibonacci grows exponentially with ~n~, this process has exponential time complexity ~O(fib(n))~ and linear storage complexity ~O(n)~ because that's the max depth of the tree
+
+#+begin_src scheme
+;; p1 is the leading element of the series, p2 is the trailing element
+(define (fib-iter n p1 p2)
+  (if (= n 0) p1
+        (fib-iter (- n 1) (+ p1 p2) p1)
+  ))
+
+(define (fib-iterative n)
+  (fib-iter n 1 0))
+#+end_src
+
+This is a iterative process (but the procedure is recursive still - this is because Scheme has tail recursion that makes this iterative. Other programming languages need special looping constructs to make it iterative.)
+
+Tree recursion might not be useful for computing Fib numbers, but it's very powerful when it comes to processes that operate on hierarchically structured data. 
+
+Consider the problem of counting change:
+
+#+BEGIN_QUOTE
+How many different ways can we make change of $ 1.00, given half-dollars, quarters, dimes, nickels, and pennies? More generally, can we write a procedure to compute the number of ways to change any given amount of money?
+#+END_QUOTE 
+
+- 1 dollar = 100 cents
+- Half-dollars = 50 cents
+- Quarters = 25 cents
+- dimes = 10 cents
+- nickels = 5 cents
+- penny = 1 cent
+
+Now, we can use tree recursion to solve this:
+
+#+begin_src scheme
+(define (break-n n)
+  (cond ((= n 0) 1) ;; if we managed to get the amount to zero, we found a way
+        ((< n 0) 0) ;; we are past the 0 mark, not a solution
+        (else (+
+               (break-n (- n 50)) ;; branch out to check with all possible smaller denomiations
+               (break-n (- n 25))
+               (break-n (- n 10))
+               (break-n (- n 5))
+               (break-n (- n 1))
+               ))))
+#+end_src
+
+
+This solution has the problem of counting permutations, not combinations. That is, it will count ~5, 1, 1, 1, 1, 1~ and ~1, 1, 1, 1, 1, 5~ as 2 distinct changes. 
+
+Also, it does a lot of work multiple times, like in the naive fib tree recursion algorithm. We can end up computing (break-n 5) many times for eg. 
+
+We can use memoization to lookup already computed values or we can organize our calculations better using dynamic programming ideas
+
+The key insights is:
+#+BEGIN_QUOTE
+The number of ways to change amount _a_ using _n_ kinds of coins equals
+- the number of ways to change amount _a_ using all but the first kind of coin, plus
+- the number of ways to change amount _a - d_ using all _n_ kinds of coins, where _d_ is the denomination of the first kind of coin.
+#+END_QUOTE
+
+This can be translated to code:
+
+#+begin_src scheme
+(define (coin-change amount)
+  (cc amount 5))
+
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+        (else (+
+               (cc amount (- kinds-of-coins 1))
+               (cc (- amount (first-denomination kinds-of-coins)) kinds-of-coins)))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+        ((= kinds-of-coins 5) 50)))
+
+#+end_src
+
+See how we use the ~first-denomination~ to make do for the lack of the list data structure. 
+Note, this is still tree recursion, and not very efficient because it does the same computation multiple times. Memoization can help here too.
+
+#+BEGIN_QUOTE
+The observation that a tree-recursive process may be highly inefficient but often easy to specify and understand has led people to propose that one could get the best of both worlds by designing a ‘‘smart compiler’’ that could transform tree-recursive procedures into more efficient procedures that compute the same result.
+#+END_QUOTE
+
+#+begin_src scheme
+;; ex1.11
+(define (ex1.11 n)
+  (if (< n 3)
+      n
+      (+ (* 1 (ex1.11 (- n 1)))
+         (* 2 (ex1.11 (- n 2)))
+         (* 3 (ex1.11 (- n 3))))))
+
+;; this is a straightforward in recursive tree process.
+#+end_src
+
+The iterative process would look like this:
+
+#+begin_src scheme
+(define (ex1.11-v2 n)
+  (if (< n 3)
+      n
+      (ex1.11-v2-iter n 3 (+ 2 2 0) 2 1 0))
+  )
+
+(define (ex1.11-v2-iter n counter a b c d)
+  (if (= n counter)
+      a
+      (ex1.11-v2-iter n
+                 (+ counter 1)
+                 (+ (* 1 a)
+                    (* 2 b)
+                    (* 3 c))
+                 a
+                 b
+                 c
+      )))
+
+#+end_src
+
+Here, we are building up to the ~n~th value of the function. We are bootstrapping with this:
+
+| n    | 0 | 1 | 2 | 3 |  4 |  5 |
+|------+---+---+---+---+----+----|
+| f(n) | 0 | 1 | 2 | 4 | 11 | 25 |
+| char | d | c | b | a |    |    |
+
+The counter is set to 3 because we have calculated the values till 3. Now, we increment the counter on each iteration and update the values as follows:
+
+- a_{}_{n+1} \leftarrow a_{n} + 2b_{n} + 3c_{n}
+- b_{n+1} \leftarrow a_{n}
+- c_{n+1} \leftarrow b_{n}
+- d_{n+1} \leftarrow c_{n}
+
+So, each char variable moves one step ahead. We stop when the counter reacher ~n~
+
+One thing to note is that for iterative processes, since we can't defer operations, we have to start from bottom up, or more precisely from the values that we know to values to want to compute. We need some bootstrapping values and such that we can build up the next values from them.
+
+#+begin_src scheme
+;; ex 1.12
+(define (pascals r c)
+  (cond ((= c 1) 1) ;; handle 1st column always = 1
+        ((= c r) 1) ;; handle last column always = 1
+        ((= r 1) 0) ;; handle 1st row having 0 for all c, r != 1
+        (else (+ (pascals (- r 1) (- c 1))
+                 (pascals (- r 1) c)))))
+#+end_src
+
+This is a tree recursion process, does the same computation many times, memoization can help.
+If we were to do this in an iterative fashion, we could have started from the tip, where the values are known and then proceeded downwards.
+
+**** 1.2.3 Orders of Growth
+
+#+BEGIN_QUOTE
+Let ~n~ be a parameter that measures the size of the problem, and let R(n) be the amount of resources the process requires for a problem of size n. 
+
+In our previous examples *we took n to be the number for which a given function is to be computed*, but there are other possibilities. For instance:
+
+- if our goal is to compute an approximation to the square root of a number, we might take n to be the number of digits accuracy required. 
+- for matrix multiplication we might take n to be the number of rows in the matrices. 
+
+In general there are a number of properties of the problem with respect to which it will be desirable to analyze a given process and n can be any of it.
+
+Similarly, R(n) might measure the number of internal storage registers used, the number of elementary machine operations performed, and so on
+#+END_QUOTE
+
+
+- for a linear order process, doubling the size will double the resources required
+- for a exponential order process, incrementing the size will *multiply* the resources required by a constant factor
+- for a logarithmic order process, doubling the size will increase the resources required by a constant amount (log_{some-base representing how the problem size reduces on each level - the branching factor perhaps}2)
+
+
+
+#+begin_src 
+;; 1.15
+The order of growth is log(n) since in each iteration, the value gets reduced by 3. So, log(a)
+#+end_src
+
+**** 1.2.4 Exponentiation
+
+Exponentiation (finding a^{n}) is a great case study. We can quickly come up with 3 solutions:
+
+***** Linear Recursive process
+
+#+begin_src scheme
+(define (exp-1 b p)
+  (if (= p 1) b ;; or, if (= p 0) 1
+      (* b (exp b (- p 1)))))
+#+end_src
+
+This is a linear recursive process
+- time: O(n)
+- space: O(n)
+
+
+***** Iterative process
+
+#+begin_src scheme
+(define (exp-2 b p)
+  (exp-2-iter b p b)
+  )
+(define (exp-2-iter b p product)
+  (if (= p 1)
+      product
+      (exp-2-iter b (- p 1) (* product b))))
+#+end_src
+
+Here, we are using a state variable ~product~ to keep track of the state.
+- time: O(n)
+- space: O(1)
+
+***** Logarithmic recursive
+
+We can use the squaring to get to the power we want
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 11:42:34
+[[file:assets/screenshot_2018-11-18_11-42-34.png]]
+
+#+begin_src scheme
+;; note, instead of using 2 nested ifs, it's better to use cond
+(define (exp-3 b p)
+  (if (= p 1)
+      b
+      (if (even? p)
+          (square (exp-3 b (/ p 2)))
+          (* b (exp-3 b (- p 1))))))
+#+end_src
+
+- time: O(log(n))
+- space: O(log(n))
+
+
+***** Logarithmic iterative
+
+#+begin_src scheme
+;; eg 1.16
+(define (exp-4 b p)
+  (if (even? p)
+      (exp-4-iter b p 1)
+      (* b (exp-4-iter b (- p 1) 1))))
+
+(define (exp-4-iter b p counter)
+  (if (= counter p)
+      b
+      (exp-4-iter (square b) p (* 2 counter))))
+#+end_src
+
+Here again, we build up to the solution by having a counter that goes up to ~p~
+
+We have b^{p} as constant, this is our "invariant" in the iteration.
+
+- time: O(log(n))
+- space: O(1)
+
+#+begin_src scheme
+;; 1.17
+(define (*1 a b)
+  (cond ((= b 1) a)
+        ((even? b) (*1 (double a) (halve b)))
+        (else (+ a (*1 a (- b 1))))))
+
+(define (double a)
+  (* a 2))
+
+(define (halve a)
+  (/ a 2))
+
+
+;; 1.18
+(define (*1-v2 a b)
+  (*1-iter a b 0))
+
+(define (*1-iter a b residue)
+  (cond ((= b 1) (+ a residue))
+        ((even? b) (*1-iter (double a) (halve b) residue))
+        (else (*1-iter a (- b 1) (+ residue a))))))
+
+#+end_src
+
+Note how we moved the residue sum resulting in deferred operations to a new state variable to get an iterative process.
+
+**** 1.2.5 Greatest Common Divisors
+
+GCD, also known as HCF is the largest common factor of two numbers. It is the largest number which divides both the numbers. 
+The largest step size that can reach both the numbers.
+
+The naive way to find it is to get the factors of both the numbers and get the largest one.
+
+Euclid's theorem says, if you divide the 2 nums a, b (a/b) and the remainder is r, then the GCD(a, b) = GCD(b, r).
+
+This can be understood when thought of as the step size analogy. It's like saying when you try to reach the larger number using the step size equal to the smaller number, you might have some leftover. Now, if find a step size that is able to cover both the remainder amount and the step size (b), that should be the GCD/HCF
+
+#+begin_src scheme
+(define (gcd a b)
+  (if (= b 0) a
+      (gcd b (remainder a b))))
+#+end_src
+
+#+begin_src scheme
+;; 1.20
+;; In the normal order, since we are subsituiting and deffering the operations the number of remainders is huge
+
+;; in applicative order, since the operands are evaluated first, we don't have to do the work again for the predicate and so the number of remainder invokations are small
+#+end_src
+
+**** 1.2.6 Example: Testing for Primality
+
+#+BEGIN_QUOTE
+This section describes two methods for checking the primality of an integer n, one with order of growth (sqrt(n)) - which we used earlier, 
+
+and a ‘‘probabilistic’’ algorithm with order of growth (logn). The exercises at the end of this section suggest programming projects based on these algorithms.
+#+END_QUOTE
+
+*** 1.3 Formulating Abstractions with Higher-Order Procedures
+
+We defined the cube procedure to get cubes ~(cube x)~
+This works for all numbers. If not for the procedures, we would have had to write ~(* x x x)~ where x would be our number
+
+This would force us to always work at the level of the primitives offered by the language and never build higher level abstractions. 
+
+"Our programs would be able to compute cubes, but our language would lack the ability to express the concept of cubing."
+
+#+BEGIN_QUOTE
+One of the things we should demand from a powerful programming language is the ability to build abstractions by assigning names to common patterns and then to work in terms of the abstractions directly. Procedures provide this ability. 
+
+...
+
+Often the same programming pattern will be used with a number of different procedures. 
+
+To express such patterns as concepts, we will need to construct procedures that can accept procedures as arguments or return procedures as values. Procedures that manipulate procedures are called _higher-order procedures_.
+#+END_QUOTE
+
+**** 1.3.1 Procedures as Arguments
+
+Consider these 3 procedures:
+
+#+begin_src scheme
+;; computes:
+;; SUMMATION of a, a+1, a+2, ..., b
+(define (sum-integers a b)
+  (if (> a b)
+      0
+      (+ a (sum-integers (+ a 1) b))))
+
+
+;; computes:
+;; SUMMATION of a3, (a+1)3, ..., b3
+(define (sum-cubes a b)
+  (if (> a b)
+      0
+      (+ (cube a) (sum-cubes (+ a 1) b))))
+
+
+(define (pi-sum a b)
+  (if (> a b)
+      0
+      (+ (/ 1.0 (* a (+ a 2))) (pi-sum (+ a 4) b))))
+#+end_src
+
+The last procedure computes:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 15:22:09
+[[file:assets/screenshot_2018-11-18_15-22-09.png]]
+
+All these processes are linearly recursive, and share a common pattern. Each iteration is adding one element for the summation. 
+
+All these share a common template, as they represent the idea of SUMMATION.
+
+#+begin_src scheme
+(define (<name> a b)
+  (
+   if (> a b)
+      0
+      (+ (<term> a) (<name> (<next> a) b))))
+
+#+end_src
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 15:25:42
+[[file:assets/screenshot_2018-11-18_15-25-42.png]]
+
+We already have procedures, which allow us to encode general patterns. 
+We can pass the ~<name>, <term>, <next>~ procedures to them as formal parameters.
+
+#+begin_src scheme
+;; (term X) gives you the term for the summation
+;; (next X) gives you the next value of the variable X for the next summation iteration
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a)
+         (sum term (next a) next b))))
+#+end_src
+
+We can encode all the 3 procedures above with this:
+
+#+begin_src scheme
+;; the first procedure
+(define (sum-1 a b)
+  (sum identity a inc b))
+
+(define (identity x) x)
+(define (inc c) (+ c 1))
+
+;; the 2nd procedure
+(define (sum-2 a b)
+  (sum cube a inc b))
+
+;; the 3rd procedure
+(define (sum-3 a b)
+  (sum t-3 a a-3 b))
+
+(define (t-3 x)
+  (/ 1.0 (* x (+ x 2))))
+
+(define (a-3 x) (+ x 4))
+#+end_src
+
+We can use the summation abstraction to define complex summations easily now:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 15:51:47
+[[file:assets/screenshot_2018-11-18_15-51-47.png]]
+
+Here, we have the ~f~
+
+#+begin_src scheme
+;; f is given by the user
+;; (+ a (/ dx 2.0)) is for the term in each iteration
+(define (integral f a b dx)
+  (define (add-dx x) (+ x dx))
+  (* (sum f (+ a (/ dx 2.0)) add-dx b) dx))
+#+end_src
+
+Here, the procedure ~(add-dx)~ would require 2 formal parameters, but then it wouldn't fit in the scheme that we have. Hence, we have put it in the same lexical scope as the ~integral~ function so it has access to ~dx~. Same with the term function here ~(+ a (/ dx 2.0))~
+
+This is a good example of how you fit in a function and use the same paradigm for many types of use cases. 
+
+#+begin_src scheme
+;; 1.30
+(define (sum-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ result (term a)))))
+  (iter a 0))
+
+;; 1.32
+(define (accumulate combiner null-values term a next b)
+  (if (> a b)
+      null-values
+      (combiner (term a) (accumulate combiner null-values term (next a) next b))))
+
+
+(define (sum-a term a next b)
+  (accumulate + 0 term a next b))
+
+;; iterative version of accumulate
+(define (accumulate3 combiner null-values term a next b)
+  (define (accumulate-iter a result)
+    (if (> a b)
+        result
+        (accumulate-iter (next a) (combiner (term a) result))))
+    (accumulate-iter a null-values)))
+
+(define (sum-a term a next b)
+  (accumulate3 + 0 term a next b))
+
+(define (sum-2-4 a b)
+  (sum-a cube a inc b))
+#+end_src
+
+**** 1.3.2 Constructing Procedures Using Lambda
+We saw above how we had to define trivial procedures just to use them as values for formal parameters of higher order procedures. We had to name them etc. 
+
+#+BEGIN_QUOTE
+it would be more convenient to have a way to directly specify ‘‘the procedure that returns its input incremented by 4’’ and ‘‘the procedure that returns the reciprocal of its input times its input plus 2.’’
+#+END_QUOTE
+
+We can do this with ~lambda~ function
+eg: ~(lambda (x) (+ x 4))~
+
+Syntax for lambda: ~(lambda (<formal-parameters>) <body>)~
+
+In fact, 
+
+#+begin_src scheme
+;; this is what we have been using
+(define (plus4 x) (+ x 4))
+
+;; this is an EQUIVALENT version
+;; the first form is just syntactic sugar, this is the real deal
+(define plus4 (lambda (x) (+ x 4)))
+#+end_src
+
+We can even define it in place and use it
+~((lambda (x y z) (+ x y z)) 1 2 3)~
+
+
+When faced with a complex function like this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 19:51:31
+[[file:assets/screenshot_2018-11-18_19-51-31.png]]
+
+We can use ~a~ and ~b~ to simplify the definition.
+
+#+begin_src scheme
+
+;; we can use an internal helper procedure
+(define (f x y)
+  (define (f-helper a b)
+    (+ (* (square a) x)
+       (* y b)
+       (* a b)))
+  (f-helper (+ 1 (* x y)) (- 1 y)))
+
+;; we can use lambda
+;; here, the body of f2 is:
+;; (<lambda body> arg1 arg2)
+(define (f2 x y)
+  ((lambda (a b)
+    (+ (* (square a) x)
+       (* y b)
+       (* a b)))
+    (+ 1 (* x y)) (- 1 y)))
+
+;; this is very common. There is some syntactic sugar to make this easier
+;; note, here we have (let (<series of var1, exp1 assignments>) <body>)
+;; so, the body is within the let expression, as it's 2nd formal parameter
+(define (f3 x y)
+  (let ((a (+ 1 (* x y)))
+        (b (- 1 y)))
+    (+ (* x (square a))
+       (* y b)
+       (* a b))))
+#+end_src
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 20:04:17
+[[file:assets/screenshot_2018-11-18_20-04-17.png]]
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-18 20:05:10
+[[file:assets/screenshot_2018-11-18_20-05-10.png]]
+
+So, ~let~ is just an expression with an inplace ~lambda~ which is declared and used
+
+
+2 points:
+
+***** Let variables are local variables
+And their scope is limited to the body of the let statement. 
+
+#+begin_src scheme
+;; x = 5 outside; inside the let body it goes to 3, the other x is still 5
+(+ (let (x 3) (+ x (* x 10)))
+   x)
+#+end_src
+
+***** The variables are defined outside the let block
+
+#+begin_src scheme
+;; if the value of x is 2
+(let ((x 3)
+      (y (+ x 2))) ;; here, y still refers to the outside x and so it'll get the value 4
+(* x y)) ;; this is 3*4 which is 12
+#+end_src
+
+
+**** 1.3.3 Procedures as General Methods
+
+We began by introducing compound procedures, which allowed us to abstract patterns of numerical computation so as to make them independent of the particular numbers involved.
+
+Later, we saw higher order procedures (eg ~integral~) procedure, that are used to express "general methods" of computation, independent of the individual functions involved. 
+
+There are 2 more examples to discuss:
+1. General methods for finding zeros
+2. General methods for fixed points of functions
+
+
+***** Finding roots of equations by the half-interval method
+
+We start with 2 values, one where the function is positive and the 2nd where it is negative. Assuming it is a continuous function, there must be a value between them where function is 0.
+Since at each step the search space reduces by half, the running time is O(log(L/T)) where T is the L is the length of the original interval and T is the error toleration
+
+
+#+begin_src scheme
+(define (find-roots f a b)
+  (let ((midpoint (average a b)))
+    (if (close-enough? a b)
+        midpoint
+        (let ((test-value (f midpoint)))
+          (cond ((positive? test-value) (find-roots f midpoint b))
+                ((else? test-value) (find-roots f b midpoint))
+                (else midpoint))))))
+#+end_src
+
+Thing to notice is how this is looking more and more like mainstream programming languages now. Note the use of let to define variables and the scope in the let body
+Again these 2 are equivalent:
+
+#+begin_src scheme
+((lambda (midpoint) (* 2 midpoint)) (+ 2 4))
+
+(let ((midpoint (+ 2 4)))
+  (* 2 midpoint)))
+#+end_src
+
+The ~close-enough?~ procedure is simple. 
+
+#+begin_src scheme
+(define (close-enough? x y)
+  (< (abs (- x y)) 0.001))
+#+end_src
+
+We can have another function that calls search if the values are okay
+
+#+begin_src scheme
+(define (half-interval-method f a b)
+  (let ((a-value (f a))
+        (b-value (f b)))
+    (cond ((and (negative? a-value) (positive? b-value)) (search f a b))
+          ((and (negative? a-value) (positive? b-value)) (search f a b))
+          (else (error "Values are not opposite signs" a b)))))
+#+end_src
+
+***** Finding fixed points of functions
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-19 08:44:35
+[[file:assets/screenshot_2018-11-19_08-44-35.png]]
+
+This will converge to a value ~x~ (for some functions)
+
+Note, not all functions have fixed points, and even in those do, it isn't that they can be found by repeated applications of ~f~.
+
+Only "attractive fixed points" can be found by repeated applications. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-19 09:00:39
+[[file:assets/screenshot_2018-11-19_09-00-39.png]]
+
+Cosine has an attractive fixed point. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2018-11-19 09:00:59
+[[file:assets/screenshot_2018-11-19_09-00-59.png]]
+
+We can formulate finding square root as a fixed point search as well
+
+Square root is the root of the equation: f(x) = x^{1/2} or y^{2} = x
+this can be rewritten as x/y = y.
+This can be solved by finding the fixed point of x/y
+
+We can find the fixed points by applying the same function to itself till the values don't change much.
+
+#+begin_src scheme
+;; fixed point
+(define tolerance 0.001)
+
+(define (fixed-point f first-guess)
+  (define (close-enough? x y)
+    (< (abs (- x y)) tolerance))
+  ;; note now we use a different name for the inner def
+  (define (try guess)
+    (let ((next-value (f guess)))
+      (if (close-enough? next-value guess)
+          next-value
+          (try next-value))))
+  (try first-guess))
+
+;; we can find solution to y = siny + cosy
+(fixed-point (lambda (x) (+ (sin x) (cos x))) 1.0)
+;Value: 1.2590038597400248
+#+end_src
+
+This is similar to the process for finding the square roots; repeatedly improving the guess until the result is close enough.
+
+We can rewrite ~sqrt~ as a ~fixed-point~ solution, 
+
+#+begin_src scheme
+(define (sqrt x)
+  (fixed-point (lambda (y) (/ x y)) 1.0))
+#+end_src
+
+This won't converge. 
+#+BEGIN_QUOTE
+Unfortunately, this fixed-point search does not converge. Consider an initial guess y 1 . The next guess is y2 = x/y1 and the next guess is y3 = x/y2 = x/(x/y1 ) = y1 . 
+#+END_QUOTE
+
+We can prevent this by damping the oscillations. Since our answer lies between y_{t+1} and x/y_{t}, we can have the new value of y_{t+1} as (1/2)*(y_{t+1} + x/y_{t})
+
+So, we can find the sqrt as:
+#+begin_src scheme
+(define (sqrt x)
+  (fixed-point (lambda (y) (average y (/ x y))) 1.0))
+
+;; 1.35
+(define (golden-ration x)
+  (fixed-point (lambda (y) (average y (+ 1 (/ 1 x)))) 1.0))
+
+;; 1.36
+(define (ex1.36-without-damping)
+  (fixed-point (lambda (x) (/ (log 1000) (log x))) 2))
+
+(ex1.36-without-damping)
+9.965784284662087
+3.004472209841214
+6.279195757507157
+3.759850702401539
+5.215843784925895
+4.182207192401397
+4.8277650983445906
+4.387593384662677
+4.671250085763899
+4.481403616895052
+4.6053657460929
+4.5230849678718865
+4.577114682047341
+4.541382480151454
+4.564903245230833
+4.549372679303342
+4.559606491913287
+4.552853875788271
+4.557305529748263
+4.554369064436181
+4.556305311532999
+4.555028263573554
+4.555870396702851
+;Value: 4.555870396702851
+
+
+(define (ex1.36-damping)
+  (fixed-point (lambda (x) (average x (/ (log 1000) (log x)))) 2))
+
+(ex1.36-damping)
+5.9828921423310435
+4.922168721308343
+4.628224318195455
+4.568346513136242
+4.5577305909237005
+4.555909809045131
+4.555599411610624
+;Value: 4.555599411610624
+
+;; 1/37
+;; recurisve procedure, iterative process
+(define (cont-frac n d k)
+  (define (fn t) (/ (n k) (+ (d k) t)))
+  (define (cont-frac-iter n d k term)
+    (if (= k 1) (fn term)
+        (cont-frac-iter n d (- k 1) (fn term))))
+  (cont-frac-iter n d k 0))
+
+
+;; recurisve procedure, recursive process
+(define (cont-frac-recursive n d k)
+  (define (fn t) (/ (n k) (+ (d k) t)))
+  (define (cont-frac-re n d k)
+    (if (= k 1) 0
+        (fn (cont-frac-re n d (- k 1)))))
+  (cont-frac-re n d k))
+
+;; note the difference between the iterative process and the recursive one.
+;; the iterative one has a state variable which needs to be carried around
+;; the recursive one just has keeps "k" with it
+#+end_src
+
+#+begin_src scheme
+;; 1.38
+(define (n i) i)
+(define (d i)
+  (cond ((= (remainder (+ i 1) 3) 0) (* 2 (/ (+ 1 i) 3)))
+         (else 1)))
+(cont-frac-recursive (lambda (i) 1.0) d 500)
+
+;; 1.39
+(define (tan-cf x k)
+  (define (d1.39 i)
+    (+ 1.0 (* 2 (- i 1))))
+  (define (n1.39 i)
+    (if (= i 1) x
+        (square x)))
+  (define (cont-frac-recursive-1.39 n d k c)
+    (define (fn t) (/ (n c) (- (d c) t)))
+    (if (= c k) 0
+        (fn (cont-frac-recursive-1.39 n d k (+ c 1)))))
+  (cont-frac-recursive-1.39 n1.39 d1.39 k 1))
+#+end_src
+
+
+**** 1.3.4 Procedures as Returned Values
+This ability to pass procedures as arguments makes the language more expressive. We can get more if we are able to return procedures as values too. We can use it to abstract away average damping from ~fixed-point~ earlier.
+
+Average damping can be defined as a function (~g(x)~ say) whose value at ~x~ is average of ~x~ and another given function ~f(x)~.
+
+
+Earlier in the ~fixed-point~, we added damping. We can make that a procedure too
+
+#+begin_src scheme
+;; note what we had earlier
+;; the fixed-point just repeatedly applied f till values were close enough
+;; to add damping we use this:
+(define (golden-ration)
+  (fixed-point (lambda (x) (average x (+ 1 (/ 1 x)))) 1.0))
+;; here, we are passing a anonymous function to fixed-point that takes a value and returns the average of x and f(x)
+
+;; so, we can write a procedure that does this. It should take a function (which accepts a parameter x) and return another function whose value is the average of x and f(x)
+(define (average-damp f)
+  (lambda (x) (average x (f x))))
+;; this x will be provided to the function in the fixed-point procedure. Starting with first-guess
+#+end_src
+
+#+begin_src scheme
+;; example raw usage of average-damp
+((average-damp square) 10)
+55
+#+end_src
+
+We can rewrite sqrt now:
+
+#+begin_src scheme
+(define (sqrt-w/damping x)
+  (fixed-point (average-damp (lambda (y) (/ x y))) 2.0))
+#+end_src
+
+#+BEGIN_QUOTE
+Notice how this formulation makes explicit the three ideas in the method: 
+- fixed-point search, 
+- average damping, 
+- and the function y \to x/y.
+
+Note how much cleaner the idea becomes when expressed in terms of these abstractions.
+
+In general, there are many ways to formulate a process as a procedure. 
+Experienced programmers know how to choose procedural formulations that are particularly perspicuous, and where useful elements of the process are exposed as separate entities that can be reused in other applications. 
+
+As a simple example of reuse, notice that the cube root of x is a fixed point of the function y \to x/y^{2} , so we can immediately generalize our square-root procedure to one that extracts cube-roots
+#+END_QUOTE
+
+#+begin_src scheme
+(define (cube-root-w/damping x)
+  (fixed-point (average-damp (lambda (y) (/ x (square y)))) 2.0))
+#+end_src
+
+***** Abstractions and first-class procedures
+We have seen how to use the compute square root using:
+- fixed-point search (the first one, without damping)
+- Newton's method (which itself can be expressed as a fixed-point process) ((the second one, with damping))
+
+Thus, we have seen 2 ways to compute sqrt as fixed-points. We can express this idea of having multiple ways to doing fixed points as an higher level abstraction
+
+#+begin_src scheme
+(define (fixed-point-of-transform g transform guess)
+  (fixed-point (transform g) guess))
+
+;; so, our variant of the average-damp is just one of the transformation that can be applied
+;; we can do some other damping also. And if we use this abstraction, once we have a better damping method, 
+;; that helps converge to solutions faster, we can just start using that
+(define (sqrt-fixed-point-of-transform x)
+  (fixed-point-of-transform (lambda (y) (/ x y)) average-damp 1.0))
+#+end_src
+
+#+BEGIN_QUOTE
+As programmers, we should be alert to opportunities to identify the underlying abstractions in our programs and to build upon them and generalize them to create more powerful abstractions. This is not to say that one should always write programs in the most abstract way possible; expert programmers know how to choose the level of abstraction appropriate to their task.
+#+END_QUOTE
+
+
+#+BEGIN_QUOTE
+In general, programming languages impose restrictions on the ways in which computational elements can be manipulated. 
+
+Elements with the fewest restrictions are said to have first-class status. Some of the ‘‘rights and privileges’’ of first-class elements are:
+
+- They may be named by variables.
+- They may be passed as arguments to procedures. 
+- They may be returned as the results of procedures. 
+- They may be included in data structures. 
+
+Lisp, unlike other common programming languages, awards *procedures full first-class status*. This poses challenges for efficient implementation, but the resulting gain in expressive power is enormous. 
+#+END_QUOTE
+
+#+begin_src scheme
+;; 1.40
+(define (inc x)
+  (+ x 1))
+
+(define (double fn)
+  (lambda (x) (fn (fn x))))
+
+
+;; 1.41
+(((double (double double)) inc) 5)
+;; (D (D D) inc 5)
+;; (D (D(D)) inc 5)
+;; (D(D(D(D))) inc 5)
+;; (D(D(D(inc inc))) inc 5)
+;; (D(D(inc inc inc inc))) inc 5)
+;; (D((inc inc inc inc inc inc inc inc)) inc 5)
+;; ((inc inc inc inc inc inc inc inc) (inc inc inc inc inc inc inc inc) inc 5)
+21
+
+;; 1.42
+(define (compose f g)
+  (lambda (x) (f (g x))))
+
+;; 1.43
+(define (repeated f n)
+  (define (repeated-iter f c)
+    (if (= c 1) f
+        (repeated-iter (compose f f) (- c 1))))
+  (repeated-iter f n))
+
+;; 1.44
+(define (n-smooth n)
+  (repeated smooth n))
+
+(((n-smooth 5) square) 2)
+;Value: 4.000010666666668
+
+;; 1.46
+(define (n-root n r x)
+  (fixed-point ((repeated average-damp r) (lambda (y) (/ x (pow y (- n 1))))) 2.0))
+
+(define (pow b p)
+  (if (= p 1) b
+      (if (even? p) (pow (square b) (/ p 2))
+      (* b (pow (square b) (/ (- p 1) 2))))))
+
+(n-root 2 2 4) ;; find the square root, use average damp chained 2 times, find root of 4
+2.
+;Value: 2.
+#+end_src
+
+#+BEGIN_QUOTE
+Several of the numerical methods described in this chapter are instances of an extremely general computational strategy known as iterative improvement. 
+
+Iterative improvement says that, to compute something, we start with an initial guess for the answer, test if the guess is good enough, and otherwise improve the guess and continue the process using the improved guess as the new guess. 
+#+END_QUOTE
+
+
+
+One catch is that in scheme, you cannot define a named procedure and return it directly
+eg:
+
+#+begin_src scheme
+;; this works
+(define (x-inc x)
+  (lambda (y)
+    (+ x y)))
+
+((x-inc 2) 3)
+; 5
+
+;; however this doesn't work
+(define (x-inc x)
+  (define (x-inc2 y)
+    (+ x y)))
+((x-inc 2) 3)
+;The object #[constant 12 #x2] is not applicable.
+
+;; if you want to return the named procedure, use this:
+(define (x-inc x)
+  (define (x-inc2 y)
+    (+ x y))
+  (lambda (y) (x-inc2 y)))
+
+((x-inc 2) 3)
+;Value: 5
+
+;; 1.46
+(define (iterative-improvement good-enough? improve-guess)
+  (define (improve guess)
+    (let ((next-value (improve-guess guess)))
+      (display next-value)
+      (newline)
+      (if (good-enough? guess next-value)
+          next-value
+          (improve next-value))))
+  (lambda (guess) (improve guess)))
+
+(define (new-fixed-point f first-guess)
+  ((iterative-improvement good-enough? f) first-guess))
+
+(define (new-golden-ration)
+  (new-fixed-point (lambda (x) (average x (+ 1 (/ 1 x)))) 1.0))
+
+#+end_src
+
+* Reserved
+
+2 Building Abstractions with Data
+
+    2.1 Introduction to Data Abstraction
+        2.1.1 Example: Arithmetic Operations for Rational Numbers
+        2.1.2 Abstraction Barriers
+        2.1.3 What Is Meant by Data?
+        2.1.4 Extended Exercise: Interval Arithmetic
+    2.2 Hierarchical Data and the Closure Property
+        2.2.1 Representing Sequences
+        2.2.2 Hierarchical Structures
+        2.2.3 Sequences as Conventional Interfaces
+        2.2.4 Example: A Picture Language
+    2.3 Symbolic Data
+        2.3.1 Quotation
+        2.3.2 Example: Symbolic Differentiation
+        2.3.3 Example: Representing Sets
+        2.3.4 Example: Huffman Encoding Trees
+    2.4 Multiple Representations for Abstract Data
+        2.4.1 Representations for Complex Numbers
+        2.4.2 Tagged data
+        2.4.3 Data-Directed Programming and Additivity
+    2.5 Systems with Generic Operations
+        2.5.1 Generic Arithmetic Operations
+        2.5.2 Combining Data of Different Types
+        2.5.3 Example: Symbolic Algebra
+
+3 Modularity, Objects, and State
+
+    3.1 Assignment and Local State
+        3.1.1 Local State Variables
+        3.1.2 The Benefits of Introducing Assignment
+        3.1.3 The Costs of Introducing Assignment
+    3.2 The Environment Model of Evaluation
+        3.2.1 The Rules for Evaluation
+        3.2.2 Applying Simple Procedures
+        3.2.3 Frames as the Repository of Local State
+        3.2.4 Internal Definitions
+    3.3 Modeling with Mutable Data
+        3.3.1 Mutable List Structure
+        3.3.2 Representing Queues
+        3.3.3 Representing Tables
+        3.3.4 A Simulator for Digital Circuits
+        3.3.5 Propagation of Constraints
+    3.4 Concurrency: Time Is of the Essence
+        3.4.1 The Nature of Time in Concurrent Systems
+        3.4.2 Mechanisms for Controlling Concurrency
+    3.5 Streams
+        3.5.1 Streams Are Delayed Lists
+        3.5.2 Infinite Streams
+        3.5.3 Exploiting the Stream Paradigm
+        3.5.4 Streams and Delayed Evaluation
+        3.5.5 Modularity of Functional Programs and Modularity of Objects
+
+4 Metalinguistic Abstraction
+
+    4.1 The Metacircular Evaluator
+        4.1.1 The Core of the Evaluator
+        4.1.2 Representing Expressions
+        4.1.3 Evaluator Data Structures
+        4.1.4 Running the Evaluator as a Program
+        4.1.5 Data as Programs
+        4.1.6 Internal Definitions
+        4.1.7 Separating Syntactic Analysis from Execution
+    4.2 Variations on a Scheme — Lazy Evaluation
+        4.2.1 Normal Order and Applicative Order
+        4.2.2 An Interpreter with Lazy Evaluation
+        4.2.3 Streams as Lazy Lists
+    4.3 Variations on a Scheme — Nondeterministic Computing
+        4.3.1 Amb and Search
+        4.3.2 Examples of Nondeterministic Programs
+        4.3.3 Implementing the Amb Evaluator
+    4.4 Logic Programming
+        4.4.1 Deductive Information Retrieval
+        4.4.2 How the Query System Works
+        4.4.3 Is Logic Programming Mathematical Logic?
+        4.4.4 Implementing the Query System
+            4.4.4.1 The Driver Loop and Instantiation
+            4.4.4.2 The Evaluator
+            4.4.4.3 Finding Assertions by Pattern Matching
+            4.4.4.4 Rules and Unification
+            4.4.4.5 Maintaining the Data Base
+            4.4.4.6 Stream Operations
+            4.4.4.7 Query Syntax Procedures
+            4.4.4.8 Frames and Bindings
+
+5 Computing with Register Machines
+
+    5.1 Designing Register Machines
+        5.1.1 A Language for Describing Register Machines
+        5.1.2 Abstraction in Machine Design
+        5.1.3 Subroutines
+        5.1.4 Using a Stack to Implement Recursion
+        5.1.5 Instruction Summary
+    5.2 A Register-Machine Simulator
+        5.2.1 The Machine Model
+        5.2.2 The Assembler
+        5.2.3 Generating Execution Procedures for Instructions
+        5.2.4 Monitoring Machine Performance
+    5.3 Storage Allocation and Garbage Collection
+        5.3.1 Memory as Vectors
+        5.3.2 Maintaining the Illusion of Infinite Memory
+    5.4 The Explicit-Control Evaluator
+        5.4.1 The Core of the Explicit-Control Evaluator
+        5.4.2 Sequence Evaluation and Tail Recursion
+        5.4.3 Conditionals, Assignments, and Definitions
+        5.4.4 Running the Evaluator
+    5.5 Compilation
+        5.5.1 Structure of the Compiler
+        5.5.2 Compiling Expressions
+        5.5.3 Compiling Combinations
+        5.5.4 Combining Instruction Sequences
+        5.5.5 An Example of Compiled Code
+        5.5.6 Lexical Addressing
+        5.5.7 Interfacing Compiled Code to the Evaluator
+
+
+
+
+
+

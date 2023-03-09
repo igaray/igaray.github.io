@@ -1,0 +1,108 @@
+--- PROBABILIDAD Y ESTADISTICA
+
+https://www.goodreads.com/book/show/517233.Introduction_to_Probability
+https://www.goodreads.com/book/show/21558327-introduction-to-probability
+
+pero se mete en temas de comparaciones de bayesianismo y estadistica frecuentista mas profunda, siempre desde una mirada probabilistica en vez de estadistica
+
+lo que mas te puedo recomendar son videos y ejercicios
+despues para stats frecuentista el wasserman
+y el casella, statistical inference
+los 4 libros tienen una mirada no "matematica dura" digamos
+son para ingenierios/fisicos (edited)
+e inclusive creo que para CS son demasiado
+lo que mas te va a convenir son capitulos de uno y otro
+si queres entender algun tema mas teorico tengo otros. esos 4 me los lei de p a p
+si queres algo mas moderno frecuentista, elements of statistical learning (no lo lei en profundidad)
+es muy dificil entender bien stat. los matematicos que conozco entienden el plumbing pero no entiende nada de donde y para que usar que cosa
+y vice versa, los que suelen saber que usar no entienden por que anda
+es medio ingenieril, tenes algo de teoria pero mucho de practica. cuanto mas se del tema mas enteindo por que a los matematicos no le gusta
+y en lo personal creo que stats en si es bastante hackerish
+en ultima instancia es todo teorema central del limite, o genrealizaciones del mismo
+con mil y un hack
+no vas a aprenderlo para rendir una materia, toma muchas horas cada maldito hack y entender que es y como funciona
+te puedo recomendar bien que estudiar y de que capitulos pero mas alla de eso te recomiendo enfocarte mas en proba que en estadistica. estadistica es casi algoritimico para aprobar
+y si podes pagarlo, no es caro, te recomiendo mucho las clases con manu puebla
+
+
+- Apuntes Elementos de Algebra
+  - Capitulo 9: Calculo Combinatorio y Binomio de Newton
+    - Calculo combinatorio
+    - El desarrollo binomial
+    - Las permutaciones como transofrmaciones
+    - Ejercicios
+
+- El arte de contar: combiantoria y enumeracion
+  - Prefacio
+  - 1 Contemos
+    - El arte de contar
+      Blaise Pascal, Pierre de Fermat, Gottfried Wilhelm Leibniz, Jakob Bernoulli, Leonhard Euler, Arthur Cayley
+    - Contando con los dedos
+    - Probabilidad y combinatoria: dos disciplinas que se pasean de la mano
+  - 2 Grafos y mapas
+    - Los grafosy los mapas
+    - Unas cuentas mas complicadas
+    - Una aplicacion: contando doble
+    - Los arboles: personajes clave en la teoria de grafos
+  - 3 El eterno nomada
+    - Mi mente se abre a vosotros
+    - Infancia
+    - Adolescencia y exilio
+    - Estados Unidos, Israel... la vida como nomade
+    - La personalidad del genio: conjetura y prueba
+  - 4 Contando (sin usar los dedos)
+    - De lo que vemos... y de lo que no vemos
+    - El reparto del desayuno
+    - De las reuniones de sociedad
+    - El teorema del final feliz
+    - Revisitando la probabilidad: el metodo probabilistico
+  - 5 La combinatoria de las cifras
+    - Las piezas fundamentales de la aritmetica
+    - Las funciones de representacion
+    - El peso es importante
+    - Y a pesar de todo, existen las progresiones aritmeticas
+    - Fine
+
+- Numeros combinatorios y probabilidades
+  - Presentacion
+  - 1 La certeza
+  - 2 Los conjuntos
+  - 3 Los experimentos aleatorios
+    - Certeza versus incertidumbre
+    - Definiciones basicas. Experimentos aleatorios
+    - Mas experimentos aleatorios
+    - Probabilidad condicional. Sucesos independientes
+    - Ejercicios
+  - 4 Decidir y estimar
+    - Comentarios previos
+    - Un problema de decision
+    - Un problema de estimacion
+    - Preguntas y problemas propuestos
+  - 5 La Ley Clasica de los Grandes Numeros
+    - Planteo de la cuestion
+    - Tirando al aire una moneda muchas veces: un modelo de simulacion virtual manual
+    - Experiencias sugeridas
+    - Comentarios: la teoria de la probabilidad ubicada en la historia de la ciencia
+  - 6 Combinatoria: una tecnica para ayudar a contar
+    - Comentarios previos
+    - Principio basico de conteo. Factorial de N
+    - Permutaciones sin repeticion
+    - Permutaciones con repeticion
+    - Los numeros combinatorios
+    - El triangulo de Tartaglia o Pascal
+    - El simbolo de sumatoria
+    - Comentarios finales
+    - Ejercicios
+  - 7 Combinatoria y Probabilidad
+    - Comentariosprevios
+    - Mas sobre el factorial n! y el numero combinatorio (n k)
+    - El calculo aproximado de n!
+    - Mas sobre los subconjuntos de un conjunto dado M
+    - Algunas aplicaciones y ejemplos
+    - Ejercicios
+  - 8 Algunos conceptos de estadistica
+    - 
+  - 9 El pasado, el presente y el futuro
+
+- Course: Enumerative combinatorics
+

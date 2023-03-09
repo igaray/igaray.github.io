@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/htae/ch2/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>0x200 Programming - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../gopl/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch3/">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch4/">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch9/">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../gopl/ch12/">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/htae/ch2.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#0x200-programming">0x200 Programming</a></li>
+        
+            <li><a href="#hacks-and-programming-hacks">Hacks and Programming Hacks *</a></li>
+        
+            <li><a href="#what-are-hackers">What are Hackers *</a></li>
+        
+    
+        <li class="main "><a href="#what-is-programming">What Is Programming?</a></li>
+        
+    
+        <li class="main "><a href="#pseudo-code">Pseudo-code</a></li>
+        
+    
+        <li class="main "><a href="#control-structures">Control Structures</a></li>
+        
+    
+        <li class="main "><a href="#more-fundamental-programming-concepts">More Fundamental Programming Concepts</a></li>
+        
+    
+        <li class="main "><a href="#getting-your-hands-dirty">Getting Your Hands Dirty</a></li>
+        
+            <li><a href="#the-bigger-picture">The Bigger Picture</a></li>
+        
+            <li><a href="#the-x86-processor">The x86 Processor</a></li>
+        
+            <li><a href="#assembly-language">Assembly Language</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="0x200-programming"><strong>0x200 Programming</strong><a class="headerlink" href="#0x200-programming" title="Permanent link">&para;</a></h3>
+<p><strong>Hacker</strong> is a term for both those who write code and those who exploit it. <u>Even though these two groups of hackers have different end goals, both groups use similar problem-solving techniques.</u> <u>An understanding of programming helps those who exploit, and an understanding of exploitation helps those who program.</u> <u>Hacking is really just the act of finding a clever and counterintuitive solution to a problem.</u></p>
+<h5 id="hacks-and-programming-hacks"><strong>Hacks and Programming Hacks</strong> *<a class="headerlink" href="#hacks-and-programming-hacks" title="Permanent link">&para;</a></h5>
+<p>The hacks found in program exploits usually use the rules of the computer to bypass security in ways never intended. Programming hacks are similar, but the final goal is efficiency or smaller source code, not necessarily a security compromise.</p>
+<p>Programs that are small, efficient, and neat to accomplish a given task are said to have <em>elegance</em>, and the clever and inventive solutions that tend to lead to this efficiency are called <em>hacks</em>.</p>
+<p>In the business world, more importance is placed on churning out functional code than on achieving clever hacks and elegance. [p6]</p>
+<h5 id="what-are-hackers"><strong>What are Hackers</strong> *<a class="headerlink" href="#what-are-hackers" title="Permanent link">&para;</a></h5>
+<p>Hackers can be:</p>
+<ul>
+<li>Hobbyists whose end goal isn’t to make a profit but to squeeze every possible bit of functionality out of their old Commodore 64s,</li>
+<li>Exploit writers who need to write tiny and amazing pieces of code to slip through narrow security cracks</li>
+<li>Anyone else who appreciates the pursuit and the challenge of finding the best possible solution.</li>
+</ul>
+<p>Hackers are people who get excited about programming and really appreciate the beauty of an elegant piece of code or the ingenuity of a clever hack.</p>
+<p>An understanding of programming is a prerequisite to understanding how programs can be exploited.</p>
+<h3 id="what-is-programming">What Is Programming?<a class="headerlink" href="#what-is-programming" title="Permanent link">&para;</a></h3>
+<p>A program is a series of statements written in a specific language.</p>
+<ul>
+<li>An <strong>assembler</strong> translates assembly language into machine-readable code.</li>
+<li>A <strong>compiler</strong> converts a high-level language into machine language.</li>
+</ul>
+<h3 id="pseudo-code">Pseudo-code<a class="headerlink" href="#pseudo-code" title="Permanent link">&para;</a></h3>
+<p>Programmers have yet another form of programming language called <a href="https://en.wikipedia.org/wiki/Pseudocode">pseudo-code</a>. Pseudo-code is simply English arranged with a general structure similar to a high-level language.</p>
+<h3 id="control-structures">Control Structures<a class="headerlink" href="#control-structures" title="Permanent link">&para;</a></h3>
+<h3 id="more-fundamental-programming-concepts">More Fundamental Programming Concepts<a class="headerlink" href="#more-fundamental-programming-concepts" title="Permanent link">&para;</a></h3>
+<h3 id="getting-your-hands-dirty">Getting Your Hands Dirty<a class="headerlink" href="#getting-your-hands-dirty" title="Permanent link">&para;</a></h3>
+<p>For this book, Linux and an x86-based processor is used exclusively.</p>
+<p>The <code>firstprog.c</code> program is a simple piece of C code that will print “Hello, world!” 10 times.</p>
+<p><small><a href="https://github.com/shichao-an/hacking/blob/master/firstprog.c">firstprog.c</a></small></p>
+<div class="codehilite"><pre><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The first line is a C syntax that tells the compiler to include headers for a standard input/output (I/O) library named <code>stdio</code>. This header file is added to the program when it is compiled. It is located at <code>/usr/include/stdio.h</code>. A function prototype is needed for <code>printf()</code> before it can be used. This function prototype (along with many others) is included in the <code>stdio.h</code> header file. A lot of the power of C comes from its extensibility and libraries.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GNU Compiler Collection</a> (GCC) is a free C compiler that translates C into machine language that a processor can understand. The outputted translation
+is an executable binary file, which is called a.out by default.</p>
+<div class="codehilite"><pre><span class="gp">$</span> gcc firstprog.c
+<span class="gp">$</span> ls -l a.out
+<span class="go">-rwxr-xr-x 1 reader reader 6621 2007-09-06 22:16 a.out</span>
+<span class="gp">$</span> ./a.out
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+<span class="go">Hello, world!</span>
+</pre></div>
+
+
+<h4 id="the-bigger-picture">The Bigger Picture<a class="headerlink" href="#the-bigger-picture" title="Permanent link">&para;</a></h4>
+<p>This has all been stuff you would learn in an elementary programming class. Most introductory programming classes just teach how to read and write C. Though being fluent in C is very useful and is enough to make you a decent programmer, but it’s only a piece of the bigger picture. <u>Most programmers learn the language from the top down and never see the big picture.</u></p>
+<p>Hackers get their edge from knowing how all the pieces interact within this bigger picture. To see the bigger picture in the realm of programming, simply realize that C code is meant to be compiled. The code can’t actually do anything until it’s compiled into an executable binary file. <u>Thinking of C-source as a program is a common misconception that is exploited by hackers every day.</u></p>
+<p>The binary <code>a.out</code>’s instructions are written in machine language. Compilers translate the language of C code into machine language for a variety of processor architectures. In this case, the processor is in a family that uses the <a href="https://en.wikipedia.org/wiki/X86">x86</a> architecture. There are also <a href="https://en.wikipedia.org/wiki/SPARC">Sparc</a> processor architectures (used in Sun Workstations) and the <a href="https://en.wikipedia.org/wiki/PowerPC">PowerPC</a> processor architecture (used in pre-Intel Macs). The compiler acts as a middle ground: translating C code into machine language for the target architecture.</p>
+<p>The average programmer is only concerned with source code, but a hacker realizes that the compiled program is what actually gets executed out in the real world. With a better understanding of how the CPU operates, a hacker can manipulate the programs that run on it.</p>
+<h5 id="objdump"><strong><code>objdump</code></strong> *<a class="headerlink" href="#objdump" title="Permanent link">&para;</a></h5>
+<p>The GNU development tools include a program called <a href="https://en.wikipedia.org/wiki/Objdump">objdump</a>, which can be used to examine compiled binaries. Let’s look at the machine code the <code>main()</code> function was translated into.</p>
+<div class="codehilite"><pre><span class="gp"> $</span> objdump -D a.out <span class="p">|</span> grep -A20 main.:
+<span class="go">08048374 &lt;main&gt;:</span>
+<span class="go"> 8048374: 55 push %ebp</span>
+<span class="go"> 8048375: 89 e5 mov %esp,%ebp</span>
+<span class="go"> 8048377: 83 ec 08 sub $0x8,%esp</span>
+<span class="go"> 804837a: 83 e4 f0 and $0xfffffff0,%esp</span>
+<span class="go"> 804837d: b8 00 00 00 00 mov $0x0,%eax</span>
+<span class="go"> 8048382: 29 c4 sub %eax,%esp</span>
+<span class="go"> 8048384: c7 45 fc 00 00 00 00 movl $0x0,0xfffffffc(%ebp)</span>
+<span class="go"> 804838b: 83 7d fc 09 cmpl $0x9,0xfffffffc(%ebp)</span>
+<span class="go"> 804838f: 7e 02 jle 8048393 &lt;main+0x1f&gt;</span>
+<span class="go"> 8048391: eb 13 jmp 80483a6 &lt;main+0x32&gt;</span>
+<span class="go"> 8048393: c7 04 24 84 84 04 08 movl $0x8048484,(%esp)</span>
+<span class="go"> 804839a: e8 01 ff ff ff call 80482a0 &lt;printf@plt&gt;</span>
+<span class="go"> 804839f: 8d 45 fc lea 0xfffffffc(%ebp),%eax</span>
+<span class="go"> 80483a2: ff 00 incl (%eax)</span>
+<span class="go"> 80483a4: eb e5 jmp 804838b &lt;main+0x17&gt;</span>
+<span class="go"> 80483a6: c9 leave</span>
+<span class="go"> 80483a7: c3 ret</span>
+<span class="go"> 80483a8: 90 nop</span>
+<span class="go"> 80483a9: 90 nop</span>
+<span class="go"> 80483aa: 90 nop</span>
+</pre></div>
+
+
+<h5 id="description-of-output-from-objdump"><strong>Description of output from <code>objdump</code></strong> *<a class="headerlink" href="#description-of-output-from-objdump" title="Permanent link">&para;</a></h5>
+<p>The output is piped into <code>grep</code> with the command-line option to only display 20 lines after the regular expression <code>main.</code>:. Each byte is represented in hexadecimal notation, which is a base-16 numbering system. This is a convenient notation since a byte contains 8 bits, and each byte can be described with 2 hexadecimal digits.</p>
+<ul>
+<li>The numbers such as <code>0x8048374</code> on the far left are memory addresses.<ul>
+<li>Memory can be thought of as a row of bytes, each with its own memory address. Older Intel x86 processors use a 32-bit addressing scheme, while newer ones use a 64-bit one. The 32-bit processors have 2<sup>32</sup> (or 4,294,967,296) possible addresses, while the 64-bit ones have 2<sup>64</sup> (1.84467441 × 10<sup>19</sup>) possible addresses. The 64-bit processors can run in 32-bit compatibility mode, which allows them to run 32-bit code quickly.</li>
+</ul>
+</li>
+<li>The hexadecimal bytes in the middle are the machine language instructions for the x86 processor. The machine code is displayed as hexadecimal bytes and each instruction is put on its own line.</li>
+<li>The instructions on the far right are in assembly language.</li>
+</ul>
+<h5 id="the-assembly-language"><strong>The Assembly Language</strong> *<a class="headerlink" href="#the-assembly-language" title="Permanent link">&para;</a></h5>
+<p>Unlike C and other compiled languages, assembly language instructions have a direct one-to-one relationship with their corresponding machine language instructions. This means that since every processor architecture has different machine language instructions, each also has a different form of assembly language. Assembly is a way to represent the machine language instructions of the processor.</p>
+<p>There are the two main types of assembly language syntax:</p>
+<ul>
+<li>AT&amp;T syntax.</li>
+<li>Intel syntax.</li>
+</ul>
+<p>The assembly shown in the output above is AT&amp;T syntax. Nearly all of Linux’s disassembly tools use this syntax by default. It’s easy to recognize AT&amp;T syntax by the cacophony of <code>%</code> and <code>$</code> symbols prefixing everything. The same code can be shown in Intel syntax by providing an additional command-line option, <code>-M intel</code>, to <code>objdump</code>, as shown in the output below.</p>
+<div class="codehilite"><pre><span class="gp">$</span> objdump -M intel -D a.out <span class="p">|</span> grep -A20 main.:
+<span class="go">08048374 &lt;main&gt;:</span>
+<span class="go"> 8048374: 55 push ebp</span>
+<span class="go"> 8048375: 89 e5 mov ebp,esp</span>
+<span class="go"> 8048377: 83 ec 08 sub esp,0x8</span>
+<span class="go"> 804837a: 83 e4 f0 and esp,0xfffffff0</span>
+<span class="go"> 804837d: b8 00 00 00 00 mov eax,0x0</span>
+<span class="go"> 8048382: 29 c4 sub esp,eax</span>
+<span class="go"> 8048384: c7 45 fc 00 00 00 00 mov DWORD PTR [ebp-4],0x0</span>
+<span class="go"> 804838b: 83 7d fc 09 cmp DWORD PTR [ebp-4],0x9</span>
+<span class="go"> 804838f: 7e 02 jle 8048393 &lt;main+0x1f&gt;</span>
+<span class="go"> 8048391: eb 13 jmp 80483a6 &lt;main+0x32&gt;</span>
+<span class="go"> 8048393: c7 04 24 84 84 04 08 mov DWORD PTR [esp],0x8048484</span>
+<span class="go"> 804839a: e8 01 ff ff ff call 80482a0 &lt;printf@plt&gt;</span>
+<span class="go"> 804839f: 8d 45 fc lea eax,[ebp-4]</span>
+<span class="go"> 80483a2: ff 00 inc DWORD PTR [eax]</span>
+<span class="go"> 80483a4: eb e5 jmp 804838b &lt;main+0x17&gt;</span>
+<span class="go"> 80483a6: c9 leave</span>
+<span class="go"> 80483a7: c3 ret</span>
+<span class="go"> 80483a8: 90 nop</span>
+<span class="go"> 80483a9: 90 nop</span>
+<span class="go"> 80483aa: 90 nop</span>
+</pre></div>
+
+
+<p>Intel syntax is much more readable and easier to understand; this book will use this syntax.  Regardless of the assembly language representation, the commands a processor understands are quite simple. These instructions consist of an operation and sometimes additional arguments that describe the destination and/or the source for the operation. These operations move memory around, perform some sort of basic math, or interrupt the processor to get it to do something else. In the end, that’s all a computer processor can really do.</p>
+<p>Processors also have their own set of special variables called <a href="https://en.wikipedia.org/wiki/Processor_register">registers</a>. Most of the instructions use these registers to read or write data, so understanding the registers of a processor is essential to understanding the instructions.</p>
+<h4 id="the-x86-processor">The x86 Processor<a class="headerlink" href="#the-x86-processor" title="Permanent link">&para;</a></h4>
+<p>The x86 processor has several registers, which are like internal variables for the processor. The GNU development tools also include a debugger called <a href="https://en.wikipedia.org/wiki/GNU_Debugger">GDB</a>. Debuggers are used by programmers to step through compiled programs, examine program memory, and view processor registers. A debugger can view the execution from all angles, pause it, and change anything along the way. [p23]</p>
+<p>Below, GDB is used to show the state of the processor registers right before the program starts.</p>
+<div class="codehilite"><pre><span class="gp">$</span> gdb -q ./a.out
+<span class="go">Using host libthread_db library &quot;/lib/tls/i686/cmov/libthread_db.so.1&quot;.</span>
+<span class="go">(gdb) break main</span>
+<span class="go">Breakpoint 1 at 0x804837a</span>
+<span class="go">(gdb) run</span>
+<span class="go">Starting program: /home/reader/booksrc/a.out</span>
+<span class="go">Breakpoint 1, 0x0804837a in main ()</span>
+<span class="go">(gdb) info registers</span>
+<span class="go">eax 0xbffff894 -1073743724</span>
+<span class="go">ecx 0x48e0fe81 1222704769</span>
+<span class="go">edx 0x1 1</span>
+<span class="go">ebx 0xb7fd6ff4 -1208127500</span>
+<span class="go">esp 0xbffff800 0xbffff800</span>
+<span class="go">ebp 0xbffff808 0xbffff808</span>
+<span class="go">esi 0xb8000ce0 -1207956256</span>
+<span class="go">edi 0x0 0</span>
+<span class="go">eip 0x804837a 0x804837a &lt;main+6&gt;</span>
+<span class="go">eflags 0x286 [ PF SF IF ]</span>
+<span class="go">cs 0x73 115</span>
+<span class="go">ss 0x7b 123</span>
+<span class="go">ds 0x7b 123</span>
+<span class="go">es 0x7b 123</span>
+<span class="go">fs 0x0 0</span>
+<span class="go">gs 0x33 51</span>
+<span class="go">(gdb) quit</span>
+<span class="go">The program is running. Exit anyway? (y or n) y</span>
+</pre></div>
+
+
+<p>A breakpoint is set on the <code>main()</code> function so execution will stop right before our code is executed. Then GDB runs the program, stops at the breakpoint, and is told to display all the processor registers and their current states.</p>
+<h5 id="eax-ecx-edx-and-ebx-registers"><strong>EAX, ECX, EDX, and EBX registers</strong> *<a class="headerlink" href="#eax-ecx-edx-and-ebx-registers" title="Permanent link">&para;</a></h5>
+<p>The first four registers (EAX, ECX, EDX, and EBX) are known as general-purpose registers. These are called the <em>Accumulator</em>, <em>Counter</em>, <em>Data</em>, and <em>Base</em> registers, respectively. They are used for a variety of purposes, but they mainly act as temporary variables for the CPU when it is executing machine instructions.</p>
+<h5 id="esp-ebp-esi-and-edi-registers"><strong>ESP, EBP, ESI, and EDI registers</strong> *<a class="headerlink" href="#esp-ebp-esi-and-edi-registers" title="Permanent link">&para;</a></h5>
+<p>The second four registers (ESP, EBP, ESI, and EDI) are also general-purpose registers, but they are sometimes known as pointers and indexes. These stand for <em>Stack Pointer</em>, <em>Base Pointer</em>, <em>Source Index</em>, and <em>Destination Index</em>, respectively.</p>
+<ul>
+<li>The ESP and EBP registers are called pointers because they store 32-bit addresses, which essentially point to that location in memory. These registers are fairly important to program execution and memory management.</li>
+<li>The ESI and EDI registers are also technically pointers, which are commonly used to point to the source and destination when data needs to be read from or written to. There are load and store instructions that use these registers, but for the most part, these registers can be thought of as just simple general-purpose registers.</li>
+</ul>
+<h5 id="eip-register"><strong>EIP register</strong> *<a class="headerlink" href="#eip-register" title="Permanent link">&para;</a></h5>
+<p>The EIP register is the <em>Instruction Pointer</em> register, which points to the current instruction the processor is reading. This register is quite important and will be used a lot while debugging. Currently, it points to a memory address at <code>0x804838a</code>.</p>
+<h5 id="eflags-register"><strong>EFLAGS register</strong> *<a class="headerlink" href="#eflags-register" title="Permanent link">&para;</a></h5>
+<p>The remaining EFLAGS register actually consists of several bit flags that are used for comparisons and memory segmentations. The actual memory is split into several different segments and these registers keep track of that. For the most part, these registers can be ignored since they rarely need to be accessed directly.</p>
+<h4 id="assembly-language">Assembly Language<a class="headerlink" href="#assembly-language" title="Permanent link">&para;</a></h4>
+<p>To use Intel syntax assembly language, our tools must be configured to use this syntax. Inside GDB, the disassembly syntax can be set to Intel by <code>typing set disassembly intel</code> or <code>set dis intel</code>. You can configure this setting to run every time GDB starts up by putting the command in the file <code>.gdbinit</code> in your home directory.</p>
+<div class="codehilite"><pre><span class="gp">$</span> gdb -q
+<span class="go">(gdb) set dis intel</span>
+<span class="go">(gdb) quit</span>
+<span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;set dis intel&quot;</span> &gt; ~/.gdbinit
+</pre></div>
+
+
+<p>The assembly instructions in Intel syntax generally follow this style:</p>
+<div class="codehilite"><pre>operation &lt;destination&gt;, &lt;source&gt;
+</pre></div>
+
+
+<p>The destination and source values will either be a register, a memory address, or a value. The operations are usually intuitive mnemonics. For example:</p>
+<ul>
+<li><code>mov</code> will move a value from the source to the destination.</li>
+<li><code>sub</code> will subtract.</li>
+<li><code>inc</code> will increment.</li>
+</ul>
+<p>The instructions below will move the value from ESP to EBP and then subtract 8 from ESP (storing the result in ESP).</p>
+<div class="codehilite"><pre>8048375: 89 e5         mov ebp,esp
+8048377: 83 ec 08      sub esp,0x8
+</pre></div>
+
+
+<p>There are also operations that are used to control the flow of execution.</p>
+<ul>
+<li>The <code>cmp</code> operation is used to compare values.</li>
+<li>Basically any operation beginning with <code>j</code> is used to jump to a different part of the code (depending on the result of the comparison).</li>
+</ul>
+<p>In the example below:</p>
+<ul>
+<li><code>cmp</code> compares a 4-byte value located at EBP minus 4 with the number 9.</li>
+<li>The next instruction <code>jle</code> is shorthand for "jump if less than or equal to", referring to the result of the previous comparison. If that value is less than or equal to 9, execution jumps to the instruction at <code>0x8048393</code>. Otherwise, execution flows to the next instruction</li>
+<li><code>jmp</code> means an unconditional jump. If the value isn’t less than or equal to 9, execution will jump to <code>0x80483a6</code>.</li>
+</ul>
+<div class="codehilite"><pre>804838b: 83 7d fc 09   cmp DWORD PTR [ebp-4],0x9
+804838f: 7e 02         jle 8048393 &lt;main+0x1f&gt;
+8048391: eb 13         jmp 80483a6 &lt;main+0x32&gt;
+</pre></div>
+
+
+<p>The <code>-g</code> flag can be used by the GCC compiler to include extra debugging information, which will give GDB access to the source code.</p>
+<div class="codehilite"><pre><span class="gp">$</span> gcc -g firstprog.c
+<span class="gp">$</span> ls -l a.out
+<span class="go">-rwxr-xr-x 1 matrix users 11977 Jul 4 17:29 a.out</span>
+<span class="gp">$</span> gdb -q ./a.out
+<span class="go">Using host libthread_db library &quot;/lib/libthread_db.so.1&quot;.</span>
+<span class="go">(gdb) list</span>
+<span class="go">1 #include &lt;stdio.h&gt;</span>
+<span class="go">2</span>
+<span class="go">3 int main()</span>
+<span class="go">4 {</span>
+<span class="go">5 int i;</span>
+<span class="go">6 for(i=0; i &lt; 10; i++)</span>
+<span class="go">7 {</span>
+<span class="go">8 printf(&quot;Hello, world!\n&quot;);</span>
+<span class="go">9 }</span>
+<span class="go">10 }</span>
+<span class="go">(gdb) disassemble main</span>
+<span class="go">Dump of assembler code for function main():</span>
+<span class="go">0x08048384 &lt;main+0&gt;: push ebp</span>
+<span class="go">0x08048385 &lt;main+1&gt;: mov ebp,esp</span>
+<span class="go">0x08048387 &lt;main+3&gt;: sub esp,0x8</span>
+<span class="go">0x0804838a &lt;main+6&gt;: and esp,0xfffffff0</span>
+<span class="go">0x0804838d &lt;main+9&gt;: mov eax,0x0</span>
+<span class="go">0x08048392 &lt;main+14&gt;: sub esp,eax</span>
+<span class="go">0x08048394 &lt;main+16&gt;: mov DWORD PTR [ebp-4],0x0</span>
+<span class="go">0x0804839b &lt;main+23&gt;: cmp DWORD PTR [ebp-4],0x9</span>
+<span class="go">0x0804839f &lt;main+27&gt;: jle 0x80483a3 &lt;main+31&gt;</span>
+<span class="go">0x080483a1 &lt;main+29&gt;: jmp 0x80483b6 &lt;main+50&gt;</span>
+<span class="go">0x080483a3 &lt;main+31&gt;: mov DWORD PTR [esp],0x80484d4</span>
+<span class="go">0x080483aa &lt;main+38&gt;: call 0x80482a8 &lt;_init+56&gt;</span>
+<span class="go">0x080483af &lt;main+43&gt;: lea eax,[ebp-4]</span>
+<span class="go">0x080483b2 &lt;main+46&gt;: inc DWORD PTR [eax]</span>
+<span class="go">0x080483b4 &lt;main+48&gt;: jmp 0x804839b &lt;main+23&gt;</span>
+<span class="go">0x080483b6 &lt;main+50&gt;: leave</span>
+<span class="go">0x080483b7 &lt;main+51&gt;: ret</span>
+<span class="go">End of assembler dump.</span>
+<span class="go">(gdb) break main</span>
+<span class="go">Breakpoint 1 at 0x8048394: file firstprog.c, line 6.</span>
+<span class="go">(gdb) run</span>
+<span class="go">Starting program: /hacking/a.out</span>
+<span class="go">Breakpoint 1, main() at firstprog.c:6</span>
+<span class="go">6 for(i=0; i &lt; 10; i++)</span>
+<span class="go">(gdb) info register eip</span>
+<span class="go">eip 0x8048394 0x8048394</span>
+<span class="go">(gdb)</span>
+</pre></div>
+
+
+<ol>
+<li>The source code is listed and the disassembly of the <code>main()</code> function is displayed.</li>
+<li>A breakpoint is set at the start of <code>main()</code>, and the program is run.<ul>
+<li>This breakpoint tells the debugger to pause the execution when it gets to that point. Since the breakpoint has been set at the start of the <code>main()</code> function, the program hits the breakpoint and pauses before actually executing any instructions in <code>main()</code>.</li>
+</ul>
+</li>
+<li>The value of EIP (the Instruction Pointer) is displayed.</li>
+</ol>
+<p>Notice that EIP contains a memory address (i.e. <code>0x8048394</code>) that points to an instruction in the <code>main()</code> function’s disassembly. The instructions before this (from <code>0x08048384</code> to <code>0x08048392</code>) are collectively known as the <a href="https://en.wikipedia.org/wiki/Function_prologue">function prologue</a> and are generated by the compiler to set up memory for the rest of the <code>main()</code> function’s local variables. Part of the reason why variables need to be declared in C is to aid the construction of this section of code. The debugger knows this part of the code is automatically generated and is smart enough to skip over it.</p>
+<h5 id="examining-memory-with-gdbs-examine-command"><strong>Examining memory with GDB's <em>examine</em> command</strong> *<a class="headerlink" href="#examining-memory-with-gdbs-examine-command" title="Permanent link">&para;</a></h5>
+<p>The GDB provides a direct method to examine memory, using the command <code>x</code>, which is short for <em>examine</em>. Examining memory is a critical skill for any hacker. With a debugger like GDB, every aspect of a program’s execution can be deterministically examined, paused, stepped through, and repeated as often as needed. Since a running program is mostly just a processor and segments of memory, examining memory is the first way to look at what’s really going on.</p>
+<p>The <em>examine</em> command expects two arguments:</p>
+<ul>
+<li>The location in memory to examine.</li>
+<li>How to display that memory.</li>
+</ul>
+<p>The display format also uses a single-letter shorthand, which is optionally preceded by a count of how many items to examine. Some common format letters are as follows:</p>
+<ul>
+<li><code>o</code>: Display in octal.</li>
+<li><code>x</code>: Display in hexadecimal.</li>
+<li><code>u</code>: Display in unsigned, standard base-10 decimal.</li>
+<li><code>t</code>: Display in binary.</li>
+</ul>
+<p>In the following example, the current address of the EIP register is used. Shorthand commands are often used with GDB, and even <code>info register eip</code> can be shortened to just <code>i r eip</code>.</p>
+<div class="codehilite"><pre>(gdb) i r eip
+eip 0x8048384 0x8048384 &lt;main+16&gt;
+(gdb) x/o 0x8048384
+0x8048384 &lt;main+16&gt;: 077042707
+(gdb) x/x $eip
+0x8048384 &lt;main+16&gt;: 0x00fc45c7
+(gdb) x/u $eip
+0x8048384 &lt;main+16&gt;: 16532935
+(gdb) x/t $eip
+0x8048384 &lt;main+16&gt;: 00000000111111000100010111000111
+(gdb)
+</pre></div>
+
+
+<h5 id="referencing-registers"><strong>Referencing registers</strong> *<a class="headerlink" href="#referencing-registers" title="Permanent link">&para;</a></h5>
+<p>The memory the EIP register is pointing to can be examined by using the address stored in EIP. With the debugger, you can reference registers directly. <code>$eip</code> is equivalent to the value EIP contains at that moment.</p>
+<p>A number can also be prepended to the format of the <em>examine</em> command to examine multiple units at the target address.</p>
+<div class="codehilite"><pre>(gdb) x/2x $eip
+0x8048384 &lt;main+16&gt;: 0x00fc45c7 0x83000000
+(gdb) x/12x $eip
+0x8048384 &lt;main+16&gt;: 0x00fc45c7 0x83000000 0x7e09fc7d 0xc713eb02
+0x8048394 &lt;main+32&gt;: 0x84842404 0x01e80804 0x8dffffff 0x00fffc45
+0x80483a4 &lt;main+48&gt;: 0xc3c9e5eb 0x90909090 0x90909090 0x5de58955
+(gdb)
+</pre></div>
+
+
+<h5 id="halfwards-words-and-giants"><strong>Halfwards, Words, and Giants</strong> *<a class="headerlink" href="#halfwards-words-and-giants" title="Permanent link">&para;</a></h5>
+<p>The default size of a single unit is a four-byte unit called a <em>word</em>. The size of the display units for the examine command can be changed by adding a size letter to the end of the format letter. The valid size letters are as follows:</p>
+<ul>
+<li><code>b</code>: A single byte</li>
+<li><code>h</code>: A halfword, which is two bytes in size</li>
+<li><code>w</code>: A word, which is four bytes in size</li>
+<li><code>g</code>: A giant, which is eight bytes in size</li>
+</ul>
+<p>This is slightly confusing, because sometimes the term <em>word</em> also refers to 2-byte values, in which case a <em>double word</em> or <em>DWORD</em> refers to a 4-byte value. Note that in this book:</p>
+<ul>
+<li>A <em>word</em> or a <em>DWORD</em> refers to 4-byte values.</li>
+<li>A <em>short</em> or a <em>halfword</em> refers to 2-byte value.</li>
+</ul>
+<p>The following GDB output shows memory displayed in various sizes.</p>
+<div class="codehilite"><pre>(gdb) x/8xb $eip
+0x8048384 &lt;main+16&gt;: 0xc7 0x45 0xfc 0x00 0x00 0x00 0x00 0x83
+(gdb) x/8xh $eip
+0x8048384 &lt;main+16&gt;: 0x45c7 0x00fc 0x0000 0x8300 0xfc7d 0x7e09 0xeb02 0xc713
+(gdb) x/8xw $eip
+0x8048384 &lt;main+16&gt;: 0x00fc45c7 0x83000000 0x7e09fc7d 0xc713eb02
+0x8048394 &lt;main+32&gt;: 0x84842404 0x01e80804 0x8dffffff 0x00fffc45
+(gdb)
+</pre></div>
+
+
+<p>Note in the above output that the first examine shows the first two bytes to be <code>0xc7</code> and <code>0x45</code>, but when a halfword is examined at the exact same memory address, the value <code>0x45c7</code> is shown, with the bytes reversed. This same byte-reversal effect can be seen when a full four-byte word is shown as <code>0x00fc45c7</code>, but when the first four bytes are shown byte by byte, they are in the order of <code>0xc7</code>, <code>0x45</code>, <code>0xfc</code>, and <code>0x00</code>.</p>
+<p>This is because on the x86 processor values are stored in <a href="https://en.wikipedia.org/wiki/Endianness">little-endian byte order</a>, which means the least significant byte is stored first. For example, if four bytes are to be interpreted as a single value, the bytes must be used in reverse order. The GDB debugger is smart enough to know how values are stored, so when a word or halfword is examined, the bytes must be reversed to display the correct values in hexadecimal. Revisiting these values displayed both as hexadecimal and unsigned decimals might help clear up any confusion.</p>
+<div class="codehilite"><pre>(gdb) x/4xb $eip
+0x8048384 &lt;main+16&gt;: 0xc7 0x45 0xfc 0x00
+(gdb) x/4ub $eip
+0x8048384 &lt;main+16&gt;: 199 69 252 0
+(gdb) x/1xw $eip
+0x8048384 &lt;main+16&gt;: 0x00fc45c7
+(gdb) x/1uw $eip
+0x8048384 &lt;main+16&gt;: 16532935
+(gdb) quit
+The program is running. Exit anyway? (y or n) y
+$ bc -ql
+199*(256^3) + 69*(256^2) + 252*(256^1) + 0*(256^0)
+3343252480
+0*(256^3) + 252*(256^2) + 69*(256^1) + 199*(256^0)
+16532935
+quit
+</pre></div>
+
+
+<p>The first four bytes are shown both in hexadecimal and standard unsigned decimal notation. A command-line calculator program called <code>bc</code> is used to show that if the bytes are interpreted in the incorrect order, 3343252480 is the result, which is incorrect. The byte order of a given architecture is an important detail. [p30]</p>
+<p>In addition to converting byte order, GDB can do other conversions with the <em>examine</em> command. The <em>examine</em> command also accepts the format letter <code>i</code>, short for instruction, to display the memory as disassembled assembly language instructions.</p>
+<div class="codehilite"><pre><span class="gp">$</span> gdb -q ./a.out
+<span class="go">Using host libthread_db library &quot;/lib/tls/i686/cmov/libthread_db.so.1&quot;.</span>
+<span class="go">(gdb) break main</span>
+<span class="go">Breakpoint 1 at 0x8048384: file firstprog.c, line 6.</span>
+<span class="go">(gdb) run</span>
+<span class="go">Starting program: /home/reader/booksrc/a.out</span>
+<span class="go">Breakpoint 1, main () at firstprog.c:6</span>
+<span class="go">6 for(i=0; i &lt; 10; i++)</span>
+<span class="go">(gdb) i r $eip</span>
+<span class="go">eip 0x8048384 0x8048384 &lt;main+16&gt;</span>
+<span class="go">(gdb) x/i $eip</span>
+<span class="go">0x8048384 &lt;main+16&gt;: mov DWORD PTR [ebp-4],0x0</span>
+<span class="go">(gdb) x/3i $eip</span>
+<span class="go">0x8048384 &lt;main+16&gt;: mov DWORD PTR [ebp-4],0x0</span>
+<span class="go">0x804838b &lt;main+23&gt;: cmp DWORD PTR [ebp-4],0x9</span>
+<span class="go">0x804838f &lt;main+27&gt;: jle 0x8048393 &lt;main+31&gt;</span>
+<span class="go">(gdb) x/7xb $eip</span>
+<span class="go">0x8048384 &lt;main+16&gt;: 0xc7 0x45 0xfc 0x00 0x00 0x00 0x00</span>
+<span class="go">(gdb) x/i $eip</span>
+<span class="go">0x8048384 &lt;main+16&gt;: mov DWORD PTR [ebp-4],0x0</span>
+<span class="go">(gdb)</span>
+</pre></div>
+
+
+<p>In the output above, the <code>a.out</code> program is run in GDB, with a breakpoint set at <code>main()</code>. The EIP register is pointing to memory that actually contains machine language instructions, and it is disassemble using the <code>x/i</code> (<code>i</code> stands for <em>instruction</em>) command. The previous <code>objdump</code> disassembly confirms that the seven bytes EIP is pointing to actually are machine language for the corresponding assembly instruction.</p>
+<div class="codehilite"><pre>8048384: c7 45 fc 00 00 00 00 mov DWORD PTR [ebp-4],0x0
+</pre></div>
+
+
+<p>This assembly instruction will move the value of 0 into memory located at the address stored in the EBP register, minus 4. This is where the C variable <code>i</code> is stored in memory; <code>i</code> was declared as an integer that uses 4 bytes of memory on the x86 processor. This instruction will zero out the variable <code>i</code> for the <code>for</code> loop. If that memory is examined right now, it will contain nothing but random garbage. The memory at this location can be examined several different ways.</p>
+<div class="codehilite"><pre>(gdb) i r ebp
+ebp 0xbffff808 0xbffff808
+(gdb) x/4xb $ebp - 4
+0xbffff804: 0xc0 0x83 0x04 0x08
+(gdb) x/4xb 0xbffff804
+0xbffff804: 0xc0 0x83 0x04 0x08
+(gdb) print $ebp - 4
+$1 = (void *) 0xbffff804
+(gdb) x/4xb $1
+0xbffff804: 0xc0 0x83 0x04 0x08
+(gdb) x/xw $1
+0xbffff804: 0x080483c0
+(gdb)
+</pre></div>
+
+
+<p>It is shown from the above example that:</p>
+<ul>
+<li>The EBP register contains the address <code>0xbffff808</code>, and the assembly instruction will be writing <code>0xbffff804</code> (4 less than <code>0xbffff808</code>). The <em>examine</em> command can examine this memory address directly or by doing the math on the fly.</li>
+<li>The <code>print</code> command can also be used to do simple math, but the result is stored in a temporary variable in the debugger. This variable named <code>$1</code> can be used later to quickly re-access a particular location in memory.</li>
+</ul>
+<p>These methods shown above will accomplish the same task: displaying the 4 garbage bytes found in memory that will be zeroed out when the current instruction executes.</p>
+<p>To execute the current instruction, run the command <code>nexti</code>, which is short for <em>next instruction</em>. The processor will read the instruction at EIP, execute it, and advance EIP to the next instruction.</p>
+<div class="codehilite"><pre>(gdb) nexti
+0x0804838b 6 for(i=0; i &lt; 10; i++)
+(gdb) x/4xb $1
+0xbffff804: 0x00 0x00 0x00 0x00
+(gdb) x/dw $1
+0xbffff804: 0
+(gdb) i r eip
+eip 0x804838b 0x804838b &lt;main+23&gt;
+(gdb) x/i $eip
+0x804838b &lt;main+23&gt;: cmp DWORD PTR [ebp-4],0x9
+(gdb)
+</pre></div>
+
+
+<p>As predicted, the previous command zeroes out the 4 bytes found at EBP minus 4, which is memory set aside for the C variable <code>i</code>. Then EIP advances to the next instruction.</p>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

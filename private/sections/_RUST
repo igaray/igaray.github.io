@@ -1,0 +1,315 @@
+- RUST
+
+<!-- 
+RUST ANALYZER
+  https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/manual.adoc
+  https://github.com/rust-analyzer/rust-analyzer/tree/master/docs/dev
+
+RUST ARGENTINA
+  https://github.com/EstebanBorai/rusty-cloudflare-worker
+  https://workers.cloudflare.com/
+  https://github.com/rust-lang-ar/rust-lang-ar.github.io/discussions/8#discussioncomment-765321
+  https://baetica.com/que-es-moodboard/?cli_action=1622670301.432
+  https://xd.adobe.com/view/a6e8590a-79fc-48f7-b07d-03411c8df981-f3bb/
+
+RUST
+  rm -f rustc_crates_depgraph.png; dot -T png rustc_crates_depgraph.dot > rustc_crates_depgraph.png && feh rustc_crates_depgraph.png;
+
+RUST CONST GENERICS
+  fn f<const N: usize>(a: &mut [usize; N]) {
+      println!("  a: {:?}", a);
+      for i in 0..N {
+          a[i] = i;
+      }
+      println!("  a: {:?}", a);
+  }
+
+  fn main() {
+      let mut a = [0; 3];
+      println!("a: {:?}", a);
+      f(&mut a);
+      println!("a: {:?}", a);
+
+      let mut a = [0; 5];
+      println!("a: {:?}", a);
+      f(&mut a);
+      println!("a: {:?}", a);
+  }
+
+RUSTC DEV GUIDE LANDING PADS
+  - [](https://github.com/rust-lang/rustc-dev-guide/issues/707)
+  - [](rts.lab.asu.edu/web_438_2012/project_final/Talk%204%20exception_handling.pdf)
+  - [](https://github.com/rust-lang/rust/issues/34393)
+  - [](https://github.com/rust-lang/rust/blob/edb368491551a77d77a48446d4ee88b35490c565/src/libpanic_unwind/gcc.rs)
+  - [](https://github.com/rust-lang/rust/pull/30448)
+  - lambda
+    [ ] ver tema certificacion
+    [ ] ballista
+    [ ] flix https://flix.dev/
+    [ ] vega
+    [ ] tree sitter https://github.com/tree-sitter/tree-sitter
+    [ ] glommio https://github.com/DataDog/glommio
+    [ ] handbook
+  - dibujo
+    [ ] bajar contenido
+  - watch
+    - https://en.wikipedia.org/wiki/30_Days_of_Night:_Dark_Days
+    - https://en.wikipedia.org/wiki/Party_Monster_(film)
+    - https://en.wikipedia.org/wiki/New_Best_Friend
+    - https://en.wikipedia.org/wiki/Milton%27s_Secret
+    - https://en.wikipedia.org/wiki/Love_and_Human_Remains
+    - https://en.wikipedia.org/wiki/The_Black_Dahlia_(film)
+    - amazon hunters
+    - devs
+    - atlanta
+    - normal people
+    - i know this much is true
+    - i may destroy you
+    - chewing gum
+    - perry mason
+    - lovecraft country
+    - dogs dont wear pants
+    - fifty shades
+    - secretary maggie gyllenhaal
+    - a dangerous method
+    - basic instinct
+    - 9 1/2 weeks kim bassinger
+    - head in the clouds charlize theron
+    - secret diary of a call girl
+    - the cell j lo
+    - one night at mccools
+    - the notorious bettie page
+    - 365 dni
+    - https://www.elcohetealaluna.com/archivo-de-peliculas/
+    - https://en.wikipedia.org/wiki/Dark_Water_(2005_film)
+    - https://en.wikipedia.org/wiki/Mulholland_Falls
+    - https://en.wikipedia.org/wiki/Of_Love_and_Shadows
+    - https://en.wikipedia.org/wiki/Etoile_(film)
+    - https://en.wikipedia.org/wiki/Career_Opportunities_(film)
+
+RUSTYTHING
+  https://actix.rs/docs/getting-started/
+
+
+-->
+<!--
+cargo login aTPDH9TWK5bNk3CqHeCsj3dqLEEr3SX3
+
+## Blog: IN DEPTH RUST STRING HANDLING
+
+Ok. You code in python. You want to title case a sentence contained in a string.
+
+```
+<pithy python example>
+```
+
+How do you do it in rust?
+
+- Characters
+- UTF-8
+- String types: str, &str, String, OsStr, Path, PathBuf
+- String methods
+- Slice methods
+
+## Talk: Lifetimes
+
+When we specify a lifetime explicitly, we are simply entering a contract with the compiler guaranteeing that the given resource will be available for a certain scope. We are, in a sense, making a promise to the compiler.
+
+We are not "creating" lifetimes. Nor are we telling Rust to allow a reference to exist somewhere that it shouldn't. We are just telling the compiler to complain if the calling code breaks the lifetime rules we've dictated.
+
+## Research: Logging
+
+github.com/Drakulix/simplelog.rs
+
+## Project: RUSTC UNDER A MICROSCOPE
+
+```
+RUBY UNDER A MICROSCOPE
+  1 Tokenization and parsing
+    In Chapter 1, you’ll learn how Ruby parses your Ruby program.
+  2 Compilation
+    Chapter 2 explains how Ruby uses a compiler to convert your program into a different language before running it.
+  3 How ruby executes your code
+    Chapter 3 looks at the virtual machine Ruby uses to run your program.
+    What’s inside this machine? How does it work?
+    We’ll look deep inside this virtual machine to find out.
+  4 Control structures and method dispatch
+  5 Objects and classes
+  6 Method lookup and constant lookup
+  7 The hash table: the workhorse of ruby internals
+  8 How ruby borrowed a decades-old idea from lisp
+  9 Metaprogramming
+  10 JRuby: ruby on the jvm
+  11 Rubinius: ruby implemented with ruby
+  12 Garbarge collection in MRI, JRuby, and Rubinius
+```
+
+
+RUBY UNDER A MICROSCOPE
+
+In Chapter 1, you’ll learn how Ruby parses your Ruby program. This is one of the most fascinating areas of computer science: How can a computer language be smart enough to understand the code you give it? What does this intelligence really consist of?
+
+Chapter 2 explains how Ruby uses a compiler to convert your program into a different language before running it.
+
+Chapter 3 looks at the virtual machine Ruby uses to run your program. What’s inside this machine? How does it work? We’ll look deep inside this virtual machine to find out.
+
+Chapter 4 continues the description of Ruby’s virtual machine, looking at how Ruby implements control structures such as if...else statements and while...end loops. It also explores how Ruby implements method calls.
+
+Chapter 5 discusses Ruby’s implementation of objects and classes. How are objects and classes related? What would we find inside a Ruby object?
+
+Chapter 6 examines Ruby modules and their relationship to classes. You’ll learn how Ruby finds methods and constants in your Ruby code.
+
+Chapter 7 explores Ruby’s implementation of hash tables. As it turns out, MRI uses hash tables for much of its internal data, not only for data you save in Ruby hash objects.
+
+Chapter 8 reveals that one of Ruby’s most elegant and useful features, blocks, is based on an idea originally developed for Lisp.
+
+In Chapter 9 tackles one of the most difficult topics for Ruby developers. By studying how Ruby implements metaprogramming internally, you’ll learn how to use metaprogramming effectively.
+
+Chapter 10 introduces JRuby, an alternative version of Ruby implemented with Java. You’ll learn how JRuby uses the Java Virtual Machine (JVM) to run your Ruby programs faster.”
+
+Chapter 11 looks at one of the most interesting and innovative implementations of Ruby: Rubinius. You’ll learn how to locate—and modify—the Ruby code in Rubinius to see how a particular Ruby method works.
+
+Chapter 12 concludes with a look at garbage collection (GC), one of the most mysterious and confusing topics in computer science. You’ll see how Rubinius and JRuby use very different GC algorithms from those used by MRI.
+
+
+-->
+
+
+
+
+
+
+--- forte rust notes
+
+a bash alias Christian and I have been using a lot lately; stops and removes all docker containers
+alias dkill='docker stop -t 1 $(docker ps -qa) && docker rm $(docker ps -qa)'
+
+
+alias bw='docker build -t wallet-api .'
+alias openbp='nano ~/.bash_profile'
+alias reloadbp='source ~/.bash_profile'
+alias sps='RUST_LOG="actix_web=info,app=debug,lib=debug,wallet=debug" cargo run --bin app'
+
+# docker macros
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias dkill='docker stop -t 1 $(docker ps -qa) && docker rm $(docker ps -qa)'
+
+alias bw could be run from anywhere if it was like this:
+alias bw='cd ~/Documents/GitHub/wallet-api/ && docker build -t wallet-api . && cd -'
+
+
+These are some aliases I find useful:
+
+alias ls='ls -FGh'
+alias grep='grep --colour=auto'
+alias localip="ipconfig getifaddr en0"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+
+
+Generic serialization/deserialization between byte-array & any struct that implements serde::{Deserialize, Serialize} :
+use serde::{Deserialize, Serialize};
+use serde_json;
+pub fn encode<T>(val: &T) -> Vec<u8>
+where
+    T: Serialize,
+{
+    serde_json::to_string(val).unwrap().as_bytes().to_vec()
+}
+pub fn decode<'a, T>(val: &'a [u8]) -> T
+where
+    T: Deserialize<'a>,
+{
+    serde_json::from_slice(val).unwrap()
+}
+^ from https://github.com/brock-ff/kafka-rust-test/tree/master/rust-kafka 
+
+
+
+
+
+you can log individual modules within a crate:
+RUST_LOG="warn,test::foo=info,test::foo::bar=debug" ./test
+
+
+
+
+
+
+
+
+There’s a rustversion crate that helps you do conditional compilation based on the rustc version.  For example: In rust 1.43, the exceeding_bitshifts directive was changed to arithmetic_overflow and throws a warning if the old name is used.
+The following code fixes the warnings regardless of the version of rustc you are using:
+    #[rustversion::attr(before(1.43), allow(exceeding_bitshifts))]
+    #[rustversion::attr(since(1.43), allow(arithmetic_overflow))]
+    fn random_token_id() -> String {
+        let mut rng = rand::thread_rng();
+        let i: u128 = rng.gen_range(100, 5000);
+        (i << 64).to_string()
+    }
+
+
+
+
+
+What's the difference between a pricing curve and a bonding curve in forte?
+
+Great question!
+The summary is...
+The Bonding Curve (also referred to as the Token Bonding Curve or TBC) refers specifically to Forte Token <--> Game Coin mints and burns. The TBC is a type of pricing curve. They use endpoints /bonding-curve/mint and /bonding-curve/burn
+Pricing Curves refer to all other things that don't directly involve Forte Tokens. This includes Subcoins, Stackables, and AMM buy/sell curves. They use endpoints /pricing-curve/...
+
+Conceptually they are the same IMO.  To Kirk’s point, they’re used in diff places, which I would say is their main differentiation (along with naming).  TBC came first. (
+
+Conceptually, I believe they're the same.
+There’s a slight difference in our contracts. We have 2 contracts and the bonding curve is a pricing curve + you can do manipulations on the curve like inflate, deflate, stake and rescind. We had that distinction before, but those manipulations ended up being needed on all places, and now I don't think we make use of a pricing curve without them
+
+
+
+
+
+We have a user story to add a version endpoint to our services that would return the package version so we could validate that we’ve deployed the correct binary. I thought it would also be useful to return other compile time information like the git commit hash it was built from, compiler version, build timetamp, feature flags, etc.  I created a test project that uses the built crate to embed compile time metadata into the binary so that it is accessible at runtime: https://github.com/mavericknico/built-test
+My test app outputs this:
+{
+  "name": "built-test",
+  "version": "0.1.0",
+  "features": "",
+  "git_commit": "e0dad77b011b585ecade3660354fd130a660cadd",
+  "build_time_utc": "Sun, 02 Aug 2020 03:34:36 +0000",
+  "rustc": "rustc 1.45.1 (c367798cf 2020-07-26)"
+}
+
+
+
+A way to auto generate and host OpenAPI v2 spec from an actix-web app: https://paperclip.waffles.space/actix-plugin.html
+
+Looks like it does require adding an attribute to your endpoint functions and a minor addition to App builder code:
+// Mark operations like so...
+#[api_v2_operation]
+async fn echo_pet(body: Json<Pet>) -> Result<Json<Pet>, ()> {
+    Ok(body)
+}
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| App::new()
+        // Record services and routes from this line.
+        .wrap_api()
+        // Add routes like you normally do...
+        .service(
+            web::resource("/pets")
+                .route(web::post().to(echo_pet))
+        )
+        // Mount the JSON spec at this path.
+        .with_json_spec_at("/api/spec")
+        .build()
+    ).bind("127.0.0.1:8080")? 
+
+
+
+tokio has two threadpools. The “main” one and one that’s “safe” to block on. Spawn blocking puts it on the blocking pool so other tasks aren’t held up.
+
+
+I took a look at sqlx some time ago. One nice thing is that it lets you write plain sql statements (I can't count the amount of time I had spent to make diesel construct the query I want).
+But one complain is that for it to do type checking on that sql, it needs a DB to actually connect to at compile time. It has a way to do that offline as well, but then it can't do type check.
+No sure if that matters, diesel keeps track of a schema.rs file which also constructs from a live DB.

@@ -1,0 +1,98 @@
+--- A&C
+
+--- ALGORITHMS 1
+
+Overview
+
+Logo
+
+We begin our study of algorithms with a motivating example and an overview of the use of the scientific method for studying algorithm performance.
+
+Lecture: Union−Find. We illustrate our basic approach to developing and analyzing algorithms by considering the dynamic connectivity problem. We introduce the union–find data type and consider several implementations (quick find, quick union, weighted quick union, and weighted quick union with path compression). Finally, we apply the union–find data type to the percolation problem from physical chemistry.
+
+Lecture: Analysis of Algorithms. The basis of our approach for analyzing the performance of algorithms is the scientific method. We begin by performing computational experiments to measure the running times of our programs. We use these measurements to develop hypotheses about performance. Next, we create mathematical models to explain their behavior. Finally, we consider analyzing the memory usage of our Java programs.
+
+Programming Assignment: Percolation. Your programming assignment will give you an opportunity to apply these concepts to a fundamental problem in physical chemistry. It is the first of many examples where a good algorithm—in this case, weighted quick union—makes the difference between being able to efficiently solve a problem and not being able to address it at all.
+
+Job Interview Questions. Algorithmic interview questions based on the lecture material.
+
+Suggested Readings. Section 1.4 and 1.5 in Algorithms, 4th edition.
+
+--- ACTIVIDAD 6
+
+Actividad a desarrollar en Jupyter Notebook. Vamos a trabajar en la implementación de dos algoritmos sobre grafos:
+
+    El primero es para reconocer el camino más corto en grafos multiestado mediante la estrategia de programación dinámica, y
+    El segundo será el algoritmo de Kruskal implementando las estructuras disjoint-set y heap (ya sea para utilizarlo como una cola con prioridad o para un ordenamiento heapsort) .
+
+Los detalles de la entrega están descriptos en el enunciado adjunto. Además, la librería adjunta les permitirá implementar sólo los algoritmos requeridos abstrayéndose de la implementación de los grafos. Deberás utilizar la librería también para visualizar los grafos resultantes.
+
+
+Fecha de entrega: Viernes 24 de Julio a las 23.59hs.
+
+--- ACTIVIDAD 7
+
+
+La tarea consiste en crear un video describiendo alguno de los algoritmos vistos en la materia, a partir de 20 min de leído el enunciado.
+El video deberá ser corto (aproximadamente 5 minutos) y tendrán que describir los siguientes puntos:
+
+    Problema que resuelve el algoritmo
+    Algoritmo y su implementación
+    Análisis de tiempo y espacio de ejecución de una implementación
+    Posibles aplicaciones (si existieran)
+
+Se evaluarán los siguientes aspectos:
+
+    Conocimiento de los temas, relación con lo visto en la materia (estrategias de diseño de algoritmos, tipos de análisis, estructuras de datos, etc)
+    Manejo de vocabulario y técnicas específicas
+    Claridad, originalidad y precisión en la presentación
+
+
+Greedy
+	Problema de la Mochila Fraccional
+	Scheduling de Procesos
+	Codigos de Huffman
+Dividir y Conquistar
+	Mergesort
+	Quicksort
+-	Par de Puntos Mas Cercanos
+	Exponenciacion Modular
+-	Transformada Rapida de Fourier
+Programacion Dinamica
+-	Coeficientes Binomiales
+-	Probabilidad de Ganar una Serie
+	Problema del Cambio
+	Problema de los Cortes
+	Problema de la Mochila Entero
+	Camino mas Cortos entre Todo Par
+	Multiplicacion de Matrices en Cadena
+	Subsecuencia Comun Mas Larga
+Algoritmos sobre Grafos
+-	Recorrido BFS
+-	Recorrido DFS
+-	Ordenamiento Topologico
+-	Componentes Fuertemente Conexos
+	Dijkstra
+	Arbol Minimo de Cubrimiento: Kruskal
+	Arbol Minimo de Cubrimiento: Prim
+-	Puentes
+-	Puntos de Articulacion
+-	Flujo Maximo: Ford-Fulkerson
+	Flujo Maximo: Edmonds-Karp
+
+-ALGORITMO DE DIJKSTRA
+-ALGORITMO DE EDMONDS-KARP PARA ENCONTRAR EL FLUJO MAXIMO
+-ALGORITMO DE KRUSKAL
+-ALGORITMO DE PRIM
+-ALGORITMO DyC PARA CALCULAR LA EXPONENCIACIÓN MODULAR
+-ALGORITMO GREEDY PARA EL PROBLEMA DE LA MOCHILA CON ELEMENTOS FRACCIONABLES
+-ALGORITMO GREEDY PARA EL PROBLEMA DE SCHEDULING DE PROCESOS
+-ALGORITMO GREEDY PARA LA CODIFICACIÓN DE HUFFMAN
+-ALGORITMO MERGESORT
+-ALGORITMO PARA ENCONTRAR LOS CAMINOS MAS CORTOS PARA TODOS LOS PARES DE NODOS
+-ALGORITMO PD PARA EL PROBLEMA DE DE SUBSECUENCIA COMÚN MÁS LARGA
+-ALGORITMO PD PARA EL PROBLEMA DE LA MOCHILA CON ELEMENTOS NO FRACCIONABLES
+-ALGORITMO PD PARA EL PROBLEMA DE LOS CORTES
+-ALGORITMO PD PARA EL PROBLEMA DE MULTIPLICACIÓN DE MATRICES EN CADENA
+-ALGORITMO PD PARA EL PROBLEMA DEL CAMBIO
+-ALGORITMO QUICKSORT

@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/gopl/ch4/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>Chapter 4. Composite Types - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch3/">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li class="active">
+                            <a href="./">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch9/">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch12/">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/gopl/ch4.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#chapter-4-composite-types">Chapter 4. Composite Types</a></li>
+        
+    
+        <li class="main "><a href="#arrays">Arrays</a></li>
+        
+            <li><a href="#array-literals">Array literals *</a></li>
+        
+            <li><a href="#comparison-of-arrays">Comparison of arrays *</a></li>
+        
+            <li><a href="#arrays-as-function-parameters">Arrays as function parameters *</a></li>
+        
+    
+        <li class="main "><a href="#slices">Slices</a></li>
+        
+            <li><a href="#components-of-a-slice">Components of a slice *</a></li>
+        
+            <li><a href="#substring-operation-and-slice-operator">Substring operation and slice operator *</a></li>
+        
+            <li><a href="#reversing-and-rotating-slices">Reversing and rotating slices *</a></li>
+        
+            <li><a href="#comparison-of-slices">Comparison of slices *</a></li>
+        
+            <li><a href="#the-zero-value-of-slices">The zero value of slices *</a></li>
+        
+            <li><a href="#the-append-function">The append Function</a></li>
+        
+            <li><a href="#in-place-slice-techniques">In-Place Slice Techniques</a></li>
+        
+            <li><a href="#implementing-a-stack-using-a-slice">Implementing a stack using a slice *</a></li>
+        
+            <li><a href="#removing-an-element-from-a-slice">Removing an element from a slice *</a></li>
+        
+    
+        <li class="main "><a href="#maps">Maps</a></li>
+        
+            <li><a href="#initialization-of-maps">Initialization of maps *</a></li>
+        
+            <li><a href="#accessing-and-deleting-map-elements">Accessing and deleting map elements *</a></li>
+        
+            <li><a href="#map-iteration">Map iteration *</a></li>
+        
+            <li><a href="#test-the-presence-of-elements">Test the presence of elements *</a></li>
+        
+            <li><a href="#comparison-of-maps">Comparison of maps *</a></li>
+        
+    
+        <li class="main "><a href="#structs">Structs</a></li>
+        
+            <li><a href="#the-zero-value-of-a-struct">The zero value of a struct *</a></li>
+        
+            <li><a href="#struct-literals">Struct Literals</a></li>
+        
+            <li><a href="#comparing-structs">Comparing Structs</a></li>
+        
+            <li><a href="#struct-embedding-and-anonymous-fields">Struct Embedding and Anonymous Fields</a></li>
+        
+    
+        <li class="main "><a href="#json">JSON</a></li>
+        
+            <li><a href="#marshaling-data-structures-to-json">Marshaling data structures to JSON *</a></li>
+        
+            <li><a href="#unmarshaling-and-decoding-from-json">Unmarshaling and decoding from JSON *</a></li>
+        
+    
+        <li class="main "><a href="#text-and-html-templates">Text and HTML Templates</a></li>
+        
+            <li><a href="#producing-output-with-a-template">Producing output with a template *</a></li>
+        
+            <li><a href="#the-htmltemplate-package">The html/template package *</a></li>
+        
+    
+        <li class="main "><a href="#doubts-and-solution">Doubts and Solution</a></li>
+        
+            <li><a href="#verbatim">Verbatim</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="chapter-4-composite-types"><strong>Chapter 4. Composite Types</strong><a class="headerlink" href="#chapter-4-composite-types" title="Permanent link">&para;</a></h3>
+<p>This chapter discusses composite types: arrays, slices, maps, and structs.</p>
+<ul>
+<li>
+<p>Arrays and structs are <em>aggregate</em> types, whose values are concatenations of other values in memory.</p>
+<ul>
+<li>Arrays are homogeneous. The elements all have the same type.</li>
+<li>Structs are heterogeneous.</li>
+</ul>
+<p>Both arrays and structs are fixed size.</p>
+</li>
+<li>
+<p>Slices and maps are dynamic data structures that grow as values are added.</p>
+</li>
+</ul>
+<h3 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h3>
+<p>An array is a fixed-length sequence of zero or more elements of a particular type.</p>
+<ul>
+<li>Arrays are rarely used directly in Go due to fixed length. Slices are commonly used due to versatililty.</li>
+<li>The built-in function <code>len</code> returns the number of elements in the array.</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span> <span class="c1">// array of 3 integers</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// print the first element</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// print the last element, a[2]</span>
+
+<span class="c1">// Print the indices and elements.</span>
+<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">a</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Print the elements only.</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">a</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>By default, the elements of an array are initially set to the <a href="https://golang.org/ref/spec#The_zero_value">zero value</a> for the element type.</p>
+<h4 id="array-literals">Array literals *<a class="headerlink" href="#array-literals" title="Permanent link">&para;</a></h4>
+<p>An <strong>array literal</strong> can be used to initialize an array with a list of values:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">q</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="kd">var</span> <span class="nx">r</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// &quot;0&quot;</span>
+</pre></div>
+
+
+<p>If an ellipsis "..." appears in place of the length, then the array length is determined by the number of initializers. The definition of <code>q</code> in the above example can be simplified to:</p>
+<div class="codehilite"><pre><span class="nx">q</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">)</span> <span class="c1">// &quot;[3]int&quot;</span>
+</pre></div>
+
+
+<p>The size of an array is part of its type. For example, <code>[3]int</code> and <code>[4]int</code> are different types. The size must be a constant expression, whose value can be computed as the program is being compiled.</p>
+<div class="codehilite"><pre><span class="nx">q</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nx">q</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span> <span class="c1">// compile error: cannot assign [4]int to [3]int</span>
+</pre></div>
+
+
+<p>The literal syntax is similar for arrays, slices, maps, and structs, as discussed later. Besides specifying a list of values in order, but it is also possible to specify a list of index and value pairs, for example:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Currency</span> <span class="kt">int</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">USD</span> <span class="nx">Currency</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">EUR</span>
+    <span class="nx">GBP</span>
+    <span class="nx">RMB</span>
+<span class="p">)</span>
+
+<span class="nx">symbol</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="nx">USD</span><span class="p">:</span> <span class="s">&quot;$&quot;</span><span class="p">,</span> <span class="nx">EUR</span><span class="p">:</span> <span class="s">&quot;€&quot;</span><span class="p">,</span> <span class="nx">GBP</span><span class="p">:</span> <span class="s">&quot;£&quot;</span><span class="p">,</span> <span class="nx">RMB</span><span class="p">:</span> <span class="s">&quot;¥&quot;</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">RMB</span><span class="p">,</span> <span class="nx">symbol</span><span class="p">[</span><span class="nx">RMB</span><span class="p">])</span> <span class="c1">// &quot;3 ¥&quot;</span>
+</pre></div>
+
+
+<p>Indices can appear in any order and some may be omitted. Unspecified values take on the zero value for the element type. For instance:</p>
+<div class="codehilite"><pre><span class="nx">r</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">99</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+</pre></div>
+
+
+<p>This defines an array <code>r</code> with 100 elements, all zero except for the last, which has value −1.</p>
+<h4 id="comparison-of-arrays">Comparison of arrays *<a class="headerlink" href="#comparison-of-arrays" title="Permanent link">&para;</a></h4>
+<p>If element type is comparable, then the array type is also comparable. We can directly compare two arrays of that type using the <code>==</code> operator, which reports whether all corresponding elements are equal. The <code>!=</code> operator is its negation.</p>
+<div class="codehilite"><pre><span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nx">c</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">==</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">b</span> <span class="o">==</span> <span class="nx">c</span><span class="p">)</span> <span class="c1">// &quot;true false false&quot;</span>
+<span class="nx">d</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// compile error: cannot compare [2]int == [3]int</span>
+</pre></div>
+
+
+<p>[p83]</p>
+<h4 id="arrays-as-function-parameters">Arrays as function parameters *<a class="headerlink" href="#arrays-as-function-parameters" title="Permanent link">&para;</a></h4>
+<p>When a function is called, a copy of each argument value is assigned to the corresponding parameter variable, so the function receives a copy, not the original. This also applies to arrays in Go. This behavior is different from languages that implicitly pass arrays by reference.</p>
+<p>Passing large arrays in this way can be inefficient, and any changes that the function makes to array elements affect only the copy, not the original. We can explicitly pass a pointer to an array. For example, the following function <code>zero</code> zeroes the contents of a <code>[32]byte</code> array:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">zero</span><span class="p">(</span><span class="nx">ptr</span> <span class="o">*</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ptr</span> <span class="p">{</span>
+        <span class="nx">ptr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The following function is a different version of <code>zero</code> that uses the array literal <code>[32]byte{}</code>, each element of which has the zero value (which is zero) for <code>byte</code>.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">zero</span><span class="p">(</span><span class="nx">ptr</span> <span class="o">*</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="nx">ptr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">byte</span><span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Passing a pointer to an array is efficient and allows the called function to mutate the caller’s variable. However, arrays are still inherently inflexible because of their fixed size. In the above example:</p>
+<ul>
+<li>The <code>zero</code> function will not accept a pointer to a <code>[16]byte</code> variable</li>
+<li>There is no way to add or remove array elements.</li>
+</ul>
+<p>For these reasons, other than special cases like <a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/sha256/main.go">SHA256’s fixed-size hash</a>, arrays are seldom used as function parameters and instead, slices are used.</p>
+<h3 id="slices">Slices<a class="headerlink" href="#slices" title="Permanent link">&para;</a></h3>
+<p>Slices represent variable-length sequences whose elements all have the same type. A slice type is written <code>[]T</code>, where the elements have type <code>T</code>. It looks like an array type without a size.</p>
+<p>A slice is a lightweight data structure that gives access to a subsequence of its <a href="https://golang.org/ref/spec#Slice_types"><em>underlying array</em></a>.</p>
+<h4 id="components-of-a-slice">Components of a slice *<a class="headerlink" href="#components-of-a-slice" title="Permanent link">&para;</a></h4>
+<p>A slice has three components:</p>
+<ul>
+<li><strong>Pointer</strong>: the pointer points to the first element of the array that is reachable through the slice, which is not necessarily the array's first element.</li>
+<li><strong>Length</strong>: the length is the number of slice elements. It can't exceed the capacity.</li>
+<li><strong>Capacity</strong>: the capacity is usually the number of elements between the start of the slice and the end of the underlying array.</li>
+</ul>
+<p>The built-in functions <code>len</code> and <code>cap</code> the values of length and capacity respectively.</p>
+<p>Multiple slices can share the same underlying array and may refer to overlapping parts of that array.</p>
+<p>The following figure shows an array of strings for the months of the year, and two overlapping slices of it. The array is declared as:</p>
+<div class="codehilite"><pre><span class="nx">months</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">&quot;January&quot;</span><span class="p">,</span> <span class="cm">/* ... */</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="s">&quot;December&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p><a href="../figure_4.1.png" title="Figure 4.1. Two overlapping slices of an array of months."><img alt="Figure 4.1. Two overlapping slices of an array of months." src="../figure_4.1_600.png" /></a></p>
+<p>The slice operator <code>s[i:j]</code>, where 0 ≤ <code>i</code> ≤ <code>j</code> ≤ <code>cap(s)</code>, creates a new slice that refers to elements <code>i</code> through <code>j-1</code> of the sequence <code>s</code>. This sequence <code>s</code> may be any of the following:</p>
+<ul>
+<li>An array variable</li>
+<li>A pointer to an array</li>
+<li>Another slice</li>
+</ul>
+<p>The resulting slice has <code>j-i</code> elements. If <code>i</code> is omitted, it's 0, and if <code>j</code> is omitted, it's <code>len(s)</code>. For example:</p>
+<ul>
+<li>The slice <code>months[1:13]</code> refers to the whole range of valid months, as does the slice <code>months[1:]</code>.</li>
+<li>The slice <code>months[:]</code> refers to the whole array.</li>
+</ul>
+<p>Overlapping slices in the figure are defined like this:</p>
+<div class="codehilite"><pre><span class="nx">Q2</span> <span class="o">:=</span> <span class="nx">months</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="nx">summer</span> <span class="o">:=</span> <span class="nx">months</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Q2</span><span class="p">)</span>     <span class="c1">// [&quot;April&quot; &quot;May&quot; &quot;June&quot;]</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">summer</span><span class="p">)</span> <span class="c1">// [&quot;June&quot; &quot;July&quot; &quot;August&quot;]</span>
+</pre></div>
+
+
+<p>The following (inefficient) code is a test for common elements of the two slices, which outputs "June":</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">summer</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">q</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">Q2</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">s</span> <span class="o">==</span> <span class="nx">q</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s appears in both\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="substring-operation-and-slice-operator">Substring operation and slice operator *<a class="headerlink" href="#substring-operation-and-slice-operator" title="Permanent link">&para;</a></h4>
+<p>The <a href="../ch3/#the-substring-operation">substring operation</a> on strings is similar to the slice operator on <code>[]byte</code> slices in that:</p>
+<ul>
+<li>Both are written <code>x[m:n]</code>.</li>
+<li>Both return a subsequence of the original bytes, sharing the underlying representation so that both operations take constant time.</li>
+</ul>
+<p>The expression <code>x[m:n]</code> yields a string if <code>x</code> is a string, or a <code>[]byte</code> if <code>x</code> is a <code>[]byte</code>.</p>
+<p>Since a slice contains a pointer to an element of an array, passing a slice to a function permits the function to modify the underlying array elements. In other words, copying a slice creates an <em>alias</em> (<a href="../ch2/#pointers">Section 2.3.2</a>) for the underlying array.</p>
+<h4 id="reversing-and-rotating-slices">Reversing and rotating slices *<a class="headerlink" href="#reversing-and-rotating-slices" title="Permanent link">&para;</a></h4>
+<p>The function <code>reverse</code> reverses the elements of an <code>[]int</code> slice in place, and it may be applied to slices of any length.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/rev/main.go">gopl.io/ch4/rev/main.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// reverse reverses a slice of ints in place.</span>
+<span class="kd">func</span> <span class="nx">reverse</span><span class="p">(</span><span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">j</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">j</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>To reverse the whole array <code>a</code>:</p>
+<div class="codehilite"><pre><span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="nx">reverse</span><span class="p">(</span><span class="nx">a</span><span class="p">[:])</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="c1">// &quot;[5 4 3 2 1 0]&quot;</span>
+</pre></div>
+
+
+<p>A simple way to <em>rotate</em> a slice left by <em>n</em> elements is to apply the <code>reverse</code> function three times: first to the leading n elements, then to the remaining elements, and finally to the whole slice.  (To rotate to the right, make the third call first.)</p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="c1">// Rotate s left by two positions.</span>
+<span class="nx">reverse</span><span class="p">(</span><span class="nx">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nx">reverse</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+<span class="nx">reverse</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// &quot;[2 3 4 5 0 1]&quot;</span>
+</pre></div>
+
+
+<p>In the above two examples, we can see that expression that initializes the slice <code>s</code> differs from that for the array <code>a</code>. A slice literal looks like an array literal, a sequence of values separated by commas and surrounded by braces, but the size is not given. <u>This implicitly creates an array variable of the right size and yields a slice that points to it.</u> As with <a href="#array-literals">array literals</a>, slice literals may specify the values in order, or give their indices explicitly, or use a mix of the two styles.</p>
+<h4 id="comparison-of-slices">Comparison of slices *<a class="headerlink" href="#comparison-of-slices" title="Permanent link">&para;</a></h4>
+<p>Unlike arrays, slices are not comparable, so we cannot use <code>==</code> to test whether two slices contain the same elements. The standard library provides the highly optimized <code>bytes.Equal</code> function for comparing two slices of bytes (<code>[]byte</code>).</p>
+<p>To compare other types of slice, we must do the comparison ourselves. For example:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">equal</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">x</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">y</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Although this "deep" equality test is natural and no more costly at run time than the <code>==</code> operator for arrays of strings, slice comparisons do not work this way. There are two reasons why deep equivalence is problematic:</p>
+<ol>
+<li>Unlike array elements, the elements of a slice are indirect, making it possible for a slice to contain itself. There is no simple, efficient and obvious way to deal with such cases.</li>
+<li>Because slice elements are indirect, a fixed slice value may contain different elements at different times as the contents of the underlying array are modified.<ul>
+<li><strong>Deep equivalence would make slices unsuitable for use as map keys.</strong> Because Go's map type (hash table) makes only shallow copies of its keys, it requires that equality for each key remain the same throughout the lifetime of the map.</li>
+<li><strong>Shallow equality test is useful but confusing.</strong> For reference types like pointers and channels, the <code>==</code> operator tests reference identity, that is, whether the two entities refer to the same thing. An analogous "shallow" equality test for slices could be useful, and it would solve the problem with maps, but the inconsistent treatment of slices and arrays by the <code>==</code> operator would be confusing. <u>The safest choice is to disallow slice comparisons altogether.</u></li>
+</ul>
+</li>
+</ol>
+<p>The only legal slice comparison is against <code>nil</code>:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="nx">summer</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</pre></div>
+
+
+<h4 id="the-zero-value-of-slices">The zero value of slices *<a class="headerlink" href="#the-zero-value-of-slices" title="Permanent link">&para;</a></h4>
+<p>The zero value of a slice type is <code>nil</code>.</p>
+<ul>
+<li>A nil slice has no underlying array.</li>
+<li>A nil slice has length and capacity zero.</li>
+</ul>
+<p>There are also non-nil slices of length and capacity zero, such as <code>[]int{}</code> or <code>make([]int, 3)[3:]</code>.</p>
+<p>As with any type that can have nil values, the nil value of a particular slice type can be written using a conversion expression such as <code>[]int(nil)</code>.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span>    <span class="c1">// len(s) == 0, s == nil</span>
+<span class="nx">s</span> <span class="p">=</span> <span class="kc">nil</span>        <span class="c1">// len(s) == 0, s == nil</span>
+<span class="nx">s</span> <span class="p">=</span> <span class="p">[]</span><span class="nb">int</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span> <span class="c1">// len(s) == 0, s == nil</span>
+<span class="nx">s</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>    <span class="c1">// len(s) == 0, s != nil</span>
+</pre></div>
+
+
+<p>To test whether a slice is empty, use <code>len(s) == 0</code>, not <code>s == nil</code>. Other than comparing equal to <code>nil</code>, a nil slice behaves like any other zero-length slice (for example, <code>reverse(nil)</code> is perfectly safe). <u>Unless clearly documented to the contrary, Go functions should treat all zero-length slices the same way, whether nil or non-nil.</u></p>
+<p>The built-in function <code>make</code> creates a slice of a specified element type, length, and capacity. The capacity argument may be omitted, in which case the capacity equals the length.</p>
+<div class="codehilite"><pre><span class="nb">make</span><span class="p">([]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">len</span><span class="p">)</span>
+<span class="nb">make</span><span class="p">([]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">len</span><span class="p">,</span> <span class="nx">cap</span><span class="p">)</span> <span class="c1">// same as make([]T, cap)[:len]</span>
+</pre></div>
+
+
+<ul>
+<li>In the first form, the slice is a view of the entire array.</li>
+<li>In the second, the slice is a view of only the array's first <code>len</code> elements, but its capacity includes the entire array. The additional elements are set aside for future growth.</li>
+</ul>
+<p>Behind the scene, <code>make</code> creates an unnamed array variable and returns a slice of it; the array is accessible only through the returned slice.</p>
+<h4 id="the-append-function">The <code>append</code> Function<a class="headerlink" href="#the-append-function" title="Permanent link">&para;</a></h4>
+<p>The built-in <code>append</code> function appends items to slices:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">runes</span> <span class="p">[]</span><span class="kt">rune</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">r</span> <span class="o">:=</span> <span class="k">range</span> <span class="s">&quot;Hello, 世界&quot;</span> <span class="p">{</span>
+    <span class="nx">runes</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">runes</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%q\n&quot;</span><span class="p">,</span> <span class="nx">runes</span><span class="p">)</span> <span class="c1">// &quot;[&#39;H&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39; &#39;,&#39; &#39;&#39; &#39;世&#39; &#39;界&#39;]&quot;</span>
+</pre></div>
+
+
+<p>The loop uses <code>append</code> to build the slice of nine runes encoded by the string literal. It is equivalent to using the built-in conversion: <code>[]rune("Hello, 世界")</code>.</p>
+<p>The following examples discusses how the <code>append</code> works, which is crucial to understanding how slices work.</p>
+<p>In the code below, <code>appendInt</code> is a function specialized for <code>[]int</code> slices:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/append/main.go">gopl.io/ch4/append/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">appendInt</span><span class="p">(</span><span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">z</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="nx">zlen</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nx">zlen</span> <span class="o">&lt;=</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// There is room to grow.  Extend the slice.</span>
+        <span class="nx">z</span> <span class="p">=</span> <span class="nx">x</span><span class="p">[:</span><span class="nx">zlen</span><span class="p">]</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// There is insufficient space.  Allocate a new array.</span>
+        <span class="c1">// Grow by doubling, for amortized linear complexity.</span>
+        <span class="nx">zcap</span> <span class="o">:=</span> <span class="nx">zlen</span>
+        <span class="k">if</span> <span class="nx">zcap</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">zcap</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">z</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">zlen</span><span class="p">,</span> <span class="nx">zcap</span><span class="p">)</span>
+        <span class="nb">copy</span><span class="p">(</span><span class="nx">z</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// a built-in function; see text</span>
+    <span class="p">}</span>
+    <span class="nx">z</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)]</span> <span class="p">=</span> <span class="nx">y</span>
+    <span class="k">return</span> <span class="nx">z</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each call to <code>appendInt</code> checks whether the slice has sufficient capacity to hold the new elements in the existing array:</p>
+<ul>
+<li>If there is sufficient capacity, <code>appendInt</code> extends the slice by defining a larger slice (still within the original array), copies the element <code>y</code> into the new space, and returns the slice. The input <code>x</code> and the result <code>z</code> share the same underlying array.</li>
+<li>If there is insufficient space for growth, <code>appendInt</code> allocates a new array big enough to hold the result, copy the values from <code>x</code> into it, then append the new element <code>y</code>. The result <code>z</code> now refers to a different underlying array from <code>x</code>.</li>
+</ul>
+<h5 id="the-copy-function"><strong>The <code>copy</code> function</strong> *<a class="headerlink" href="#the-copy-function" title="Permanent link">&para;</a></h5>
+<p>The built-in function <code>copy</code> copies elements from one slice to another of the same type. Its first argument is the destination and its second is the source, resembling the order of operands in an assignment like <code>dst = src</code>. The slices may refer to the same underlying array, or they may even overlap.</p>
+<p><u><code>copy</code> actually copies <code>k</code> elements, where <code>k</code> is smaller of the two slice lengths, and returns <code>k</code>. There is no danger of running off the end or overwriting something out of range.</u> [p89]</p>
+<p>For efficiency, expanding the array by doubling its size at each expansion avoids an excessive number of allocations and ensures that appending a single element takes constant time on average. The following program demonstrates the effect:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">y</span> <span class="p">=</span> <span class="nx">appendInt</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d cap=%d\t%v\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">y</span><span class="p">),</span> <span class="nx">y</span><span class="p">)</span>
+        <span class="nx">x</span> <span class="p">=</span> <span class="nx">y</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each change in capacity indicates an allocation and a copy:</p>
+<div class="codehilite"><pre>0 cap=1   [0]
+1 cap=2   [0 1]
+2 cap=4   [0 1 2]
+3 cap=4   [0 1 2 3]
+4 cap=8   [0 1 2 3 4]
+5 cap=8   [0 1 2 3 4 5]
+6 cap=8   [0 1 2 3 4 5 6]
+7 cap=8   [0 1 2 3 4 5 6 7]
+8 cap=16  [0 1 2 3 4 5 6 7 8]
+9 cap=16  [0 1 2 3 4 5 6 7 8 9]
+</pre></div>
+
+
+<p>The following two figures show what happen at <code>i=3</code> iteration: appending with room to grow. [p89-90]</p>
+<p><a href="../figure_4.2.png" title="Figure 4.2. Appending with room to grow."><img alt="Figure 4.2. Appending with room to grow." src="../figure_4.2_600.png" /></a></p>
+<p>The following two figures show what happen at <code>i=4</code> iteration: appending without room to grow.  [p90]</p>
+<p><a href="../figure_4.3.png" title="Figure 4.3. Appending without room to grow."><img alt="Figure 4.3. Appending without room to grow." src="../figure_4.3_600.png" /></a></p>
+<h5 id="updating-the-slice-variable-when-calling-append"><strong>Updating the slice variable when calling <code>append</code></strong> *<a class="headerlink" href="#updating-the-slice-variable-when-calling-append" title="Permanent link">&para;</a></h5>
+<p>The built-in <code>append</code> function uses a more sophisticated growth strategy than <code>appendInt</code>. Usually we don't know whether a given call to <code>append</code> will cause a reallocation, so we can't assume that the original slice refers to the same array as the resulting slice or not. This means we must not assume that operations on elements of the old slice will (or will not) be reflected in the new slice. As a result, <u>it's usual to assign the result of a call to <code>append</code> to the same slice variable whose value we passed to <code>append</code>:</u></p>
+<div class="codehilite"><pre><span class="nx">runes</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">runes</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+</pre></div>
+
+
+<p><u>Updating the slice variable is required not just when calling <code>append</code>, but for any function that may change the length or capacity of a slice or make it refer to a different underlying array.</u> To use slices correctly, remember that although the elements of the underlying array are indirect, the slice's pointer, length, and capacity are not. To update them requires an assignment like the one above. Slices are not "pure" reference types but resemble an aggregate type such as this struct:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">IntSlice</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">ptr</span> <span class="o">*</span><span class="kt">int</span>
+    <span class="nx">len</span><span class="p">,</span> <span class="nx">cap</span> <span class="kt">int</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h5 id="variadic-functions"><strong>Variadic functions</strong> *<a class="headerlink" href="#variadic-functions" title="Permanent link">&para;</a></h5>
+<p>The <code>appendInt</code> function adds a single element to a slice, but the built-in <code>append</code> is able to add more than one new element, or a whole slice of them.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span>
+<span class="nx">x</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nx">x</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nx">x</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nx">x</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">x</span><span class="o">...</span><span class="p">)</span> <span class="c1">// append the slice x</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>      <span class="c1">// &quot;[1 2 3 4 5 6 1 2 3 4 5 6]&quot;</span>
+</pre></div>
+
+
+<p>The following modification of <code>append</code> matches the behavior of the built-in <code>append</code>. The ellipsis "..." in the declaration of <code>appendInt</code> makes the function <a href="https://gobyexample.com/variadic-functions"><strong>variadic</strong></a>: it accepts any number of final arguments. The corresponding ellipsis in the call above to <code>append</code> shows how to supply a list of arguments from a slice. Variadic functions are detailed in <a href="../ch5/#variadic-functions">Section 5.7</a>.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">appendInt</span><span class="p">(</span><span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">y</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">z</span> <span class="p">[]</span><span class="kt">int</span>
+    <span class="nx">zlen</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span>
+    <span class="c1">// ...expand z to at least zlen...</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">z</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">):],</span> <span class="nx">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">z</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="in-place-slice-techniques">In-Place Slice Techniques<a class="headerlink" href="#in-place-slice-techniques" title="Permanent link">&para;</a></h4>
+<p>This section discusses examples of functions that modify the elements of a slice in place, like <code>rotate</code> and <code>reverse</code>.</p>
+<p>Given a list of strings, the <code>nonempty</code> function returns the non-empty ones:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/nonempty/main.go">gopl.io/ch4/nonempty/main.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// Nonempty is an example of an in-place slice algorithm.</span>
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="c1">// nonempty returns a slice holding only the non-empty strings.</span>
+<span class="c1">// The underlying array is modified during the call.</span>
+<span class="kd">func</span> <span class="nx">nonempty</span><span class="p">(</span><span class="nx">strings</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">s</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">strings</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">s</span>
+            <span class="nx">i</span><span class="o">++</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">strings</span><span class="p">[:</span><span class="nx">i</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The subtle part is that the input slice and the output slice share the same underlying array.  This avoids the need to allocate another array, though the contents of data are partly overwritten, as shown in the second <code>Printf</code> statement below:</p>
+<div class="codehilite"><pre><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%q\n&quot;</span><span class="p">,</span> <span class="nx">nonempty</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span> <span class="c1">// `[&quot;one&quot; &quot;three&quot;]`</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%q\n&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>           <span class="c1">// `[&quot;one&quot; &quot;three&quot; &quot;three&quot;]`</span>
+</pre></div>
+
+
+<p>The <code>nonempty</code> function can also be written using <code>append</code>:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">nonempty2</span><span class="p">(</span><span class="nx">strings</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">out</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="c1">// zero-length slice of original</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">s</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+            <span class="nx">out</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">out</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The above two variants, which reuse an array, requires that at most one output value is produced for each input value, which is true of many algorithms that filter out elements of a sequence or combine adjacent ones. Such usage is the exception, not the rule, but it can be clear, efficient, and useful on occasion.</p>
+<h4 id="implementing-a-stack-using-a-slice">Implementing a stack using a slice *<a class="headerlink" href="#implementing-a-stack-using-a-slice" title="Permanent link">&para;</a></h4>
+<p>A slice can be used to implement a stack. Given an initially empty slice <code>stack</code>, we can push a new value onto the end of the slice with <code>append</code>:</p>
+<div class="codehilite"><pre><span class="nx">stack</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">stack</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="c1">// push v</span>
+</pre></div>
+
+
+<p>The top of the stack is the last element:</p>
+<div class="codehilite"><pre><span class="nx">top</span> <span class="o">:=</span> <span class="nx">stack</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">// top of stack</span>
+</pre></div>
+
+
+<p>Shrink the stack by popping that element:</p>
+<div class="codehilite"><pre><span class="nx">stack</span> <span class="p">=</span> <span class="nx">stack</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">stack</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">// pop</span>
+</pre></div>
+
+
+<h4 id="removing-an-element-from-a-slice">Removing an element from a slice *<a class="headerlink" href="#removing-an-element-from-a-slice" title="Permanent link">&para;</a></h4>
+<p>To remove an element from the middle of a slice, preserving the order of the remaining elements, use <code>copy</code> to slide the higher-numbered elements down by one to fill the gap:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">slice</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+    <span class="nb">copy</span><span class="p">(</span><span class="nx">slice</span><span class="p">[</span><span class="nx">i</span><span class="p">:],</span> <span class="nx">slice</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="nx">slice</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">remove</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// &quot;[5 6 8 9]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If we don't need to preserve the order, just move the last element into the gap:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">slice</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">slice</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">slice</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nx">slice</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">slice</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">remove</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// &quot;[5 6 9 8]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="maps">Maps<a class="headerlink" href="#maps" title="Permanent link">&para;</a></h3>
+<p>The hash table is  an unordered collection of key/value pairs in which all the keys are distinct, and the value associated with a given key can be retrieved, updated, or removed using a constant number of key comparisons on the average, no matter how large the hash table.</p>
+<p>In Go, a map is a reference to a hash table. See <a href="https://blog.golang.org/go-maps-in-action">Go maps in action</a> for reference.</p>
+<ul>
+<li>A map type is written <code>map[K]V</code>.<ul>
+<li><code>K</code> is the type of its keys.</li>
+<li><code>V</code> is the type of its values.</li>
+</ul>
+</li>
+<li>All of the keys in a given map are of the same type, and all of the values are of the same type.<ul>
+<li>The keys need not be of the same type as the values.</li>
+</ul>
+</li>
+<li>The key type <code>K</code> must be comparable using <code>==</code>, so that the map can test whether a given key is equal to one already within it.<ul>
+<li>Though floating-point numbers are comparable, it's a bad idea to compare floats for equality and bad if NaN is a possible value, as mentioned in <a href="../ch3/#special-values-inf-inf-and-nan">Chapter 3</a>.</li>
+</ul>
+</li>
+<li>There are no restrictions on the value type V.</li>
+</ul>
+<h4 id="initialization-of-maps">Initialization of maps *<a class="headerlink" href="#initialization-of-maps" title="Permanent link">&para;</a></h4>
+<p>The built-in function <code>make</code> can be used to create a map:</p>
+<div class="codehilite"><pre><span class="nx">ages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="c1">// mapping from strings to ints</span>
+</pre></div>
+
+
+<p>A <em>map literal</em> can also be used to create a new map populated with some initial key/value pairs:</p>
+<div class="codehilite"><pre><span class="nx">ages</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+    <span class="s">&quot;alice&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="s">&quot;charlie&quot;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This is equivalent to:</p>
+<div class="codehilite"><pre><span class="nx">ages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<span class="nx">ages</span><span class="p">[</span><span class="s">&quot;alice&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">31</span>
+<span class="nx">ages</span><span class="p">[</span><span class="s">&quot;charlie&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">34</span>
+</pre></div>
+
+
+<p>An alternative expression for a new empty map is <code>map[string]int{}</code>.</p>
+<h4 id="accessing-and-deleting-map-elements">Accessing and deleting map elements *<a class="headerlink" href="#accessing-and-deleting-map-elements" title="Permanent link">&para;</a></h4>
+<p>Map elements are accessed through the usual subscript notation:</p>
+<div class="codehilite"><pre><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;alice&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">32</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;alice&quot;</span><span class="p">])</span> <span class="c1">// &quot;32&quot;</span>
+</pre></div>
+
+
+<p>Map elements are removed with the built-in function <a href="https://golang.org/pkg/builtin/#delete"><code>delete</code></a>:</p>
+<div class="codehilite"><pre><span class="nb">delete</span><span class="p">(</span><span class="nx">ages</span><span class="p">,</span> <span class="s">&quot;alice&quot;</span><span class="p">)</span> <span class="c1">// remove element ages[&quot;alice&quot;]</span>
+</pre></div>
+
+
+<p>These operations are safe even if the element isn't in the map:</p>
+<ul>
+<li>Deleting an element using a key that isn't present in the map is a no-op.</li>
+<li>A map lookup using a key that isn't present returns the zero value for its type<ul>
+<li>For instance, if <code>"bob"</code> is not yet a key in the map, value of <code>ages["bob"]</code> will be 0, so the following example works.</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">// happy birthday!</span>
+</pre></div>
+
+
+<p>The shorthand assignment forms also work for map elements:</p>
+<div class="codehilite"><pre><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span><span class="o">++</span>  <span class="c1">// equivalent to above</span>
+</pre></div>
+
+
+<p>A map element is not a variable and we cannot take its address:</p>
+<div class="codehilite"><pre><span class="nx">_</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span> <span class="c1">// compile error: cannot take address of map element</span>
+</pre></div>
+
+
+<p>One reason that we can't take the address of a map element is that growing a map might cause rehashing of existing elements into new storage locations, thus potentially invalidating the address.</p>
+<h4 id="map-iteration">Map iteration *<a class="headerlink" href="#map-iteration" title="Permanent link">&para;</a></h4>
+<p>A <code>range</code>-based <code>for</code> loop can be used to enumerate all the key/value pairs in the map, which is similar to slices. Continuing the previous example, successive iterations of the loop cause the <code>name</code> and <code>age</code> variables to be set to the next key/value pair:</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ages</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\t%d\n&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The order of map iteration is unspecified. Different implementations might have a different ordering due to a different hash function used. In practice, the order is random (varying from one execution to the next), which is an intentional behavior: <u>making the sequence vary helps force programs to be robust across implementations.</u></p>
+<p>To enumerate the key/value pairs in order, we must sort the keys explicitly. The following example is a common pattern which uses the <code>Strings</code> function from the <code>sort</code> package:</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="s">&quot;sort&quot;</span>
+<span class="kd">var</span> <span class="nx">names</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="k">for</span> <span class="nx">name</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ages</span> <span class="p">{</span>  <span class="c1">// omit the second loop variable</span>
+    <span class="nx">names</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">names</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">names</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">name</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">names</span> <span class="p">{</span>  <span class="c1">// use the blank identifier _ to ignore the first variable</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\t%d\n&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">ages</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>It is more efficient to allocate an array of the required size. The statement below creates a slice that is initially empty but has sufficient capacity to hold all the keys of the <code>ages</code> map:</p>
+<div class="codehilite"><pre><span class="nx">names</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">ages</span><span class="p">))</span>
+</pre></div>
+
+
+<p>The zero value for a map type is <code>nil</code>, which means a reference to no hash table at all.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">ages</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ages</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span>     <span class="c1">// &quot;true&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">ages</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">// &quot;true&quot;</span>
+</pre></div>
+
+
+<p>Most operations on maps, including lookup, <code>delete</code>, <code>len</code>, and <code>range</code> loops, are safe to perform on a <code>nil</code> map reference, since it behaves like an empty map. But storing to a <code>nil</code> map causes a panic:</p>
+<div class="codehilite"><pre><span class="nx">ages</span><span class="p">[</span><span class="s">&quot;carol&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">21</span> <span class="c1">// panic: assignment to entry in nil map</span>
+</pre></div>
+
+
+<p>You must allocate the map before you can store into it.</p>
+<h4 id="test-the-presence-of-elements">Test the presence of elements *<a class="headerlink" href="#test-the-presence-of-elements" title="Permanent link">&para;</a></h4>
+<p>Accessing a map element by subscripting always yields a value:</p>
+<ul>
+<li>If the key is present in the map, you get the corresponding value.</li>
+<li>If the key is not present, you get the zero value for the element type.</li>
+</ul>
+<p>To know whether the element was present or not, use a test like this:</p>
+<div class="codehilite"><pre><span class="nx">age</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span> <span class="cm">/* &quot;bob&quot; is not a key in this map; age == 0. */</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>These two statements can be combined and written like this:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">ages</span><span class="p">[</span><span class="s">&quot;bob&quot;</span><span class="p">];</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>Subscripting a map in this context yields two values; the second is a boolean that reports whether the element was present. The boolean variable is often called <code>ok</code>, especially if it is immediately used in an <code>if</code> condition.</p>
+<h4 id="comparison-of-maps">Comparison of maps *<a class="headerlink" href="#comparison-of-maps" title="Permanent link">&para;</a></h4>
+<p>As with slices, maps cannot be compared to each other; the only legal comparison is with <code>nil</code>.  To test whether two maps contain the same keys and the same associated values, we must write a loop:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">equal</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">xv</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">x</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">yv</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">y</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span> <span class="p">!</span><span class="nx">ok</span> <span class="o">||</span> <span class="nx">yv</span> <span class="o">!=</span> <span class="nx">xv</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In this example, <code>!ok</code> (in the second <code>if</code> condition) is used to distinguish the "missing" and "present but zero" cases. [p96]</p>
+<p>Since the keys of a map are distinct, a map can be used to create a "<code>set</code>" type, which is not available in Go. The following program <code>dedup</code> reads a sequence of lines and prints only the first occurrence of each distinct line. (It's a variant of the <code>dup</code> program showed in <a href="../ch1/#finding-duplicate-lines">Section 1.3</a>.)</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/dedup/main.go">gopl.io/ch4/dedup/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">seen</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span> <span class="c1">// a set of strings</span>
+    <span class="nx">input</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">input</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">line</span> <span class="o">:=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">Text</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nx">seen</span><span class="p">[</span><span class="nx">line</span><span class="p">]</span> <span class="p">{</span>
+            <span class="nx">seen</span><span class="p">[</span><span class="nx">line</span><span class="p">]</span> <span class="p">=</span> <span class="kc">true</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">Err</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;dedup: %v\n&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If we need a map or set whose keys are slices, this cannot be expressed directly, because a map's keys must be comparable. However, it can be done by using a helper function <code>k</code> that maps each key (slice) to a string (if <code>x</code> is equivalent to <code>y</code>, then <code>k(x) == k(y)</code>), creating a map whose keys are strings and applying the helper function to each key before we access the map.</p>
+<p>The example below uses a map to record the number of times <code>Add</code> has been called with a given list of strings. It uses <code>fmt.Sprintf</code> to convert a slice of strings into a single string that is a suitable map key, quoting each slice element with <code>%q</code> to record string boundaries:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">m</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nx">k</span><span class="p">(</span><span class="nx">list</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%q&quot;</span><span class="p">,</span> <span class="nx">list</span><span class="p">)</span> <span class="p">}</span>
+<span class="kd">func</span> <span class="nx">Add</span><span class="p">(</span><span class="nx">list</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">[</span><span class="nx">k</span><span class="p">(</span><span class="nx">list</span><span class="p">)]</span><span class="o">++</span> <span class="p">}</span>
+<span class="kd">func</span> <span class="nx">Count</span><span class="p">(</span><span class="nx">list</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">m</span><span class="p">[</span><span class="nx">k</span><span class="p">(</span><span class="nx">list</span><span class="p">)]</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>The same approach can be used for the following:</p>
+<ul>
+<li>Any non-comparable key type.</li>
+<li>Comparable key types with other definitions of equality than <code>==</code>, such as case-insensitive comparisons for strings.</li>
+</ul>
+<p>Besides, the type of <code>k(x)</code> needn't be a string. It can be any comparable type with the desired equivalence property, such as integers, arrays, or structs.</p>
+<p>The following program is another example of maps that counts the occurrences of each distinct Unicode code point in its input.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/charcount/main.go">gopl.io/ch4/charcount/main.go</a></small></p>
+<p>[p97-99]</p>
+<p>The <a href="https://golang.org/pkg/bufio/#Reader.ReadRune"><code>ReadRune</code></a> method (from <a href="https://golang.org/pkg/bufio/"><code>bufio</code></a>) performs UTF-8 decoding and returns three values: the decoded rune, the length in bytes of its UTF-8 encoding, and an error value. The only error we expect is end-of-file. If the input was not a legal UTF-8 encoding of a rune, the returned rune is <a href="https://golang.org/pkg/unicode/#pkg-constants"><code>unicode.ReplacementChar</code></a> and the length is 1.</p>
+<p>The value type of a map can be a composite type, such as a map or slice. In the following code, the key type of graph is <code>string</code> and the value type is <code>map[string]bool</code>, representing a set of strings. This graph maps a string to a set of related strings, its successors in a directed graph.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/graph/main.go">gopl.io/ch4/graph/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">graph</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">addEdge</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">to</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">edges</span> <span class="o">:=</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">from</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nx">edges</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">edges</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span>
+        <span class="nx">graph</span><span class="p">[</span><span class="nx">from</span><span class="p">]</span> <span class="p">=</span> <span class="nx">edges</span>
+    <span class="p">}</span>
+    <span class="nx">edges</span><span class="p">[</span><span class="nx">to</span><span class="p">]</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">hasEdge</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">to</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">from</span><span class="p">][</span><span class="nx">to</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>The <code>addEdge</code> function populates a map lazily, that is, to initialize each value as its key appears for the first time.</li>
+<li>The <code>hasEdge</code> function shows how the zero value of a missing map entry works: even if neither <code>from</code> nor <code>to</code> is present, <code>graph[from][to]</code> will always give a meaningful result.</li>
+</ul>
+<h3 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h3>
+<p>A <strong>struct</strong> is an aggregate data type that groups together zero or more named values of arbitrary types as a single entity. Each value is called a <em>field</em>. All of the fields are collected into a single entity that can be copied as a unit, passed to functions and returned by them, stored in arrays, etc.</p>
+<p>These two statements declare a struct type called <code>Employee</code> and a variable called <code>dilbert</code> that is an instance of an <code>Employee</code>:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Employee</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">ID</span>         <span class="kt">int</span>
+    <span class="nx">Name</span>       <span class="kt">string</span>
+    <span class="nx">Address</span>    <span class="kt">string</span>
+    <span class="nx">DoB</span>        <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="nx">Position</span>   <span class="kt">string</span>
+    <span class="nx">Salary</span>     <span class="kt">int</span>
+    <span class="nx">ManagerID</span>  <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">dilbert</span> <span class="nx">Employee</span>
+</pre></div>
+
+
+<p>The individual fields of <code>dilbert</code> are accessed using dot notation like <code>dilbert.Name</code> and <code>dilbert.DoB</code>.</p>
+<p>Because <code>dilbert</code> is a variable, its fields are also variables. A field may be assigned to like this:</p>
+<div class="codehilite"><pre><span class="nx">dilbert</span><span class="p">.</span><span class="nx">Salary</span> <span class="o">-=</span> <span class="mi">5000</span>
+</pre></div>
+
+
+<p>The address of the filed can be taken and accessed through a pointer:</p>
+<div class="codehilite"><pre><span class="nx">position</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dilbert</span><span class="p">.</span><span class="nx">Position</span>
+<span class="o">*</span><span class="nx">position</span> <span class="p">=</span> <span class="s">&quot;Senior &quot;</span> <span class="o">+</span> <span class="o">*</span><span class="nx">position</span>
+</pre></div>
+
+
+<p>The dot notation also works with a pointer to a struct:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">employeeOfTheMonth</span> <span class="o">*</span><span class="nx">Employee</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">dilbert</span>
+<span class="nx">employeeOfTheMonth</span><span class="p">.</span><span class="nx">Position</span> <span class="o">+=</span> <span class="s">&quot; (proactive team player)&quot;</span>
+</pre></div>
+
+
+<p>The last statement is equivalent to:</p>
+<div class="codehilite"><pre><span class="p">(</span><span class="o">*</span><span class="nx">employeeOfTheMonth</span><span class="p">).</span><span class="nx">Position</span> <span class="o">+=</span> <span class="s">&quot; (proactive team player)&quot;</span>
+</pre></div>
+
+
+<p>The function <code>EmployeeByID</code> takes as input an employee's ID and returns a pointer to an <code>Employee</code> struct. We can use the dot notation to access its fields:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">EmployeeByID</span><span class="p">(</span><span class="nx">id</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">Employee</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">EmployeeByID</span><span class="p">(</span><span class="nx">dilbert</span><span class="p">.</span><span class="nx">ManagerID</span><span class="p">).</span><span class="nx">Position</span><span class="p">)</span>
+<span class="nx">id</span> <span class="o">:=</span> <span class="nx">dilbert</span><span class="p">.</span><span class="nx">ID</span>
+<span class="nx">EmployeeByID</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">Salary</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>The last statement updates the <code>Employee</code> struct that is pointed to by the result of the call to <code>EmployeeByID</code>. <u>If the result type of <code>EmployeeByID</code> were changed to <code>Employee</code> instead of <code>*Employee</code>, the assignment statement would not compile since its left-hand side would not identify a variable.</u></p>
+<p>Fields are usually written one per line, with the field's name preceding its type. However, consecutive fields of the same type may be combined, as with <code>Name</code> and <code>Address</code> here:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Employee</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">ID</span>            <span class="kt">int</span>
+    <span class="nx">Name</span><span class="p">,</span> <span class="nx">Address</span> <span class="kt">string</span>
+    <span class="nx">DoB</span>           <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+    <span class="nx">Position</span>      <span class="kt">string</span>
+    <span class="nx">Salary</span>        <span class="kt">int</span>
+    <span class="nx">ManagerID</span>     <span class="kt">int</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Field order is significant to type identity:</p>
+<ul>
+<li>If we combined the declaration of the <code>Position</code> field (also a string), or interchanged <code>Name</code> and <code>Address</code>, we would be defining a different struct type.</li>
+<li>Typically we only combine the declarations of related fields.</li>
+</ul>
+<p>The name of a struct field is exported if it begins with a capital letter. This is <a href="../ch2/#local-and-exported-names">Go's main access control mechanism</a>. A struct type may contain a mixture of exported and unexported fields.</p>
+<p>Struct types tend to be verbose because they often involve a line for each field. Although we could write out the whole type each time it is needed, the repetition is unnecessary. Instead, struct types usually appear within the declaration of a named type like <code>Employee</code>.</p>
+<p>A named struct type <code>S</code> can't declare a field of the same type <code>S</code>, because an aggregate value cannot contain itself. The analogous restriction also applies to arrays. But <code>S</code> may declare a field of the pointer type <code>*S</code>, which allows creating recursive data structures like linked lists and trees. The following example uses a binary tree to implement an insertion sort:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/treesort/sort.go">gopl.io/ch4/treesort/sort.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">tree</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">value</span>       <span class="kt">int</span>
+    <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="o">*</span><span class="nx">tree</span>
+<span class="p">}</span>
+
+<span class="c1">// Sort sorts values in place.</span>
+<span class="kd">func</span> <span class="nx">Sort</span><span class="p">(</span><span class="nx">values</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">root</span> <span class="o">*</span><span class="nx">tree</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">values</span> <span class="p">{</span>
+        <span class="nx">root</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">appendValues</span><span class="p">(</span><span class="nx">values</span><span class="p">[:</span><span class="mi">0</span><span class="p">],</span> <span class="nx">root</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// appendValues appends the elements of t to values in order</span>
+<span class="c1">// and returns the resulting slice.</span>
+<span class="kd">func</span> <span class="nx">appendValues</span><span class="p">(</span><span class="nx">values</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span><span class="nx">tree</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">t</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">values</span> <span class="p">=</span> <span class="nx">appendValues</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span>
+        <span class="nx">values</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+        <span class="nx">values</span> <span class="p">=</span> <span class="nx">appendValues</span><span class="p">(</span><span class="nx">values</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">values</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">tree</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">tree</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">t</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="c1">// Equivalent to return &amp;tree{value: value}.</span>
+        <span class="nx">t</span> <span class="p">=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">tree</span><span class="p">)</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">value</span> <span class="p">=</span> <span class="nx">value</span>
+        <span class="k">return</span> <span class="nx">t</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">value</span> <span class="p">&lt;</span> <span class="nx">t</span><span class="p">.</span><span class="nx">value</span> <span class="p">{</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">left</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nx">right</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">right</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">t</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="the-zero-value-of-a-struct">The zero value of a struct *<a class="headerlink" href="#the-zero-value-of-a-struct" title="Permanent link">&para;</a></h4>
+<p><u>The zero value for a struct is composed of the zero values of each of its fields.</u> It is usually desirable that the zero value be a natural or sensible default, but sometimes the type designer has to work at it.</p>
+<p>For example:</p>
+<ul>
+<li>The initial value of the <code>bytes.Buffer</code> struct is a ready-to-use empty buffer.</li>
+<li>The zero value of <a href="https://golang.org/pkg/sync/#Mutex"><code>sync.Mutex</code></a> is a ready-to-use unlocked mutex (discussed <a href="../ch9/">Chapter 9</a>)</li>
+</ul>
+<p>The struct type with no fields is called the <em>empty struct</em>, written as <code>struct{}</code>. It has size zero and carries no information. Some Go programmers use it instead of <code>bool</code> as the value type of a map that represents a set, to emphasize that only the keys are significant, but the space saving is marginal and the syntax more cumbersome, so we generally avoid it.</p>
+<div class="codehilite"><pre><span class="nx">seen</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">struct</span><span class="p">{})</span> <span class="c1">// set of strings</span>
+<span class="c1">// ...</span>
+<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">seen</span><span class="p">[</span><span class="nx">s</span><span class="p">];</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+    <span class="nx">seen</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="p">=</span> <span class="kd">struct</span><span class="p">{}{}</span>
+    <span class="c1">// ...first time seeing s...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4 id="struct-literals">Struct Literals<a class="headerlink" href="#struct-literals" title="Permanent link">&para;</a></h4>
+<p>A value of a struct type can be written using a <strong>struct literal</strong> that specifies values for its fields.</p>
+<p>There are two forms of struct literal.</p>
+<p>The first form, as shown below, requires that a value be specified for every field, in the right order. The writer and reader have to remember exactly what the fields are, and it makes the code fragile if the set of fields later grow or are reordered.</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span> <span class="p">}</span>
+<span class="nx">p</span> <span class="o">:=</span> <span class="nx">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Accordingly, this form tends to be used only within the package that defines the struct type, or with smaller struct types for which there is an obvious field ordering convention, like <code>image.Point{x, y}</code> or <code>color.RGBA{red, green, blue, alpha}</code>.</p>
+<p>The second form is more often used, in which a struct value is initialized by listing some or all of the field names and their corresponding values, as in this statement from the Lissajous program of <a href="../ch1/#animated-gifs">Section 1.4</a>:</p>
+<div class="codehilite"><pre><span class="nx">anim</span> <span class="o">:=</span> <span class="nx">gif</span><span class="p">.</span><span class="nx">GIF</span><span class="p">{</span><span class="nx">LoopCount</span><span class="p">:</span> <span class="nx">nframes</span><span class="p">}</span>
+</pre></div>
+
+
+<p><u>If a field is omitted in this form of literal, it is set to the zero value for its type.</u> Because names are provided, the order of fields doesn't matter.</p>
+<p>The two forms cannot be mixed in the same literal. Also, you cannot use the (order-based) first form of literal to sneak around the rule that unexported identifiers may not be referred to from another package.</p>
+<div class="codehilite"><pre><span class="kn">package</span> <span class="nx">p</span>
+<span class="kd">type</span> <span class="nx">T</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span> <span class="p">}</span> <span class="c1">// a and b are not exported</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="n">package</span> <span class="n">q</span>
+<span class="kn">import</span> <span class="s2">&quot;p&quot;</span>
+<span class="n">var</span> <span class="n">_</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">T</span><span class="p">{</span><span class="n">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span> <span class="o">//</span> <span class="nb">compile</span> <span class="n">error</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t reference a, b</span>
+<span class="n">var</span> <span class="n">_</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">T</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>       <span class="o">//</span> <span class="nb">compile</span> <span class="n">error</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t reference a, b</span>
+</pre></div>
+
+
+<p>Struct values can be passed as arguments to functions and returned from them. For instance, the following function scales a <code>Point</code> by a specified factor:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Scale</span><span class="p">(</span><span class="nx">p</span> <span class="nx">Point</span><span class="p">,</span> <span class="nx">factor</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">Point</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Point</span><span class="p">{</span><span class="nx">p</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">factor</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">factor</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">Scale</span><span class="p">(</span><span class="nx">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">// &quot;{5 10}&quot;</span>
+</pre></div>
+
+
+<p>For efficiency, larger struct types are usually passed to or returned from functions indirectly using a pointer, like:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Bonus</span><span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">Employee</span><span class="p">,</span> <span class="nx">percent</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span> <span class="o">*</span> <span class="nx">percent</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This is required if the function must modify its argument, since in a <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value">call-by-value</a> language like Go, the called function receives only a copy of an argument, not a reference to the original argument.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">AwardAnnualRaise</span><span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">Employee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span> <span class="p">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span> <span class="o">*</span> <span class="mi">105</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Because structs are so commonly dealt with through pointers, it's possible to use this shorthand notation to create and initialize a struct variable and obtain its address:</p>
+<div class="codehilite"><pre><span class="nx">pp</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+
+
+<p>It is exactly equivalent to</p>
+<div class="codehilite"><pre><span class="nx">pp</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">Point</span><span class="p">)</span>
+<span class="o">*</span><span class="nx">pp</span> <span class="p">=</span> <span class="nx">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+
+
+<p><code>&amp;Point{1, 2}</code> can be used directly within an expression, such as a function call.</p>
+<h4 id="comparing-structs">Comparing Structs<a class="headerlink" href="#comparing-structs" title="Permanent link">&para;</a></h4>
+<p>If all the fields of a struct are comparable, the struct itself is comparable. The two expressions of the same type may be compared using <code>==</code> or <code>!=</code>. The <code>==</code> operation compares the corresponding fields of the two structs in order. In the following example, the two printed expressions are equivalent:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span> <span class="p">}</span>
+<span class="nx">p</span> <span class="o">:=</span> <span class="nx">Point</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="nx">q</span> <span class="o">:=</span> <span class="nx">Point</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">X</span> <span class="o">==</span> <span class="nx">q</span><span class="p">.</span><span class="nx">X</span> <span class="o">&amp;&amp;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">Y</span> <span class="o">==</span> <span class="nx">q</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span> <span class="c1">// &quot;false&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">p</span> <span class="o">==</span> <span class="nx">q</span><span class="p">)</span>                   <span class="c1">// &quot;false&quot;</span>
+</pre></div>
+
+
+<p>Comparable struct types, like other comparable types, may be used as the key type of a map.</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">address</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">hostname</span> <span class="kt">string</span>
+    <span class="nx">port</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="nx">hits</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="nx">address</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<span class="nx">hits</span><span class="p">[</span><span class="nx">address</span><span class="p">{</span><span class="s">&quot;golang.org&quot;</span><span class="p">,</span> <span class="mi">443</span><span class="p">}]</span><span class="o">++</span>
+</pre></div>
+
+
+<h4 id="struct-embedding-and-anonymous-fields">Struct Embedding and Anonymous Fields<a class="headerlink" href="#struct-embedding-and-anonymous-fields" title="Permanent link">&para;</a></h4>
+<p>This section discusses Go's <a href="https://golang.org/doc/effective_go.html#embedding"><em>struct embedding</em></a> mechanism, which enables us to use one named struct type as an <em>anonymous field</em> of another struct type. This provides a convenient syntactic shortcut so that a simple dot expression like <code>x.f</code> can stand for a chain of fields like <code>x.d.e.f</code>.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Circle</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span><span class="p">,</span> <span class="nx">Radius</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Wheel</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span><span class="p">,</span> <span class="nx">Radius</span><span class="p">,</span> <span class="nx">Spokes</span> <span class="kt">int</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>A <code>Circle</code> has fields for the <code>X</code> and <code>Y</code> coordinates of its center, and a <code>Radius</code>. A <code>Wheel</code> has all the features of a <code>Circle</code>, plus <code>Spokes</code> (number of radial spokes).</p>
+<p>The following code creates a wheel:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">w</span> <span class="nx">Wheel</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Radius</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Spokes</span> <span class="p">=</span> <span class="mi">20</span>
+</pre></div>
+
+
+<p>It is convenient to factor out their common parts:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Point</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Circle</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Center</span> <span class="nx">Point</span>
+    <span class="nx">Radius</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Wheel</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Circle</span> <span class="nx">Circle</span>
+    <span class="nx">Spokes</span> <span class="kt">int</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This seems clearer, but accessing the fields of a <code>Wheel</code> is more verbose:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">w</span> <span class="nx">Wheel</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Circle</span><span class="p">.</span><span class="nx">Center</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Circle</span><span class="p">.</span><span class="nx">Center</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Circle</span><span class="p">.</span><span class="nx">Radius</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Spokes</span> <span class="p">=</span> <span class="mi">20</span>
+</pre></div>
+
+
+<p>In Go, we can declare a field with a type but no name, called an <em>anonymous field</em>. The type of the field must be a named type or a pointer to a named type.</p>
+<p>For example, in the code below, <code>Circle</code> and <code>Wheel</code> have one anonymous field each: <code>Point</code> is embedded within <code>Circle</code>, and a <code>Circle</code> is embedded within <code>Wheel</code>.</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Circle</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Point</span>
+    <span class="nx">Radius</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Wheel</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Circle</span>
+    <span class="nx">Spokes</span> <span class="kt">int</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>We can refer to the names at the leaves of the implicit tree without giving the intervening names:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">w</span> <span class="nx">Wheel</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">8</span>        <span class="c1">// equivalent to w.Circle.Point.X = 8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="mi">8</span>        <span class="c1">// equivalent to w.Circle.Point.Y = 8</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Radius</span> <span class="p">=</span> <span class="mi">5</span>   <span class="c1">// equivalent to w.Circle.Radius = 5</span>
+<span class="nx">w</span><span class="p">.</span><span class="nx">Spokes</span> <span class="p">=</span> <span class="mi">20</span>
+</pre></div>
+
+
+<p>The explicit forms shown in the comments above show that "anonymous field" is something of a misnomer. The fields <code>Circle</code> and <code>Point</code> do have names (that of the named type), but those names are optional in dot expressions. We may omit any or all of the anonymous fields when selecting their subfields.  However, there's no shorthand for this form of struct literal syntax, so neither of these will compile:</p>
+<div class="codehilite"><pre><span class="nx">w</span> <span class="p">=</span> <span class="nx">Wheel</span><span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">}</span>                       <span class="c1">// compile error: unknown fields</span>
+<span class="nx">w</span> <span class="p">=</span> <span class="nx">Wheel</span><span class="p">{</span><span class="nx">X</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">Y</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">Radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">Spokes</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span> <span class="c1">// compile error: unknown fields</span>
+</pre></div>
+
+
+<p>The struct literal must follow the shape of the type declaration, so we must use one of the two forms below, which are equivalent to each other:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/embed/main.go">gopl.io/ch4/embed/main.go</a></small></p>
+<div class="codehilite"><pre><span class="nx">w</span> <span class="p">=</span> <span class="nx">Wheel</span><span class="p">{</span><span class="nx">Circle</span><span class="p">{</span><span class="nx">Point</span><span class="p">{</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">},</span> <span class="mi">5</span><span class="p">},</span> <span class="mi">20</span><span class="p">}</span>
+
+<span class="nx">w</span> <span class="p">=</span> <span class="nx">Wheel</span><span class="p">{</span>
+    <span class="nx">Circle</span><span class="p">:</span> <span class="nx">Circle</span><span class="p">{</span>
+        <span class="nx">Point</span><span class="p">:</span>  <span class="nx">Point</span><span class="p">{</span><span class="nx">X</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">Y</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="nx">Radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">Spokes</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="c1">// NOTE: trailing comma necessary here (and at Radius)</span>
+              <span class="c1">// if the enclosing brace is in the next line</span>
+<span class="p">}</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Wheel{Circle:Circle{Point:Point{X:8, Y:8}, Radius:5}, Spokes:20}</span>
+
+<span class="nx">w</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">42</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Wheel{Circle:Circle{Point:Point{X:42, Y:8}, Radius:5}, Spokes:20}</span>
+</pre></div>
+
+
+<p>Notice how the <code>#</code> adverb causes <code>Printf</code>'s <code>%v</code> verb to display values in a form similar to Go syntax, which includes the name of each field.</p>
+<p>Because "anonymous" fields have implicit names, we can't have two anonymous fields of the same type since their names would conflict.</p>
+<p>The visibility of the field is analogous to the name of the field, which is implicitly determined by its type, In the examples above, the <code>Point</code> and <code>Circle</code> anonymous fields are exported. If they are unexported (<code>point</code> and <code>circle</code>), we could still use the shorthand form</p>
+<div class="codehilite"><pre><span class="nx">w</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="mi">8</span> <span class="c1">// equivalent to w.circle.point.X = 8</span>
+</pre></div>
+
+
+<p>But the explicit long form shown in the comment would be forbidden outside the declaring package because <code>circle</code> and <code>point</code> would be inaccessible.</p>
+<p>Anonymous fields need not be struct types (discussed later): any named type or pointer to a named type will do. The reason of embedding a type that has no subfields has to do with methods. The shorthand notation used for selecting the fields of an embedded type also works for selecting its methods. In effect, the outer struct type gains not only the fields of the embedded type but also its methods. This mechanism is the main way that complex object behaviors are composed from simpler ones. Composition is central to object-oriented programming in Go, detailed in <a href="../ch6/#composing-types-by-struct-embedding">Section 6.3</a>.</p>
+<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/JSON">JavaScript Object Notation</a> (JSON) is a standard notation for sending and receiving structured information. Other notations include:</p>
+<ul>
+<li>XML</li>
+<li><a href="https://en.wikipedia.org/wiki/Abstract_Syntax_Notation_One">ASN.1</a></li>
+<li>Google's <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">Protocol Buffers</a></li>
+</ul>
+<p>JSON is the most widely used because of its simplicity, readability, and universal support.</p>
+<p>Go supports encoding and decoding these formats, provided by the standard library packages <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> (discussed in this section), <a href="https://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a> and <a href="https://golang.org/pkg/encoding/asn1/"><code>encoding/asn1</code></a>. These packages all have similar APIs. See also <a href="http://blog.golang.org/json-and-go">JSON and Go</a> for reference.</p>
+<p>JSON is an encoding of JavaScript values (strings, numbers, booleans, arrays, and objects) as Unicode text, which is an efficient, readable representation for the basic data types of <a href="../ch3/">Chapter 3</a> and the composite types of this chapter (arrays, slices, structs, and maps).</p>
+<p>The basic JSON types are:</p>
+<ul>
+<li>Numbers (in decimal or scientific notation)</li>
+<li>Booleans (<code>true</code> or <code>false</code>)</li>
+<li>Strings, which are sequences of Unicode code points enclosed in double quotes, with backslash escapes using a similar notation to Go, though JSON's <code>\U</code><em>hhhh</em> numeric escapes denote <a href="https://en.wikipedia.org/wiki/UTF-16">UTF-16</a> codes, not runes.</li>
+</ul>
+<p>These basic types may be combined recursively using JSON arrays and objects:</p>
+<ul>
+<li>A JSON array is an ordered sequence of values, written as a comma-separated list enclosed in square brackets<ul>
+<li>JSON arrays are used to encode Go arrays and slices.</li>
+</ul>
+</li>
+<li>A JSON object is a mapping from strings to values, written as a sequence of <code>name:value</code> pairs separated by commas and surrounded by braces<ul>
+<li>JSON objects are used to encode Go maps (with string keys) and structs.</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre>boolean     true
+number      -273.15
+string      &quot;She said \&quot;Hello, BF\&quot;&quot;
+array       [&quot;gold&quot;, &quot;silver&quot;, &quot;bronze&quot;]
+object      {&quot;year&quot;: 1980,
+             &quot;event&quot;: &quot;archery&quot;,
+             &quot;medals&quot;: [&quot;gold&quot;, &quot;silver&quot;, &quot;bronze&quot;]}
+</pre></div>
+
+
+<h4 id="marshaling-data-structures-to-json">Marshaling data structures to JSON *<a class="headerlink" href="#marshaling-data-structures-to-json" title="Permanent link">&para;</a></h4>
+<p>The following example declares a <code>Movie</code> data type and a typical list of values. The string literals after the <code>Year</code> and <code>Color</code> field declarations are <code>field tags</code>, which will be explained later.</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Movie</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Title</span>  <span class="kt">string</span>
+    <span class="nx">Year</span>   <span class="kt">int</span>  <span class="s">`json:&quot;released&quot;`</span>
+    <span class="nx">Color</span>  <span class="kt">bool</span> <span class="s">`json:&quot;color,omitempty&quot;`</span>
+    <span class="nx">Actors</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">movies</span> <span class="p">=</span> <span class="p">[]</span><span class="nx">Movie</span><span class="p">{</span>
+    <span class="p">{</span><span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;Casablanca&quot;</span><span class="p">,</span> <span class="nx">Year</span><span class="p">:</span> <span class="mi">1942</span><span class="p">,</span> <span class="nx">Color</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">Actors</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Humphrey Bogart&quot;</span><span class="p">,</span> <span class="s">&quot;Ingrid Bergman&quot;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;Cool Hand Luke&quot;</span><span class="p">,</span> <span class="nx">Year</span><span class="p">:</span> <span class="mi">1967</span><span class="p">,</span> <span class="nx">Color</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">Actors</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Paul Newman&quot;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;Bullitt&quot;</span><span class="p">,</span> <span class="nx">Year</span><span class="p">:</span> <span class="mi">1968</span><span class="p">,</span> <span class="nx">Color</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">Actors</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Steve McQueen&quot;</span><span class="p">,</span> <span class="s">&quot;Jacqueline Bisset&quot;</span><span class="p">}},</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>It's easy to convert such data structures to and from JSON. Converting a Go data structure to JSON is called <a href="https://en.wikipedia.org/wiki/Marshalling_(computer_science)"><em>marshaling</em></a>, which is done by <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a>:</p>
+<div class="codehilite"><pre><span class="nx">data</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">movies</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;JSON marshaling failed: %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\n&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>Marshal</code> produces a byte slice containing a long string with no extraneous white space:</p>
+<div class="codehilite"><pre>[{&quot;Title&quot;:&quot;Casablanca&quot;,&quot;released&quot;:1942,&quot;Actors&quot;:[&quot;Humphrey Bogart&quot;,&quot;Ingrid Bergman&quot;]},{&quot;Title&quot;:&quot;Cool Hand Luke&quot;,&quot;released&quot;:1967,&quot;color&quot;:true,&quot;Actors&quot;:[&quot;Paul Newman&quot;]},{&quot;Title&quot;:&quot;Bullitt&quot;,&quot;released&quot;:1968,&quot;color&quot;:true,&quot;Actors&quot;:[&quot;Steve McQueen&quot;,&quot;Jacqueline Bisset&quot;]}]
+</pre></div>
+
+
+<p>To make it human-readable, a variant called <a href="https://golang.org/pkg/encoding/json/#MarshalIndent"><code>json.MarshalIndent</code></a> can be used to produces neatly indented output. Two additional arguments are:</p>
+<ul>
+<li>A prefix for each line of output.</li>
+<li>A string for each level of indentation.</li>
+</ul>
+<div class="codehilite"><pre><span class="nx">data</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">movies</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;    &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;JSON marshaling failed: %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s\n&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+</pre></div>
+
+
+<p>(output skipped) [p109]</p>
+<p>Marshaling uses the Go struct field names as the field names for the JSON objects (through <a href="http://blog.golang.org/laws-of-reflection"><em>reflection</em></a>, discussed in Section 12.6). <u>Only exported fields are marshaled, which is why we chose capitalized names for all the Go field names.</u></p>
+<p>Note that in the output, the name of the <code>Year</code> field changed to <code>released</code> and <code>Color</code> changed to <code>color</code>, because of the field tags. A field tag is a string of metadata associated at compile time with the field of a struct:</p>
+<div class="codehilite"><pre><span class="nx">Year</span> <span class="kt">int</span> <span class="s">`json:&quot;released&quot;`</span>
+<span class="nx">Color</span> <span class="kt">bool</span> <span class="s">`json:&quot;color,omitempty&quot;`</span>
+</pre></div>
+
+
+<p>A field tag may be any literal string, but it is conventionally interpreted as a space-separated list of <code>key:"value"</code> pairs. Since they contain double quotation marks, field tags are usually written with <a href="../ch3/#raw-string-literal">raw string literals</a>.</p>
+<ul>
+<li>The <code>json</code> key controls the behavior of the <code>encoding/json</code>
+package, and other <code>encoding/...</code> packages follow this convention.</li>
+<li>The first part of the <code>json</code> field tag specifies an alternative JSON name for the Go field.<ul>
+<li>Field tags are often used to specify an idiomatic JSON name like <code>total_count</code> for a Go field named <code>TotalCount</code>.</li>
+</ul>
+</li>
+<li><code>omitempty</code> (which is an additional option in the tag for <code>Color</code>) indicates that no JSON output should be produced if the field has the zero value for its type (<code>false</code>, here); otherwise, it is the empty value.</li>
+</ul>
+<h4 id="unmarshaling-and-decoding-from-json">Unmarshaling and decoding from JSON *<a class="headerlink" href="#unmarshaling-and-decoding-from-json" title="Permanent link">&para;</a></h4>
+<p>The inverse operation to marshaling is called <code>unmarshaling</code>. This is done by <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a>, which decodes JSON and populates a Go data structure. By defining suitable Go data structures, we can select which parts of the JSON input to decode and which to discard. The code below unmarshals the JSON movie data into a slice of structs whose only field is <code>Title</code>. When <code>Unmarshal</code> returns, it has filled in the slice with the <code>Title</code> information; other names in the JSON are ignored.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">titles</span> <span class="p">[]</span><span class="kd">struct</span><span class="p">{</span> <span class="nx">Title</span> <span class="kt">string</span> <span class="p">}</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">titles</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;JSON unmarshaling failed: %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">titles</span><span class="p">)</span> <span class="c1">// &quot;[{Casablanca} {Cool Hand Luke} {Bullitt}]&quot;</span>
+</pre></div>
+
+
+<p>The following example queries the GitHub issue tracker using its <a href="https://api.github.com/search/issues">web-service interface</a> (see also <a href="https://developer.github.com/v3/">https://developer.github.com/v3/</a>). First, it defines the necessary types and constants:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/github/github.go">gopl.io/ch4/github/github.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// Package github provides a Go API for the GitHub issue tracker.</span>
+<span class="c1">// See https://developer.github.com/v3/search/#search-issues.</span>
+<span class="kn">package</span> <span class="nx">github</span>
+
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+
+<span class="kd">const</span> <span class="nx">IssuesURL</span> <span class="p">=</span> <span class="s">&quot;https://api.github.com/search/issues&quot;</span>
+
+<span class="kd">type</span> <span class="nx">IssuesSearchResult</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">TotalCount</span> <span class="kt">int</span> <span class="s">`json:&quot;total_count&quot;`</span>
+    <span class="nx">Items</span>      <span class="p">[]</span><span class="o">*</span><span class="nx">Issue</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Issue</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Number</span>    <span class="kt">int</span>
+    <span class="nx">HTMLURL</span>   <span class="kt">string</span> <span class="s">`json:&quot;html_url&quot;`</span>
+    <span class="nx">Title</span>     <span class="kt">string</span>
+    <span class="nx">State</span>     <span class="kt">string</span>
+    <span class="nx">User</span>      <span class="o">*</span><span class="nx">User</span>
+    <span class="nx">CreatedAt</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`json:&quot;created_at&quot;`</span>
+    <span class="nx">Body</span>      <span class="kt">string</span>    <span class="c1">// in Markdown format</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">User</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Login</span>   <span class="kt">string</span>
+    <span class="nx">HTMLURL</span> <span class="kt">string</span> <span class="s">`json:&quot;html_url&quot;`</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>The names of all the struct fields must be capitalized even if their JSON names are not.</li>
+<li>The matching process that associates JSON names with Go struct names during unmarshaling is case-insensitive, so it's only necessary to use a field tag when there's an underscore in the JSON name but not in the Go name.</li>
+<li>In this example, we are being selective about which fields to decode. The GitHub search response contains considerably more information than shown here.</li>
+</ul>
+<p>The <code>SearchIssues</code> function makes an HTTP request and decodes the result as JSON. Since the query terms presented by a user could contain characters like <code>?</code> and <code>&amp;</code> that have special meaning in a URL, we use <code>url.QueryEscape</code> to ensure that they are taken literally.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/github/search.go">gopl.io/ch4/github/search.go</a></small></p>
+<div class="codehilite"><pre><span class="kn">package</span> <span class="nx">github</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;encoding/json&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;net/http&quot;</span>
+    <span class="s">&quot;net/url&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// SearchIssues queries the GitHub issue tracker.</span>
+<span class="kd">func</span> <span class="nx">SearchIssues</span><span class="p">(</span><span class="nx">terms</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">IssuesSearchResult</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">q</span> <span class="o">:=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">QueryEscape</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">terms</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">))</span>
+    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">IssuesURL</span> <span class="o">+</span> <span class="s">&quot;?q=&quot;</span> <span class="o">+</span> <span class="nx">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+
+    <span class="c1">// We must close resp.Body on all execution paths.</span>
+    <span class="c1">// (Chapter 5 presents &#39;defer&#39;, which makes this simpler.)</span>
+    <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="p">{</span>
+        <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;search query failed: %s&quot;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Status</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">result</span> <span class="nx">IssuesSearchResult</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">result</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">result</span><span class="p">,</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The earlier examples used <code>json.Unmarshal</code> to decode the entire contents of a byte slice as a single JSON entity. For variety, this example uses the <em>streaming</em> decoder, <a href="https://golang.org/pkg/encoding/json/#Decoder"><code>json.Decoder</code></a>, which allows several JSON entities to be decoded in sequence from the same stream, although we don't need that feature here. There is a corresponding streaming encoder called <a href="https://golang.org/pkg/encoding/json/#Encoder"><code>json.Encoder</code></a>. The call to <code>Decode</code> populates the variable <code>result</code>. [p111]</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/issues/main.go">gopl.io/ch4/issues/main.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// Issues prints a table of GitHub issues matching the search terms.</span>
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;log&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+
+    <span class="s">&quot;gopl.io/ch4/github&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">github</span><span class="p">.</span><span class="nx">SearchIssues</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d issues:\n&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">TotalCount</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">item</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">result</span><span class="p">.</span><span class="nx">Items</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;#%-5d %9.9s %.55s\n&quot;</span><span class="p">,</span>
+            <span class="nx">item</span><span class="p">.</span><span class="nx">Number</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Login</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">Title</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The command-line arguments specify the search terms. The command below queries the Go project's issue tracker for the list of open bugs related to JSON decoding:</p>
+<div class="codehilite"><pre>$ go build gopl.io/ch4/issues
+$ ./issues repo:golang/go is:open json decoder
+13 issues:
+#5680    eaigner encoding/json: set key converter on en/decoder
+#6050  gopherbot encoding/json: provide tokenizer
+#8658  gopherbot encoding/json: use bufio
+...
+</pre></div>
+
+
+<h3 id="text-and-html-templates">Text and HTML Templates<a class="headerlink" href="#text-and-html-templates" title="Permanent link">&para;</a></h3>
+<p>The formatting for the previous example can be done with the <a href="https://golang.org/pkg/text/template/"><code>text/template</code></a> and <a href="https://golang.org/pkg/html/template/"><code>html/template</code></a> packages, which provide a mechanism for substituting the values of variables into a text or HTML template.</p>
+<p>A template is a string or file containing one or more portions enclosed in double braces, <code>{{...}}</code>, called <em>actions</em>. While most of the string is printed literally, the actions trigger other behaviors. Each action contains an expression in the template language, a notation for doing the following:</p>
+<ul>
+<li>Printing values</li>
+<li>Selecting struct fields</li>
+<li>Calling functions and methods</li>
+<li>Expressing control flow, such as <code>if</code>-<code>else</code> statements and <code>range</code> loops</li>
+<li>Instantiating other templates</li>
+</ul>
+<p>A simple template string is shown below:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/issuesreport/main.go">gopl.io/ch4/issuesreport/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">templ</span> <span class="p">=</span> <span class="s">`{{.TotalCount}} issues:</span>
+<span class="s">{{range .Items}}----------------------------------------</span>
+<span class="s">Number: {{.Number}}</span>
+<span class="s">User:   {{.User.Login}}</span>
+<span class="s">Title:  {{.Title | printf &quot;%.64s&quot;}}</span>
+<span class="s">Age:    {{.CreatedAt | daysAgo}} days</span>
+<span class="s">{{end}}`</span>
+</pre></div>
+
+
+<p>Within an action, there is a notion of the current value, referred to as "dot" and written as "<code>.</code>", a period.</p>
+<ul>
+<li>The dot initially refers to the template's parameter, which is <code>github.IssuesSearchResult</code> in this example.</li>
+<li>The <code>{{.TotalCount}}</code> action expands to the value of the <code>TotalCount</code> field.</li>
+<li>The <code>{{range .Items}}</code> and <code>{{end}}</code> actions create a loop, so the text between them is expanded multiple times, with dot bound to successive elements of Items.</li>
+</ul>
+<p>Within an action, the <code>|</code> notation makes the result of one operation the argument of another, analogous to a Unix shell pipeline.</p>
+<ul>
+<li>For <code>Title</code>, the second operation is the <code>printf</code> function, which is a built-in synonym for <code>fmt.Sprintf</code> in all templates.</li>
+<li>For <code>Age</code>, the second operation is the following function, <code>daysAgo</code>, which converts the <code>CreatedAt</code> field into an elapsed time, using <a href="https://golang.org/pkg/time/#Since"><code>time.Since</code></a>:</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">daysAgo</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">t</span><span class="p">).</span><span class="nx">Hours</span><span class="p">()</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Note that the type of <code>CreatedAt</code> is <code>time.Time</code>, not <code>string</code>. In the same way that a type may control its string formatting (<a href="../ch2/#type-declarations">Section 2.5</a>) by defining certain methods, a type may also define methods to control its JSON marshaling and unmarshaling behavior. The JSON-marshaled value of a <code>time.Time</code> is a string in a standard format.</p>
+<h4 id="producing-output-with-a-template">Producing output with a template *<a class="headerlink" href="#producing-output-with-a-template" title="Permanent link">&para;</a></h4>
+<p>Producing output with a template is a two-step process:</p>
+<ol>
+<li>Parse the template into a suitable internal representation (parsing need be done only once).</li>
+<li>Execute it on specific inputs.</li>
+</ol>
+<p>The code below creates and parses the template <code>templ</code> defined above.</p>
+<div class="codehilite"><pre><span class="nx">report</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;report&quot;</span><span class="p">).</span>
+    <span class="nx">Funcs</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span><span class="p">{</span><span class="s">&quot;daysAgo&quot;</span><span class="p">:</span> <span class="nx">daysAgo</span><span class="p">}).</span>
+    <span class="nx">Parse</span><span class="p">(</span><span class="nx">templ</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Note the chaining of method calls:</p>
+<ol>
+<li><code>template.New</code> creates and returns a template.</li>
+<li><code>Funcs</code> adds <code>daysAgo</code> to the set of functions (<a href="https://golang.org/pkg/text/template/#FuncMap"><code>FuncMap</code></a>) accessible within this template, then returns that template.</li>
+<li><code>Parse</code> is called on the result.</li>
+</ol>
+<p>Because templates are usually fixed at compile time, failure to parse a template indicates a fatal bug in the program. The <a href="https://golang.org/pkg/text/template/#Must"><code>template.Must</code></a> helper function makes error handling more convenient: it accepts a template and an error, checks that the error is nil (and panics otherwise), and then returns the template. This idea will be discussed in <a href="../ch5/#panic">Section 5.9</a>.</p>
+<p>In the code below, the template is created, augmented with <code>daysAgo</code>, parsed, and checked (using <code>template.Must</code>), and then executed it using a <code>github.IssuesSearchResult</code> as the data source and <code>os.Stdout</code> as the destination:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">report</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;issuelist&quot;</span><span class="p">).</span>
+    <span class="nx">Funcs</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span><span class="p">{</span><span class="s">&quot;daysAgo&quot;</span><span class="p">:</span> <span class="nx">daysAgo</span><span class="p">}).</span>
+    <span class="nx">Parse</span><span class="p">(</span><span class="nx">templ</span><span class="p">))</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">github</span><span class="p">.</span><span class="nx">SearchIssues</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">report</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The program prints a plain text report like this:</p>
+<div class="codehilite"><pre>$ go build gopl.io/ch4/issuesreport
+$ ./issuesreport repo:golang/go is:open json decoder
+13 issues:
+----------------------------------------
+Number: 5680
+User:   eaigner
+Title:  encoding/json: set key converter on en/decoder
+Age:    750 days
+----------------------------------------
+Number: 6050
+User:   gopherbot
+Title:  encoding/json: provide tokenizer
+Age:    695 days
+----------------------------------------
+...
+</pre></div>
+
+
+<h4 id="the-htmltemplate-package">The <code>html/template</code> package *<a class="headerlink" href="#the-htmltemplate-package" title="Permanent link">&para;</a></h4>
+<p>The <code>html/template</code> package uses the same API and expression language as <code>text/template</code> but adds features for automatic and context-appropriate escaping of strings appearing within HTML, JavaScript, CSS, or URLs. These features can help avoid a perennial security problem of HTML generation, an <a href="https://en.wikipedia.org/wiki/Code_injection">injection attack</a>.</p>
+<p>The template below prints the list of issues as an HTML table:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/issueshtml/main.go">gopl.io/ch4/issueshtml/main.go</a></small></p>
+<p>The command below executes the new template on the results of a slightly different query:</p>
+<div class="codehilite"><pre><span class="gp">$</span> go build gopl.io/ch4/issueshtml
+<span class="gp">$</span> ./issueshtml repo:golang/go commenter:gopherbot json encoder &gt;issues.html
+</pre></div>
+
+
+<p>If there are issues whose titles contain HTML metacharacters like <code>&amp;</code> and <code>&lt;</code>, they are automatically HTML-escaped the titles so that they appear literally. If the <code>text/template</code> package is used by mistake, the four-character string <code>"&amp;lt;"</code> would have been rendered as a less-than character <code>'&lt;'</code>, and the string <code>"&lt;link&gt;"</code> would have become a link element, changing the structure of the HTML document and perhaps compromising its security.</p>
+<p>To suppress this auto-escaping behavior for fields that contain trusted HTML data, use the named string type <code>template.HTML</code> instead of <code>string</code>. Similar named types exist for trusted JavaScript, CSS, and URLs. The program below demonstrates the principle by using two fields with the same value but different types: <code>A</code> is a <code>string</code> and <code>B</code> is a <code>template.HTML</code>.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch4/autoescape/main.go">gopl.io/ch4/autoescape/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">templ</span> <span class="p">=</span> <span class="s">`&lt;p&gt;A: {{.A}}&lt;/p&gt;&lt;p&gt;B: {{.B}}&lt;/p&gt;`</span>
+    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;escape&quot;</span><span class="p">).</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">templ</span><span class="p">))</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="kd">struct</span> <span class="p">{</span>
+        <span class="nx">A</span> <span class="kt">string</span>        <span class="c1">// untrusted plain text</span>
+        <span class="nx">B</span> <span class="nx">template</span><span class="p">.</span><span class="nx">HTML</span> <span class="c1">// trusted HTML</span>
+    <span class="p">}</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">A</span> <span class="p">=</span> <span class="s">&quot;&lt;b&gt;Hello!&lt;/b&gt;&quot;</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">B</span> <span class="p">=</span> <span class="s">&quot;&lt;b&gt;Hello!&lt;/b&gt;&quot;</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>[p117]</p>
+<p>This section shows only the most basic features of the template system. For more information, consult the package documentation:</p>
+<div class="codehilite"><pre><span class="gp">$</span> go doc text/template
+<span class="gp">$</span> go doc html/template
+</pre></div>
+
+
+<h3 id="doubts-and-solution">Doubts and Solution<a class="headerlink" href="#doubts-and-solution" title="Permanent link">&para;</a></h3>
+<h4 id="verbatim">Verbatim<a class="headerlink" href="#verbatim" title="Permanent link">&para;</a></h4>
+<h5 id="p100-on-structs"><strong>p100 on structs</strong><a class="headerlink" href="#p100-on-structs" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span class="o">...</span>
+<span class="nx">EmployeeByID</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">Salary</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<blockquote>
+<p>If the result type of <code>EmployeeByID</code> were changed to <code>Employee</code> instead of <code>*Employee</code>, the assignment statement would not compile since its left-hand side would not identify a variable.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: Why is that?</p>
+<h5 id="p107-on-json"><strong>p107 on JSON</strong><a class="headerlink" href="#p107-on-json" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>JSON's <code>\U</code><em>hhhh</em> numeric escapes denote <a href="https://en.wikipedia.org/wiki/UTF-16">UTF-16</a> codes, not runes.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: I didn't find any online references for this.</p>
+<h5 id="p114-on-text-templates"><strong>p114 on text templates</strong><a class="headerlink" href="#p114-on-text-templates" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>In the same way that a type may control its string formatting (<a href="../ch2/#type-declarations">Section 2.5</a>) by defining certain methods, a type may also define methods to control its JSON marshaling and unmarshaling behavior. The JSON-marshaled value of a <code>time.Time</code> is a string in a standard format.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: How to define methods to control its JSON marshaling and unmarshaling behavior?</p>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

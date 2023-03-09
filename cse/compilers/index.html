@@ -1,0 +1,1754 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Compilers - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../cse/mathematics/index.html">Mathematics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>Combinatorics</div></li></ol></li><li class="chapter-item "><a href="../../cse/ai/index.html">AI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../cse/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item expanded "><a href="../../cse/compilers/index.html" class="active">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping a Simple Compiler From Nothing</a></li><li class="chapter-item "><a href="../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages are Static Languages</a></li><li class="chapter-item "><a href="../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../cse/compilers/why_inheritance_never_made_sense.html">Why Inheritance Never Made Sense</a></li><li class="chapter-item "><a href="../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item "><a href="../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../cse/software_engineering/testing.html">Testing</a></li><li class="chapter-item "><a href="../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><div>Domain Driven Design</div></li><li class="chapter-item "><div>SOLID</div></li><li class="chapter-item "><a href="../../cse/software_engineering/quality.html">Quality</a></li><li class="chapter-item "><a href="../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../cse/software_engineering/excellency_quality/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../cse/tools/cli.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/git.html">git</a></li><li class="chapter-item "><a href="../../cse/tools/nix.html">nix</a></li><li class="chapter-item "><a href="../../cse/tools/nnn.html">nnn</a></li><li class="chapter-item "><a href="../../cse/tools/prometheus.html">prometheus</a></li><li class="chapter-item "><a href="../../cse/tools/rsync.html">rsync</a></li><li class="chapter-item "><a href="../../cse/tools/sed.html">sed</a></li><li class="chapter-item "><a href="../../cse/tools/ssh.html">ssh</a></li><li class="chapter-item "><div>taskwarrior</div></li><li class="chapter-item "><div>timewarrior</div></li><li class="chapter-item "><a href="../../cse/tools/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../cse/tools/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../cse/tools/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><div>Nomad</div></li><li class="chapter-item "><a href="../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../cse/tools/kakoune.html">Kakoune</a></li><li class="chapter-item "><div>Kubernetes</div></li><li class="chapter-item "><a href="../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../cse/tools/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/tools/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../cse/lisp/index.html">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../cse/lisp/the_lisp_curse.html">The Lisp Curse</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../cse/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../cse/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../cse/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../cse/proglangs/sql.html">SQL</a></li></ol></li><li class="chapter-item "><a href="../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><div>Art</div></li><li class="chapter-item "><div>History</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/anapanasanti.html">anapanasanti</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/ascending_the_mountain.html">ascending_the_mountain</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/beginning_anew.html">beginning_anew</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddha_the_word.html">buddha_the_word</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">buddhas_way_and_abortion</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/death_is_a_sacrament.html">death_is_a_sacrament</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/detachment.html">detachment</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/dokkodo.html">dokkodo</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_dalai_lama.html">emptiness_dalai_lama</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/gassho_and_bowing.html">gassho_and_bowing</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/heart_to_heart_zen_and_religion_the_roots_and_the_shape.html">heart_to_heart_zen_and_religion_the_roots_and_the_shape</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/realizing_our_true_nature.html">realizing_our_true_nature</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/rules_of_chado.html">rules_of_chado</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_mind_illuminated.html">the_mind_illuminated</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/yunmens_bright_light.html">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../human_manual/index.html">Human Manual</a></li><li class="chapter-item "><a href="../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../music/wave.html">*wave</a></li><li class="chapter-item "><div>Classical Music</div></li><li class="chapter-item "><div>Jazz</div></li><li class="chapter-item "><div>Japanese Jazz</div></li></ol></li><li class="chapter-item "><a href="../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../misc/library/index.html">Library</a></li><li class="chapter-item "><a href="../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="programming-language-theory-and-practice"><a class="header" href="#programming-language-theory-and-practice">Programming Language Theory and Practice</a></h1>
+<ul>
+<li><a href="#lambda-calculus">Lambda Calculus</a></li>
+<li><a href="#category-theory">Category Theory</a></li>
+<li><a href="#type-systems">Type Systems</a>
+<ul>
+<li><a href="#dependent-types">Dependent Types</a></li>
+</ul>
+</li>
+<li><a href="#homoiconicity">Homoiconicity</a></li>
+<li><a href="#functional-programming">Functional Programming</a></li>
+<li><a href="#object-oriented-programming">Object Oriented Programming</a></li>
+<li><a href="#domain-specific-languages">Domain Specific Languages</a></li>
+<li><a href="#implementation">Implementation</a></li>
+<li><a href="#virtual-machines">Virtual Machines</a></li>
+<li><a href="#llvm">LLVM</a></li>
+<li><a href="#jit">JIT</a></li>
+<li><a href="#garbage-collection">Garbage Collection</a></li>
+<li><a href="#parsing">Parsing</a></li>
+<li><a href="#language-server-protocol">Language Server Protocol</a></li>
+<li><a href="#incremental-compilation">Incremental Compilation</a></li>
+</ul>
+<hr />
+<h2 id="lambda-calculus"><a class="header" href="#lambda-calculus">Lambda Calculus</a></h2>
+<h2 id="category-theory"><a class="header" href="#category-theory">Category Theory</a></h2>
+<!--
+  - [](http://bartoszmilewski.com/2015/07/29/representable-functors/)
+  - [](http://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/)
+  - [](http://techblog.realestate.com.au/how-we-used-category-theory-to-solve-a-problem-in-java/)
+  - [](https://alhassy.github.io/PathCat/)
+  - [](https://www.reddit.com/r/math/comments/ap25mr/a_monad_is_a_monoid_in_the_category_of/)
+  - [](https://www.johndcook.com/blog/2019/04/29/how-category-theory-is-applied/)
+  - [](https://mitpress.mit.edu/books/topology)
+  - [](https://topos.site/blog/2022/08/computation-and-category-theory/) [/r](https://www.reddit.com/r/compsci/comments/wljlyy/computation_and_category_theory_in_a_recent_talk/)
+-->
+<h2 id="type-systems"><a class="header" href="#type-systems">Type Systems</a></h2>
+<!--
+  - https://ahelwer.ca/post/2022-10-13-little-typer-ch9/
+  - https://blog.nelhage.com/post/why-sorbet-is-fast/
+  - https://artagnon.com/articles/equality
+  - https://eli.thegreenplace.net/2018/type-inference/
+  - https://danluu.com/empirical-pl/
+  - https://medium.com/@ondrejmirtes/union-types-vs-intersection-types-fd44a8eacbb
+  - https://blog.merovius.de/2017/09/12/diminishing-returns-of-static-typing.html
+  - [[http://blog.mgechev.com/2017/08/05/typed-lambda-calculus-create-type-checker-transpiler-compiler-javascript/][Developing Statically Typed Programming Language]]o
+  - [[http://matthias-endler.de/2017/why-type-systems-matter/][Why Type Systems Matter]]
+  - [[http://www.codecommit.com/blog/scala/what-is-hindley-milner-and-why-is-it-cool][What is Hindley-Milner? (and why is it cool?)]]
+  - [[http://lionelbarrow.com/2014/09/27/who-is-your-type-system-for/][Lionel Barrow's Blog]]
+  - [[http://www.cs.cmu.edu/~rwh/courses/hott/][15-819 Homotopy Type Theory]]
+  - [[http://www.wilfred.me.uk/blog/2014/02/15/of-types-and-men/][Of Types and Men – Wilfred Hughes::Blog]]
+  - http://techblog.bozho.net/static-typing-is-not-for-type-checking/
+  - http://www.elbeno.com/blog/?p=1516
+  - http://journal.stuffwithstuff.com/2010/08/31/type-checking-a-dynamic-language/
+  - http://jamie-wong.com/bending-the-pl-curve/
+  - http://engineering.issuu.com/2015/09/17/gadt-practicalities.html
+  - https://www.reddit.com/r/programming/comments/5a0d2b/type_systems_and_logic/
+  - http://aherrmann.github.io/programming/2014/10/19/type-erasure-with-merged-concepts/
+  - http://andmkent.com/blog/2014/12/20/let-aliasing-in-typed-racket/
+  - http://blog.steveklabnik.com/posts/2010-07-17-what-to-know-before-debating-type-systems
+  - http://blogs.janestreet.com/why-gadts-matter-for-performance/
+  - http://chadaustin.me/2015/07/sum-types/
+  - http://chasethedevil.blogspot.fr/2014/06/on-role-of-static-types-and-generic.html
+  - http://codewords.hackerschool.com/issues/one/option-and-null-in-dynamic-languages
+  - http://codewords.hackerschool.com/issues/one/type-systems-and-logic
+  - http://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types/
+  - http://codon.com/consider-static-typing
+  - http://danboykis.com/?p=2293
+  - http://dylanfoundry.org/2014/08/28/type-system-overview/
+  - http://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system
+  - http://existentialtype.wordpress.com/2011/03/19/dynamic-languages-are-static-languages/
+  - http://games.greggman.com/game/dynamic-typing-static-typing/
+  - http://gist.github.com/garybernhardt/122909856b570c5c457a6cd674795a9c
+  - http://gist.github.com/non/ec48b0a7343db8291b92
+  - http://haifengl.wordpress.com/2014/07/08/ocaml-polymorphism/
+  - http://infinitecardinals.wordpress.com/2014/12/23/type-theory-in-15-minutes/
+  - http://javadocmd.com/blog/let-the-type-system-do-the-work/
+  - http://jimkeener.com/posts/type-madness-part1
+  - http://journal.stuffwithstuff.com/2010/10/29/bootstrapping-a-type-system/
+  - http://jozefg.bitbucket.org/posts/2015-02-28-type-inference.html
+  - http://keb.theoremsfor.me/zippers-and-type-magic/
+  - https://blog.daftcode.pl/covariance-contravariance-and-invariance-the-ultimate-python-guide-8fabc0c24278
+  - http://medium.com/@thejameskyle/type-systems-covariance-contravariance-bivariance-and-invariance-explained-35f43d1110f8#.xv63r7mgt
+  - http://medium.com/@thejameskyle/type-systems-reachability-and-exhaustiveness-analysis-3d9692c399#.o1fuas2r8
+  - http://melix.github.io/blog/2014/12/10-things-static-cant-do.html
+  - http://michaelfeathers.silvrback.com/the-ergonomics-of-type-checking
+  - http://michaelrbernste.in/2014/02/17/what-is-a-type-system-for.html
+  - http://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory
+  - http://norvig.com/design-patterns/
+  - http://researchblogs.cs.bham.ac.uk/thelablunch/2015/06/types-computation-vs-interaction/
+  - http://robots.thoughtbot.com/thinking-in-types
+  - http://siek.blogspot.pt/2012/08/type-safety-in-five-easy-lemmas.html
+  - http://tech.esper.com/2014/07/30/algebraic-data-types/
+  - http://techblog.realestate.com.au/the-abject-failure-of-weak-typing/
+  - http://tel.github.io/2014/08/08/six_points_about_type_safety/
+  - http://textvis.lnu.se/
+  - http://tratt.net/laurie/research/pubs/html/tratt__dynamically_typed_languages/
+  - http://wphomes.soic.indiana.edu/jsiek/what-is-gradual-typing/
+  - http://www.cs.kent.ac.uk/people/staff/sjt/TTFP/
+  - http://www.drmaciver.com/2016/10/static-typing-will-not-save-us-from-broken-software/
+  - http://www.freedomlayer.org/articles/dht_intro.html
+  - http://www.lucidchart.com/techblog/2015/08/31/the-worst-mistake-of-computer-science/
+  - http://www.pl-enthusiast.net/2014/08/05/type-safety/
+  - http://www.reddit.com/r/programming/comments/2uul7o/consider_static_typing/
+  - http://www.reddit.com/r/programming/comments/534aj8/the_advantages_of_static_typing_simply_stated/?limit=500
+  - https://news.ycombinator.com/item?id=12830719
+  - https://blog.eventsourcing.com/your-functional-programs-are-imperative-pumpkins-d722ec1358b7#.qexoon2u6
+  - https://codon.com/consider-static-typing
+  - https://existentialtype.wordpress.com/
+  - http://boxbase.org/entries/2018/jan/29/static-typing-increases-need-to-refactor/
+  - https://www.hillelwayne.com/post/reasoning-about-systems/
+  - http://www.calebh.io/Type-Inference-by-Solving-Constraints/
+  - https://hydraz.semi.works/posts/2018-03-27.html
+  - http://okmij.org/ftp/Computation/typeclass.html
+  - https://www.sicpers.info/2018/05/on-null/
+  - https://blog.infinitenegativeutility.com/2018/5/structural-types-and-duck-typing
+  - https://www.stephanboyer.com/post/115/higher-rank-and-higher-kinded-types
+  - https://www.tweag.io/posts/2017-08-03-linear-typestates.html
+  - https://francisrstokes.github.io/blog/blog/2019/01/12/exploring-the-peano-axioms-with-algebraic-data-types/
+  - https://www.benjamin.pizza/posts/2019-01-11-the-fourth-type-of-variance.html
+  - https://nullprogram.com/blog/2014/04/25/
+  - http://www.ccs.neu.edu/home/stchang/popl2017/
+  - https://blog.steveklabnik.com/posts/2010-07-17-what-to-know-before-debating-type-systems
+  - http://www.science4all.org/article/homotopy-type-theory/
+  - https://abhinavsarkar.net/posts/twt-notes-1/
+  - https://www.cs.cmu.edu/~rwh/courses/hott/
+  - https://buttondown.email/hillelwayne/archive/making-illegal-states-unrepresentable/
+  - http://blog.ielliott.io/sized-hkts/
+  - https://en.wikipedia.org/wiki/Typed_lambda_calculus
+  - https://en.wikipedia.org/wiki/Simply_typed_lambda_calculus
+  - https://en.wikipedia.org/wiki/Proof_theory
+  - https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence
+  - https://lexi-lambda.github.io/blog/2020/11/01/names-are-not-type-safety/g
+  - https://www.brainstobytes.com/the-liskov-substitution-principle/
+  - https://steshaw.org/hm/
+  - https://news.ycombinator.com/item?id=23794691
+  - https://typing-is-hard.ch/
+  - https://lexi-lambda.github.io/blog/2020/08/13/types-as-axioms-or-playing-god-with-static-types/
+  - https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/
+  - https://github.com/prakhar1989/type-inference/blob/master/infer.ml
+  - https://prakhar1989.github.io/type-inference/
+-->
+<h3 id="dependent-types"><a class="header" href="#dependent-types">Dependent Types</a></h3>
+<!--
+  - [[http://www.alfredodinapoli.com/posts/2014-10-13-fun-with-dependent-types-in-haskell.html][Alfredo Di Napoli - Computer Scientist, Scala and Haskell Programmer]]
+  - [](https://medium.com/travel-cloud/why-you-should-care-about-dependently-typed-programming-2f7a409f31c0)
+  - [](http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html)
+  - [](http://okmij.org/ftp/Computation/lightweight-dependent-typing.html)
+-->
+<h2 id="homoiconicity"><a class="header" href="#homoiconicity">Homoiconicity</a></h2>
+<!--
+  - [](http://c2.com/cgi/wiki?DefinitionOfHomoiconic)
+  - [](http://c2.com/cgi/wiki?HomoiconicExampleInManyProgrammingLanguages)
+  - [](http://c2.com/cgi/wiki?HomoiconicFaq)
+  - [](http://c2.com/cgi/wiki?HomoiconicLanguages)
+  - [](http://en.wikipedia.org/wiki/Homoiconicity)
+  - [](http://en.wikipedia.org/wiki/Hygienic_macro)
+  - [](http://paperlined.org/dev/language_wonk/homoiconic_facade.html)
+  - [](http://www.randomhacks.net/articles/2002/09/13/hygienic-macros)
+  - [](http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/)
+-->
+<h2 id="functional-programming"><a class="header" href="#functional-programming">Functional Programming</a></h2>
+<!--
+  - [[https://blog.qfpl.io/posts/fp-cheat-sheet/][Functional Programming Cheat Sheet]]
+  - https://codurance.com/2017/10/12/functional-calisthenics/
+  - https://forcomprehension.com/2017/11/28/intrinsically-functional/
+  - http://blogs.janestreet.com/observations-of-a-functional-programmer/
+  - http://blog.pusher.com/10-things-i-learnt-diving-in-the-functional-programming-deep-end-with-haskell/
+  - http://c2.com/cgi/wiki?BadEngineeringPropertiesOfFunctionalLanguages
+  - http://codewords.hackerschool.com/issues/one/an-introduction-to-functional-programming
+  - http://codewords.recurse.com/issues/one/an-introduction-to-functional-programming
+  - http://correctsoftware.websitefreelancing.com/index.php?/archives/4-Functional-programming-how-to-construct-naturally-basic-functions.-Part-1-until-function.html
+  - http://dan.bravender.net/2009/8/23/Purely_Functional_Programming_for_Python.html
+  - http://drboolean.gitbooks.io/mostly-adequate-guide/content/
+  - http://hkupty.github.io/2016/Functional-Programming-Concepts-Idioms-and-Philosophy/
+  - http://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9
+  - http://okmij.org/ftp/Scheme/oop-in-fp.txt
+  - http://research.microsoft.com/en-us/um/people/simonpj/papers/pj-lester-book/
+  - http://romefort.net/the-immutable-stack-part-1/
+  - http://stackoverflow.com/questions/2078978/functional-programming-vs-object-oriented-programming/2079678#2079678
+  - http://web.archive.org/web/20130819160454/http://www.altdevblogaday.com/2012/04/26/functional-programming-in-c/
+  - http://www.daimi.au.dk/~madst/tool/papers/expression.txt
+  - http://www.stephendiehl.com/posts/abstraction.html
+  - http://www.gamasutra.com/view/news/169296/Indepth_Functional_programming_in_C.php
+  - https://maxhallinan.com/posts/2018/03/03/learning-the-language-of-functional-programming/
+  - https://blog.cleancoder.com/uncle-bob/2018/04/13/FPvsOO.html
+  - https://codingitwrong.com/2019/02/05/the-relationship-between-oo-and-fp.html
+  - https://medium.com/@randy_mllr/why-oop-is-fp-in-disguise-cb706a801a1e
+  - https://dev.to/notriddle/functional-programming-is-not-a-paradigm-1p8o
+  - https://codurance.com/2018/08/09/the-functional-style-part-1/
+  - https://sigma.software/about/media/pillars-functional-programming-part-1
+  - https://sigma.software/about/media/pillars-functional-programming-part-2
+  - http://raganwald.com/2013/04/08/functional-vs-OOP.html
+  - http://www.javiercasas.com/articles/codata-in-action
+  - https://solovyov.net/blog/2020/higher-order-functions/
+  - https://www.boringcactus.com/2020/07/18/monads-without-the-bullshit.html
+  - https://lobste.rs/s/pailpa/monads_explained_without_bullshit
+  - https://research.utwente.nl/en/publications/functional-programming-with-bananas-lenses-envelopes-and-barbed-w
+  - https://bartoszmilewski.com/2020/08/03/defunctionalization-and-freyds-theorem/
+  - https://algebradriven.design/
+  - https://github.com/winitzki/sofp
+  - http://brendanfong.com/programmingcats.html
+  - https://news.ycombinator.com/item?id=24353976
+  - https://www.solipsys.co.uk/new/RecursionRevisited.html?tj15lo
+  - https://gist.github.com/serras/5152ec18ec5223b676cc67cac0e99b70
+  - https://twitter.com/SusanPotter/status/1314937510863175680
+  - https://doisinkidney.com/posts/2020-10-17-ski.html
+  - https://elmbits.com/issue-40-functional-programming/
+  - https://typeable.io/blog/2021-02-26-fp-pros.html
+  - https://www.fpcomplete.com/haskell/tutorial/lens/
+  - https://roman.pt/posts/dont-let-dicts-spoil-your-code/
+  - http://ix.io/443i/html
+  - https://news.ycombinator.com/item?id=32053512 
+  - https://github.com/readme/featured/functional-programming
+-->
+<h2 id="object-oriented-programming"><a class="header" href="#object-oriented-programming">Object Oriented Programming</a></h2>
+<!--
+  - [](http://github.com/davecaos/a_little_rant_against_oop)
+  - [](http://medium.com/humans-create-software/composition-over-inheritance-cb6f88070205)
+  - [](https://mortoray.com/2017/03/14/the-meta-field-dilemma-a-size-or-sizea/)
+  - [](http://news.softpedia.com/news/The-Metaphysics-of-Object-Oriented-Programming-24906.shtml)
+  - [](http://whats-in-a-game.com/blog/implementation-inheritance-is-evil/)
+  - [](https://www.sandimetz.com/blog/2018/21/what-does-oo-afford)
+  - [](https://www.sicpers.info/2018/03/why-inheritance-never-made-any-sense/)
+  - [](https://www.gamedev.net/blogs/entry/2265481-oop-is-dead-long-live-oop/)
+  - [](https://dpc.pw/the-faster-you-unlearn-oop-the-better-for-you-and-your-software)
+  - [](https://twobithistory.org/2019/01/31/simula.html)
+  - [](https://adam.nels.onl/blog/an-oo-languge-for-the-20s/)
+-->
+<h2 id="domain-specific-languages"><a class="header" href="#domain-specific-languages">Domain Specific Languages</a></h2>
+<ul>
+<li>2015/05 <a href="http://spin.atomicobject.com/2015/05/19/domain-specific-vs-notation/">Domain-Specific Languages vs. Notation</a></li>
+<li>2017/03 <a href="http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/">How to write a DSL (in Python with Lark)</a></li>
+<li>2018/07 <a href="http://tonsky.me/blog/dsl/">Designing good DSL</a></li>
+<li>2019/05 <a href="https://artur-martsinkovskyi.github.io//2019/dsls-are-hoax/">DSLs for non-programmers are a hoax</a></li>
+<li>2020/04 <a href="http://jackkelly.name/blog/archives/2020/04/03/the_power_of_tiny_dsls/index.html">The Power of Tiny DSLs</a></li>
+</ul>
+<h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
+<!--
+-->
+<h2 id="virtual-machines"><a class="header" href="#virtual-machines">Virtual Machines</a></h2>
+<!--
+  - https://fly.io/blog/sqlite-virtual-machine/
+    - https://news.ycombinator.com/item?id=32750676
+  - http://aosabook.org/en/ironlang.html
+  - http://bitbucket.org/earlz/lightvm/overview
+  - http://blog.felixangell.com/virtual-machine-in-c/
+  - http://endrift.com/mgba/2015/06/27/cycle-counting-prefetch/
+  - http://gedrap.github.io/xs-vm/
+  - http://github.com/bkrsta/tinyvm/tree/fastvm
+  - http://github.com/byo3rn/ire
+  - http://github.com/ddfreyne/rcpu
+  - http://github.com/endeav0r/hsvm
+  - http://github.com/HaxeFoundation/hl
+  - http://github.com/jakogut/tinyvm
+  - http://github.com/skx/simple.vm
+  - http://github.com/tairoman/M8
+  - http://github.com/WetDesertRock/Yarn
+  - http://news.ycombinator.com/item?id=9516656
+  - http://news.ycombinator.com/item?id=9762054
+  - http://tratt.net/laurie/blog/entries/fast_enough_vms_in_fast_enough_time
+  - http://www.felixangell.com/virtual-machine-in-c/
+  - http://www.gnu.org/software/mdk/manual/html_node/index.html
+  - https://blog.holbertonschool.com/hack-the-virtual-memory-drawing-the-vm-diagram/
+  - https://github.com/rmccullagh/como-lang-ng/blob/master/vm/simple.c
+  - [[https://bellard.org/riscvemu/][RISCVEMU]]
+  - [[https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e][How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code]]
+  - https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md
+  - https://medium.com/@disassemble.io/comprehensive-bytecode-basics-9b822d609008
+  - https://news.ycombinator.com/item?id=16773876
+  - https://viuavm.org/
+  - https://docs.viuavm.org/model.html
+  - https://news.ycombinator.com/item?id=16606677
+  - https://github.com/jakogut/tinyvm/
+  - https://rsms.me/sol-a-sunny-little-virtual-machine
+  - http://muattiyah.com/posts/python-internals-cpython-bytecode/
+  - https://bernsteinbear.com/blog/bytecode-interpreters/
+  - https://news.ycombinator.com/item?id=18821475
+  - https://badootech.badoo.com/home-grown-bytecode-interpreters-51e12d59b25c
+  - https://badootech.badoo.com/when-pigs-fly-optimising-bytecode-interpreters-f64fb6bfa20f
+  - http://notes.eatonphil.com/emulator-basics-a-stack-and-register-machine.html
+  - https://lobste.rs/s/lp4jgz/i_am_trying_collect_list_toy_processors
+  - https://gpfault.net/posts/most-important-project.txt.html
+  - https://justinmeiners.github.io/lc3-vm/
+-->
+<h2 id="llvm"><a class="header" href="#llvm">LLVM</a></h2>
+<!--
+  - https://blog.yossarian.net/2020/09/19/LLVMs-getelementptr-by-example
+  - http://adriansampson.net/blog/llvm.html
+  - http://aosabook.org/en/llvm.html
+  - http://blog.regehr.org/archives/1109
+  - http://blog.regehr.org/archives/1122
+  - http://dev.stephendiehl.com/numpile/
+  - http://eli.thegreenplace.net/2014/samples-for-using-llvm-and-clang-as-a-library/
+  - http://llvm.lyngvig.org/Articles/Mapping-High-Level-Constructs-to-LLVM-IR
+  - http://llvm.lyngvig.org/Articles/Mapping-High-Level-Constructs-to-LLVM-IR#
+  - http://llvm.org/devmtg/2014-04/
+  - http://llvm.org/releases/3.5.0/docs/tutorial/LangImpl1.html
+  - http://medium.com/@FredericJacobs/why-i-m-not-enabling-bitcode-f35cd8fbfcc5
+  - http://msm.runhello.com/p/1003
+  - http://pauladamsmith.com/blog/2015/01/how-to-get-started-with-llvm-c-api.html
+  - http://www.stephendiehl.com/llvm/
+  - https://felixangell.com/blog/an-introduction-to-llvm-in-go
+  - http://polly.llvm.org/
+  - https://blog.regehr.org/archives/1605
+  - https://blog.regehr.org/archives/1603
+  - http://notes.eatonphil.com/compiler-basics-llvm.html
+  - http://releases.llvm.org/8.0.0/docs/ReleaseNotes.html
+  - https://github.com/oilshell/blog-code/blob/master/grep-for-papers/llvm.txt
+  - http://lists.llvm.org/pipermail/llvm-dev/2019-June/133308.html
+  - https://www.aosabook.org/en/llvm.html
+  - https://blog.llvm.org/posts/2021-02-23-llvm-meets-code-property-graphs/
+-->
+<h2 id="jit"><a class="header" href="#jit">JIT</a></h2>
+<!--
+  - http://blog.indutny.com/4.how-to-start-jitting
+  - http://www.stephendiehl.com/llvm/
+  - http://gcc.gnu.org/onlinedocs/gcc-5.1.0/jit/intro/tutorial04.html
+  - http://github.com/lukego/blog/issues
+  - http://github.com/lukego/blog/issues/5
+  - https://github.com/dibyendumajumdar/nanojit
+  - https://github.com/spencertipping/jit-tutorial
+  - [[https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/][A crash course in just-in-time (JIT) compilers]]
+  - https://solarianprogrammer.com/2018/01/10/writing-minimal-x86-64-jit-compiler-cpp/
+  - https://solarianprogrammer.com/2018/01/12/writing-minimal-x86-64-jit-compiler-cpp-part-2/
+  - https://www.youtube.com/watch?v=oH4_unx8eJQ&feature=youtu.be
+  - http://www.mikedrivendevelopment.com/2018/06/what-i-learned-making-my-own-jit.html
+  - https://nullprogram.com/blog/2015/03/19/
+  - https://carolchen.me/blog/jits-impls/
+  - https://carolchen.me/blog/jits-intro/
+  - https://github.com/animetosho/jit_smc_test/blob/master/README.md#single-use-jit-performance-on-x86-processors
+-->
+<h2 id="garbage-collection"><a class="header" href="#garbage-collection">Garbage Collection</a></h2>
+<ul>
+<li><a href="http://gchandbook.org">The Garbage Collection Handbook</a></li>
+<li><a href="http://www.hboehm.info/gc/">Boehm: A garbage collector for C and C++</a></li>
+<li><a href="https://maplant.com/gc.html">Writing a Simple Garbage Collector in C</a></li>
+<li>2012/12 <a href="http://sebastiansylvan.com/2012/12/01/garbage-collection-thoughts/">Garbage collection thoughts</a></li>
+<li>2013/09 <a href="http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection">A tour of V8: Garbage Collection</a></li>
+<li>2013/12 <a href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/">Baby’s First Garbage Collector</a></li>
+<li>2014/11 <a href="http://sectionfive.net/blog/2014/11/24/arc-exploration-and-pitfalls/">Exploring ARC</a></li>
+<li>2015/04 <a href="http://sectionfive.net/blog/2015/04/01/arc-in-depth-part-i/">ARC In Depth: Part I</a></li>
+<li>2015/06 <a href="http://sectionfive.net/blog/2015/06/12/arc-in-depth-part-ii/">ARC In Depth: Part II</a></li>
+<li>2015/04 <a href="http://blogs.janestreet.com/building-a-lower-latency-gc/">Building a lower-latency GC</a></li>
+<li>2015/07 <a href="http://highscalability.com/blog/2015/7/29/a-well-known-but-forgotten-trick-object-pooling.html">A Well Known But Forgotten Trick: Object Pooling</a></li>
+<li>2016/02 <a href="https://web.archive.org/web/20180427214838/http://onoffswitch.net/toy-generational-garbage-collector/">A toy generational garbage collector</a></li>
+<li>2016/04 <a href="http://engineering.vena.io/2016/04/04/malloc-envy/">Malloc Envy </a></li>
+<li>2016/09 <a href="http://blogs.msdn.microsoft.com/alphageek/2016/09/13/under-the-hood-performance-considerations-of-a-garbage-collector/">Under the Hood - Performance Considerations of a Garbage Collector</a></li>
+<li>2017/12 <a href="http://www.goodmath.org/blog/2017/12/22/a-beginners-guide-to-garbage-collection/">A Beginner’s Guide to Garbage Collection</a></li>
+<li>2018/11 <a href="https://blog.adamant-lang.org/2018/garbage-collection-is-a-hack/">Garbage Collection is a Hack</a></li>
+<li>2018/11 <a href="https://orbifold.xyz/garbage.html">Common Mistakes about Generational Garbage Collection</a></li>
+<li>2019/05 <a href="https://spectrum.ieee.org/tech-talk/computing/hardware/this-little-device-relieves-a-cpu-from-its-garbage-collection-duties">For Better Computing, Liberate CPUs From Garbage Collection</a></li>
+<li>2019/12 <a href="https://yorickpeterse.com/articles/deciding-when-to-collect-garbage/">Deciding when to collect garbage</a></li>
+<li>2020/03 <a href="http://www.ocamlpro.com/2020/03/23/ocaml-new-best-fit-garbage-collector/">An in-depth Look at OCaml’s new “Best-fit” Garbage Collector Strategy</a></li>
+<li>2021/02 <a href="https://www.perl.com/article/the-trouble-with-reference-counting/">The Trouble with Reference Counting</a></li>
+<li>2021/09 <a href="https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/">.NET CLR Garbage Collection</a></li>
+<li>2022/02 <a href="https://blog.px.dev/go-garbage-collector/">Dumpster diving the Go garbage collector</a></li>
+</ul>
+<h2 id="parsing"><a class="header" href="#parsing">Parsing</a></h2>
+<!-- 
+  - https://blog.drewolson.org/parsing-permutations
+  - https://begriffs.com/posts/2021-11-28-practical-parsing.html
+  - https://tomassetti.me/guide-parsing-algorithms-terminology/
+  - http://www.mollypages.org/page/grammar/index.mp
+  - https://blog.buildo.io/the-trees-behind-your-tools-63b01daa58f
+  - http://0value.com/A-PEG-parser-generator-for-Go
+  - http://blog.gopheracademy.com/advent-2014/parsers-lexers/
+  - http://blogs.msdn.com/b/ricom/archive/2015/07/20/what-you-really-need-to-know-about-regular-expressions-before-using-them.aspx
+  - http://boxbase.org/entries/2014/nov/3/pypy-bottom-up/
+  - http://boxbase.org/entries/2015/jun/15/marpa-parsing-revolution/
+  - http://c2.com/cgi/wiki?AlternativesToRegularExpressions
+  - http://c9x.me/lalr/
+  - http://eli.thegreenplace.net/2008/09/26/recursive-descent-ll-and-predictive-parsers/
+  - http://github.com/ColinH/PEGTL
+  - http://github.com/purmou/PearleyParser
+  - http://github.com/UpstandingHackers/hammer
+  - http://github.com/vnmakarov/yaep
+  - http://h14s.p5r.org/2014/10/shiftreduce-expression-parsing-by-douglas-gregor.html
+  - http://hz2.org/blog/python_calc.html
+  - http://jeffreykegler.github.io/Marpa-web-site/
+  - http://loup-vaillant.fr/tutorials/earley-parsing/
+  - http://news.ycombinator.com/item?id=8684437
+  - http://nikic.github.io/2012/06/15/The-true-power-of-regular-expressions.html
+  - http://parsingintro.sourceforge.net/
+  - http://research.swtch.com/yaccalive#
+  - http://savage.net.au/Marpa.html
+  - http://tdop.github.io/
+  - http://theorangeduck.com/page/you-could-have-invented-parser-combinators
+  - http://www.binary-studio.com/2014/11/28/antlr-%E2%80%93-tool,-which-can-find-sense-in-any-structured-set-of-characters
+  - http://www.engr.mun.ca/~theo/Misc/exp_parsing.htm
+  - http://www.getinterface.com/support/developers-blog/entry/parsing-expression-grammars-vs-regular-ex/
+  - http://www.networkworld.com/article/2955126/software/genetic-programming-meets-regular-expressions.html
+  - http://www.playwithlua.com/?p=66
+  - http://www.playwithlua.com/?p=70
+  - http://www.reddit.com/r/programming/comments/2g1mww/the_marpa_parser/
+  - http://www.reddit.com/r/programming/comments/3h8dsn/marpa_is_a_parsing_algorithm/
+  - http://www.semdesigns.com/Products/DMS/LifeAfterParsing.html?Home=DMSToolkit
+  - http://www.sqlite.org/src/doc/trunk/doc/lemon.html
+  - http://www.thesoftwaredevelopmentlifecycle.com/an-almost-type-safe-library-for-linear-algebra/
+  - https://www.abubalay.com/blog/2018/04/08/recursive-ascent
+  - https://news.ycombinator.com/item?id=16788288
+  - http://duriansoftware.com/joe/Constructing-human-grade-parsers.html
+  - https://jeffreykegler.github.io/personal/timeline_v3
+  - https://lukasatkinson.de/2015/marpa-overview/
+  - https://omar.yt/an-introduction-to-syntax.cr
+  - http://semantic-domain.blogspot.com/2018/07/a-typed-algebraic-approach-to-parsing.html
+  - http://docs.racket-lang.org/peg/index.html
+  - https://engineering.desmos.com/articles/pratt-parser/
+  - https://jeffreykegler.github.io/Ocean-of-Awareness-blog/individual/2015/03/peg.html
+  - https://pdos.csail.mit.edu/~baford/packrat/thesis/
+  - http://theorangeduck.com/page/you-could-have-invented-parser-combinators
+  - https://jeremykun.com/2019/04/20/a-working-mathematicians-guide-to-parsing/
+  - https://lobste.rs/s/3pdhus/left_recursion_recursive_descent
+  - https://soft-dev.org/pubs/html/diekmann_tratt__dont_panic/
+  - https://marijnhaverbeke.nl/blog/lezer.html
+  - http://blogs.perl.org/users/jeffrey_kegler/2014/09/parsing-a-timeline.html
+  - https://tratt.net/laurie/blog/entries/automatic_syntax_error_recovery.html
+  - https://sqlite.org/src/doc/trunk/doc/lemon.html
+  - https://tiarkrompf.github.io/notes/?/just-write-the-parser/
+  - https://rahul.gopinath.org/post/2021/02/06/earley-parsing/
+  - https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
+  - https://neilmadden.blog/2020/11/25/parse-dont-type-check/
+-->
+<h2 id="language-server-protocol"><a class="header" href="#language-server-protocol">Language Server Protocol</a></h2>
+<ul>
+<li><a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a></li>
+<li><a href="https://github.com/sourcegraph/emacs-lsp">GitHub - sourcegraph/emacs-lsp: LSP support for Emacs</a></li>
+<li>2017/02 <a href="https://tomassetti.me/what-is-the-language-server-protocol/">Why You Should Know the Language Server Protocol</a></li>
+<li>2017/04 <a href="https://tomassetti.me/language-server-dot-visual-studio/">Language Server Protocol: A Language Server For DOT With Visual Studio Code</a></li>
+<li>2018/05 <a href="https://blog.logrocket.com/how-to-use-the-language-server-protocol-to-extending-a-client-764da0e7863c">Extending a client with the language server protocol</a></li>
+<li>2019/03 <a href="https://www.reddit.com/r/vim/comments/b3yzq4/a_lsp_client_maintainers_view_of_the_lsp_protocol/">r/ A LSP client maintainer's view of the LSP protocol.</a></li>
+</ul>
+<h2 id="incremental-compilation"><a class="header" href="#incremental-compilation">Incremental Compilation</a></h2>
+<!--
+- TESINA
+  - https://sluongng.hashnode.dev/bazel-caching-explained-pt-1-how-bazel-works
+  - https://rust-analyzer.github.io/blog/2020/07/20/three-architectures-for-responsive-ide.html
+  - https://github.com/janestreet/incremental/blob/master/src/incremental_intf.ml
+  - https://blog.janestreet.com/introducing-incremental/
+  - https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/guide.md
+  - https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/dev/architecture.md
+  - https://rust-analyzer.github.io/blog/2020/04/20/first-release.html
+  - https://news.ycombinator.com/item?id=22995466
+  - https://blog.logrocket.com/intro-to-rust-analyzer/
+  - https://ferrous-systems.com/blog/rust-analyzer-2019/
+  - https://www.youtube.com/watch?v=N6b44kMS6OM&t=1709s
+  - https://www.youtube.com/watch?v=_muY4HjSqVw&t=1s
+  - https://www.youtube.com/watch?v=i_IhACacPRY
+  - https://www.youtube.com/watch?v=vrnNvAAoQFk
+  - https://www.youtube.com/playlist?list=PL85XCvVPmGQhOL-J2Ng7qlPvDVOwYpGTN
+  - https://www.youtube.com/watch?v=alD0l_8W9Sc&t=6s
+  - https://gist.github.com/nikomatsakis/0bd497f157a40776216f37d8bbec25cd
+  - https://rustc-dev-guide.rust-lang.org/salsa.html
+  - https://www.youtube.com/watch?v=WxyyJyB_Ssc&t=330s
+  - https://www.youtube.com/watch?v=FKK2ZC1JdDc&t=38s
+  - https://drive.google.com/file/d/16p-V0BochNYPbvMMFIOrogJGg-TdkeEh/view
+  - https://www.youtube.com/watch?v=sqj_Xp7x-7w
+  - https://www.youtube.com/channel/UCVnn5LPz8TNgNV5aqlCt6aQ/featured
+  - https://www.youtube.com/watch?v=R77XYOtuomE
+  - https://www.youtube.com/watch?v=iobC5yGRWoo
+  - https://www.youtube.com/playlist?list=PLhb66M_x9UmrqXhQuIpWC5VgTdrGxMx3y
+  - https://jondot.medium.com/8-steps-for-troubleshooting-your-rust-build-times-2ffc965fd13e
+  - https://fuchsia.dev/fuchsia-src/development/languages/rust/editors
+  - https://github.com/rust-lang/rustc-dev-guide/pull/1295
+  - https://www.youtube.com/watch?v=H54VDCuT0J0
+  - https://www.youtube.com/watch?v=_agDeiWek8w
+  - https://www.youtube.com/watch?v=i5KdU0ieb_A&t=146s
+  - https://www.youtube.com/watch?v=o896qSpTigg
+  - https://github.com/topics/incremental-computation
+  - http://www.schemeworkshop.org/2016/schemeworkshop2016-miniadapton.pdf
+  - http://www.schemeworkshop.org/2016/mini-adapton-presentation.pdf
+  - https://github.com/fisherdj/miniAdapton
+  - https://arxiv.org/abs/1609.05337
+  - https://icfp16.sigplan.org/details/scheme-2016-papers/8/miniAdapton-A-Minimal-Implementation-of-Incremental-Computation-in-Scheme
+  - https://arxiv.org/abs/1609.05337
+  - http://webyrd.net/
+  - https://www.youtube.com/watch?v=bmpu1N2yf-k
+  - https://www.youtube.com/watch?v=zsL2YxMXaKw
+  - https://www.youtube.com/watch?v=DSuX-LIAU-I
+  - https://www.youtube.com/watch?v=OqryZNwwR-U
+  - https://www.youtube.com/watch?v=R3xX37RGJKE
+  - https://www.youtube.com/watch?v=CtmIXaqIyeA
+  - https://www.youtube.com/watch?v=0uzrH2Ee494&t=623s
+  - https://www.microsoft.com/en-us/research/publication/bounded-incremental-computation/
+  - https://github.com/brenoafb/incremental-computation
+  - http://adapton.org/
+  - http://matthewhammer.org/adapton/adapton-pldi2014.pdf
+  - https://arxiv.org/abs/1503.07792
+  - https://github.com/adapton/adapton.rust
+  - https://docs.rs/adapton/0.3.31/adapton/#programming-model
+  - https://docs.rs/adapton/latest/adapton/
+  - http://venge.net/graydon/talks/intro-talk-2.pdf
+  - https://github.com/salsa-rs/salsa/issues
+  - https://salsa-rs.netlify.app/plumbing/cycles.html
+  - https://www.youtube.com/watch?v=Gdx6by6tcvw
+  - https://www.youtube.com/watch?v=aftdOFuVU1o
+  - https://sorbet.org/
+  - https://hackmd.io/duaehimPSdqQajoVhbQHtw
+  - https://github.com/sorbet/sorbet/blob/master/core/GlobalState.h#L295-L299
+  - https://rubykaigi.org/2020/presentations/DarkDimius.html
+  - https://github.com/DarkDimius?after=Y3Vyc29yOnYyOpK5MjAxNi0wMS0yOFQwOTo1NDo1OC0wMzowMM4DA9Um&tab=repositories
+  - https://d-d.me/site/presentations/
+  - https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems.pdf
+  - https://www.notamonadtutorial.com/interview-with-norias-creator-a-promising-dataflow-database-implemented-in-rust/
+  - https://www.usenix.org/conference/osdi18/presentation/gjengset
+  - https://corecursive.com/030-rethinking-databases-with-jon-gjengset/
+  - https://www.csail.mit.edu/research/noria-new-data-flow-system-web-applications
+  - https://pdos.csail.mit.edu/papers/noria:osdi18.pdf
+  - https://github.com/mit-pdos/noria
+  - https://docs.rs/noria/0.6.1/noria/
+  - https://www.microsoft.com/en-us/research/publication/differential-dataflow/
+  - https://timelydataflow.github.io/differential-dataflow/
+  - https://cs.uwaterloo.ca/~ssalihog/courses/slides/Chathura-Differential-Dataflow.pdf
+  - https://github.com/TimelyDataflow/differential-dataflow
+  - http://michaelisard.com/pubs/differentialdataflow.pdf
+  - http://www.frankmcsherry.org/differential/dataflow/2015/04/07/differential.html
+  - https://github.com/suptalentdev/differential-dataflow
+  - https://www.scattered-thoughts.net/writing/why-isnt-differential-dataflow-more-popular/
+  - https://news.ycombinator.com/item?id=24837031
+  - https://www.youtube.com/watch?v=s19G6n0UjsM&list=PLqbS7AVVErFi-YFrJ9IRwFFbzHzuYy-CN&index=3&t=2639s
+  - https://www.youtube.com/watch?v=GctxvSPIfr8
+  - https://salsa-rs.github.io/salsa/
+  - https://rustc-dev-guide.rust-lang.org/salsa.html
+  - https://github.com/salsa-rs/salsa
+  - https://github.com/salsa-rs/salsa/blob/master/examples/hello_world/main.rs
+  - https://github.com/rust-lang/rust/issues/48547
+  - https://smallcultfollowing.com/babysteps/blog/2020/04/09/libraryification/
+  - https://blog.rust-lang.org/2022/02/24/Rust-1.59.0.html
+  - https://blog.rust-lang.org/2022/02/21/rust-analyzer-joins-rust-org.html
+  - http://skiplang.com/blog/2017/01/04/how-memoization-works.html
+  - http://skiplang.com/docs/tutorial.html
+  - http://skiplang.com/
+  - https://news.ycombinator.com/item?id=18077612
+  - https://github.com/skiplang/skip
+  - https://github.com/lark-exploration/lark
+  - https://hackmd.io/@michaelwoerister/SJf9VU1-5
+  - https://hackmd.io/@michaelwoerister/SJRXZBVQ5#2-Switching-to-a-more-ergonomic-query-based-system
+  - https://www.tweag.io/blog/2022-06-23-haskell-module/
+  - https://raw.githubusercontent.com/nikomatsakis/salsa/slot-no-more/book/src/derived-query-read.drawio.svg
+  - https://github.com/salsa-rs/salsa/pull/296
+  - https://hackmd.io/6x9f6mavTRS2imfG96tP5A
+  - https://hackmd.io/NCnpdfm0T3a2pE_rymnmcA
+  - https://internals.rust-lang.org/t/lark-compiler-experiment/9267
+  - https://docs.mun-lang.org/ch04-01-salsa.html
+  - https://sluongng.hashnode.dev/bazel-caching-explained-pt-2-bazel-in-memory-cache
+  - https://shashank.bearblog.dev/why-bazel/
+  - https://tably.com/blog/seamless-and-collaborative
+  - https://tably.com/blog/high-performance-analytics
+- COMPILERS
+  - [[http://c9x.me/art/gthreads/intro.html][Green threads explained (intro)]]
+  - [[http://c9x.me/compile/][QBE - Compiler Backend]]
+  - https://lobste.rs/s/yqakzf/qbe_1_0
+  - [[http://c9x.me/compile/bib/][The Compiler Writer Resource Page]]
+  - [[http://c9x.me/gthreads/intro.html][Green threads explained (intro)]]
+  - https://c9x.me/compile/doc/il.html
+  - https://c9x.me/compile/doc/llvm.html
+  - https://c9x.me/compile/bib/
+  - https://c9x.me/compile/doc/abi.html
+  - https://c9x.me/compile/ideas.txt
+  - http://pharr.org/matt/blog/2018/04/30/ispc-all.html
+  - http://www.vnev.me/implementing-a-programming-language-in-c-part-1/
+  - http://www.vnev.me/implementing-a-programming-language-in-c-part-2/
+  - http://www.reddit.com/r/programming/comments/2lr37j/compiler_implementation_live_coding_jonathan_blow/
+  - [[http://www.holub.com/software/compiler.design.in.c.html][Compiler Design in C – Allen Holub]]
+  - [[http://www.bayfronttechnologies.com/mc_tutorial.html][Tutorial: Metacompilers Part 1]]
+  - [[http://loup-vaillant.fr/projects/metacompilers/][Metacompilers]]
+  - https://www.williamjbowman.com/blog/2017/03/24/what-even-is-compiler-correctness/
+  - [[https://backtrace.io/blog/compile-once-debug-twice-picking-a-compiler-for-debuggability-1of3/][Compile Once Debug Twice: Picking a Compiler for Debuggability (1/3)]]
+  - [[http://github.com/combinatorylogic/clike][GitHub - combinatorylogic/clike: A simple C-like language compiler with an extensible syntax and typed macros support]]
+  - [[http://mortoray.com/2014/10/09/what-a-compiler-does-symbol-resolution/][What a compiler does: symbol resolution – Musing Mortoray]]
+  - [[http://mortoray.com/2014/10/30/what-a-compiler-does-type-conversion-basics/][What a compiler does: type conversion basics – Musing Mortoray]]
+  - [[https://nicoleorchard.com/blog/compilers][An Intro to Compilers]]
+  - https://norasandler.com/2017/11/29/Write-a-Compiler.html
+  - https://norasandler.com/2017/12/05/Write-a-Compiler-2.html
+  - https://norasandler.com/2017/12/15/Write-a-Compiler-3.html
+  - https://www.benjamin.pizza/posts/2017-11-13-recursion-without-recursion.html
+  - https://github.com/aalhour/awesome-compilers
+  - http://benignbemine.github.io/2015/07/19/es6-tail-calls/
+  - http://beza1e1.tuxen.de/articles/jump_threading.html
+  - http://blog.ezyang.com/2013/05/the-ast-typing-problem/
+  - http://blog.regehr.org/archives/1161
+  - http://combinatorylogic.wordpress.com/
+  - http://docs.google.com/document/d/1szwabPJJc4J-igUZU4ZKprOrNRNJug2JPD8OYi3i1K0/edit
+  - http://eli.thegreenplace.net/2013/11/05/how-to-jit-an-introduction
+  - http://elm-lang.org/blog/compiler-errors-for-humans
+  - http://gcc.gnu.org/wiki/ListOfCompilerBooks
+  - http://github.com/bbu/simple-interpreter
+  - http://github.com/j-baker/l1c
+  - http://kristerw.blogspot.com.ar/2016/02/how-undefined-signed-overflow-enables.html
+  - http://lambda-nights.com/
+  - http://news.ycombinator.com/item?id=8610704
+  - http://nickdesaulniers.github.io/blog/2015/05/25/interpreter-compiler-jit/
+  - http://osa1.net/posts/2015-08-09-sufficiently-smart-compiler.html
+  - http://pp.ipd.kit.edu/firm/Index
+  - http://recc.robertelder.org/
+  - http://scifac.ru.ac.za/compilers/index.htm
+  - http://superoptimization.org/wiki/Superoptimizing_Compilers
+  - http://webkit.org/blog/5852/introducing-the-b3-jit-compiler/
+  - http://wingolog.org/archives/2015/07/28/loop-optimizations-in-guile
+  - http://www.blueraja.com/blog/285/branchless-conditionals-compiler-optimization-technique
+  - http://www.cs.uoregon.edu/research/summerschool/summer12/curriculum.html
+  - http://www.embeddedrelated.com/showarticle/813.php
+  - http://www.lighterra.com/papers/graphcoloring/
+  - http://www.philipreames.com/Blog/2016/01/03/a-perspective-on-friendly-c/
+  - http://www.wilfred.me.uk/blog/2014/08/27/baby-steps-to-a-c-compiler/
+  - https://ayende.com/blog/177409/goto-based-optimizations?Key=3395f435-4ea4-4ff8-aafe-RED
+  - https://blog.regehr.org/archives/1565
+  - https://www.tedinski.com/2018/03/13/how-compilers-are-designed.html
+  - https://gist.github.com/teryror/97a96e02a7766c54bef54b509a945b6c
+  - https://dbp.io/essays/2018-04-19-how-to-prove-a-compiler-fully-abstract.html
+  - https://increment.com/programming-languages/crash-course-in-compilers/
+  - https://medium.com/@prathamesh1615/adding-peephole-optimization-to-gcc-89c329dd27b3
+  - https://compilerbook.com/
+  - http://notes.eatonphil.com/compiling-dynamic-programming-languages.html
+  - https://www.ps.uni-saarland.de/~sdschn/LVC.html
+  - http://godbolt.org/
+  - https://dendibakh.github.io/blog/2019/03/27/Machine-code-layout-optimizatoins
+  - https://lemire.me/blog/2019/04/12/why-are-unrolled-loops-faster/
+  - https://c9x.me/compile/
+  - https://c9x.me/yacc/
+  - https://crawshaw.io/blog/fast-compilers
+  - https://blog.felixangell.com/compilers-brief-and-brisk
+  - https://www.reddit.com/r/Compilers/comments/amd2p4/what_is_the_actual_benefit_of_using_ssa_to/
+  - https://codon.com/compilers-for-free
+  - https://blog.felixangell.com/compilers-brief-and-brisk
+  - https://xmonader.github.io/letsbuildacompiler-pretty/
+  - https://github.com/xmonader/letsbuildacompiler-pretty
+  - https://blog.yossarian.net/2019/05/18/Basic-disassembly-with-libopcodes
+  - http://notes.eatonphil.com/tail-call-elimination.html
+  - https://lwn.net/Articles/793253/
+  - https://news.ycombinator.com/item?id=20456386
+  - https://generalproblem.net/lets_build_a_compiler/01-starting-out/
+  - https://github.com/AviKKi/The-Dragon-Book
+  - https://news.ycombinator.com/item?id=22764811
+  - https://increment.com/programming-languages/crash-course-in-compilers/
+  - https://humanreadablemag.com/issues/2/articles/theres-a-mathematician-in-your-compiler
+  - https://belkadan.com/blog/2016/05/So-You-Want-To-Be-A-Compiler-Wizard/
+  - https://technomancy.us/192
+  - https://leonardschuetz.ch/blog/200908_nanboxing
+  - https://blogs.unity3d.com/2020/09/07/enhanced-aliasing-with-burst/
+  - https://www.geeksforgeeks.org/code-optimization-in-compiler-design/
+  - https://tratt.net/laurie/blog/entries/what_challenges_and_trade_offs_do_optimising_compilers_face.html
+  - https://news.ycombinator.com/item?id=24913959
+  - https://keleshev.com/one-pass-compiler-primer
+  - https://web.eecs.utk.edu/~azh/blog/teenytinycompiler1.html
+  - https://hassamuddin.com/blog/reg-alloc/
+  - https://github.com/zakirullin/tiny-compiler
+  - https://www.reddit.com/r/Compilers/comments/iv8b0i/i_created_an_intermediate_representation_language/
+  - https://github.com/RobbeDGreef/carbon-ir
+  - https://github.com/rui314/chibicc
+  - https://lambda.uta.edu/cse5317/notes/short.html;
+  - https://eklitzke.org/how-tail-call-optimization-works
+  - https://arzg.github.io/lang/
+  - https://www.reddit.com/r/Compilers/comments/v8fwlg/lr0_parser_theory_and_implementation/
+  - https://developers.redhat.com/articles/2022/04/12/state-static-analysis-gcc-12-compiler
+  - https://comby.dev/blog/2022/04/11/comby-decomposer-compiler-fuzzing
+  - https://www.awelm.com/posts/evil-compiler/
+  - https://lobste.rs/s/f8oxju/copy_patch_compilation_fast_compilation
+  - https://www.reddit.com/r/Compilers/comments/u8vzsy/selfhosting_compilers/
+  - https://www.reddit.com/r/Compilers/comments/uklrmp/update_extended_basic_blocks_superblocks/
+  - https://cacm.acm.org/magazines/2022/2/258231-abstractions-their-algorithms-and-their-compilers/fulltext
+  - https://benhoyt.com/writings/goawk-compiler-vm/
+  - https://medium.com/@predrag.gruevski/compiler-adventures-part-1-no-op-instructions-c084358c7864
+  - https://elm-lang.org/news/compilers-as-assistants
+  - https://www.reddit.com/r/Compilers/comments/sxgvxo/good_books_to_start_writing_compilers/
+  - https://grsecurity.net/Compilers_The_Old_New_Security_Frontier_BlueHat_IL_2022.pdf
+  - https://www.reddit.com/r/ProgrammingLanguages/comments/up206c/stack_machines_for_compilers/
+  - https://lobste.rs/s/a0qwcf/compiler_explorer
+  - https://www.huy.rocks/everyday/04-01-2022-typescript-how-the-compiler-compiles
+    - https://news.ycombinator.com/item?id=30974581
+- COMPILERS / MACHINE LEARNING
+  - https://era.ed.ac.uk/handle/1842/36866
+  - https://news.ycombinator.com/item?id=24339697
+  - https://ai.googleblog.com/2022/07/mlgo-machine-learning-framework-for.html
+- C WITH MACROS
+  - http://250bpm.com/blog:56
+  - http://github.com/eudoxia0/cmacro
+  - http://github.com/eudoxia0/corvus
+  - http://github.com/eudoxia0/magma
+- FUTURE
+  - https://tttthreads.com/thread/927593460642615296
+  - https://blog.isomorf.io/the-economics-of-semantic-coding-7e8fd1b421e6
+  - http://blog.comealive.io/Working-Toward-Bret-Victors-Learnable-Programming/
+  - http://coh.io/post/126903335445/its-text-editor-oclock
+  - http://github.com/Azeirah/A-new-wave-of-programming
+  - http://github.com/jaredly/treed
+  - http://github.com/martanne/vis
+  - http://github.com/shurcooL/Conception-go
+  - http://groups.google.com/forum/#!topic/comp.compilers/fJHahKDCNGg
+  - http://incidentalcomplexity.com/
+  - http://incidentalcomplexity.com/2014/10/16/retrospective/
+  - http://joelburget.com/plaintext/
+  - http://kevinmahoney.co.uk/articles/structural-editor-prototype/
+  - http://leoeditor.com/
+  - http://lispm.de/symbolics-lisp-machine-ergonomics
+  - http://news.ycombinator.com/item?id=8907056
+  - http://peaker.github.io/lamdu/
+  - http://robmoff.at/2016/01/13/all-about-eve/
+  - http://thecodist.com/article/after-3-decades-in-programming-looking-at-the-next-3-decades
+  - http://unisonweb.org/2015-05-07/about.html
+  - http://worrydream.com/cdg/ResearchAgenda-v0.19.pdf
+  - http://www.chris-granger.com/2014/03/27/toward-a-better-programming/
+  - http://www.chris-granger.com/2014/10/01/beyond-light-table/
+  - http://www.chris-granger.com/2015/08/17/version-0/
+  - http://www.destroyallsoftware.com/talks/a-whole-new-world?repost=true
+  - http://www.erasmatazz.com/library/the-journal-of-computer/jcgd-volume-6/how-to-build-an-inverse.html
+  - http://www.greenfoot.org/frames/#overview
+  - http://www.linkedin.com/pulse/editor-wars-why-emacs-vi-present-steep-learning-curve-bauernberger
+  - https://the-composition.com/the-origins-of-opera-and-the-future-of-programming-bcdaf8fbe960?gi=e73e14160f53
+  - https://news.ycombinator.com/item?id=16736913
+  - http://futureofcoding.org/essays/eve/
+  - http://willcrichton.net/notes/gradual-programming/
+  - https://blogs.msdn.microsoft.com/visualstudio/2018/05/07/introducing-visual-studio-intellicode/
+  - https://thesephist.com/posts/programming-environment/
+  - https://tinyletter.com/marianoguerra/letters/future-of-coding-weekly-2020-08-week-3
+  - https://blog.robenkleene.com/2020/09/21/the-era-of-visual-studio-code/
+  - https://reasonablypolymorphic.com/blog/towards-tactics/index.html
+- INTERPRETERS
+  - http://ruslanspivak.com/lsbasi-part1/
+  - http://ruslanspivak.com/lsbasi-part2/
+  - http://ruslanspivak.com/lsbasi-part3/
+  - http://wingolog.org/archives/2016/01/11/the-half-strap-self-hosting-and-guile
+  - https://github.com/marciok/Mu#writing-your-own-programming-language
+  - http://beza1e1.tuxen.de/object_oriented_lambda_calculus_eval.html
+  - [[https://francisstokes.wordpress.com/2017/08/16/programming-language-from-scratch/][PROGRAMMING LANGUAGE FROM SCRATCH: 3 EASY STEPS TO AN INTERPRETER]]
+- IMMUTABILITY
+  - https://hackernoon.com/thinking-immutably-when-slammed-with-a-ton-of-new-feature-requests-7d4cbef07eaa
+- K FRAMEWORK
+  - http://www.kframework.org/index.php/Main_Page
+- METAPROGRAMMING
+  - http://aphyr.com/posts/305-clojure-from-the-ground-up-macros
+  - http://blog.biicode.com/tiny-metaprogramming-library/
+  - http://damienradtke.com/using-and-abusing-macros/
+  - http://fgiesen.wordpress.com/2012/04/08/metaprogramming-for-madmen/
+  - http://github.com/iamwilhelm/prolly
+  - http://lists.warhead.org.uk/pipermail/iwe/2005-July/000130.html#
+  - http://malisper.me/
+  - http://marfisc.wordpress.com/2015/04/29/using-d-templates-for-gamedev/
+  - http://news.ycombinator.com/item?id=10029784
+  - http://stefan-marr.de/2015/04/zero-overhead-metaprogramming/
+  - http://thenewcircle.com/s/post/1582/macros_vs_types_eugene_burmako_lars_hupel_video
+  - http://tratt.net/laurie/blog/entries/when_are_macros_useful
+  - http://www.gigamonkeys.com/book/macros-defining-your-own.html#the-story-of-mac-a-just-so-story
+  - http://www.greghendershott.com/fear-of-macros/
+  - http://www.greghendershott.com/fear-of-macros/index.html
+  - http://www.jetbrains.com/mps/
+  - http://www.rascal-mpl.org/
+  - http://www.wilfred.me.uk/blog/2014/09/15/comparative-macrology/
+  - http://xen.garden/wp/?p=25
+  - http://stevelosh.com/blog/2018/05/fun-with-macros-gathering/
+  - https://medium.com/@vladimirkozhaev/taking-the-complex-and-making-it-simple-what-is-dsl-and-why-you-need-a-new-programming-language-dc96ab09d1d5
+  - https://medium.com/@MartinCracauer/static-type-checking-in-the-programmable-programming-language-lisp-79bb79eb068a
+  - https://devblogs.microsoft.com/oldnewthing/20200528-00/?p=103804
+- PROBABILISTIC PROGRAMMING
+  - http://dippl.org/
+  - http://probabilistic-programming.org/wiki/Home
+- REGEX
+  - http://www.drregex.com/2017/11/match-nested-brackets-with-regex-new.html
+  - http://www.loggly.com/blog/five-invaluable-techniques-to-improve-regex-performance/
+  - https://nickdrane.com/build-your-own-regex/
+  - http://www.loggly.com/blog/regexes-the-bad-better-best/
+  - http://www.rexegg.com/regex-best-trick.html
+  - https://dev.to/vi3k6i5/regex-was-taking-5-days-to-run-so-i-built-a-tool-that-did-it-in-15-minutes-c98
+  - https://medium.com/@jitbit/cool-regex-performance-hacks-i-bumped-into-83c9fdd1976b
+  - https://dev.to/alainakafkes/exploring-the-linguistics-behind-regular-expressions-bb4
+  - https://www.jitbit.com/alexblog/272-cool-regex-performance-hacks-i-bumped-into/
+  - https://dassur.ma/things/regexp-quote/
+  - https://www.tutorialdocs.com/article/regex-trap.html
+  - https://swtch.com/~rsc/regexp/regexp1.html
+  - https://swtch.com/~rsc/regexp/
+  - https://swtch.com/~rsc/
+  - http://www.haskellforall.com/2020/07/the-golden-rule-of-software-quality.html
+  - www.rexegg.com/regex-disambiguation.html#namedcapture
+  - https://v8.dev/blog/non-backtracking-regexp
+- FUNCTIONAL REACTIVE PROGRAMMING
+  - [[http://zork.net/~st/jottings/FRP_in_Python.html][Exploring Functional Reactive Programming in Python -    Screwtape's Notepad]]
+  - [[http://www.haskell.org/haskellwiki/Functional_Reactive_Programming][Functional Reactive Programming - HaskellWiki]]
+  - [[http://people.seas.harvard.edu/~chong/abstracts/CzaplickiC13.html][Asynchronous Functional Reactive Programming for GUIs]]
+  - [[http://efasckenoth.wordpress.com/2013/04/06/functional-reactive-user-interfaces-part-i/][Functional Reactive User Interfaces Part I | Signal to Noise]]
+  - https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems
+  - https://jaxenter.com/jax-magazine-october-2016-reactive-programming-with-scala-lagom-spark-akka-and-play-129787.html
+  - http://acko.net/blog/shadow-dom/#hackernews
+  - http://algoholic.eu/qnodeseditor-qt-nodesports-based-data-processing-flow-editor/
+  - http://blog.knoldus.com/2014/08/20/knolx-session-reactive-programming-using-scala-and-akka/
+  - http://blog.lacebark.io/2014/09/15/structuring-reactive-programs/
+  - http://blog.paralleluniverse.co/2014/02/20/reactive/
+  - http://blog.risingstack.com/functional-ui-and-components-as-higher-order-functions/
+  - http://blog.webrunners.de/series/reactive-extensions/
+  - http://blogs.janestreet.com/breaking-down-frp/
+  - http://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote-Duality
+  - http://futurice.com/blog/reactive-mvc-and-the-virtual-dom
+  - http://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+  - http://github.com/jamesmacaulay/zelkova
+  - http://github.com/kenwheeler/mcfly#mcfly
+  - http://github.com/kriskowal/gtor
+  - http://github.com/schlangster/cpp.react
+  - http://goto.ucsd.edu/reflex/
+  - http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome
+  - http://kukuruku.co/hub/java/reactive-actors-in-java
+  - http://medium.com/reactive-programming/what-is-reactive-programming-bc9fa7f4a7fc
+  - http://omniscientjs.github.io/guides/01-simpler-ui-reasoning-with-unidirectional/
+  - http://rx.codeplex.com/
+  - http://semantic-domain.blogspot.com.ar/2015/07/how-to-implement-spreadsheet.html
+  - http://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming
+  - http://venkateshcm.com/2014/04/Reactor-Pattern-Part-4-Write-Sequential-Non-Blocking-IO-Code-With-Fibers-In-NodeJS/
+  - http://www.coursera.org/course/reactive?from_restricted_preview=1&course_id=971465&r=https%3A%2F%2Fclass.coursera.org%2Freactive-001
+  - http://www.engijs.org/help/introduction.html
+  - http://www.felienne.com/archives/3724
+  - http://www.haskellcast.com/episode/009-conal-elliott-on-frp-and-denotational-design/
+  - http://www.innoq.com/de/blog/reactivity-whats-in-a-name/
+  - http://www.techtalkshub.com/reactive-design-language-paradigms/
+  - https://wiki.haskell.org/Functional_Reactive_Programming
+- REACTIVE / DATAFLOW
+  - http://blog.acolyer.org/2015/08/18/the-dataflow-model-a-practical-approach-to-balancing-correctness-latency-and-cost-in-massive-scale-unbounded-out-of-order-data-processing/
+  - https://github.com/fractalide/fractalide
+  - http://github.com/remis-thoughts/calcgraph
+  - http://radar.oreilly.com/2015/08/the-world-beyond-batch-streaming-101.html
+  - http://www.macs.hw.ac.uk/~rs46/posts/2015-09-07-distributed-functional-futures.html
+  - http://www.mattkeeter.com/projects/graph/
+  - https://noflojs.org/documentation/
+  - https://en.wikipedia.org/wiki/Flow-based_programming
+  - https://flowhub.io/ide/
+  - http://bergie.iki.fi/blog/category/fbp/
+  - https://fgiesen.wordpress.com/2018/03/05/a-whirlwind-introduction-to-dataflow-graphs/
+  - https://blog.acolyer.org/2018/06/29/debugging-data-flows-in-reactive-programs/
+  - http://www.jpaulmorrison.com/fbp/
+- REACTIVE / DEKU
+  - http://news.ycombinator.com/item?id=9528531
+  - http://segment.com/blog/deku-our-functional-alternative-to-react/
+- REACTIVE / FLUX
+  - http://danmaz74.me/2015/07/27/flux-architecture-visual-cheatsheet/
+  - http://facebook.github.io/flux/docs/overview.html#content
+  - http://facebook.github.io/react/blog/2014/09/24/testing-flux-applications.html
+  - http://facebook.github.io/react/docs/flux-overview.html
+  - http://github.com/facebook/flux
+  - http://medium.com/@cassiozen/flux-cargo-culting-3cae9ff27c0c
+  - http://medium.com/@dan_abramov/the-case-for-flux-379b7d1982c6
+  - http://medium.com/brigade-engineering/what-is-the-flux-application-architecture-b57ebca85b9e
+  - http://ryanclark.me/getting-started-with-flux/
+- REACTIVE / FRP
+  - http://elm-lang.org/learn/What-is-FRP.elm
+  - http://en.wikipedia.org/wiki/Functional_reactive_programming
+  - http://news.ycombinator.com/item?id=9942768
+  - http://www.reddit.com/r/haskell/comments/2upcsv/conal_elliotts_pushpull_frp/
+  - http://joneisen.me/talk-frelp-ui
+  - http://vindum.io/blog/lets-reinvent-frp/
+- REACTIVE / OM
+  - http://blog.circleci.com/why-we-use-om-and-why-were-excited-for-om-next/
+  - http://diogo149.github.io/2014/10/19/om-no/
+  - http://josf.info/blog/2014/09/18/first-ompressions-a-conceptual-look-at-om/
+  - http://justin.harmonize.fm/development/2014/08/05/om-and-flux.html
+- REACTIVE / REACT
+  - https://medium.freecodecamp.com/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.kjw3okwvp
+  - https://daveceddia.com/visual-guide-to-state-in-react/
+  - http://aeflash.com/2015-02/react-tips-and-best-practices.html
+  - http://blog.500tech.com/is-reactjs-fast/
+  - http://blog.siftscience.com/blog/2015/4/6/d-threeact-how-sift-science-made-d3-react-besties
+  - http://blog.siftscience.com/blog/2015/best-practices-for-building-large-react-applications
+  - http://camjackson.net/post/9-things-every-reactjs-beginner-should-know
+  - http://docs.google.com/presentation/d/1afMLTCpRxhJpurQ97VBHCZkLbR1TEsRnd3yyxuSQ5YY/preview?sle=true&slide=id.p
+  - http://facebook.github.io/react/
+  - http://facebook.github.io/react/docs/getting-started.html
+  - http://frankiesardo.github.io/blog/2015/01/06/lost-in-react-a-logbook/
+  - http://fraserxu.me/2015/06/03/react-data-visualization/
+  - http://futurice.com/blog/reactive-mvc-and-the-virtual-dom/
+  - http://github.com/enaqx/awesome-react
+  - http://github.com/facebook/react
+  - http://github.com/scotch-io/react-tweets
+  - http://joshbassett.info/2014/reactive-uis-with-react-and-bacon/
+  - http://medium.com/@ericflo/facebook-just-taught-us-all-how-to-build-websites-51f1e7e996f2
+  - http://prezi.com/nnpdilbld-aj/untitled-prezi/?utm_campaign=share&utm_medium=copy
+  - http://scotch.io/tutorials/javascript/learning-react-getting-started-and-concepts
+  - http://scotch.io/tutorials/learning-react-getting-started-and-concepts
+  - http://staltz.com/dont-react/#/
+  - http://staltz.com/dont-react/#/3
+  - http://swarmjs.github.io/articles/todomvc/
+  - http://www.garysieling.com/blog/trace-logging-react
+  - http://www.normative.com/react-and-why-its-awesome/
+  - http://www.techsonian.net/2014/09/from-backbone-to-react-our-experience-scaling-a-web-application/
+  - https://udilia.com/courses/learn-react-by-building-a-web-app
+  - https://learnreact.design/2020/03/31/react-mental-models-working-with-input
+  - https://bitsofco.de/what-i-wish-i-knew-about-react/
+- STATIC ANALYSIS
+  - https://nim-lang.org/blog/2020/06/08/static-analysis.html
+  - http://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis
+  - http://spinroot.com/static/
+  - http://testingfaqs.org/t-static.html
+  - http://blog.plover.com/prog/Hoare-logic.html
+  - http://randomascii.wordpress.com/2013/06/24/two-years-and-thousands-of-bugs-of-static-analysis/
+  - http://www.viva64.com/en/b/0335/
+  - http://www.viva64.com/en/b/0336/
+  - https://cacm.acm.org/magazines/2018/4/226371-lessons-from-building-static-analysis-tools-at-google/fulltext
+  - https://news.ycombinator.com/item?id=16954877
+  - https://dzone.com/articles/development-of-a-new-static-analyzer-pvs-studio-ja
+  - http://compcert.inria.fr/verasco/
+  - http://www.astree.ens.fr/
+  - https://medium.com/@a.lurie_78598/using-graph-theory-to-decide-where-to-start-reading-source-code-74a1e2ddf72
+  - https://cacm.acm.org/magazines/2010/2/69354-a-few-billion-lines-of-code-later/fulltext
+  - https://steveire.wordpress.com/2019/04/30/the-future-of-ast-matching-refactoring-tools-eurollvm-and-accu/
+  - https://cacm.acm.org/magazines/2010/2/69354-a-few-billion-lines-of-code-later/fulltext
+  - https://deepsource.io/blog/introduction-static-code-analysis/
+- STATIC ANALYSIS / C++
+  - http://cpphints.com/
+- STATIC ANALYSIS / C++ / FBINFER
+  - http://fbinfer.com/docs/hello-world.html#hello-world-c
+  - http://fbinfer.com/docs/getting-started.html
+- STATIC ANALYSIS / C++ / NDEPEND
+  - http://blog.tdwright.co.uk/2017/12/20/static-analysis-with-ndepend-a-first-look/
+- STATIC ANALYSIS / C++ / SIXGILL
+  - http://sixgill.org/
+- STATIC ANALYSIS / C++ / SOURCEMETER
+  - http://www.sourcemeter.com/news/2015-06-12/sourcemeter-70-released-with-support-for-cc-java-python-and-rpg/
+- STATIC ANALYSIS / DATAFLOW
+  - http://pling.jondgoodwin.com/post/data-flow-analysis/
+  - https://en.wikipedia.org/wiki/Data-flow_analysis
+- STATIC ANALYSIS / SONAR
+  - https://sonarcloud.io/dashboard?id=NetHack-3.6.0
+- STATIC ANALYSIS / SOURCEGRAPH
+  - https://sourcegraph.com/plan
+  - [[http://github.com/sourcegraph/srclib][GitHub - sourcegraph/srclib: srclib is a polyglot code analysis library, built for hackability. It consists of language analysis toolchains (currently for Go and Java, with Python, JavaScript, and Ruby in beta) with a common output format, and a CLI tool for running the analysis.]]
+  - https://about.sourcegraph.com/blog/introducing-sourcegraph-server-2-4/
+  - https://about.sourcegraph.com/blog/introducing-sourcegraph-server-2-3/
+  - https://about.sourcegraph.com/blog/introducing-sourcegraph-server-2-6/
+  - https://about.sourcegraph.com/blog/introducing-sourcegraph-2-7/
+  - https://about.sourcegraph.com/#integrations
+  - https://www.reddit.com/r/programming/comments/9kmr4p/sourcegraph_is_now_open_source/
+  - https://about.sourcegraph.com/docs/code-intelligence/install-manual/
+  - https://about.sourcegraph.com/go/gophercon-2018-allocator-wrestling/
+  - https://about.sourcegraph.com/go/gophercon-2018-rethinking-classical-concurrency-patterns/
+  - https://github.com/sourcegraph/sourcegraph-extension-api
+  - https://about.sourcegraph.com/go/gophercon-2018-from-prototype-to-production-lessons-from-building-and/
+  - https://about.sourcegraph.com/blog/the-sourcegraph-test-v0-9-12-more-steps-to-better-code/
+  - https://about.sourcegraph.com/plan/
+  - [[https://about.sourcegraph.com/go/go-reliability-and-durability-at-dropbox-tammy-butow][Dropbox’s journey to using Go]]
+  - [[https://about.sourcegraph.com/go/advanced-testing-in-go-mitchell-hashimoto][Advanced testing in Go]]
+  - https://www.linkedin.com/pulse/sourcegraph-code-search-intelligence-marcel-bruch
+  - https://text.sourcegraph.com/code-intelligence-for-java-now-available-on-sourcegraph-5bcb149f177
+  - https://text.sourcegraph.com/code-intelligence-now-available-for-java-on-sourcegraph-com-eec198dcc46#.y2xg46jzg
+  - https://text.sourcegraph.com/part-2-how-sourcegraph-scales-with-the-language-server-protocol-73b86175f38b#.jdz13pmij
+  - https://text.sourcegraph.com/how-sourcegraph-scales-with-the-language-server-protocol-a4e8fd3fbae5#.nowoto72c
+  - https://text.sourcegraph.com/go-code-intelligence-on-sourcegraph-now-in-general-availability-ga-e2ebcddc7f45#.py6sapeh0
+  - https://sourcegraph.com/about
+  - http://text.sourcegraph.com/sourcegraph-the-best-way-to-read-code-just-got-better-2094def0e553#.cia8mk2me
+  - https://about.sourcegraph.com/blog/
+  - https://about.sourcegraph.com/blog/optimizing-a-code-intel-indexer/
+- STATIC ANALYSIS / SOURCETRAIL
+  - https://www.sourcetrail.com/documentation/#Depth%20Graph
+  - https://www.sourcetrail.com
+  - https://www.sourcetrail.com/blog/why_working_on_chrom_made_me_develop_a_tool_for_reading_source_code/
+  - https://www.sourcetrail.com/blog/release_2017_4/
+  - http://www.bfilipek.com/2017/10/sourcetrail.html
+- TYPE SYSTEMS / DIMENSIONAL ANALYSIS
+  - https://www.johndcook.com/blog/2015/12/01/dimensional-analysis-and-types/
+  - https://conscientiousprogrammer.com/blog/2015/12/20/24-days-of-hackage-2015-day-20-dimensional-type-checked-computation-on-physical-quantities-with-units/
+  - https://www.reddit.com/r/programming/comments/8lwfis/dimensional_analysis_in_programming_languages/
+  - https://www.khanacademy.org/math/algebra/units-in-modeling/rate-conversion/v/dimensional-analysis-units-algebraically
+  - https://gmpreussner.com/research/dimensional-analysis-in-programming-languages
+  - https://github.com/PainterQubits/Unitful.jl
+  - https://www.adacore.com/gems/gem-136-how-tall-is-a-kilogram
+  - https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gnat_ugn/Performing-Dimensionality-Analysis-in-GNAT.html
+  - https://news.ycombinator.com/item?id=10027468
+  - https://docs.rs/dimensioned/0.7.0/dimensioned/
+  - https://crates.io/keywords/dimensional-analysis
+  - https://hackage.haskell.org/package/dimensional
+  - https://github.com/paholg/dimensioned
+  - https://www.hillelwayne.com/post/frink/
+- VISUAL PROGRAMMING
+  - https://libarynth.org/visual_programming
+  - http://trepl.xyz/ide
+  - http://dimitar-asenov.github.io/Envision/
+  - http://alltom.com/pages/theseus/chi-2014/
+  - https://blog.statebox.org/why-visual-programming-doesnt-suck-2c1ece2a414e
+  - https://en.wikipedia.org/wiki/DRAKON
+  - http://drakon-editor.sourceforge.net/DRAKON.pdf
+  - http://drakon-editor.sourceforge.net/drakon-erlang/intro.html
+  - https://drakonhub.com/files/lift.html
+  - http://blog.duangle.com/2015/01/conspire-programming-environment-for.html
+  - http://flowhub.io/
+  - http://flowgorithm.org/download/index.htm
+  - http://flowgorithm.org/index.htm
+  - http://blog.interfacevision.com/design/design-visual-progarmming-languages-snapshots/
+  - https://news.ycombinator.com/item?id=19025639
+  - https://studio.diagram.codes/
+  - https://github.com/true-grue/yed_py
+  - http://www.buildingwidgets.com/blog/2017/10/28/visualizing-trees-partition-tree
+  - https://divan.dev/posts/visual_programming_go/
+  - https://www.roadtovr.com/primitive-vr-source-code-data-visualization-collaboration/
+  - https://medium.com/@cwodtke/five-models-for-making-sense-of-complex-systems-134be897b6b3
+  - https://c4model.com/
+  - https://www.visualisingdata.com/2020/03/10-significant-visualisation-developments-july-to-december-2019/
+  - https://www.fluentcpp.com/2020/03/13/how-to-get-the-table-of-contents-of-a-long-function/
+  - https://bkhome.org/news/202003/the-resurrection-of-goosee-diagrammer.html
+  - https://news.ycombinator.com/item?id=22978454
+  - https://blog.metaobject.com/2020/04/maybe-visual-programming-is-answer.html
+  - [[http://dohgramming.com/post/code-as-text-is-a-problem/][Code as text is a problem  · dohgramming.com]]
+  - [[https://news.ycombinator.com/item?id=14278605][Code as text is a problem | Hacker News]]
+  - https://www.reddit.com/r/programming/comments/69jwki/code_as_text_is_a_problem/?submit_url=http%3A%2F%2Fdohgramming.com%2Fpost%2Fcode-as-text-is-a-problem%2F&already_submitted=true&submit_title=
+  - [[http://alarmingdevelopment.org/?p=1068][Gallery of programming UIs]]
+- SOURCETRAIL
+  https://github.com/CoatiSoftware/Sourcetrail
+  https://web.archive.org/web/20211012130304/https://www.sourcetrail.com/blog/release_0_6/
+  https://web.archive.org/web/20211012130256/https://www.sourcetrail.com/blog/indexing_clang_with_coati_using_clang/
+  https://web.archive.org/web/20211012130302/https://www.sourcetrail.com/blog/parameter_or_argument/
+  https://web.archive.org/web/20211012130353/https://sourcetrail.com/blog/why_working_on_chrom_made_me_develop_a_tool_for_reading_source_code/
+  https://web.archive.org/web/20211012130314/https://www.sourcetrail.com/blog/happy_birthday_coati/
+  https://web.archive.org/web/20211012130321/https://www.sourcetrail.com/blog/coati_is_dead_long_live_sourcetrail/
+  https://web.archive.org/web/20211012130325/https://www.sourcetrail.com/blog/creating_a_c_cpp_project_from_scratch/
+  https://web.archive.org/web/20211012130348/https://www.sourcetrail.com/blog/sourcetrail_supports_python/
+- UNSORTED
+  - http://sigusr2.net/metacircular-static-types.html
+  - https://docs.oracle.com/en/operating-systems/solaris/oracle-solaris/11.4/linkers-libraries/
+  - https://www.cs.cornell.edu/~asampson/blog/turnt.html
+  - https://blog.jfo.click/building-a-tiny-little-broken-calculator-with-parser-combinators/
+  - https://www.reddit.com/r/Compilers/comments/w8j0rr/assemblers_and_linkers_resources/
+  - https://css-tricks.com/lets-create-a-tiny-programming-language/
+  - https://jamey.thesharps.us/2017/06/19/search-based-compiler-code-generation/
+  - https://stackoverflow.com/questions/33534322/complex-loop-optimization
+  - https://hg.sr.ht/~icefox/garnet
+  - https://lobste.rs/s/ufqsah/garnet_programming_language
+  - https://mattalp.com/blog/dispatch-chains/
+  - https://www.reddit.com/r/Compilers/comments/w4dgkv/a_singlepass_compiler_in_a_bytecode_interpreted/
+  - https://htdp.org/
+  - https://brandur.org/soft-deletion
+  - https://www.pypy.org/posts/2022/07/toy-optimizer.html
+  - https://github.com/pfusik/cito/blob/master/ci.md
+  - https://www.reddit.com/r/Compilers/comments/w21imr/partial_controlflow_linearization_removes_side/
+  - https://github.com/carbon-language/carbon-lang
+  - https://www.storj.io/blog/lensm
+  - https://derw.substack.com/p/designing-an-ml-family-language-on
+  - https://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html
+  - https://borretti.me/article/lessons-writing-compiler
+  - https://news.ycombinator.com/item?id=32100880
+  - https://earthly.dev/blog/programming-language-improvements/
+  - https://lobste.rs/s/qlb7iy/slow_march_progress_programming
+  - https://pl-rants.net/posts/case-for-new-lang/
+  - http://rickardlindberg.me/writing/rlmeta/
+  - https://tomassetti.me/code-generation/
+  - https://javax0.wordpress.com/2018/05/23/generating-source-code-a-compromise/
+  - http://cr.openjdk.java.net/~jrose/values/iterator-vs-cursor.html
+  - http://stephencollie.net/declarative-programming-is-it-a-real-thing/
+  - http://www.tedinski.com/2018/02/27/the-expression-problem.html
+  - http://www.tedinski.com/2018/01/30/the-one-ring-problem-abstraction-and-power.html
+  - http://dev.stephendiehl.com/fun/evaluation.html
+  - http://tomasp.net/blog/2016/thinking-unthinkable/
+  - https://www.hillelwayne.com/post/thinking-the-unthinkable/
+  - https://graydon2.dreamwidth.org/253769.html
+  - http://9tabs.com/random/2017/12/23/evil-coding-incantations.html
+  - http://www.proglangdesign.net/
+  - https://mathblog.com/10-great-programming-languages-for-mathematics/
+  - https://github.com/NLKNguyen/awesome-language-engineering
+  - http://ascr-discovery.science.doe.gov/2017/11/language-barrier/
+  - http://esr.ibiblio.org/?p=7724
+  - https://medium.com/@mbykovski/the-progamming-languages-war-f7d5d9d7c0e9
+  - https://lobste.rs/s/n6eix9/rich_hickey_delivers_rationale_for
+  - [[http://plzoo.andrej.com/index.html][The Programming Languages Zoo]]
+  - [[https://wincent.com/blog/languages][Searching for the Holy Grail]]
+  - [[https://lexi-lambda.github.io/blog/2017/08/12/user-programmable-infix-operators-in-racket/][User-programmable infix operators in Racket]]
+  - [[http://www.cs.binghamton.edu/~zdu/parsdemo/srintro.html][Introduction to Shift-Reduce Parsing]]
+  - [[http://pages.cs.wisc.edu/~loris/][Loris D'Antoni]]
+  - [[http://rise4fun.com/Fast/][fast - Is this program correct?]]
+  - [[https://posish.now.sh/][Posish is a tool that helps you generate code with character positions.]]
+  - [[http://lpan.io/what-i-learnt-from-viw/][What I learnt from coding a text editor in C]]
+  - [[https://www.dwheeler.com/readable/sweet-expressions.html][Curly infix, Modern-expressions, and Sweet-expressions: A suite of readable formats for Lisp-like languages]]
+  - [[http://readable.sourceforge.net/][Readable Lisp S-expressions Project]]
+  - [[http://vvvvalvalval.github.io/posts/what-makes-a-good-repl.html][What makes a good REPL?]]
+  - [[https://maniagnosis.crsr.net/2017/08/programming-language-syntax-complaints.html][Programming language syntax that I don’t like]]
+  - [[https://blog.acolyer.org/2017/08/15/writing-parsers-like-it-is-2017/][Writing parsers like it is 2017]]
+  - [[https://tomassetti.me/parsing-in-python/][Parsing In Python: Tools And Libraries]]
+  - [[https://isomorf.io/#!/][isomorf]]
+  - [[https://medium.com/isomorf-blog/the-accidental-complexity-of-syntax-7ecd8b1fb42][The Accidental Complexity of Syntax]]
+  - [[http://www.rntz.net/post/2017-01-27-aphorisms-on-pl-design.html][Aphorisms on programming language design]]
+  - [[http://graydon2.dreamwidth.org/253769.html][What next]]
+  - [[http://www.paulgraham.com/thist.html][Olin Shivers: History of T]]
+  - [[http://www.rntz.net/post/2016-06-06-not-everything-is-an-expression.html][Not Everything is an Expression]]
+  - [[http://journal.stuffwithstuff.com/2015/09/08/the-hardest-program-ive-ever-written/?sort][The Hardest Program I've Ever Written]]
+  - [[http://www.ps.uni-saarland.de/~duchier/python/continuations.html][Continuations Made Simple and Illustrated]]
+  - [[https://www.michelson-lang.com/#sec-1-32][Michelson Language]]
+  - [[https://stackoverflow.com/questions/17783393/how-to-parse-text-for-a-dsl-at-compile-time][How to parse text for a DSL at compile time?]]
+  - [[http://joyfulmantis.github.io/posts/2017-08-23-functors-applicatives-monads.html][functors, applicatives, and monads: you don't need to know theory to use them]]
+  - [[https://medium.com/oicr-softeng/why-siri-cant-code-yet-fdd53319bc04][Why Siri Can’t Code (Yet)]]
+  - [[https://softwareengineering.stackexchange.com/questions/356307/unifying-programming-and-database-query][Unifying programming and database query]]
+  - [[http://enterprisecraftsmanship.com/2016/11/03/oop-fp-and-object-relational-impedance-mismatch/][OOP, FP, and object-relational impedance mismatch - Enterprise Craftsmanship]]
+  - [[http://github.com/dlang/tools][GitHub - dlang/tools: Ancillary tools for the D programming language compiler]]
+  - [[http://www.regular-expressions.info/tools.html][Popular Tools, Utilities and Programming Languages That Support Regular Expressions]]
+  - [[http://www.semdesigns.com/Products/LanguageTools/][Semantic Designs: Programming Language Tools]]
+  - [[http://en.wikipedia.org/wiki/Programming_tool][Programming tool - Wikipedia]]
+  - [[http://www.reddit.com/r/programming/comments/5abb0m/what_if_anything_are_we_getting_wrong_about/][What (if anything) are we getting wrong about programming languages? : programming]]
+  - [[http://danghica.blogspot.com.ar/2016/09/what-else-are-we-getting-wrong.html][What else are we getting wrong?]]
+  - [[http://cs.lmu.edu/%7Eray/notes/paradigms/][paradigms]]
+  - [[http://250bpm.com/blog:37][Code Generation & Visual Smog in Code (part I) - 250bpm]]
+  - [[http://250bpm.com/blog:38][Code Generation & Visual Smog in Code (part II) - 250bpm]]
+  - [[http://aosabook.org/en/pypy.html][The Architecture of Open Source Applications (Volume 2): PyPy]]
+  - http://blog.balflear.com/?p=31
+  - http://blog.balflear.com/?p=38
+  - [[http://blog.fourthbit.com/2014/03/01/the-best-programming-language-or-how-to-stop-worrying-and-love-the-code#.UxRMIIfvkjI.hackernews][The Best Programming Language (or How to Stop Worrying and Love the Code) - The Blog of Fourthbit]]
+  - [[http://blog.jakubarnold.cz/2014/07/14/lens-tutorial-introduction-part-1.html][Lens Tutorial - Introduction (part 1)]]
+  - [[http://blog.jakubarnold.cz/2014/08/06/lens-tutorial-stab-traversal-part-2.html][Lens Tutorial - Stab & Traversal (Part 2)]]
+  - http://blog.paralleluniverse.co/2015/08/07/scoped-continuations/
+  - http://blog.thinkful.com/post/71644244908/thoughts-on-declarative-and-imperative-languages
+  - [[http://blogs.janestreet.com/the-ml-sweet-spot/][The ML sweet spot :: Jane Street Tech Blogs]]
+  - [[http://brikis98.blogspot.com.ar/2014/04/six-programming-paradigms-that-will.html][Redirecting...]]
+  - [[http://burz.github.io/2014/06/15/feval.html][F-Algebras for expression evaluation |  burz.io]]
+  - [[http://c2.com/cgi/wiki?ProgrammingLanguageNamingPatterns][http://c2.com/cgi/wiki?ProgrammingLanguageNamingPatterns]]
+  - [[http://c2.com/cgi/wiki?QuestForThePerfectLanguage][http://c2.com/cgi/wiki?QuestForThePerfectLanguage]]
+  - [[http://c2.com/cgi/wiki?ReallyValuablePages][http://c2.com/cgi/wiki?ReallyValuablePages]]
+  - [[http://callcc.io/hython-the-simplest-possible-language/][http://callcc.io/hython-the-simplest-possible-language/]]
+  - [[http://cesquivias.github.io/blog/2014/10/13/writing-a-language-in-truffle-part-1-a-simple-slow-interpreter/][Writing a Language in Truffle. Part 1: A Simple, Slow Interpreter]]
+  - [[http://cesquivias.github.io/blog/2014/12/02/writing-a-language-in-truffle-part-2-using-truffle-and-graal/][Writing a Language in Truffle. Part 2: Using Truffle and Graal]]
+  - [[http://cesquivias.github.io/blog/2015/01/08/writing-a-language-in-truffle-part-3-making-my-language-much-faster/][Writing a Language in Truffle. Part 3: Making my Language (Much) Faster]]
+  - [[http://cesquivias.github.io/blog/2015/01/15/writing-a-language-in-truffle-part-4-adding-features-the-truffle-way/][Writing a Language in Truffle. Part 4: Adding Features the Truffle Way]]
+  - [[http://code.facebook.com/posts/729709347050548/under-the-hood-building-and-open-sourcing-flint/][Under the Hood: Building and open-sourcing flint | Engineering Blog | Facebook Code | Facebook]]
+  - [[http://codewords.hackerschool.com/issues/one/why-are-objects-so-hard-to-debug][Why are objects so hard to debug?]]
+  - [[http://colinm.org/language_checklist.html][Programming Language Checklist]]
+  - [[http://cookingcode.wordpress.com/2014/05/11/smalltalk-and-pharo-unknown-rockstars/][Smalltalk and Pharo: Unknown rockstars – Cooking Code]]
+  - [[http://cs.brown.edu/courses/cs173/2012/book/][Programming Languages: Application and Interpretation]]
+  - [[http://cs.brown.edu/courses/cs173/2012/book/index.html][Programming Languages: Application and Interpretation]]
+  - http://csprogrammer.net/en/an-overview-of-programming-variables/
+  - [[http://deliberate-software.com/programming-language-safety-algorithm/][Programming Language Safety Ranking  · deliberate software]]
+  - [[http://devblog.avdi.org/2015/07/08/ruby-is-defined-by-terrible-tools/][Ruby is defined by terrible tools | Virtuous Code]]
+  - [[http://duartes.org/gustavo/blog/post/closures-objects-heap/][Closures, Objects, and the Fauna of the Heap - Gustavo Duarte]]
+  - [[http://ducklang.org/designing-a-programming-language-i][Designing a Programming Language: I | Duck Programming Language Official Website]]
+  - [[http://eli.thegreenplace.net/2009/03/14/some-problems-of-recursive-descent-parsers][Some problems of recursive descent parsers - Eli Bendersky's website]]
+  - [[http://en.wikipedia.org/wiki/Corecursion][Corecursion - Wikipedia]]
+  - [[http://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Compiled_languages][List of programming languages by type - Wikipedia]]
+  - [[http://en.wikipedia.org/wiki/Lists_of_programming_languages][Lists of programming languages - Wikipedia]]
+  - [[http://en.wikipedia.org/wiki/Programming_language][Programming language - Wikipedia]]
+  - [[http://erlang.org/pipermail/erlang-questions/2014-January/076647.html][erlang-questions The quest for the perfect programming language  for massive concurrency.]]
+  - [[http://exercism.io/getting-started][exercism.io]]
+  - [[http://exploringdata.github.io/vis/programming-languages-influence-network/][Programming Languages Influence Network | Exploring Data]]
+  - http://fr.umio.us/favoring-curry/
+  - [[http://fsharpforfunandprofit.com/posts/introvert-vs-extrovert/][Introvert and extrovert programming languages | F# for fun and profit]]
+  - [[http://github.com/bodil/BODOL][GitHub - bodil/BODOL: The common BODil Oriented Language]]
+  - http://github.com/bread-man/mango
+  - [[http://github.com/cdosborn/lit/tree/master/examples][lit/examples at master · cdosborn/lit · GitHub]]
+  - [[http://github.com/cosmo-ethz/hope/blob/master/docs/flow.jpg][hope/flow.jpg at master · jakeret/hope · GitHub]]
+  - [[http://github.com/fatiherikli/programming-language-network][GitHub - fatiherikli/programming-language-network: The network of programming languages]]
+  - [[http://github.com/i2y/mochi][GitHub - i2y/mochi: Dynamically typed functional programming language]]
+  - [[http://github.com/jameswp/whilefs][GitHub - JamesWP/WhileFS: While - computation language implementation in F#]]
+  - [[http://github.com/kqr/gists/blob/master/articles/gentle-introduction-monad-transformers.md][gists/gentle-introduction-monad-transformers.md at master · kqr/gists · GitHub]]
+  - [[http://googoogaga.github.io/][GOO]]
+  - [[http://haifengl.wordpress.com/2014/07/03/ocaml-pattern-matching/][OCaml: Pattern Matching | Haifeng's Random Walk]]
+  - [[http://haifengl.wordpress.com/2014/07/07/ocaml-algebraic-data-types/][OCaml: Algebraic Data Types | Haifeng's Random Walk]]
+  - [[http://hyperpolyglot.org/][Programming Languages - Hyperpolyglot]]
+  - [[http://hz2.org/blog/the_perfect_programming_language.html][The Perfect Programming Language]]
+  - http://intelligence.org/2014/03/02/bob-constable/
+  - [[http://jeffreykegler.github.io/Ocean-of-Awareness-blog/individual/2014/09/chron.html][Parsing: a timeline]]
+  - [[http://joearms.github.io/2014/02/07/why-programming-is-difficult.html][Joe Armstrong - Erlang and other things]]
+  - [[http://joshondesign.com/2014/08/22/typopl][Typographic Programming Language]]
+  - [[http://journal.stuffwithstuff.com/2013/08/26/what-is-open-recursion/][What is "Open Recursion"?                – journal.stuffwithstuff.com]]
+  - http://jspha.com/posts/six_points_about_type_safety/
+  - [[http://kirbyfan64.github.io/posts/the-magic-of-rpython.html][The Magic of RPython]]
+  - [[http://kukuruku.co/hub/algorithms/using-the-quick-raise-of-matrices-to-power-to-write-a-very-fast-interpreter-of-a-simple-programming-language][Using the Quick Raise of Matrices to a Power to Write a Very Fast Interpreter of a Simple Programming Language]]
+  - [[http://ljwo.wordpress.com/2014/11/07/to-const-or-not-to-const-the-liskov-substitution-principle/][To const or not to const – the Liskov substitution principle | Programming blog of Łukasz Wojakowski]]
+  - http://marcofiset.com/programming-language-implementation-part-1-lexer/
+  - [[http://mars-lang.appspot.com/][Mars Programming Language]]
+  - [[http://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming][A practical introduction to functional programming]]
+  - http://medium.com/@ayanonagon/the-y-combinator-no-not-that-one-7268d8d9c46
+  - http://medium.com/@jlouis666/proglang-design-with-evidence-1444213f3902
+  - http://medium.com/@McCosmos/a-treatise-on-cosmos-the-new-programming-language-905be69eb4af
+  - http://medium.com/@svenvc/lambda-calculus-in-pharo-a4a571869594
+  - http://medium.com/this-is-not-a-monad-tutorial/eric-merritt-erlang-and-distributed-systems-expert-gives-his-views-on-beam-languages-hindley-a09b15f53a2f
+  - [[http://michaelrbernste.in/2013/06/03/real-time-garbage-collection-is-real.html][mrb: Real-Time Garbage Collection Is Real]]
+  - [[http://michaelrbernste.in/2013/06/12/matter-anti-matter.html][mrb: Matter, Anti-Matter, and the Unified Theory of Garbage Collection]]
+  - [[http://mortoray.com/2014/08/01/the-false-abstraction-antipattern/][The false abstraction antipattern – Musing Mortoray]]
+  - http://nbviewer.ipython.org/github/mwaskom/seaborn/blob/master/examples/plotting_distributions.ipynb
+  - [[http://news.ycombinator.com/item?id=10027884][BEAM languages, Hindley–Milner type systems, and new technologies | Hacker News]]
+  - [[http://news.ycombinator.com/item?id=7197255][Why Programming is Difficult | Hacker News]]
+  - [[http://news.ycombinator.com/item?id=9947544][Ask HN: What are some good resources on the history of programming languages? | Hacker News]]
+  - [[http://nightmare.com/rushing/irken/irken/lang.html][The Irken Language]]
+  - [[http://nomothetis.svbtle.com/smashing-swift][Smashing Swift]]
+  - [[http://okmij.org/ftp/Haskell/extensible/][Freer Monads and Extensible Effects]]
+  - [[http://okmij.org/ftp/tagless-final/course/optimizations.html][Modular Optimizations]]
+  - [[http://palmstroem.blogspot.com.ar/2012/05/lambda-calculus-for-absolute-dummies.html][Palmström: The Lambda Calculus for Absolute Dummies (like myself)]]
+  - [[http://panuviljamaablog.blogspot.com.ar/2014/03/objects-vs-functions-round-1-currying.html][PanuLogic Software Development Blog: Objects vs. Functions round 1: Currying vs. Instantiation]]
+  - http://permalink.gmane.org/gmane.comp.encryption.general/14818
+  - [[http://phdp.github.io/posts/2015-04-05-automated-reasoning.html][Philippe Desjardins-Proulx]]
+  - [[http://plato.stanford.edu/entries/computer-science/][The Philosophy of Computer Science (Stanford Encyclopedia of Philosophy)]]
+  - [[http://protz.github.io/mezzo/][The Mezzo programming language]]
+  - http://psnively.github.io/blog/2014/10/14/Curry-Howard-the-Ontological-Ultimate/
+  - [[http://qntm.org/closures][Closures explained @ Things Of Interest]]
+  - http://queue.acm.org/detail.cfm?ref=rss&id=2611829
+  - http://research.microsoft.com/en-us/projects/r2/
+  - [[http://rigaux.org/language-study/syntax-across-languages/][syntax across languages]]
+  - [[http://roscidus.com/blog/blog/2014/02/13/ocaml-what-you-gain/][OCaml: what you gain - Thomas Leonard's blog]]
+  - http://rosettacode.org/wiki/Rosetta_Code
+  - [[http://rubyonrails.org/doctrine/][Doctrine | Ruby on Rails]]
+  - [[http://schani.wordpress.com/2010/04/30/linear-vs-binary-search/][Linear vs Binary Search | Mostly Software]]
+  - [[http://skillsmatter.com/skillscasts/2323-bobs-last-language][The Last Programming Language | SkillsCast  | 13th July 2011]]
+  - http://slidetocode.com/2012/05/06/the-perfect-programming-language/
+  - [[http://soft-dev.org/pubs/html/diekmann_tratt__eco_a_language_composition_editor/][Software Development Team: Eco: A Language Composition Editor]]
+  - [[http://srclib.org/][srclib]]
+  - http://ssodelta.wordpress.com/2014/10/20/logix-converting-raw-user-input-to-expression-trees/
+  - [[http://stefan-marr.de/2014/09/are-we-there-yet/][Are We There Yet? Simple Language-Implementation Techniques for the 21st Century · Stefan-Marr.de]]
+  - [[http://stefan-marr.de/2015/01/fosdem-2015-building-high-performance-language-implementations-with-low-effort/][FOSDEM 2015: Building High-Performance Language Implementations With Low Effort · Stefan-Marr.de]]
+  - [[http://stefan-marr.de/papers/ieee-soft-marr-et-al-are-we-there-yet/][Are We There Yet? Simple Language-Implementation Techniques for the 21st Century]]
+  - http://stilldrinking.org/programming-sucks
+  - [[http://swizec.com/blog/week-15-a-tutorial-on-the-expresiveness-and-universality-of-fold/swizec/6514][Week 15: A tutorial on the expressiveness and universality of fold - A geek with a hat]]
+  - [[http://thesecretsquad.wordpress.com/2014/10/25/dazed-and-confuzzled/][Dazed and Confuzzled | The Secret Squad]]
+  - [[http://thesocietea.org/2015/07/programming-concepts-compiled-and-interpreted-languages/][Programming Concepts: Compiled and Interpreted Languages | Aaron Krauss]]
+  - [[http://tomasp.net/blog/2014/why-coeffects-matter/index.html][Coeffects: The next big programming challenge - Tomas Petricek]]
+  - [[http://ubuntuforums.org/showthread.php?t=1249601][The Perfect Programming Language]]
+  - http://unnikked.ga/how-to-build-a-brainfuck-interpreter
+  - [[http://wcook.blogspot.com.ar/][William Cook's Fusings]]
+  - [[http://will.thimbleby.net/misc/][MISC]]
+  - [[http://wingolog.org/archives/2014/08/25/revisiting-common-subexpression-elimination-in-guile][revisiting common subexpression elimination in guile -- wingolog]]
+  - http://wry.me/misc/peval.html
+  - [[http://wry.me/~darius/writings/dynatail.html][Tail Recursion with Dynamic Scope]]
+  - http://www.americanscientist.org/issues/id.3489,y.0,no.,content.true,page.1,css.print/issue.aspx
+  - [[http://www.availlang.org/about-avail/introduction/index.html][Avail - Introduction]]
+  - [[http://www.bamsoftware.com/software/bfloop/][bfloop]]
+  - [[http://www.cl.cam.ac.uk/~srk31/blog/2014/10/07/][Rambles around computer science]]
+  - [[http://www.confreaks.com/videos/1287-rubyconf2012-y-not-adventures-in-functional-programming][Confreaks TV | Y Not -- Adventures in Functional Programming - Ruby Conference 2012]]
+  - [[http://www.cs.cmu.edu/~aldrich/wyvern/][The Wyvern Programming Language]]
+  - [[http://www.cs.trinity.edu/~jhowland/math-talk/functional1/][Functional Programming and the J Programming Language]]
+  - [[http://www.cs.uni.edu/~wallingf/blog/archives/monthly/2013-03.html#e2013-03-27T12_46_03.htm][Knowing and Doing: March 2013 Archives]]
+  - [[http://www.csse.monash.edu.au/~damian/papers/HTML/ModestProposal.html][Error]]
+  - http://www.cyber-dojo.com/setup/show/
+  - http://www.davidchristiansen.dk/2014/09/06/pretty-printing-idris/
+  - [[http://www.drdobbs.com/architecture-and-design/function-purity-and-immutable-data-struc/240169087][Function Purity and Immutable Data Structure Construction | Dr Dobb's]]
+  - http://www.drmaciver.com/2015/07/a-wish-list/
+  - [[http://www.eugenkiss.com/b/on-usability-of-programming-languages/][Eugen’s Journal – On Usability of Programming Languages]]
+  - [[http://www.fpcomplete.com/user/bss/magma-tree][Algebraic Terraforming: Trees from Magma - School of Haskell | School of Haskell]]
+  - [[http://www.gura-lang.org/][Gura Programming Language - Top]]
+  - [[http://www.inf.ethz.ch/personal/wirth/ProjectOberon/index.html][Project Oberon (New Edition 2013)]]
+  - [[http://www.jeffreysward.com/editorials/questppl.htm][The Quest for the Perfect Programming Language and Other Myths by Jeffrey Sward]]
+  - [[http://www.kythe.io/docs/][Kythe - Documentation]]
+  - [[http://www.macs.hw.ac.uk/~rs46/posts/2014-02-03-objects-boxes-actors-agents.html][Programming Shootout - Objects vs Boxes vs Actors vs Agents]]
+  - [[http://www.memorymanagement.org/mmref/lang.html][4. Memory management in various languages — Memory Management Reference 4.0 documentation]]
+  - [[http://www.mseri.me/piping-with-swift/][Piping with Swift - Tales of a Fractal Spectrum]]
+  - [[http://www.nongnu.org/txr/][TXR Language]]
+  - [[http://www.perlmonks.org/?node_id=450922][pissed off about functional programming]]
+  - [[http://www.physicsofsoftware.com/random-notes/shape-form-as-a-program][Shape (Form) as a Program - The Physics of Software]]
+  - [[http://www.pl-enthusiast.net/2015/05/27/what-is-pl-research-and-how-is-it-useful/][What is PL research and how is it useful? - The PL Enthusiast]]
+  - http://www.q-lang.io/
+  - [[http://www.quora.com/Do-you-feel-that-golang-is-ugly/answer/Tikhon-Jelvis?srid=oXLH&share=1][Tikhon Jelvis's answer to Do you feel that golang is ugly? - Quora]]
+  - [[http://www.reddit.com/r/haskell/comments/35bybo/lispers_of_haskell_whats_your_experience_using/][Lispers of Haskell: What's Your Experience Using Haskell versus a Lisp? (x-post on /r/lisp) : haskell]]
+  - [[http://www.reddit.com/r/programming/comments/2j3kr4/proposal_for_unified_call_syntax_for_c_xfy_vs_fxy/][Proposal for unified call syntax for C++: x.f(y) vs. f(x,y) : programming]]
+  - http://www.slatelanguage.org/
+  - http://www.subcomplex.com/
+  - [[http://www.techrepublic.com/article/developers-are-calling-it-quits-on-polyglot-programming/][Developers are calling it quits on polyglot programming - TechRepublic]]
+  - [[http://zneak.github.io/fcd/2016/02/21/csaw-wyvern.html][Using fcd to solve the CSAW Wyvern challenges — fcd]]
+  - https://medium.freecodecamp.com/the-programming-language-pipeline-91d3f449c919
+  - [[http://www.ybrikman.com/writing/2014/04/09/six-programming-paradigms-that-will/][Six programming paradigms that will change how you think about coding]]
+  - [[https://news.ycombinator.com/item?id=14237589][Esoteric programming paradigms | Hacker News]]
+  - [[https://github.com/iostreamer-X/FuncShell][GitHub - iostreamer-X/FuncShell: Improve your shell by making it functional through Haskell! (An update to Awkward)]]
+  - [[https://news.ycombinator.com/item?id=14236830][FuncShell – A Haskell-based alternative to awk | Hacker News]]
+  - [[http://www.newyorker.com/tech/elements/walking-helps-us-think][Why Walking Helps Us Think | The New Yorker]]
+  - [[http://www.cambridgeblog.org/2017/05/what-if-anything-is-a-programming-paradigm/][Genomics of Programming | FifteenEightyFour | Cambridge University Press]]
+  - https://wiki.theory.org/index.php/YourLanguageSucks
+  - http://www.lispcast.com/procedural-paradox
+  - http://wingolog.org/archives/2018/01/11/spectre-and-the-end-of-langsec
+  - https://blog.acolyer.org/2018/01/29/the-paradigms-of-programming/
+  - https://news.ycombinator.com/item?id=16255634
+  - http://blog.ploeh.dk/2018/01/29/argument-list-isomorphisms/
+  - http://wiki.c2.com/?LispStrawMen
+  - https://www.ybrikman.com/writing/2014/04/09/six-programming-paradigms-that-will/
+  - https://medium.com/bits-and-behavior/designing-learnable-teachable-and-productive-programming-languages-dagstuhl-trip-report-81e41bde84bd
+  - http://blog.asrpo.com/are_there_interpreted_languages
+  - https://lobste.rs/s/qmu4j1/what_programming_languages_have_been
+  - https://soc.github.io/languages/unified-condition-syntax
+  - https://queue.acm.org/detail.cfm?id=3212479
+  - https://wenkokke.github.io/sf/
+  - https://lobste.rs/s/rrejlp/book_recommendations_for_programming
+  - https://github.com/mspraggs/loxx
+  - https://gmpreussner.com/research/dimensional-analysis-in-programming-languages
+  - https://code.joejag.com/2016/anti-if-the-missing-patterns.html
+  - http://canonical.org/~kragen/memory-models/
+  - https://lobste.rs/s/yj31ty/collapsing_towers_interpreters
+  - https://wordsandbuttons.online/if_i_were_to_invent_a_programming_language_for_the_21st_century.html
+  - blog.ielliott.io/on-programming-language-design/
+  - http://www.eclipse.org/Xtext/
+  - https://bertrandmeyer.com/2015/07/06/new-paper-theory-of-programs/
+  - https://www.microsoft.com/en-us/research/blog/influencing-mainstream-software-applying-programming-language-research-ideas-to-transform-spreadsheets/?OCID=msr_blog_PLspreadsheets_popl_highlights
+  - https://kilotau.com/2019/01/15/can-we-abstract-control-flow.html
+  - https://futhark-lang.org/blog/2019-01-13-giving-programmers-what-they-want.html
+  - https://homotopytypetheory.org/2014/08/19/a-formalized-interpreter/
+  - http://sustburbia.blogspot.com/2016/01/a-review-of-tiny-languages-part-1.html
+  - https://news.ycombinator.com/item?id=18815232
+  - https://www.infoq.com/presentations/tools-language-workbench
+  - https://erkin.party/blog/190208/spaghetti/
+  - https://lobste.rs/s/jtrbrj/what_s_your_preferred_embedded
+  - https://lobste.rs/s/mcwvhn/what_are_some_niche_features_you_d_like_see
+  - https://www.reddit.com/r/ProgrammingLanguages/comments/b2a61l/what_are_some_niche_features_youd_like_to_see_in/
+  - https://www.infoq.com/presentations/language-design-process
+  - http://cybertiggyr.com/peval.html
+  - https://blog.wesleyac.com/posts/language-todos
+  - https://medium.com/@johnmcclean/lambdas-are-not-functional-programming-63533ce2eb74
+  - https://people.eecs.berkeley.edu/~brock/blog/reple.php
+  - http://willcrichton.net/notes/compiling-knowledge-probability/
+  - http://www.pl-enthusiast.net/2017/10/23/what-is-soundness-in-static-analysis/
+  - https://coot.me/posts/categories-with-monadic-effects.html
+  - http://hopl.info/home.prx
+  - [[http://steshaw.org/plt/][PLT by steshaw]]
+  - https://medium.com/@old_sound/programming-languages-are-not-languages-c6f161a78c44
+  - https://plzoo.andrej.com/
+  - https://www.seas.harvard.edu/courses/cs152/2010sp/lectures.html
+  - https://blog.jez.io/variables-and-binding/
+  - https://www.oreilly.com/radar/multi-paradigm-languages/
+  - https://lukeplant.me.uk/blog/posts/everything-is-an-x-pattern/
+  - https://hirrolot.github.io/posts/why-static-languages-suffer-from-complexity#
+  - https://www.reddit.com/r/rust/comments/s7sgxq/why_static_languages_suffer_from_complexity/
+  - https://jeang3nie.codeberg.page/case-for-modern-language-pt1/
+  - https://write.as/loke/dont-write-a-programming-language
+    - https://news.ycombinator.com/item?id=30485604
+  - https://danso.ca/blog/higher-kinded-types/
+  - https://news.ycombinator.com/item?id=30515286
+  - https://matt.might.net/articles/best-programming-languages/
+  - http://journal.stuffwithstuff.com/2015/09/08/the-hardest-program-ive-ever-written/#1
+  - https://ach.srht.site/minipeg
+  - https://ayazhafiz.com/articles/22/why-dont-more-languages-offer-flow-typing
+    - https://news.ycombinator.com/item?id=30907178
+  - https://github.com/lexi-lambda/eff/blob/master/notes/semantics-zoo.md
+  - https://briancallahan.net/blog/20220330.html
+  - https://github.com/apple/swift-llbuild/tree/main/docs
+  - https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm
+  - https://blog.plover.com/math/se/notation.html
+    - https://news.ycombinator.com/item?id=31087533
+  - https://atp.fm/205-chris-lattner-interview-transcript#gc
+    - https://news.ycombinator.com/item?id=31139610
+  - https://arxiv.org/abs/2011.13127
+  - https://blog.gopheracademy.com/advent-2014/parsers-lexers/
+  - https://bravotic.com/dev/stdscr/1.html
+  - http://worrydream.com/EarlyHistoryOfSmalltalk/
+  - https://github.com/mikeroyal/LLVM-Guide
+  - https://cacm.acm.org/magazines/2022/2/258227-static-analysis-at-github/fulltext
+  - https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form
+  - https://www.ics.uci.edu/~pattis/ICS-33/lectures/ebnf.pdf
+  - https://tomassetti.me/ebnf/
+  - https://condor.depaul.edu/ichu/csc447/notes/wk3/BNF.pdf
+  - https://stackoverflow.com/questions/2575044/bnf-vs-ebnf-vs-abnf-which-to-choose
+  - https://cs.brown.edu/courses/cs173/2012/book/
+  - https://www.tweag.io/blog/2022-04-28-union-intersection-contracts/
+  - https://hal.inria.fr/hal-03107122
+  - https://docs.budgielang.org/
+  - https://t3x.org/reload/
+  - https://github.com/eashanhatti/peridot
+  - https://github.com/neogeny/TatSu
+    - https://news.ycombinator.com/item?id=31293716
+  - https://tomassetti.me/domain-specific-languages/
+  - https://dev.to/bascodes/a-comprehensive-guide-to-slicing-in-python-mko
+  - https://en.wikipedia.org/wiki/Structured_program_theorem
+  - https://medium.com/leaningtech/solving-the-structured-control-flow-problem-once-and-for-all-5123117b1ee2
+  - https://boxbase.org/entries/2020/aug/3/case-against-oop/
+    - https://news.ycombinator.com/item?id=30293622
+  - https://mukulrathi.com/create-your-own-programming-language/intro-to-type-checking/
+  - https://craftofcoding.wordpress.com/2022/02/11/what-fortran-does-better-than-c-like-languages/
+  - https://craftinginterpreters.com/contents.html
+    - https://news.ycombinator.com/item?id=30332368
+  - https://journal.infinitenegativeutility.com/structurally-typed-condition-handling
+  - https://jott.live/markdown/interactive_optimization
+  - https://mitchellh.com/zig
+  - https://www.reddit.com/r/rust/comments/suhoqz/wafflescheme_simple_scheme_implementation_with/
+  - https://en.wikipedia.org/wiki/Prolog
+  - https://en.wikipedia.org/wiki/Datalog
+  - https://en.wikipedia.org/wiki/MiniKanren
+  - http://minikanren.org/
+  - http://minikanren.org/minikanren-and-prolog.html
+  - https://scholarworks.iu.edu/dspace/bitstream/handle/2022/8777/Byrd_indiana_0093A_10344.pdf
+  - https://docs.racket-lang.org/minikanren/index.html
+  - https://crates.io/crates/mini-kanren
+  - https://crates.io/crates/proto-vulcan
+  - https://crates.io/crates/datafrog
+  - https://github.com/rust-lang/datafrog
+  - https://github.com/frankmcsherry/blog/blob/master/posts/2018-05-19.md
+  - https://github.com/frankmcsherry
+  - https://crates.io/crates/declarative-dataflow
+  - https://github.com/rust-lang/datafrog/issues
+  - http://webyrd.net/quines/quines.pdf
+  - https://dodisturb.me/posts/2018-12-25-The-Essence-of-Datalog.html
+    - https://news.ycombinator.com/item?id=19351385
+  - https://www.metalevel.at/prolog
+    - https://news.ycombinator.com/item?id=14045987
+  - https://icfp21.sigplan.org/details/minikanren-2021-papers/1/Prolog-Style-Meta-Programming-miniKanren
+  - https://github.com/namin/metamk
+  - https://github.com/graninas/The-Voids-Of-Haskell
+  - https://briandfoy.github.io/ide-driven-development/
+  - http://patryshev.com/books/WhyDependentTypesMatter.pdf
+  - https://easierwithpractice.com/why-dependent-types-matter/
+  - https://dlang.org/blog/2022/02/19/how-i-taught-the-d-programming-language-at-a-russian-university/
+  - https://fengari.io/
+  - https://bford.info/packrat/
+  - https://briancallahan.net/blog/20220220.html
+    - https://news.ycombinator.com/item?id=30412654
+  - https://pantagruel-language.com/
+  - https://github.com/subsetpark/pantagruel
+    - https://lobste.rs/s/xkth5p/pantagruel_v0_5_1
+  - https://cs.stackexchange.com/questions/3028/is-category-theory-useful-for-learning-functional-programming
+  - https://github.com/hmemcpy/milewski-ctfp-pdf
+  - https://belkadan.com/blog/2022/02/Dynamic-Linking-and-Static-Linking/
+  - https://blog.jetbrains.com/fleet/2022/02/fleet-below-deck-part-ii-breaking-down-the-editor/
+  - https://www.sciencedirect.com/science/article/abs/pii/S2590118420300046
+    - https://lobste.rs/s/wnqdip/morbig_static_parser_for_posix_shell
+  - https://github.com/smarr/RoarVM
+  - https://dercuano.github.io/notes/tiny-interpreters-for-microcontrollers.html
+  - https://blog.wilcoxd.com/2022/02/21/Functional-Programming-Patterns-In-Smalltalk/
+  - https://github.com/stepchowfun/proofs
+  - https://serokell.io/blog/interview-with-louis-pilfold
+  - https://tvm.d2l.ai/
+  - https://gankra.github.io/blah/c-isnt-a-language/
+  - https://github.com/nornagon/jonesforth/blob/master/jonesforth.S
+  - https://verdagon.dev/blog/higher-raii-7drl
+  - https://vale.dev/
+  - http://www.jerf.org/iri/post/2960
+  - https://packetlost.dev/blog/notes-from-learning-clojure/
+  - https://tokay.dev/
+  - https://codeberg.org/ngn/k
+  - https://news.ycombinator.com/item?id=31361023
+  - https://beautifulracket.com/
+  - https://nirvdrum.com/2022/05/09/truffle-language-embedding.html
+  - https://www.cs.cornell.edu/andru/papers/gallifrey-types/
+  - http://len.falken.directory/misc/brain-dump-2022-05-13T03:03:00-05:00.txt
+    - https://lobste.rs/s/vtcocq/c_is_truly_all_we_need_everything_else_is
+  - https://github.com/langjam/langjam
+  - https://www.roc-lang.org/
+  - https://www.kmjn.org/notes/operator_precedence_fortran.html
+  - https://slope.colorfield.space/
+  - https://antelang.org/
+  - http://www.jerf.org/iri/post/2954
+  - https://gcc-newbies-guide.readthedocs.io/en/latest/diving-into-gcc-internals.html
+    - [[https://github.com/murisi/L2/][GitHub - murisi/L2: An elegant untyped, unsafe programming language with unhygienic procedural macros]]
+  - https://dlang.org/blog/2022/06/21/dip1000-memory-safety-in-a-modern-system-programming-language-pt-1/
+  - https://whileydave.com/2022/06/15/type-checking-in-whiley-goes-both-ways/
+  - https://www.cambus.net/clang-static-analyzer-and-the-z3-constraint-solver/
+  - https://crystal-lang.org/2021/12/29/crystal-i.html
+  - https://news.ycombinator.com/item?id=31872739
+  - [[https://www.quora.com/What-is-homotopy-type-theory][What is homotopy type theory? - Quora]]
+  - [[http://homotopytypetheory.org/][Homotopy Type Theory]]
+  - https://homotopytypetheory.org/book/
+  - https://www.andrew.cmu.edu/user/erijke/hott/
+  - [[https://homotopytypetheory.org/book/][The HoTT Book | Homotopy Type Theory]]
+  - [[https://www.wikiwand.com/en/Homotopy_type_theory][Homotopy type theory - Wikiwand]]
+  - https://www.cs.cmu.edu/~rwh/courses/hott/
+  - https://www.andrew.cmu.edu/user/erijke/hott/
+  - https://facebookincubator.github.io/clangir/
+  - https://lobste.rs/s/sbiat6/clang_ir_cir_new_ir_for_clang
+  - https://wiki.alopex.li/QbeNotes
+  - https://briancallahan.net/blog/20220629.html
+  - https://github.com/rse/astq
+  - https://austinhenley.com/blog/mycomputingstory.html
+  - https://www.cell-lang.net/faq.html
+    - https://news.ycombinator.com/item?id=31915925
+  - https://www.draketo.de/proj/py2guile/
+  - https://noncombatant.org/2021/10/23/thoughts-on-language-design-bugs/
+  - http://intuitionistic.org/
+  - https://github.com/hemanth/functional-programming-jargon
+  - https://github.com/cybergsus/sawblade
+  - https://briancallahan.net/blog/20220704.html
+  - https://github.com/zesterer/tao
+  - https://arrdem.com/2022/07/04/superficial_simplicity/
+  - https://plzoo.andrej.com/index.html
+  - https://medium.com/@yanguly/inside-javascript-engines-part-1-parsing-c519d75833d7
+  - https://medium.com/@yanguly/inside-javascript-engines-part-2-code-generation-and-basic-optimizations-952bed02db62
+  - https://tomassetti.me/difference-between-compiler-interpreter/
+  - https://tomassetti.me/resources-create-programming-languages/
+  - https://tomassetti.me/domain-specific-languages/
+  - https://tomassetti.me/bests-posts-on-language-engineering-2016/
+  - https://tomassetti.me/building-language-tool-support/
+  - https://tomassetti.me/interview-static-analysis/
+  - https://tomassetti.me/generating-bytecode/
+  - https://tomassetti.me/building-compiler-language-validation/
+  - https://tomassetti.me/model-to-model-transformations/
+  - https://tomassetti.me/what-are-good-books-on-best-practices-of-the-design-of-domain-specific-languages-dsl/
+  - https://tomassetti.me/book-creating-languages-and-supporting-tools/
+  - https://tomassetti.me/ebnf/
+  - https://tomassetti.me/a-tutorial-on-how-to-write-a-compiler-using-llvm/
+  - https://tomassetti.me/how-to-write-a-transpiler/
+  - https://tomassetti.me/domain-specific-languages-for-contacts/
+  - https://tomassetti.me/why-you-should-not-use-flex-yacc-and-bison/
+  - https://tomassetti.me/how-to-create-programming-language/
+  - https://tomassetti.me/a-complete-tutorial-on-the-drools-business-rule-engine/
+  - https://tomassetti.me/code-generation/
+  - https://tomassetti.me/guide-parsing-algorithms-terminology/
+  - https://docs.microsoft.com/en-us/archive/blogs/alphageek/native-compilation-why-jit-when-you-can-codegen
+  - https://news.ycombinator.com/item?id=32069418
+  - https://medium.com/leaningtech/fantastic-tail-calls-and-how-to-implement-them-8c6bd52fd271
+  - https://iucompilercourse.github.io/IU-P423-P523-E313-E513-Fall-2020/
+  - https://buttondown.email/hillelwayne/archive/six-programming-languages-id-like-to-see/
+  - https://news.ycombinator.com/item?id=32081808
+  - https://news.ycombinator.com/item?id=32079227
+  - https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/
+  - https://dogbolt.org/
+  - https://www.reddit.com/r/Compilers/comments/wayorr/full_time_job_as_compiler_engineer/
+  - https://www.foonathan.net/2022/07/carbon-calling-convention/
+  - https://news.ycombinator.com/item?id=32289225
+  - https://webkit.org/blog/12967/understanding-gc-in-jsc-from-scratch/
+  - https://semantic-domain.blogspot.com/2013/07/what-declarative-languages-are.html?m=1
+  - https://lobste.rs/s/vrq9ci/what_declarative_languages_are_2013
+  - https://effectivetypescript.com/2022/07/30/treemap-for-source-files/
+  - https://kevinlawler.com/refcount
+  - https://lobste.rs/s/qdtqi2/automatic_memory_management_with_short
+  - https://news.ycombinator.com/item?id=32372689
+  - https://github.com/elonlit/Genesis
+  - https://idiomdrottning.org/sexpc
+  - https://derw.substack.com/p/writing-a-bootstrapping-compiler?sd=pf
+  - https://www.reddit.com/r/rust/comments/wi5qjh/what_optimizations_does_pgo_do_besides_branch/
+  - https://arxiv.org/abs/1410.7103
+  - https://lobste.rs/s/cnqdvf/confusion_church_turing_thesis
+  - http://al3x.net/2014/09/16/thoughts-on-five-years-of-emerging-languages.html
+  - https://evertpot.com/syntactic-sugar/
+  - https://lobste.rs/s/ycdjwq/on_syntactic_sugar
+  - https://yoyo-code.com/programming-breakthroughs-we-need/
+  - https://azdavis.net/posts/millet/
+  - https://www.reddit.com/r/cpp/comments/wutf6o/writing_an_opensource_c_static_analysis_tool/
+  - https://sqlite.org/src/doc/trunk/doc/lemon.html
+  - https://news.ycombinator.com/item?id=32590390
+  - https://github.com/breck7/pldb
+  - https://copilot-language.github.io/
+  - https://synthesis.to/2021/03/15/control_flow_analysis.html
+  - https://lewissbaker.github.io/2022/08/27/understanding-the-compiler-transform
+  - https://github.com/opencompl/egg-tactic-code
+  - https://twitter.com/thorstenball/status/1564839204273770498?t=Oph7q9hfOR5-ln-e4XlHEw&s=19
+  - https://lobste.rs/s/gm2ukd/fp_language_which_will_stand_test_time
+  - https://www.reddit.com/r/Compilers/comments/pjn25h/how_does_engineering_a_compiler_by_keith_cooper/
+  - [[http://msdn.microsoft.com/en-gb/magazine/dn904673.aspx][Compilers - What Every Programmer Should Know About Compiler Optimizations]]
+  - [[http://aras-p.info/blog/2016/12/09/Amazing-Optimizers-or-Compile-Time-Tests/][Amazing Optimizers, or Compile Time Tests ·  Aras' website]]
+  - https://sdtimes.com/test/5-ways-static-code-analysis-can-save-you/
+  - http://math.andrej.com/2020/09/14/a-general-definition-of-dependent-type-theories/
+  - https://medium.com/@gajus/parsing-absolutely-anything-in-javascript-using-earley-algorithm-886edcc31e5e#.ta9sl8jw5
+  - [[https://github.com/ollef/Earley][GitHub - ollef/Earley: Parsing all context-free grammars using Earley's algorithm in Haskell.]]
+  - https://lwn.net/Articles/897750/
+  - https://news.ycombinator.com/item?id=24066832
+  - http://lambda-the-ultimate.org/node/5648
+  - https://github.com/thradams/cake
+    - https://news.ycombinator.com/item?id=32823118
+  - https://developers.redhat.com/articles/2022/09/17/gccs-new-fortification-level
+  - https://compilerspotlight.substack.com/p/language-showcase-lux
+  - https://bertrandmeyer.com/2022/09/28/introduction-theory-programming-languages-full-book-now-freely-available/
+  - https://www.akitasoftware.com/blog-posts/why-arent-there-more-programming-languages-startups
+    - https://lobste.rs/s/hfwxsh/why_aren_t_there_more_programming
+  - https://www.cs.cmu.edu/~rwh/pfpl/
+  - https://news.ycombinator.com/item?id=33031724
+  - https://about.sourcegraph.com/blog/introducing-steve-yegge
+  - https://www.mattkeeter.com/blog/2022-10-04-ssra/
+    - https://twitter.com/impraxical/status/1577321303400452100
+    - https://lobste.rs/s/od8rzt/solid_state_register_allocator 
+  - https://elixir-lang.org/blog/2022/10/05/my-future-with-elixir-set-theoretic-types/
+  - https://lawrencecpaulson.github.io/2022/10/05/Standard_ML.html
+  - https://github.com/woodrush/lambda-8cc
+  - https://con.racket-lang.org/
+  - https://codefol.io/posts/the-hundred-year-programming-language/
+  - https://thelittletyper.com/
+    - https://news.ycombinator.com/item?id=33162971
+  - https://medium.com/building-carta/type-annotation-via-automated-refactoring-fd8edfe123d4
+  - https://blog.jetbrains.com/fleet/2022/10/introducing-the-fleet-public-preview/
+  - http://tratt.net/laurie/blog/entries/debugging_layers
+  - https://iu-parfunc.github.io/gibbon/
+  - https://evanthebouncy.github.io/program-synthesis-minimal/
+  - https://www.reddit.com/r/Compilers/comments/y4yz0z/who_is_researching_array_languages_these_days/
+- TOOLS / DEVELOPMENT / MCA
+  - http://lists.llvm.org/pipermail/llvm-dev/2018-March/121490.html
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../cse/ai/machine_learning_dev_ops.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../cse/compilers/books/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../cse/ai/machine_learning_dev_ops.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../cse/compilers/books/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

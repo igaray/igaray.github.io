@@ -1,0 +1,226 @@
+# LAMBDA
+
+TODO
+
+---
+# Learning path
+  - content
+    - cultura
+    - linux / docker
+    - networking
+    - debugging (quiero meter mas que gdb)
+    - git
+    - base de datos
+    - FP / Erlang
+    - Rust
+    - Estructura de datos: merkle tree, tries, btree, CRDTs
+    - armado de mini lisp
+  - content
+    creo que tengo unos recursos sobre debugging que podrian ir, mas sobre el mindset que tecnicas especificas, pero creo que para los lenguajes core que usamos podriamos incluir links, una cosa puntual que si creo que falta es tracing en erlang/elixir,  y erlang in anger
+    despues en la parte de management, tendriamos que buscar algo piola, puntual y al grano con respecto a lo cual todos estamos de acuerdo, sobre como hacer estimaciones
+    en la parte de sistemas distribuidos y let it fail, mencion del concepto de chaos engineering
+    para reducir, separaria lo que es el learning path puntualmente, o sea, los textos a leer y ejercicios a realizar, del material de referencia
+    y por ultimo, respecto a lo de build your own lisp, creo que es un excelente proyecto pero no se si no llevaria mucho tiempo y si beneficiaria a todos por igual, o si necesitamos que todos pasen a traves de eso, creo que lo dejaria opcional y haria mas hincapie en el concepto subyacente: instrucciones/codigo como datos, y relacionar eso con el approach homoiconico de lisp/julia/elixir, como funciona un interprete puro de codigo, y como funciona una VM simple
+    como ejercicio practico, creo que es mas valioso un ejercicio de parsear y limpiar datos, que haga entender el valor de tener datos estructurados vs no estructurados, especialmente en cuanto a manejo de errores
+  - content
+    https://landscape.cncf.io/
+    https://roadmap.sh/
+    https://mattturck.com/data2020/
+  - content
+    https://trello.com/b/HbTEX5hb/employee-manual
+    https://en.wikipedia.org/wiki/Employee_handbook
+    https://hubworks.com/blog/how-to-write-an-employee-manual-20-step-guide.html
+    https://handbook.manas.tech/#01-manas/0-manas.md
+  - fix:
+    Hello , hoy retome un poco el learning. Lei un poco mas de Elixir Getting Started. Tambien estuve viendo la sección Helpful reading , leyendo The sunk cost fallacy y el otro link sobre The biggest mistake i see engineers make no esta funcionando. Un abrazo.:saluting_face:
+  - fix: 
+    https://www.thezbook.com/the-biggest-mistake-i-see-engineers-make/
+  - add:
+    [https://jlouisramblings.blogspot.com/2013/10/embrace-copying.html](https://jlouisramblings.blogspot.com/2013/10/embrace-copying.html)
+    Importante Erlang
+    [https://jlouisramblings.blogspot.com/2012/08/getting-25-megalines-of-code-to-behave.html](https://jlouisramblings.blogspot.com/2012/08/getting-25-megalines-of-code-to-behave.html)
+    Importante erlang y general
+    https://jlouisramblings.blogspot.com/2012/06/protocols-in-kingdom-of-distribution.html
+    Opcional Erlang
+    [https://jlouisramblings.blogspot.com/2012/05/more-on-erlang-and-state.html](https://jlouisramblings.blogspot.com/2012/05/more-on-erlang-and-state.html)
+    Opcional Erlang
+    https://medium.com/@jlouis666/stacking-theory-for-systems-design-2450e6300689
+    Importante Erlang + General
+    https://medium.com/@jlouis666/on-functional-programming-df28cc9078de
+    Opcional General
+    [https://medium.com/@jlouis666/how-to-build-stable-systems-6fe9dcf32fc4](https://medium.com/@jlouis666/how-to-build-stable-systems-6fe9dcf32fc4)
+    Importante General!
+    [https://medium.com/@jlouis666/systems-in-production-c2ed26b6a72e](https://medium.com/@jlouis666/systems-in-production-c2ed26b6a72e)
+    Opcional General
+    [https://medium.com/@jlouis666/on-scalability-capacity-and-sensitivity-b71941c36dc8](https://medium.com/@jlouis666/on-scalability-capacity-and-sensitivity-b71941c36dc8)
+    Opcional General
+    [https://medium.com/@jlouis666/error-kernels-9ad991200abd](https://medium.com/@jlouis666/error-kernels-9ad991200abd)
+    Importante Erlang / Opcional general
+    - https://blog.troutwine.us/2013/07/10/choose-erlang/
+    - https://jlouisramblings.blogspot.com/2011/07/erlangs-parallelism-is-not-parallelism.html
+    - http://erlang.idea.cz/Erlang_BEAM_Scheduling.pdf
+    - https://hamidreza-s.github.io/erlang/scheduling/real-time/preemptive/migration/2016/02/09/erlang-scheduler-details.html
+    - https://people.kth.se/~johanmon/dse.html
+    A way of looking at an Erlang program is to forget about the details inside the processes. What you want to do is to describe the protocol of communication instead. You can describe what will happen if a process receives a certain message. As an example, a BitTorrent client may have a message you can send to the IO layer: `{read, K, Tag}`. The semantics are that the IO subsystem will read piece `K` from the underlying stable storage and it will respond with either `{ok, Tag, Data}` or with `{error, Tag, Reason}`. The tag acts as a unique identifier reference so we can match up a particular read with a response. And it is part of a standard OTP `gen_server` behaviours call semantics to use tagging like this.
+      esto es CLAVE
+  - add:
+    https://www.youtube.com/watch?v=M3pwjYCjzZc&list=PLFX2cij7c2PywdPR25Ikj4FLCumA9y-ip
+  - add:
+    https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+  - add:
+    https://www.semanticscholar.org/paper/The-Debugging-Mindset-O%27Dell/8a5fcc5f28dfd308d5270f1e25dd2837073ce216
+  - add:
+    https://matklad.github.io/2021/05/31/how-to-test.html
+  - add:
+    https://google.github.io/comprehensive-rust/
+  - add:
+    https://crates.io/crates/flamegraph
+    La documentación de este crate es HERMOSA para dar una intro rápida a performance engineering.
+    https://stackoverflow.com/questions/13322479/how-to-benchmark-programs-in-rust
+    https://www.brendangregg.com/usemethod.html
+    [Thinking Methodically about Performance](https://dl.acm.org/doi/pdf/10.1145/2405116.2413037)
+  - add:
+    me gustaria meter una mini intro de cairo
+  - add:
+    https://www.youtube.com/watch?v=d-zn-wv4Di8
+  - add:
+    https://github.com/lambdaclass/entropy_hacking_learning_path
+  - add:
+    - https://deepai.org/publication/overview-of-blakley-s-secret-sharing-scheme#:~:text=In%20this%20scheme%2C%20the%20dealer,approach%20to%20solve%20this%20problem
+    - 2022/11/06 [The essence of Reed-Solomon coding](https://mazzo.li/posts/reed-solomon.html)
+    - https://en.wikipedia.org/wiki/Secret_sharing#Blakley's_scheme
+    - https://en.wikipedia.org/wiki/Crypto_Wars
+    - https://en.wikipedia.org/wiki/Clipper_chip
+    - https://youtu.be/1pQJkt7-R4Q
+    - https://youtu.be/-qk3fG4PTj4
+    - https://youtu.be/TgKwz5Ikpc8
+    - https://youtu.be/HMsPUKizT3k
+    - https://youtu.be/ShUyfk4QB-8
+    - https://youtu.be/ufAtIB6uuis
+
+---
+# Patricia Merkle Tree
+- https://github.com/lambdaclass/patricia-tree/pull/2
+- https://github.com/ethereum/go-ethereum
+- https://github.com/zhangchiqing/merkle-patricia-trie
+- https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/
+- https://github.com/ethereum/go-ethereum/blob/743e404906744e24b43dab49b83deaa9111d3c14/trie/trie_test.go#L625
+
+---
+# Arweave
+- https://2-6-spec.arweave.dev/
+- https://www.arweave.org/yellow-paper.pdf
+- https://www.arweave.org/files/arweave-lightpaper.pdf
+
+---
+# Links
+- lambda repos
+  - https://github.com/unbalancedparentheses/learn_wasmer
+  - https://github.com/unbalancedparentheses/learning
+  - https://github.com/unbalancedparentheses/the_bayes_way
+  - https://github.com/unbalancedparentheses/distributed_consensus_in_rust_for_hackers
+  - https://github.com/unbalancedparentheses/lambda_calculus_rust
+  - https://github.com/unbalancedparentheses/lambda_toy_language
+  - https://github.com/unbalancedparentheses/toylang
+  - https://github.com/unbalancedparentheses/learn_economics
+  - https://github.com/unbalancedparentheses/spawnedshelter
+  - https://github.com/unbalancedparentheses/leptokurtic_forecasting_world
+  - https://github.com/unbalancedparentheses/nutrition_health_papers_and_videos
+  - https://github.com/unbalancedparentheses/ee_lecture_notes
+  - https://github.com/unbalancedparentheses/cryptography_in_rust_for_hackers
+  - https://github.com/lambdaclass/lambda_little_distributed_systems_handbook
+  - https://github.com/lambdaclass/event_driven
+  - https://github.com/lambdaclass/riak_core_tutorial
+  - https://github.com/lambdaclass/million_requests_per_second
+  - https://github.com/lambdaclass/programming_bitcoin_in_rust
+  - https://github.com/lambdaclass/consensus_algorithms_simulations_julia
+  - https://github.com/lambdaclass/tla_plus_playground
+  - https://www.notamonadtutorial.com/
+  - [security learning path](https://hackmd.io/@fhxMfEADQZiUQHZBV5I8yw/BJTz8xvHs)
+- misc
+  - https://github.com/caulk-crypto/caulk
+  - https://slack.com/intl/en-gb/blog/collaboration/etiquette-tips-in-slack
+  - https://hackmd.io/YFNlSwCvT2GrQReF9qrPZA?view
+  - https://github.com/rrrene/elixir-style-guide
+  - https://blog.lelonek.me/an-opinionated-elixir-style-guide-c01b279f3e30
+  - https://github.com/DockYard/styleguides/blob/master/engineering/elixir.md
+  - https://blog.appsignal.com/2020/01/29/how-to-get-your-elixir-application-ready-for-ci-cd.html
+  - https://keathley.io/blog/good-and-bad-elixir.html
+  - https://github.com/christopheradams/elixir_style_guide
+  - [Youtube: Critical Program Reading](https://www.youtube.com/watch?v=7hdJQkn8rtA)
+  - https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html
+  - https://twitter.com/astrakernel/status/1609463401213988864?s=46&t=_WLSphmawg6UbZWavULqpQ
+  - https://youtu.be/NxhZ_c8YX8E
+  - https://twitter.com/alexxubyte/status/1608141999940726784?s=12&t=fcj797RMrvuGOMECv3iR9A
+  - https://twitter.com/penberg/status/1608378283976183808?s=12&t=63AZiFWF8ImlyrpEEHvHNA
+  - https://www.youtube.com/channel/UCgwD47KJixTA-HmQ3NL3uZg
+  - https://terrytao.wordpress.com/career-advice/theres-more-to-mathematics-than-rigour-and-proofs/
+  - https://github.com/jsinger67/parol
+  - https://github.com/dtantsur/rust-dht
+  - https://github.com/ledgerwatch/erigon/releases/tag/v2022.04.03
+  - https://twitter.com/zhongfu/status/1410098888103448582?lang=en
+  - https://github.com/lambdaclass/libtorrent-rs
+  - https://edgarluque.com/blog/bencode-parser-with-nom
+  - https://github.com/mandreyel/cratetorrent
+  - https://github.com/taller-1-fiuba-rust/22C1-La-Deymoneta
+  - https://kevinlynagh.com/notes/match-vs-lookup/
+  - https://docs.rs/once_cell/latest/once_cell/
+  - https://github.com/rust-lang/rust/blob/stable/RELEASES.md#version-1660-2022-12-15
+  - https://blog.rust-lang.org/inside-rust/2022/12/12/1.66.0-prerelease.html
+  - https://github.com/starkware-libs/cairo/tree/main/crates/languageserver/src
+  - https://marabos.nl/atomics/
+  - https://www.reddit.com/r/rust/comments/zjx2xx/blog_post_rust_in_2023/
+  - https://www.malachite.rs/
+  - http://rtpg.co/2022/12/05/rust-trait-object-apis.html
+  - https://google.github.io/comprehensive-rust/
+  - https://github.com/pretzelhammer/rust-blog?s=35
+  - https://tiotags.gitlab.io/blog/rust.html
+  - https://utcc.utoronto.ca/~cks/space/blog/programming/RustIsInevitable
+  - https://rust-unofficial.github.io/patterns/anti_patterns/deny-warnings.html
+  - https://www.forrestthewoods.com/blog/should-small-rust-structs-be-passed-by-copy-or-by-borrow/
+  - https://www.youtube.com/watch?v=pePqWoTnSmQ
+  - https://github.com/ReSpeak/tomcrypt-rs
+  - https://twitter.com/fuzzinglabs/status/1605935392301031424?s=12&t=dvJCw4XRFfYSR-5dxiNldw
+  - https://github.com/FuzzingLabs/cairo-fuzzer
+  - https://www.youtube.com/watch?v=HPvexX3ZCJw
+  - https://yorickpeterse.com/articles/deciding-when-to-collect-garbage/
+  - https://github.com/alecmocatta/cap
+  - https://www.youtube.com/watch?v=Nb2tebYAaOA
+  - https://youtu.be/G4hL5Om4IJ4
+
+---
+# Entrevistas
+
+## Estructura general
+- Preguntar por ingles.
+- Preguntar por experiencia previa.
+- Preguntar por preferencias y objetivos.
+- Area: Procesos de Desarrollo
+- Area: Lenguajes
+- Area: Datos
+- Area: Linux
+
+## Soft Skills
+
+## Python
+
+- Setup de proyectos
+
+## Erlang
+
+## Elixir
+
+## C++
+
+## Rust
+
+## Linux
+
+## Datos
+
+- SQL
+- Bases de datos no relacionales
+- Estadistica
+
+--- 
+# Aleo

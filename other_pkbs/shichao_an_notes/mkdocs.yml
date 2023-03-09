@@ -1,0 +1,181 @@
+site_name: Shichao's Notes
+site_description: Shichao's Notes
+site_url: https://notes.shichao.io
+repo_url: https://github.com/shichao-an/notes
+theme: flatly
+theme_dir: 'custom_theme'
+site_favicon: 'toki_32.png'
+extra_javascript:
+    - custom.js
+      #- https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
+markdown_extensions:
+    - mdx_math
+    - codehilite
+    - toc:
+        permalink: True
+pages:
+    - Home: 'index.md'
+    - APUE:
+        - 'Contents': 'apue/index.md'
+        - 'Chapter 1. UNIX System Overview': 'apue/ch1.md'
+        - 'Chapter 2. UNIX Standardization and Implementations': 'apue/ch2.md'
+        - 'Chapter 3. File I/O': 'apue/ch3.md'
+        - 'Chapter 4. Files and Directories': 'apue/ch4.md'
+        - 'Chapter 5. Standard I/O Library': 'apue/ch5.md'
+        - 'Chapter 6. System Data Files and Information': 'apue/ch6.md'
+        - 'Chapter 7. Process Environment': 'apue/ch7.md'
+        - 'Chapter 8. Process Control': 'apue/ch8.md'
+        - 'Chapter 9. Process Relationships': 'apue/ch9.md'
+        - 'Chapter 10. Signals': 'apue/ch10.md'
+        - 'Chapter 11. Threads': 'apue/ch11.md'
+        - 'Chapter 12. Thread Control': 'apue/ch12.md'
+        - 'Chapter 13. Daemon Processes': 'apue/ch13.md'
+        - 'Chapter 14. Advanced I/O': 'apue/ch14.md'
+        - 'Chapter 15. Interprocess Communication': 'apue/ch15.md'
+        - 'Chapter 16. Network IPC: Sockets': 'apue/ch16.md'
+        - 'Chapter 17. Advanced IPC': 'apue/ch17.md'
+    - UNP:
+        - 'Contents': 'unp/index.md'
+        - 'Chapter 1. Introduction': 'unp/ch1.md'
+        - 'Chapter 2. The Transport Layer: TCP, UDP, and SCTP': 'unp/ch2.md'
+        - 'Chapter 3. Sockets Introduction': 'unp/ch3.md'
+        - 'Chapter 4. Elementary TCP Sockets': 'unp/ch4.md'
+        - 'Chapter 5. TCP Client/Server Example': 'unp/ch5.md'
+        - 'Chapter 6. I/O Multiplexing: The select and poll Functions': 'unp/ch6.md'
+        - 'Chapter 7. Socket Options': 'unp/ch7.md'
+        - 'Chapter 8. Elementary UDP Sockets': 'unp/ch8.md'
+    - TCPv1:
+        - 'Contents': 'tcpv1/index.md'
+        - 'Chapter 1. Introduction': 'tcpv1/ch1.md'
+        - 'Chapter 2. The Internet Address Architecture': 'tcpv1/ch2.md'
+        - 'Chapter 3. Link Layer': 'tcpv1/ch3.md'
+        - 'Chapter 4. ARP: Address Resolution Protocol': 'tcpv1/ch4.md'
+        - 'Chapter 5. The Internet Protocol (IP)': 'tcpv1/ch5.md'
+        - 'Chapter 6. System Configuration: DHCP and Autoconfiguration': 'tcpv1/ch6.md'
+        - 'Chapter 7. Firewalls and Network Address Translation (NAT)': 'tcpv1/ch7.md'
+        - 'Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol': 'tcpv1/ch8.md'
+        - 'Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)': 'tcpv1/ch9.md'
+        - 'Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation': 'tcpv1/ch10.md'
+        - 'Chapter 11. Name Resolution and the Domain Name System (DNS)': 'tcpv1/ch11.md'
+        - 'Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)': 'tcpv1/ch12.md'
+        - 'Chapter 13. TCP Connection Management': 'tcpv1/ch13.md'
+        - 'Chapter 14. TCP Timeout and Retransmission': 'tcpv1/ch14.md'
+        - 'Chapter 15. TCP Data Flow and Window Management': 'tcpv1/ch15.md'
+        - 'Chapter 16. TCP Congestion Control': 'tcpv1/ch16.md'
+        - 'Chapter 17. TCP Keepalive': 'tcpv1/ch17.md'
+        - 'Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM': 'tcpv1/ch18.md'
+        - 'Headers': 'tcpv1/headers.md'
+    - TCPIP:
+        - 'Contents': 'tcpip/index.md'
+        - 'Chapter 37. Overview of Key Routing Protocol Concepts': 'tcpip/ch37.md'
+    - UTLK:
+        - 'Contents': 'utlk/index.md'
+        - 'Chapter 1. Introduction': 'utlk/ch1.md'
+        - 'Chapter 2. Memory Addressing': 'utlk/ch2.md'
+        - 'Chapter 3. Processes': 'utlk/ch3.md'
+    - LSP:
+        - 'Contents': 'lsp/index.md'
+        - 'Chapter 9. Memory Management': 'lsp/ch9.md'
+    - TLPI:
+        - 'Contents': 'tlpi/index.md'
+        - 'Chapter 6. Processes': 'tlpi/ch6.md'
+        - 'Chapter 7. Memory Allocation': 'tlpi/ch7.md'
+    - GOPL:
+        - 'Contents': 'gopl/index.md'
+        - 'Chapter 1. Tutorial': 'gopl/ch1.md'
+        - 'Chapter 2. Program Structure': 'gopl/ch2.md'
+        - 'Chapter 3. Basic Data Types': 'gopl/ch3.md'
+        - 'Chapter 4. Composite Types': 'gopl/ch4.md'
+        - 'Chapter 5. Functions': 'gopl/ch5.md'
+        - 'Chapter 6. Methods': 'gopl/ch6.md'
+        - 'Chapter 7. Interfaces': 'gopl/ch7.md'
+        - 'Chapter 8. Goroutines and Channels': 'gopl/ch8.md'
+        - 'Chapter 9. Concurrency with Shared Variables': 'gopl/ch9.md'
+        - 'Chapter 10. Packages and the Go Tool': 'gopl/ch10.md'
+        - 'Chapter 11. Testing': 'gopl/ch11.md'
+        - 'Chapter 12. Reflection': 'gopl/ch12.md'
+    - PER:
+        - 'Contents': 'per/index.md'
+        - 'Chapter 1. A Tutorial Introduction': 'per/ch1.md'
+        - 'Chapter 6. Functions and Functional Programming': 'per/ch6.md'
+        - 'Chapter 7. Classes and Object-Oriented Programming': 'per/ch7.md'
+        - 'Chapter 15. Data Structures, Algorithms, and Code Simplification': 'per/ch15.md'
+    - TWGR:
+        - 'Contents': 'twgr/index.md'
+        - 'Chapter 1. Bootstrapping your Ruby literacy': 'twgr/ch1.md'
+        - 'Chapter 2. Objects, methods, and local variables': 'twgr/ch2.md'
+    - ICND1:
+        - 'Contents': 'icnd1/index.md'
+        - 'ICND1 Part I: Networking Fundamentals': 'icnd1/part1.md'
+    - ICND2:
+        - 'Contents': 'icnd2/index.md'
+        - 'ICND2 Part I: LAN Switching': 'icnd2/part1.md'
+    - DevOps:
+        - 'Contents': 'devops/index.md'
+        - 'Chapter 1. What Is DevOps?': 'devops/ch1.md'
+        - 'Chapter 2. The Cloud as a Platform': 'devops/ch2.md'
+        - 'Chapter 3. Operations': 'devops/ch3.md'
+        - 'Chapter 4. Overall Architecture': 'devops/ch4.md'
+        - 'Chapter 5. Building and Testing': 'devops/ch5.md'
+        - 'Chapter 6. Deployment': 'devops/ch6.md'
+        - 'Chapter 7. Monitoring': 'devops/ch7.md'
+        - 'Chapter 8. Security and Security Audits': 'devops/ch8.md'
+        - 'Chapter 9. Other Ilities': 'devops/ch9.md'
+        - 'Chapter 10. Business Considerations': 'devops/ch10.md'
+        - 'Chapter 11. Supporting Multiple Datacenters': 'devops/ch11.md'
+        - 'Chapter 12. Implementing a Continuous Deploy': 'devops/ch12.md'
+        - 'Chapter 13. Migrating to Microservices': 'devops/ch13.md'
+        - 'Chapter 14. Operations as a Process': 'devops/ch14.md'
+        - 'Chapter 15. The Future of DevOps': 'devops/ch15.md'
+    - CNAPP:
+        - 'Contents': 'cnapp/index.md'
+        - 'Chapter 1. Introduction': 'cnapp/ch1.md'
+    - BD:
+        - 'Contents': 'bd/index.md'
+        - 'Chapter 1. A new paradigm for Big Data': 'bd/ch1.md'
+        - 'Chapter 2. Data model for Big Data': 'bd/ch2.md'
+        - 'Chapter 3. Data model for Big Data: Illustration': 'bd/ch3.md'
+    - DDA:
+        - 'Contents': 'dda/index.md'
+        - 'Part I. Foundations of Data Systems': 'dda/part1.md'
+        - 'Chapter 1. Reliable, Scalable and Maintainable Applications': 'dda/ch1.md'
+        - 'Chatper 2. Data Models and Query Languages': 'dda/ch2.md'
+        - 'Chatper 3. Storage and Retrieval': 'dda/ch3.md'
+        - 'Chatper 4. Encoding and Evolution': 'dda/ch4.md'
+        - 'Part II: Distributed Data': 'dda/part2.md'
+        - 'Chatper 5. Replication': 'dda/ch5.md'
+        - 'Chatper 6. Partitioning': 'dda/ch6.md'
+    - CNSPP:
+        - 'Contents': 'cnspp/index.md'
+        - 'Chapter 0. Guide for Readers and Instructors': 'cnspp/ch0.md'
+        - 'Chapter 1. Overview': 'cnspp/ch1.md'
+        - 'Chapter 2. Classical Encryption Techniques': 'cnspp/ch2.md'
+    - HTAE:
+        - 'Contents': 'htae/index.md'
+        - '0x200 Programming': 'htae/ch2.md'
+        - '0x300 Exploitation': 'htae/ch3.md'
+        - '0x500 Shellcode': 'htae/ch5.md'
+    - PIC: 'pic/index.md'
+    - CSN:
+        - 'Contents': 'csn/index.md'
+        - 'Part 1: Language': 'csn/part1.md'
+        - 'Part 2: Advanced': 'csn/part2.md'
+    - PL:
+        - 'Bash': 'bash/index.md'
+        - 'C': 'c/index.md'
+        - 'Go': 'golang/index.md'
+        - 'Python': 'python/index.md'
+        - 'Ruby': 'ruby/index.md'
+        - 'x86 assembly': 'asm/index.md'
+        - 'x86 disassembly': 'disassembly/index.md'
+    - Books: 'books.md'
+    - TOC: 'toc.md'
+    - Roadmap:
+        - 'Roadmap': 'roadmap/index.md'
+        - 'OKR': 'roadmap/okr.md'
+        - 'Catalog': 'roadmap/catalog.md'
+    - Others:
+        - 'CLRS': 'clrs/index.md'
+        - 'iptables': 'iptables/index.md'
+        - 'Nginx': 'nginx/index.md'
+        - 'Vim': 'vim/index.md'

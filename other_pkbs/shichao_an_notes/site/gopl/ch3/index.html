@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/gopl/ch3/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>Chapter 3. Basic Data Types - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li class="active">
+                            <a href="./">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch4/">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch9/">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch12/">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/gopl/ch3.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#chapter-3-basic-data-types">Chapter 3. Basic Data Types</a></li>
+        
+    
+        <li class="main "><a href="#integers">Integers</a></li>
+        
+            <li><a href="#signedness">Signedness *</a></li>
+        
+            <li><a href="#binary-operators">Binary operators *</a></li>
+        
+    
+        <li class="main "><a href="#floating-point-numbers">Floating-Point Numbers</a></li>
+        
+            <li><a href="#special-values-inf-inf-and-nan">Special values: +Inf, -Inf, and NaN *</a></li>
+        
+    
+        <li class="main "><a href="#complex-numbers">Complex Numbers</a></li>
+        
+    
+        <li class="main "><a href="#booleans">Booleans</a></li>
+        
+    
+        <li class="main "><a href="#strings">Strings</a></li>
+        
+            <li><a href="#the-substring-operation">The substring operation *</a></li>
+        
+            <li><a href="#string-concatenation-comparison-and-immutability">String concatenation, comparison and immutability *</a></li>
+        
+            <li><a href="#string-literals">String Literals</a></li>
+        
+            <li><a href="#unicode">Unicode</a></li>
+        
+            <li><a href="#utf-8">UTF-8</a></li>
+        
+            <li><a href="#strings-and-byte-slices">Strings and Byte Slices</a></li>
+        
+            <li><a href="#conversions-between-strings-and-numbers">Conversions between Strings and Numbers</a></li>
+        
+    
+        <li class="main "><a href="#constants">Constants</a></li>
+        
+            <li><a href="#the-constant-generator-iota">The Constant Generator iota</a></li>
+        
+            <li><a href="#untyped-constants">Untyped Constants</a></li>
+        
+    
+        <li class="main "><a href="#doubts-and-solution">Doubts and Solution</a></li>
+        
+            <li><a href="#verbatim">Verbatim</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="chapter-3-basic-data-types"><strong>Chapter 3. Basic Data Types</strong><a class="headerlink" href="#chapter-3-basic-data-types" title="Permanent link">&para;</a></h3>
+<p>Computers operate fundamentally on fixed-size numbers called <strong>words</strong>, which are interpreted as integers, floating-point numbers, bit sets, or memory addresses, then combined into larger aggregates.</p>
+<p>Go’s types fall into four categories:</p>
+<ul>
+<li>Basic types: numbers, strings, and booleans.</li>
+<li>Aggregate types: arrays and structs.</li>
+<li>Reference types: pointers, slices, maps, functions, and channels .</li>
+<li>Interface types</li>
+</ul>
+<p>Basic types (discussed in this chapter) include numbers, strings, and booleans.</p>
+<h3 id="integers">Integers<a class="headerlink" href="#integers" title="Permanent link">&para;</a></h3>
+<p>Go provides both signed and unsigned integer arithmetic. There are four distinct sizes of
+signed integers: 8, 16, 32, and 64 bits. They represented by:</p>
+<ul>
+<li>Signed: <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code>;</li>
+<li>Unsigned: <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, and <code>uint64</code>.</li>
+</ul>
+<p>There are also two types <code>int</code> and <code>uint</code> that are the natural or most efficient size for signed and unsigned integers on a particular platform: <code>int</code> is by far the most widely used numeric type. Both these types have the same size, either 32 or 64 bits, but one must not make assumptions about which; different compilers may make different choices even on identical hardware.</p>
+<ul>
+<li>The type <code>rune</code> is an synonym for <code>int32</code> and conventionally indicates that a value is a Unicode
+code point. The two names may be used interchangeably.</li>
+<li>The type <code>byte</code> is an synonym for <code>uint8</code>, and emphasizes that the value is a piece of raw data rather than a small numeric quantity.</li>
+<li><code>uintptr</code> is an unsigned integer type, whose width is not specified but is sufficient to hold all the bits of a pointer value. The <code>uintptr</code> type is used only for low-level programming, such as at the boundary of a Go program with a C library or an operating system (discussed with the <code>unsafe</code> package in <a href="ch13.md">Chapter 13</a>).</li>
+</ul>
+<p>Regardless of their size, <code>int</code>, <code>uint</code>, and <code>uintptr</code> are different types from their explicitly sized siblings. Thus <code>int</code> is not the same type as <code>int32</code>, even if the natural size of integers is 32 bits, and an explicit conversion is required to use an <code>int</code> value where an <code>int32</code> is needed, and vice versa.</p>
+<h4 id="signedness">Signedness *<a class="headerlink" href="#signedness" title="Permanent link">&para;</a></h4>
+<p>Signed numbers are represented in <a href="https://en.wikipedia.org/wiki/Two%27s_complement">2’s-complement</a> form, in which the high-order bit is reserved for the sign of the number and the range of values of an n-bit number is from −2<sup><em>n</em>−1</sup> to 2<sup><em>n</em>−1</sup>−1. Unsigned integers use the full range of bits for non-negative values and thus have the range 0 to 2<sup><em>n</em>−1</sup>. For instance, the range of <code>int8</code> is −128 to 127, whereas the range of <code>uint8</code> is 0 to 255.</p>
+<h4 id="binary-operators">Binary operators *<a class="headerlink" href="#binary-operators" title="Permanent link">&para;</a></h4>
+<p>Go’s binary operators for arithmetic, logic, and comparison are listed here in order of decreasing precedence:</p>
+<div class="codehilite"><pre>* / % &lt;&lt; &gt;&gt; &amp; &amp;^
++ - | ^
+== != &lt; &lt;= &gt; &gt;=
+&amp;&amp;
+||
+</pre></div>
+
+
+<p>There are only five levels of precedence for binary operators. Operators at the same level associate to the left; parentheses may be required for clarity, or to make the operators evaluate in the intended order in an expression like <code>mask &amp; (1 &lt;&lt; 28)</code>.</p>
+<p>Each operator in the first two lines of the table above, has a corresponding assignment operator. For instance, <code>+</code> has <code>+=</code> that may be used to abbreviate an assignment statement.</p>
+<h5 id="arithmetic-operators"><strong>Arithmetic operators</strong> *<a class="headerlink" href="#arithmetic-operators" title="Permanent link">&para;</a></h5>
+<p>The integer <a href="https://golang.org/ref/spec#Arithmetic_operators">arithmetic operators</a> <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code> may be applied to integer, floating-point, and complex numbers, but the remainder operator <code>%</code> applies only to integers.</p>
+<ul>
+<li>The behavior of <code>%</code> for negative numbers varies across programming languages. In Go, the sign of the remainder is always the same as the sign of the <a href="https://en.wikipedia.org/wiki/Division_(mathematics)">dividend</a>, so <code>-5%3</code> and <code>-5%-3</code> are both <code>-2</code>.</li>
+<li>The behavior of <code>/</code> depends on whether its operands are integers, so <code>5.0/4.0</code> is <code>1.25</code>, but <code>5/4</code> is <code>1</code> because integer division truncates the result toward zero.</li>
+</ul>
+<h5 id="integer-overflow"><strong>Integer overflow</strong> *<a class="headerlink" href="#integer-overflow" title="Permanent link">&para;</a></h5>
+<p>If the result of an arithmetic operation, whether signed or unsigned, has more bits than can be represented in the result type, it is said to <em>overflow</em>. The high-order bits that do not fit are silently discarded. If the original number is a signed type, the result could be negative if the leftmost bit is a 1, as in the <code>int8</code> example here:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">u</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="mi">255</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">u</span><span class="p">,</span> <span class="nx">u</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">u</span><span class="o">*</span><span class="nx">u</span><span class="p">)</span> <span class="c1">// &quot;255 0 1&quot;</span>
+
+<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int8</span> <span class="p">=</span> <span class="mi">127</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">i</span><span class="o">*</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// &quot;127 -128 1&quot;</span>
+</pre></div>
+
+
+<h5 id="comparison-and-comparability"><strong>Comparison and comparability</strong> *<a class="headerlink" href="#comparison-and-comparability" title="Permanent link">&para;</a></h5>
+<p>Binary comparison operators are:</p>
+<ul>
+<li><code>==</code>: equal to</li>
+<li><code>!=</code>: not equal to</li>
+<li><code>&lt;</code>: less than</li>
+<li><code>&lt;=</code>: less than or equal to</li>
+<li><code>&gt;</code>: greater than</li>
+<li><code>&gt;=</code>: greater than or equal to</li>
+</ul>
+<p>The type of a comparison expression is a boolean.</p>
+<ul>
+<li>All values of basic type (booleans, numbers, and strings) are <em>comparable</em>. This means two values of the same type may be compared using the <code>==</code> and <code>!=</code> operators.</li>
+<li>Integers, floating-point numbers, and strings are <em>ordered</em> by the comparison operators.</li>
+<li>The values of many other types are not comparable, and no other types are ordered.</li>
+</ul>
+<h5 id="unary-operators"><strong>Unary operators</strong> *<a class="headerlink" href="#unary-operators" title="Permanent link">&para;</a></h5>
+<p>There are also unary addition and subtraction operators:</p>
+<ul>
+<li><code>+</code>: unary positive (no effect)</li>
+<li><code>-</code>: unary negation</li>
+</ul>
+<p>For integers, <code>+x</code> is a shorthand for <code>0+x</code> and <code>-x</code> is a shorthand for <code>0-x</code>; for floating-point and complex numbers, <code>+x</code> is just <code>x</code> and <code>-x</code> is the negation of <code>x</code>.</p>
+<h5 id="bitwise-binary-operators"><strong>Bitwise binary operators</strong> *<a class="headerlink" href="#bitwise-binary-operators" title="Permanent link">&para;</a></h5>
+<p>The following are bitwise binary operators. The first four of them treat their operands as bit patterns with no concept of arithmetic carry or sign:</p>
+<ul>
+<li><code>&amp;</code>: bitwise AND</li>
+<li><code>|</code>: bitwise OR</li>
+<li><code>^</code>: bitwise XOR</li>
+<li><code>&amp;^</code>: bit clear (AND NOT)</li>
+<li><code>&lt;&lt;</code>: left shift</li>
+<li><code>&gt;&gt;</code>: right shift</li>
+</ul>
+<p>The operator <code>^</code> has two usages:</p>
+<ul>
+<li>When used as a binary operator, it is bitwise exclusive OR (XOR)</li>
+<li>When used as a unary prefix operator, it is bitwise negation or complement, which means it returns a value with each bit in its operand inverted.</li>
+</ul>
+<p>The <code>&amp;^</code> operator is bit clear (AND NOT): in the expression <code>z = x &amp;^ y</code>, each bit of <code>z</code> is 0 if the corresponding bit of <code>y</code> is 1; otherwise it equals the corresponding bit of <code>x</code>.</p>
+<h5 id="bitwise-operation-examples"><strong>Bitwise operation examples</strong> *<a class="headerlink" href="#bitwise-operation-examples" title="Permanent link">&para;</a></h5>
+<p>The code below shows how bitwise operations can be used to interpret a <code>uint8</code> value as a compact and efficient set of 8 independent bits. It uses <code>Printf</code>'s <code>%b</code> verb to print a number’s binary digits; <code>08</code> modifies <code>%b</code> to pad the result with zeros to exactly 8 digits.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span> <span class="p">|</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">5</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="kt">uint8</span> <span class="p">=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">1</span> <span class="p">|</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">2</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>    <span class="c1">// &quot;00100010&quot;, the set {1, 5}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>    <span class="c1">// &quot;00000110&quot;, the set {1, 2}</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="o">&amp;</span><span class="nx">y</span><span class="p">)</span>  <span class="c1">// &quot;00000010&quot;, the intersection {1}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">|</span><span class="nx">y</span><span class="p">)</span>  <span class="c1">// &quot;00100110&quot;, the union {1, 2, 5}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">^</span><span class="nx">y</span><span class="p">)</span>  <span class="c1">// &quot;00100100&quot;, the symmetric difference {2, 5}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="o">&amp;^</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// &quot;00100000&quot;, the difference {5}</span>
+
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nb">uint</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">x</span><span class="o">&amp;</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="nx">i</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span> <span class="c1">// membership test</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// &quot;1&quot;, &quot;5&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// &quot;01000100&quot;, the set {2, 6}</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%08b\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="o">&gt;&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// &quot;00010001&quot;, the set {0, 4}</span>
+</pre></div>
+
+
+<p><a href="../ch6/#example-bit-vector-type">Section 6.5</a> shows an implementation of integer sets that can be much bigger than a byte.</p>
+<p>In the shift operations <code>x&lt;&lt;n</code> and <code>x&gt;&gt;n</code>:</p>
+<ul>
+<li>The <code>n</code> operand determines the number of bit positions to shift and must be unsigned.</li>
+<li>The <code>x</code> operand may be unsigned or signed.</li>
+</ul>
+<p>Arithmetically:</p>
+<ul>
+<li>A left shift <code>x&lt;&lt;n</code> is equivalent to multiplication by 2<sup>n</sup>.</li>
+<li>A right shift <code>x&gt;&gt;n</code> is equivalent to the floor of division by 2<sup>n</sup>.</li>
+</ul>
+<p>For unsigned numbers, both left and right shifts fill the vacated bits with zeros. However, <u>right shifts of signed numbers fill the vacated bits with copies of the sign bit.</u> For this reason, it is important to use unsigned arithmetic when you’re treating an integer as a bit pattern.</p>
+<h5 id="usages-of-unsigned-numbers"><strong>Usages of unsigned numbers</strong><a class="headerlink" href="#usages-of-unsigned-numbers" title="Permanent link">&para;</a></h5>
+<p>Although Go provides unsigned numbers and arithmetic, we tend to use the signed <code>int</code> form even for quantities that can’t be negative, such as the length of an array (though <code>uint</code> might seem a more obvious choice). The built-in <code>len</code> function returns a signed <code>int</code>. Consider the following example:</p>
+<div class="codehilite"><pre><span class="nx">medals</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;gold&quot;</span><span class="p">,</span> <span class="s">&quot;silver&quot;</span><span class="p">,</span> <span class="s">&quot;bronze&quot;</span><span class="p">}</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">medals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">medals</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="c1">// &quot;bronze&quot;, &quot;silver&quot;, &quot;gold&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If <code>len</code> returned an unsigned number, then <code>i</code> would be a <code>uint</code>, and the condition <code>i &gt;= 0</code> would always be true by definition. After the third iteration, in which <code>i == 0</code>, the <code>i--</code> statement would cause <code>i</code> to become not <code>−1</code>, but the maximum <code>uint</code> value (for example, 2<sup>64</sup>−1), and the evaluation of <code>medals[i]</code> would fail at run time, or panic (<a href="../ch5/#panic">Section 5.9</a>), by attempting to access an element outside the bounds of the slice.</p>
+<p>For this reason, unsigned numbers tend to be used only when their bitwise operators or peculiar arithmetic operators are required, such as</p>
+<ul>
+<li>Implementing bit sets</li>
+<li>Parsing binary file formats</li>
+<li>For hashing and cryptography.</li>
+</ul>
+<p>They are typically not used for merely non-negative quantities.</p>
+<p>Binary operators for arithmetic and logic (except shifts) must have operands of the same type. In cases where operands have different types, an explicit conversion is required. This eliminates a whole class of problems and makes programs easier to understand.</p>
+<p>Consider this sequence:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">apples</span> <span class="kt">int32</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="kd">var</span> <span class="nx">oranges</span> <span class="kt">int16</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="kd">var</span> <span class="nx">compote</span> <span class="kt">int</span> <span class="p">=</span> <span class="nx">apples</span> <span class="o">+</span> <span class="nx">oranges</span> <span class="c1">// compile error</span>
+</pre></div>
+
+
+<p>Attempting to compile these three declarations produces an error message:</p>
+<div class="codehilite"><pre>invalid operation: apples + oranges (mismatched types int32 and int16)
+</pre></div>
+
+
+<p>This type mismatch can be fixed in several ways, most directly by converting everything to a common type:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">compote</span> <span class="p">=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">apples</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nx">oranges</span><span class="p">)</span>
+</pre></div>
+
+
+<p>As described in <a href="../ch2/#type-declarations">Section 2.5</a>, for every type <code>T</code>, the conversion operation <code>T(x)</code> converts the value <code>x</code> to type <code>T</code> if the conversion is allowed. Many integer-to-integer conversions do not entail any change in value, but only tell the compiler how to interpret a value. However, some conversions may change the value or lose precision:</p>
+<ul>
+<li>A conversion that narrows a big integer into a smaller one.</li>
+<li>A conversion from integer to floating-point or vice versa.</li>
+</ul>
+<div class="codehilite"><pre><span class="nx">f</span> <span class="o">:=</span> <span class="mf">3.141</span> <span class="c1">// a float64</span>
+<span class="nx">i</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="c1">// &quot;3.141 3&quot;</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="mf">1.99</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nx">f</span><span class="p">))</span> <span class="c1">// &quot;1&quot;</span>
+</pre></div>
+
+
+<p>Float to integer conversion discards any fractional part, truncating toward zero. You should avoid conversions in which the operand is out of range for the target type, because the behavior depends on the implementation:</p>
+<div class="codehilite"><pre><span class="nx">f</span> <span class="o">:=</span> <span class="mf">1e100</span>  <span class="c1">// a float64</span>
+<span class="nx">i</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="c1">// result is implementation-dependent</span>
+</pre></div>
+
+
+<p>Integer literals of any size and type can be written as one of the following:</p>
+<ul>
+<li>Ordinary decimal numbers,</li>
+<li>Octal numbers, if they begin with 0, e.g. 0666</li>
+<li>Hexadecimal, if they begin with 0x or 0X, e.g. 0xdeadbeef. Hex digits may be upper or lower case.</li>
+</ul>
+<p>Nowadays octal numbers seem to be used for exactly one purpose: file permissions on POSIX systems. Hexadecimal numbers are widely used to emphasize the bit pattern of a number over its numeric value.  When printing numbers using the <code>fmt</code> package, we can control the <a href="https://en.wikipedia.org/wiki/Radix">radix</a> and format with the <code>%d</code>, <code>%o</code>, and <code>%x</code> verbs, as shown in this example:</p>
+<div class="codehilite"><pre><span class="nx">o</span> <span class="o">:=</span> <span class="mo">0666</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %[1]o %#[1]o\n&quot;</span><span class="p">,</span> <span class="nx">o</span><span class="p">)</span> <span class="c1">// &quot;438 666 0666&quot;</span>
+<span class="nx">x</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %[1]x %#[1]x %#[1]X\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// 3735928559 deadbeef 0xdeadbeef 0XDEADBEEF</span>
+</pre></div>
+
+
+<p>The above example describes two <code>fmt</code> tricks.</p>
+<ol>
+<li>Usually a <code>Printf</code> format string containing multiple <code>%</code> verbs would require the same number of extra operands, but the <code>[1]</code> "adverbs" after <code>%</code> tell <code>Printf</code> to use the first operand.</li>
+<li>The <code>#</code> adverb for <code>%o</code> or <code>%x</code> or <code>%X</code> tells <code>Printf</code> to emit a <code>0</code> or <code>0x</code> or <code>0X</code> prefix respectively.</li>
+</ol>
+<p>Rune literals are written as a character within single quotes. The simplest example is an ASCII character like <code>'a'</code>, but it’s possible to write any Unicode code point either directly or with numeric escapes. This will be discussed in later sections.</p>
+<p>Runes are printed with <code>%c</code>, or with <code>%q</code> if quoting is desired:</p>
+<div class="codehilite"><pre><span class="nx">ascii</span> <span class="o">:=</span> <span class="sc">&#39;a&#39;</span>
+<span class="nx">unicode</span> <span class="o">:=</span> <span class="sc">&#39;D&#39;</span>
+<span class="nx">newline</span> <span class="o">:=</span> <span class="sc">&#39;\n&#39;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %[1]c %[1]q\n&quot;</span><span class="p">,</span> <span class="nx">ascii</span><span class="p">)</span>   <span class="c1">// &quot;97 a &#39;a&#39;&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %[1]c %[1]q\n&quot;</span><span class="p">,</span> <span class="nx">unicode</span><span class="p">)</span> <span class="c1">// &quot;22269 D &#39;D&#39;&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d %[1]q\n&quot;</span><span class="p">,</span> <span class="nx">newline</span><span class="p">)</span>       <span class="c1">// &quot;10 &#39;\n&#39;&quot;</span>
+</pre></div>
+
+
+<h3 id="floating-point-numbers">Floating-Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Permanent link">&para;</a></h3>
+<p>There are two sizes of floating-point numbers, whose properties are governed by the <a href="https://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754 standard</a> (implemented by all modern CPUs). The limits of floating-point values can be found in the <code>math</code> package.</p>
+<ul>
+<li><code>float32</code><ul>
+<li>The largest <code>float32</code> is the constant <code>math.MaxFloat32</code>, which is about <code>3.4e38</code>.</li>
+<li>The smallest positive value is <code>1.4e-45</code>.</li>
+</ul>
+</li>
+<li><code>float64</code><ul>
+<li>The largest <code>float64</code> is the constant <code>math.MaxFloat64</code>, which is about <code>1.8e308</code>.</li>
+<li>The smallest positive value is <code>4.9e-324</code>.</li>
+</ul>
+</li>
+</ul>
+<p>A <code>float32</code> provides approximately six decimal digits of precision, whereas a <code>float64</code> provides about 15 digits. <u><code>float64</code> should be preferred for most purposes because <code>float32</code> computations accumulate error rapidly if not careful</u>; the smallest positive integer that cannot be exactly represented as a <code>float32</code> is not large:</p>
+<p>Floating-point numbers can be written literally using decimals. For example:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">e</span> <span class="p">=</span> <span class="mf">2.71828</span> <span class="c1">// (approximately)</span>
+</pre></div>
+
+
+<p>Digits may be omitted before the decimal point (e.g. <code>.707</code>) or after it (e.g. <code>1.</code>). Very small or very large numbers are better written in scientific notation, with the letter <code>e</code> or <code>E</code> preceding the decimal exponent:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">Avogadro</span> <span class="p">=</span> <span class="mf">6.02214129e23</span>
+<span class="kd">const</span> <span class="nx">Planck</span> <span class="p">=</span> <span class="mf">6.62606957e-34</span>
+</pre></div>
+
+
+<p>Floating-point values can be printed with <code>Printf</code>'s following verbs:</p>
+<ul>
+<li><code>%g</code>: it chooses the most compact representation that has adequate precision, i.e. <code>%e</code> for large exponents, <code>%f</code> otherwise</li>
+<li><code>%e</code> (exponent): decimal point with exponent (scientific notation)</li>
+<li><code>%f</code>: decimal point but no exponent</li>
+</ul>
+<p>All three verbs allow field width and numeric precision to be controlled.</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nx">x</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="p">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;x = %d e**x = %8.3f\n&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Exp</span><span class="p">(</span><span class="nb">float64</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The code above prints the powers of <em>e</em> with three decimal digits of precision, aligned in an eight-character field:</p>
+<div class="codehilite"><pre>x = 0 e**x =    1.000
+x = 1 e**x =    2.718
+x = 2 e**x =    7.389
+x = 3 e**x =   20.086
+x = 4 e**x =   54.598
+x = 5 e**x =  148.413
+x = 6 e**x =  403.429
+x = 7 e**x = 1096.633
+</pre></div>
+
+
+<h4 id="special-values-inf-inf-and-nan">Special values: +Inf, -Inf, and NaN *<a class="headerlink" href="#special-values-inf-inf-and-nan" title="Permanent link">&para;</a></h4>
+<p>In addition to mathematical functions, the <code>math</code> package has functions for creating and detecting the special values defined by <a href="https://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a>:</p>
+<ul>
+<li>Positive and negative infinities, which represent numbers of excessive magnitude and the result of division by zero;</li>
+<li><a href="https://en.wikipedia.org/wiki/NaN">NaN</a> ("not a number"), the result of such mathematically dubious operations as <code>0/0</code> or <code>Sqrt(-1)</code>.</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">z</span> <span class="kt">float64</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">z</span><span class="p">,</span> <span class="o">-</span><span class="nx">z</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="nx">z</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="nx">z</span><span class="p">,</span> <span class="nx">z</span><span class="o">/</span><span class="nx">z</span><span class="p">)</span> <span class="c1">// &quot;0 -0 +Inf -Inf NaN&quot;</span>
+</pre></div>
+
+
+<p>The function <code>math.IsNaN</code> tests whether its argument is a not-a-number value, and <code>math.NaN</code> returns such a value. It’s tempting to use NaN as a sentinel value in a numeric computation. Be careful when testing whether a specific computational result is equal to NaN: any comparison with NaN always yields <code>false</code>.</p>
+<div class="codehilite"><pre><span class="nx">nan</span> <span class="o">:=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">NaN</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nan</span> <span class="o">==</span> <span class="nx">nan</span><span class="p">,</span> <span class="nx">nan</span> <span class="p">&lt;</span> <span class="nx">nan</span><span class="p">,</span> <span class="nx">nan</span> <span class="p">&gt;</span> <span class="nx">nan</span><span class="p">)</span> <span class="c1">// &quot;false false false&quot;</span>
+</pre></div>
+
+
+<p>If a function that returns a floating-point result might fail, it’s better to report the failure separately, like this:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">compute</span><span class="p">()</span> <span class="p">(</span><span class="nx">value</span> <span class="kt">float64</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="k">if</span> <span class="nx">failed</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">,</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>[p58-60]</p>
+<h3 id="complex-numbers">Complex Numbers<a class="headerlink" href="#complex-numbers" title="Permanent link">&para;</a></h3>
+<p>Go provides two sizes of complex numbers, <code>complex64</code> and <code>complex128</code>, whose components are <code>float32</code> and <code>float64</code> respectively. The built-in function <code>complex</code> creates a complex number from its real and imaginary components, and the built-in <code>real</code> and <code>imag</code> functions extract those components:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="kt">complex128</span> <span class="p">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// 1+2i</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="kt">complex128</span> <span class="p">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// 3+4i</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">y</span><span class="p">)</span>                 <span class="c1">// &quot;(-5+10i)&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">real</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">y</span><span class="p">))</span>           <span class="c1">// &quot;-5&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">imag</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">y</span><span class="p">))</span>           <span class="c1">// &quot;10&quot;</span>
+</pre></div>
+
+
+<p>If a floating-point literal or decimal integer literal is immediately followed by <code>i</code>, such as <code>3.141592i</code> or <code>2i</code>, it becomes an <em>imaginary literal</em>, denoting a complex number with a zero real component:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="m">1i</span> <span class="o">*</span> <span class="m">1i</span><span class="p">)</span> <span class="c1">// &quot;(-1+0i)&quot;, i$ = -1</span>
+</pre></div>
+
+
+<p>Complex numbers use the rules for constant arithmetic; complex constants can be added to other constants. Therefore, complex numbers can be written naturally, like <code>1+2i</code> or <code>2i+1</code>. The declarations of <code>x</code> and <code>y</code> above can be simplified:</p>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span> <span class="o">+</span> <span class="m">2i</span>
+<span class="nx">y</span> <span class="o">:=</span> <span class="mi">3</span> <span class="o">+</span> <span class="m">4i</span>
+</pre></div>
+
+
+<p>Complex numbers may be compared for equality with <code>==</code> and <code>!=</code>. Two complex numbers are equal if their real parts are equal and their imaginary parts are equal. The <code>math/cmplx</code> package provides library functions for working with complex numbers, such as the complex square root and exponentiation functions.</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">cmplx</span><span class="p">.</span><span class="nx">Sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1">// &quot;(0+1i)&quot;</span>
+</pre></div>
+
+
+<p>[p61-63]</p>
+<h3 id="booleans">Booleans<a class="headerlink" href="#booleans" title="Permanent link">&para;</a></h3>
+<p>A value of type <code>bool</code>, or <a href="https://en.wikipedia.org/wiki/Boolean_data_type"><strong>boolean</strong></a>, has only two possible values, <code>true</code> and <code>false</code>.</p>
+<ul>
+<li>The conditions in <code>if</code> and <code>for</code> statements are booleans</li>
+<li>Comparison operators (e.g. <code>==</code>, <code>&lt;&gt;</code>) produce a boolean result.</li>
+<li>The unary operator <code>!</code> is logical negation. For example, <code>!true</code> is <code>false</code>, or, <code>(!true==false)==true</code>.</li>
+<li>Redundant boolean expressions can be simplified, like <code>x==true</code> to <code>x</code>.</li>
+</ul>
+<p>Boolean values can be combined with the <code>&amp;&amp;</code> (AND) and <code>||</code> (OR) operators, which have <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">short-circuit behavior</a>: <u>if the answer is already determined by the value of the left operand, the right operand is not evaluated, making it safe to write expressions like this:</u></p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;x&#39;</span>
+</pre></div>
+
+
+<p>where <code>s[0]</code> would panic if applied to an empty string.</p>
+<p>Since <code>&amp;&amp;</code> has higher precedence than <code>||</code> (mnemonic: <code>&amp;&amp;</code> is boolean multiplication, <code>||</code> is boolean addition), no parentheses are required for conditions of this form:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="sc">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span> <span class="o">||</span>
+    <span class="sc">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;Z&#39;</span> <span class="o">||</span>
+    <span class="sc">&#39;0&#39;</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span> <span class="p">{</span>
+    <span class="c1">// ...ASCII letter or digit...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>There is no implicit conversion from a boolean value to a numeric value like 0 or 1, or vice versa.</p>
+<p>It might be worth writing conversion functions:</p>
+<div class="codehilite"><pre><span class="c1">// btoi returns 1 if b is true and 0 if false.</span>
+<span class="kd">func</span> <span class="nx">btoi</span><span class="p">(</span><span class="nx">b</span> <span class="kt">bool</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">b</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="p">}</span>
+        <span class="k">return</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="c1">// itob reports whether i is non-zero.</span>
+<span class="kd">func</span> <span class="nx">itob</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">}</span>
+</pre></div>
+
+
+<h3 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h3>
+<p>A string is an immutable sequence of bytes. Strings may contain arbitrary data, including bytes with value 0, but usually they contain human-readable text. <u>Text strings are conventionally interpreted as UTF-8-encoded sequences of Unicode code points (runes).</u></p>
+<p>The built-in <code>len</code> function returns the number of bytes (not runes) in a string, and the index operation <code>s[i]</code> retrieves the <code>i</code>-th byte of string <code>s</code>, where 0 ≤ <code>i</code> &lt; <code>len(s)</code>.</p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;hello, world&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// &quot;12&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">s</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="c1">// &quot;104 119&quot; (&#39;h&#39; and &#39;w&#39;)</span>
+</pre></div>
+
+
+<p>In the above code, <code>s[0]</code> and <code>s[7]</code> <a href="http://play.golang.org/p/X1hEmf1qts">is of <code>uint8</code> type</a>.</p>
+<p>Attempting to access a byte outside this range results in a panic:</p>
+<div class="codehilite"><pre><span class="nx">c</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)]</span> <span class="c1">// panic: index out of range</span>
+</pre></div>
+
+
+<p>The <code>i</code>-th byte of a string is not necessarily the <code>i</code>-th character of a string, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.</p>
+<h4 id="the-substring-operation">The substring operation *<a class="headerlink" href="#the-substring-operation" title="Permanent link">&para;</a></h4>
+<p>The <em>substring</em> operation <code>s[i:j]</code> yields a new string consisting of the bytes of the original string starting at index <code>i</code> and continuing up to, but not including, the byte at index <code>j</code>. The result contains <code>j-i</code> bytes.</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// &quot;hello&quot;</span>
+</pre></div>
+
+
+<p>A panic results if either index is out of bounds or if <code>j</code> is less than <code>i</code>.</p>
+<p>Either or both of the <code>i</code> and <code>j</code> operands may be omitted:</p>
+<ul>
+<li>If <code>i</code> is omitted, it defaults to 0 (the start of the string)</li>
+<li>If <code>j</code> is omitted, it defaults to <code>len(s)</code> (its end).</li>
+</ul>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// &quot;hello&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="mi">7</span><span class="p">:])</span> <span class="c1">// &quot;world&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">[:])</span> <span class="c1">// &quot;hello, world&quot;</span>
+</pre></div>
+
+
+<h4 id="string-concatenation-comparison-and-immutability">String concatenation, comparison and immutability *<a class="headerlink" href="#string-concatenation-comparison-and-immutability" title="Permanent link">&para;</a></h4>
+<p>The <code>+</code> operator makes a new string by concatenating two strings:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;goodbye&quot;</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span> <span class="c1">// &quot;goodbye, world&quot;</span>
+</pre></div>
+
+
+<p>Strings may be compared with comparison operators (e.g. <code>==</code> and <code>&lt;</code>); the comparison is done byte by byte, so the result is the natural lexicographic ordering.</p>
+<p>String values are immutable: the byte sequence contained in a string value can never be changed.</p>
+<div class="codehilite"><pre><span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="sc">&#39;L&#39;</span> <span class="c1">// compile error: cannot assign to s[0]</span>
+</pre></div>
+
+
+<p>However, we can assign a new value to a string variable. <code>+=</code> can be used to append one string to another:</p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;left foot&quot;</span>
+<span class="nx">t</span> <span class="o">:=</span> <span class="nx">s</span>
+<span class="nx">s</span> <span class="o">+=</span> <span class="s">&quot;, right foot&quot;</span>
+</pre></div>
+
+
+<p>This does not modify the string that <code>s</code> originally held but causes <code>s</code> to hold the new string formed by the <code>+=</code> statement; meanwhile, <code>t</code> still contain<code>s</code> the old string.</p>
+<p>Immutability means that it is safe for two copies of a string to share the same underlying memory, making it cheap to copy strings of any length. Similarly, a string <code>s</code> and a substring like <code>s[7:]</code> may safely share the same data, so the substring operation is also cheap. No new memory is allocated in either case. The following figure illustrates the arrangement of a string and two of its substrings sharing the same underlying byte array.</p>
+<p><a href="../figure_3.4.png" title="Figure 3.4. The string &quot;hello, world&quot; and two substrings."><img alt="Figure 3.4. The string &quot;hello, world&quot; and two substrings." src="../figure_3.4_600.png" /></a></p>
+<h4 id="string-literals">String Literals<a class="headerlink" href="#string-literals" title="Permanent link">&para;</a></h4>
+<p>A string value can be written as a <strong>string literal</strong>, a sequence of bytes enclosed in double quotes:</p>
+<div class="codehilite"><pre><span class="s">&quot;Hello, 世界&quot;</span>
+</pre></div>
+
+
+<p>Go source files are always encoded in UTF-8 and Go text strings are conventionally interpreted as UTF-8. We can include Unicode code points in string literals.</p>
+<p>Within a double-quoted string literal, <a href="https://en.wikipedia.org/wiki/Escape_sequence"><strong>escape sequences</strong></a> that begin with a backslash <code>\</code> can be used to insert arbitrary byte values into the string. Some escapes handles <a href="https://en.wikipedia.org/wiki/Control_character#In_ASCII">ASCII control codes</a> like newline, carriage return, and tab:</p>
+<ul>
+<li><code>\a</code>: "alert" or bell</li>
+<li><code>\b</code>: backspace</li>
+<li><code>\f</code>: form feed</li>
+<li><code>\n</code>: newline</li>
+<li><code>\r</code>: carriage return</li>
+<li><code>\t</code>: tab</li>
+<li><code>\v</code>: vertical tab</li>
+<li><code>\'</code>: single quote (only in the rune literal <code>'\''</code>)</li>
+<li><code>\"</code>: double quote (only within <code>"..."</code> literals)</li>
+<li><code>\\</code>: backslash</li>
+</ul>
+<p>Arbitrary bytes can also be included in literal strings using hexadecimal or octal escapes.</p>
+<ul>
+<li>A hexadecimal escape is written <code>\xhh</code>, with exactly two hexadecimal digits <code>h</code> (in upper or lower case).</li>
+<li>An octal escape is written <code>\ooo</code> with exactly three octal digits <code>o</code> (0 through 7) not exceeding <code>\377</code> (255 in decimal).</li>
+</ul>
+<p>Both denote a single byte with the specified value.</p>
+<h5 id="raw-string-literal"><strong>Raw string literal</strong> *<a class="headerlink" href="#raw-string-literal" title="Permanent link">&para;</a></h5>
+<p>A <strong>raw string literal</strong> is written <code>`...`</code>, using <a href="https://en.wikipedia.org/wiki/Grave_accent#Use_in_programming">backquotes</a> instead of double quotes. Within a raw string literal, no escape sequences are processed; the contents are taken literally, including backslashes and newlines, so a raw string literal may spread over several lines in the program source. <u>The only processing is that <a href="https://en.wikipedia.org/wiki/Carriage_return">carriage returns</a> are deleted so that the value of the string is the same on all platforms,</u> including those that conventionally put carriage returns in text files.</p>
+<p>Raw string literals are a convenient way to write regular expressions, which tend to have lots of backslashes. They are also useful for HTML templates, JSON literals, and command usage messages, which often extend over multiple lines.</p>
+<div class="codehilite"><pre>const GoUsage = `Go is a tool for managing Go source code.
+Usage:
+go command [arguments]
+...`
+</pre></div>
+
+
+<h4 id="unicode">Unicode<a class="headerlink" href="#unicode" title="Permanent link">&para;</a></h4>
+<p>In early days, <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> (short for American Standard Code for Information Interchange), or more precisely US-ASCII, uses 7 bits to represent 128 "characters": the upper- and lower-case letters of English, digits, and a variety of punctuation and device-control characters. With the growth of the Internet, data in various languages has become much more common. How to deal with this variety?</p>
+<p>The answer is <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> (<a href="http://unicode.org/">unicode.org</a>), which collects all of the characters in all of the world's writing systems, plus:</p>
+<ul>
+<li>Accents and other diacritical marks</li>
+<li>Control codes like tab and carriage return</li>
+<li>Plenty of esoterica</li>
+</ul>
+<p>Each of these characters is assigned a standard number called a <strong>Unicode code point</strong> or, in Go terminology, a <strong>rune</strong>.</p>
+<p>Unicode version 8 defines code points for over 120,000 characters in over 100 languages and scripts. In computer programs and data, the natural data type to hold a single rune is <code>int32</code>. This is what Go uses and is why it has the synonym <code>rune</code> for precisely this purpose.</p>
+<p>A sequence of runes can be represented as a sequence of <code>int32</code> values. In this representation, which is called <a href="https://en.wikipedia.org/wiki/UTF-32">UTF-32</a> or UCS-4, the encoding of each Unicode code point has the same size, 32 bits. This is simple and uniform, but it uses much more space than necessary since most computer-readable text is in ASCII, which requires only 8 bits or 1 byte per character. All the characters in widespread use still number fewer than 65,536, which would fit in 16 bits.</p>
+<h4 id="utf-8">UTF-8<a class="headerlink" href="#utf-8" title="Permanent link">&para;</a></h4>
+<p><a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a> is a variable-length encoding of Unicode code points as bytes. UTF-8 was invented by <a href="https://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> and <a href="https://en.wikipedia.org/wiki/Rob_Pike">Rob Pike</a>, two of the creators of Go, and is now a Unicode standard. It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use. <u>The high-order bits of the first byte of the encoding for a rune indicate how many bytes follow:</u></p>
+<ul>
+<li><u>A high-order <code>0</code> indicates 7-bit ASCII, where each rune takes only 1 byte, so it is identical to conventional ASCII.</u></li>
+<li>A high-order <code>110</code> indicates that the rune takes 2 bytes; the second byte begins with 10.</li>
+<li>Larger runes have analogous encodings.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Encoding Format</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0xxxxxx</code></td>
+<td>runes 0−127</td>
+<td>(ASCII)</td>
+</tr>
+<tr>
+<td><code>11xxxxx 10xxxxxx</code></td>
+<td>128−2047</td>
+<td>(values &lt;128 unused)</td>
+</tr>
+<tr>
+<td><code>110xxxx 10xxxxxx 10xxxxxx</code></td>
+<td>2048−65535</td>
+<td>(values &lt;2048 unused)</td>
+</tr>
+<tr>
+<td><code>1110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></td>
+<td>65536−0x10ffff</td>
+<td>(other values unused)</td>
+</tr>
+</tbody>
+</table>
+<p>Although a variable-length encoding precludes direct indexing to access the <em>n</em>-th character of a string, UTF-8 has many desirable properties:</p>
+<ul>
+<li>The UTF-8 encoding is compact, compatible with ASCII, and self-synchronizing: it's possible to find the beginning of a character by backing up no more than three bytes.</li>
+<li>It's a prefix code, so it can be decoded from left to right without any ambiguity or lookahead. No rune’s encoding is a substring of any other, or even of a sequence of others, so you can search for a rune by just searching for its bytes, without worrying about the preceding context.</li>
+<li>The lexicographic byte order equals the Unicode code point order, so sorting UTF-8 works naturally.</li>
+<li>There are no embedded NUL (zero) bytes, which is convenient for programming languages that use NUL to terminate strings.</li>
+</ul>
+<p>Go source files are always encoded in UTF-8, and UTF-8 is the preferred encoding for text strings manipulated by Go programs.</p>
+<ul>
+<li>The <a href="https://golang.org/pkg/unicode/"><code>unicode</code></a> package provides functions for working with individual runes (such as distinguishing letters from numbers, or converting an uppercase letter to a lower-case one)</li>
+<li>The <a href="https://golang.org/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package provides functions for encoding and decoding runes as bytes using UTF-8.</li>
+</ul>
+<p>Many Unicode characters are hard to type on a keyboard or to distinguish visually from similar-looking ones; some are even invisible. Unicode escapes in Go string literals can be specified by their numeric code point value. There are two forms:</p>
+<ul>
+<li><code>\u</code><em>hhhh</em> for a 16-bit value</li>
+<li><code>\U</code><em>hhhhhhhh</em> for a 32-bit value</li>
+</ul>
+<p>Each <em>h</em> is a hexadecimal digit, though the 32-bit form is used very infrequently. Each denotes the UTF-8 encoding of the specified code point. For example, the following <strong>string literals</strong> all represent the same <a href="https://play.golang.org/p/Y3nE6aDtMX"><em>six-byte</em></a> string:</p>
+<div class="codehilite"><pre><span class="s">&quot;世界&quot;</span>
+<span class="s">&quot;\xe4\xb8\x96\xe7\x95\x8c&quot;</span>
+<span class="s">&quot;\u4e16\u754c&quot;</span>
+<span class="s">&quot;\U00004e16\U0000754c&quot;</span>
+</pre></div>
+
+
+<p>The three escape sequences above provide alternative notations for the first string, but the values they denote are identical. Unicode escapes may also be used in rune literals. These three <strong>rune literals</strong> are equivalent:</p>
+<div class="codehilite"><pre><span class="sc">&#39;世&#39;</span>
+<span class="sc">&#39;\u4e16&#39;</span>
+<span class="sc">&#39;\U00004e16&#39;</span>
+</pre></div>
+
+
+<p>A rune whose value is less than 256 may be written with a single hexadecimal escape, such as <code>'\x41'</code> for <code>'A'</code>, but for higher values, a <code>\u</code> or <code>\U</code> escape must be used. Consequently, <u><code>'\xe4\xb8\x96'</code> is not a legal rune literal, even though those three bytes are a valid UTF-8 encoding of a single code point.</u></p>
+<p><u>Due to the properties of UTF-8, many string operations don't require decoding.</u></p>
+<p>We can test whether one string contains another:</p>
+<ul>
+<li>As a prefix:</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">prefix</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">prefix</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">s</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="nx">prefix</span><span class="p">)]</span> <span class="o">==</span> <span class="nx">prefix</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>As a suffix:</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">HasSuffix</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">suffix</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">suffix</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nx">suffix</span><span class="p">):]</span> <span class="o">==</span> <span class="nx">suffix</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>A as a substring:</li>
+</ul>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Contains</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">substr</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">:],</span> <span class="nx">substr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>These functions, which are drawn from the <code>strings</code> package, use the same logic for UTF-8-encoded text as for raw bytes. This is not true for other encodings.</p>
+<p>If we care about the individual Unicode characters, we have to use other mechanisms. Consider the string from our very first example, "Hello, 世界", which includes two East Asian characters. The following figure illustrates its representation in memory.</p>
+<p><a href="../figure_3.5.png" title="Figure 3.5. A range loop decodes a UTF-8-encoded string."><img alt="Figure 3.5. A range loop decodes a UTF-8-encoded string." src="../figure_3.5_600.png" /></a></p>
+<p>The string contains 13 bytes, but interpreted as UTF-8, it encodes only nine code points or runes:</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="s">&quot;unicode/utf8&quot;</span>
+
+<span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;Hello, 世界&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// &quot;13&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nx">RuneCountInString</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="c1">// &quot;9&quot;</span>
+</pre></div>
+
+
+<p>The <code>unicode/utf8</code> package provides the decoder to process those characters, with which we can use like this:</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="p">{</span>
+    <span class="nx">r</span><span class="p">,</span> <span class="nx">size</span> <span class="o">:=</span> <span class="nx">utf8</span><span class="p">.</span><span class="nx">DecodeRuneInString</span><span class="p">(</span><span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">:])</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\t%c\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+    <span class="nx">i</span> <span class="o">+=</span> <span class="nx">size</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each call to <code>DecodeRuneInString</code> returns <code>r</code>, the rune itself, and size, the number of bytes occupied by the UTF-8 encoding of <code>r</code>. The size is used to update the byte index <code>i</code> of the next rune in the string.</p>
+<p>Go’s <code>range</code> loop, when applied to a string, performs UTF-8 decoding implicitly. The output of the loop below is also shown in <a href="../figure_3.5.png">Figure 3.5</a>; notice how the index jumps by more than 1 for each non-ASCII rune.</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">r</span> <span class="o">:=</span> <span class="k">range</span> <span class="s">&quot;Hello, 世界&quot;</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\t%q\t%d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>We could use a simple range loop to count the number of runes in a string, like this:</p>
+<div class="codehilite"><pre><span class="nx">n</span> <span class="o">:=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="o">++</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>As with the other forms of range loop, we can omit the variables we don’t need:</p>
+<div class="codehilite"><pre><span class="nx">n</span> <span class="o">:=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="o">++</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The result of <code>n</code> is the same to that of <code>utf8.RuneCountInString(s)</code>.</p>
+<p>In Go, although it is a matter of convention that text strings are interpreted as UTF-8-encoded sequences of Unicode code points, it's a necessity for correct use of <code>range</code> loops on strings.</p>
+<h5 id="the-replacement-characters"><strong>The replacement characters</strong> *<a class="headerlink" href="#the-replacement-characters" title="Permanent link">&para;</a></h5>
+<p>What happens if we range over a string containing arbitrary binary data or UTF-8 data containing errors?</p>
+<p>Each time a UTF-8 decoder, whether explicit in a call to <code>utf8.DecodeRuneInString</code> or implicit in a <code>range</code> loop, consumes an unexpected input byte, it generates a special Unicode <a href="https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character">replacement character</a>, <code>'\uFFFD'</code>, which is usually printed as a white question mark inside a black hexagonal or diamond-like shape �. When a program encounters this rune value, it’s often a sign that some upstream part of the system that generated the string data has been careless in its treatment of text encodings.</p>
+<p>UTF-8 is convenient as an interchange format, but within a program <u>runes may be more convenient because they are of uniform size and are thus easily indexed in arrays and slices.</u></p>
+<h5 id="rune-conversion"><strong><code>[]rune</code> conversion</strong> *<a class="headerlink" href="#rune-conversion" title="Permanent link">&para;</a></h5>
+<p>A <code>[]rune</code> conversion applied to a UTF-8-encoded string returns the sequence of Unicode code points that the string encodes:</p>
+<div class="codehilite"><pre><span class="c1">// &quot;program&quot; in Japanese katakana</span>
+<span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;プログラム&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;% x\n&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="c1">// &quot;e3 83 97 e3 83 ad e3 82 b0 e3 83 a9 e3 83 a0&quot;</span>
+<span class="nx">r</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">rune</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%x\n&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="c1">// &quot;[30d7 30ed 30b0 30e9 30e0]&quot;</span>
+</pre></div>
+
+
+<p>If a slice of runes is converted to a string, it produces the concatenation of the UTF-8 encodings of each rune:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">r</span><span class="p">))</span> <span class="c1">// &quot;プログラム&quot;</span>
+</pre></div>
+
+
+<p>Converting an integer value to a string interprets the integer as a rune value, and yields the UTF-8 representation of that rune:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>     <span class="c1">// &quot;A&quot;, not &quot;65&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="mh">0x4eac</span><span class="p">))</span> <span class="c1">// &quot;京&quot;</span>
+</pre></div>
+
+
+<p>If the rune is invalid, the replacement character is substituted:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="mi">1234567</span><span class="p">))</span> <span class="c1">// &quot;�&quot;</span>
+</pre></div>
+
+
+<h4 id="strings-and-byte-slices">Strings and Byte Slices<a class="headerlink" href="#strings-and-byte-slices" title="Permanent link">&para;</a></h4>
+<p>Four standard packages are particularly important for manipulating strings:</p>
+<ul>
+<li><a href="https://golang.org/pkg/bytes/"><code>bytes</code></a></li>
+<li><a href="https://golang.org/pkg/strings/"><code>strings</code></a></li>
+<li><a href="https://golang.org/pkg/strconv/"><code>strconv</code></a></li>
+<li><a href="https://golang.org/pkg/unicode/"><code>unicode</code></a></li>
+</ul>
+<p>The <code>strings</code> package provides many functions for searching, replacing, comparing, trimming, splitting, and joining strings.</p>
+<p>The <code>bytes</code> package has similar functions for manipulating slices of bytes, of type <code>[]byte</code>, which share some properties with <code>strings</code>. Because strings are immutable, building up strings incrementally can involve a lot of allocation and copying. In such cases, it’s more efficient to use the <code>bytes.Buffer</code> type.</p>
+<p>The <code>strconv</code> package provides functions for converting boolean, integer, and floating-point values to and from their string representations, and functions for quoting and unquoting strings.</p>
+<p>The <code>unicode</code> package provides functions that use the Unicode standard categories for letters, digits, etc:</p>
+<ul>
+<li>Rune classifying functions like <code>IsDigit</code>, <code>IsLetter</code>, <code>IsUpper</code>, and <code>IsLower</code>. Each function takes a single rune argument and returns a boolean.</li>
+<li>Conversion functions like <code>ToUpper</code> and <code>ToLower</code> convert a rune into the given case if it is a letter.<ul>
+<li>The <code>strings</code> package has similar functions, also called <code>ToUpper</code> and <code>ToLower</code>, that return a new string with the specified transformation applied to each character of the original string.</li>
+</ul>
+</li>
+</ul>
+<h5 id="the-basename-function"><strong>The <code>basename</code> function</strong> *<a class="headerlink" href="#the-basename-function" title="Permanent link">&para;</a></h5>
+<p>The <code>basename</code> function in the following example was inspired by the Unix shell utility <a href="https://en.wikipedia.org/wiki/Basename"><code>basename</code></a>. In our version, <code>basename(s)</code> removes any prefix of <code>s</code> that looks like a file system path with components separated by slashes, and it removes any suffix that looks like a file type:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">basename</span><span class="p">(</span><span class="s">&quot;a/b/c.go&quot;</span><span class="p">))</span> <span class="c1">// &quot;c&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">basename</span><span class="p">(</span><span class="s">&quot;c.d.go&quot;</span><span class="p">))</span>   <span class="c1">// &quot;c.d&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">basename</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">))</span>      <span class="c1">// &quot;abc&quot;</span>
+</pre></div>
+
+
+<p>The first version of <code>basename</code> does not use any libraries:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch3/basename1/main.go">gopl.io/ch3/basename1/main.go</a></small></p>
+<p>A simpler version uses the <code>strings.LastIndex</code> library function:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch3/basename2/main.go">gopl.io/ch3/basename2/main.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">basename</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">slash</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">LastIndex</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">)</span> <span class="c1">// -1 if &quot;/&quot; not found</span>
+    <span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[</span><span class="nx">slash</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="nx">dot</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">LastIndex</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">);</span> <span class="nx">dot</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">s</span> <span class="p">=</span> <span class="nx">s</span><span class="p">[:</span><span class="nx">dot</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">s</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h5 id="the-path-and-pathfilepath-packages"><strong>The <code>path</code> and <code>path/filepath</code> packages</strong> *<a class="headerlink" href="#the-path-and-pathfilepath-packages" title="Permanent link">&para;</a></h5>
+<p>The <a href="https://golang.org/pkg/path/"><code>path</code></a> and <a href="https://golang.org/pkg/path/filepath/"><code>path/filepath</code></a> packages provide a set of functions for manipulating hierarchical names.</p>
+<ul>
+<li>The <code>path</code> package works with slash-delimited paths on any platform. It shouldn’t be used for file names, but it is appropriate for other domains, like URL.</li>
+<li>The <code>path/filepath</code> package manipulates file names using the rules for the host platform, such as <code>/foo/bar</code> for POSIX or <code>c:\foo\bar</code> on Microsoft Windows.</li>
+</ul>
+<h5 id="a-substring-example-comma"><strong>A substring example: <code>comma</code></strong> *<a class="headerlink" href="#a-substring-example-comma" title="Permanent link">&para;</a></h5>
+<p>The task is to take a string representation of an integer, such as "12345", and insert commas every three places, as in "12,345".</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch3/comma/main.go">gopl.io/ch3/comma/main.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// comma inserts commas in a non-negative decimal integer string.</span>
+<span class="kd">func</span> <span class="nx">comma</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">s</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">comma</span><span class="p">(</span><span class="nx">s</span><span class="p">[:</span><span class="nx">n</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">s</span><span class="p">[</span><span class="nx">n</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>[p73]</p>
+<p>A string contains an array of bytes that, once created, is immutable. By contrast, the elements of a byte slice can be freely modified.</p>
+<p>Strings can be converted to byte slices and back again:</p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">:=</span> <span class="s">&quot;abc&quot;</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class="nx">s2</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>The <code>[]byte(s)</code> conversion allocates a new byte array holding a copy of the bytes of <code>s</code>, and yields a slice that references the entirety of that array.</li>
+<li>The <code>string(b)</code> conversion from byte slice back to string also makes a copy, to ensure immutability of the resulting string <code>s2</code>.</li>
+</ul>
+<p>To avoid conversions and unnecessary memory allocation, many of the utility functions in the <code>bytes</code> package directly parallel their counterparts in the <code>strings</code> package. For example, the following functions are from <code>strings</code>:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Contains</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">substr</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nx">Count</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">sep</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span>
+<span class="kd">func</span> <span class="nx">Fields</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="kd">func</span> <span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">prefix</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">sep</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span>
+<span class="kd">func</span> <span class="nx">Join</span><span class="p">(</span><span class="nx">a</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">sep</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span>
+</pre></div>
+
+
+<p>and the corresponding ones from <code>bytes</code>:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Contains</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">subslice</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nx">Count</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">sep</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">int</span>
+<span class="kd">func</span> <span class="nx">Fields</span><span class="p">(</span><span class="nx">s</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">[][]</span><span class="kt">byte</span>
+<span class="kd">func</span> <span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">prefix</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">bool</span>
+<span class="kd">func</span> <span class="nx">Index</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">sep</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="kt">int</span>
+<span class="kd">func</span> <span class="nx">Join</span><span class="p">(</span><span class="nx">s</span> <span class="p">[][]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">sep</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span>
+</pre></div>
+
+
+<p>The only difference is that strings have been replaced by byte slices.</p>
+<p>The <code>bytes</code> package provides the <a href="https://golang.org/pkg/bytes/#Buffer"><code>Buffer</code></a> type for efficient manipulation of byte slices. A <code>Buffer</code> starts out empty but grows as data of types like <code>string</code>, <code>byte</code>, and <code>[]byte</code> are written to it. A <code>bytes.Buffer</code> variable requires no initialization because its zero value is usable:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch3/printints/main.go">gopl.io/ch3/printints/main.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// intsToString is like fmt.Sprintf(values) but adds commas.</span>
+<span class="kd">func</span> <span class="nx">intsToString</span><span class="p">(</span><span class="nx">values</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">buf</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span>
+    <span class="nx">buf</span><span class="p">.</span><span class="nx">WriteByte</span><span class="p">(</span><span class="sc">&#39;[&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">values</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">i</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="nx">buf</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">buf</span><span class="p">,</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">buf</span><span class="p">.</span><span class="nx">WriteByte</span><span class="p">(</span><span class="sc">&#39;]&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">buf</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>When appending the UTF-8 encoding of an arbitrary rune to a <code>bytes.Buffer</code>, it’s best to use <code>bytes.Buffer</code>’s <code>WriteRune</code> method, but <code>WriteByte</code> is fine for ASCII characters such as <code>'['</code> and <code>']'</code>.</p>
+<p>The <code>bytes.Buffer</code> type is extremely versatile. <a href="../ch7/">Chapter 7</a> discusses how it may be used as a replacement for a file whenever an I/O function requires either of:</p>
+<ul>
+<li>A sink for bytes (<code>io.Writer</code>) as <code>Fprintf</code> does above.</li>
+<li>A source of bytes (<code>io.Reader</code>).</li>
+</ul>
+<h4 id="conversions-between-strings-and-numbers">Conversions between Strings and Numbers<a class="headerlink" href="#conversions-between-strings-and-numbers" title="Permanent link">&para;</a></h4>
+<p>In addition to conversions between strings, runes, and bytes, it's often necessary to convert between numeric values and their string representations, which is done with functions from the <code>strconv</code> package.</p>
+<p>To convert an integer to a string, there are two options:</p>
+<ul>
+<li><code>fmt.Sprintf</code></li>
+<li><code>strconv.Itoa("integer to ASCII")</code>:</li>
+</ul>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">123</span>
+<span class="nx">y</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span> <span class="c1">// &quot;123 123&quot;</span>
+</pre></div>
+
+
+<p><code>FormatInt</code> and <code>FormatUint</code> can be used to format numbers in a different base:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatInt</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">// &quot;1111011&quot;</span>
+</pre></div>
+
+
+<p>The <code>fmt.Printf</code> verbs <code>%b</code>, <code>%d</code>, <code>%u</code>, and <code>%x</code> are often more convenient than Format functions, especially if we want to include additional information besides the number:</p>
+<div class="codehilite"><pre><span class="nx">s</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;x=%b&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="c1">// &quot;x=1111011&quot;</span>
+</pre></div>
+
+
+<p>To parse a string representing an integer, use the <code>strconv</code> functions <code>Atoi</code> or <code>ParseInt</code>, or <code>ParseUint</code> for unsigned integers:</p>
+<div class="codehilite"><pre><span class="nx">x</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">)</span> <span class="c1">// x is an int</span>
+<span class="nx">y</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="c1">// base 10, up to 64 bits</span>
+</pre></div>
+
+
+<p>The third argument of <code>ParseInt</code> gives the size of the integer type that the result must fit into: the special value of 0 implies <code>int</code>. In any case, the type of the result <code>y</code> is always <code>int64</code>, which you can then convert to a smaller type.</p>
+<p><a href="https://golang.org/pkg/fmt/#Scanf"><code>fmt.Scanf</code></a> can be used to parse input that consists of orderly mixtures of strings and numbers all on a single line, but it is inflexible, especially when handling incomplete or irregular input.</p>
+<h3 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
+<p><u>Constants are expressions whose value is known to the compiler and whose evaluation is guaranteed to occur at compile time, not at run time.</u> The underlying type of every constant is a basic type: boolean, string, or number.</p>
+<p>A <code>const</code> declaration defines named values that look syntactically like variables but whose value is constant, which prevents accidental changes during program execution.</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">pi</span> <span class="p">=</span> <span class="mf">3.14159</span> <span class="c1">// approximately; math.Pi is a better approximation</span>
+</pre></div>
+
+
+<p>As with variables, a sequence of constants can appear in one declaration, appropriate for a group of related values:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">e</span>  <span class="p">=</span> <span class="mf">2.71828</span>
+    <span class="nx">pi</span> <span class="p">=</span> <span class="mf">3.14159</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Computations on constants can be evaluated at compile time, reducing the work necessary at run time and enabling other compiler optimizations. Errors ordinarily detected at run time can be reported at compile time when their operands are constants, such as:</p>
+<ul>
+<li>Integer division by zeros</li>
+<li>String indexing out of bounds</li>
+<li>Floating-point operation that would result in a non-finite value</li>
+</ul>
+<p>The results of all arithmetic, logical, and comparison operations applied to constant operands are themselves constants, as are the results of conversions and calls to certain built-in functions such as <code>len</code>, <code>cap</code>, <code>real</code>, <code>imag</code>, <code>complex</code>, and <a href="https://golang.org/pkg/unsafe/#Sizeof"><code>unsafe.Sizeof</code></a>.</p>
+<p>Constant expressions may appear in types, specifically as the length of an array type:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">IPv4Len</span> <span class="p">=</span> <span class="mi">4</span>
+<span class="c1">// parseIPv4 parses an IPv4 address (d.d.d.d).</span>
+<span class="kd">func</span> <span class="nx">parseIPv4</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">IP</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">p</span> <span class="p">[</span><span class="nx">IPv4Len</span><span class="p">]</span><span class="kt">byte</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>A constant declaration may have a type and a value. In the absence of an explicit type, the type is inferred from the expression on the right-hand side. In the following, <code>time.Duration</code> is a named type whose underlying type is <code>int64</code>, and <code>time.Minute</code> is a constant of that type. Both of the constants declared below have the type <code>time.Duration</code> (revealed by <code>%T</code>):</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">noDelay</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">const</span> <span class="nx">timeout</span> <span class="p">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %[1]v\n&quot;</span><span class="p">,</span> <span class="nx">noDelay</span><span class="p">)</span>     <span class="c1">// &quot;time.Duration 0&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %[1]v\n&quot;</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>     <span class="c1">// &quot;time.Duration 5m0s</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T %[1]v\n&quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">)</span> <span class="c1">// &quot;time.Duration 1m0s&quot;</span>
+</pre></div>
+
+
+<p>When a sequence of constants is declared as a group, the right-hand side expression may be omitted for all but the first of the group, implying that the previous expression and its type should be used again. For example:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="nx">b</span>
+    <span class="nx">c</span> <span class="p">=</span> <span class="mi">2</span>
+    <span class="nx">d</span>
+<span class="p">)</span>
+
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// &quot;1 1 2 2&quot;</span>
+</pre></div>
+
+
+<h4 id="the-constant-generator-iota">The Constant Generator <code>iota</code><a class="headerlink" href="#the-constant-generator-iota" title="Permanent link">&para;</a></h4>
+<p>The <em>constant generator</em> <a href="https://golang.org/ref/spec#Iota"><code>iota</code></a> can be used in a <code>const</code> declaration to create a sequence of related values; the value of <code>iota</code> begins at zero and increments by one for each item in the sequence.</p>
+<p>The following example is from the <a href="https://golang.org/pkg/time/"><code>time</code></a> package, which defines named constants of type <code>Weekday</code> for the days of the week. This kind of types are often called <a href="https://en.wikipedia.org/wiki/Enumeration">enumerations</a>, or enums for short.</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Weekday</span> <span class="kt">int</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">Sunday</span> <span class="nx">Weekday</span> <span class="p">=</span> <span class="kc">iota</span>
+    <span class="nx">Monday</span>
+    <span class="nx">Tuesday</span>
+    <span class="nx">Wednesday</span>
+    <span class="nx">Thursday</span>
+    <span class="nx">Friday</span>
+    <span class="nx">Saturday</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>This declares <code>Sunday</code> to be 0, <code>Monday</code> to be 1, and so on.</p>
+<p><code>iota</code> can also be used in more complex expression. The following example is from the <a href="https://golang.org/pkg/net/"><code>net</code></a> package where each of the lowest 5 bits of an unsigned integer is given a distinct name and boolean interpretation:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Flags</span> <span class="kt">uint</span>
+
+<span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">FlagUp</span> <span class="nx">Flags</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="kc">iota</span> <span class="c1">// is up</span>
+    <span class="nx">FlagBroadcast</span>            <span class="c1">// supports broadcast access capability</span>
+    <span class="nx">FlagLoopback</span>             <span class="c1">// is a loopback interface</span>
+    <span class="nx">FlagPointToPoint</span>         <span class="c1">// belongs to a point-to-point link</span>
+    <span class="nx">FlagMulticast</span>            <span class="c1">// supports multicast access capability</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>As <code>iota</code> increments, each constant is assigned the value of <code>1 &lt;&lt; iota</code>, which evaluates to successive powers of two (each corresponding to a single bit). The functions in <a href="https://github.com/shichao-an/gopl.io/blob/master/ch3/netflag/netflag.go">gopl.io/ch3/netflag/netflag.go</a> test, set or clear bits of those constants.</p>
+<p>The following declaration names the powers of 1024:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">_</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="kc">iota</span><span class="p">)</span>
+    <span class="nx">KiB</span> <span class="c1">// 1024</span>
+    <span class="nx">MiB</span> <span class="c1">// 1048576</span>
+    <span class="nx">GiB</span> <span class="c1">// 1073741824</span>
+    <span class="nx">TiB</span> <span class="c1">// 1099511627776 (exceeds 1 &lt;&lt; 32)</span>
+    <span class="nx">PiB</span> <span class="c1">// 1125899906842624</span>
+    <span class="nx">EiB</span> <span class="c1">// 1152921504606846976</span>
+    <span class="nx">ZiB</span> <span class="c1">// 1180591620717411303424 (exceeds 1 &lt;&lt; 64)</span>
+    <span class="nx">YiB</span> <span class="c1">// 1208925819614629174706176</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>[p78]</p>
+<h4 id="untyped-constants">Untyped Constants<a class="headerlink" href="#untyped-constants" title="Permanent link">&para;</a></h4>
+<p>Although a constant can have any of the basic data types (e.g. <code>int</code>, <code>float64</code>, <code>time.Duration</code>), many constants are not committed to a particular type. The compiler represents these uncommitted constants with much greater numeric precision than values of basic types, and arithmetic on them is more precise than machine arithmetic; you may assume at least 256 bits of precision. There are six flavors of these uncommitted constants</p>
+<ul>
+<li>Untyped boolean</li>
+<li>Untyped integer</li>
+<li>Untyped rune</li>
+<li>Untyped floating-point</li>
+<li>Untyped complex</li>
+<li>Untyped string</li>
+</ul>
+<p>Untyped constants can retain higher precision and participate in many more expressions than committed constants without requiring conversions. For example, the values <code>ZiB</code> and <code>YiB</code> in the example above are too big to store in any integer variable, but they are legitimate constants that may be used in expressions like this one:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">YiB</span><span class="o">/</span><span class="nx">ZiB</span><span class="p">)</span> <span class="c1">// &quot;1024&quot;</span>
+</pre></div>
+
+
+<p>The floating-point constant <code>math.Pi</code> may be used wherever any floating-point or complex value is needed:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="kt">float32</span> <span class="p">=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="kt">float64</span> <span class="p">=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span>
+<span class="kd">var</span> <span class="nx">z</span> <span class="kt">complex128</span> <span class="p">=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span>
+</pre></div>
+
+
+<p>If <code>math.Pi</code> had been committed to a specific type such as <code>float64</code>, the result would not be as precise, and type conversions would be required:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="nx">Pi64</span> <span class="kt">float64</span> <span class="p">=</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="kt">float32</span> <span class="p">=</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">Pi64</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="kt">float64</span> <span class="p">=</span> <span class="nx">Pi64</span>
+<span class="kd">var</span> <span class="nx">z</span> <span class="kt">complex128</span> <span class="p">=</span> <span class="nb">complex128</span><span class="p">(</span><span class="nx">Pi64</span><span class="p">)</span>
+</pre></div>
+
+
+<p>For literals, syntax determines flavor. The literals in the table below all denote constants of the same value but different flavors:</p>
+<table>
+<thead>
+<tr>
+<th>Literal</th>
+<th>Flavor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>untyped integer</td>
+</tr>
+<tr>
+<td><code>0.0</code></td>
+<td>untyped floating-point</td>
+</tr>
+<tr>
+<td><code>0i</code></td>
+<td>untyped complex</td>
+</tr>
+<tr>
+<td><code>'\u0000'</code></td>
+<td>untyped rune</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly, <code>true</code> and <code>false</code> are untyped booleans and string literals are untyped strings.</p>
+<p><code>/</code> may represent integer or floating-point division depending on its operands. Consequently, the choice of literal may affect the result of a constant division expression:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mi">212</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">((</span><span class="nx">f</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span><span class="p">)</span>     <span class="c1">// &quot;100&quot;; (f - 32) * 5 is a float64</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span> <span class="o">*</span> <span class="p">(</span><span class="nx">f</span> <span class="o">-</span> <span class="mi">32</span><span class="p">))</span>     <span class="c1">// &quot;0&quot;; 5/9 is an untyped integer, 0</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mf">5.0</span> <span class="o">/</span> <span class="mf">9.0</span> <span class="o">*</span> <span class="p">(</span><span class="nx">f</span> <span class="o">-</span> <span class="mi">32</span><span class="p">))</span> <span class="c1">// &quot;100&quot;; 5.0/9.0 is an untyped float</span>
+</pre></div>
+
+
+<p>Only constants can be untyped. The constant is implicitly converted to the type of the variable if either of the following happens:</p>
+<ul>
+<li>The untyped constant is assigned to a variable (first statement in the example below).</li>
+<li>The untyped constant appears on the right-hand side of a variable declaration with an explicit type (the other three statements in the example below).</li>
+</ul>
+<p>For example:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="m">0i</span> <span class="c1">// untyped complex -&gt; float64</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="mi">2</span>                  <span class="c1">// untyped integer -&gt; float64</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="mf">1e123</span>              <span class="c1">// untyped floating-point -&gt; float64</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="sc">&#39;a&#39;</span>                <span class="c1">// untyped rune -&gt; float64</span>
+</pre></div>
+
+
+<p>The statements above are equivalent to these:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">f</span> <span class="kt">float64</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="m">0i</span><span class="p">)</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="mf">1e123</span><span class="p">)</span>
+<span class="nx">f</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Whether implicit or explicit, converting a constant from one type to another requires that the target type can represent the original value. Rounding is allowed for real and complex floating-point numbers:</p>
+<div class="codehilite"><pre><span class="kd">const</span> <span class="p">(</span>
+    <span class="nx">deadbeef</span> <span class="p">=</span> <span class="mh">0xdeadbeef</span> <span class="c1">// untyped int with value 3735928559</span>
+    <span class="nx">a</span> <span class="p">=</span> <span class="nb">uint32</span><span class="p">(</span><span class="nx">deadbeef</span><span class="p">)</span>    <span class="c1">// uint32 with value 3735928559</span>
+    <span class="nx">b</span> <span class="p">=</span> <span class="nb">float32</span><span class="p">(</span><span class="nx">deadbeef</span><span class="p">)</span>   <span class="c1">// float32 with value 3735928576 (rounded up)</span>
+    <span class="nx">c</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">deadbeef</span><span class="p">)</span>   <span class="c1">// float64 with value 3735928559 (exact)</span>
+    <span class="nx">d</span> <span class="p">=</span> <span class="nb">int32</span><span class="p">(</span><span class="nx">deadbeef</span><span class="p">)</span>     <span class="c1">// compile error: constant overflows int32</span>
+    <span class="nx">e</span> <span class="p">=</span> <span class="nb">float64</span><span class="p">(</span><span class="mf">1e309</span><span class="p">)</span>      <span class="c1">// compile error: constant overflows float64</span>
+    <span class="nx">f</span> <span class="p">=</span> <span class="nb">uint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>            <span class="c1">// compile error: constant underflows uint</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>In a variable declaration without an explicit type (including <a href="../ch2/#short-variable-declarations">short variable declarations</a>), the flavor of the untyped constant implicitly determines the default type of the variable. For example:</p>
+<div class="codehilite"><pre><span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>      <span class="c1">// untyped integer;        implicit int(0)</span>
+<span class="nx">r</span> <span class="o">:=</span> <span class="sc">&#39;\000&#39;</span> <span class="c1">// untyped rune;           implicit rune(&#39;\000&#39;)</span>
+<span class="nx">f</span> <span class="o">:=</span> <span class="mf">0.0</span>    <span class="c1">// untyped floating-point; implicit float64(0.0)</span>
+<span class="nx">c</span> <span class="o">:=</span> <span class="m">0i</span>     <span class="c1">// untyped complex;        implicit complex128(0i)</span>
+</pre></div>
+
+
+<p>In the above example, the asymmetry should be noted: untyped integers are converted to <u><code>int</code>, whose size is not guaranteed,</u> but untyped floating-point and complex numbers are converted to the explicitly sized types <code>float64</code> and <code>complex128</code>. <u>The language has no unsized <code>float</code> and <code>complex</code> types analogous to unsized <code>int</code></u>, because it is very difficult to write correct numerical algorithms without knowing the size of one’s floating-point data types.</p>
+<p>To give the variable a different type, we must explicitly convert the untyped constant to the desired type or state the desired type in the variable declaration. For example:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">i</span> <span class="p">=</span> <span class="nb">int8</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">i</span> <span class="kt">int8</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>These defaults are particularly important when converting an untyped constant to an interface value (<a href="../ch7/">Chapter 7</a>) since they determine its dynamic type.</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1">// &quot;int&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>    <span class="c1">// &quot;float64&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="m">0i</span><span class="p">)</span>     <span class="c1">// &quot;complex128&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="sc">&#39;\000&#39;</span><span class="p">)</span> <span class="c1">// &quot;int32&quot; (rune)</span>
+</pre></div>
+
+
+<h3 id="doubts-and-solution">Doubts and Solution<a class="headerlink" href="#doubts-and-solution" title="Permanent link">&para;</a></h3>
+<h4 id="verbatim">Verbatim<a class="headerlink" href="#verbatim" title="Permanent link">&para;</a></h4>
+<h5 id="p53-on-bitwise-binary-operator"><strong>p53 on bitwise binary operator <code>&amp;^</code></strong><a class="headerlink" href="#p53-on-bitwise-binary-operator" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>The <code>&amp;^</code> operator is bit clear (AND NOT): in the expression <code>z = x &amp;^ y</code>, each bit of <code>z</code> is 0 if the corresponding bit of <code>y</code> is 1; otherwise it equals the corresponding bit of <code>x</code>.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: What does it mean?</p>
+<p><span class="text-info">Solution</span>:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/28432398/difference-between-some-operators-golang">Stack Overflow</a>: <code>x &amp;^ y</code> means to get the bits that are in <code>x</code> AND NOT in <code>y</code>. See also <a href="#bitwise-operation-examples">bitwise operation examples</a>.
+"BF"</li>
+</ul>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

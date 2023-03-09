@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/gopl/ch9/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>Chapter 9. Concurrency with Shared Variables - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch3/">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch4/">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li class="active">
+                            <a href="./">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch12/">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/gopl/ch9.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#chapter-9-concurrency-with-shared-variables">Chapter 9. Concurrency with Shared Variables</a></li>
+        
+    
+        <li class="main "><a href="#race-conditions">Race Conditions</a></li>
+        
+            <li><a href="#avoiding-a-data-race">Avoiding a data race *</a></li>
+        
+    
+        <li class="main "><a href="#mutual-exclusion-syncmutex">Mutual Exclusion: sync.Mutex</a></li>
+        
+    
+        <li class="main "><a href="#readwrite-mutexes-syncrwmutex">Read/Write Mutexes: sync.RWMutex</a></li>
+        
+    
+        <li class="main "><a href="#memory-synchronization">Memory Synchronization</a></li>
+        
+    
+        <li class="main "><a href="#lazy-initialization-synconce">Lazy Initialization: sync.Once</a></li>
+        
+    
+        <li class="main "><a href="#the-race-detector">The Race Detector</a></li>
+        
+    
+        <li class="main "><a href="#example-concurrent-non-blocking-cache">Example: Concurrent Non-Blocking Cache</a></li>
+        
+    
+        <li class="main "><a href="#goroutines-and-threads">Goroutines and Threads</a></li>
+        
+            <li><a href="#growable-stacks">Growable Stacks</a></li>
+        
+            <li><a href="#goroutine-scheduling">Goroutine Scheduling</a></li>
+        
+            <li><a href="#gomaxprocs">GOMAXPROCS</a></li>
+        
+            <li><a href="#goroutines-have-no-identity">Goroutines Have No Identity</a></li>
+        
+    
+        <li class="main "><a href="#doubts-and-solution">Doubts and Solution</a></li>
+        
+            <li><a href="#verbatim">Verbatim</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="chapter-9-concurrency-with-shared-variables"><strong>Chapter 9. Concurrency with Shared Variables</strong><a class="headerlink" href="#chapter-9-concurrency-with-shared-variables" title="Permanent link">&para;</a></h3>
+<p>The previous chapter presented several programs that use goroutines and channels to
+express concurrency in a direct and natural way.</p>
+<p>This chapter looks at the mechanics of concurrency, and in particular discusses:</p>
+<ul>
+<li>Some of the problems associated with sharing variables among multiple goroutines.</li>
+<li>The analytical techniques for recognizing those problems.</li>
+<li>The patterns for solving them.</li>
+<li>Some of the technical differences between goroutines and operating system threads.</li>
+</ul>
+<h3 id="race-conditions">Race Conditions<a class="headerlink" href="#race-conditions" title="Permanent link">&para;</a></h3>
+<p>In a sequential program, that is, a program with only one goroutine, the steps of the program happen in the familiar execution order determined by the program logic. For instance, in a sequence of statements, the first one happens before the second one, and so on.</p>
+<p>In a program with two or more goroutines, the steps within each goroutine happen in the familiar order, but in general we don't know whether an event <em>x</em> in one goroutine happens before an event <em>y</em> in another goroutine, or happens after it, or is simultaneous with it. When we cannot confidently say that one event <em>happens before</em> the other, then the events <em>x</em> and <em>y</em> are <em>concurrent</em>.</p>
+<p>Consider a function that works correctly in a sequential program. That function is <em>concurrency-safe</em> if it continues to work correctly even when called concurrently (called from two or more goroutines with no additional synchronization).</p>
+<p>This notion can be generalized to a set of collaborating functions, such as the methods and operations of a particular type. A type is concurrency-safe if all its accessible methods and operations are concurrency-safe.</p>
+<p>We can make a program concurrency-safe without making every concrete type in that program concurrency-safe. Indeed, concurrency-safe types are the exception rather than the rule, so you should access a variable concurrently only if the documentation for its type says that this is safe. We avoid concurrent access to most variables by either of the following:</p>
+<ul>
+<li>Confining them to a single goroutine</li>
+<li>Maintaining a higher-level invariant of mutual exclusion</li>
+</ul>
+<p>In contrast, exported package-level functions are generally expected to be concurrency-safe. Since package-level variables cannot be confined to a single goroutine, functions that modify them must enforce mutual exclusion.</p>
+<p>There are many reasons a function might not work when called concurrently, including:</p>
+<ul>
+<li>Deadlock</li>
+<li>Livelock</li>
+<li>Resource starvation.</li>
+</ul>
+<p>This chapter focuse on the most important one, the <a href="https://en.wikipedia.org/wiki/Race_condition"><strong>race condition</strong></a>.</p>
+<p>A race condition is a situation in which the program does not give the correct result for some interleavings of the operations of multiple goroutines. Race conditions are pernicious because they may remain latent in a program and appear infrequently, perhaps only under heavy load or when using certain compilers, platforms, or architectures. This makes them hard to reproduce and diagnose.</p>
+<p>The following example explains the seriousness of race conditions through the metaphor of financial loss:</p>
+<div class="codehilite"><pre><span class="c1">// Package bank implements a bank with only one account.</span>
+<span class="kn">package</span> <span class="nx">bank</span>
+
+<span class="kd">var</span> <span class="nx">balance</span> <span class="kt">int</span>
+
+<span class="kd">func</span> <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span> <span class="nx">balance</span> <span class="p">=</span> <span class="nx">balance</span> <span class="o">+</span> <span class="nx">amount</span> <span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">balance</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>As a sequential program, any sequence of calls to <code>Deposit</code> and <code>Balance</code> will give the right answer, that is, <code>Balance</code> will report the sum of all amounts previously deposited. However, if we call these functions not in a sequence but concurrently, <code>Balance</code> is no longer guaranteed to give the right answer. Consider the following two goroutines, which represent two transactions on a joint bank account:</p>
+<div class="codehilite"><pre><span class="c1">// Alice:</span>
+<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">bank</span><span class="p">.</span><span class="nx">Deposit</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="c1">// A1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="nx">bank</span><span class="p">.</span><span class="nx">Balance</span><span class="p">())</span> <span class="c1">// A2</span>
+<span class="p">}()</span>
+
+<span class="c1">// Bob:</span>
+<span class="k">go</span> <span class="nx">bank</span><span class="p">.</span><span class="nx">Deposit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">// B</span>
+</pre></div>
+
+
+<p>Alice deposits $200, then checks her balance, while Bob deposits $100. Since the steps <code>A1</code> and <code>A2</code> occur concurrently with <code>B</code>, we cannot predict the order in which they happen.</p>
+<p>Intuitively, it might seem that there are only three possible orderings:</p>
+<ol>
+<li>"Alice first"</li>
+<li>"Bob first"</li>
+<li>"Alice/Bob/Alice"</li>
+</ol>
+<p>[p259]</p>
+<p>In all cases the final balance is $300. The only variation is whether Alice's balance slip includes Bob's transaction or not, but the customers are satisfied either way.</p>
+<p>However, this intuition is wrong. There is a fourth possible outcome, in which Bob's deposit occurs in the middle of Alice's deposit, after the balance has been read (<code>balance + amount</code>) but before it has been updated (<code>balance = ...</code>), causing Bob's transaction to disappear. This is because Alice's deposit operation <code>A1</code> is really a sequence of two operations, a read and a write; call them <code>A1r</code> and <code>A1w</code>. The following is the problematic interleaving:</p>
+<p>After <code>A1r</code>, the expression <code>balance + amount</code> evaluates to 200, so this is the value written during <code>A1w</code>, despite the intervening deposit.</p>
+<p>This program contains a particular kind of race condition called a <a href="https://en.wikipedia.org/wiki/Race_condition#Software"><em>data race</em></a>. The definition of it is:</p>
+<p><u>A data race occurs whenever two goroutines access the same variable concurrently and at least one of the accesses is a write.</u></p>
+<p>Things get even messier if the data race involves a variable of a type that is larger than a single machine word, such as an interface, a string, or a slice. The following code updates <code>x</code> concurrently to two slices of different lengths:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="p">[]</span><span class="kt">int</span>
+<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">x</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}()</span>
+<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">x</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span> <span class="p">}()</span>
+<span class="nx">x</span><span class="p">[</span><span class="mi">999999</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span> <span class="c1">// NOTE: undefined behavior; memory corruption possible!</span>
+</pre></div>
+
+
+<p>The value of <code>x</code> in the final statement is not defined. It could be any of the following:</p>
+<ul>
+<li>nil</li>
+<li>A slice of length 10</li>
+<li>A slice of length 1,000,000.</li>
+</ul>
+<p>Recall that there are three parts to a slice: the pointer, the length, and the capacity. If the pointer comes from the first call to <code>make</code> and the length comes from the second, <code>x</code> would be a slice whose nominal length is 1,000,000 but whose underlying array has only 10 elements. In this case, storing to element 999,999 would clobber an arbitrary faraway memory location, with consequences that are impossible to predict and hard to debug and localize. This semantic minefield is called <a href="https://en.wikipedia.org/wiki/Undefined_behavior"><em>undefined behavior</em></a> and is well known to C programmers; fortunately it is rarely as troublesome in Go as in C.</p>
+<p>Even the notion that a concurrent program is an interleaving of several sequential programs is a false intuition. <a href="#memory-synchronization">Section 9.4</a> will show that data races may have even stranger outcomes. Many programmers will occasionally offer justifications for known data races in their programs. The absence of problems on a given compiler and platform may give them false confidence. A good rule of thumb is that there is no such thing as a <em>benign data race</em>. So how do we avoid data races in our programs?</p>
+<h4 id="avoiding-a-data-race">Avoiding a data race *<a class="headerlink" href="#avoiding-a-data-race" title="Permanent link">&para;</a></h4>
+<p>There are three ways to avoid a data race.</p>
+<h5 id="avoid-writing-the-variable"><strong>Avoid writing the variable</strong> *<a class="headerlink" href="#avoid-writing-the-variable" title="Permanent link">&para;</a></h5>
+<p>The first way is not to write the variable. Consider the map below, which is lazily populated as each key is requested for the first time. If <code>Icon</code> is called sequentially, the program works fine, but if <code>Icon</code> is called concurrently, there is a data race accessing the map.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">icons</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span>
+
+<span class="c1">// NOTE: not concurrency-safe!</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+    <span class="nx">icon</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+    <span class="nx">icon</span> <span class="p">=</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+    <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="p">=</span> <span class="nx">icon</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">icon</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If instead we initialize the map with all necessary entries before creating additional goroutines and never modify it again, then any number of goroutines may safely call <code>Icon</code> concurrently since each only reads the map.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">icons</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">{</span>
+    <span class="s">&quot;spades.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;spades.png&quot;</span><span class="p">),</span>
+    <span class="s">&quot;hearts.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;hearts.png&quot;</span><span class="p">),</span>
+    <span class="s">&quot;diamonds.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;diamonds.png&quot;</span><span class="p">),</span>
+    <span class="s">&quot;clubs.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;clubs.png&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="c1">// Concurrency-safe.</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>In the example above, the <code>icons</code> variable is assigned during package initialization, which happens before the program's <code>main</code> function starts running. Once initialized, <code>icons</code> is never modified. Data structures that are never modified or are immutable are inherently concurrency-safe and need no synchronization. This approach can be used if updates are essential.</p>
+<h5 id="avoid-accessing-the-variable-from-multiple-goroutines"><strong>Avoid accessing the variable from multiple goroutines</strong> *<a class="headerlink" href="#avoid-accessing-the-variable-from-multiple-goroutines" title="Permanent link">&para;</a></h5>
+<p>The second way to avoid a data race is to avoid accessing the variable from multiple goroutines. This is the approach taken by many of the programs in the previous chapter, for example:</p>
+<ul>
+<li>The main goroutine in the concurrent web crawler (<a href="../ch8/#example-concurrent-web-crawler">Section 8.6</a>) is the sole goroutine that accesses the <code>seen</code> map.</li>
+<li>The <code>broadcaster</code> goroutine in the chat server (<a href="../ch8/#example-chat-server">Section 8.10</a>) is the only goroutine that accesses the <code>clients</code> map.</li>
+</ul>
+<p>These variables are <em>confined</em> to a single goroutine.</p>
+<p>Since other goroutines cannot access the variable directly, they must use a channel to send the confining goroutine a request to query or update the variable. This is what is meant by the Go mantra:</p>
+<p>"Do not communicate by sharing memory; instead, share memory by communicating."</p>
+<p>A goroutine that brokers access to a confined variable using channel requests is called a <em>monitor goroutine</em> for that variable. For example, the <code>broadcaster</code> goroutine monitors access to the <code>clients</code> map.</p>
+<p>The following is the <code>bank</code> example rewritten with the <code>balance</code> variable confined to a monitor goroutine called <code>teller</code>:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/bank1/bank.go">gopl.io/ch9/bank1/bank.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// Package bank provides a concurrency-safe bank with one account.</span>
+<span class="kn">package</span> <span class="nx">bank</span>
+
+<span class="kd">var</span> <span class="nx">deposits</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="c1">// send amount to deposit</span>
+<span class="kd">var</span> <span class="nx">balances</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)</span> <span class="c1">// receive balance</span>
+
+<span class="kd">func</span> <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span> <span class="nx">deposits</span> <span class="o">&lt;-</span> <span class="nx">amount</span> <span class="p">}</span>
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span>       <span class="p">{</span> <span class="k">return</span> <span class="o">&lt;-</span><span class="nx">balances</span> <span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">teller</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">balance</span> <span class="kt">int</span> <span class="c1">// balance is confined to teller goroutine</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="k">select</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">amount</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">deposits</span><span class="p">:</span>
+            <span class="nx">balance</span> <span class="o">+=</span> <span class="nx">amount</span>
+        <span class="k">case</span> <span class="nx">balances</span> <span class="o">&lt;-</span> <span class="nx">balance</span><span class="p">:</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="nx">teller</span><span class="p">()</span> <span class="c1">// start the monitor goroutine</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Even when a variable cannot be confined to a single goroutine for its entire lifetime, confinement may still be a solution to the problem of concurrent access. For example, it's common to share a variable between goroutines in a pipeline by passing its address from one stage to the next over a channel. If each stage of the pipeline refrains from accessing the variable after sending it to the next stage, then all accesses to the variable are sequential. In effect, the variable is confined to one stage of the pipeline, then confined to the next, and so on. This discipline is sometimes called <em>serial confinement</em>.</p>
+<p>In the example below, <code>Cakes</code> are serially confined, first to the <code>baker</code> goroutine, then to the <code>icer</code> goroutine:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Cake</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">state</span> <span class="kt">string</span> <span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">baker</span><span class="p">(</span><span class="nx">cooked</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="o">*</span><span class="nx">Cake</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">{</span>
+        <span class="nx">cake</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">Cake</span><span class="p">)</span>
+        <span class="nx">cake</span><span class="p">.</span><span class="nx">state</span> <span class="p">=</span> <span class="s">&quot;cooked&quot;</span>
+        <span class="nx">cooked</span> <span class="o">&lt;-</span> <span class="nx">cake</span> <span class="c1">// baker never touches this cake again</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">icer</span><span class="p">(</span><span class="nx">iced</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="o">*</span><span class="nx">Cake</span><span class="p">,</span> <span class="nx">cooked</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">Cake</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">cake</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cooked</span> <span class="p">{</span>
+        <span class="nx">cake</span><span class="p">.</span><span class="nx">state</span> <span class="p">=</span> <span class="s">&quot;iced&quot;</span>
+        <span class="nx">iced</span> <span class="o">&lt;-</span> <span class="nx">cake</span> <span class="c1">// icer never touches this cake again</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h5 id="allow-only-one-goroutine-to-access-the-variable-at-a-time"><strong>Allow only one goroutine to access the variable at a time</strong> *<a class="headerlink" href="#allow-only-one-goroutine-to-access-the-variable-at-a-time" title="Permanent link">&para;</a></h5>
+<p>The third way to avoid a data race is to allow many goroutines to access the variable, but only one at a time. This approach is known as <a href="https://en.wikipedia.org/wiki/Mutual_exclusion"><em>mutual exclusion</em></a> and is the subject of the next section.</p>
+<h3 id="mutual-exclusion-syncmutex">Mutual Exclusion: <a href="https://golang.org/pkg/sync/#Mutex"><code>sync.Mutex</code></a><a class="headerlink" href="#mutual-exclusion-syncmutex" title="Permanent link">&para;</a></h3>
+<p><a href="#example-concurrent-web-crawler">Section 8.6</a> uses a buffered channel as a <em>counting semaphore</em> to ensure that no more than 20 goroutines made simultaneous HTTP requests. With the same idea, we can use a channel of capacity 1 to ensure that at most one goroutine accesses a shared variable at a time. A semaphore that counts only to 1 is called a <a href="https://en.wikipedia.org/wiki/Semaphore_(programming)"><em>binary semaphore</em></a>.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/bank2/bank.go">gopl.io/ch9/bank2/bank.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">sema</span>    <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{},</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// a binary semaphore guarding balance</span>
+    <span class="nx">balance</span> <span class="kt">int</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sema</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span> <span class="c1">// acquire token</span>
+    <span class="nx">balance</span> <span class="p">=</span> <span class="nx">balance</span> <span class="o">+</span> <span class="nx">amount</span>
+    <span class="o">&lt;-</span><span class="nx">sema</span> <span class="c1">// release token</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">sema</span> <span class="o">&lt;-</span> <span class="kd">struct</span><span class="p">{}{}</span> <span class="c1">// acquire token</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">balance</span>
+    <span class="o">&lt;-</span><span class="nx">sema</span> <span class="c1">// release token</span>
+    <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This pattern of <a href="https://en.wikipedia.org/wiki/Mutual_exclusion">mutual exclusion</a> is so useful that it is supported directly by the <a href="https://golang.org/pkg/sync/#Mutex"><code>Mutex</code></a> type from the <a href="https://golang.org/pkg/sync/"><code>sync</code></a> package. Its <code>Lock</code> method acquires the token (called a <em>lock</em>) and its <code>Unlock</code> method releases it:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/bank3/bank.go">gopl.io/ch9/bank3/bank.go</a></small></p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="s">&quot;sync&quot;</span>
+
+<span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">mu</span>      <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span> <span class="c1">// guards balance</span>
+    <span class="nx">balance</span> <span class="kt">int</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">balance</span> <span class="p">=</span> <span class="nx">balance</span> <span class="o">+</span> <span class="nx">amount</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">b</span> <span class="o">:=</span> <span class="nx">balance</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each time a goroutine accesses <code>balance</code>, it must call the mutex's <code>Lock</code> method to acquire an exclusive lock. If some other goroutine has acquired the lock, this operation will block until the other goroutine calls <code>Unlock</code> and the lock becomes available again. The mutex <em>guards</em> the shared variables. <u>By convention, the variables guarded by a mutex are declared immediately after the declaration of the mutex itself.</u> If you deviate from this, be sure to document it.</p>
+<p>The region of code between <code>Lock</code> and <code>Unlock</code> in which a goroutine is free to read and modify the shared variables is called a <a href="https://en.wikipedia.org/wiki/Critical_section"><em>critical section</em></a>. The lock holder's call to <code>Unlock</code> happens before any other goroutine can acquire the lock for itself. It is essential that the goroutine release the lock once it is finished, on all paths through the function, including error paths.</p>
+<p>The bank program above exemplifies a common concurrency pattern:</p>
+<ul>
+<li>A set of exported functions encapsulates one or more variables so that the only way to access the variables is through these functions (or methods, for the variables of an object).</li>
+<li>Each function acquires a mutex lock at the beginning and releases it at the end, thereby ensuring that the shared variables are not accessed concurrently.</li>
+</ul>
+<p>This arrangement of functions, mutex lock, and variables is called a <a href="https://en.wikipedia.org/wiki/Monitor_(synchronization)"><em>monitor</em></a>. This older use of the word "monitor" inspired the term "monitor goroutine". Both uses share the meaning of a broker that ensures variables are accessed sequentially.</p>
+<p>In more complex critical sections, especially those in which errors must be dealt with by returning early, it can be hard to tell that calls to <code>Lock</code> and <code>Unlock</code> are strictly paired on all paths. Go's <code>defer</code> statement is useful by deferring a call to <code>Unlock</code>, and the critical section implicitly extends to the end of the current function.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">balance</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In the example above:</p>
+<ul>
+<li>The <code>Unlock</code> executes after the <code>return</code> statement has read the value of <code>balance</code>, so the <code>Balance</code> function is concurrency-safe. Also, the local variable <code>b</code> is no longer needed.</li>
+<li>Furthermore, a deferred <code>Unlock</code> will run even if the critical section panics, which may be important in programs that make use of <code>recover</code> (<a href="../ch5/#recover">Section 5.10</a>). A <code>defer</code> is marginally more expensive than an explicit call to <code>Unlock</code>, but not enough to justify less clear code. Concurrent programs always favor clarity and resist premature optimization. Where possible, use <code>defer</code> and extend critical sections to the end of a function.</li>
+</ul>
+<p>In the <code>Withdraw</code> function below:</p>
+<ul>
+<li>On success, it reduces the balance by the specified amount and returns <code>true</code>.</li>
+<li>If the account holds insufficient funds for the transaction, <code>Withdraw</code> restores the balance and returns <code>false</code>.</li>
+</ul>
+<div class="codehilite"><pre><span class="c1">// NOTE: not atomic!</span>
+<span class="kd">func</span> <span class="nx">Withdraw</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="nx">Deposit</span><span class="p">(</span><span class="o">-</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">Balance</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span> <span class="c1">// insufficient funds</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This function eventually gives the correct result, but it has a side effect. When an excessive withdrawal is attempted, the balance transiently dips below zero. This may cause a concurrent withdrawal for a modest sum to be spuriously rejected. So if Bob tries to buy a sports car, Alice can't pay for her morning coffee.</p>
+<p>The problem is that <code>Withdraw</code> is not <a href="https://en.wikipedia.org/wiki/Linearizability"><em>atomic</em></a>: it consists of a sequence of three separate operations, each of which acquires and then releases the mutex lock, but nothing locks the whole sequence.</p>
+<p>Ideally, <code>Withdraw</code> should acquire the mutex lock once around the whole operation. However, this attempt won't work:</p>
+<div class="codehilite"><pre><span class="c1">// NOTE: incorrect!</span>
+<span class="kd">func</span> <span class="nx">Withdraw</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">Deposit</span><span class="p">(</span><span class="o">-</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">Balance</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span> <span class="c1">// insufficient funds</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>Deposit</code> tries to acquire the mutex lock a second time by calling <code>mu.Lock()</code>, but because mutex locks are not <a href="https://en.wikipedia.org/wiki/Reentrancy_(computing)"><em>re-entrant</em></a>, it's not possible to lock a mutex that's already locked. This leads to a deadlock where nothing can proceed, and <code>Withdraw</code> blocks forever.</p>
+<p>There is a good reason Go's mutexes are not re-entrant. The purpose of a mutex is to ensure that certain invariants of the shared variables are maintained at critical points during program execution. One of the invariants is "no goroutine is accessing the shared variables", but there may be additional invariants specific to the data structures that the mutex guards. When a goroutine acquires a mutex lock, it may assume that the invariants hold. While it holds the lock, it may update the shared variables so that the invariants are temporarily violated. However, when it releases the lock, it must guarantee that order has been restored and the invariants hold once again. Although a re-entrant mutex would ensure that no other goroutines are accessing the shared variables, it cannot protect the additional invariants of those variables.</p>
+<p>A common solution is to divide a function such as <code>Deposit</code> into two:</p>
+<ul>
+<li>An unexported function, <code>deposit</code>, which assumes the lock is already held and does the real work</li>
+<li>An exported function <code>Deposit</code> that acquires the lock before calling <code>deposit</code></li>
+</ul>
+<p>The rewritten <code>Withdraw</code> in terms of <code>deposit</code> is like this:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Withdraw</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">deposit</span><span class="p">(</span><span class="o">-</span><span class="nx">amount</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">balance</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">false</span> <span class="c1">// insufficient funds</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="nx">deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">balance</span>
+<span class="p">}</span>
+
+<span class="c1">// This function requires that the lock be held.</span>
+<span class="kd">func</span> <span class="nx">deposit</span><span class="p">(</span><span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span> <span class="nx">balance</span> <span class="o">+=</span> <span class="nx">amount</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>Encapsulation (<a href="../ch6/#encapsulation">Section 6.6</a>), by reducing unexpected interactions in a program, helps us maintain data structure invariants. For the same reason, encapsulation also helps us maintain concurrency invariants. <u>When you use a mutex, make sure that both it and the variables it guards are not exported, whether they are package-level variables or the fields of a struct.</u></p>
+<h3 id="readwrite-mutexes-syncrwmutex">Read/Write Mutexes: <a href="https://golang.org/pkg/sync/#RWMutex"><code>sync.RWMutex</code></a><a class="headerlink" href="#readwrite-mutexes-syncrwmutex" title="Permanent link">&para;</a></h3>
+<p>Since the <code>Balance</code> function only needs to read the state of the variable, it would actually be safe for multiple <code>Balance</code> calls to run concurrently, as long as no <code>Deposit</code> or <code>Withdraw</code> call is running. In this scenario we need a special kind of lock that allows read-only operations to proceed in parallel with each other, but write operations to have fully exclusive access. This lock is called a <a href="https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock"><em>multiple readers, single writer</em></a> lock, which is provided by <code>sync.RWMutex</code> in Go:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<span class="kd">var</span> <span class="nx">balance</span> <span class="kt">int</span>
+
+<span class="kd">func</span> <span class="nx">Balance</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span> <span class="c1">// readers lock</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">balance</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>The <code>Balance</code> function now calls the <code>RLock</code> and <code>RUnlock</code> methods to acquire and release a <em>reader</em> or <em>shared</em> lock.</li>
+<li>The <code>Deposit</code> function, which is unchanged, calls the <code>mu.Lock</code> and <code>mu.Unlock</code> methods to acquire and release a <em>writer</em> or <em>exclusive</em> lock.</li>
+</ul>
+<p><code>RLock</code> can be used only if there are no writes to shared variables in the critical section. In general, we should not assume that logically read-only functions or methods don't also update some variables. For example, a method that appears to be a simple accessor might also increment an internal usage counter, or update a cache so that repeat calls are faster. If in doubt, use an exclusive <code>Lock</code>.</p>
+<p>It's only profitable to use an <code>RWMutex</code> when most of the goroutines that acquire the lock are readers, and the lock is under contention, that is, goroutines routinely have to wait to acquire it. An <code>RWMutex</code> requires more complex internal bookkeeping, making it slower than a regular mutex for uncontended locks.</p>
+<h3 id="memory-synchronization">Memory Synchronization<a class="headerlink" href="#memory-synchronization" title="Permanent link">&para;</a></h3>
+<p>From previous examples, it is seen that the <code>Balance</code> method needs mutual exclusion, either channel-based or mutex-based, even if it consists only of a single operation (unlike <code>Deposit</code> where there is no danger of another goroutine executing "in the middle" of it). There are two reasons we need a mutex:</p>
+<ol>
+<li>It's equally important that <code>Balance</code> not execute in the middle of some other operation like <code>Withdraw</code>.</li>
+<li>Synchronization is about more than just the order of execution of multiple goroutines; synchronization also affects memory.</li>
+</ol>
+<p>In a modern computer there may be dozens of processors, each with its own local cache of the main memory. For efficiency, writes to memory are buffered within each processor and flushed out to main memory only when necessary. They may even be committed to main memory in a different order than they were written by the writing goroutine. <u>Synchronization primitives like channel communications and mutex operations cause the processor to flush out and commit all its accumulated writes so that the effects of goroutine execution up to that point are guaranteed to be visible to goroutines running on other processors.</u></p>
+<p>Consider the possible outputs of the following code:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kt">int</span>
+<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="p">=</span> <span class="mi">1</span>                   <span class="c1">// A1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;y:&quot;</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="c1">// A2</span>
+<span class="p">}()</span>
+
+<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">y</span> <span class="p">=</span> <span class="mi">1</span>                   <span class="c1">// B1</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;x:&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="c1">// B2</span>
+<span class="p">}()</span>
+</pre></div>
+
+
+<p>Since these two goroutines are concurrent and access shared variables without mutual exclusion, there is a data race, so the program is not deterministic. We might expect it to print any one of these four results, which correspond to intuitive interleavings of the labeled statements of the program:</p>
+<div class="codehilite"><pre>y:0 x:1
+x:0 y:1
+x:1 y:1
+y:1 x:1
+</pre></div>
+
+
+<p>The fourth line above could be explained by the sequence <code>A1,B1,A2,B2</code> or by <code>B1,A1,A2,B2</code>. However, the following two outcomes might also happen, depending on the compiler, CPU, and many other factors:</p>
+<div class="codehilite"><pre>x:0 y:0
+y:0 x:0
+</pre></div>
+
+
+<p>Within a single goroutine, the effects of each statement are guaranteed to occur in the order of execution; goroutines are <a href="https://en.wikipedia.org/wiki/Sequential_consistency"><em>sequentially consistent</em></a>. But in the absence of explicit synchronization using a channel or mutex, there is no guarantee that events are seen in the same order by all goroutines. Although goroutine <em>A</em> must observe the effect of the write <code>x = 1</code> before it reads the value of <code>y</code>, it does not necessarily observe the write to <code>y</code> done by goroutine <em>B</em>, so A may print a <em>stale</em> value of <code>y</code>.</p>
+<p>It is tempting to try to understand concurrency as if it corresponds to some interleaving of the statements of each goroutine, but as the example above shows, this is not how a modern compiler or CPU works:</p>
+<ul>
+<li><u>Because the assignment and the <code>Print</code> refer to different variables, a compiler may conclude that the order of the two statements cannot affect the result, and swap them.</u></li>
+<li>If the two goroutines execute on different CPUs, each with its own cache, writes by one goroutine are not visible to the other goroutine's <code>Print</code> until the caches are synchronized with main memory.</li>
+</ul>
+<p>All these concurrency problems can be avoided by the consistent use of simple, established patterns. Where possible, confine variables to a single goroutine; for all other variables, use mutual exclusion.</p>
+<h3 id="lazy-initialization-synconce">Lazy Initialization: <code>sync.Once</code><a class="headerlink" href="#lazy-initialization-synconce" title="Permanent link">&para;</a></h3>
+<p>Initializing a variable up front increases the start-up latency of a program and is unnecessary if execution doesn't always reach the part of the program that uses that variable. Therefore, it is good practice to defer an expensive initialization step until it is needed. Consider the <code>icons</code> variable discussed <a href="#avoiding-a-data-race">earlier in the chapter</a>:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">icons</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span>
+</pre></div>
+
+
+<p>The following version of <code>Icon</code> uses <a href="https://en.wikipedia.org/wiki/Lazy_initialization"><em>lazy initialization</em></a>:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">loadIcons</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">icons</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">{</span>
+        <span class="s">&quot;spades.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;spades.png&quot;</span><span class="p">),</span>
+        <span class="s">&quot;hearts.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;hearts.png&quot;</span><span class="p">),</span>
+        <span class="s">&quot;diamonds.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;diamonds.png&quot;</span><span class="p">),</span>
+        <span class="s">&quot;clubs.png&quot;</span><span class="p">:</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;clubs.png&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// NOTE: not concurrency-safe!</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">icons</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">loadIcons</span><span class="p">()</span> <span class="c1">// one-time initialization</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>For a variable accessed by only a single goroutine, we can use the pattern above, but this pattern is not safe if <code>Icon</code> is called concurrently. Like the bank's original <code>Deposit</code> function, <code>Icon</code> consists of multiple steps: it tests whether <code>icons</code> is nil, then it loads the icons, then it updates icons to a non-nil value.</p>
+<p>Intuition might suggest that the worst possible outcome of the race condition above is that the <code>loadIcons</code> function is called several times. While the first goroutine is busy loading the icons, another goroutine entering <code>Icon</code> would find the variable still equal to nil, and would also call <code>loadIcons</code>. However, this intuition is also wrong. As discussed in <a href="#memory-synchronization">Section 9.4</a>, in the absence of explicit synchronization, the compiler and CPU are free to reorder accesses to memory in any number of ways, so long as the behavior of each goroutine is sequentially consistent. One possible reordering of the statements of <code>loadIcons</code> is shown below. It stores the empty map in the <code>icons</code> variable before populating it:</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">loadIcons</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">icons</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">)</span>
+    <span class="nx">icons</span><span class="p">[</span><span class="s">&quot;spades.png&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;spades.png&quot;</span><span class="p">)</span>
+    <span class="nx">icons</span><span class="p">[</span><span class="s">&quot;hearts.png&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;hearts.png&quot;</span><span class="p">)</span>
+    <span class="nx">icons</span><span class="p">[</span><span class="s">&quot;diamonds.png&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;diamonds.png&quot;</span><span class="p">)</span>
+    <span class="nx">icons</span><span class="p">[</span><span class="s">&quot;clubs.png&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="nx">loadIcon</span><span class="p">(</span><span class="s">&quot;clubs.png&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Consequently, a goroutine finding <code>icons</code> to be non-nil may not assume that the initialization of the variable is complete.</p>
+<p>The simplest correct way to ensure that all goroutines observe the effects of <code>loadIcons</code> is to synchronize them using a mutex:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span> <span class="c1">// guards icons</span>
+<span class="kd">var</span> <span class="nx">icons</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span>
+
+<span class="c1">// Concurrency-safe.</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">defer</span> <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">icons</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">loadIcons</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>However, the cost of enforcing mutually exclusive access to icons is that two goroutines cannot access the variable concurrently, even once the variable has been safely initialized and will never be modified again. This suggests a multiple-readers lock:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span> <span class="c1">// guards icons</span>
+<span class="kd">var</span> <span class="nx">icons</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span>
+
+<span class="c1">// Concurrency-safe.</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">icons</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">icon</span> <span class="o">:=</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+        <span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nx">icon</span>
+    <span class="p">}</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+
+    <span class="c1">// acquire an exclusive lock</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">icons</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span> <span class="c1">// NOTE: must recheck for nil</span>
+        <span class="nx">loadIcons</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="nx">icon</span> <span class="o">:=</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+    <span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">icon</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>There are now two critical sections:</p>
+<ol>
+<li>The goroutine first acquires a reader lock, consults the map, then releases the lock.</li>
+<li>If an entry was found, it is returned. If no entry was found, the goroutine acquires a writer lock. There is no way to upgrade a shared lock to an exclusive one without first releasing the shared lock, so we must recheck the <code>icons</code> variable in case another goroutine already initialized it in the interim.</li>
+</ol>
+<p>The pattern above has greater concurrency but is complex and thus error-prone. Fortunately, the <code>sync</code> package provides a specialized solution to the problem of one-time initialization: <a href="https://golang.org/pkg/sync/#Once"><code>sync.Once</code></a>. Conceptually, a <code>Once</code> consists of a mutex and a boolean variable that records whether initialization has taken place; the mutex guards both the boolean and the client's data structures. The sole method, <code>Do</code>, accepts the initialization function as its argument. The following <code>Icon</code> function uses <code>Once</code>:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">loadIconsOnce</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+<span class="kd">var</span> <span class="nx">icons</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span>
+
+<span class="c1">// Concurrency-safe.</span>
+<span class="kd">func</span> <span class="nx">Icon</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+    <span class="nx">loadIconsOnce</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">loadIcons</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">icons</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Each call to <code>Do(loadIcons)</code> locks the mutex and checks the boolean variable. In the first call, in which the variable is false, <code>Do</code> calls <code>loadIcons</code> and sets the variable to true. Subsequent calls do nothing, but the mutex synchronization ensures that the effects of <code>loadIcons</code> on memory (specifically, <code>icons</code>) become visible to all goroutines. Using <code>sync.Once</code> in this way, we can avoid sharing variables with other goroutines until they have been properly constructed.</p>
+<h3 id="the-race-detector">The Race Detector<a class="headerlink" href="#the-race-detector" title="Permanent link">&para;</a></h3>
+<p>The Go runtime and toolchain are equipped with a sophisticated and easy-to-use dynamic analysis tool, the <a href="https://golang.org/doc/articles/race_detector.html"><strong>race detector</strong></a>. Add the <code>-race</code> flag to your <code>go build</code>, <code>go run</code>, or <code>go test</code> command. This causes the compiler to build a modified version of your application or test with additional instrumentation that effectively records all accesses to shared variables that occurred during execution, along with the identity of the goroutine that read or wrote the variable. In addition, the modified program records all synchronization events, such as <code>go</code> statements, channel operations, and calls to <code>(*sync.Mutex).Lock</code>, <code>(*sync.WaitGroup).Wait</code>, and so on. The complete set of synchronization events is specified by the <a href="https://golang.org/ref/mem"><em>The Go Memory Model</em></a> document that accompanies the language specification.</p>
+<p>The race detector studies this stream of events, looking for cases in which <u>one goroutine reads or writes a shared variable that was most recently written by a different goroutine without an intervening synchronization operation.</u> This indicates a concurrent access to the shared variable, and thus a data race. The tool prints a report that includes the identity of the variable, and the stacks of active function calls in the reading goroutine and the writing goroutine. This is usually sufficient to pinpoint the problem. <a href="#example-concurrent-non-blocking-cache">Section 9.7</a> contains an example of race detector.</p>
+<p>The race detector reports all data races that were actually executed. However, it can only detect race conditions that occur during a run; it cannot prove that none will ever occur. For best results, make sure that your tests exercise your packages using concurrency. Due to extra bookkeeping, a program built with race detection needs more time and memory to run, but the overhead is tolerable even for many production jobs. For infrequently occurring race conditions, making the race detector do its job can save time of debugging.</p>
+<h3 id="example-concurrent-non-blocking-cache">Example: Concurrent Non-Blocking Cache<a class="headerlink" href="#example-concurrent-non-blocking-cache" title="Permanent link">&para;</a></h3>
+<p>This section talks about building a <em>concurrent non-blocking cache</em>, an abstraction that solves a problem in real-world concurrent programs but is not well addressed by existing libraries. This is the problem of <a href="https://en.wikipedia.org/wiki/Memoization"><em>memoizing</em></a> a function, which means caching the result of a function so that it need be computed only once.</p>
+<p>The solution will be concurrency-safe and will avoid the contention associated with designs based on a single lock for the whole cache. It'll use the <code>httpGetBody</code> function below as an example of the function to memoize. It makes an HTTP GET request and reads the request body. Calls to this function are relatively expensive, so we want to avoid repeating them unnecessarily.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">httpGetBody</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Notice the final line. <code>ReadAll</code> returns two results, a <code>[]byte</code> and an <code>error</code>, but since these are assignable to the declared result types of <code>httpGetBody</code>, <code>interface{}</code> and <code>error</code> respectively, we can return the result of the call without further ado. We chose this return type for <code>httpGetBody</code> so that it conforms to the type of functions that our cache is designed to memoize.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memo1/memo.go">gopl.io/ch9/memo1/memo.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// Package memo provides a concurrency-unsafe</span>
+<span class="c1">// memoization of a function of type Func.</span>
+<span class="kn">package</span> <span class="nx">memo</span>
+
+<span class="c1">// A Memo caches the results of calling a Func.</span>
+<span class="kd">type</span> <span class="nx">Memo</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">f</span>     <span class="nx">Func</span>
+    <span class="nx">cache</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">result</span>
+<span class="p">}</span>
+
+<span class="c1">// Func is the type of the function to memoize.</span>
+<span class="kd">type</span> <span class="nx">Func</span> <span class="kd">func</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">result</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">value</span> <span class="kd">interface</span><span class="p">{}</span>
+    <span class="nx">err</span>   <span class="kt">error</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">New</span><span class="p">(</span><span class="nx">f</span> <span class="nx">Func</span><span class="p">)</span> <span class="o">*</span><span class="nx">Memo</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Memo</span><span class="p">{</span><span class="nx">f</span><span class="p">:</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">cache</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">result</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="c1">// NOTE: not concurrency-safe!</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span> <span class="p">=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">f</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">res</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>A <code>Memo</code> instance holds the function <code>f</code> to memoize, of type <code>Func</code>, and the <code>cache</code>, which is a mapping from strings to results. Each result is simply the pair of results returned by a call to <code>f</code>, a value and an error.</p>
+<p>Below is an example of how to use <code>Memo</code>. For each element in a stream of incoming URLs, we call <code>Get</code>, logging the latency of the call and the amount of data it returns:</p>
+<div class="codehilite"><pre><span class="nx">m</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">httpGetBody</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">url</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">incomingURLs</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="nx">value</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s, %s, %d bytes\n&quot;</span><span class="p">,</span>
+        <span class="nx">url</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="nx">value</span><span class="p">.([]</span><span class="kt">byte</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>We can use the <a href="https://golang.org/pkg/testing/"><code>testing</code></a> package (the topic of <a href="../ch11/">Chapter 11</a>) to systematically investigate the effect of memoization. In the test output below,the URL stream contains duplicates; that although the first call to <code>(*Memo).Get</code> for each URL takes hundreds of milliseconds, the second request returns the same amount of data in under a millisecond.</p>
+<div class="codehilite"><pre>$ go test -v gopl.io/ch9/memo1
+=== RUN Test
+https://golang.org, 175.026418ms, 7537 bytes
+https://godoc.org, 172.686825ms, 6878 bytes
+https://play.golang.org, 115.762377ms, 5767 bytes
+http://gopl.io, 749.887242ms, 2856 bytes
+https://golang.org, 721ns, 7537 bytes
+https://godoc.org, 152ns, 6878 bytes
+https://play.golang.org, 205ns, 5767 bytes
+http://gopl.io, 326ns, 2856 bytes
+--- PASS: Test (1.21s)
+PASS
+ok gopl.io/ch9/memo1 1.257s
+</pre></div>
+
+
+<p>This test executes all calls to <code>Get</code> sequentially.</p>
+<p>Since HTTP requests are a great opportunity for parallelism, the following test makes all requests concurrently. <u>The test uses a <code>sync.WaitGroup</code> to wait until the last request is complete before returning.</u></p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memotest/memotest.go#L84">gopl.io/ch9/memotest/memotest.go</a></small></p>
+<div class="codehilite"><pre><span class="nx">m</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">httpGetBody</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">n</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+<span class="k">for</span> <span class="nx">url</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">incomingURLs</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+        <span class="nx">value</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s, %s, %d bytes\n&quot;</span><span class="p">,</span>
+            <span class="nx">url</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="nx">value</span><span class="p">.([]</span><span class="kt">byte</span><span class="p">)))</span>
+        <span class="nx">n</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+    <span class="p">}(</span><span class="nx">url</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">n</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The test runs much faster, but unfortunately it is unlikely to work correctly all the time. We may notice unexpected cache misses, or cache hits that return incorrect values, or even crashes.</p>
+<p>The worse thing is that it is likely to work correctly some of the time, so we may not even notice that it has a problem. But if we run it with the <code>-race</code> flag, the race detector (<a href="#the-race-detector">Section 9.6</a>) often prints a report such as this one:</p>
+<div class="codehilite"><pre>$ go test -run=TestConcurrent -race -v gopl.io/ch9/memo1
+=== RUN TestConcurrent
+...
+WARNING: DATA RACE
+Write by goroutine 36:
+runtime.mapassign1()
+~/go/src/runtime/hashmap.go:411 +0x0
+gopl.io/ch9/memo1.(*Memo).Get()
+~/gobook2/src/gopl.io/ch9/memo1/memo.go:32 +0x205
+...
+Previous write by goroutine 35:
+runtime.mapassign1()
+~/go/src/runtime/hashmap.go:411 +0x0
+gopl.io/ch9/memo1.(*Memo).Get()
+~/gobook2/src/gopl.io/ch9/memo1/memo.go:32 +0x205
+...
+Found 1 data race(s)
+FAIL gopl.io/ch9/memo1 2.393s
+</pre></div>
+
+
+<p>The reference to <code>memo.go:32</code> tells us that two goroutines have updated the <code>cache</code> map without any intervening synchronization. <code>Get</code> is not concurrency-safe: it has a data race.</p>
+<div class="codehilite"><pre>28 func (memo *Memo) Get(key string) (interface{}, error) {
+29     res, ok := memo.cache[key]
+30     if !ok {
+31         res.value, res.err = memo.f(key)
+32         memo.cache[key] = res
+33     }
+34     return res.value, res.err
+35 }
+</pre></div>
+
+
+<p>The simplest way to make the cache concurrency-safe is to use monitor-based synchronization, by adding a mutex to the <code>Memo</code>, which acquires the mutex lock at the start of <code>Get</code>, and releases it before <code>Get</code> returns, so that the two cache operations occur within the critical section:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memo2/memo.go">gopl.io/ch9/memo2/memo.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Memo</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">f</span>     <span class="nx">Func</span>
+    <span class="nx">mu</span>    <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span> <span class="c1">// guards cache</span>
+    <span class="nx">cache</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">result</span>
+<span class="p">}</span>
+
+<span class="c1">// Get is concurrency-safe.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">res</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span> <span class="p">=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">f</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">res</span>
+    <span class="p">}</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now the race detector is silent, even when running the tests concurrently. Unfortunately this change to <code>Memo</code> reverses our earlier performance gains. By holding the lock for the duration of each call to <code>f</code>, <code>Get</code> serializes all the I/O operations we intended to parallelize. What we need is a <em>non-blocking</em> cache, one that does not serialize calls to the function it memoizes.</p>
+<p>In the following implementation of <code>Get</code>, the calling goroutine acquires the lock twice: once for the lookup, and then a second time for the update if the lookup returned nothing. In between, other goroutines are free to use the cache.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memo3/memo.go">gopl.io/ch9/memo3/memo.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">res</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span> <span class="p">=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">f</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+
+        <span class="c1">// Between the two critical sections, several goroutines</span>
+        <span class="c1">// may race to compute f(key) and update the map.</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">res</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The performance improves again, but now we notice that some URLs are being fetched twice.  This happens when two or more goroutines call <code>Get</code> for the same URL at about the same time. Both consult the cache, find no value there, and then call the slow function <code>f</code>. Then both of them update the map with the result they obtained. One of the results is overwritten by the other.</p>
+<p>We need to avoid this redundant work. This feature is sometimes called <em>duplicate suppression</em>. In the version of <code>Memo</code> below, each map element is a pointer to an entry struct. Each entry contains the memoized result of a call to the function <code>f</code>, but it additionally contains a channel called <code>ready</code>. Right after the entry's result has been set, this channel will be closed, to <em>broadcast</em> (<a href="../ch8/#cancellation">Section 8.9</a>) to any other goroutines that it is now safe for them to read the result from the <code>entry</code>.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memo4/memo.go">gopl.io/ch9/memo4/memo.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">entry</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">res</span>   <span class="nx">result</span>
+    <span class="nx">ready</span> <span class="kd">chan</span> <span class="kd">struct</span><span class="p">{}</span> <span class="c1">// closed when res is ready</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">New</span><span class="p">(</span><span class="nx">f</span> <span class="nx">Func</span><span class="p">)</span> <span class="o">*</span><span class="nx">Memo</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Memo</span><span class="p">{</span><span class="nx">f</span><span class="p">:</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">cache</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">entry</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Memo</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">f</span>     <span class="nx">Func</span>
+    <span class="nx">mu</span>    <span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span> <span class="c1">// guards cache</span>
+    <span class="nx">cache</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">entry</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">value</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+    <span class="nx">e</span> <span class="o">:=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nx">e</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="c1">// This is the first request for this key.</span>
+        <span class="c1">// This goroutine becomes responsible for computing</span>
+        <span class="c1">// the value and broadcasting the ready condition.</span>
+        <span class="nx">e</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">entry</span><span class="p">{</span><span class="nx">ready</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{})}</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">e</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+
+        <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">err</span> <span class="p">=</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">f</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+
+        <span class="nb">close</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">ready</span><span class="p">)</span> <span class="c1">// broadcast ready condition</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// This is a repeat request for this key.</span>
+        <span class="nx">memo</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+
+        <span class="o">&lt;-</span><span class="nx">e</span><span class="p">.</span><span class="nx">ready</span> <span class="c1">// wait for ready condition</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">err</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>A call to <code>Get</code> now involves:</p>
+<ul>
+<li>Acquiring the mutex lock that guards the <code>cache</code> map</li>
+<li>Looking in the map for a pointer to an existing <code>entry</code></li>
+<li>Allocating and inserting a new <code>entry</code> if none was found, then releasing the lock</li>
+</ul>
+<p>But there are two cases this time:</p>
+<ul>
+<li>If there was an existing <code>entry</code> (in the <code>else</code> block), its value is not necessarily ready yet: another goroutine could still be calling the slow function <code>f</code>. Thus the calling goroutine must wait for the entry's "ready" condition before it reads the <code>entry</code>'s result. <u>It does this by reading a value from the <code>ready</code> channel, since this operation blocks until the channel is closed.</u></li>
+<li>If there was no existing entry (in the <code>if e == nil</code> block), then by inserting a new "not ready" entry into the map, the current goroutine becomes responsible for invoking the slow function, updating the entry, and broadcasting the readiness of the new entry to any other goroutines that might (by then) be waiting for it.</li>
+</ul>
+<p>Notice that the variables <code>e.res.value</code> and <code>e.res.err</code> in the <code>entry</code> are shared among multiple goroutines. The goroutine that creates the <code>entry</code> sets their values, and other goroutines read their values once the "ready" condition has been broadcast. Despite being accessed by multiple goroutines, no mutex lock is necessary. The closing of the <code>ready</code> channel happens before any other goroutine receives the broadcast event, so the write to those variables in the first goroutine happens before they are read by subsequent goroutines. There is no data race.</p>
+<p>Our concurrent, duplicate-suppressing, non-blocking cache is complete.</p>
+<p>The implementation of <code>Memo</code> above uses a mutex to guard a map variable that is shared by each goroutine that calls <code>Get</code>. It's interesting to contrast this design with an alternative one in which the map variable is confined to a <em>monitor goroutine</em> to which callers of <code>Get</code> must send a message.</p>
+<p>The declarations of <code>Func</code>, <code>result</code>, and <code>entry</code> remain as before. However, the <code>Memo</code> type now consists of a channel, <code>requests</code>, through which the caller of <code>Get</code> communicates with the monitor goroutine. The element type of the channel is a <code>request</code>. Using this structure, the caller of <code>Get</code> sends the monitor goroutine both the key (the argument to the memoized function), and another channel, <code>response</code>, over which the result should be sent back when it becomes available. This channel will carry only a single value.</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch9/memo5/memo.go">gopl.io/ch9/memo5/memo.go</a></small></p>
+<div class="codehilite"><pre><span class="c1">// A request is a message requesting that the Func be applied to key.</span>
+<span class="kd">type</span> <span class="nx">request</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">key</span>      <span class="kt">string</span>
+    <span class="nx">response</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">result</span> <span class="c1">// the client wants a single result</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Memo</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">requests</span> <span class="kd">chan</span> <span class="nx">request</span> <span class="p">}</span>
+
+<span class="c1">// New returns a memoization of f.  Clients must subsequently call Close.</span>
+<span class="kd">func</span> <span class="nx">New</span><span class="p">(</span><span class="nx">f</span> <span class="nx">Func</span><span class="p">)</span> <span class="o">*</span><span class="nx">Memo</span> <span class="p">{</span>
+    <span class="nx">memo</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Memo</span><span class="p">{</span><span class="nx">requests</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">request</span><span class="p">)}</span>
+    <span class="k">go</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">server</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">memo</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kd">interface</span><span class="p">{},</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">response</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">result</span><span class="p">)</span>
+    <span class="nx">memo</span><span class="p">.</span><span class="nx">requests</span> <span class="o">&lt;-</span> <span class="nx">request</span><span class="p">{</span><span class="nx">key</span><span class="p">,</span> <span class="nx">response</span><span class="p">}</span>
+    <span class="nx">res</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">response</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">err</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">Close</span><span class="p">()</span> <span class="p">{</span> <span class="nb">close</span><span class="p">(</span><span class="nx">memo</span><span class="p">.</span><span class="nx">requests</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>The <code>Get</code> method above creates a <code>response</code> channel, puts it in the <code>request</code>, sends it to the monitor goroutine, then immediately receives from it.</p>
+<p>The cache variable is confined to the monitor goroutine <code>(*Memo).server</code> shown below. The monitor reads requests in a loop until the <code>request</code> channel is closed by the <code>Close</code> method. For each request, it consults the cache, creating and inserting a new <code>entry</code> if none was found.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="p">(</span><span class="nx">memo</span> <span class="o">*</span><span class="nx">Memo</span><span class="p">)</span> <span class="nx">server</span><span class="p">(</span><span class="nx">f</span> <span class="nx">Func</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">cache</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">entry</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nx">req</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">memo</span><span class="p">.</span><span class="nx">requests</span> <span class="p">{</span>
+        <span class="nx">e</span> <span class="o">:=</span> <span class="nx">cache</span><span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">e</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="c1">// This is the first request for this key.</span>
+            <span class="nx">e</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">entry</span><span class="p">{</span><span class="nx">ready</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{})}</span>
+            <span class="nx">cache</span><span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">e</span>
+            <span class="k">go</span> <span class="nx">e</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="c1">// call f(key)</span>
+        <span class="p">}</span>
+        <span class="k">go</span> <span class="nx">e</span><span class="p">.</span><span class="nx">deliver</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">entry</span><span class="p">)</span> <span class="nx">call</span><span class="p">(</span><span class="nx">f</span> <span class="nx">Func</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Evaluate the function.</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">res</span><span class="p">.</span><span class="nx">err</span> <span class="p">=</span> <span class="nx">f</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="c1">// Broadcast the ready condition.</span>
+    <span class="nb">close</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">ready</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">entry</span><span class="p">)</span> <span class="nx">deliver</span><span class="p">(</span><span class="nx">response</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Wait for the ready condition.</span>
+    <span class="o">&lt;-</span><span class="nx">e</span><span class="p">.</span><span class="nx">ready</span>
+    <span class="c1">// Send the result to the client.</span>
+    <span class="nx">response</span> <span class="o">&lt;-</span> <span class="nx">e</span><span class="p">.</span><span class="nx">res</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Similar to the mutex-based version, the first request for a given key becomes responsible for calling the function <code>f</code> on that key, storing the result in the <code>entry</code>, and broadcasting the readiness of the <code>entry</code> by closing the <code>ready</code> channel. This is done by <code>(*entry).call</code>.</p>
+<p>A subsequent request for the same key finds the existing <code>entry</code> in the map, waits for the result to become ready, and sends the result through the <code>response</code> channel to the client goroutine that called <code>Get</code>. This is done by <code>(*entry).deliver</code>.</p>
+<p><u>The <code>call</code> and <code>deliver</code> methods must be called in their own goroutines to ensure that the monitor goroutine does not stop processing new requests.</u></p>
+<p>This example shows that it's possible to build many concurrent structures using either of the
+two approaches without excessive complexity:</p>
+<ul>
+<li>Shared variables and locks</li>
+<li>Communicating sequential processes</li>
+</ul>
+<p>It's not always obvious which approach is preferable in a given situation, but it's worth knowing how they correspond. Sometimes switching from one approach to the other can make your code simpler.</p>
+<h3 id="goroutines-and-threads">Goroutines and Threads<a class="headerlink" href="#goroutines-and-threads" title="Permanent link">&para;</a></h3>
+<p>The <a href="../ch8/">previous chapter</a> mentioned that the difference between goroutines and operating system (OS) threads could be ignored until later. Although the differences between them are essentially quantitative, a big enough quantitative difference becomes a qualitative one, and so it is with goroutines and threads.</p>
+<h4 id="growable-stacks">Growable Stacks<a class="headerlink" href="#growable-stacks" title="Permanent link">&para;</a></h4>
+<p>Each OS thread has a fixed-size block of memory (often as large as 2MB) for its <a href="https://en.wikipedia.org/wiki/Call_stack"><em>stack</em></a>, the work area where it saves the local variables of function calls that are in progress or temporarily suspended while another function is called.</p>
+<p>This fixed-size stack is simultaneously too much and too little:</p>
+<ul>
+<li>A 2MB stack would be a huge waste of memory for a little goroutine, such as one that merely waits for a <code>WaitGroup</code> then closes a channel.</li>
+<li>It's too small for a Go program that creates hundreds of thousands of goroutines at one time. Yet despite their size, fixed-size stacks are not always big enough for the most complex and deeply recursive of functions.</li>
+</ul>
+<p>Changing the fixed size can improve space efficiency and allow more threads to be created, or it can enable more deeply recursive functions, but it cannot do both.</p>
+<p>In contrast, a goroutine starts life with a small stack, typically 2KB. A goroutine's stack, like the stack of an OS thread, holds the local variables of active and suspended function calls, but unlike an OS thread, a goroutine’s stack is not fixed; it grows and shrinks as needed. The size limit for a goroutine stack may be as much as 1GB, orders of magnitude larger than a typical fixed-size thread stack, though few goroutines use that much.</p>
+<h4 id="goroutine-scheduling">Goroutine Scheduling<a class="headerlink" href="#goroutine-scheduling" title="Permanent link">&para;</a></h4>
+<p>OS threads are scheduled by the OS kernel. Every few milliseconds, a hardware timer interrupts the processor, which causes a kernel function called the <em>scheduler</em> to be invoked. This function does the following things:</p>
+<ol>
+<li>Suspends the currently executing thread and saves its registers in memory.</li>
+<li>Looks over the list of threads and decides which one should run next</li>
+<li>Restores that thread's registers from memory, then resumes the execution of that thread.</li>
+</ol>
+<p>Because OS threads are scheduled by the kernel, passing control from one thread to another requires a full <a href="https://en.wikipedia.org/wiki/Context_switch">context switch</a>, which does the following things:</p>
+<ul>
+<li>Saving the state of one user thread to memory</li>
+<li>Restoring the state of another thread</li>
+<li>Updating the scheduler's data structures.</li>
+</ul>
+<p>This operation is slow, due to its poor locality and the number of memory accesses required, and has historically only gotten worse as the number of CPU cycles required to access memory has increased.</p>
+<p>The Go runtime contains its own scheduler that uses a technique known as <em>m:n scheduling</em>, because it multiplexes (or schedules) <em>m</em> goroutines on <em>n</em> OS threads. The job of the Go scheduler is analogous to that of the kernel scheduler, but it is concerned only with the goroutines of a single Go program.</p>
+<p>Unlike the operating system's thread scheduler, the Go scheduler is not invoked periodically by a hardware timer, but implicitly by certain Go language constructs. For example, when a goroutine calls <code>time.Sleep</code> or blocks in a channel or mutex operation, the scheduler puts it to sleep and runs another goroutine until it is time to wake the first one up. Because it doesn't need a switch to kernel context, rescheduling a goroutine is much cheaper than rescheduling a thread.</p>
+<h4 id="gomaxprocs">GOMAXPROCS<a class="headerlink" href="#gomaxprocs" title="Permanent link">&para;</a></h4>
+<p>The Go scheduler uses a parameter called <code>GOMAXPROCS</code> to determine how many OS threads may be actively executing Go code simultaneously. Its default value is the number of CPUs on the machine, so on a machine with 8 CPUs, the scheduler will schedule Go code on up to 8 OS threads at once. <code>GOMAXPROCS</code> is the <em>n</em> in <em>m</em>:<em>n</em> scheduling.</p>
+<ul>
+<li><u>Goroutines that are sleeping or blocked in a communication do not need a thread at all.</u></li>
+<li>Goroutines that are blocked in I/O or other system calls or are calling non-Go functions, do need an OS thread, but <code>GOMAXPROCS</code> need not account for them.</li>
+</ul>
+<p>You can explicitly control this parameter using the <code>GOMAXPROCS</code> environment variable or the <a href="https://golang.org/pkg/runtime/#GOMAXPROCS"><code>runtime.GOMAXPROCS</code></a> function.</p>
+<p>We can see the effect of <code>GOMAXPROCS</code> on the following program, which prints an endless stream of zeros and ones:</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>$ GOMAXPROCS=1 go run hacker-cliché.go
+111111111111111111110000000000000000000011111...
+$ GOMAXPROCS=2 go run hacker-cliché.go
+010101010101010101011001100101011010010100110...
+</pre></div>
+
+
+<ol>
+<li>In the first run, at most one goroutine was executed at a time. Initially, it was the main goroutine, which prints ones. After a period of time, the Go scheduler put it to sleep and woke up the goroutine that prints zeros, giving it a turn to run on the OS thread.</li>
+<li>In the second run, there were two OS threads available, so both goroutines ran simultaneously, printing digits at about the same rate.</li>
+</ol>
+<p>Note that many factors are involved in goroutine scheduling, and the runtime is constantly evolving, so your results may differ from the ones above.</p>
+<h4 id="goroutines-have-no-identity">Goroutines Have No Identity<a class="headerlink" href="#goroutines-have-no-identity" title="Permanent link">&para;</a></h4>
+<p>In most operating systems and programming languages that support multithreading, the current thread has a distinct identity that can be easily obtained as an ordinary value, typically an integer or pointer. This makes it easy to build an abstraction called <a href="https://en.wikipedia.org/wiki/Thread-local_storage"><strong>thread-local storage</strong></a>, which is essentially a global map keyed by thread identity, so that each thread can store and retrieve values independent of other threads.</p>
+<p>Goroutines have no notion of identity that is accessible to the programmer. This is by design, since thread-local storage tends to be abused. For example, in a web server implemented in a language with thread-local storage, it's common for many functions to find information about the HTTP request on whose behalf they are currently working by looking in that storage. However, this can lead to an unhealthy "<a href="https://en.wikipedia.org/wiki/Action_at_a_distance_(computer_programming)">action at a distance</a>" in which the behavior of a function is not determined by its arguments alone, but by the identity of the thread in which it runs. Consequently, if the identity of the thread changes (e.g. some worker threads are enlisted to help) the function misbehaves mysteriously.</p>
+<p>Go encourages a simpler style of programming in which parameters that affect the behavior of a function are explicit. Not only does this make programs easier to read, but it facilitates us to freely assign subtasks of a given function to many different goroutines without worrying about their identity.</p>
+<p>At this point, all the language features needed for writing Go programs have been discussed. The next two chapters will step back to some of the practices and tools that support programming in the large: how to structure a project as a set of packages, and how to obtain, build, test, benchmark, profile, document, and share those packages.</p>
+<h3 id="doubts-and-solution">Doubts and Solution<a class="headerlink" href="#doubts-and-solution" title="Permanent link">&para;</a></h3>
+<h4 id="verbatim">Verbatim<a class="headerlink" href="#verbatim" title="Permanent link">&para;</a></h4>
+<h5 id="p265-on-mutexes"><strong>p265 on mutexes</strong><a class="headerlink" href="#p265-on-mutexes" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>Although a re-entrant mutex would ensure that no other goroutines are accessing the shared variables, it cannot protect the additional invariants of those variables.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: What does it mean?</p>
+<h5 id="p271-in-synconce"><strong>p271 in <code>sync.Once</code></strong><a class="headerlink" href="#p271-in-synconce" title="Permanent link">&para;</a></h5>
+<blockquote>
+<p>... the mutex synchronization ensures that the effects of <code>loadIcons</code> on memory (specifically, <code>icons</code>) become visible to all goroutines. Using <code>sync.Once</code> in this way, we can avoid sharing variables with other goroutines until they have been properly constructed.</p>
+</blockquote>
+<p><span class="text-danger">Question</span>: What does it mean?</p>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

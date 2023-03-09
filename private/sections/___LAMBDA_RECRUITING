@@ -1,0 +1,260 @@
+--- RECRUITING
+
+FEEDBACKS
+    1. Tell me about your strong sides. What are you good at, what value you can bring to the team.
+    I work well under pressure
+    Followup: what programming languages do you know?
+    python
+    java
+    spark
+    C
+    sql
+    2. Tell me about a project that involved data work, preferably with Spark as it is on your resume.
+    We worked on data lake: design and development of ETL processes.
+    The process usually involves the following steps:
+    decide what info we need in data lake
+    define relationships
+    create data model
+    design and build data in data lake: sql queries, python
+    scheduling (Airflow)
+    We have Hadoop data lake that supports reports take decisions. I was responsible for reporting as well.
+    Followup: how did you arrange partitioning, what considerations you took into account.
+    We had partitions per date, different files inside partitions. # of files depends on size of the block, block size is 128 MB .
+    Followup: how do you decide what file size should be?
+     # of files depends on size of the block, block size is 128 MB .
+    Followup: why do files divided into block, what blocks are for?
+    To improve queries.
+    3. Let us say you the team has created an ML model. How would you deploy it? This is an open-ended question. Please state all your assumptions explicitly. All you got is a notebook with a model.
+    define data sources of information we need
+    put sources in the lake
+    build pipelines, you can use spark or python depending on data size.
+    once you have data, run it
+    after that you have to test information, need to come up wit test cases for comparison
+    to test if the model is correct.
+    you can use a scheduler to create jobs.
+     Followup: which jobs do you need to schedule?
+     - I will create 3 layers: same information without transformations, ETL processes, reporting (for example, information grouped by some category)
+
+     Followup: what is the model, what do you create at the very end of your pipeline.
+    model is data model. I never dealt with ML models and this is not what I am interested in. I want to stay on data engineering side, I like it very much. I worked only with data models and it is not my goal to work with that kind of models.
+    4. What aspects of the job do you like the most:
+    I like to work in highly qualified team
+    I want to improve my english
+    I like to have a challenge
+    5. Who would be am ideal teammate for you? What personal traits they should have?
+    if we have meetings, if they need to ask me something it is important to communicate well and be proactive
+    good communication/daily standups
+    Questions she asked:
+    the team;
+    set of responsibilities
+    Summary: The candidate is not interested in the role, never had any intention to work on ML side. She also did not reveal a sufficient knowledge of MPP aspects based on my question about data partitioning, nor sufficient experience in deployments of data processes.
+
+    we are declining on Pablo. Feedback here:
+    While I was originally scheduled to ask “Recommendation”, I didn’t have familiarity with that question and Pablo had missed the Left Outer Join interview => I asked him Left Outer Join.
+    Pablo took a long time getting started but eventually understood the problem. He said he was more familiar with Java than Python but opted to proceed in Python.
+    Overall he was very slow. Some of this comes from not knowing Python I imagine, but with 25 years of engineering experience he should be able to look up e.g. “How do I iterate over the lines of a file in Python?” (He even said he had 1 year’s experience in Python).
+    He started with the O(AB) approach. He wrote his first pass and I asked how he could test it. He wrote the csvs and tested the function in a reasonable way. The function however did not work and he needed a lot of hand holding to debug and fix things. And by the end of the interview he still did not have a working solution, let alone an efficient one.
+    So I am a Strong No
+    Best,
+    David
+
+    Thanks very much for the note!
+    Just to reiterate our requirements for Targeting team. We are looking
+    for an experienced engineer who has a proven track record of dealing
+    with data-intense backend infrastructure and processes. Spark
+    experience is ideal. Based on my interviews so far, analysts or data
+    science “enthusiasts” have a lower probability to fit the role unless
+    they are actually responsible for infrastructure as well. Pure devops
+    do not put data at the center, focus exclusively on systems, and,
+    consequently, did not show interest in expanding data-centric skills.
+    The team liked Marco. But unfortunately we had to go through a
+    follow-up to see if he would not get stuck with complex problems, and
+    he accepted another offer in the meantime.
+    Thanks again,
+    Elena
+
+---
+? 
+    load testing: artillery, bazooka
+    cambio:
+    mas impacto
+    mas contgacto con cloud poasta y no mentira meli
+    mas responsabilidad
+    aws
+    terraform
+    algoritmos grafos
+    side proyects
+    pasado matematioco, informatica ahora, planea un master
+
+---
+? 
+    - no elixir, ruby, f# funcional
+    - banco
+    - interes en crypto y defi, informado, no programacion
+    - backend, ruby,. python
+    - big data, teradata, sql
+    - ETL automatization
+    - apaga incendios, java, c#, f#, d!, R
+    - equipo de actuarios
+    - luigi airflow
+
+---
+CARLOS LUIS
+    https://github.com/carluis321
+    https://github.com/carluis321/blackjack/blob/master/lib/room.ex
+    elixir xp propia no en produccion
+    funcional
+    6 años js node, typescript, php
+    algo de front,mas backend, poco react
+    BD: psql, mysql, dynamo, redis, mongo
+    no blockchain
+    hizo un scraper, puppeteer
+    servicios en santandar, algo de infra, seguridad, SSO, JWT
+
+---
+Carlos Hernandez
+    joomla
+    edenor middleware redt soap
+    elixir 1.5y mastercard visa booking iseatz
+    sqs, logs, monitoreo , s3, 
+    docker, ci
+    agil, planning, 2w, sprints
+
+---
+Matias Grinberg Soldaini 
+
+---
+Carlos Hernandez Pacheco
+    - edenor middleware redt soap
+    elixir 1.5y mastercard visa booking iseatz
+    sqs, logs, monitoreo , s3, 
+    docker, ci
+    agil, planning, 2w, sprints
+
+---
+RODRIGO OLIVERI
+    https://ar.linkedin.com/in/rodrigooliveri
+     - Elixir
+    Un señor Joven, agradable, le interesó la publicación porque le tiene mucho interés en programar con Elixir; viene de trabajar muchos años con Ruby, en el 2018, empezó a estudiar Elixir para proponerlo en un proyecto que tenía en el banco, pero no se lo aprobaron, a cambio tuvo que desarrollar en F#; en conjunto con Python.
+    Ahora está ayudando a su grupo con unas automatizaciones de infraestructura y con otro grupo de modelado en R.
+    En su tiempo libre, lo usa para estudiar finanzas y compartir con sus hijos, tiene 2.
+    Quiere un cambio porque se quiere trabajar definitivamente en forma remota y cobrar en USD, ya que se quiere ir a Uruguay.
+    Su Bruto pretendido es de 5.5K USD
+
+    Este flaco me cayo muy bien.
+    Lleva 7 años laburando para un banco, pero en este tiempo ha pasado por muchos equipos y tipos de proyectos, asi que parece que no se ha estancado tanto como otros que he visto en la misma situacion. Por mucho tiempo fue el “apaga incendios”, el que mandan a un equipo que esta atrasado para mejorar su situacion. Ahora esta manejando un equipo de actuarios, apoyandolos tecnicamente.
+    Sabe de backend, integraciones, apis, e herramientas de ing de datos como luigi, airflow.
+    No sabe elixir, pero si sabe ruby, algo de python, y de programacion funcional. Logro meter un proyecto en F#
+    Tiene interes en crypto, aunque a nivel de mantenerse informado, no de programar
+    Bastante de bases de datos, mucho tiempo con teradata que es una base de datos SQL
+    Automatizacion de ETLs
+    Lo veo bastante lambda, por su interes en mejores herramientas para hacer su trabajo. Estaba muy interesado en la descripcion de forte.
+    Lo unico a tener en cuenta es que necesita un tiempo de aprender elixir
+
+---
+FEDERICO MANUEL PETER
+
+    middleware bancario
+        para integrar una app web con un sistema bancario viejo
+    sniffer de trafico malicioso
+        deep packet inspection
+
+    - algo de aws, gcp, no mucho
+    - 
+
+    apurar
+
+
+
+    sistema de sincrinzacion de datos 
+        sin mucho volumen
+        informacion comercial, facturas, varias sociedades que quieren compartir informacion
+        integracion de datos,1000 por dia
+
+    add one de cliente de sap
+
+    auditoria de solidity
+    mantenimiento de explorer de blockchain
+    automatizacion de deploys
+
+    python, aws
+    interprete tipo forth en rust
+
+---
+
+    ing electronica
+    matematica fisica
+
+    firmware, señales 
+    rediseño de algoritmo de sensado
+    analisis de fourier
+
+---
+    5 años
+    telefonica mobil de espana
+    c, c++
+    cobro riesgo fraude
+
+    8 años 
+    siderar
+    - c, c++, automacion y control, hornos y maquinas en la linea de control, qnx
+    - otro sisteme de control que lee valores de campos de plc
+    - sisteam en el medio de la parte operativa y de gestion
+    - sql server, web services, hace dos años
+    - algo de .net en windows
+
+    poco contacto con cloud, algo de aws
+    uso de colas 
+    no mucho docker
+
+---
+  FERNANDO NICOLAS PASTORELLI DECILLIS (phosphorus)
+  curso de python orientado a ciencia de datos
+  curso en la unsam
+  rust hace menos, jugando con rocket
+
+  p python scripts sueltos, poco de backend
+  javascript hace un monton
+  java dos 
+  hace de todo
+  poco de funcional, haskell y erlang 
+
+  nada de go
+
+  arranco con php, le gustaba web
+  despues .net mvc, hacia de todo pero mas que nada del lado del bck
+  hace dos años java,
+
+  freelo node
+
+  - aws, k8s, si
+
+---
+    mercadolibre, dic 2020
+    en la parte de shipping integration, sistemas que manejan la logistica de entregas
+    etiquetas, 
+    java, 
+    backoffice, react
+    2 
+    no tenia m
+
+---
+LUIS GARCIA 
+    - comienzo sixtree 2014, python junior
+    - 2015-2017 despues administrador de proyectos, contabilizando horas, simil jira, erlang dificil, migracion a elixir, 
+    - 7meses, isotope11, elixir,le asignaban otras actividades, restaurant de alabama, administrador de contenido, RoR
+    - 2018-hoy, QA automation, python
+    - hackerrank, exercism.io
+
+    - le gusta tdd, elm
+    - trabajo con josh adam, de elixir confs
+
+    no se considera senior, mucho por aprender, le falta xp
+    casi semisr, casi junior
+    le falta bastante confianza
+    traduccion de material de ingles a castellano de elixir
+
+    https://github.com/luismackmack
+
+---
+MARTÍN ALEJANDRO ROSAS

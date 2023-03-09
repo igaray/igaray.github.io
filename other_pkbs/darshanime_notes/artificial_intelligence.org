@@ -1,0 +1,3953 @@
+* Artificial intelligence
+** CS 188x: Artificial Intelligence
+*** Dan Klein, Pieter Abbeel. UCB
+
+# Algorithms and more
+
+* Lecture 1
+
+2 important things to learning:
+i. Memory - learning from your experience 
+ii. Simulation - prediction based on your actions and your model of the environment
+
+Always a trade-off b/w learning and simulation(modelling)
+
+Agent - an entity that perceives and acts.
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_1.png]]
+
+We have the environment (that we can model in our agents mind), we get percepts from it using our sensors and we use the data to control your actuators(they are the tools you have at your disposal to act on the env) to manipulate the env. 
+
+The question mark is the _agent function_
+
+A rational agent selects the actions that maximize it's utility (expected utility from your model of the world)
+
+the percepts, actions that are available decide which algos to use
+ 
+Our agent will be Pacman. 
+
+** Part 1 - Making decisions
+fast search/planning
+constraint satisfaction
+adversarial and uncertain search
+
+** Part 2 - Reasoning under uncertainty 
+bayes' nets - which is a framework for reasoning about uncertainty 
+decision theory
+machine learning
+
+** Part 3 - applications
+NLP, CV etc
+
+
+* Lecture 2 - Search
+
+** Agents that plan ahead
+
+*** Reflex agents
+chooses action chooses action based on current percept (and maybe memory)
+do not consider future consequences of their actions 
+
+this can solve the problem if the maze is simple
+if the link is broken, it stalls
+
+((similar to greedy algorithms?))
+
+*** Planning agents
+it simulates the results of it's actions
+must have a model of how the world evolves in response to actions
+
+**** Optimal vs. complete planning
+
+
+
+**** Planning vs. replanning
+Planning - expand the entire graph and choose the best plan before making a move
+this is fine if the graph is not very big
+
+Replanning - expand only as much as needed. If you can get a point, take it. If not, expand nodes till you can get it. May not give optimal solution
+Now, you can have different algos (strategys) on how to expand when you have to do so
+
+
+** Search Problems
+A search problem consists of:
+
+*** a state space
+ - all the ways a world might be in the future
+*** a successor function
+ - how it evolves in response to actions
+ - for each state, what actions are available
+*** start state, goal test
+
+A solution is a _plan_
+it is a sequence of actions which transform the start state to a goal state
+
+Search problems are models
+**** Example: Traveling in Romania
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_2.png]]
+
+
+State space - cities
+Successor function - roads
+cost - distance/time required/cost dependent on quality of road
+start state - Arad
+Goal test - is state == Bucharest?
+
+Solution - sequence of roads 
+ 
+What to include in your environment?
+World state - every last detail
+Search state - keeps only the details needed for planning (abstraction)
+
+**** Pacman 
+
+***** Pathing problem - you have to be at the specified position
+
+States - (x, y) location
+Actions - NSEW
+Successor - update location only
+Goal test - (x,y)=END
+
+
+In the pathing problem, we need only this much in our search state
+We can abstract all other details away
+This will make the search space smaller
+
+***** Eat all Dots - slightly harder
+
+States - (x,y) location of yourself, location of all dots 
+BUT, BETTER
+States - (x,y) location of yourself, dot booleans
+Actions - NSEW
+Successor - update location, possibly a dot Boolean
+Goal test - dot boolean all 0s
+
+The number of world state gets to large numbers very easily
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_3.png]]
+
+But, we don't need all that information.  
+States for pathing - #of agent positions - 120
+States for eat all dots - 120x(2^30)
+ 
+So, you need to search efficiently
+
+Consider:
+ Safe passage problem - keep the ghosts perma scared while you eat all dots
+
+State - your location, location of power pellets and dots, #steps you can travel before ghosts come alive again
+you don't need the location of ghosts, think!
+or you need that if you can eat the ghosts and they come alive etc. you need to model them in that case
+
+
+*** state graphs, search trees
+
+State space graph - a mathematical representation of a search problem
+
+each node is an abstracted state of the world, 
+each arc represents successors, 
+the goal test is a set of goal nodes (can be only one)
+
+each state occurs only once in the state graph
+
+Generally, you cannot build the full graph in memory, it's too big
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_4.png]]
+
+
+you can dynamically build the graph on demand from the start state using the transition function(successor function) 
+how to build the graph on demand, in such a way that you don't have to build too much --> search algorithms!
+
+
+Search graph
+ - each state appears once
+Search tree
+ - root is the start state, but we have multiple successors
+ - a "What if" tree of plans and their outcomes
+ - this tree is an unrolling of the search graph
+ - generally bigger than the search graph
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_5.png]]
+
+
+ 
+consider this 4 state graph:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_6.png]]
+
+So, the state tree is infinite if there are cycles in the graph
+Also, lots of repeated structure in the search tree
+
+*** Tree Search
+
+Say, we want to solve the Romania problem - Arad to Bucharest 
+We do this:
+1. expand out potential nodes
+2. Maintain a *fringe* of partial plans under consideration
+3. Try to expand as few tree nodes as possible
+
+How to expand the tree? Several strategys
+
+General pseudo code:
+
+fn Tree-search(problem, strategy) returns a solution or failure
+{
+    initialize the search tree using the initial state of problem
+    loop do
+    {
+        if there are no candidates for expansion, return failure
+        choose a leaf node for expansion according to strategy
+        if the node contains a goal state, return corresponding solution
+        else expand the node and add the resulting nodes to the search tree
+    }
+}
+
+Strategy is needed for - *which fringe nodes to explore?*
+
+That leads us to the search methods
+
+** Uninformed Search methods
+
+Options:
+1. Depth first search - use stack - LIFO
+2. Breath first search - use queue - FIFO
+
+
+*** DFS
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_7.png]]
+
+
+
+Questions we need to answer:
+Complete - guaranteed to find a solution if one exists?
+Optimal - guaranteed to find the least cost path?
+Time complexity
+Space complexity
+
+b is the branching factor
+m is the maximum depth
+solutions at various depths (in red)
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_8.png]]
+
+Number of nodes: 1 + b + b*b + ... + b^m = O(b^m)
+
+It expands everything till the end, then moves right. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_9.png]]
+
+It stops at the left most solution. 
+Worst case - the solution is at lower right corner - could process the whole tree
+ 
+Complete - guaranteed to find a solution if one exists?
+If there is a cycle, it would be infinite, unless we prevent cycles
+
+Optimal - guaranteed to find the least cost path?
+Not optimal, it will find the left most solution (in our diagram, a better one exists)
+
+Space complexity - O(bm)
+time - O(b^m)
+
+*** BFS
+
+Expand the shallowest node first
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_10.png]]
+
+Now:
+Complete - guaranteed to find a solution if one exists?
+Yes, complete
+
+Optimal - guaranteed to find the least cost path?
+Optimal if all costs are one. 
+
+Time complexity
+O(b^s)
+
+Space complexity
+O(b^s) 
+-- this case is when you are in the last node of the 2nd last layer, then, you have b^(s-1) nodes in your present layer, each has b nodes so:
+b^s
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_11.png]]
+
+
+When will BFS outperform DFS?
+solutions are shallow
+
+When will DFS outperform BFS?
+solutions are deep and dense
+
+Note, DFS has a space advantage, with BFS's shallow-solution advantages with - Iterative deepening 
+-- do DFS with a depth limit of 1. If no solution...
+-- do DFS with a depth limit of 2. If no solution...
+-- do DFS with a depth limit of 3. If no solution...
+
+We get DFS memory with BFS guratantee (it is optimal)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_12.png]]
+
+BFS will find shortest path in terms of *shallow*, not in terms of *cheapness*
+(it becomes the same thing if the cost of everything is 1)
+
+To find the least-cost path, we need uniform cost search
+
+*** Uniform cost search
+
+Strategy - expand the cheapest node first
+Fringe is a priority queue (priority - cumulative cost)
+(it is a heap)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_13.png]]
+
+
+Note: it is the overall (cumulative) cost
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_14.png]]
+It goes cheap to expensive, irrespective of depth
+
+Complete - guaranteed to find a solution if one exists?
+Yes, complete
+
+Optimal - guaranteed to find the least cost path?
+Yes, Optimal
+
+Time complexity
+Processes all nodes with cost less than cheapest solution
+
+if that solution costs C* and arcs cost at least alpha, then effective depth - C*/alpha approx
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_15.png]]
+So, O(b^m) where m is the depth, or can be re-written as O(b^(c/aplha)) 
+:top: exponential in effective depth
+
+Space complexity
+
+O(b^(C*/alpha)) --> same as time
+
+UCS has a problem of expanding in all directions whereever it sees a lower cost function, even if that is away from the target, this is because it doesn't have any notion of direction towards goal
+
+Remember - your search is only as good as your model
+
+* Lecture 3 -  Informed Search
+
+If we include some specific information regarding the problem we are solving, we can make the tree not expand in all directions blindly for a solution, but have it more directed in it's search
+
+** review
+a search problem has:
+ - states
+ - actions and costs
+ - successor function (world dynamics)
+ - start state and goal test
+
+search tree
+ - nodes - represent plans for reaching states
+ - plans have costs (sum of action costs)
+
+search algorithm
+ - systematically builds a search tree
+ - chooses an ordering of the fringe (unexplored nodes) --> what order to choose in exploring downwards in the tree - the only key difference b/w all the search algos
+ - optimal - finds least-cost plans
+
+
+Many problems can be modeled as constraint search problems, and these techniques can be used there
+we can change our cost function, to optimize for different things
+
+# Recall we did a java problem yesterday, what it said was - given a 6x6 matrix, find the hourglass with max sum
+# this can be modeled as a search problem - 
+# starting with the 6x6 matrix, it will have a lot of children (4*4 - 16) to be precise.
+# the end goal would be to choose the cheapest of them
+
+# here, it was simple, but it could be thought of in that way
+# so, search problems really shine when you want a series of optimal decisions 
+
+In essence, all the algos differ in how they use the fringe. 
+all fringes are priority queues(heaps)(collections of nodes with attached priorities)
+
+So, in DFS - priority of selecting nodes from fringe - negative depth (lowest negative depth or highest depth first)
+in BFS - depth (lowest depth)
+in UCS - cumulative cost 
+
+for DFS and BFS, you can use a stack/queue respectively and avoid the log(n) overhead of using PQ/heap
+
+recall the problem with uninformed search was that we explored everything relatively uniformaly in all directions. 
+there was no sense of direction  
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_16.png]]
+
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_17.png]]
+
+Note here, the pacman explores the tree like so:
+starting node is the starting position
+the starting node has 4 children, each at a cost of 1
+similarly, each of the children have 4 children, all cost 1
+
+this way, a lot of nodes will have to be explored to find the optimal solution
+there is a lot of waste computation going on. (the redder it is, the earier it was discovered in the graph)
+
+We need to have a notion of the location of the goal
+
+** Informed Search
+
+Here, you have some indicator of where the goal is. Or, you have a heuristic. 
+
+*** Heuristics
+
+A heuristic is:
+ - a function that estimates how close a state is to a goal -- any mapping of states to numbers, which helps you indentify better states from worse states
+ - designed for a particular search problem
+
+Say, for example - you can have your manhattan distance from the goal as a heuristic. you can have this because you have the location of the goal and your own as well
+You can also use euclidean distance, that's also a heuristic
+
+
+
+*** Greedy Search
+
+You choose the lowest heuristic and go with it. 
+this might not give the optimal solution but. It is like guided DFS. 
+
+Strategy - expand a node that you think is closest to a goal state
+
+a common case - takes you straight to a suboptimal goal
+worst case - badly guilded DFS
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_18.png]]
+
+The darker the red, the earlier the node was explored. 
+
+The agent goes left, then at the intersection, it goes left, get stuck, backtracks and comes back and gets the right path
+when the simulation is done, the agent can follow the right path straight away
+
+This leads us to A* --> put it all together -- use heuristics, but also consider the idea of uniform cost search which explores other directions in case they turn out to be optimal
+
+*** A* search
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_19.png]]
+
+UCS is optimal, methodically searches the cheap alternatives first before getting to the optimal solution
+Greedy is fast, zips along in the direction of the target, gets to a suboptimal solution
+
+A* best of both worlds
+
+Here, we combine the heuristic with the cost of each path (add them together)
+The heuristic has information about the location of the target and if we are moving in the right direction
+The cost of the path makes sure that we are on the cheapest path
+
+Or: 
+Uniform cost - orders by path cost, or backward cost g(n) --> of the UCS fame
+Greedy - orders by goal proximity, or forward cost h(n) --> heuristic
+
+A* searches by f(n) = g(n) + h(n)
+
+use a heap :top:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_20.png]]
+
+
+So, to use A* we need an heuristic and cost for each edge (going from one node to another)
+
+We stop A* not when we dequeue the goal, which means that that is the shortest path on the PQ now
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_21.png]]
+ 
+Here, the dry run:
+Start from S, 
+
+| path | cost+heuristic | total |
+|------+----------------+-------|
+| S    | 0+3            | 3     | // only thing on the queue, so popped out
+
+| path | cost+heuristic | total |
+|------+----------------+-------|
+| S-a  |            2+2 |     4 |
+| S-b  |            2+1 |     3 | //cheaper so popped off
+
+| path  | cost+heuristic | total |
+|-------+----------------+-------|
+| S-a   | 2+2            |     4 | // cheaper so popped off, to be replaced by it's children
+| S-b-G | (2+3)+0        |     5  | //this has the goal, but we stop only when we DEQUEUE the goal
+
+| path  | cost+heuristic | total |
+|-------+----------------+-------|
+| S-a-G | (2+2)+0        |     4 | // cheaper, so dequeued and we have the answer
+| S-b-G | (2+3)+0        |     5 |
+
+
+
+____
+Complete - guaranteed to find a solution if one exists?
+
+Optimal - guaranteed to find the least cost path?
+Yes, subject of fineprint
+
+Time complexity
+
+Space complexity
+____
+
+
+However, it fails if the heuristics are shitty. We can always take a weighted average and all... 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_22.png]]
+It fails here :top:
+
+We need to regulate our heuristics
+ - What went wrong was - actual bad goal cost < estimated good goal cost  (the actual god-sent truth cost was less than what our heuristic says)
+ - we need estimates(heuristics) to be less than actual costs
+
+**** Admissible heuristics
+
+Inadmissible (pessimistic) heuristics break optimality by trapping good plans on the fringe
+Admissible (optimistic) heuristics slow down bad plans but never outweigh true costs
+
+A heuristic h is admissible(optimistic) if:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_23.png]]
+
+Also, it has to be positive. 
+
+**** Optimality of A* tree search
+
+Assume: 
+ - A is an optimal goal mode
+ - B is an suboptimal goal mode
+ - h is admissible
+
+Claim A will exit the fringe before B
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_24.png]]
+
+To mark the nodes that have been explored, highlight the nodes on the fringe
+
+Recall: f(n) = g(n) + h(n)
+f - the f score
+g - the cumulative cost of reaching that node
+h - the heuristic value at that point (which is always lower than the actual value - the god-sent truth)
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_25.png]]
+
+we have:
+ - f(n) is less or equal to f(A)
+   - f(n) = g(n) + h(n) --> which is, cumulative cost of reaching n, heuristic value of reaching A from n (which always has to be an underestimate)
+ - f(A) < f(B) --> h() will be 0 in both cases, and since A is optimal, g(A)<g(B) by defination
+ - n expands before B --> f(n) <= f(A) < f(B)
+
+Hence, all ancestors of A and A itself, expands before B
+A* is optimal
+
+**** Properties of A*
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_26.png]]
+
+A* focuses more in the direction of the goal, because it has the sense of the goal, due to the heuristic. UCS expands in all directions based on the cost without any sense of goal's direction 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_27.png]]
+
+
+:top: the first one is UCS, the 2nd one is A*. *Both are optimal*, but A* has a sense of direction and it won't explore the right side of the graph because it has an heuristic sense of direction of the goal 
+
+**** Uses of A*
+
+ - Video games
+ - Pathing/routing problems
+ - Resource planning problems
+ - robot motion planning
+ - language analysus
+ - Machine translation
+ - speech recognition
+ - ...
+
+*** Demonstrations
+
+Here, the aim is to go from green to red. 
+The light blue costs 1, deep blue costs 3.
+
+White dots means the state is explored
+
+ - BFS --> optimal if all costs equal, equal cost support, no heuristic support
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_29.png]]
+
+Note, it expands a lot of deep blue nodes without slowing down there. This is because BFS does not have any sense of non - 1 costs. It treats all the nodes as same cost, so here, it is not optimal.
+
+But if the costs we the same, it would be the optimal
+
+
+ -  UCS - optimal even in unequal costs, unequal cost support, no heuristic support 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_28.png]]
+
+
+ - Here, the optimal solution is given to us, with consideration of the deep blue water's extra cost. But we still do a lot of extra worl, note the white dots in the bottom half of the graph, the goal is somewhere else entirely, but UCS explores these nodes because it has no sense of the direction of the goal
+
+
+ - Greedy - like a guided DFS, not optimal, no cost support, heuristic support
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_31.png]]
+
+
+Here, note it zooms straight into the wrong direction. It just listens to the heuristic and does not bother about the cost at all. 
+
+ - A* - optimal solution, unequal cost support, heuristic support
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_32.png]]
+
+
+A* does no unnecessary work, it gives us the optimal solution, works prefectly 
+
+
+- DFS - not optimal, no cost support, no heuristic support
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_33.png]]
+
+
+
+*** Creating Heuristics
+
+Most of the work in solving a search problem is creating a admissible heuristic 
+
+Pratically speaking, indamissible heuristics can make your work a lot faster but you lose the optimality guarantee 
+
+
+Consider this problem:
+
+**** 8 Puzzle
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_34.png]]
+
+Number of world states - 9! (actually 9!/2 because about half of the combination cannot be achieved without breaking the board)
+Number of successor actions - 4 (so, branching factor of 4)
+Cost - 1 (because moving any tile costs the same)
+Heuristic
+
+1. number of tiles misplaced
+  - this is admissible because it is quite constrained, it is not arbitarily high.
+  - This is aka *relaxed-problem* heuristic. This is because it is how far the solution is if you can pick any tile and place it in it's right position. This would be the *god-send* heuristic in the relaxed problem. 
+
+
+2. total manhattan distannce
+  - here, we have tightened the bound on the heuristic a little. this would be the *god-send* in the case where we could slide any tile in any direction ignoring other tiles
+
+This tighter heuristic is better, in the sense that we will be more guided in our search, and won't have to explore many many nodes
+
+1. actual cost(actual distance) as a heuristic?
+   - it is admissible, because it is the *god-send* in our present game with the present rules
+   - this would lead us to expand only solving the nodes that are on our optimal path
+   - but to get the heuristic, we have to solve the problem first
+
+So, there is a tradeoff b/w getting heuristics that are tighter(and guide you well) and how much work you have to do to get them
+
+
+In general, heuristics can be nicely designed by relaxing the rules of the game and then computing costs under that simplified case
+
+#+ATTR_ORG: :width 100
+#+ATTR_ORG: :height 100
+[[./assets/AI_UCB_35.png]]
+
+At the top, we have the *god-sent* best heuristic. at the bottom, we have the zero heuristic.
+Then, we have some heuristics that are better than others - ha better than hc
+
+Any heuristic ha is better than another heuristic hb if it gives a higher value always (:thinking:)
+
+The zero heuristic gives you UCS
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_36.png]]
+
+
+** Graph Search
+  
+A small change that will make everything better. 
+
+This is not visiting the nodes we already visited. Consider this:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_37.png]]
+
+the 2 'e' subtrees have exactly the same nodes. 
+we have already visited e, we shouldn't visit it again. (thought the cost of both the subtrees is different)
+
+*** main idea of graph search
+ - never expand a state twice
+ - tree search + set of expanded states ("closed set")
+ - expand the search tree node-by-node but,
+ - before expanding the node, check to make sure its state has never been expanded before
+ - if not new, skip it, if new, expand and all to closed set
+
+Will this wreck completeness? 
+i.e. be unable to find a goal(solution) if it exists
+
+Can this wreck optimality?
+Yes, if you get the wrong one first, you won't visit the 2nd one. So, get the right one first if you want optimality
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_38.png]]
+| path | cost+heuristic | total |
+|------+----------------+-------|
+| S    | 0+2            | 2     | // only thing on the queue, so popped out
+
+| path | cost+heuristic | total |
+|------+----------------+-------|
+| S-a  |            1+4 |     5 |
+| S-b  |            1+1 |     2 |
+
+| path  | cost+heuristic | total |
+|-------+----------------+-------|
+| S-a   |            1+4 |     5 |
+| S-b-c |            3+1 | 4     |
+
+| path    | cost+heuristic | total |
+|---------+----------------+-------|
+| S-a     |            1+4 |     5 |
+| S-b-c-G |            6+0 |     6 |
+
+| path    | cost+heuristic | total |
+|---------+----------------+-------|
+| S-a-C   |            2+1 |     3 | // won't be visited because C is already visited. No other node on the fringe, So, solution returned is: S-b-c-G
+| S-b-c-G |            6+0 |     6 |
+
+
+#+ATTR_ORG: :width 200
+#+ATTR_ORG: :height 200
+[[./assets/AI_UCB_39.png]]
+
+What we need is *consistency* in our heuristics
+
+*admissiblilty* --> estimates need to be less than equal to actual reality
+*consistency* --> the heuristic has to be consistent with the reality, it has to represent the reality nicely
+That is to say, when consider 2 nodes, A and C
+say, h(A) = 4 and h(C) = 1
+
+Say the cost of the edge A->C is 1. Then, our heuristics are being inconsistent, they say that the difference in cost is 4-1=3
+So, the heuristic difference should be <= cost of that edge
+
+This constraint makes sense, because the heuristic is the actual cost, how can it reduce by more than the edge? even if the edge is pointing straight to the goal, the difference would only be equal. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_40.png]]
+
+** summary
+Tree search:  
+ - A* optimal if heuristic admissible
+ - UCS is special case with h=0 always
+
+Graph search:
+ - A* optimal if heuristic is consistent
+ - UCS optimal (h=0 is consistent)
+
+*Consistency implies admissibility*
+(not the other way around)
+generally - you brainstrom admissiblity and verify consistency 
+
+In general, most natural admissible heuristic tend to be consistent, especially if from relaxed problems 
+
+SO: 
+ - A* uses both backward costs and estimates of forward costs
+ - A* is optimal with consistent (and hence admissible) heuristics, (consistency needed if you want to use closed sets, admissiblity always needed for optimality)
+ - heuristic design is key - often use relaxed problems
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_41.png]]
+
+* Lecture 4 - CSPs - Constraint satisfaction problems
+
+CSPs are specialized class of search problems 
+Also a general class of problems - how to represent them and solve them
+
+
+Assumptions for search:
+ - single agent, deterministic actions, fully observed state, discrete state space
+
+ - planning - we try to find sequence of actions to get goal
+   - the path to the goal is the important thing, the goal state is easy and given
+   - paths have various costs, depths
+   - heuristics give problem-specific guidance
+
+ - identification - we try to discover the goal state that is well formed. assignments to varialbes
+   - the goal itself is important, not the path. 
+   - all paths at the same depth
+   - example - map coloring
+
+In general, in search problems, the state is a black box, we just have a goal test which says if we have reached the goal and we have some successor functions which can be anything. 
+
+CSPs are a subset of search problems with some special assumptions.
+ - state is defined by *variables Xi*, with values from a domain D
+ - goal test is a set of constraints specifying allowable combinations of values for subsets of variables
+
+Simple example of a /formal representation language/
+Allows userful general-purpose algos with more power than standard search algos
+
+** Examples of CSPs
+*** Map coloring
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_44.png]]
+
+1. Variables - states that we want to color --> WA, NT, Q, NSW, V, SA, T
+2. Domains - D = {red, green, blue}
+3. Constraints - adjacent regions must have different colors
+ - implicit - WA != NT
+ - explicit - (WA, NT) part of {(red, green), (red, blue), ... }
+4. Solutions - assignments satisfying all constraints 
+ - eg, {WA=red, NT=green, Q=red, ..., T=green}
+
+needless to say, The solution satisfies the constraints 
+
+
+*** N-queens problem
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_45.png]]
+
+Place N queens on a chess board in such a way that they cannot attack one another
+
+The picture shows a 4 queen problem
+Specifying the problem:
+
+*** my formulation
+1. Variables - location of the queens (Xq1, Yq1), (Xq2, Yq2), ...
+2. Domains - all the squares on the chess board {(1, 1), (1, 2), ... , (8, 8)}
+3. constraints - 
+   - implicit 
+     - Xq1 != Xq2 != Xq3 != Xq4,
+     - same for Y
+     - (X, Y) coordinates for any 2 queens cannot form a line with m= +-1
+   - explicit
+     - too many to write! 
+4. Solutions
+   - {Q1=(1, 1), Q2=(4, 7), ... }
+
+
+*** formulation 1
+1. variables: Xij (1 if queen there, 0 otherwise) (we have 64 variables)
+2. Domains: {0, 1}
+3. constraints:
+   - implicit
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_46.png]]
+
+The first one means: in any row, there must not be 2 queens
+The on the right means, there must be 4 queens (trivial solution would be to assign all Xijs to 0, problem solved!)
+
+Note, the explicit formulation of the constraint on the right would be - 
+something like: 
+{X11, X12, X13, ..., X88} belongs:
+  {1, 1, 1, 1, 0, ..., 0}
+  {1, 0, 1, 1, 1, ..., 0} etc
+That is a lot of writing. So, we generally write constraints in implicit form
+
+*** formulation 2
+
+in the earlier formulation, we did not use the knowledge of the problem, that is why we had to explicitly write the implicit constriant about summation of Xs being N
+
+1) variables - Qk, each row is a variable and the value will be where the queen for that row is
+the variable has an implied constraint that there cannot be more than 1 queen for each row
+it uses the knowledge of the problem :top:
+2) domain - {1, 2, 3, ..., N}
+3) constraints
+   - implicit
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_47.png]]
+
+4) solution is simple - (Q1, Q2, .., Qn) = {1, 3, 0, ..., 0}
+
+
+We can draw constraint graphs to think about how to represent them in your data structure 
+semantics of the graph:
+ - nodes are varialbes
+ - edges b/w nodes means there is a constraint b/w them
+binary csp - each constraint relates at most to 2 variables. the graph is simple in this case:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_48.png]]
+
+They can be more dense as well. 
+
+*** Sudoku
+
+this is a beautiful constraint satisfaction problem
+
+variables - value of each open square
+domain - {1..9}
+constraints - no num repeats in a row, col etc. 9-war alldiff for each row, col, region
+
+
+** varieties of CSPs
+
+discrete variables 
+  - finite domains
+    - size d means O(d^n) complete assignments
+    - eg: boolean CSPs, including boolean satisfiability(NP-complete)
+
+  - infinite domains(integers, strings etc)
+    - eg: job scheduling, variables are start/end times for each job
+    - linear constraint solvable, nonlinear undecidable
+
+continuous variables
+ - eg: start/end times for hubble telescope observations
+ - linear constraints solvable in polynomial time by LP methods
+
+Linear programming is a kind of CSP with continuous variables and linear constraints 
+
+So, CSPs cover a huge huge area of problems, learning to solve them is important
+
+
+** varieties of constraints 
+
+unary constraints 
+- involve a single variable equivalent to reducing domains, 
+eg: SA!=green
+
+binary constraints
+- involve pairs of variables eg:
+  SA!=WA
+
+Higher order constraints-
+- involve 3 or more varialbes
+
+
+preferences (soft constraints)
+ - eg: red better than green
+ - often representable by a cost for each variable assignment
+ - gives constrained optimization problems
+ - (we'll ignore these until Bayes' nets)
+
+
+** real world CSPs
+- assignment problems eg - who teaches what class
+- hardware configuration
+- transportation scheduling
+- factory scheduling
+- circuit layout
+- etc
+
+** solving CSPs
+
+Framing CSPs aren't much different from framing search problems
+
+Standard search formulation of CSPs
+ - initial state - empty assignment {}
+ - successor function - assign a value to an unassigned variable
+ - goal test - the current assignment is complete and satisfies all constraints 
+
+This framing is awfully like an search problem formulation, so much so that we can try our search algos on them
+
+*** BFS
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_49.png]]
+
+BFS start at the root node, which is empty assignment(not the goal). 
+Now, it would go to layer 1. Taking WA to be the entry point, we assign it green. Not a goal, we assign it blue, not a goal, we assign it red
+Not a goal, then we assign WA green and play with NT&SA's colors
+
+So, BFS is exceptionally inefficient, the solutions lie at the bottom of the triangle and BFS will traverse the entire thing before reaching there
+
+** DFS
+
+it will assign green to everything, then backtrack. grossly inefficient but still assigns everyone colors before backtracking
+
+The main problem is - you make mistakes early on and you don't realize that then. 
+
+** Backtracking search 
+Backtracking search is the basic uninformed algorithm for solving CSPs
+
+idea 1 - one variable at a time
+ - since {WA=red then NT=green} is the same as {NT=green then WA=red}, we only need to consider assignments to a single variable at each step
+
+idea 2 - check constraints as you go
+ - i.e. consider only values which do not conflict previous assignments
+ - might have to do some computation to check the constraints
+ - "incremental goal test"
+
+DFS with these 2 improvements is called *backtracking search*
+can do n-queens with n~25
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_50.png]]
+
+
+Note, the fellas which break constraints are not included.
+Also, we take one variable at a time(the children of root aren't numofnodes*numofcolors but only numofcolors because the ordering doesn't matter
+
+Pseudo code:
+
+
+#+begin_src C
+
+function BackTrackingSearch(csp) returns solution/failure
+{
+    return recursive-BackTracking({}, csp)
+}
+
+function recursive-BackTracking(assignment, csp)
+{
+    if assignemnt is complete -> return assignment
+    choose a child node --> if breaks constraint, choose another, return recursive-BackTracking(assignemnt, csp)
+    return failure
+}
+
+#+end_src
+
+Backtracking = DFS + variable-ordering + fail on violation
+
+*what are the choice points?*
+ - we can play with the selection of the child node - which node from the graph to work on next (there would be several children nodes, we choose which one?) -- *ordering*
+ - and also, what color to assign to the next node so that the chances of constraint violation is minimum.  
+
+This is a nice improvement, but it doesn't scale
+Some general purpose ideas:
+
+ - ordering: 
+   - what variable should be assigned next?
+   - in what order should it's values be tried?
+
+ - filtering
+   - can we detect inevitable failure early?
+
+ - Structure
+   - can we exploit the problem structure?
+
+
+*** Filtering
+
+**** Forward checking
+The nodes that are still unassigned have all the choices in their domains. what we can do when we assign any node is, check if we can reduce the domain of other nodes (need not be it's children) by crossing off the values it cannot take. 
+
+Here, we assigned WA red and so we removed red from the domains of NT and SA 
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_51.png]]
+
+
+
+Note here, forward checking messed us up. In the 3rd stage, we see that NT and SA both can be only blue, but both cannot be blue because they are adjacent. FC does nothing about this. we assign SA next, NT will have an empty domain, and we will need to backtrack.  
+
+We need to intelligently select the nodes to work on --> we need to focus on ordering
+
+FC is better than nothing though. 
+
+# There is a tradeoff here
+# In A*, the better the heuristic, the more directed our search would be, but we did a lot of work to just compute the heuristic - so, we need to balance that 
+# Here as well, the better the filtering, the less the backtracking, but more time needed to cross off things from other node's domains etc - so, we need to balance that as well
+
+The problem with FC is that it doesn't check interactions b/w unassigned variables, it checks interactions b/w assigned variables and their neighbours. *Consistency of a single arc* does exactly that. 
+
+*Constraint propagation* - reason from constraint to constraint - FC and CSA are both ConPro methods
+
+**** Consistency of a single arc
+
+This is also a constraint propagation method. 
+Here, we take any 2 nodes and check if they are arc consistent. 
+
+An arc is consistent iff:
+    For every X in the tail, there is an extension to some Y in head that does not violate a constraint 
+
+Note:
+ - there must be a choice in the head for every selection of tail's elements
+eg:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_52.png]]
+Here, is NT --> WA consistent?
+for green in NT, there is a choice in WA
+for blue in NT, there is a choice in WA
+for red in NT, there is a NO choice in WA
+
+so, remove red from NT to make it consistent. 
+
+
+Now, checking Q --> WA
+for green in Q, there is a choice in WA
+for blue in Q, there is a choice in WA
+for red in Q, there is a choice in WA
+
+In you think, *what forward checking does is, it enforces the consistency of every arc that points to my new assignment.*
+
+That is all FC was, but we can do more. We can enforce consistency elsewhere as well.
+We can make sure that every, each and every arc in a CSP is consistent, (such a CSP is called an arc consistent CSP)
+
+This is a good way of constraint propagation
+
+But consider this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_53.png]]
+
+Checking V --> NSW
+for green in V, there is a choice in NSW (red, blue)
+for blue in V, there is a choice in NSW (red)
+for red in V, there is a choice in NSW (blue)
+
+So, consistent
+
+Now, NSW --> SA
+for red in NSW, there is a choice in SA
+for blue in NSW, there is NO choice in SA 
+so, to make the arc consistent, remove blue from NSW
+
+But, now, we our previously consistent arc V-->NSW is no longer consistent
+
+Remember -> 
+ - delete from the tail
+ - if X loses a value, neighbours of X need to be rechecked
+ - arc consistency detects failure earlier than FC (because it is more agressive in it's constraint propagation than FC)
+ - can be run as a preprocessor or after each assignment
+
+downside: 
+ - too much overhead for each basic step of the algo
+
+This algorithm is called *AC-3*. It takes the CSP, makes it arc consistent and returns it. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_54.png]]
+
+***** Limitations of AC
+ - after enforcing arc consistency - can have one or more or no solution after enforcing AC.
+#+ATTR_ORG: :width 200
+#+ATTR_ORG: :height 200
+[[./assets/AI_UCB_55.png]]
+in the first case, arcs consistent, 2 solutions exist
+in the 2nd case, arcs consistent, no solutions exist 
+
+if we have 3 way interactions, arc consistency fails to alert us about problems and we will have to backtrack 
+This is because arc consistency needs some higher notion of the state of the CSP and the assignments 
+
+
+** Ordering
+
+Which nodes to start with, and which nodes to expand?
+That can make a lot of difference, if we dynamically choose the nodes that can help us reduce our backtracking. 
+ 
+One idea is to use the Minimum remaining values as the heuristic for choosing the next node to work on. This is simple, just choose the node that has the least options in it's domain.
+
+Why min rather than max? 
+Because it's domain has the potential to get empty soon. we might as well choose the most difficult node(variable) first
+also called *most constrained variable*
+aka *fail-fast* ordering
+
+
+Another option:
+Least constraining value - LCV
+ - give a choice of variable, choose the least constraining value
+ - i.e. the ones that rules out the fewest values in the remaining variables
+ - note that it may take some computation to determine this (eg, rerunning filtering)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_56.png]]
+Here, when red and green are placed, the square below green one has only blue in it's domain. Now, if we choose the 2nd lower diagram, we will have to backtrack, so we should choose the 2nd top diagram. 
+
+Or: choose value that doesn't cross a lot of stuff. 
+Or: choose the easy value
+
+This reduces backtracking.
+Both these problems make the queens problem to solvable to 1000 queens
+
+
+* Lecture 5 - CSPs II
+
+** review
+
+CSPs are a subset of search problems
+*Solving a CSP is an NP hard problem*
+
+*** CSP
+ - variables
+ - domains
+ - constraints
+   - implicit (provide a code to compute) // here, we have to execute some code to find out if an assignment passes
+   - explicit (provide a list of legal tuples)
+   - unary/binary/n-ary // the constraint touches a single node (WA!=red) or can touch 2 or more
+
+Goals - find any solution, find all, find best etc
+
+nodes --> aka variables
+nodes(variables) are assigned values
+
+We can solve generalize CSPs to not only find a solution(which is what we have been doing till now) but also all solutions, or find the best solutions etc according to preferences etc
+
+We had some ideas about how to improve CSPs
+Ordering 
+- which variable should be assigned next? (MRV, minimum remaining values) -- choose variable with MRV
+- in what order should its values be tried? (LCV, least constraining value) -- choose value that would least constraint other variables
+
+Filtering 
+- forward checking, or it's more aggresive brother
+- arc consistency 
+
+Structure
+- can we exploit problem structure?
+- recall, our arc consistency had this problem of not being able to make guarantees about number of solutions even when the arcs were consistent. This was because it did not have any idea about the structure of the problem. 
+
+We need to extend AC (arc consistency)
+
+** K-consistency
+
+Earlier, we say AC3 which goes from arc to arc and enforces consistency - it just takes a CSP and makes it arc consistent or returns failure. It is a preprocessing algo. ((thought a arc-consistent CSP does not guarantee a solution))
+
+Increasing degrees of consistency
+ - 1-consistency
+   - node consistency (each single node's domain has a value which meets that node's unary constraint)
+
+ - 2-consistency (*Arc consistency*)
+   - for each pair of nodes, any consistent assignment to one can be extended to the other
+   - you can assign anything to one and the other would still be fine
+
+ - K-consistency
+   - for each k nodes, any consistent assignment to (k-1) can be extended to kth node
+   - you can assign anything to (k-1) nodes, (all but one) and it won't break the constraint for the kth node
+
+# Higher k more expensive to compute 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_57.png]]
+
+Here, the arcs are 1-consistent, 2-consistent, but not 3-consistent
+take the bottom two variables(nodes), a legal assignment for them would be - R+B or B+R
+in either case, there would be no solution for the top node, so, 3-consistency is not present
+
+How do we enforce this? In AC (2C), we removed the values from the domain of the tail variable. Here, we define a new constraint dynamically which says that the bottom 2 nodes cannot have R-B or B-R
+(if you think about it, in AC/2C also, we added uniary constraint on the tail node, it was saying that that node cannot have blue say
+
+So, if you are enforcing K-C, to get rid of a violation, you define a K-1-ary constraint on the group of K-1 nodes
+
+K-consistency --> the CSP is K consistent
+Strong K-consistent --> the CSP is K consistent, K-1 consistent, K-2 consistent, ... 
+
+Claim: strong n-consistency means we can solve without backtracking. 
+Simple to argue:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+[[./assets/AI_UCB_58.png]]
+
+But, enforcing n-consistency is same as solving the problem! 
+So, this is one way of solving the problem. you enforce 1-consistency (1C), then 2C, this may break 1C, fix it, then 3C, this may break 2C and 1C etc ... all the way to nC
+
+# k=3 is called path consistency 
+
+* Lecture 8 - Markov Decision Processes I
+
+This is when we are unsure about the outcomes of our actions. The action is in our control, the outcome isn't
+
+The problem is, the robot is in a maze. 
+80% of the time, the action you take results in you going in the right direction, 10% clockwise, 10% counter clockwise
+There are rewards here, and you have to gather the rewards. There is a living reward (+ve/-ve) at each time step and a big reward in the end (+ve/-ve).
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 05:56:53
+[[file:assets/screenshot_2017-12-22_05-56-53.png]]
+
+How do you make decisions here? If this was deterministic, it would have been a simple application of A* or some other graph search algorithm. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 05:57:37
+[[file:assets/screenshot_2017-12-22_05-57-37.png]]
+
+But here, it is not deterministic:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 05:57:54
+[[file:assets/screenshot_2017-12-22_05-57-54.png]]
+
+This kind of problem, is called a *Markov Decision Process*
+
+** Markov Decision Process
+It is a lot like a search problem, it's got a set of states s \in S and a successor function but it is not deterministic unlike search problem
+
+An MDP is defined by:
+ - a set of states s \in S
+ - a set of actions a \in A
+ - a transition function T(s, a, s')
+   - this is the probability that "a" from "s" leads to "s'" i.e. P(s'|s,a)
+   - called *dynamics*
+ - a reward function R(s, a, s')
+   - (sort of like a cost function)
+ - a start state
+ - a terminal state
+
+
+MDPs are non-deterministic search problems
+ - we can solve them using expectimax search
+   - you can follow the path with maximum expected utility
+ - we'll have a new tool soon
+
+
+*** Who is Markov
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:11:56
+[[file:assets/screenshot_2017-12-22_06-11-56.png]]
+
+"Markov" means given the present state, the future and past are independent.
+For MDPs, it means action outcomes depend only on the current state
+
+P(S_{t+1} = s' | S_{t} = s_{t}, A_{t} = a_{t}, S_{t-1} = s_{t-1}, A_{t-1} = a_{t-1}, ..., S_{0} = s_{0}, A_{0} = a_{0}) = P(S_{t+1} = s' | S_{t} = s_{t}, A_{t} = a_{t})
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:11:25
+[[file:assets/screenshot_2017-12-22_06-11-25.png]]
+
+This is like search, where the successor function depends on current state, not history
+
+** Policies
+In deterministic single agent search problems, we wanted an optimal plan, or sequence of actions, from start to goal
+Here, we need a policy, which tells us what to do at each state. (once we have the optimal policy, we get the reflex agent, which doesn't have to think)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:14:25
+[[file:assets/screenshot_2017-12-22_06-14-25.png]]
+
+:top: is the optimal policy when R(s, a, s') = -0.03 for all non-terminals
+
+Expectimax doesn't compute the policy explicitly, it calculates what to do at each step
+An optimal policy is the one that would maximize the agent's reward function, \pi^{*}: S \to A
+ 
+The optimal policy depends on the R
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:19:01
+[[file:assets/screenshot_2017-12-22_06-19-00.png]]
+
+:top: living reward very small
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:19:32
+[[file:assets/screenshot_2017-12-22_06-19-32.png]]
+:top: living reward is large enough to not allow us to try not risking the pit
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:20:28
+[[file:assets/screenshot_2017-12-22_06-20-28.png]]
+
+** Example: Racing
+- the car wants to travel far, quickly
+- 3 states
+  - cool, warm, overhead
+- 2 actions
+  - slow, fast
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:22:33
+[[file:assets/screenshot_2017-12-22_06-22-33.png]]
+
+The rewards:
+ - +1 for slow
+ - +2 for fast
+ - -10 for overheated
+
+This :top: is the state transition diagram, it shows the states, the actions, the transition functions, the rewards
+
+We can use expectimax here:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:24:48
+[[file:assets/screenshot_2017-12-22_06-24-48.png]]
+
+But the tree is huge, (infinite) and there is a lot of repetition of structure here, so expectimax might not be the optimal way to calculate this
+
+We can write the generic search tree:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:26:25
+[[file:assets/screenshot_2017-12-22_06-26-25.png]]
+
+When we are in a state (s), and we take an action (a), we end up in a q-state (where we have committed to a particular action but haven't computed one yet), and we finally we land in some (s') *according to the transition function*
+
+So, we have:
+- the transition: (s, a, s')
+- T(s, a, s') = P(s' | a, s)
+- and the reward: R(s, a, s')
+
+The differences between this and expectimax tree is that the rewards are not at the bottom, but smeared thru out the tree. And also that the probabilities are given to us by the Transition function
+
+Since we get the rewards step by step, we have to decide the utility of all possible sequences we can take and choose the best one
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:33:31
+[[file:assets/screenshot_2017-12-22_06-33-31.png]]
+
+We have to choose between: 
+ - more or less (5 vs 2, choose 5)
+ - now or later (now is better)
+
+Rewards are discounted, at each time step by \gamma
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:35:00
+[[file:assets/screenshot_2017-12-22_06-35-00.png]]
+
+How do we discount?
+ - we do this by changing the reward function at time step +1 by \gamma
+ - we do this because it makes sense to have rewards sooner than later
+ - also, it helps our algorithms converge nicely
+
+
+The preferences are "Stationary preferences" iff:
+ - initially, the optimal policy was [a_{1}, a_{2}, ...] over [b_{1}, b_{2}, ...] and
+ - after adding a new action r before both, the preference is still the same: [r, a_{1}, a_{2}, ...] over [r, b_{1}, b_{2}, ...]
+
+*Under the SP assumption, we can only have utilities that discount the rewards at each timestep.*
+
+Sometimes the preferences won't be stationary, so this won't apply there
+
+** Infinite utilities?
+ - what if the game lasts forever? Do we get infinite rewards? How do we choose between policies then?
+ - solutions:
+   - finite horizon (similar to depth-limited search)
+     - terminate after T time steps
+     - *gives nonstationary policies* (\pi depends on time left)
+   - Discounting: use 0 \lt \gamma \lt 1
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:48:07
+[[file:assets/screenshot_2017-12-22_06-48-07.png]]
+
+   - absorbing state:
+     - guarantee that for every policy, a terminal state will eventually be reached (I.e. The probability of reaching the safe states reduces with T)
+
+So, we have defined MDPs which have:
+ - set of states s
+ - start state s_{0}
+ - set of actions A
+ - transitions T(s, a, s') = P(s' | s, a)
+ - rewards R(s, a, s') (and discount \gamma)
+
+And we compute the policy (mapping from states to actions) using the utility (sum of discounted rewards)
+
+** Solving MDPs
+
+ - Value (utility) of state s
+   - V^{*}(s) is the expected utility of starting in s and acting optimally
+ - Value of q-state
+   - Q^{ * }(s, a) is the expected utility of starting out having taken action "a" from state "s" and thereafter acting optimally
+ - The optimal policy
+   - \pi^{*}(s) is the optimal action from state s
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:57:11
+[[file:assets/screenshot_2017-12-22_06-57-11.png]]
+
+
+These look like this:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 06:58:40
+[[file:assets/screenshot_2017-12-22_06-58-40.png]]
+
+The living reward is -0.1 and the \gamma is 0.99
+The values in the grids are the values of those states V^{*}(s)
+The arrows are the optimal policies from that state \pi^{ *}
+
+We also have the q values:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:01:22
+[[file:assets/screenshot_2017-12-22_07-01-22.png]]
+
+The q values show what is the expected utility of choosing a particular action from each state.
+The value of the state V^{*} is simply the max of all q-values
+
+How do we compute these things?
+
+*** Values of States
+
+ - Fundamental operation: compute the expectimax value of a state
+
+Well, the optimal action from a state s is to choose action with the max expected value of the q-state that that action will lead to. This optimal action will give us the expectimax value of the state
+
+What is the value from the q-state?
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:11:49
+[[file:assets/screenshot_2017-12-22_07-11-49.png]]
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:12:06
+[[file:assets/screenshot_2017-12-22_07-12-06.png]]
+
+Let's look at each one by one:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:12:22
+[[file:assets/screenshot_2017-12-22_07-12-22.png]]
+
+The value of a state s is the maximum of the values of all the q-states you can choose from. This is deterministic, you can choose what q-state you want to be in, so you choose the best.
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:13:28
+[[file:assets/screenshot_2017-12-22_07-13-28.png]]
+
+The value of a q-state is the weighted average (of the rewards you get on going to that state) over all the possible states you can end in + discounted rewards from that state
+
+We can inline Q^{*} and write the 2 equations in one:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:19:16
+[[file:assets/screenshot_2017-12-22_07-19-16.png]]
+:top: is called the bellman equation
+
+*** Time limited values
+
+The racing search tree is repetitive:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:20:53
+[[file:assets/screenshot_2017-12-22_07-20-53.png]]
+
+So, expectimax wastes a lot of time doing the same repetitive calculations. Also, the tree is infinite so expectimax has that going against it as well
+
+To solve it, we can do a depth-limited computation, going on till the change is small (due to discounting by \gamma) - "they go out of the agent's horizon, in a soft way"
+
+Key idea: time limited values
+
+Define V_{k}(s) to be the optimal value of s if the game ends in k more steps
+This is exactly what depth-k expectimax would give if we start from s. 
+The rewards come when the change nodes resolve, that is, at the marked places:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:26:25
+[[file:assets/screenshot_2017-12-22_07-26-25.png]]
+
+This :top: is V_{2}
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:26:50
+[[file:assets/screenshot_2017-12-22_07-26-50.png]]
+
+
+What do these values look like?
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:27:40
+[[file:assets/screenshot_2017-12-22_07-27-40.png]]
+
+No steps left, no rewards possible
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:28:40
+[[file:assets/screenshot_2017-12-22_07-28-40.png]]
+
+:top: is V_{2}
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:28:56
+[[file:assets/screenshot_2017-12-22_07-28-56.png]]
+
+:top: is V_{5}
+
+When does this converge? Depends on the specific probabilities involved, the discounts etc
+
+How to compute them?
+
+Looking at the graph again:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:31:19
+[[file:assets/screenshot_2017-12-22_07-31-19.png]]
+
+All the bottom layer has is lots and lots of copies of the 3 states. Since no timesteps are available from there, they all have value of 0.
+Same idea for V_{1}, V_{2} etc
+
+We can exploit this to compute the values in an efficient way - building this computation from the bottom up, and building it all the way to the top to get the same computation that expectimax would have done
+
+This is called *value iteration*
+
+*** Value iteration
+
+Start with V_{0}(s) = 0; no time steps left means expected reward of 0
+Now, we go up one layer and to get V for a node in that layer, we do a small expectimax over all possible actions and take the max one. We can do this fast because we already have the Vs for the layer below. We do this for all nodes in our layer and then go up another layer
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:49:35
+[[file:assets/screenshot_2017-12-22_07-49-35.png]]
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:49:01
+[[file:assets/screenshot_2017-12-22_07-49-01.png]]
+
+Repeat until convergence. 
+Complexity of each iteration: O(S^{2}A) - we need to do this update for each state S (each node in the layer), and for each state, we go over all actions A, and for each action, we add the transition reward and discounted future rewards for all the states we can end up in from that action
+
+It is good because it doesn't grow with the number of iterations, unlike expectimax
+Bad because it has to touch every state, unlike expectimax
+So, it's a tradeoff over how many states you have, how connected they are and how deeply you want to go in the tree
+
+*This will converge to unique optimal values*, the approximations get better and better with depth, also, the policy may converge long before the values converge
+
+**** Example: Value iteration
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:56:54
+[[file:assets/screenshot_2017-12-22_07-56-54.png]]
+
+Remember our racing cars top:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 07:57:17
+[[file:assets/screenshot_2017-12-22_07-57-17.png]]
+V_{0} is easy
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 08:03:00
+[[file:assets/screenshot_2017-12-22_08-03-00.png]]
+
+V_{1} is easy as well
+
+For V_{2}, we run expectimax for each state from there
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-22 08:07:04
+[[file:assets/screenshot_2017-12-22_08-07-04.png]]
+
+Simple to calculate here as well :top: 
+
+*** Convergence
+ - if the tree has maximum depth M, them V_{M} holds the actual untruncated values (the actual expectimax values)
+ - if discount is less than 1
+
+Since we saw that the policies converge faster than the values, we'll see in next lecture if we can exploit search over policy space and not value space. 
+
+* Lecture 9 - Markov Decision Processes II
+
+We had the grid world, where the movement of our bot was noisy. The results were non deterministic, and we had rewards - living reward and terminal reward. The goal of the agent was to maximize the rewards. Also, rewards get discounted at each time step by \gamma
+
+When ever you see MDP, you think "non-deterministic search problem"
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:41:11
+[[file:assets/screenshot_2017-12-23_15-41-11.png]]
+
+From s, you take action a, and you land in s' with probability P(s'|s,a) or T(s,a,s') and you get the reward R(s,a,s') if you get there
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:42:26
+[[file:assets/screenshot_2017-12-23_15-42-26.png]]
+
+We have policy, utilities, values, q-values :top:
+Value is the average outcome over optimal action (since the actions are non-deterministic)
+
+Q-Value is just what you would get if you ran the expectimax computation. 
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:45:17
+[[file:assets/screenshot_2017-12-23_15-45-17.png]]
+You get Values from \Delta S, you get Q from chance node
+
+We have the optimal value for a state, V^{*}(s)
+(the star always means optimal)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:47:23
+[[file:assets/screenshot_2017-12-23_15-47-22.png]]
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:47:29
+[[file:assets/screenshot_2017-12-23_15-47-29.png]]
+
+Optimal policy: \pi^{*}(s) - optimal action from state s
+
+A lot of what we do with MDPs is, take problem specification and obtain the optimal policy
+
+Example values of V:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:50:45
+[[file:assets/screenshot_2017-12-23_15-50-45.png]]
+
+
+The arrows are the optimal policy
+
+The Q-values look like so:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 15:51:51
+[[file:assets/screenshot_2017-12-23_15-51-51.png]]
+
+The -0.6 q-value on the square to left of -1 square means that if from that square if you choose left action, and then act optimally, you get -0.6 reward. It is not -1 because there are chances that you might not go left, but slip and go north or south etc.
+
+But, for the square to the bottom of -1, the north action's Q-valu is -0.65, (less than -0.6), this is because we cannot go slip and go left from there, so that saving chance is not present and so the risk is higher
+
+Rewards are for the time step, the values are cumulative over all timesteps, till the game ends (if it ends)
+
+** The Bellman Equations
+
+They specify nicely how to be optimal:
+ - take correct first action
+ - keep being optimal
+
+This gives rise to a system of equations.
+
+We need to write some notion of "optimal utility" via expectimax. 
+
+The optimal utility from V:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:05:42
+[[file:assets/screenshot_2017-12-23_16-05-42.png]]
+
+:top: just select the the q-state that has the max utility (we can do this since our actions are deterministic and in our control)
+
+The optimal utility from Q:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:06:35
+[[file:assets/screenshot_2017-12-23_16-06-34.png]]
+
+:top: the optimal utility from Q-state is just the instantaneous reward we get on getting there and the discounted future reward from there onwards, weighted by the probability of getting there
+
+We can write Q inline
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:10:42
+[[file:assets/screenshot_2017-12-23_16-10-42.png]]
+
+This is a system of equations :top: called "Bellman equations". How to solve them?
+
+** Value iteration
+
+It just takes the bellman equations and turns them into a method of computing them via a recurrence relation
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:12:54
+[[file:assets/screenshot_2017-12-23_16-12-54.png]]
+
+We have the base case of V_{0}, which is the value we start with (we use the optimal values for k timesteps)
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:14:29
+[[file:assets/screenshot_2017-12-23_16-14-29.png]]
+
+This becomes a recurrence relation :top:
+
+Expectimax was also another way of solving the bellman system of equations. and they have tradeoffs
+
+** Policy methods
+
+We need methods to find optimal policy, algorithms that work on policies and not on the values (because they converge faster)
+
+*** Policy evaluation
+
+If we have a policy, what the values are?
+
+Earlier, we have all the actions we had to consider:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:26:12
+[[file:assets/screenshot_2017-12-23_16-26-12.png]]
+
+Now we once we have the policy, we don't have to consider all the actions, that is decided for us (we still have to consider all states from q-state because we don't know where we'll land). So, the branching at the max node is removed
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:27:24
+[[file:assets/screenshot_2017-12-23_16-27-24.png]]
+
+Of course, the value at the root (s) may not be optimal (if policy is not optimal)
+
+We can compute the optimal value of a state under the given policy \pi, defined as V^{\pi}(s)
+
+V^{\pi}(s) = expected total discounted rewards starting in s and following \pi
+
+We just remove the max we have from earlier since the action is fixed:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:30:35
+[[file:assets/screenshot_2017-12-23_16-30-35.png]]
+
+We need policy evaluation because we'll have algorithms that look at a policy, see if it is bad and find ways to improve it
+**** Example:
+Consider these 2 policies:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:35:12
+[[file:assets/screenshot_2017-12-23_16-35-12.png]]
+
+They'll have the values:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:35:25
+[[file:assets/screenshot_2017-12-23_16-35-25.png]]
+
+How do we get these values? 
+ - Idea 1
+Use Bellman equations and make them updates, (*just like Value iteration*)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:37:56
+[[file:assets/screenshot_2017-12-23_16-37-56.png]]
+
+We start with a base case and build our way up towards k timesteps, in a dynamic programming like fashion. This methods makes sense only if the number of states is small - O(S^{2})
+
+(In value iteration was S^{2}A, since we had to iterate thru all actions, here we don't since the actions are fixed for us)
+
+ - Idea 2
+
+Without the maxes, Bellman Equations are just a linear system of equations - we can solve using any linear system solver.
+
+*** Policy extraction
+Earlier, we had the policy and we tried to figure out how good it was by computing the values
+Now we do the opposite, we get the optimal values, how do we extract the policy?
+
+Eg: we get this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:43:20
+[[file:assets/screenshot_2017-12-23_16-43-20.png]]
+
+How do we get the arrows?
+
+We just choose the q-state with max value.
+But we don't have q-states, so we need to do mini-expectimax of one step:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:46:24
+[[file:assets/screenshot_2017-12-23_16-46-24.png]]
+
+Here, :top: arg max means select the action a that yields the maximum (achieves the maximum)
+We have to do a unroll one step look-ahead of expectimax :top:
+
+If we have the q-values, it is simple:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:49:06
+[[file:assets/screenshot_2017-12-23_16-49-06.png]]
+
+
+We just select the action that has the max q-value. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:49:59
+[[file:assets/screenshot_2017-12-23_16-49-59.png]]
+Here, we don't have to do the unroll, it is already done for us
+
+Important lesson: much easy to select actions from q-values that values
+
+*** Policy iteration
+
+It combines the idea of evaluation of policy with the idea of improving the policy on the basis of those values
+
+There are problems with Value iteration:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 16:53:54
+[[file:assets/screenshot_2017-12-23_16-53-54.png]]
+ - VI just mimics the bellman equations
+ - it is slow, in each iteration,
+   - it looks at each state (V), and in each state
+     - it looks at each action (q-state), and in each action,
+       - it looks at each outcome (immediate reward + discounted rewards)
+ - running complexity: O(S^{2}A)
+
+Also, the max at each state rarely changes - so if you have 100 actions, if 99 were bad in last iteration, they'll be bad this iteration too, but we check them anyway.
+
+The policy converges much before the values.
+
+We use policy iteration!
+
+It has 2 steps:
+ - Policy evaluation
+   - calculate utilities for some fixed policy (not optimal ((yet)) ) until convergence
+ - policy improvement
+   - update policy using one-step look-ahead with resulting converged (but not optimal) utilities as future values
+ - repeat until policy converges
+
+It is a optimal algorithm and it can converge much faster under some conditions (when the max action doesn't change much)
+
+Equations:
+
+ - Evaluation:
+   - for fixed current policy \pi, find values with policy evaluation
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:16:45
+[[file:assets/screenshot_2017-12-23_17-16-45.png]]
+
+This is fast since we don't have the max
+
+ - Improvement:
+   - for fixed values, get a better policy using policy extraction
+   - one step look ahead
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:22:12
+[[file:assets/screenshot_2017-12-23_17-22-12.png]]
+The improvement step is still slow, it needs to look at all actions
+But that is okay, since we do a evaluation steps much more than the improvement state
+
+**** Comparison
+ - Both value iteration and policy iteration do the same thing (both compute optimal values)
+ - In value iteration
+   - every iteration updates both the values (and implicitly) the policy
+   - we don't track the policy but taking the max over actions implicitly recomputes it
+
+ - in policy iteration:
+   - we do several passes that update utilities with fixed policy
+   - after policy is evaluated, a new policy is chosen
+   - the new policy is better (or we are done)
+
+They both take MDP and give optimal values and policies as output
+
+We have a lot of algorithm now:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:28:53
+[[file:assets/screenshot_2017-12-23_17-28-53.png]]
+
+They are all variations of Bellman updates, all turned into one-step lookahead.
+They differ only in whether we plug in fixed policy or max over actions
+
+** Double Bandits
+How does the MDPs connect to reinforcement learning?
+
+Imagine we have 2 slot machines: This is an MDP :arrow_down:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:34:49
+[[file:assets/screenshot_2017-12-23_17-34-49.png]]
+
+If we play the blue one, we always get $1
+The red bandit wins $2 75% of the time, 0 25% of the times
+
+Imagine there are only 100 time steps.
+We can compute the expected values offline:
+
+Blue: 100
+Red: 150
+
+We got this using our knowledge of the game, we did not play
+
+Now, let's play. We can play 10 rounds, we win 12$ say. Here, we actually played.
+
+Now, let's assume we don't have the probabilities that we had last time:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:38:55
+[[file:assets/screenshot_2017-12-23_17-38-55.png]]
+
+Optimal policy? We don't know
+Here, we need to play to learn
+
+Let's play. 
+Red: 0, 0, 0, 2, 0, 2, 0, 0, 0, 0
+Blue: 1, 1, 1, 1, 1, ...
+
+Here the setting is different. There is still an MDP but you don't know it's parameters.
+You have to do some discovery. You have to learn!
+ - what we did was reinforcement learning
+ - there was an MDP but we couldn't solve it with just computation
+ - we needed to figure it out
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 17:41:56
+[[file:assets/screenshot_2017-12-23_17-41-56.png]]
+
+We have to balance exploration and exploitation.
+Regret is the difference in the rewards that you would have got if you had perfect information vs what you got (due to discovery/exploitation of suboptimal action etc)
+
+* Lecture 10 - Reinforcement Learning
+
+The agent has actions available to it, it chooses an action
+The environment gives back a reward, and it gets back a "percept", the agent sees what happens (it give back a state)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 18:12:29
+[[file:assets/screenshot_2017-12-23_18-12-29.png]]
+Basic idea:
+ - receive feedback in form of rewards
+ - agent's utility is defined by the reward function
+ - must learn to act so as to maximize expected rewards
+ - all learning is based on observed samples of outcomes (not everything that might have happened)
+
+Training is trying new variations, seeing what works
+
+
+** Reinforcement learning
+
+We still assume MDPs, but we do not know the transition function T(s, a, s') or R(s, a, s'). We still want to learn the best policy to act optimally \pi^{*}(s)
+
+So, we need to try things out - not all of which work optimally.
+Imagine something like our previous car example, just that we don't know what fast and slow do, or what rewards you get. 
+
+Critical difference now vs last unit (where we just learned to solve fully known MDPs, offline, by using vanilla math (double bandit), or using value iteration or policy iteration) is that now we have to perform the (maybe suboptimal) things to know that it is bad
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:41:18
+[[file:assets/screenshot_2017-12-23_20-41-18.png]]
+
+*** Model based learning
+So, how do we learn how to act when we don't know the T or R?
+
+We can still use VI or expectimax. That is what model based learning does, it reduces the reinforcement learning problem to a known MDP by assuming some values for T and R and taking them to be correct
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:43:39
+[[file:assets/screenshot_2017-12-23_20-43-39.png]]
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:44:46
+[[file:assets/screenshot_2017-12-23_20-44-46.png]]
+
+How do we decide to take some action s?
+Whenever we are on state s and have decided on some action a (somehow), we discover some states s' outcomes
+We count them, normalize them, we get probabilities - this is the estimate of the T for that s and a pair (state and action pair)
+In addition, we also discover the reward associated by s and a when we experience that transition
+
+Example: Model based learning
+
+Let's say we have some policy \pi
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:48:54
+[[file:assets/screenshot_2017-12-23_20-48-54.png]]
+
+We follow this for some turns and we get this:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:49:10
+[[file:assets/screenshot_2017-12-23_20-49-10.png]]
+
+
+We can get probabilities for each transition from these simulations:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:54:56
+[[file:assets/screenshot_2017-12-23_20-54-56.png]]
+
+
+Now we have a MDP (it may be wrong) but we can solve it.
+
+**** Example: Expected Age
+
+Goal: compute expected age of a group of people
+If you know the probability distribution, it is easy
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 20:56:51
+[[file:assets/screenshot_2017-12-23_20-56-51.png]]
+
+This is exactly what is happening in the MDP, at the chance node. We know the probability distribution (the transition function T) and we just some over.
+But here, we since don't know the distribution, we collect the samples. The more samples I have, the more accurate my prediction of the actual probability - the *Hoeffding's inequality!*
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:02:42
+[[file:assets/screenshot_2017-12-23_21-02-42.png]]
+
+This is one way :top:, we can also do this:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:03:23
+[[file:assets/screenshot_2017-12-23_21-03-23.png]]
+
+This :top: works because the samples appear with the right frequencies. 
+
+This is the difference b/w model based and model free
+In model based, we learn the probability distribution and reduce it to the case of MDP
+In model free, we take the samples as they come and average them together.
+
+Algos for model free are much simpler.
+
+*** Model free learning
+
+Here, we don't construct the model of the transition function. We just take actions and everytime we take an action, we compare what we thought was happening to what did happen. Whenever something is better or worse that we expected, we update our hypothesis. 
+So, in model free learning, we track the values of interest themselves, not the transition functions or rewards
+
+**** Passive RL
+The agent doesn't perform the activities, but someone does and the agent gets to observe that someone and learn from it
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:17:54
+[[file:assets/screenshot_2017-12-23_21-17-54.png]]
+
+The agent is monitoring, not controlling
+In Passive RL, we won't try to find out how to act optimally. But essentially learn the state values (just like policy evaluation)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:20:13
+[[file:assets/screenshot_2017-12-23_21-20-13.png]]
+
+The learner is along for the ride, no choice about what actions to take, just execute the policy and learn from experience. This is not offline planning we are actually taking the actions in the world (just passively, without active control over them)
+
+***** Direct evaluation
+
+Goal: Compute values for each state under \pi (not the transition function or the rewards)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:39:50
+[[file:assets/screenshot_2017-12-23_21-39-50.png]]
+
+Example: Direct evaluation
+(note here we take the cumulative reward from each state, just like when we would compute the V from a particular state with fixed policy \pi using policy evaluation)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 21:50:59
+[[file:assets/screenshot_2017-12-23_21-50-59.png]]
+
+We were in B twice, each time we received 8, so \to 8
+We were in D many times, we received 10, 10, 10, so \to 10
+We were in A once, -10, so \to -10
+We were in E twice, 8, -12, so \to -2
+
+Here, when we execute over and over and over, the variance will die out and we'll understand that some of the states are good and some of them are bad and so this approach will work out in the end.
+
+From E, you get to C. From E you get -2, from C you get +4. How can E be bad, but the state it leads to everytime, is good?
+Similarly, look at B, B is always good, but it leads to C which is mediocre
+
+So, we have thrown out a lot of information about the interconnected-ness of the states
+
+What's good about direct evaluation?
+ - it's easy to understand
+ - doesn't require any knowledge of T, R
+ - it eventually computes the correct average values, using just sample transitions
+
+What's bad about it?
+ - it wastes information about state connections (we are learning each state independently)
+ - each state must be learned separately
+ - so, it takes long to learn (and a lot of samples as well)
+
+To fix the problems :top:, *why not use policy evaluation*?
+We weren't doing that till now, we were just dumb computing the probabilities
+
+We had this in policy evaluation:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:04:00
+[[file:assets/screenshot_2017-12-23_22-04-00.png]]
+
+"If you have values for a state, replace them with one step look ahead (which here is just the weighted average of immediate reward plus future values)"
+
+We cannot do this but :top:, because we don't have T and R (not even estimates, because we are using model free approach)
+
+But we have a proxy for them in model free as well - our estimates from experience
+
+Idea: Take samples of outcomes s' (by doing the action)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:11:21
+[[file:assets/screenshot_2017-12-23_22-11-21.png]]
+
+We have this :top:, but when we actually take the action, it becomes:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:11:48
+[[file:assets/screenshot_2017-12-23_22-11-48.png]]
+
+And the equation is:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:11:56
+[[file:assets/screenshot_2017-12-23_22-11-56.png]]
+
+We have an estimate of what the score is going to be from s. The reward we know, because we just got it and discounted future value is somewhere in the table that I am maintaining (and it's wrong probably, but that's okay)
+
+We do this multiple times and we get this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:13:10
+[[file:assets/screenshot_2017-12-23_22-13-10.png]]
+
+When we have a lot of samples from this same state s and action a - we saw various actions s' - each had a reward
+We can say this now about the state s:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:13:52
+[[file:assets/screenshot_2017-12-23_22-13-52.png]]
+
+We can say that on average we get this value :top:
+How do you get back to s and take the second sample? You cannot keep executing the same action from the same state
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:16:01
+[[file:assets/screenshot_2017-12-23_22-16-01.png]]
+
+We need to be somehow be satisfied with that one sample we get.
+
+
+***** Temporal Difference Learning
+Big idea: learn from every experience
+ - update V(s) each time we experience a transition (s, a, s', r) (use the one data point, one sample we get from :top: and go with it)
+ - this is called "Temporal Difference Learning" because we compare our current estimate of a value with what we actually see - we have a running average
+ - the hope is that likely outcomes s' will contribute updates more often
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-23 22:19:29
+[[file:assets/screenshot_2017-12-23_22-19-29.png]]
+
+:top: we still have just one datapoint, we still don't worry about how to choose actions, that comes later. We are still moving our hypothesis of values towards what we see happen - we'll use some kind of running average
+
+We have some estimate V^{\pi}(s)
+
+We take some action according to what \pi tells us and we land in s' and get some reward: 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:23:17
+[[file:assets/screenshot_2017-12-24_06-23-17.png]]
+:top: is our single sample datapoint
+
+We add that to our estimate running estimate V^{\pi}(s)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:23:41
+[[file:assets/screenshot_2017-12-24_06-23-41.png]]
+
+Rearranging:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:24:52
+[[file:assets/screenshot_2017-12-24_06-24-52.png]]
+
+Take your value of the original estimate and add to it what you thought would happen vs what actually happened (that's the error, so we adjust our estimate to incorporate this new information)
+
+Larger \alpha learns faster, smaller \alpha does a better job of balancing across experiences
+
+Example of TDL: we start with all V estimates as 0, as we have no idea what will happen
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:28:22
+[[file:assets/screenshot_2017-12-24_06-28-22.png]]
+
+If you go north, no updates - since you expected to get 0, you get 0 (since living reward is 0)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:29:19
+[[file:assets/screenshot_2017-12-24_06-29-19.png]]
+
+
+Till here nothing happens:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:30:27
+[[file:assets/screenshot_2017-12-24_06-30-27.png]]
+
+But when you exit, you get +1, so you adjust your V(s) to 0.5 (we learn that the \alpha is 0.5)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:31:06
+[[file:assets/screenshot_2017-12-24_06-31-06.png]]
+
+You play again, when you are in the square to the left of 0.5:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:31:32
+[[file:assets/screenshot_2017-12-24_06-31-32.png]]
+
+You think you'll get 0, but you get 0.5 (if you get there successfully) and so the V for it updates 0.25)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:32:27
+[[file:assets/screenshot_2017-12-24_06-32-27.png]]
+
+As you exit the last square, it increases to 0.75 etc
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:33:03
+[[file:assets/screenshot_2017-12-24_06-33-03.png]]
+
+This is TDL - we are adjusting our hypothesis to what is actually happening.
+
+And this is how knowledge propagates.
+Now, consider this case where we are at the blue dot:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:40:54
+[[file:assets/screenshot_2017-12-24_06-40-54.png]]
+
+We are here for the first time. But as soon as we go north, the value of that square will get very high, even when we hadn't been there ever before - this is the difference that temporal difference learning makes
+
+(In the earlier scheme of things, direct evaluation, we would have had to count the experiences from that square independently without any regard to the experiences of the 0.98 square or 1.00 square)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:43:05
+[[file:assets/screenshot_2017-12-24_06-43-05.png]]
+ 
+
+Now if you do this many times, you learn everything there is to learn about the MDP
+
+*How do we choose actions?* - we'll learn that later
+
+***** Exponential Moving average
+
+The running interpolation update is:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:44:28
+[[file:assets/screenshot_2017-12-24_06-44-28.png]]
+
+This makes recent samples more important.
+The form of this :top: is:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:45:16
+[[file:assets/screenshot_2017-12-24_06-45-16.png]]
+
+So, we can see that recent examples have more weight. If \alpha is 1, the new examples have all the weight
+
+We don't average evenly because the estimate of the future state is better in the recent states so we want to listen to them more. (the rewards stay the same)
+
+If we decrease the learning rate (\alpha), we can converge
+
+***** Problems with TD value learning
+- this is a model free way of doing things
+- we mimic Bellman updates with running sample averages (bellman equations are smeared across space and time here)
+- But we cannot use this thing to choose actions
+
+This is because to do action selection, we either need to do one step expectimax - which we cannot do because we don't have T and R
+Or we need Q values (and then action selection is simple - pick the action with largest q-value)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:52:46
+[[file:assets/screenshot_2017-12-24_06-52-46.png]]
+
+This makes action selection model free as well.
+
+**** Active RL
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 06:55:52
+[[file:assets/screenshot_2017-12-24_06-55-52.png]]
+
+- Full reinforcement learning (we don't want to just learn values, we want optimal policy (like value iteration did)
+  - we still don't know T or R
+  - But we want to select actions
+
+Here, learner makes choices. We are faced with the fundamental tradeoff: exploration vs exploitation
+This is NOT offline planning, you take actions and find out what happens (this leads to regret)
+
+We eventually want to learn optimal thing (policy)
+
+***** Q-value iteration
+What were the algorithms we already have for computing optimal values:
+ - Value Iteration
+   - start with V_{0}(s)=0
+   - given V_{k}, use it to compute k+1 (the layer above it) values for all states
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:07:34
+[[file:assets/screenshot_2017-12-24_07-07-34.png]]
+We stuck a layer of expectimax (one layer of optimality) on top of our old (incorrect approximations) - so this is correct
+
+This cannot be done with samples, because of the max - we can use samples to only compute estimates of averages, not max-es
+
+So, it makes sense to learn q-values. Write down a version of value iteration that works with Q-values
+ - start with Q_{0}(s, a) = 0
+ - given Q_{k}, calculate depth k+1 (that is, the layer above) q-values for all q-states
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:13:34
+[[file:assets/screenshot_2017-12-24_07-13-34.png]]
+
+Read the equation carefully, :top:, we just moved the recurrence half a level down
+We got rid of the max now and we replaced the value of the next layer with max over Q_{k} (since we don't have the values now). But we have a new max over Q_{k} (Q of the layer below us, that is okay since we already know all the q-values for that layer)
+
+Everytime we are in a state s, take some action a, when we do this, we learn about how good (s, a) is
+
+So, the sample we get is: (s, a, s', r)
+
+We maintain a table that looks like this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:18:03
+[[file:assets/screenshot_2017-12-24_07-18-03.png]]
+
+We update our estimate of Q values like we did with V in TDL :top: :top:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:19:06
+[[file:assets/screenshot_2017-12-24_07-19-06.png]]
+
+:top: knowledge of new sample - we don't need to weight by T because the action is resolved and we have the s' state that we landed in. Also, we don't know T
+
+We incorporate this new estimate into a running average:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:20:40
+[[file:assets/screenshot_2017-12-24_07-20-40.png]]
+
+
+"We learned Values using bellman + TDL (we used bellman equations to get the value of that sample and we used TDL to incorporate that sample into our running average), that worked, but we could not choose actions using that - because to choose actions, we needed to compute max over all the Q-values (or we needed to know T and R). So we decided to apply learn q-values themselves (using TDL) and now our action is just max q-value"
+
+****** Example:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:24:00
+[[file:assets/screenshot_2017-12-24_07-24-00.png]]
+
+:top: start with all 0s
+
+Nothing happens in the first iteration, we just receive the exit award on exiting
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:24:54
+[[file:assets/screenshot_2017-12-24_07-24-54.png]]
+
+(We received 10, the learning rate was 0.5)
+
+Now, consider this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:25:25
+[[file:assets/screenshot_2017-12-24_07-25-25.png]]
+
+Here, we'll learn that when we take action RIGHT, we get 5, so the q-value for that particular action will get updated to 2.5
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:26:21
+[[file:assets/screenshot_2017-12-24_07-26-21.png]]
+
+If we go east several times:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:26:47
+[[file:assets/screenshot_2017-12-24_07-26-47.png]]
+
+If we jump off a cliff, we learn about that particular action:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:27:12
+[[file:assets/screenshot_2017-12-24_07-27-12.png]]
+
+This doesn't take away (or diminish) what we learned about the q-value of the RIGHT action from that square
+Also, this presence of low score doesn't reduce the q-values of "right" action on the previous squares since they take the max over the q-values in the next square for their estimates (they believe that the agent will act optimally)
+
+
+****** Q-learning properties
+
+Amazing result: Q-learning converges to optimal policy - even when you don't follow it (like in the previous example, we jumped off the cliff, we did not act optimally, but the assumption in the formula was that we will and we learned)
+
+This is called "off-policy learning"
+
+Also, you have to explore enough, and make the learning rate small enough eventually
+
+Next time we'll see how to select actions and what to do when the state space is so large you cannot keep a large table around
+
+* Lecture 11 - Reinforcement Learning II
+
+We imagine that the real world is a Markov decision process. 
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:37:14
+[[file:assets/screenshot_2017-12-24_07-37-14.png]]
+
+We don't know T or R, so must try things out
+Big idea: compute all averages over T using sample outcomes (since we do not have T, this is our best bet at being able to figure out the MDP in spite of that)
+
+We know this so far:
+Bellman equations are the equations that relate value of one state, with the value after one action
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:53:38
+[[file:assets/screenshot_2017-12-24_07-53-38.png]]
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 07:53:54
+[[file:assets/screenshot_2017-12-24_07-53-54.png]]
+
+Everything is just Bellman equations (which is actually just expectimax) written in various ways
+
+Value learning with TDL helped us evaluate fixed policy \pi - but we could not choose actions, so we shifted to q-learning
+
+** Model Free (temporal difference) Learning
+
+Experience the world thru episodes: (s, a, r, s', a', r', s'', a'', r'', s''', ...)
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:02:14
+[[file:assets/screenshot_2017-12-24_08-02-14.png]]
+
+
+Update estimates each transition (s, a, r, s')
+Over time, updates will mimic Bellman updates
+
+** Q-learning
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:03:45
+[[file:assets/screenshot_2017-12-24_08-03-45.png]]
+
+But we can't compute this update without knowing T, R.
+
+- we get a sample: (s, a, r, s')
+
+On the basis of this sample, we can conclude about the state (s, a):
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:06:58
+[[file:assets/screenshot_2017-12-24_08-06-58.png]]
+
+We incorporate this knowledge into our running average
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:07:30
+[[file:assets/screenshot_2017-12-24_08-07-30.png]]
+
+*** Q-learning properties
+- Q-learning converges to optimal policy - even if you're acting sub-optimally
+- this is called "off policy learning"
+- you have to explore enough and decrease learning rate wisely
+
+
+*** Exploration vs Exploitation
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:11:07
+[[file:assets/screenshot_2017-12-24_08-11-07.png]]
+
+How to explore?
+ - simplest: random actions (\epsilon-greedy)
+   - every time step, flip a coin
+   - with small probability \epsilon, act randomly
+   - with large probability, 1-\epsilon, act optimally
+
+ - problem with random actions:
+   - eventually we explore the space, but we keep thrashing around once the learning is done
+   - one solution: lower \epsilon over time
+   - another solution: exploration functions
+
+
+ - exploration functions
+   - explore areas whose badness is not (yet) established, eventually stop exploring (random doesn't stop this)
+   - "in the face of uncertainty, have optimism"
+
+One way:
+   - takes a value estimate u and a visit count n, and returns an optimistic utility, eg: \fnof(u, n) = u + k/n
+We added the bonus to utility which decreases with visits
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:21:32
+[[file:assets/screenshot_2017-12-24_08-21-32.png]]
+
+This propagates the "bonus" back to states that lead to unknown states as well
+
+*** Regret
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:23:10
+[[file:assets/screenshot_2017-12-24_08-23-10.png]]
+
+Even if you learn the optimal policy, you still make mistakes along the way - 
+Regret is a measure of your total mistakes cost
+ - the difference between you expected rewards including when you were suboptimal and optimal expected rewards
+
+Minimizing regret goes beyond learning to be optimal - it requires optimally learning to be optimal - making only the minimum mandatory mistakes that were required to become optimal
+
+Example: random exploration has higher regret compare to exploration functions
+
+** P1 Mini-Contest
+Finding the shortest path to gobble up all dots:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:33:09
+[[file:assets/screenshot_2017-12-24_08-33-09.png]]
+
+
+3rd place: William Mok
+ - started out optimizing A* with caching
+ - *tried all possible ways to finishing the maze going for the closest dot first rather than all possible paths* - this restriction makes things simple
+ - skipped paths if algorithm knew it would not be a solution
+
+2nd place:
+ - described optimal solutions to subproblems
+ - linked subproblem to subproblem
+ - solves optimally when less that 20 dots left (this is what chess does, when the game is complex, do reasonably (optimally in the sub graph, cut section of the graph - which is suboptimal in the large picture) and near the end game, act optimally)
+
+1st place:
+ - based off of cut points, split the graph into N smaller graphs, solve each independently
+ - in order to solve subgraph, apply many optimizations, (remove food at cutpoint, remove food in tunnels, run fixpoint iteration of A* etc)
+ - finally, adjoin paths from each of the subgraphs in order to get full graph solution. Essentially TSP problem
+
+
+
+** Approximate Q-Learning
+Too many states to keep all in memory
+When we learn that ghost is scary thru one experience, we should transfer that to similar states
+We want to be able to generalize across states because there are so many of them
+
+- Basic Q-learning keeps a table of all q-values
+  - in realistic situations, we cannot possibly learn about every single state
+    - too many states to visit them all in training
+    - too many states to hold the q-tables in memory
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:43:43
+[[file:assets/screenshot_2017-12-24_08-43-43.png]]
+
+
+We want to generalize:
+ - learn about small number of training states from experience
+ - generalize that experience to new, similar situations
+ - this is a fundamental idea in Machine learning and we'll see it here as well
+
+*** Example: Pacman
+If we know that the first state is bad, we know nothing that the 2nd is bad. Heck, we don't know that the 3rd is bad as well, because it's missing a dot and so the state is different
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:46:51
+[[file:assets/screenshot_2017-12-24_08-46-51.png]]
+
+
+*** Feature based representations
+Solution: describe a state using a vector of features (properties)
+ - features are functions from states to real numbers (often 0/1) that capture important properties of the state
+ - example features:
+   - distance to closest ghost
+   - distance to closest dot
+   - number of ghosts
+   - is pacman in a tunnel
+   - etc
+
+We can also describe a q-state (s, a) with features (eg: actions moves agent closer to food)
+
+*** Linear Value functions
+
+Using a feature representation, we can write q function (or value function) for any state using a few weights
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 08:57:28
+[[file:assets/screenshot_2017-12-24_08-57-28.png]]
+
+Advantage: our experience is summed up in a few powerful numbers
+Disadvantage: states may share features but actually be very different in value - so we have to come up with great features
+
+*** Approximate Q-learning
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:06:12
+[[file:assets/screenshot_2017-12-24_09-06-12.png]]
+
+The Q value is a linear function of the features now weighted by their weights
+
+Q-learning with linear Q-functions:
+ - transition: (s, a, r, s')
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:09:21
+[[file:assets/screenshot_2017-12-24_09-09-21.png]]
+
+The difference, (the error term) is the difference between what you thought you would get from that state (Q(s,a)) and what you actually get (the first term on RHS)
+
+How do we incorporate this?
+In the old scheme of things:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:10:42
+[[file:assets/screenshot_2017-12-24_09-10-42.png]]
+So, we had our Q value around, we nudged it in the direction of the difference
+
+But now we don't have the Q-values around (since they are so large etc), so we have to update the weights 
+The reason is, our q-value wasn't high/low enough for what we actually got, so we want to change the weights so that it becomes closer to the actual q-value now
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:12:36
+[[file:assets/screenshot_2017-12-24_09-12-36.png]]
+
+We increase all the weights weighted by the features
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:15:03
+[[file:assets/screenshot_2017-12-24_09-15-03.png]]
+
+
+This is the parametric option :top:
+We are encapsulating our knowledge by a set of parameters, the weight vector
+
+Another option is that your knowledge is encapsulated in your experiences, you stay closer to the data - this is the non-parametric method.
+As you get more data, non-parametric is better, but takes longer to learn - general tradeoff b/w parametric and non-parametric methods
+
+*** Example: Q-pacman with approximate q-learning (feature based q-learning)
+
+Let's start with this simple hypothesis
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:20:42
+[[file:assets/screenshot_2017-12-24_09-20-42.png]]
+
+
+Imagine our start state was s (left hand side board)
+the weights are arbitrary, (or learned with a few iterations)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:24:16
+[[file:assets/screenshot_2017-12-24_09-24-16.png]]
+
+Our estimate of the Q-value from that place forward is +1
+But when we went there, we got eaten by the ghost and we get -500 reward, and the Q value for future steps is 0 since the game ended
+
+So, we update the weights and get a new hypothesis. (\alpha is the learning rate)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:25:25
+[[file:assets/screenshot_2017-12-24_09-25-25.png]]
+
+We get this hypothesis :top: after the update. Note how earlier we really liked the dots and disliked the ghosts a little bit. Now, we like the dots lesser and dislike the ghosts much more (compare to previous hypothesis)
+
+We learn really quickly. This works nicely for similar states.
+
+
+*** Q-learning and least squares
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:28:15
+[[file:assets/screenshot_2017-12-24_09-28-15.png]]
+
+
+We saw this in linear regression
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:29:36
+[[file:assets/screenshot_2017-12-24_09-29-36.png]]
+
+To figure out the weights, we minimized the mean squared error
+
+Our updates in q-learning look like so:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:33:25
+[[file:assets/screenshot_2017-12-24_09-33-25.png]]
+
+
+*** Policy search
+- problem with q-learning (even approximate q-learning)
+  - we are trying to optimize the q-value of the states, by adjusting the weights. It tries to get the magnitudes right, but not the ordering of the q-values. If our q-values were perfect, we'd get the ordering as well, but we aren't perfect and so we don't have the actual ordering.
+  - often feature based policies that work well (win games, maximize utilities) aren't the ones that approximate V/Q best
+  - this distinction between modeling and prediction again later in the course
+
+Solution: learn *policies* that maximize rewards, not the values that predict them
+ 
+Policy search: start with an ok solution (eg: q-learning) then fine-tune by hill climbing on feature weights
+
+Simplest policy search:
+ - start with an initial linear value function or q-function
+ - nudge each feature weight up and down and see if your policy is better than before
+
+Problems:
+ - how do we tell the policy got better?
+ - need to run many sample episodes
+   - if they are a lot of features, this can be impractical
+
+Better methods exploit lookahead structure, sample wisely, change  multiple parameters
+
+
+*** Conclusion
+
+We completed the first part, search and planning
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 09:47:25
+[[file:assets/screenshot_2017-12-24_09-47-25.png]]
+
+* Lecture 12 - Probability
+
+This section we'll study *Probabilistic reasoning*
+
+Probability is really important:
+ - diagnosis - from observations, obtain a posterior distribution over disease causing it
+ - speech recognition
+ - tracking objects
+ - robot mapping
+ - genetics
+ - error correcting codes
+
+Later, in Part 3, we'll study *Machine Learning*
+
+** Probability concepts
+ - random variables
+ - joint and marginal distributions
+ - conditional distribution
+ - product rule, chain rule, Bayes' rule
+ - inference
+ - independence
+
+** Ghostbusters demo
+We have a grid, with a ghost somewhere. We have sensors we can use to check various grid. 
+If the ghost is near, we get red, else orange, yellow, red etc
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 14:57:59
+[[file:assets/screenshot_2017-12-24_14-57-59.png]]
+
+If we bust at the grid with the arrow, we'll get a HIT and win the game
+
+The sensors gives us:
+ - on the ghost: red
+ - 1 or 2 away: orange
+ - 3 or 4 away: yellow
+ - 5+ away: green
+
+Example of the conditional distribution for when distance = 3:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 14:59:15
+[[file:assets/screenshot_2017-12-24_14-59-15.png]]
+
+Similarly, we'll have such conditional distributions over all distances 
+
+** Uncertainty
+
+General situation that we have:
+- observed variables (evidence) - the sensors in last example
+  - the agent knows certain things about the state of the world (eg: sensor readings)
+- unobserved variables
+  - these are the variables the agent needs to reason about (with the aid of the evidence variables) - eg: where is the ghost
+- model
+  - agent knows something about how the known variables relate to the unknown variables
+
+Probabilistic reasoning gives us a framework for managing our beliefs and knowledge
+
+
+** Random Variables
+They are a bit like variables we had in CSPs
+
+Examples:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:05:14
+[[file:assets/screenshot_2017-12-24_15-05-14.png]]
+
+RV here (like in CSPs) have domains
+ - R is {true, false} aka {+r, -r}
+ - T in {hot, cold}
+ - D in [0, \infin]
+   - D is driving time. This :top: is a continuous random variable, we won't study that here, but similar ideas
+   - the math is similar, the ideas is same. Eg: we deal with integrals and not summations
+ - L (possible locations) in {(0,0), (1, 2), ...}
+
+
+** Probability Distributions
+
+Associate a probability with each value
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:08:11
+[[file:assets/screenshot_2017-12-24_15-08-11.png]]
+
+Bad idea to give anything 0 probability :top:
+
+Unobserved random variables have distributions :top: like we saw
+
+Shorthand notation:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:10:06
+[[file:assets/screenshot_2017-12-24_15-10-06.png]]
+
+P(hot) is okay because only the random variable T has hot in it's domain
+
+** Joint Distributions
+
+ - We care about JDs because we want to infer things about RVs we haven't observed based on the RVs we have observed
+
+Consider T and W
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:14:49
+[[file:assets/screenshot_2017-12-24_15-14-49.png]]
+
+All the individual entries have to be positive and the sum of the entries in the distribution (in the table, or if continuous, the entire continuous distribution) has to be 1
+
+If we have n variables of domain size d, we need to have d^{n} entries in the table. This gets intractable very fast if we have large sets of RVs.
+
+A probabilistic model is just a joint distribution over a set of random variables. Going forward, we'll build models where there won't be so much interactivity in the RVs - there are only indirect interactions b/w most RVs
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:21:46
+[[file:assets/screenshot_2017-12-24_15-21-46.png]]
+
+
+Just like in CSPs, we were able to work with a small set of constraints b/w variables
+
+In CSPs, we had True/False values that dictated weather the variable was allowed to have that instantiation or not whereas here, we have probabilities specifying how likely is a particular outcome
+
+Usually, we are interest in Events which are a set of outcomes
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:28:30
+[[file:assets/screenshot_2017-12-24_15-28-30.png]]
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:28:56
+[[file:assets/screenshot_2017-12-24_15-28-56.png]]
+
+Example:
+ - P(hot AND sunny) = 0.4
+ - P(hot) = 0.4 + 0.1 = 0.5
+ - P(hot OR sunny) = 0.4 + 0.1 + 0.2 = 0.7
+
+Usually, the events we care about are partial assignments, like P(hot)
+
+** Marginal Distributions
+
+MDs sub-tables of the original joint distribution that contains a subset of the RVs.
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:31:30
+[[file:assets/screenshot_2017-12-24_15-31-30.png]]
+
+We can build 2 MDs here, one over T and one over W
+
+Building one over T
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:32:01
+[[file:assets/screenshot_2017-12-24_15-32-01.png]]
+
+From the JD, we sum out all other variables, so we sum out W here and get a marginal distribution over T
+
+MDs mean we marginalize the original distribution to be consider only a subset of the original variables and we build the table for that subset of RVs
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:35:17
+[[file:assets/screenshot_2017-12-24_15-35-17.png]]
+
+If we had 3 RVs, we can build a MD over X_{1} and X_{2} etc
+
+Another example:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:37:11
+[[file:assets/screenshot_2017-12-24_15-37-11.png]]
+
+** Conditional Probabilities
+
+Probability over something given something else
+A simple relation between joint and conditional probabilities
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:41:49
+[[file:assets/screenshot_2017-12-24_15-41-49.png]]
+
+
+Example:
+
+Given the JD:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:44:03
+[[file:assets/screenshot_2017-12-24_15-44-02.png]]
+
+We can find P(W=s|T=c) using the formula here directly
+0.2/0.5 = 0.4
+
+We did not need to use it here, but in general we use the Bayes' rule here:
+
+P(s|c) = P(s, c) / P(c)
+P(s|c) = P(c|s)P(s) / P(c)
+
+Probability of getting sunny given cold is probability of getting sunny and cold upon probability of getting cold
+
+Example:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 15:53:18
+[[file:assets/screenshot_2017-12-24_15-53-18.png]]
+
+Note in the second question, since we already know P(x|y) and the domain of X is +x, -x only, we can write P(-x|y) = 1-P(x|y)
+
+** Conditional Distributions
+
+We can go from a joint distribution to conditional distributions.
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:11:00
+[[file:assets/screenshot_2017-12-24_16-11-00.png]]
+
+Conditional distributions are conditional probabilities over all the instantiations of the marginzalized variable
+
+Each distributions (each table) sum to 1
+
+** Normalization Trick
+
+A way to go from joint distribution to conditional distribution in a very structured mechanical way
+
+Till now, we did:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:14:13
+[[file:assets/screenshot_2017-12-24_16-14-13.png]]
+
+We note that the denominator is all the entries with T = c in both cases. The numerator is consistent with the row (from the table) we are computing
+
+So, alternative way:
+Select the entries in the table consistent with the evidence, which here was T=c to get:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:17:29
+[[file:assets/screenshot_2017-12-24_16-17-29.png]]
+
+And now, we need to have the consistent ones at the top and their sum at the bottom to get the CD
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:19:17
+[[file:assets/screenshot_2017-12-24_16-19-17.png]]
+
+If we can somehow recover the JD, we have the full model for that set of RVs, you can infer anything you want
+
+Example:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:22:25
+[[file:assets/screenshot_2017-12-24_16-22-25.png]]
+
+The phrase "to normalize" means that we bring the sum to 1
+Normalization is multiplying all entries by a constant factor Z so that the sum of all the entries is 1
+Z = 1/(sum of all entries)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:24:27
+[[file:assets/screenshot_2017-12-24_16-24-27.png]]
+
+** Probabilistic Inference
+
+Compute a desired probability from other known probabilities (eg: conditional from joint)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:32:42
+[[file:assets/screenshot_2017-12-24_16-32-42.png]]
+
+** Inference by enumeration
+We can split our random variables from the full joint distribution into 3 disjoint groups
+
+General Case:
+ - Evidence variables
+   - E_{1}, ..., E_{k} = e_{1}, ..., e_{k}
+   - we have observed, we know their values
+ - Query variables
+   - Q
+   - these are the guys we want to know something about
+ - Hidden variables
+   - H_{1}, ..., H_{r}
+   - appear in the JD, but don't appear on query
+
+We want P(Q | e_{1}, ..., e_{k})
+
+Generic procedure to get the answer to the query:
+ 1. Select the entries consistent with the evidence
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:37:08
+[[file:assets/screenshot_2017-12-24_16-37-08.png]]
+ 2. Sum out hidden variables
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:37:14
+[[file:assets/screenshot_2017-12-24_16-37-14.png]]
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:39:25
+[[file:assets/screenshot_2017-12-24_16-39-25.png]]
+
+This will be something like:
+P(a, c) = \Sigma P(a, c, b) over b 
+where b is the hidden variable 
+
+ 3. Normalize
+We get joint distribution from step 2. Now, all we have to do get the conditional distribution (select the consistent entries (again) and normalize)
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:42:35
+[[file:assets/screenshot_2017-12-24_16-42-35.png]]
+
+*** Example of Inference by enumeration
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 16:43:39
+[[file:assets/screenshot_2017-12-24_16-43-39.png]]
+
+1. P(W)
+We need the marginal distribution over W
+W can be sun or rain
+W=sun is: 0.3+0.1+0.1+0.15 = 0.65
+W=rain is 0.05+0.05+0.05+0.2 = 0.35
+
+Query variable is W, hidden variables are T and S
+
+2. P(W|winter)
+
+We get:
+W=sun|winter = 0.1+0.15 = 0.25
+W=rain|winter = 0.05+0.20 = 0.25
+So after normalization, 0.5, 0.5
+
+Query variable is W, hidden variable is T, evidence variable is S
+
+3. P(W|winter, hot)
+W=sun|winter, hot = 0.10
+W=cold|winter, hot = 0.20
+So after normalization, 1/3 and 2/3
+
+Query variable is W, query variables are T and S
+
+* Lecture 13 - Markov Models
+
+Couple more things about probability before we dive into Markov Models
+
+** Product Rule
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:06:16
+[[file:assets/screenshot_2017-12-24_19-06-16.png]]
+
+This rule allows us to go from _a marginal and a conditional_ and get the full _joint distribution_
+
+We can recover the JD from Marginal and conditional - if we get the JD, we know everything there is to know about those RVs
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:08:31
+[[file:assets/screenshot_2017-12-24_19-08-31.png]]
+
+** The Chain Rule
+We can extend this to more than 2 RVs
+We can always write any joint distribution as an incremental product of conditional distribution
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:10:09
+[[file:assets/screenshot_2017-12-24_19-10-08.png]]
+
+:top: the ordering of x-s doesn't matter. So, we have n! Ways of getting the JD
+
+** Bayes Rule
+We will often be given the distribution, not as the full JD, but the CD or something else etc and we want to be able to somehow slice and dice that representation to get the representation we want
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:14:42
+[[file:assets/screenshot_2017-12-24_19-14-42.png]]
+
+It is helpful if we have the thing on the right and we are interested in the thing on the left
+
+This can happen due to:
+ - often one conditional is tricky but the other is simple
+ - this formulation lets us build one conditional from its reverse
+ - this comes up in machine translation, speech recognition etc
+
+** Inference with Bayes' rule
+
+Example of diagnostic probability from casual probability:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:16:53
+[[file:assets/screenshot_2017-12-24_19-16-53.png]]
+
+Example:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:17:26
+[[file:assets/screenshot_2017-12-24_19-17-26.png]]
+
+We want to find out:
+P(+m|+s) 
+This is equal to P(+s|+m)P(+m)/ P(+s)
+
+Here, P(+s|+m) is called the prior
+
+Typically, the thing at the bottom is not given explicitly, but there is all information present to compute it.
+
+Eg: to compute marginal over s (P(s)), 
+we can take the marginal over m and the conditional for s given m, so you can construct the joint distribution and from that get the marginal for just s
+
+Eg: P(+m, +s) = P(+s|+m)P(+m)
+which is one entry in the JD, which is 0.8*0.0001 = 0.00008
+similarly other entries in the table
+
+Applying the bayes rule: 
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:25:31
+[[file:assets/screenshot_2017-12-24_19-25-31.png]]
+
+P(+m|+s) = probability of getting +m and +s divided by probability of getting +s
+
+Plugging the values, we get 0.007944
+
+So, how do we make decisions based on this? :top:
+We write down the utility of living with undiagnosed meningitis vs the utility of visiting the doctor etc and you look at expected utility and take a decision that maximizes your utility
+
+Another Example:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:29:55
+[[file:assets/screenshot_2017-12-24_19-29-55.png]]
+
+P(W|dry) is a conditional distribution, so a table with 2 entries, one for W=sun and another for W=rain
+
+P(sun|dry), hmm, we can use our learning from earlier:
+taking out the 2 relevant entries for dry, we have
+sun, dry = 0.9
+
+NO! We cannot do that because the table given to us is a conditional distribution, not a joint distribution
+
+We can either make it a joint distribution and then compute the probabilities or use Bayes' rule
+
+We'll invoke Bayes' rule twice to get it
+P(sun|dry) = P(dry|sun)P(sun)/P(dry) = 0.9*0.8/(0.9*0.8+0.3*0.2)
+P(rain|dry) = P(dry|rain)P(rain)/P(dry) = 0.3*0.2/(0.9*0.8+0.3*0.2)
+
+(We get P(dry) = \Sigma P(dry, W) over W)
+
+We could also have gotten the 2nd one with 1-res of 1st one
+Since sun, rain are the only entries in the domain of W
+
+This is primitive way of slicing and dicing distributions, we'll see much more complicated ways later
+
+** Ghostbusters Revisited
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:48:22
+[[file:assets/screenshot_2017-12-24_19-48-22.png]]
+
+Here, like earlier we have to find the ghost. We'll sense using our noisy sensor to get a color measurement. 
+
+The numbers represent out prior distributions about the location of the ghost
+
+On the first sense:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:51:07
+[[file:assets/screenshot_2017-12-24_19-51-07.png]]
+
+So our prior gets updated according to the Bayes' rule
+
+After some more observations:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 19:55:26
+[[file:assets/screenshot_2017-12-24_19-55-25.png]]
+
+We have really narrowed it down now and we can burst
+What we haven't looked at yet is, what is the right place to sense, to take the next measurement in - so that we get the maximum information
+
+How did we implement this? :top:
+Let's say we have 2 distributions
+- Prior distribution over ghost location P(G)
+- let's say this is uniform initially
+- Sensor reading model: P(C|G)
+  - given: we know what our sensors do
+  - C = color measured, G = location of ghost
+
+We can calculate the posterior distribution P(G|c) over ghost locations given an observed color c using Bayes' rule
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 20:08:39
+[[file:assets/screenshot_2017-12-24_20-08-39.png]]
+The proportionality means that there is a difference of only a normalizing factor
+
+The g means that you should sum over random variable G - which represents all the locations the ghost can be in (all the possible values of RV G - You get this by integrating the posterior and dividing the prob by it)
+
+** Independence
+This is a property of distributions.
+
+2 variables are independent in a joint distribution if:
+P(X, Y) = P(X)P(Y) \forall x, y P(x, y) = P(x)P(y)
+
+Short hand to say that X and Y are independent: X \perp\perp Y
+
+This means that the JD can be represented in a simple way - we just need 2 marginal distributions to encode all the information in the JD
+
+We can use independence as a modeling assumption
+ - this helps split up the JD (keeping it's size under control)
+ - Independence is like the disconnected subproblems in CSPs (when tasmania was independent from Australia and things broke down)
+
+*** Example of Independence
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 20:23:44
+[[file:assets/screenshot_2017-12-24_20-23-44.png]]
+
+We need to build the marginals first:
+P(T) =  0.5 for hot, 0.5 for cold
+P(W) = 0.6 for sun, 0.4 for rain
+
+Now, P(hot, sun) = 0.4
+Also, P(hot)*P(sun) = 0.5*0.6 = 0.3
+So, not independence
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-24 20:29:04
+[[file:assets/screenshot_2017-12-24_20-29-04.png]]
+
+Every entry in the new table should be identical to every entry in the first table
+
+If you have N RVs, the JDs will have N^{D} entries where D is the domain of the RVs
+If all of them are independent, you will only have D*N entries in your JD
+
+Your JD will be fully specified by using the N tables
+Example for N independent coins: :arrow_down:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:22:12
+[[file:assets/screenshot_2017-12-25_13-22-12.png]]
+
+
+
+** Conditional Independence
+Since independence is a very strong assumption to make in most situations, we will use conditional independence. 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:24:48
+[[file:assets/screenshot_2017-12-25_13-24-48.png]]
+
+Consider 3 RVs - toothache, cavity, catch
+
+If I have a cavity, the probability that the probe catches in it doesn't depend on weather I have a toothache or not - the probe doesn't have that information in it
+So, we can write the conditional independence as:
+
+P(+catch | +cavity, +toothache) = P(+catch | +cavity) 
+
+\to we have: catch \perp\perp toothache | cavity
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:27:15
+[[file:assets/screenshot_2017-12-25_13-27-15.png]]
+
+Similarly, we have:
+
+P(+catch | -cavity, +toothache) = P(+catch | -cavity)
+
+Similarly, we will have the same equations for each value of each RV - 8 combinations 
+
+So, we can write it as:
+P(Catch | Toothache, Cavity) = P(Catch | Cavity)
+
+Using capital letter means that we are representing the RVs here, not a particular instantiation of the RV. So :top: encodes 8 equations
+
+One more thing:
+When we have 2 independent RVs
+P(X, Y) = P(X)P(Y)
+We can also write:
+P(X, Y|A) = P(X|A)P(Y|A) \to carry the conditional A on each term of both sides
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:32:25
+[[file:assets/screenshot_2017-12-25_13-32-25.png]]
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:35:16
+[[file:assets/screenshot_2017-12-25_13-35-16.png]]
+
+*** Example: Conditional Independence - I
+We have 3 things in the domain:
+ - traffic
+ - umbrella
+ - raining
+
+Reasonable conditional independence assumption in this scenario: :top:
+traffic \perp\perp umbrella | raining
+:top: also implies umbrella \perp\perp traffic | raining
+
+So, this is like, if we have rain, T and U are independent
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:42:33
+[[file:assets/screenshot_2017-12-25_13-42-33.png]]
+
+*** Example: Conditional Independence - II
+We have 3 things in the domain:
+ - fire
+ - smoke
+ - alarm
+
+Reasonable conditional independence assumption in this scenario: :top:
+Since the chain of reasoning is this: 
+
+Fire causes Smoke causes Alarm
+So, if Smoke is given, Fire and Alarm become independent
+alarm \perp\perp fire | smoke
+
+If you have a sensor and you consider it independent of some event, you cannot use that sensor to take readings for that event. So, conditional independence is a better (and softer) assumption in such cases
+
+We now have covered probability basics, and can move on now
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:47:41
+[[file:assets/screenshot_2017-12-25_13-47-41.png]]
+
+** Markov Models
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 13:47:04
+[[file:assets/screenshot_2017-12-25_13-47-04.png]]
+
+
+They allow us to specify a JD over a very large number of RVs, in a very compact form (and not having to specify the whole distribution) - and still do computations on it
+
+- Allows us reason over time and space
+  - speech recognition
+  - robot localization
+  - user attention
+  - medical monitoring
+
+They allow us to introduce time and space into our models - a lot like in MDPs
+
+
+Let's say we a markov model - what that means is that we have a sequence of random variables
+
+Connected like so:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:12:11
+[[file:assets/screenshot_2017-12-25_14-12-11.png]]
+
+Here, P(X_{1}) \perp\perp P(X_{3})| X_{2} etc
+
+We start with, P(X_{1}) and : P(X_{t}|X_{t-1})
+
+This is called the transition probabilities (we had them in MDPs as well) aka dynamics
+They describe how states evolve over time
+
+Stationary assumption: transition assumption probabilities same at all times
+This is exactly just like a MDP transition model, but no choice of action
+
+*** Joint Distribution of a Markov Model
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:17:51
+[[file:assets/screenshot_2017-12-25_14-17-51.png]]
+
+Note how simplified the JD has become due to the conditional independence restriction
+
+Questions to be resolved:
+ - does this indeed define a joint distribution?
+   - that is to say, do all the entries sum to 1
+
+Let's look at the chain rule again
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:25:40
+[[file:assets/screenshot_2017-12-25_14-25-40.png]]
+
+There are n! Ways to expand the chain rule, we picked this ordering explicitly because that will help us exploit the conditional independence assumption
+
+Assuming that:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:26:39
+[[file:assets/screenshot_2017-12-25_14-26-39.png]]
+
+So, we get:
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:27:19
+[[file:assets/screenshot_2017-12-25_14-27-19.png]]
+
+So, we have the full JD using lesser entries. 
+
+More generally:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:29:40
+[[file:assets/screenshot_2017-12-25_14-29-40.png]]
+
+So, for all RVs, it is independent wrt everyone except the one that came just before it
+
+So, we have: 2 entries of P(X_{1}), and 2 entries for each of P(X_{t}|X_{t-1}), T-1 of those, so, a total of: 2T entries entries to define the full JD of T RVs
+
+If we make the stationary assumption that distribution of X_{t} is independent of t, we will have just 2 values in the JD. At that point, we'll be in the business of describing how the distribution changes with time
+
+Also, consider an arbitrary assumptions: 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:36:47
+[[file:assets/screenshot_2017-12-25_14-36-47.png]]
+
+Is it true that X_{1} \perp\perp X_{3} , X_{4}| X_{2}?
+
+This will be true iff:
+P(X_{1} | X_{3} , X_{4}, X_{2}) = P(X_{1} | X_{2})
+or
+P(X_{1} ,X_{3} , X_{4 }| X_{2}) = P(X_{1} | X_{2})P(X_{3} , X_{4 }| X_{2})
+
+Which turns out to be *True*
+So, we can make all sorts of arbitrary assumptions now
+
+*** Markov Models Recap
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 14:44:55
+[[file:assets/screenshot_2017-12-25_14-44-55.png]]
+
+So, we have a lot of conditional assumptions due to restriction ourselves us markov models.
+
+We have one additional explicit assumptions: P(X_{t}|X_{t-1}) is the same for all t
+What this means is that the transition model is the same at all times
+
+
+*** Example Markov Chain: Weather
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:18:11
+[[file:assets/screenshot_2017-12-25_15-18-11.png]]
+
+
+We have states, X = {rain, sun}
+Initial distribution: 1.0 sun
+Conditional Probability Table P(X_{t}|X_{t-1})
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:19:00
+[[file:assets/screenshot_2017-12-25_15-19-00.png]]
+
+We can represent it as: 
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:19:14
+[[file:assets/screenshot_2017-12-25_15-19-14.png]]
+
+We can answer questions like, what is the distribution after one step etc
+
+The general method: :arrow_down:
+
+P(X_{2}=sun) = \Sigma (X_{2}, X) over X where X is X_{1} here
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:21:10
+[[file:assets/screenshot_2017-12-25_15-21-10.png]]
+
+0.9*1.0 + 0.3*0.0 = 0.9
+
+*** Mini Forward Algorithm
+
+Question: What's P(X) on some date t?
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:25:32
+[[file:assets/screenshot_2017-12-25_15-25-32.png]]
+
+
+In the formula :top:, P(x_{t}|x_{t-1}) is given in the CPT and P(x_{t-1}) we get from previous iteration of the recursion
+
+**** Example run of mini-forward algorithm
+
+Consider the same problem as earlier :top:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:28:04
+[[file:assets/screenshot_2017-12-25_15-28-04.png]]
+
+So, regardless of the initial distribution, if we run mini-forward algorithm long enough, it will converge to a stationary distribution. Almost each Markov models will have a stationary distribution
+
+This distribution is called P_{\infin}
+It satisfies:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:30:07
+[[file:assets/screenshot_2017-12-25_15-30-07.png]]
+
+We can solve this equation in 2 ways - either by simulating via the forward passes or by considering a linear update equations and solve for the stationary point
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:33:48
+[[file:assets/screenshot_2017-12-25_15-33-48.png]]
+
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:30:22
+[[file:assets/screenshot_2017-12-25_15-30-22.png]]
+
+ 
+This is used in Page rank algorithm
+
+The RV is which page the user is on. The state(domain) is all the web pages
+The initial distribution is uniform over pages, the transitions are:
+- with probability c, uniform jump to a random page
+- with probability 1-c, follow random outlink
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:41:17
+[[file:assets/screenshot_2017-12-25_15-41-17.png]]
+
+Stationary distribution:
+- Google 1.0 returned the set of pages containing all the keyword in decreasing ranks from the stationary distribution
+- this is robust to link spamming etc
+
+
+
+* Lecture 14 - Hidden Markov Models and Particle Filtering
+
+We model what happens when the world changes and you observe only a part of it
+
+Consider the pacman can eat ghosts, but they are invisible. 
+But you get noisy readings about the location of the ghosts
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:44:56
+[[file:assets/screenshot_2017-12-25_15-44-56.png]]
+
+You can try to move closer to it and try to eat it.
+
+Is it possible to take these readings and combine this with your model of the world, I.e. How the ghosts move, where the maze walls are etc and figure out where they are
+
+We'll get to this by end of class
+
+Markov Models are just a type of Bayers' net
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 15:49:39
+[[file:assets/screenshot_2017-12-25_15-49-39.png]]
+
+Each node is identically distributed, (stationarity) - there is just one Probability distribution that we are manipulating. How we go from one to the next is dependent on the Transition probability, present in the CPT - that transition probability is constant. Transition probability aka dynamics.
+
+This is exactly similar to the Transition model in MDP, the difference being in MDP, there was an "a" in the transition model as well, which represented the action that you take - here you don't take actions, you are just watching
+
+*** Conditional Independence
+
+Past and future states independent of the present
+Each time step only depends on the previous - this is called the 1st order markov property
+This is just a simplified Bayes' net. We can use everything that we learned in a bayers' net here
+
+And then we talked about the weather markov chain
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:25:48
+[[file:assets/screenshot_2017-12-25_16-25-48.png]]
+
+
+We did the question
+P(X_{2}=sun) = \Sigma P(X_{2}=sun, X_{1}) = (X_{2}=sun, X_{1}=sun) + (X_{2}=sun, X_{1}=rain)
+
+To move the timesteps, we have the mini-forward algorithm which was a recursive algorithm that takes the previous value and the probability of being there (entries from the CPT for that variable value/state)
+
+We also saw that whatever be the initial distribution, we always converge to a static distribution after applying the forward algorithm many timesteps
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:34:03
+[[file:assets/screenshot_2017-12-25_16-34-03.png]]
+
+(0.75 and 0.25 are due to the transition probabilities (the transition matrix) that we started with)
+
+So, we can say that <0.75, 0.25> is the principle eigenvector of the transition matrix (because on applying the matrix transformation, this vector remains where it was) - eigenvalue 1
+
+**** Ghostbusters
+We saw that we start with a uniform distribution over the location of the ghost and we take measurements to update it. So we end up with something like this:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:39:18
+[[file:assets/screenshot_2017-12-25_16-39-18.png]]
+
+
+(How do we update those values by incorporating the new noisy evidence? :top:)
+
+Now when we let time pass, the ghost moves. 
+*The ghost is following a markov chain - it moves according to a transition matrix*
+Currently, the transition matrix dictates Brownian motion, so after some time steps we have:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:42:27
+[[file:assets/screenshot_2017-12-25_16-42-27.png]]
+
+(The probability distributions are obtained from another markov model that's hidden??)
+
+"If we have a model that the ghost goes towards the center usually, we don't get a stationary distribution" - why? :/
+
+** Hidden Markov Models
+
+Markov models - it says I know how the world changes, but sooner or later, I am not very confident because the uncertainties add up
+
+Hidden Markov Models - it says I know 2 things. How world changes in a time step, and at every time step I also get a reading of some kind of evidence that helps me sharpen my belief of what's happening
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:58:31
+[[file:assets/screenshot_2017-12-25_16-58-31.png]]
+
+The reason we have Hidden Markov Models is that in Markov Models, we aren't very sure about our beliefs after some time. 
+In HMMs, we get some evidence variable to update our beliefs at each time step
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:58:18
+[[file:assets/screenshot_2017-12-25_16-58-18.png]]
+
+
+The hidden variable is like earlier, *where are we exactly?*
+The evidence depends only on the state at that time
+
+*** Example: Weather HMM
+
+An HMM is defined by:
+ - Initial Distribution (X_{1})
+ - Transitions P(X|X_{-1})
+ - Emissions P(E|X)
+   - how noisy are the sensors
+
+Here, we have just 1 random variable - rain or not
+We have the transition matrix (aka dynamics) of the RV - rain today if rain was there yesterday = 0.7
+no rain today if rain yesterday = 0.3
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 16:59:47
+[[file:assets/screenshot_2017-12-25_16-59-47.png]]
+
+Note here the emission model is:
+
+#+ATTR_ORG: :width 400
+#+ATTR_ORG: :height 400
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-12-25 17:02:30
+[[file:assets/screenshot_2017-12-25_17-02-30.png]]
+
+This says, given rain=true, probability of seeing umbrella is 0.9
+and given rain=false, probability of seeing umbrella is 0.2
+

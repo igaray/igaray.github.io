@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59055167-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-59055167-2');
+        </script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://notes.shichao.io/gopl/ch12/">
+        <link rel="shortcut icon" href="../../toki_32.png">
+        
+
+	<title>Chapter 12. Reflection - Shichao's Notes</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400italic,500,600" rel="stylesheet">
+        <link href="../../custom.css" rel="stylesheet">
+        <link href="../../friendly.css" rel="stylesheet">
+        <link href="../../theme.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Shichao's Notes</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">APUE <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../apue/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch1/">Chapter 1. UNIX System Overview</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch2/">Chapter 2. UNIX Standardization and Implementations</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch3/">Chapter 3. File I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch4/">Chapter 4. Files and Directories</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch5/">Chapter 5. Standard I/O Library</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch6/">Chapter 6. System Data Files and Information</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch7/">Chapter 7. Process Environment</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch8/">Chapter 8. Process Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch9/">Chapter 9. Process Relationships</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch10/">Chapter 10. Signals</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch11/">Chapter 11. Threads</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch12/">Chapter 12. Thread Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch13/">Chapter 13. Daemon Processes</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch14/">Chapter 14. Advanced I/O</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch15/">Chapter 15. Interprocess Communication</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch16/">Chapter 16. Network IPC: Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../apue/ch17/">Chapter 17. Advanced IPC</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">UNP <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../unp/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch2/">Chapter 2. The Transport Layer: TCP, UDP, and SCTP</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch3/">Chapter 3. Sockets Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch4/">Chapter 4. Elementary TCP Sockets</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch5/">Chapter 5. TCP Client/Server Example</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch6/">Chapter 6. I/O Multiplexing: The select and poll Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch7/">Chapter 7. Socket Options</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../unp/ch8/">Chapter 8. Elementary UDP Sockets</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">TCPv1 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../tcpv1/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch1/">Chapter 1. Introduction</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch2/">Chapter 2. The Internet Address Architecture</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch3/">Chapter 3. Link Layer</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch4/">Chapter 4. ARP: Address Resolution Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch5/">Chapter 5. The Internet Protocol (IP)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch6/">Chapter 6. System Configuration: DHCP and Autoconfiguration</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch7/">Chapter 7. Firewalls and Network Address Translation (NAT)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch8/">Chapter 8. ICMPv4 and ICMPv6: Internet Control Message Protocol</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch9/">Chapter 9. Broadcasting and Local Multicasting (IGMP and MLD)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch10/">Chapter 10. User Datagram Protocol (UDP) and IP Fragmentation</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch11/">Chapter 11. Name Resolution and the Domain Name System (DNS)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch12/">Chapter 12. TCP: The Transmission Control Protocol (Preliminaries)</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch13/">Chapter 13. TCP Connection Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch14/">Chapter 14. TCP Timeout and Retransmission</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch15/">Chapter 15. TCP Data Flow and Window Management</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch16/">Chapter 16. TCP Congestion Control</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch17/">Chapter 17. TCP Keepalive</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/ch18/">Chapter 18. Security: EAP, IPsec, TLS, DNSSEC, and DKIM</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../tcpv1/headers/">Headers</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GOPL <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch1/">Chapter 1. Tutorial</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch2/">Chapter 2. Program Structure</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch3/">Chapter 3. Basic Data Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch4/">Chapter 4. Composite Types</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch5/">Chapter 5. Functions</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch6/">Chapter 6. Methods</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch7/">Chapter 7. Interfaces</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch8/">Chapter 8. Goroutines and Channels</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch9/">Chapter 9. Concurrency with Shared Variables</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch10/">Chapter 10. Packages and the Go Tool</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../ch11/">Chapter 11. Testing</a>
+                        </li>
+                      
+                        <li class="active">
+                            <a href="./">Chapter 12. Reflection</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CSN <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li>
+                            <a href="../../csn/">Contents</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part1/">Part 1: Language</a>
+                        </li>
+                      
+                        <li>
+                            <a href="../../csn/part2/">Part 2: Advanced</a>
+                        </li>
+                      
+                    </ul>
+                </li>
+            <li>
+                    <a href="../../toc/">TOC</a>
+                </li>
+            </ul>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    
+                        <a href="https://github.com/shichao-an/notes/blob/master/docs/gopl/ch12.md">
+                    
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#chapter-12-reflection">Chapter 12. Reflection</a></li>
+        
+    
+        <li class="main "><a href="#why-reflection">Why Reflection?</a></li>
+        
+    
+        <li class="main "><a href="#reflecttype-and-reflectvalue">reflect.Type and reflect.Value</a></li>
+        
+    
+        <li class="main "><a href="#display-a-recursive-value-printer">Display, a Recursive Value Printer</a></li>
+        
+    
+        <li class="main "><a href="#example-encoding-s-expressions">Example: Encoding S-Expressions</a></li>
+        
+    
+        <li class="main "><a href="#setting-variables-with-reflectvalue">Setting Variables with reflect.Value</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+              
+
+<h3 id="chapter-12-reflection"><strong>Chapter 12. Reflection</strong><a class="headerlink" href="#chapter-12-reflection" title="Permanent link">&para;</a></h3>
+<p>Go provides a mechanism to do the following on variables without knowing their types at compile time:</p>
+<ul>
+<li>Update variables and inspect their values at run time</li>
+<li>Call their methods</li>
+<li>Apply the operations intrinsic to their representation</li>
+</ul>
+<p>This mechanism is called <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)">reflection</a>. Reflection also lets us treat types themselves as first-class values.</p>
+<p>This chapter covers Go's reflection features on how they increase the expressiveness of the language, and in particular how they are crucial to the implementation of two
+important APIs:</p>
+<ul>
+<li>String formatting provided by <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a></li>
+<li>Protocol encoding provided by packages like <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> and <a href="https://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a></li>
+</ul>
+<p>Reflection is also essential to the template mechanism provided by the <a href="https://golang.org/pkg/text/template/"><code>text/template</code></a> and <a href="https://golang.org/pkg/html/template/"><code>html/template</code></a> packages as seen in <a href="../ch4/#text-and-html-templates">Section 4.6</a>. However, reflection is complex to reason about and not for casual use, so although these packages are implemented using reflection, they do not expose reflection in their own APIs.</p>
+<h3 id="why-reflection">Why Reflection?<a class="headerlink" href="#why-reflection" title="Permanent link">&para;</a></h3>
+<p>Sometimes we need to write a function capable of dealing uniformly with values of types, which have one of the following traits:</p>
+<ul>
+<li>They don't satisfy a common interface,</li>
+<li>They don't have a known representation,</li>
+<li>They don't exist at the time we design the function,</li>
+<li>All three of above.</li>
+</ul>
+<p>A familiar example is the formatting logic within <code>fmt.Fprintf</code>, which can usefully print an arbitrary value of any type, even a user-defined one. Let's try to implement a function like it using what we know already. For simplicity, our function will accept one argument and will return the result as a string like <code>fmt.Sprint</code> does, so we'll call it <code>Sprint</code>.</p>
+<p>We start with a type switch that tests whether the argument defines a <code>String</code> method and call it if so. We then add switch cases that test the values' dynamic type against each of the basic types: <code>string</code>, <code>int</code>, <code>bool</code>, etc., and perform the appropriate formatting operation in each case.</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Sprint</span><span class="p">(</span><span class="nx">x</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="kd">type</span> <span class="nx">stringer</span> <span class="kd">interface</span> <span class="p">{</span>
+        <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span>
+    <span class="p">}</span>
+    <span class="k">switch</span> <span class="nx">x</span> <span class="o">:=</span> <span class="nx">x</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">stringer</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+    <span class="k">case</span> <span class="kt">string</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">x</span>
+    <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+    <span class="c1">// ...similar cases for int16, uint32, and so on...</span>
+    <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nx">x</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;true&quot;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="s">&quot;false&quot;</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="c1">// array, chan, func, map, pointer, slice, struct</span>
+        <span class="k">return</span> <span class="s">&quot;???&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>But how do we deal with other types?</p>
+<ul>
+<li>Types like <code>[]float64</code>, <code>map[string][]string</code>: we can add more cases, but the number of such types is infinite.</li>
+<li>Named types like <a href="https://golang.org/pkg/net/url/#Values"><code>url.Values</code></a>: even if the type switch had a case for its underlying type <code>map[string][]string</code>, it wouldn't match <code>url.Values</code> because the two types are not identical, and the type switch cannot include a case for each type like <code>url.Values</code> because that would require this library to depend upon its clients.</li>
+</ul>
+<p>Without a way to inspect the representation of values of unknown types, we quickly get stuck.  What we need is reflection.</p>
+<h3 id="reflecttype-and-reflectvalue"><code>reflect.Type</code> and <code>reflect.Value</code><a class="headerlink" href="#reflecttype-and-reflectvalue" title="Permanent link">&para;</a></h3>
+<p>Reflection is provided by the <a href="https://golang.org/pkg/reflect/"><code>reflect</code></a> package. It defines two important types, <a href="https://golang.org/pkg/reflect/#Type"><code>Type</code></a> and <a href="https://golang.org/pkg/reflect/#Value"><code>Value</code></a>. A <code>Type</code> represents a Go type. It is an interface with many methods for discriminating among types and inspecting their components, like the fields of a struct or the parameters of a function. The sole implementation of <code>reflect.Type</code> is the type descriptor (<a href="../ch7/#interface-values">Section 7.5</a>), the same entity that identifies the dynamic type of an interface value.</p>
+<p>The <a href="https://golang.org/pkg/reflect/#TypeOf"><code>reflect.TypeOf</code></a> function accepts any <code>interface{}</code> and returns its dynamic type as a <code>reflect.Type</code>:</p>
+<div class="codehilite"><pre><span class="nx">t</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1">// a reflect.Type</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span> <span class="c1">// &quot;int&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>          <span class="c1">// &quot;int&quot;</span>
+</pre></div>
+
+
+<p>The <code>TypeOf(3)</code> call above assigns the value 3 to the <code>interface{}</code> parameter. Recall from <a href="../ch7/#interface-values">Section 7.5</a> that an assignment from a concrete value to an interface type performs an implicit interface conversion, which creates an interface value consisting of two components:</p>
+<ul>
+<li>Its dynamic type is the operand's type (<code>int</code>)</li>
+<li>Its dynamic value is the operand's value (3)</li>
+</ul>
+<p>Because <code>reflect.TypeOf</code> returns an interface value's dynamic type, it always returns a concrete type. For example, the code below prints "<code>*os.File</code>", not "<code>io.Writer</code>". Later, we will see that <code>reflect.Type</code> is also capable of representing interface types.</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">w</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Writer</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">w</span><span class="p">))</span> <span class="c1">// &quot;*os.File&quot;</span>
+</pre></div>
+
+
+<p>Notice that <code>reflect.Type</code> satisfies <code>fmt.Stringer</code>. Because printing the dynamic type of an interface value is useful for debugging and logging, <code>fmt.Printf</code> provides a shorthand, <code>%T</code>, that uses <code>reflect.TypeOf</code> internally:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%T\n&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">// &quot;int&quot;</span>
+</pre></div>
+
+
+<p>The other important type in the <code>reflect</code> package is <code>Value</code>. A <code>reflect.Value</code> can hold a value of any type. The <code>reflect.ValueOf</code> function accepts any <code>interface{}</code> and returns a <code>reflect.Value</code> containing the interface's dynamic value. As with <code>reflect.TypeOf</code>, the results of <code>reflect.ValueOf</code> are always concrete, but a <code>reflect.Value</code> can also hold interface values.</p>
+<div class="codehilite"><pre><span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// a reflect.Value</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>          <span class="c1">// &quot;3&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>   <span class="c1">// &quot;3&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span> <span class="c1">// NOTE: &quot;&lt;int Value&gt;&quot;</span>
+</pre></div>
+
+
+<p>Like <code>reflect.Type</code>, <code>reflect.Value</code> also satisfies <code>fmt.Stringer</code>, but <u>unless the <code>Value</code> holds a string, the result of the <code>String</code> method reveals only the type. Instead, use the <code>fmt</code> package's <code>%v</code> verb, which treats <code>reflect.Value</code>s specially.</u></p>
+<p>Calling the <a href="https://golang.org/pkg/reflect/#Value.Type"><code>Type</code></a> method on a <code>Value</code> returns its type as a <code>reflect.Type</code>:</p>
+<div class="codehilite"><pre><span class="nx">t</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Type</span><span class="p">()</span>            <span class="c1">// a reflect.Type</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>  <span class="c1">// &quot;int&quot;</span>
+</pre></div>
+
+
+<p>The inverse operation to <code>reflect.ValueOf</code> is the <a href="https://golang.org/pkg/reflect/#Value.Interface"><code>reflect.Value.Interface</code></a> method. It returns an <code>interface{}</code> holding the same concrete value as the <code>reflect.Value</code>:</p>
+<div class="codehilite"><pre><span class="nx">v</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// a reflect.Value</span>
+<span class="nx">x</span> <span class="o">:=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Interface</span><span class="p">()</span>      <span class="c1">// an interface{}</span>
+<span class="nx">i</span> <span class="o">:=</span> <span class="nx">x</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>            <span class="c1">// an int</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d\n&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>   <span class="c1">// &quot;3&quot;</span>
+</pre></div>
+
+
+<p>A <code>reflect.Value</code> and an <code>interface{}</code> (empty interface) can both hold arbitrary values. What is the difference between them?</p>
+<ul>
+<li>An empty interface hides the representation and intrinsic operations of the value it holds and exposes none of its methods, so unless we know its dynamic type and use a type assertion to peer inside it (as we did above), there is little we can do to the value within.</li>
+<li>In contrast, a <code>Value</code> has many methods for inspecting its contents, regardless of its type.</li>
+</ul>
+<p>Let's use the methods of a <code>Value</code> for our second attempt at a general formatting function called <code>format.Any</code>.</p>
+<p>Instead of a type switch, we use <code>reflect.Value</code>'s <code>Kind</code> method to discriminate the cases. Although there are infinitely many types, there are only a finite number of <em>kinds</em> of type:</p>
+<ul>
+<li>The basic types <code>Bool</code>, <code>String</code>, and all the numbers</li>
+<li>The aggregate types <code>Array</code> and <code>Struct</code></li>
+<li>The reference types <code>Chan</code>, <code>Func</code>, <code>Ptr</code>, <code>Slice</code>, and <code>Map</code></li>
+<li><code>Interface</code> types</li>
+<li><code>Invalid</code>, meaning no value at all (The zero value of a <code>reflect.Value</code> has kind <code>Invalid</code>.)</li>
+</ul>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch12/format/format.go">gopl.io/ch12/format/format.go</a></small></p>
+<div class="codehilite"><pre><span class="kn">package</span> <span class="nx">format</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;reflect&quot;</span>
+    <span class="s">&quot;strconv&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// Any formats any value as a string.</span>
+<span class="kd">func</span> <span class="nx">Any</span><span class="p">(</span><span class="nx">value</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">formatAtom</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// formatAtom formats a value without inspecting its internal structure.</span>
+<span class="kd">func</span> <span class="nx">formatAtom</span><span class="p">(</span><span class="nx">v</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Value</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Invalid</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&quot;invalid&quot;</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Int</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Int8</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Int16</span><span class="p">,</span>
+        <span class="nx">reflect</span><span class="p">.</span><span class="nx">Int32</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Int64</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatInt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Int</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uint</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uint8</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uint16</span><span class="p">,</span>
+        <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uint32</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uint64</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Uintptr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatUint</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Uint</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1">// ...floating-point and complex cases omitted for brevity...</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatBool</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Bool</span><span class="p">())</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">String</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Quote</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Chan</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Func</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Ptr</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Slice</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Map</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Type</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; 0x&quot;</span> <span class="o">+</span>
+            <span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatUint</span><span class="p">(</span><span class="nb">uint64</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">()),</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span> <span class="c1">// reflect.Array, reflect.Struct, reflect.Interface</span>
+        <span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Type</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; value&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>This function treats each value as an indivisible thing with no internal structure (hence <code>formatAtom</code>). For aggregate types (structs and arrays) and interfaces it prints only the type of the value, and for reference types (channels, functions, pointers, slices, and maps), it prints the type and the reference address in hexadecimal. This is less than ideal but still a major improvement. Since <code>Kind</code> is concerned only with the underlying representation, <code>format.Any</code> also works for named types. For example:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">x</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="kd">var</span> <span class="nx">d</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Nanosecond</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">format</span><span class="p">.</span><span class="nx">Any</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>                  <span class="c1">// &quot;1&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">format</span><span class="p">.</span><span class="nx">Any</span><span class="p">(</span><span class="nx">d</span><span class="p">))</span>                  <span class="c1">// &quot;1&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">format</span><span class="p">.</span><span class="nx">Any</span><span class="p">([]</span><span class="kt">int64</span><span class="p">{</span><span class="nx">x</span><span class="p">}))</span>         <span class="c1">// &quot;[]int64 0x8202b87b0&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">format</span><span class="p">.</span><span class="nx">Any</span><span class="p">([]</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">{</span><span class="nx">d</span><span class="p">}))</span> <span class="c1">// &quot;[]time.Duration 0x8202b87e0&quot;</span>
+</pre></div>
+
+
+<h3 id="display-a-recursive-value-printer"><code>Display</code>, a Recursive Value Printer<a class="headerlink" href="#display-a-recursive-value-printer" title="Permanent link">&para;</a></h3>
+<p>This section is about how to improve the display of composite types. Rather than try to copy <code>fmt.Sprint</code> exactly, we'll build a debugging utility function called <code>Display</code> that, given an arbitrarily complex value <code>x</code>, prints the complete structure of that value, labeling each element with the path by which it was found.</p>
+<div class="codehilite"><pre><span class="nx">e</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">eval</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="s">&quot;sqrt(A / pi)&quot;</span><span class="p">)</span>
+<span class="nx">Display</span><span class="p">(</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In the call above, the argument to <code>Display</code> is a syntax tree from the expression evaluator in <a href="../ch7/#example-expression-evaluator">Section 7.9</a>. <code>eval.Parse</code> is from <a href="https://github.com/shichao-an/gopl.io/blob/master/ch7/eval/parse.go#L59">gopl.io/ch7/eval/parse.go</a>.</p>
+<p>The output of <code>Display</code> is shown below:</p>
+<div class="codehilite"><pre>Display e (eval.call):
+e.fn = &quot;sqrt&quot;
+e.args[0].type = eval.binary
+e.args[0].value.op = 47
+e.args[0].value.x.type = eval.Var
+e.args[0].value.x.value = &quot;A&quot;
+e.args[0].value.y.type = eval.Var
+e.args[0].value.y.value = &quot;pi&quot;
+</pre></div>
+
+
+<p>Where possible, you should avoid exposing reflection in the API of a package. We'll define an unexported function <code>display</code> to do the real work of the recursion, and export <code>Display</code>, a simple wrapper around it that accepts an <code>interface{}</code> parameter:</p>
+<p><small><a href="https://github.com/shichao-an/gopl.io/blob/master/ch12/display/display.go">gopl.io/ch12/display/display.go</a></small></p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">Display</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">x</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Display %s (%T):\n&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span>
+    <span class="nx">display</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>display</code> uses the <code>formatAtom</code> function defined earlier to print elementary values, e.g.  basic types, functions, and channels, but uses the methods of <code>reflect.Value</code> to recursively display each component of a more complex type. As the recursion descends, the <code>path</code> string, which initially describes the starting value (for instance, <code>"e"</code>), will be augmented to indicate how we reached the current value (for instance, <code>"e.args[0].value"</code>).</p>
+<div class="codehilite"><pre><span class="kd">func</span> <span class="nx">display</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">v</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Kind</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Invalid</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s = invalid\n&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Slice</span><span class="p">,</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Array</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Len</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+            <span class="nx">display</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s[%d]&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">i</span><span class="p">),</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Index</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Struct</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">NumField</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+            <span class="nx">fieldPath</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s.%s&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Type</span><span class="p">().</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Name</span><span class="p">)</span>
+            <span class="nx">display</span><span class="p">(</span><span class="nx">fieldPath</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Field</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Map</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">key</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">v</span><span class="p">.</span><span class="nx">MapKeys</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">display</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s[%s]&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span>
+                <span class="nx">formatAtom</span><span class="p">(</span><span class="nx">key</span><span class="p">)),</span> <span class="nx">v</span><span class="p">.</span><span class="nx">MapIndex</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Ptr</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsNil</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s = nil\n&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">display</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;(*%s)&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">),</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">())</span>
+        <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">Interface</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IsNil</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s = nil\n&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s.type = %s\n&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">().</span><span class="nx">Type</span><span class="p">())</span>
+            <span class="nx">display</span><span class="p">(</span><span class="nx">path</span><span class="o">+</span><span class="s">&quot;.value&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Elem</span><span class="p">())</span>
+        <span class="p">}</span>
+    <span class="k">default</span><span class="p">:</span> <span class="c1">// basic types, channels, funcs</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s = %s\n&quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">formatAtom</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In the above code:</p>
+<ul>
+<li>
+<p><strong>Slices and arrays:</strong> The logic is the same for both. The <code>Len</code> method returns the number of elements of a slice or array value, and <code>Index(i)</code> retrieves the element at index <code>i</code>, also as a <code>reflect.Value</code>; it panics if <code>i</code> is out of bounds. These are analogous to the built-in <code>len(a)</code> and <code>a[i]</code> operations on sequences. The <code>display</code> function recursively invokes itself on each element of the sequence, appending the subscript notation <code>"[i]"</code> to the path.</p>
+<ul>
+<li>Although <code>reflect.Value</code> has many methods, only a few are safe to call on any given value.</li>
+</ul>
+</li>
+<li>
+<p><strong>Structs</strong>: The <code>NumField</code> method reports the number of fields in the struct, and <code>Field(i)</code> returns the value of the <em>i</em>-th field as a <code>reflect.Value</code>. The list of fields includes ones promoted from anonymous fields. To append the field selector notation <code>".f"</code> to the path, we must obtain the <code>reflect.Type</code> of the struct and access the name of its <em>i</em>-th field.</p>
+</li>
+<li><strong>Maps</strong>: The <code>MapKeys</code> method returns a slice of <code>reflect.Value</code>s, one per map key. As usual when iterating over a map, the order is undefined. <code>MapIndex(key)</code> returns the value corresponding to <code>key</code>. We append the subscript notation <code>"[key]"</code> to the path. (We're cutting a corner here. The type of a map key isn't restricted to the types <code>formatAtom</code> handles best; arrays, structs, and interfaces can also be valid map keys.)</li>
+<li><strong>Pointers</strong>: The <code>Elem</code> method returns the variable pointed to by a pointer as a <code>reflect.Value</code>. This operation would be safe even if the pointer value is <code>nil</code>, in which case the result would have kind <code>Invalid</code>, but we use <code>IsNil</code> to detect nil pointers explicitly so we can print a more appropriate message. We prefix the path with a <code>"*"</code> and parenthesize it to avoid ambiguity.</li>
+<li><strong>Interfaces</strong>: <code>IsNil</code> is used to test whether the interface is nil, and if not, we retrieve its dynamic value using <code>v.Elem()</code> and print its type and value.</li>
+</ul>
+<p>Let's use <code>Display</code> on some example types. The <code>Movie</code> type below is a slight variation on the one in <a href="../ch4/#json">Section 4.5</a>:</p>
+<div class="codehilite"><pre><span class="kd">type</span> <span class="nx">Movie</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Title</span><span class="p">,</span> <span class="nx">Subtitle</span> <span class="kt">string</span>
+    <span class="nx">Year</span>            <span class="kt">int</span>
+    <span class="nx">Color</span>           <span class="kt">bool</span>
+    <span class="nx">Actor</span>           <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span>
+    <span class="nx">Oscars</span>          <span class="p">[]</span><span class="kt">string</span>
+    <span class="nx">Sequel</span>          <span class="o">*</span><span class="kt">string</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Let's declare a value of this type and see what <code>Display</code> does with it:</p>
+<div class="codehilite"><pre><span class="nx">strangelove</span> <span class="o">:=</span> <span class="nx">Movie</span><span class="p">{</span>
+    <span class="nx">Title</span><span class="p">:</span>    <span class="s">&quot;Dr. Strangelove&quot;</span><span class="p">,</span>
+    <span class="nx">Subtitle</span><span class="p">:</span> <span class="s">&quot;How I Learned to Stop Worrying and Love the Bomb&quot;</span><span class="p">,</span>
+    <span class="nx">Year</span><span class="p">:</span>     <span class="mi">1964</span><span class="p">,</span>
+    <span class="nx">Color</span><span class="p">:</span>    <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">Actor</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&quot;Dr. Strangelove&quot;</span><span class="p">:</span>            <span class="s">&quot;Peter Sellers&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Grp. Capt. Lionel Mandrake&quot;</span><span class="p">:</span> <span class="s">&quot;Peter Sellers&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Pres. Merkin Muffley&quot;</span><span class="p">:</span>       <span class="s">&quot;Peter Sellers&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Gen. Buck Turgidson&quot;</span><span class="p">:</span>        <span class="s">&quot;George C. Scott&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Brig. Gen. Jack D. Ripper&quot;</span><span class="p">:</span>  <span class="s">&quot;Sterling Hayden&quot;</span><span class="p">,</span>
+        <span class="s">`Maj. T.J. &quot;King&quot; Kong`</span><span class="p">:</span>      <span class="s">&quot;Slim Pickens&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">Oscars</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">&quot;Best Actor (Nomin.)&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Best Adapted Screenplay (Nomin.)&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Best Director (Nomin.)&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Best Picture (Nomin.)&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The call <code>Display("strangelove", strangelove)</code> prints:</p>
+<div class="codehilite"><pre>Display strangelove (display.Movie):
+strangelove.Title = &quot;Dr. Strangelove&quot;
+strangelove.Subtitle = &quot;How I Learned to Stop Worrying and Love the Bomb&quot;
+strangelove.Year = 1964
+strangelove.Color = false
+strangelove.Actor[&quot;Gen. Buck Turgidson&quot;] = &quot;George C. Scott&quot;
+strangelove.Actor[&quot;Brig. Gen. Jack D. Ripper&quot;] = &quot;Sterling Hayden&quot;
+strangelove.Actor[&quot;Maj. T.J. \&quot;King\&quot; Kong&quot;] = &quot;Slim Pickens&quot;
+strangelove.Actor[&quot;Dr. Strangelove&quot;] = &quot;Peter Sellers&quot;
+strangelove.Actor[&quot;Grp. Capt. Lionel Mandrake&quot;] = &quot;Peter Sellers&quot;
+strangelove.Actor[&quot;Pres. Merkin Muffley&quot;] = &quot;Peter Sellers&quot;
+strangelove.Oscars[0] = &quot;Best Actor (Nomin.)&quot;
+strangelove.Oscars[1] = &quot;Best Adapted Screenplay (Nomin.)&quot;
+strangelove.Oscars[2] = &quot;Best Director (Nomin.)&quot;
+strangelove.Oscars[3] = &quot;Best Picture (Nomin.)&quot;
+strangelove.Sequel = nil
+</pre></div>
+
+
+<p>We can use <code>Display</code> to display the internals of library types, such as <code>*os.File</code>:</p>
+<div class="codehilite"><pre><span class="nx">Display</span><span class="p">(</span><span class="s">&quot;os.Stderr&quot;</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Display os.Stderr (*os.File):</span>
+<span class="c1">// (*(*os.Stderr).file).fd = 2</span>
+<span class="c1">// (*(*os.Stderr).file).name = &quot;/dev/stderr&quot;</span>
+<span class="c1">// (*(*os.Stderr).file).nepipe = 0</span>
+</pre></div>
+
+
+<p>Notice that even unexported fields are visible to reflection. Beware that the particular output of this example may vary across platforms and may change over time as libraries evolve. (Those fields are private for a reason.)</p>
+<p>We can even apply <code>Display</code> to a <code>reflect.Value</code> and watch it traverse the internal representation of the type descriptor for <code>*os.File</code>. The output of the call <code>Display("rV", reflect.ValueOf(os.Stderr))</code> is shown below (though your output may vary:</p>
+<div class="codehilite"><pre>Display rV (reflect.Value):
+(*rV.typ).size = 8
+(*rV.typ).hash = 871609668
+(*rV.typ).align = 8
+(*rV.typ).fieldAlign = 8
+(*rV.typ).kind = 22
+(*(*rV.typ).string) = &quot;*os.File&quot;
+(*(*(*rV.typ).uncommonType).methods[0].name) = &quot;Chdir&quot;
+(*(*(*(*rV.typ).uncommonType).methods[0].mtyp).string) = &quot;func() error&quot;
+(*(*(*(*rV.typ).uncommonType).methods[0].typ).string) = &quot;func(*os.File) error&quot;
+...
+</pre></div>
+
+
+<p>Observe the difference between the following two examples:</p>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">i</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="nx">Display</span><span class="p">(</span><span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Display i (int):</span>
+<span class="c1">// i = 3</span>
+
+<span class="nx">Display</span><span class="p">(</span><span class="s">&quot;&amp;i&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">i</span><span class="p">)</span>
+<span class="c1">// Output:</span>
+<span class="c1">// Display &amp;i (*interface {}):</span>
+<span class="c1">// (*&amp;i).type = int</span>
+<span class="c1">// (*&amp;i).value = 3</span>
+</pre></div>
+
+
+<ul>
+<li>In the first example, <code>Display</code> calls <code>reflect.ValueOf(i)</code>, which returns a value of kind <code>Int</code>.  As we mentioned in <a href="#reflecttype-and-reflectvalue">Section 12.2</a>, <code>reflect.ValueOf</code> always returns a <code>Value</code> of a concrete type since it extracts the contents of an interface value.</li>
+<li>In the second example, <code>Display</code> calls <code>reflect.ValueOf(&amp;i)</code>, which returns a pointer to <code>i</code>, of kind <code>Ptr</code>. The switch case for <code>Ptr</code> calls <code>Elem</code> on this value, which returns a <code>Value</code> representing the variable <code>i</code> itself, of kind <code>Interface</code>. A <code>Value</code> obtained indirectly like this one may represent any value at all, including interfaces. The <code>display</code> function calls itself recursively and this time, it prints separate components for the interface's dynamic type and value.</li>
+</ul>
+<p>As currently implemented, <code>Display</code> will never terminate if it encounters a cycle in the object graph, such as this linked list that eats its own tail:</p>
+<div class="codehilite"><pre><span class="c1">// a struct that points to itself</span>
+<span class="kd">type</span> <span class="nx">Cycle</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">Value</span> <span class="kt">int</span><span class="p">;</span> <span class="nx">Tail</span> <span class="o">*</span><span class="nx">Cycle</span> <span class="p">}</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="nx">Cycle</span>
+<span class="nx">c</span> <span class="p">=</span> <span class="nx">Cycle</span><span class="p">{</span><span class="mi">42</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">c</span><span class="p">}</span>
+<span class="nx">Display</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>Display</code> prints this ever-growing expansion:</p>
+<div class="codehilite"><pre><span class="nx">Display</span> <span class="nx">c</span> <span class="p">(</span><span class="nx">display</span><span class="p">.</span><span class="nx">Cycle</span><span class="p">):</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">Value</span> <span class="p">=</span> <span class="mi">42</span>
+<span class="p">(</span><span class="o">*</span><span class="nx">c</span><span class="p">.</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Value</span> <span class="p">=</span> <span class="mi">42</span>
+<span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="nx">c</span><span class="p">.</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Value</span> <span class="p">=</span> <span class="mi">42</span>
+<span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="nx">c</span><span class="p">.</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Tail</span><span class="p">).</span><span class="nx">Value</span> <span class="p">=</span> <span class="mi">42</span>
+<span class="o">...</span><span class="nx">ad</span> <span class="nx">infinitum</span><span class="o">...</span>
+</pre></div>
+
+
+<p>Many Go programs contain at least some cyclic data. Making <code>Display</code> robust against such cycles is tricky, requiring additional bookkeeping to record the set of references that have been followed so far (which is also costly). A general solution requires <code>unsafe</code> language features, as we will see in <a href="ch13.md#example-deep-equivalence">Section 13.3</a>.</p>
+<p>Cycles pose less of a problem for <code>fmt.Sprint</code> because it rarely tries to print the complete structure. For example, when it encounters a pointer, it breaks the recursion by printing the pointer's numeric value. It can get stuck trying to print a slice or map that contains itself as an element, but such rare cases do not warrant the considerable extra trouble of handling cycles.</p>
+<h3 id="example-encoding-s-expressions">Example: Encoding S-Expressions<a class="headerlink" href="#example-encoding-s-expressions" title="Permanent link">&para;</a></h3>
+<p>(skipped) [p338-341]</p>
+<h3 id="setting-variables-with-reflectvalue">Setting Variables with <code>reflect.Value</code><a class="headerlink" href="#setting-variables-with-reflectvalue" title="Permanent link">&para;</a></h3>
+<p>In previous sections, reflection has only <em>interpreted</em> values in our program. The point of this section is to <em>change</em> them.</p>
+<p>Recall that some Go expressions like <code>x</code>, <code>x.f[1]</code>, and <code>*p</code> denote variables, but others like <code>x + 1</code> and <code>f(2</code>) do not. A variable is an <em>addressable</em> storage location that contains a value, and its value may be updated through that address.</p>
+<p>A similar distinction applies to <code>reflect.Value</code>s. Some are addressable; others are not.  Consider the following declarations:</p>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">2</span>                     <span class="c1">// value   type   variable?</span>
+<span class="nx">a</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c1">// 2       int    no</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 2       int    no</span>
+<span class="nx">c</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">)</span>   <span class="c1">// &amp;x      *int   no</span>
+<span class="nx">d</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Elem</span><span class="p">()</span>              <span class="c1">// 2       int    yes (x)</span>
+</pre></div>
+
+
+<ul>
+<li>The value within <code>a</code> is not addressable. It is merely a copy of the integer 2. The same is true of b.</li>
+<li>The value within <code>c</code> is also non-addressable, being a copy of the pointer value <code>&amp;x</code>.</li>
+<li>In fact, no <code>reflect.Value</code> returned by <code>reflect.ValueOf(x)</code> is addressable.</li>
+<li>But <code>d</code>, derived from <code>c</code> by dereferencing the pointer within it, refers to a variable and is thus addressable. We can use this approach, calling <code>reflect.ValueOf(&amp;x).Elem()</code>, to obtain an addressable <code>Value</code> for any variable <code>x</code>.</li>
+</ul>
+<p>We can ask a <code>reflect.Value</code> whether it is addressable through its <code>CanAddr</code> method:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">CanAddr</span><span class="p">())</span> <span class="c1">// &quot;false&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">CanAddr</span><span class="p">())</span> <span class="c1">// &quot;false&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">CanAddr</span><span class="p">())</span> <span class="c1">// &quot;false&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">CanAddr</span><span class="p">())</span> <span class="c1">// &quot;true&quot;</span>
+</pre></div>
+
+
+<p>We obtain an addressable <code>reflect.Value</code> whenever we indirect through a pointer, even if we started from a non-addressable <code>Value</code>. All the usual rules for addressability have analogs for reflection. For example, since the slice indexing expression <code>e[i]</code> implicitly follows a pointer, it is addressable even if the expression <code>e</code> is not. By analogy, <code>reflect.ValueOf(e).Index(i)</code> refers to a variable, and is thus addressable even if <code>reflect.ValueOf(e)</code> is not.</p>
+<p>To recover the variable from an addressable <code>reflect.Value</code> requires three steps:</p>
+<ol>
+<li>We call <code>Addr()</code>, which returns a <code>Value</code> holding a pointer to the variable.</li>
+<li>We call <code>Interface()</code> on this <code>Value</code>, which returns an <code>interface{}</code> value containing the pointer.</li>
+<li>If we know the type of the variable, we can use a type assertion to retrieve the contents of the interface as an ordinary pointer. We can then update the variable through the pointer:</li>
+</ol>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">2</span>
+<span class="nx">d</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>   <span class="c1">// d refers to the variable x</span>
+<span class="nx">px</span> <span class="o">:=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">Addr</span><span class="p">().</span><span class="nx">Interface</span><span class="p">().(</span><span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="c1">// px := &amp;x</span>
+<span class="o">*</span><span class="nx">px</span> <span class="p">=</span> <span class="mi">3</span>                           <span class="c1">// x = 3</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>                    <span class="c1">// &quot;3&quot;</span>
+</pre></div>
+
+
+<p>Alternatively, we can update the variable referred to by an addressable <code>reflect.Value</code> directly without using a pointer, by calling the <code>reflect.Value.Set</code> method:</p>
+<div class="codehilite"><pre><span class="nx">d</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// &quot;4&quot;</span>
+</pre></div>
+
+
+<p>The same <a href="../ch2/#assignability">assignability</a> checks, which are ordinarily performed by the compiler, are done at run time by the <code>Set</code> methods. In the above code, the variable and the value both have type <code>int</code>, but if the variable had been an <code>int64</code>, the program would panic, so it's crucial to make sure the value is assignable to the type of the variable:</p>
+<div class="codehilite"><pre><span class="nx">d</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="c1">// panic: int64 is not assignable to int</span>
+</pre></div>
+
+
+<p>Calling <code>Set</code> on a non-addressable <code>reflect.Value</code> panics too:</p>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">2</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">b</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1">// panic: Set using unaddressable value</span>
+</pre></div>
+
+
+<p>There are variants of <code>Set</code> specialized for certain groups of basic types: <code>SetInt</code>, <code>SetUint</code>, <code>SetString</code>, <code>SetFloat</code>, and so on:</p>
+<div class="codehilite"><pre><span class="nx">d</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">SetInt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// &quot;3&quot;</span>
+</pre></div>
+
+
+<p>These methods are more forgiving. For example, <code>SetInt</code> will succeed so long as the variable's type is some kind of signed integer, or even a named type whose underlying type is a signed integer, and if the value is too large it will be quietly truncated to fit. But tread carefully: calling <code>SetInt</code> on a <code>reflect.Value</code> that refers to an <code>interface{}</code> variable will panic, even though <code>Set</code> would succeed.</p>
+<div class="codehilite"><pre><span class="nx">x</span> <span class="o">:=</span> <span class="mi">1</span>
+<span class="nx">rx</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">x</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
+<span class="nx">rx</span><span class="p">.</span><span class="nx">SetInt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1">// OK, x = 2</span>
+<span class="nx">rx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>       <span class="c1">// OK, x = 3</span>
+<span class="nx">rx</span><span class="p">.</span><span class="nx">SetString</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>            <span class="c1">// panic: string is not assignable to int</span>
+<span class="nx">rx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span> <span class="c1">// panic: string is not assignable to int</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="kd">interface</span><span class="p">{}</span>
+<span class="nx">ry</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">y</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span>
+<span class="nx">ry</span><span class="p">.</span><span class="nx">SetInt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1">// panic: SetInt called on interface Value</span>
+<span class="nx">ry</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>       <span class="c1">// OK, y = int(3)</span>
+<span class="nx">ry</span><span class="p">.</span><span class="nx">SetString</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>            <span class="c1">// panic: SetString called on interface Value</span>
+<span class="nx">ry</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span> <span class="c1">// OK, y = &quot;hello&quot;</span>
+</pre></div>
+
+
+<p>When we applied <code>Display</code> to <code>os.Stdout</code>, we found that reflection can read the values of unexported struct fields that are inaccessible according to the usual rules of the language, like the <code>fd int</code> field of an <code>os.File</code> struct on a Unix-like platform. However, reflection cannot update such values:</p>
+<div class="codehilite"><pre><span class="nx">stdout</span> <span class="o">:=</span> <span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">).</span><span class="nx">Elem</span><span class="p">()</span> <span class="c1">// *os.Stdout, an os.File var</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">Type</span><span class="p">())</span>                  <span class="c1">// &quot;os.File&quot;</span>
+<span class="nx">fd</span> <span class="o">:=</span> <span class="nx">stdout</span><span class="p">.</span><span class="nx">FieldByName</span><span class="p">(</span><span class="s">&quot;fd&quot;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fd</span><span class="p">.</span><span class="nx">Int</span><span class="p">())</span> <span class="c1">// &quot;1&quot;</span>
+<span class="nx">fd</span><span class="p">.</span><span class="nx">SetInt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>          <span class="c1">// panic: unexported field</span>
+</pre></div>
+
+
+<p>An addressable <code>reflect.Value</code> records whether it was obtained by traversing an unexported struct field and, if so, disallows modification. Consequently, <code>CanAddr</code> is not usually the right check to use before setting a variable. The related method <code>CanSet</code> reports whether a <code>reflect.Value</code> is addressable and settable:</p>
+<div class="codehilite"><pre><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">fd</span><span class="p">.</span><span class="nx">CanAddr</span><span class="p">(),</span> <span class="nx">fd</span><span class="p">.</span><span class="nx">CanSet</span><span class="p">())</span> <span class="c1">// &quot;true false&quot;</span>
+</pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../custom.js"></script>
+    </body>
+</html>

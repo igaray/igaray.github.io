@@ -1,0 +1,2335 @@
+--- FORTE
+
+# BOOKMARKS
+  https://github.com/pulls?q=is%3Apr+archived%3Afalse+team%3Afortelabsinc%2Fcap-forte+is%3Aclosed
+  https://github.com/orgs/fortelabsinc/teams/cap-pts/repositories
+  https://www.worldtimebuddy.com/
+  https://app.datadoghq.com/apm/home?env=none
+  https://console.cloud.google.com/home?project=forte-shared-devops-01
+  https://medium.com/@mschae/measuring-your-phoenix-app-d63a77b13bda
+  https://news.ycombinator.com/item?id=20852106
+  https://dev.bleacherreport.com/diving-into-distributed-tracing-ce9638025576
+  https://www.datadoghq.com/blog/community/interview-zach-daniel-spandex/
+  https://github.com/spandex-project/spandex
+  https://elixirschool.com/blog/instrumenting-phoenix-with-telemetry-part-one/
+  https://redis.io/commands/set
+  https://redis.io/topics/distlock
+  https://trunkbaseddevelopment.com/
+  https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development
+  https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development
+  https://www.toptal.com/software/trunk-based-development-git-flow
+  https://www.split.io/glossary/trunk-based-development/
+  https://www.figma.com/file/iDQWDZdNEo1YDQMp6p89tG/TruShot-Wireframes-Review
+  https://blog.appsignal.com/2020/07/14/building-state-machines-in-elixir-with-ecto.html
+  https://elixirforum.com/t/gearbox-a-functional-state-machine-with-an-easy-to-use-api-inspired-by-both-fsm-and-machinery/25458
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+  https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request
+  https://hexdocs.pm/cors_plug/readme.html#compatibility
+  https://hackmd.io/6kFhtQK4TqCUz-_dnTbJKA
+  https://medium.com/@raigonjolly/cheat-sheets-gcloud-bq-gsutil-kubectl-for-google-cloud-associate-certificate-4093b8977a01
+  https://cloud.google.com/sdk/gcloud/reference/secrets
+  https://cloud.google.com/sdk/gcloud/reference/secrets/list
+  https://cloud.google.com/sdk/gcloud/reference/secrets/describe
+  https://cloud.google.com/sdk/gcloud/reference/secrets/delete
+  https://cloud.google.com/sdk/docs/images/gcloud-cheat-sheet.pdf
+  https://portal.queue-fair.net/queue?id=78115
+  https://forteio.atlassian.net/wiki/spaces/PTS/pages/1304100960/MVP+Greybox+Site+Readiness+Check+List
+  https://docs.sentry.io/platforms/elixir/
+
+# JIRA QUERIES
+
+- Issues being worked on and in backlog 
+  project = "CAP" AND status NOT IN ("To Do", "Done", "Closed") AND sprint = EMPTY ORDER BY created DESC
+- Issues with no component
+  project = "CAP" AND component = EMPTY ORDER BY created DESC
+
+---
+# COMMANDS & URLS
+
+  curl -vvv X HEAD https://s3-us-west-1.amazonaws.com/aleo.rollup.parameters/mint_pk-fadea97.params -O -J
+
+  Form here you can clone your git repo and deploy!
+
+  git clone https://igaray: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@github.com/fortelabsinc/cap_compliance_svc.git
+  git clone https://igaray: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@github.com/fortelabsinc/cap_marketplace_svc.git
+  git clone https://igaray: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@github.com/fortelabsinc/fortex_common_devops.git fc_devops
+
+  in the bastion:
+  gcloud config set project forte-nonprd-cap-001
+  gcloud container clusters get-credentials fte-nonprd-gke-usc1-01 --project forte-nonprd-cap-001  --region us-central1
+
+  gcloud compute scp .ssh/id_rsa_2020 fte-devops-capbhost-gce-01:~/.ssh --project forte-shared-devops-01
+
+  SELECT count(*) FROM pg_stat_activity WHERE datname = 'cap-pay_dev';
+
+  alter database "cap-compliance_dev" rename to "cap-compliance_dev_backup";
+  alter database "cap-compliance_dev_backup" rename to "cap-compliance_dev";
+
+  alter database "cap-pay_dev" rename to "cap-pay_dev_backup";
+  drop database "cap-pay_dev_backup";
+
+                    id                  |                app_id                |              wallet_id               |     inserted_at     |     updated_at
+  --------------------------------------+--------------------------------------+--------------------------------------+---------------------+---------------------
+   19215ac2-4b2f-4285-9960-987fde54e00a | c75bbfe5-3932-4a9e-86f1-19f5e76da6b9 | 81067376-e521-42c0-a859-a9853e140319 | 2021-09-14 20:48:15 | 2021-09-14 20:48:15
+   1a84e686-672b-41b2-92c8-ba01a46d6abc | c75bbfe5-3932-4a9e-86f1-19f5e76da6b9 | 507ad596-9711-4eca-8016-5b8178692b11 | 2021-09-15 15:59:13 | 2021-09-15 15:59:13
+
+  update list_price_marketplaces set app_id='c75bbfe5-3932-4a9e-86f1-19f5e76da6b0' where id='19215ac2-4b2f-4285-9960-987fde54e00a';
+
+  update list_price_items set list_price_drop_id='2aa0c548-d26a-4c22-9786-08875a18ef79' where list_price_marketplace_id='b3d3debe-cf5c-4858-99a6-45768eb3d557';
+
+  curl -X GET http://localhost:4000/api/v1/queries/list_price_marketplace/1a84e686-672b-41b2-92c8-ba01a46d6abc/items -H 'content-type: application/json' -H 'x-cap-app-id: c75bbfe5-3932-4a9e-86f1-19f5e76da612'; echo ""
+
+  . /Users/igaray/.local/bin/erlang/23.3.4/activate
+  source $HOME/.kiex/elixirs/elixir-1.11.4.env
+  export GITHUB_OAUTH_TOKEN=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
+
+  ./ops --setup
+  ./ops --bpd --spec forte_dev
+  ./ops --build --spec forte_dev
+  ./ops --publish --spec forte_dev
+  ./ops --deploy --spec forte_dev
+  ./ops --release --spec forte_dev
+  ./ops --secrets --spec forte_dev
+
+  https://cap-dev.cerescode.com
+  https://cap-qa.cerecode.com
+
+  https://github.com/fortelabsinc/fortex_common_devops
+
+  connect to the bastion:
+  gcloud compute ssh fte-devops-capbhost-gce-01 --tunnel-through-iap --project forte-shared-devops-01
+
+  kubectl get deployment/cap-account --namespace cap-account-dev -o wide
+  kubectl logs cap-admin-5c657d7665-lsmc5 --namespace=cap-admin-dev -c cap-admin -f
+
+
+  resource.type="k8s_container"
+  resource.labels.namespace_name=("cap-pay-dev" OR "cap-marketplace-dev" OR "cap-wallet-dev")
+
+    ---
+      curl --verbose -X POST http://localhost:4205/api/v1/actions/app/create -H 'content-type: application/json' --data '{"name":"test-app-1", "description":"Test Application 1", "customer_key":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA9o0b2DZtIiScqrDeXcQ84m47MdLLusglKLkRPP5V2lA=\n-----END PUBLIC KEY-----"}'
+      Note: Unnecessary use of -X or --request, POST is already inferred.
+      *   Trying ::1...
+      * TCP_NODELAY set
+      * Connected to localhost (::1) port 4205 (#0)
+      > POST /api/v1/actions/app/create HTTP/1.1
+      > Host: localhost:4205
+      > User-Agent: curl/7.64.1
+      > Accept: */*
+      > content-type: application/json
+      > Content-Length: 190
+      >
+      * upload completely sent off: 190 out of 190 bytes
+      < HTTP/1.1 201 Created
+      < cache-control: max-age=0, private, must-revalidate
+      < content-length: 302
+      < content-type: application/json; charset=utf-8
+      < date: Fri, 03 Sep 2021 18:42:13 GMT
+      < server: Cowboy
+      < x-request-id: FqFkCeuhGw728gsAHINx
+      <
+      * Connection #0 to host localhost left intact
+      {"data":{"cap_app_description":"Test Application 1","cap_app_id":"39311032-7d0e-4888-ab9a-cba250b42005","cap_app_name":"test-app-1","cap_app_service_key":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAiHEYircB26T8rDB7ti2A7tBPcY2mf67fTdest2gmOL8=\n-----END PUBLIC KEY-----\n\n","cap_app_status":"active"}}* Closing connection 0
+
+    ---
+      curl --verbose -X POST http://localhost:4205/api/v1/actions/app/create -H 'content-type: application/json' --data '{"name":"test-app-1", "description":"Test Application 1", "customer_key":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA9o0b2DZtIiScqrDeXcQ84m47MdLLusglKLkRPP5V2lA=\n-----END PUBLIC KEY-----"}'
+      Note: Unnecessary use of -X or --request, POST is already inferred.
+      *   Trying ::1...
+      * TCP_NODELAY set
+      * Connected to localhost (::1) port 4205 (#0)
+      > POST /api/v1/actions/app/create HTTP/1.1
+      > Host: localhost:4205
+      > User-Agent: curl/7.64.1
+      > Accept: */*
+      > content-type: application/json
+      > Content-Length: 190
+      >
+      * upload completely sent off: 190 out of 190 bytes
+      < HTTP/1.1 201 Created
+      < cache-control: max-age=0, private, must-revalidate
+      < content-length: 302
+      < content-type: application/json; charset=utf-8
+      < date: Fri, 03 Sep 2021 18:56:28 GMT
+      < server: Cowboy
+      < x-request-id: FqFk0Sxb9ALxOS4AHI5h
+      <
+      * Connection #0 to host localhost left intact
+      {"data":{"cap_app_description":"Test Application 1","cap_app_id":"b062a156-b591-49b1-afaf-c4033b89c786","cap_app_name":"test-app-1","cap_app_service_key":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA8B7ar45aPLet22t9xIdi/NselIFN0krExoCUDkpfdm4=\n-----END PUBLIC KEY-----\n\n","cap_app_status":"active"}}* Closing connection 0
+
+    ---
+      % curl -i -X PUT "http://127.0.0.1:4000/Packages/415148a9-210f-4b33-99d9-64e0d98f8289" -H "Content-Type: multipart/form-data" -F "file=@Xanthar.zip;type=application/zip"
+      HTTP/1.1 100 Continue
+
+      HTTP/1.1 204 No Content
+      Date: Fri, 03 Sep 2021 15:43:10 GMT
+      Server: Kestrel
+
+    ---
+      % curl -i -X GET "http://localhost:4000/Packages/415148a9-210f-4b33-99d9-64e0d98f8289"
+      HTTP/1.1 200 OK
+      Date: Fri, 03 Sep 2021 15:45:54 GMT
+      Content-Type: application/json; charset=utf-8
+      Server: Kestrel
+      Transfer-Encoding: chunked
+
+      {"id":"415148a9-210f-4b33-99d9-64e0d98f8289","name":"Xanthar","baseUrl":"https://storage.googleapis.com/cap-content-cap-content-dev-test/415148a9-210f-4b33-99d9-64e0d98f8289","content":{"assets/public/information":{"sequence":1630683791051063,"type":null,"hash":"VtCrqXXg41HGaSs7cM/czg==","etag":"CLeS7cCS4/ICEAE=","size":6210509},"assets/public/preview":{"sequence":1630683791262749,"type":null,"hash":"k4KR7UP6qAz4SrWk6ORMWg==","etag":"CJ2I+sCS4/ICEAE=","size":460648}}}%
+
+    ---
+      curl --verbose -X POST http://localhost:4300/api/v1/auth/create/rave -H 'content-type: application/json' --data '{"cap_app_id":"39311032-7d0e-4888-ab9a-cba250b42005", "username": "1d6df757-833e-4de1-a61b", "password": "1d6df757-833e-4de1-a61b-9f258835c6e0", "password_confirm": "1d6df757-833e-4de1-a61b-9f258835c6e0","email":"igaray+test-1@forte.io", "device_id":"1d6df757-833e-4de1-a61b-9f258835c6e0", "device_name": "1d6df757-833e-4de1-a61b-9f258835c6e0"}'
+
+    ---
+      curl -i -X GET http://localhost:4202/api/v1/actions/blueprints/create  -H 'x-cap-app-id: 39311032-7d0e-4888-ab9a-cba250b42005' -d '{"blueprint_base_url":"https://storage.googleapis.com/cap-content-cap-content-dev-test/415148a9-210f-4b33-99d9-64e0d98f8289"}'
+
+    ---
+      % curl -X POST https://cap-admin-qa.cerescode.com/api/v1/actions/app/create \
+           -H Content-type:application/json \
+           -d '{
+              "name": "Trueshot-QA",
+              "description": "Trueshot NFT Emporium",
+              "customer_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAUqvFnVsNuuYUXfp/+wJ246S5LusiPUyffxjs++PX31s=\n-----END PUBLICKEY-----\n\n"
+              }'
+      {"data":{"cap_app_details":null,"cap_app_id":"2b526a0b-17de-48ff-8e3c-65812b3c7279","cap_app_name":"Trueshot-QA","cap_app_service_key":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAlwitMaX23/cCTL3C5gN8yfKdxTWM1cTPAyqZqbP5C5M=\n-----END PUBLIC KEY-----\n\n","cap_app_status":"active"}}%
+
+# VASP NOTES
+  - ask chris whether theres a lodabalancer already in place (are we ready for horiz scala?))
+    yes, k8s replication value
+  - ask chris whether the purchase endpoint is cruft or not
+    no, purchase (direct wallet xfer) vs charge
+  - ask chris whether VASP.V2 version is an error or not
+    its meant for the offchain dual attestation system
+  - ask chris whether the vasp/command endpoint is cruft
+    - part of that stub for the future
+
+  - Posting the questions coming from the game developer ( Loot.io)
+    1. per that doc, Go to the VASP Admin Portal and log in with your Forte account. What is the URL for the VASP Admin Portal and what are our login credentials? :slightly_smiling_face:
+      No.  They can not have access to the Admin portal
+    2. what format are timestamps required to be in for the various timestamp payloads?
+    3. What does subaddress mean in the payment response, and do we need it? is it the wallet address that we’re asking the user to go send diem to?
+    4. What do we do with the intent? Do we just present it to the player? Is it perhaps required when they go to make a Diem transfer (do they have to paste some GUID in or something)?
+    5. Do you have test accounts with Diem balance that we can use, on some exchange that supports Diem transfers? Or are we reliant on you guys to do the actual testing?
+
+# CAP NOTES
+
+## PLAN
+  1st week: scaffolding, rest api hello world, db connectivity, deploys
+  2nd week: devops focused on happy path
+  3rd week: hardening, error cases, feature expansion
+  4th week: full end to end testing, debug interaction problems
+
+## PRODUCT GOALS
+  - exchange website, move currencies between games
+  - deploy 1155 smart contract, interact with it, do soem stuff, hold some eth in a wallet, hopefully reuse existing systems, big concerns backpressure
+  - bitski.com nft
+  - multiple games using the system
+  - security and sharding mechanisms
+  - types of users
+    - game devs
+    - forte admins
+    - plain users / players
+    - system accounts
+
+## GDRIVE LINKS
+  https://drive.google.com/drive/folders/1FhCpExxKgtTWe-QIUyyyv8XOuyy9C1gn?usp=sharing
+  https://drive.google.com/file/d/1zGo0SeG5nFatuHcnls-Jd0tMZ7nDLBGu/view?usp=sharing
+  https://drive.google.com/drive/u/2/folders/1Jv49aInU_e-Xg9bPsoU3pqrphIqcyR_5
+  https://drive.google.com/drive/folders/1Jv49aInU_e-Xg9bPsoU3pqrphIqcyR_5?usp=sharing
+
+## FUTURE
+  - Analytics
+
+## BLOCKCHAIN
+  https://github.com/fortelabsinc/cap_blockchain_svc
+  Description
+    The primary responsibility of the Blockchain services is to provide and abstraction system and interface to L1/L2 blockchains.
+    This service will provide both high level APIs such as “mint NFT” or meta level operations in addition to providing connection routing and services to the blockchain itself.
+    All meta level APIs will work cross blockchain and allow for future support to be added.
+    Additionally this layer acts as a kind of Pubsub/event stream of actions that will allow other services to register for update and be sent out in a bi-direction style of communications.
+    The Blockchain Services is basically an abstraction/wrapper that handles the direct blockchain operations.
+    The goal of this service is provide a “common as you can get” set of APIs for easier integration and to keep blockchain code from leaking all over the system.
+    As time continues we will want to expand support for many blockchain types without having to do LARGE refactors each time a POC or new blockchain tech comes out.
+    Finally, the Blockchain services will be a gateway for bi-directional chain communication to enable things such as caching and event notifications when state changes, etc.
+
+## WALLET
+  https://github.com/fortelabsinc/cap_wallet_svc
+  Description
+    Wallets allow for easy to use balance management and on chain inventory tracking.
+    Additionally this service will support operations such as query the smart contracts assigned to an address (for blockchains that do not provide this level of query support natively) and state caching for faster querying capabilities.
+    The Wallet Services primary responsibility is to manage on-chain content for a user/app.
+    Because we will have some managed on chain wallets for holding assets (and possibility “currency” types) we need an easy to use system for query collection info.
+    Many blockchains do not have the concept of a “user”.
+    Instead they have a “smart contract” which can be thought of as a collection of state and logic.
+    These smart contracts can have an “owner” address assigned to them, however there is not an easy to use set of APIs that enable searches such as “given me all the assets for this address”.
+    Instead it is expect that the “users” of the blockchain can either walk the chain to find all these assets (very slow) or maintain some kind of cached mapping.
+    Additionally Wallets have keys assigned to them. This enables the wallet owner to sign transactions with a private key.
+    The architecture for this system is pretty basic and the critical components it addresses is more focused on translating “actions” into requests/events that get sent out to other chains, etc.
+  Features:
+    - maintain mapping of address to owned smart contracts minted by THIS system.
+    - Sign transaction payloads with a private key held by the system
+    - Manages Keys in KMS/HSM backed systems
+    - Create new wallets
+    - Destroy existing wallets
+    - Map ID to a wallet address (abstraction of the different blockchain address formats into common UUID)
+  Not responsible for:
+    - Hierarchical mapping of “Users” to “Wallets” (account service)
+    - On-chain operations (blockchain service)
+    - Caching of Wallet Balances or Asset States (blockchain service)
+
+## WALLET TRANSACTIONS
+  - id: uuid
+  - type: purchase | item_transfer | currency_transfer
+  - data: map{
+    - amount: cantidad de
+    - item: uuid del item que fue transferido
+  }
+
+## ACCOUNT
+  https://github.com/fortelabsinc/cap_account_svc
+  Description
+    The Accounting Service is used for authentification, login and high level accounting.
+    Because it will be possible for a single customer to use multiple front end solutions this service will provide a hierarchical account tracking system with  multiple “views” of sub accounts.
+    Here is an example:
+      User creates an account on Game A, then goes to Game B’s site.
+      They do not need to create a full new account but can reuse their account information from game A.
+      Internally the Account service will track that this user has a wallet for Game A and a different wallet for Game B.
+    Additionally the accounting system will allow to track all operations via a singular user ID while still enable a more unique game profile.
+    - Map account info to UUID
+
+    Keeps map of Account info and AppIDs for certain data (like wallets, etc)
+
+    Potential for Auth integration?
+
+        Rave Social might be our primary auth provider be portals need to know how to interact with this?
+
+    Access Control Layers
+
+        Admin - Level 0
+
+        App - Level 1
+
+        Creator - Level 2
+
+        User - Level 3
+
+    Question:  Should this and the App Service just collapse into the same thing?  Lots of the same problems will need to be addressed….
+
+## APPLICATION
+  https://github.com/fortelabsinc/cap_app_svc
+
+## VASP
+  https://github.com/fortelabsinc/cap_vasp_svc
+  Description
+    A virtual asset service provider(VASP) allows for the tracking of things like wallet balances, trades and purchase events to be managed off chain in a fast and trackable fashion.  By moving data off chain and into a VASP, we can allow for things like micro payments for good and services at “soft-real-time” speeds and then batch up many of these trades/transaction into block payments.  It also allows for things such as escrowing funds for fast withdraw and then exiting out.  And example would be to pull out X amount of funds into auction credits and then each time a bid is made remove that balance from the VASP.  Once the auction is complete the funds are transfer to the sell OR they could be returned to the on chain account.
+
+## BLUEPRINT
+  https://github.com/fortelabsinc/cap_blueprint_svc
+  Description
+    Before we can sell any NFTs they will need to create blueprints of their asset types for later minting.
+    Blueprints allow the creator to package up all their source assets and provide a framework for defining how these assets will be constructed.
+    Point of Asset Management Service:
+      - meta data tracking
+      - NFTs created by the content creators
+      - Tracking things such 1 of N instances
+      - When Items could go on sale
+    Basic Use-case:
+      - Content Creator wants to define and mint some NFTs
+      - Content Creator will gather up the source assets needed
+      - Content Creator will create manifest files that maps assets used in the system and definition files
+      - Content Creator will zip these files up (manifest and source assets)
+      - Content Creator will upload the zip file to use (automated or manually)
+      - Forte will “process” the Blueprint Content Package
+      - Content Creator can now “mint” instances from their blueprint.
+
+## MARKETPLACE
+  https://github.com/fortelabsinc/cap_marketplace_svc
+  Description
+    Point of the Market Place Service:
+    - List price Auctions
+    - Store front sales
+    - Penny Auctions?
+
+## SERVER API
+  https://github.com/fortelabsinc/cap_api_svc
+  Description
+    Meant for Server to Server integrations.
+    Major responsibilities include request/payload verification and response processing.
+
+## PAYMENT SERVICE
+  https://github.com/fortelabsinc/cap_pay_svc
+  Description
+    payment service coinbase commerce
+    The Payment Service primary responsibility is for processing inbound payments and trigging actions based on the payment.
+    Because we will not be implementing Merchant Processing directly in this system (using existing systems like the Forte PPS system for Fiat, Coinbase Commerce for Crypto) this system should be flexible enough to to support the addition of alternative payment services so they can be swapped out for business requirements or expanded with new functionality as time continues.
+    High Level Functionality
+    Integration with External Payment Processing Services
+        Initial support with Coinbase Commerce
+        Integration with Forte PPS for Fiat Payments
+    Tracking of Payment Status and accounting
+    Ability to issue Refunds if required
+    Application based tracking of payments
+    Bulk purchases (like a shopping cart)
+        This is not to say we need to build a server side shopping cart
+        Just that we could have a collection of “items” to be purchased at one time in one bill
+    Integration with the Admin Services to query and display transactions in the system
+    User Purchase History
+
+# ALEO
+
+  QUESTIONS
+  - A) how do we get events from the net?
+    - A1) whether rpc or http polling, we couldn't find any endpoints in the aleo explorer api
+    - A2) is it the case that the only way is to check for new blocks and inspect the blocks for transactions relevant to us?
+  - B) if there is a way to receive events occuring on chain, what info is in those events?
+  - C) when deploying a circuit: one of the two things needed from the ledger when deploying is the ledger digest
+    C1) are we correct in thinking the ledger digest can be obtained from the merkle_root field of the latest block?
+    and that we can get the latest block by 1) calling getbestblockhash and 2) getblock with that block_hash'
+    C2) and what happens if when preparing a circuit deploy, we follow these steps and in the course of obtaining the ledger_digest a new block is mined? do we retry?
+    C3) if we run a lightweight client, can we obtain the merkle_path via rpc/endpoint?
+    if the answer is no, doesn't that necessitate that we run a full node?
+    I guess we're confused about how to implement a light client.
+  - D) the other thing necessary is the merkle_path of every record.
+    in the case of a circuit deploy, the old_records are not relevant, there will be none, or they will be dummy record
+    in the case of an token/item/nft transfer from one address to another, the merkle_path for each record will be necessary.
+    to get the merkle path of a record, do we need the merkle_tree of the application (which we will store on our side) or does it refer to the record commitment merkle tree in the main chain ledger?
+
+    - token id base uri 21 bytes? why?
+    - guardar data en el app state ? metadata? memorandum? podemos implementar application nosotros
+      donde meter un blueprint
+    - pregunta del ledge, porque funciona lo que hace javi? este ledgeer que en teoria es un test blockchain?
+    - why deploy + mint vs mint?
+    - como leer la transaction de la blockchain? como usar la viewkey?
+    - como van a ver cosas en el explorer los demas?
+    - el codigo del circuito, cual es?
+    - qué paso con este endpoint https://developer.aleo.org/autogen/testnet/private_endpoints/decoderecord
+      en la version groth16 ya no esta
+    - whats the difference between a program and a circuit
+    - what's missing?
+
+  Hello! if possible we would like to get a high level explanation of the latests PRs to understand the implications for us.
+  We need to define which path we are going to take regarding the handling of the ledger in the nft library. to recap, our options are:
+    - no ledger (as we are doing now, and was working up until the latest mint circuit was merged)
+    - implementing the ledger trait with a "light client" ledger which would obtain a ledger digest and merkle path over the network from a miner node, via not-yet-implemented rpc endpoints.
+    - implementing a full ledger in the nft library, same as snarkos does
+
+  I guess our question revolves around whether our code broke because something is still missing or our approach is no longer valid, and what our next steps should be.
+  Essentially, I need clarity on the roadmap and our team interactions to plan tasks on our end, and would like to avoid having our wheels turning in place in vain.
+
+  Another thing on my mind are the sync issues between nodes. I understand their on your radar but also wanted a peek into the plan. :)
+  Is running a full testnet locally on our dev machines a viable option for my devs?
+  I suspect that would improve our dev experience.
+
+# VASP TODO
+  - [x] deploy checklist for vasp
+    - pr to destination branch
+    - announce in channel
+    - test ok -> merge pr (deploy)
+    - announce
+  - [ ] document the vasp deploy checklist
+  - [ ] add urls for envs and test wallet to nicks’s vasp tracking page
+  - [ ] enable diemer in ci
+  - [ ] Items I've left for you to move/import to CAP at your discretion: GV-335, GV-378, GV-9
+
+# CAP TODO
+
+## PERSONAL
+  - [ ] Read NFT general docs
+    - [ ] https://coinmarketcap.com/alexandria/article/how-to-mint-an-nft
+    - [ ] https://www.coinbureau.com/guides/mint-nfts/
+    - [ ] https://101blockchains.com/nft-minting/
+    - [ ] https://petapixel.com/2021/06/02/how-to-mint-an-nft-the-photographers-guide/
+    - [ ] https://docs.alchemy.com/alchemy/tutorials/how-to-create-an-nft/how-to-mint-a-nft
+  - [ ] Read eth NFT docs
+    - [ ] https://ethereum.org/en/nft/
+  - [ ] Read Aleo docs
+  - [ ] Watch resources on ZKP, snarks, etc
+
+## DOCUMENTATION
+  - CAP Docs
+    - [x] Document db schemas
+      - [x] Admin
+      - [x] Portal
+      - [x] API
+      - [x] Account
+      - [x] Application
+      - [x] Blueprint
+      - [x] Content
+      - [x] Marketplace
+      - [x] Payment
+      - [x] VASP
+      - [x] Wallet
+      - [x] Blockchain
+    - [ ] Document http api
+      - [ ] move information
+        from
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1157922854/CAP+Service+API+Documentation
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1119223863/Monumental
+        to cap docs
+      - [ ] Admin
+      - [ ] Portal
+      - [ ] API
+      - [ ] Account
+      - [ ] Application
+      - [ ] Blueprint
+      - [ ] Content
+      - [ ] Marketplace
+      - [ ] Payment
+      - [ ] VASP
+      - [ ] Wallet
+      - [ ] Blockchain
+    - [x] Move over items from the VASP Glossary into glossary.md
+      - [ ] define Token Bonding
+      - [ ] define Token Velocity
+    - [ ] Document service interaction flows
+      - [ ] From design notes: App developer creates a new app
+      - [ ] From design notes: App developer creates a drop with 1 item for an app_id marketplace
+      - [ ] Create blueprint
+            From design notes: App developer upload a zip file with the manifest and source assets to define assets creation
+      - [ ] Mint a blueprint
+      - [ ] List NFTs for sale in a marketplace
+      - [ ] From design notes: User sign in using RAVE in a custom made marketplace for a specific game (or app_id) and gets to see a list of all available NFTS for that particular app
+      - [ ] A user purchases an NFT for sale in a marketplace
+            From design notes: Payment Flow
+      - [ ] List a user's wallet's contents
+    - [ ] Move over as much of the doc from the confluence Design Notes page
+    - [ ] Summarize aleo documentation in cap_docs
+    - [ ] Arch: Typed/Scoped Identifiers
+    - [ ] Arch: Authentication, authorization, and O11y
+    - [ ] Arch: Poor Man’s PubSub
+    - [ ] Arch: Entity Relationship diagram for existing entities
+    - [ ] Api: Authentication
+    - [ ] Api: Authorization
+    - [ ] Api: Request and Response envelopes
+    - [ ] Api: Request IDs
+    - [ ] Api: CAP Application IDs & Rave Application IDs
+    - [ ] Api: Versioning
+    - [ ] Api: Query, Actions, Events convention
+    - [ ] Operations: Logs & Observability
+    - [ ] Operations: CI Pipelines & Github Actions
+    - [ ] Operations: Deploy Runbooks
+    - [x] Readme: explain how swagger's index.html has been modified.
+    - What's up with fortex_utils readme contents wrt utilities glossary link destinations?
+    - FUTURE WORK
+      - [ ] Find a way to include the output of `mix phx.routes` into each corresponding service
+      - [ ] Incorporate rendered coding guidelines into cap_docs site
+      - [ ] Incorporate NFT rustdocs
+      - [ ] Extract information from aleo-forte channel history
+      - [ ] Extract information from mate and group conversation histories
+      - Copy platform's confluence structure
+        onboarding
+        access
+        process
+        guideliness
+        documentation
+        - infra architecture
+        - backend architecture
+        - api
+        - code walkthrough
+      - [ ] Markdown generator with a better phx.routes
+      - [ ] Markdown generator for a list of ecto schemas
+      - [ ] Write an ex doc formatter for markdown
+        - page for each module
+        - generate summary.md
+        - include readme.md
+  - [ ] Write documentation guidelines and templates
+    https://hexdocs.pm/elixir/1.12/writing-documentation.html
+  - Coding Guidelines
+    https://github.com/fortelabsinc/fortex_coding_guidelines
+    https://github.com/inaka/erlang_guidelines
+    - [ ] Address issues
+    - [ ] Write coding guidelines contribution protocol
+    - [ ] Nunca deberia haber en un controller llamadas directas a los otros services internos, solo una llamada a nuestro modulo en lib (sin Web) que hace todo eso de forma transparente para el controller
+    - [ ] project development handbook
+      - dev flow
+      - pr structure, name pr after the ticket, template, checklist,
+      - pr expectations, review, rejection criteria, coding standards, tests, specs, dialyzer, warn as error
+
+## WORK DEFINITION
+  - [x] look at https://forteio.atlassian.net/wiki/spaces/AE/pages/1083966398/Use+cases
+  - [x] crear tareas para payment
+  - [x] Create tickets for remaining work
+    - [x] drops have a timestamp, marketplace listing and drops with timestamps for countdown time
+      [x] link to correct epic
+    - [x] implementacion de aleo bridge
+      document and get feedback from CJ and lois
+
+  Para v2
+  - [ ] complete crud for marketplace price listings
+  - [ ] compelte crud for marketplace price listing
+  - [ ] Access levels design, documentation, and ticket creation
+  - [ ] Flesh out following scenario
+    Scenario: developers need to access to user wallet to redeem the purchase.
+    ** if developer want to sell less convention NFT such as, purchase a Q&A session, or items can be redeem prior to game launch?
+    We might also want to define the workflow to support developer access user wallet information while the Admin portal UI/UX and access permission complete. (this might a temporary flow. need to discuss)
+
+### 2021-08-01
+  - Talk about estimations
+    incluir una estimacion, 1,2,3 objetivo: NO es medir cuanto llevara, sino tener para poder medir despues, PERO en la retro, charlar sobre si hubo divergencia entre estimacion y realidad
+    charlar sobre complejidad vs dependencias, como explicitar las dependencias, complejidad inherente vs complejidad percibida por subespecificacion
+  - reforzar como:
+    si no tienen tareas, checkear primero con aki priorizacion
+    pueden crear todas las tareas que quieran, pero van al backlog y para elegir se eligen tareas no iniciadas dentro del sprint
+
+### 2021-08-02
+  - [x] preguntar preguntas de santi sobre payment service:
+    - 1) will the payment service be publicly exposed?
+    - 2) how do we notify the storefonrt of succesful purchase?
+  - [x] tareas que faltan del admin para poder hacer todo lo que hace un content creator
+  - [x] break out CAP-84 into tasks for the individual components
+        Admin, API, Account, Application, Blueprint, Marketplace, Payment
+        1) turn into epic
+        2) create an issue for each one with the description:
+           "Ensure that the service authorizes requests with the token"
+  - [x] create task for poor man's pubsub (async event framework)
+  - [x] ask which integration testing tasks are needed
+
+  - [x] access to Acuant
+
+  - [x] detallar para flor las transacciones
+    tienen un type, transfer de base, pero hay otros tuipos?
+  - [ ] consider event timeouts in the design of poormanspubsub
+
+  - estimations
+  - blueprint integration
+    - read previous material
+
+  - listing docs
+  - august updates
+    - compliance & dependecies w/exchange
+      ongoing discussion wrt compliance
+      value out feature: cash out
+      100k
+  - in a week or two ramping up bridge team
+    blockchain devs
+    some dependency down the line
+
+### 2021-08-05
+  - [x] figure out how to make prs to upstream nft
+  - [x] create repo for corey's
+  - [x] create tickets for flor
+
+### 2021-08-09
+  - [x] new marketplace endpoint docs for monty
+  - [x] new payment endpoint docs for monty
+  - [x] ver como viene payment con santi
+  - [x] ver como viene aleo con javi
+  - [x] ver como viene mint con tyny
+  - [x] dockerize services
+  - [x] sync con ramiro
+  - [x] sync con rodri
+
+  para llegar a MVP
+  - terminado flow de mint
+  - terminado payment
+  - terminado marketplace
+  - integrados todos los servicios nuestros
+  - integrado content service
+  - integrado storefront
+  - deployado
+  - prueba de integracion en vivo
+  subir BP, crear BP, mint BP, crear drop, listar items en drop, listar items en marketplace, comprar item, listar items en wallet de usuario
+
+### 2021-08-10
+
+  List items for sale
+  How are we going to map itemId to its metadata?
+  Where is this metadata stored? In the WalletService inventory?
+
+  lay out functionalit and tasks for the full development experience
+    see stuff in your game
+    write your own custom website
+
+  basically, all we could do in this time frame
+
+  finish line
+    - deploy pipelines
+      hopefully in sprint 7
+
+    - monty integration
+      end of sprint 8
+      - integrated with our APIs
+        - marketplace
+        - payment
+
+    - cap features
+      - upload bp zip
+      - content service integration
+        1 week: test + changes
+
+      - [x] create bp
+      - mint action
+        within this sprint not including aleo
+      - marketplace listing
+        - latest: mid-sprint 8
+
+    - aleo integration
+      - deploy working
+      - mint
+
+  required pending tech debt and code quality tasks
+
+  total 18
+
+  compliance
+    - scaffold service
+    - stand up live environments
+    - create user schema
+    - user register endpoint
+    - kyc endpoint
+    - integrate with sardine
+
+  1.1
+    - server api
+    - fiat in
+      - look at pps
+      - desigfn
+      - move relevant code over / implement
+    - account permissions
+      - add permissions logic in account service
+      - include permissions in jwt token
+      - modify authorization plug in other services to validate jwt token permissions
+        - admin
+        - blueprint
+        - content
+        - marketplace
+        - payment
+        - wallet
+        - blockchain
+
+  1.2
+    - admin portal
+      - set up the admin portal ui framework
+      - features
+        - login
+        - applications view
+        - blueprints view
+        - marketplaces view
+        - wallets view
+        - content view
+        - payments view
+        - blockchain view
+    - P2P sale in single developer store
+    - message broker
+      - have ops set up message broker in live envs
+      - locally set up message broker in docker compose
+      - modify fortex utils capclient to emit messages
+      - modify fortex utils event handler to
+      - remove event endpoint from all service
+    - observability
+      - locally set up prometheus and grafana in docker compose
+      - have ops set up prometheus and grafana in live envs
+      - modify all services to emit metrics to prometheus
+      - add metrics
+
+### 2021-08-12
+  PAYMENT
+  - 1.0 rate limit error in happy path
+  - 1.0 cancelled payment notification handling
+
+  - cache payment status for polling api
+  - backpressure for coinbase API
+    - what to do if the rate limit cannot be increase? use several api keys?
+  - putting events from coinbase in redis
+  - marketplace put items in escrow until payment
+  - payment notification webhook
+  - what to do when payments expire?
+    - best scenario: cancel payment on coinbase after 30 min
+
+### 2021-08-13
+  - [x] javi
+  - [x] corey
+
+### 2021-08-17
+  MAJOR
+  - [x] sprint planning
+  - [x] fix capdocs
+  - [x] compliance TDD
+
+  MINOR
+    - [x] review payment docs
+    - [x] review blueprint docs
+    - [x] marketplace docs for monty
+    - [ ] set up technical 1:1s with everyone
+    - [ ] look at lois' documents
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1143603205/Create+NFT+Platform+Account
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1143603214/User+Wallet
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1143767045/Creator+Admin+Portal
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1138655739/Store+Front
+          https://forteio.atlassian.net/wiki/spaces/AE/pages/1143570440/Purchase+NFT+item
+    - sardine
+      [ ] do we need to use the device api?
+      [ ] explain how it works
+
+  - [ ] talk about coinbase testing
+    - https://forteio.atlassian.net/wiki/spaces/AE/pages/1200685119/Coinbase
+  - [x] missing tasks for santi in MP & WS
+  - [x] Ramiro Matteoda  3:35 PM Estaba viendo ahora que agrego lo de get items by marketplace, que deberiamos agregar un endpoint para read items by drop id
+
+### 2021-08-18
+  - capture requirements content creation service
+    - content creation portal does not has to be on the same site the product is hosted on
+    - google/okta auth for content creator
+
+    - requirements:
+      - upload and modify bp
+      - mint? or do it in admin?
+      - manipulate marketplace
+        create and schedule drops
+        put items up for sail or remove them, modify price
+
+      - what is selling, how quickly, see history
+        metrics for items, dashboards
+
+      - sell bundles
+
+      - need to see the serial number
+        - being able to reliable tell how many are left, which one is this one, see token id
+
+      - when we purchase we need to know weere buying the next one in the series and not a random one
+
+      - see ownership history (provenance)
+
+      - auctions
+      - wallet trasnfers from users
+
+      - discount
+
+### 2021-08-19
+
+  - que sucede una vez que se realizo un pago?
+    1 PS notifica a MPS que un item fue exitosamente pago y el MPS lo elimina de su listado
+    2 PS notifica a WS que un item fue exitosamente pago, y el WS lo transfiere de la wallet del MPS a la wallet del usuario que lo compro.
+
+  - check ceres dockerfile
+  - nodule in all services
+  - ver los comentarios de ramiro
+  - ver lo de rave app id por cap app id con diego
+
+  - cyphertracing
+  - device type and ip addreess of logins into the system
+  - how will clients test
+
+### 2021-08-20
+  cuatro horas
+  - hecho: cuando corremos la creacion de una cuenta en ft desde elixir a traves de rustler, consistentmente explota con un segfault
+  - hecho: esto no sucede con snarkvm en commit 57ca3193bd474073de9d3b2b400ea96aa2292efc
+  - hecho: esto se rompio cuando mergeo lo de testnet2 en el sucesor al siguiente commit
+  - hecho: si corremos el test de fortex-aleo-nft-wrapper que llama directamente sin rustler al codigo, funciona
+  - hecho: se rompe al construir la compute key en to_decryption_key del archivo compute_keys.rs more
+  - hipotesis: el segfault se debe a un puntero invalido que deberia apuntar a los parametros necesarios para crear la compute key, el puntero es invalido porque la carga de los parametros se hace mediante un macro lazy static que no interactua bien con rustler
+  - siguientes pasos: encontrar exactamente donde se hace la carga perezosa de los parametros
+  - elaborar un test para validar esta hipotesis
+
+  a futuro:
+    - ver como debuggear mejor estas cosas
+    - como usar gdb, strace, valgrind con la BEAM
+
+  - cap docs fix:
+  - [x] cap_account_svc
+  - [x] cap_admin_svc
+  - [x] cap_api_svc
+  - [x] cap_app_svc
+  - [x] cap_blockchain_svc
+  - [x] cap_blueprint_svc
+  - [x] cap_marketplace_svc
+  - [x] cap_pay_svc
+  - [x] cap_vasp_svc
+  - [x] cap_wallet_svc
+  - [x] fortex_aleo
+  - [x] fortex_nodule
+  - [x] fortex_utils
+  - [ ] cap_test_rig
+  - [ ] cap_compliance_svc
+
+  - [ ] tickets de marketplace y corey
+        https://forte-io.slack.com/archives/C027YJ91BB4/p1629381967059800
+
+        https://forte-io.slack.com/archives/C027YJ91BB4/p1629313275042900?thread_ts=1629305808.036200&cid=C027YJ91BB4
+
+        https://forte-io.slack.com/archives/C025WDZ0WDS/p1629298403030600
+
+        https://forte-io.slack.com/archives/C027YJ91BB4/p1629819382177800
+
+    - (CAP-271) Implementar método para leer un list price item dado un list_price_item_id y un list_price_marketplace_id. Este método se va a usar por ahora por el PS (Payments Service). Se asume que storefront cuenta con ésta información. Marketplace devuelve el item con un precio. MP de momento no conoce nada acerca de descripción ni nombre de item (acá intervienen otros servicios: wallet -> blockchaiin: metadata del nft maybe?). Nombres y precios de items debería ser v1.0, no? Porque de momento la lista de items para storefront no tiene esa data.
+
+    - (Sin issue) Mecanismo para recibir notificaciones acerca de compras de items (Eventos asincrónicos/endpoint), de manera que MP no liste items que ya fueron comprados hacia el storefront.
+
+    - (Sin issue) Wallet necesita:  Método para devolver información (nombre, descripción, o sea metadata) de un nft de BS (blockchain service)
+
+    - (Sin issue) Método/webhook/evento para transferir assets de una wallet a otra, dado un receiver_wallet_id, un owner_wallet_id y algun otro argumento que distinga el item o nft que se desea transferir.
+
+    - The Marketplace service does not yet have any details for items - only the price and a wallet_item_id whose purpose isn't understood by us offhand. We'll need the information included with an NFT that comes from its corresponding blueprint to display a relevant image/name/description for NFTs available on the marketplace.
+
+    - Payments docs look great and we should be able to incorporate the service for both creating payments and listing status of pending payments. Creating payments requires a drop_id. Does this correspond with the wallet_item_id provided by the marketplace service? The Marketplace service has a separate endpoint for drops which includes an id that seems more appropriate. Can you help disambiguate items and drops as they pertain to the marketplace service?
+      So the biggest pieces for us will be in the marketplace and payments services being finalized. They don't have to be working for us to write our part of the code; we just need to know the final request and response structures. We'll be writing what we can with what's in the docs now, knowing it's subject to change and pieces are missing atm. It'll be quick enough for us to make adjustments as they come.
+
+    - Thinking over how we need blueprint details along w/ the NFT information sent back by the Marketplace service. If the CMS was publicly accessible to the platform service, we could handle all of the NFT => Blueprint associations on our server and keeping it on a caching layer ala redis or on disk to postgres or however we want. This would then allow us to have more custom logic to create associations across NFT sets without having to lean on you any time a client has special needs. Wanted to get that thought out there for you to consider. (edited)
+
+    ---
+    bueno tabamos hablando con el Tyny y ayer Ramiro preguntaba sobre el "get_by_id" de blueprintsvc (que lo va a usar walletsvc para traerse data del BP)
+    te habia mostrado este ticket, Rami: https://forteio.atlassian.net/browse/CAP-213
+    pero ese lo habia creado Flori y me pa que no existe ticket para esta task (segun me dice Tyny)
+    12:37
+    el blueprint x ahora tiene re poca data en si guardada en la DB:
+    schema "blueprints" do
+        field :base_url, :string
+        field :manifest, :map
+
+        timestamps()
+      end
+    bah, tiene TODA la data guardada pero dentro de ese map manifest
+    12:37
+    esta parte la habia arrancado tyny en su momento
+    12:39
+    me pa que quiza necesitemos "estandarizar" un poco mas esa data, al menos con la info que sepamos que es importante
+    no creo que devolver toda la data del manifest asi de una como haya venido del yml este bien (o si?
+
+
+    Bieen, el issue 213 está destinado a hacer las requests desde el marketplace, mockeando las respuestas del wallet y del blueprint. Yo estoy con eso, contando que esos servicios van a tener los endpoints necesarios (el wallet el list de items y el blueprint el read_by_id que viene con la data del manifest.
+
+    desde el marketplacesvc tmb van a tener que llamar al blueprintsvc?
+
+    El flujo que entiendo que terminamos definiendo va por ahi. Al walletSvc le llega un evento para crear el item desde el blueprintSvc, lo que incluye el blueprint_id. El item alamcenaría ese id  entonces también. Cuando el Marketplace le pide al wallet los items, cada item llega con su blueprint_id. Y con ese id, el marketplace mismo hace la llamada al blueprintSvc.
+
+    Asi que en realidad, el walletSvc solo recibe el evento del mint, crea los items correspondientes y tiene que poder listar items by wallet_id y ya
+
+    ahhh pense que el wallet hacia esa llamada para traer la data del BP y ya le devolvia al marketplace todo lindo y listo para que lo muestre
+    pero esta bien sip, es lo mesmo
+    total para el BPS le da igual quien lo llame para devolver data de un BP
+
+    y me parece bien/logico que el marketplace sepa del dominio de blueprints
+
+    Sii, además conoce de blueprints porque tiene que permitir editar su precio por ejemplo
+
+    esta perfecto, yo me encargo del endpoint en blueprint y despues lo conectamos en el marketplace con la lista de items
+
+    Asi que si hoy en dia el blueprint no tiene el read, sale una creacion de task para eso, y si vos Diegui seguis con el WalletSvc, quizas Rami ya se puede meter con el blueprint
+
+    claros bien, entonces ese 213 es de marketplace exclusivamente
+    listo ahi le creo el ticket para Rami!
+
+
+    Segun Corey, la info más relevante que necesita de un item, es su nombre, descripcion, precio e imagenes improtantes, asi que eso seria lo que podriamos estandarizar del blueprint para que el servicio lo guarde y despues lo pueda devolver no? al menos en esta version
+
+    aca hay que ver si devolvemos la metadata como esta o estandarizamos la respuesta (con name, description, etc) desde el blueprint cosa que siempre salga igual, si a futuro cambia el formato del manifiest en algo, solo necesitamos modificar el blueprint service y no quien lo lee
+
+### 2021-08-27
+
+  - [ ] ticket for secret key base in the runtime.exs update via nodule
+
+  - [x] tickets para compliance
+    - Scaffolding: Dockerize
+    - Scaffolding: secrets management with nodule
+    - Write an example config mapping data fields to kyc levels
+    - User data model
+    - Documents data model
+    - Sardine API client module
+    - Users endpoint
+    - Documents endpoint
+  - [x] tickets and doc for deployment of monty repos
+  - [x] tickets de devops
+        https://forte-io.slack.com/archives/C026LRKLLJ0/p1629693316104900
+  - [x] tickets de integracion?
+  - [x] ask lois & cloudbaker for access to forte-nonprd-cap-001
+  - [x] crear ticket para filtrar items que estan en un drop
+
+  - [ ] create ticket: integration test with coinbase
+
+### 2021-08-31
+  - [ ] hablar con ramiro sobre:
+    - las tres tareas que no se crearon del admin cli para leer items y drops
+    - pasar el precio de un BP al crearlo , tanto admin cli como endpoint de BP
+
+    - [ ] add ticket to integrate the content service to the test rig
+    - [ ] add ticket to make the content service use a local folder in development mode
+  - follow up with javi wrt transaction id collision
+
+
+
+  ROADMAP
+  - [08/16 - 08/30] v1.0 integration
+  - [08/30 - 09/03] v1.0 RC
+  - [09/23 - 09/30] fiat in spike
+  - [09/ - 09/] v1.1
+
+  1.0
+    - [x] DEPLOY
+    - [x] ALEO
+    - [ ] BLUEPRINT
+    - [ ] MINT
+    - [ ] LIST
+    - [ ] PAY
+    - COMPLIANCE
+    - FIAT & PPS & PAYMENT
+    - VASP (move over to CAP)
+
+    - [ ] update pr template for all services
+          https://forteio.atlassian.net/browse/CAP-310
+    - [ ] verificar esto: para listar todos los items a la venta, ahora y en el futuro, hay que:
+      - dado un  list price marketplace (LPMP)
+      - obtener todos los list price items para ese LPMP
+      - obtener todos los drops para ese LPMP, con su fecha de activacion
+      - para cada uno de esos drops, obtener todos los list price drop items
+
+    - [x] modificar cap admin cli:
+      [x] create drop: add available_on on parameters
+      [x] remove activate_drop command if it is automactly by available on date
+      - new commands:
+        [x] add item in a drop
+        [x] create price for a blueprint in marketplace
+        [ ] list items in a drop by marketplace and drop id
+        [ ] read items by nmarketplace and blueprint id
+        [ ] read item by id in marketplace
+
+    - IMPORTANTE como el storefront sabe donde estan los assets?
+
+### 2021-09-07
+  Current priority: CAP 1.0
+  After doing the release candidate, we’ll see technical stuff we need to add.
+  As an intermediate version, 1.0.1, we can add prometheus to see stats and identify bottlenecks, and add A analytics tracking (which Monumental is also interested in) to see user behaviors. This we can rip from VASP.
+  CAP- 1.1
+  Compliance (Partial)
+  Exchange KYC requirement due 2nd week of Sep (week sept/6)
+  Fiat In
+  Vasp
+  Add USDC support by integrating the existing PPS service to VASP. PPS is an Eli
+
+    TECH DEBT
+      - repasar todos los servicios y decisiones de disenio y documentar
+        - [ ]
+
+      - [ ] Admin
+      - [ ] Developer Portal
+      - [ ] API
+      - [ ] Account
+      - [ ] Application
+      - [ ] Blueprint
+      - [ ] Content
+      - [ ] Marketplace
+      - [ ] Payment
+      - [ ] Wallet
+      - [ ] Blockchain
+      - [ ] Compliance
+      - [ ] VASP
+
+      - [ ] code walkthrough de todos los servicios
+      - [ ] repasar apis de todos los servicios por consistencia y asegurarse que los uuids esten namespaceados
+      - [ ] Repasar conceptos de arquitectura y api y asegurarse que esten o bien implementados o tickets creados e incluidos en La Tabla
+        - [ ] activar plug para verificar el header de X-CAP-APP-ID en todos los servicios, pero solo validarse una vez en L3, los del interior asumen que es correcto.
+        - [ ] lo mismo para autenticacion de token, que el account este asociado a esa application
+        - [ ] asegurarse de versionado en blockchain service y en admin
+      - [ ] review functionality already in the admin
+        also drops and payment
+
+        - volver a tener list price item
+          - volver a meter el modelo
+          - agregar endpoints en marketplace list price items
+          - modificar el flow de minteo para que despues de que se crean los wallet items,
+            se crean los marketplace list price items, con un precio default sacado del minted blueprint
+          - verificar en todos lados de que el precio default este asociado al minted blueprint y no al blueprint
+
+        - eventos por bulto
+          - para mint
+          - para creacion de items en wallet
+          - para creacion de items en marketplace
+
+        - tokenid baseuri is being used:
+          - cuando es necesario crear un blueprint, se le pasa el baseurl
+          -
+
+      - payment
+        - cache payment status for polling api
+        - backpressure for coinbase API
+          - what to do if the rate limit cannot be increase? use several api keys?
+        - putting events from coinbase in redis
+        - marketplace put items in escrow until payment
+        - payment notification webhook
+        - what to do when payments expire?
+          - best scenario: cancel payment on coinbase after 30 min
+
+      - aleo:
+          - [ ] tech debt: aleo code memory management
+            answer questions:
+              - how long do the calls to the nft bindings take?
+              - how much memory do they use?
+              - how many bytes go in and out?
+              - is there a way to better manage the huge batch mint parameters?
+          - [ ] Add backpressure support to aleo operations (mint, transfer, etc)
+                https://forteio.atlassian.net/browse/CAP-288
+          - [ ] tech debt: nft code fixmes
+          - [ ] tech debt: aleo base64 wrapper is it necessary?
+          - [ ] tech debt: wrap aleo nft in http api
+          - [ ] contemplar versionado en la serializacion de aleo
+          - [ ] contemplar versionado en los contratos?
+        - [ ] create ticket: blockchain service improve event listener
+              the listener shouldn't listne by block but instead listen to pending transactions
+              it currently works because there is only one miner node
+        - [ ] blockchain service look into aleo listener via websocket
+        - [ ] revisit aleo consensus issues, increase cluster size to more nodes
+        - [ ] revisit aleo circuit versioning
+
+    1.1
+
+      - IMMEDIATE TECH DEBT
+      - account permissions
+          add permissions logic in account service
+          include permissions in jwt token
+          modify authorization plug in other services to validate jwt token permissions
+            admin
+            blueprint
+            content
+            marketplace
+            payment
+            wallet
+            blockchain?
+      - item escrow
+      - automatic drops
+        - [ ] refactor marketplace: remove activate drop and automate the drop
+      - blockchain backpressure
+      - minting process status
+      - [ ] create tickets for documenting APIs via openapi
+
+      - fiat in-rails
+        Buy NFTs using fiat currency
+        - look at pps code
+        - document apis
+        - integrate pps into payment service
+          - running pps locally is not an option, mocks and staging will be used for development
+
+      - server api
+        - copy key creation and endpoints from Diem VASP
+        - move functionality currently in admin backend to server api
+          - which functionality?
+        - expose all CAP functionality through the server api
+          - which functionality?
+
+      - DIEM & VASP
+        In the first pass, focus on a custodial service which will allow cheaper purchasing/buying/trading of NFTs, and either re-use the VASP or move it’s functionality into the corresponding CAP component.
+          Make sure fortex_nodule integrates well with KMS
+          Store eth keys in KMS on GCP
+        - Ethereum integration
+
+        https://forteio.atlassian.net/browse/GV-570
+        - wtf is gamecoin?
+        - wtf is forte balance?
+        - where is this per player created USDC wallet?
+        - where is this Circle system?
+        - wtf is SourceCoin?
+        - when is exchange 1.1?
+
+        - picking back up, end of the month?
+        - feature set:
+          - get it into the new deployment framework
+          - rip out the cointrade, the way gemini does it is different
+            figure out some testing
+          - after that, support for usdc and circle, not until oct-nov
+        - business priorities
+          - lot of people want to see cap deployed
+            take 1.0 and launch it with little alchemist
+            not a huge load of trffic
+            by the time we do we have 1.1. with fixes
+          - kyc stuff: opens up purchasing
+          - fiat opens in more payment types
+
+          - due diligence
+            - do we need to add more support in pps for what we need?
+            - generate good estimates for integrating pps for fiat in
+
+        - continuous release cycle
+
+    1.2
+      - admin portal
+        GUI for admin portal
+        set up the admin portal ui framework
+            get better estimate from devs
+        features
+          login
+          applications view
+          blueprints view
+          marketplaces view
+          wallets view
+          content view
+          payments view
+          blockchain view
+
+      - P2P sale in single developer store
+        Users can sell their assets p2p
+        gather requirements & design spike
+
+      - tech debt: Message broker service
+        Incorporate a message broker for async information flows (e.g. mqtt, kafka)
+          have ops set up message broker in live envs
+          locally set up message broker in docker compose
+          modify fortex utils capclient to emit messages
+          modify fortex utils event handler to emit events to broker instead of service endpoints
+          remove event endpoint from all service
+
+      - Observeability
+        General observability: debugging aids, dashboards, performance metrics (prometheus & grafana)
+          locally set up prometheus and grafana in docker compose
+          have ops set up prometheus and grafana in live envs
+          modify all services to emit metrics to prometheus
+          add metrics
+
+    1.3
+      - Bridging to mainnet
+
+      - Analytics
+        Integrate with Upsight
+          Create apps within upsight
+          Move code from VASP to CAP for sending analytic metrics
+          Document (how to add metrics, how to query with HQL)
+          How many wallets, transactions for this game?
+
+    Future
+      - Caching (redis &/| memcached)
+
+      - Rewrite of content management service
+
+      - White Label Site / Creator Admin Portal
+        - capture requirements content creation service
+          - content creation portal does not has to be on the same site the product is hosted on
+          - google/okta auth for content creator
+
+          - requirements:
+            - upload and modify bp
+            - mint? or do it in admin?
+            - manipulate marketplace
+              create and schedule drops
+              put items up for sail or remove them, modify price
+
+            - what is selling, how quickly, see history
+              metrics for items, dashboards
+
+            - sell bundles
+
+            - need to see the serial number
+              - being able to reliable tell how many are left, which one is this one, see token id
+
+            - when we purchase we need to know weere buying the next one in the series and not a random one
+
+            - see ownership history (provenance)
+
+            - auctions
+            - wallet trasnfers from users
+
+            - discount
+
+  - compliance service
+    auth via jwe
+  - capclients healthcheck
+  - follow up convo admin cli docs
+
+  - follow up
+
+  - revoke and manage oauth tokens for ci pipelines
+    - kill ACCESS_TOKEN
+
+  - in api consistency check
+    - verify handling of money, all integers
+    - mraketplace model: list price blueprint y drop item, el precio es un mapa con currency y price, y estaria mejor que sean dos campos separados
+
+  - content creation
+    - api
+    full crud for packages
+
+  - look into geofencing
+    look into information obtainable from rave
+
+### 2021-09-07
+  - deploy services [admin, account, blueprint, blockchain, marketplace]
+  - test account creation
+  - test blueprint creation
+  - test mint
+  - pps spike
+
+  ---
+  1 crear modelo compliance_application
+      field(:id, Ecto.UUID, primary_key: true)
+      field(:name, :string)
+      field(:status, :string)
+      field(:internal_key, :binary) # la privada nuestra
+      field(:customer_key, :binary) # la publica de ellos
+      field(:web_hook, :string)
+      field(:meta, :map)
+
+  2 crear endpoints crud de application
+    en el post de creacion tienen que pasar su client public key
+  3 crear un plug
+
+  ---
+  We should also setup a meeting around gsuite groups, so we can map users back to IAM roles. you can create the groups on your end as you are the gsuite admins, and then we can do the IAM mappings in Terraform. We can provide help/guidance as needed. That way we don't just have to keep adding one-off perms and individual user accounts
+
+  hostname: com-dev.cerescode.com
+
+  <payment_host>/webhooks/v1/coinbase
+
+  - [x] updaste storefront app id in specs
+  - [x] payment ingress
+  - [ ] payment nodule
+  - [ ] fix de runtime mal y bien
+
+  - precio cero valido?
+    si es asi no llamar a coinbase
+  - load testing plan
+    licenses gatlin being used by other products
+
+  1.0.1
+
+  fix nodule so it can be smarter and allow runtime updates
+  mover vasp sdk to cap client in fortex_utils
+  remove drop item model
+
+  - [ ] coinbase account
+  - [ ] permisos de bucket para blueprint
+  - [ ] creacion de cuentas desde el storefront
+  - [ ] creacion de blueprint
+  - [ ] setear el precio
+  - [ ] mint
+
+  - incorporate state transitions and batch transfer once its in
+  - howards no compute key pr, will require resampling the parameters
+
+  -
+    Bueeeno, le saqué la ficha a lo que estamos haciendo mal en el MPsvc respecto a los drops que comentaba hace un rato:
+    - el endpoint que existe para añadir un item a un drop permite ponerle un precio al item.
+    - Pero ese endpoint quedó viejo al haber eliminado el modelo que permitía persistir el precio unitario de un item.
+    - Entonces ahora no estamos persistiendo el precio de ese item al activar un drop,
+    - y por tanto, al listar los items de un market despues no aparece porque no tiene precio seteado.
+    - Propuestas:
+    - 1.
+      - Eliminar la opción de ponerle un precio a un item que se añade a un drop,
+      - y seguir manejandonos con el endpoint que permite poner un precio al blueprint.
+    - 2.
+      - Aprovechar a cranear la proxima etapa donde queremos que los items tengan su propio precio,
+      - y diseñar el modelo que permita eso.
+    - 3.
+      - Bienvenidas otras ideas (edited)
+    - Perfecto Flor, yo en principio iria con la opcion 1 hasta que tengamos el modelo con precio por item, y dejemos por ahora solamente el precio general del blueprint
+
+### 2021-09-14
+  https://www.express-gateway.io/
+  https://konghq.com/kong/
+  https://auth0.com/
+  https://www.google.com/search?q=datadog+elixir+apm&oq=datadog+elixir+apm&aqs=chrome..69i57.3740j0j7&sourceid=chrome&ie=UTF-8
+  https://linkerd.io/
+  https://newrelic.com/
+
+   500 anna
+  1000 francois
+   750 leopold
+   750 mrpimm
+
+### 2021-09-20
+  - revisar endpoints que ncecesiten paginacion
+  - levantar todos los servicios de un saque
+  - define smoke tests para correr con cada deploy
+    e.g setear el precio de un item,
+
+  - [ ] document devops
+        document how evnironment variables work
+        document how nodule variables work
+        document how the system interacts with fc devops env vars
+  - [ ] tickets: update docs
+  - [ ] ticket: blockchain process status endpoint
+        how many jobs
+        stats for every job
+        stats for every genstage
+  - [ ] ticket: mint computation time  vs mint process time
+  - [ ] batch mint
+  - [ ] ticket: check toolchain version for rust and erlang/elixir, lock
+  - [ ] ticket test dynamic memory pr by raymond
+  - [ ] ticket: make the content server not create the bucket, but create folders in a previously created bucket
+  - [ ] ver que onda con mint drop
+        aclarar que hace un drop
+        aclarar si es necesario el modelo de drops y drop items
+
+  - [ ] ver que hace falta para meter a un cliente nuevo, en general
+        ver como haria un cliente nuevo para integrar su storefront
+
+  - [ ] eliminar el portal, la funcionalidad que esta ahi, deberia estar en algun servicio nuestro
+  - [ ] ticket for: mock the content server by serving  local folder as static content
+
+  - [ ] integracion pps!!!
+
+  - [ ] sacar rescues y loggear mejor en el marketplace
+        cuando este mergeado lo mio del AdminSvc y MarketplaceSvc, quisiera tratar de deployearlos a ver si sigo pudiendo dsps de todas las vueltas con el bastion
+        te chiflo igual Aki para tener un green-light antes de hacerlo
+
+  - [ ] docker image for running the migrations
+        challenge: port forward, how to connect the docker container to the database
+        maybe set up as a k8s job
+
+  - [x] admin
+        CAP -454 ingress
+        move functionality admin cli to service
+        create a fixture for default cap id
+        jwe auth with a forte admin app id
+
+  - [x] CAP-451 foxtex
+  - [x] CAP-452 make sure all price fields in apis and models are integers and have a currency
+  - [ ] CAP-453 test large payloads including many items
+
+  - [ ] ticket: error de diego blueprint server response handling of blockchain mint error
+
+  - [ ] revisar lo de ramiro, coordinar con exchange
+
+  - [ ] ticket: encriptar la priuvate key en wallet service, O BIEN que no lo guarde y que quede en la blockchain service
+
+### 2021-09-27
+
+  hay una aspecto que estoy plasmando en este momento, pero la anticipo aca:
+
+  hay tres tipos de accounts (admin, developer, user), cuando haces login el account service te da el JWT token que despues acarreas de un servicio a otro, el cual va a incluir la info necesaria para autorizar.
+
+  mi pregunta es: deberia centralizarse en el account service el mappeo de tipo de cuenta a acciones, o cada servicio debereia tener su propia definicion?
+
+  e.g. un developer puede crear un blueprint.
+  deberia hacer login y el
+
+  - [x] transfer
+    - exponer funcionalidad de transfer en nft
+    - exponer funcionalidad de transfer en fortex_aleo
+    - meter endpoint en blockchain para transferir un conjunto de items de una wallet a otra, haciendo el mismo de control de progreso que hace mint
+    - el wallet service, en el handler del transfer, tiene que avisarle al blockchain service
+      en un principio, el wallet service inicia el job, y se olvida
+      despues, podemos manejar el caso de fallo y la notificacoin mejor
+
+      PAYMENT -> MARKETPLACE "se vendio item A"
+      PAYMENT -> WALLET "transfer item A de wallet B a wallet C"
+      WALLET -> BLOCKCHAIN "transfer tokenid A de address B a address C"
+
+  - improve payment item description sent to include all item descripotions
+
+  - blockchain service: que pase si un evento se marca como en proceso, se tira abajo el pod? queda para siempre en ese estado
+
+  - [x] eliminar private key de listing wallet
+  - [ ] encriptar la private key
+
+  - [ ] endpoint for corey
+        The inventory call is slightly more awkward to debug as the portal service is making multiple calls to build up the response. It gets the wallet items from the wallet service, then hits the blueprint service to get relevant blueprint data for each wallet item. I've updated the endpoint to return the JSON it gets from any of those calls if they fail to deserialize. Hopefully that catches the culprit and I can have live data to debug with.
+
+  blockchain
+    - lock database row to ensure no two blockchain pods are working on the same contract
+    - expose job information to allow manual checking of broken tasks
+    - logic to restart a task manually
+
+    - move rpc code to fortexaleo 
+    - 
+
+
+  escrow
+    - multiaz and hot standby for redis
+
+  blockers to launch
+  - getting analytics
+  - initial loadtesting
+    dashboards for cpu mem and io usage per pod
+    database tools
+  - moving on to production servers
+
+     martina
+
+  retro
+  - lots of doc tasts at the end, preferably do the documentation during the task
+  - fortex utils is growing a lot, start treating it as a component
+  - keep group calls when we have to design features that involve many services
+  - regarding tests were pushed to the end 
+      - mostly in aleo, talk to joaco about unit tests 
+
+  https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+
+  TRUESHOT PRODUCT 
+    600.000 users
+    80k concurrent
+    10k unique items
+
+    - rso: putting rso before this sire, the you create your account, but rso is not the thing htat determines your login, its more a linking of the account system, we can assume that every user that comes in has an rso accounting, then you can register, well have birthdates, we dont need to store permanently, more of a client side over 18 , clients can cheat but were ok with that.
+    - internal tracking info: analytics is good enough, 
+    purchase history miught need more than analytics, but the focus is CSR 
+    - we need to have runbook son how to track that data down 
+      if you have a problem wiuth e.g. someone cant log int, what to do 
+    - big one: drop event: users will join a queue, based on that queue when they can come into a store
+      because we have rso required, people will be able to join the account but we need logic associtated whether they can enter the queue or not 
+      iit might be that when  you go to enter the queue, it checks your game level, 
+      criteria will be tbd, but based on info obtained from rso 
+      have we sttled on a queue system yet?
+    - big one: storefront, how tghey access this component 
+      what they want is this idea that you have buckets of things, but each of these things are unique pieaces, 
+      think of it like a deck of cards, you are paying or the optino to buy the top card on that deck 
+      its not that they are all listed in the market, we fill a bucket up, adn when they buy it
+      no blind, just client side visualization
+      what they wont know is which exact nft they purcharse
+
+  LOGS
+
+    The query syntax
+
+    This section discusses how queries are structured and how matching is performed.
+
+    Queries are expressions that can specify a set of log entries from any number of logs. A query is a Boolean expression that specifies a subset of all the log entries in your project.
+
+    You can build queries based on the following four dimensions using the logical operators AND and OR:
+
+        Resource: For more information, go to resource.type.
+        Log name: For more information, go to logName.
+        Severity: For more information, go to severity.
+        Time range: For more information, go to timestamp.
+
+  LOAD TESTING
+  - [x] !! talk to dominic and kirk black on optimizing rave api usage, 
+        get the endpoint docs, to reduce the calls made to rave, 
+        the one with less write load, if the token is favlid, and includes an expiration date. 
+        https://forte-io.slack.com/archives/C01TJPXCYQ0/p1635530407005200
+        https://forte-io.slack.com/archives/C02HEFHNZFZ/p1635617697225900
+
+### 2021-11-17
+
+  How do I retrieve the requirements for qualifying to join a Drop Event (as well as if the user qualifies)?
+  - by trying to join the queue, which is still an unavailable endpoint
+  questions:
+  - which are the requirements?
+  - how do we get the information to check the requirements?
+  - how do we communicate the requirements back to the frontend?
+
+  customer 
+  - ftx intregation
+  - auction
+  - kyc
+  - user to user auctions
+
+### 2021-11-23
+
+  tomi 
+  - mismas dos cosas 
+  - remover colas de pubsub 
+  - temitas de permisos nuevos (antes poder deployar, etc, solucionados, ahora prueba local no puede porque necesita conectarse a pubsub desde su maquina, le va a pedir ayuda a javi, no tiene accceso a la seccion de pubsub)
+
+  mati ono 
+  - smoke test, cronjob no en k8s sino en bastion para que reinicie db de dev todas las noches
+  - sabado no adaba datadog, ahora esta reportando,
+  - espaciaron los smoke tests cada 2hs, tomando metricas 
+  - canal para reportar el estatus del smoke test 
+  - transicion a web
+
+  gonza 
+  - ultimos dias integrando aap con admin 
+  - se encontraron con algunos problemitos, blueprint tarde mas que antes, haciendolo asincronico 
+  - viendo la maquina de estado para que avance de manera independiente 
+
+  rodri 
+  - flor estaba a punto de terminar un tema de wallet con errores de blockchain, revisando el PR
+  - rama con mailbox, y mensaje de 
+  - milton termino de sacar los ping endpoints
+  - tyny diego santi viendo problemas de mock payment y rediseño de locking
+  - sentry en fortex utils
+
+  joaco 
+  - termino de cifrar los secretos de aleo, habria que agregar las claves y deployar 
+  - matias dependencia de rocksdb, medio trabado 
+
+  DOCUMENT
+    I think the priority is:
+    High level Architecture Review
+
+    - We interact with the blockchain for minting, transacting, and
+    - How we store wallet key pairs
+
+    - [x] Rough architecture
+    - Any security measures taken with API security or data storage
+
+    2. 3rd party service integration (but not named)  stuff like "3rd party Identity Management" or "3rd Party Queue Services"
+    doesn't have to get into details on what they are and how they work.
+    4:48
+
+    3. High infrastructure Architecture.  so this would be stuff like how our GCP Kube environment is setup, how we have the Load balance in place and Google Shield, Only allow access to port 443, etc
+
+    With those 3 things we should pretty much cover what we need
+    4:49
+    After that if we have time it would be good to talk about things like Data Storage beyond what is covered in the "High Level Infra" docs like "Connection to Postgres/Redis"
+
+    But things like what data we store and how we store it is more like a cherry on top at this point
+
+    https://forteio.atlassian.net/wiki/spaces/AE/overview?homepageId=1083966060
+    https://forteio.atlassian.net/wiki/spaces/AE/pages/1216086130/1+Architecture+Design
+    https://forteio.atlassian.net/wiki/spaces/AE/pages/1199734869/DevOps
+    https://forteio.atlassian.net/wiki/spaces/PTS/pages/1296105473/Project+Trueshot+Production+Readiness+Checklist
+
+  GCLOUD
+    Not setting default zone/region (this feature makes it easier to use
+    [gcloud compute] by setting an appropriate default value for the
+    --zone and --region flag).
+    See https://cloud.google.com/compute/docs/gcloud-compute section on how to set
+    default compute region and zone manually. If you would like [gcloud init] to be
+    able to do this for you the next time you run it, make sure the
+    Compute Engine API is enabled for your project on the
+    https://console.developers.google.com/apis page.
+
+    Created a default .boto configuration file at [/home/igaray/.boto]. See this file and
+    [https://cloud.google.com/storage/docs/gsutil/commands/config] for more
+    information about configuring Google Cloud Storage.
+    Your Google Cloud SDK is configured and ready to use!
+
+    * Commands that require authentication will use igaray@forte.io by default
+    * Commands will reference project forte-nonprd-cap-001 by default
+    Run gcloud help config to learn how to change individual settings
+
+    This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
+    Run gcloud topic configurations to learn more.
+
+    Some things to try next:
+
+    * Run gcloud --help to see the Cloud Platform services you can interact with. And run gcloud help COMMAND to get help on any gcloud command.
+    * Run gcloud topic --help to learn about advanced features of the SDK like arg files and output formatting
+
+
+    Your current project is [forte-nonprd-cap-001].  You can change this setting by running:               │
+      $ gcloud config set project PROJECT_ID
+
+### 2021-12-17
+
+  - quiero ver en que anda cada equipo
+
+  - quiero ver que hacer para acelerar el equipo de loadtesting, entiendo que ahora esta tomi, pero posiblmente estaria bueno poner o a roni o tobias a aprender y contribuir desde ahi. tiene que correrse un load test por dia.
+
+  - hay que empezar a pasar en limpio el docu de requerimientos v5 a confluence, (si bien supuestamente Lois nos lo va a pasar en limpio hay que tener un lugar donde empezar a hacer diseño y descomposicion de tareas)
+
+  - me gustaria que @Martin Paulucci me de una mano con lo siguiente: quiero asegurarme que todos los PRs esta semana pasen los criterios de tener tests, de tener tests de integracion, y de tener documentacion.
+
+  - a nivel mas macro, el foco de esta semana, ademas de v5, tiene que ser meter esta idea en la cabeza de todes:
+    - cuando se corre un test de CI y falla, o cuando se corren los smoketests y fallan, o cuando los load tests indican error, se crear un bug ticket con la data y pasa a ser prioridad
+    - si los logs y los dashboards no dan suficiente informacion para poder tomar una determinacion de porque surgio el error, tienen que hacerse un cambio metiendo mas logs y/o metricas
+    - smoke y load tests diarios con su planilla de errores indican la salud del sistema, y esos numeros tendrian que mejorar semana a semana.
+
+  - ni bien tengamos los diseños de los features nuevos, entre mañana y pasado, y se pase a implementarlos, tiene que poder compararse el sistema antes y despues. si es manual no importa, luego se automatiza
+
+  - Las pautas mas metodologicas que pasaste las puedo ir metiendo en confluence como parte de los procesos del equipo
+
+  - El desglose de v5 lo podemos ir haciendo sobre la copia que hizo chaja del documento
+
+### 2021-12-20
+
+### 2022-01-26
+
+#### Lois Wang  9:10 PM
+
+  I chat with Tomas just a few minutes ago and follow up on the situation on today’s PR error/ debugging experiences with Wen and Sam from NL team.
+  here is my recommendation to him and hope this align with you all for the future day to day. ( principle should apply to all collaborated teams)
+  Action item:
+  Lois is going to support the waring/ alert access granting with all development team.
+  ** seems like NL does not have every alert tools, Core team have access to. we will improve that asap. I lost track on everything we use.:sweat:
+  I’m waiting on Tomas to share a list with me. may need some help from @Martina Cantaro tomorrow.
+  When we run into major error that require debug or roll back, CAP team should feel free to call out the individual you need to join the debug process and also set up a clear time urgency respond. or CAP team should be able to make the judgement call either roll back or fixes and move forward.
+  Often the impact level is hard for other team to see, and it’s fine that Chaja or Aki help to drive those decision. we need to move forward with the best possible way. I don’t think rolling back the code sometimes is bad.
+  even if that means the QA site need to wait or some other CAP function can not be ready for a day.
+  regarding to clear time urgency respond:
+  sometimes letting the team wait on back and forth on slack respond can be frustrating and ineffective.
+  if the team need to move forward in the next 30 mins, just call it out. and also communicate what changes will be made. It really help others to know what kind of action item they can provide or accommodate..
+  it happens sometimes other developers are in meetings or other urgent work they may not be able to respond or participate debug.  it’s better just allow the communication to be clear, and not leaving the rest of the core team hanging or blocked.
+  it’s okay to use @here to communicate major update/ code debug requirements.
+  Hope you all have a good night, we can chat more tomorrow if you have other thoughts.:woman-bowing:
+
+#### BCS QUESTIONS
+  - why is the proxy service separate from the api service?
+  - does the proxy validate the signing? no
+  - application registratoin
+  - standard webhook response format
+
+  api service is the value
+  it is where we need to focus on features
+  restful apis from internal o r external clients enabling conducting the transactions on blockchains
+  developer empowerment, withouth having to understand signing, ect
+  it will reach out to wallet to acquire signatures, etc 
+  package it up and hand it off to the event processor
+
+  somewhere in 
+  async apis for handling volume
+  validating the payloads to make sure they are legitimate
+
+#### ALEO EXPLORER
+  - environments, mover a qa
+  - remember to flip the switch on aleo explorer netlfiy so that its public
+
+#### LOIS 1:1
+  NORTHERN LABS
+    - better collaboration by splitting tasks finer and helping with integration 
+    - backchanelling
+    - empowering devs to speak out
+    - guidelines and standargs}
+
+    wagner
+    - better vertical, not horizontal 
+    - leaders expectations
+    - sabe que hace quien cuando pero no traduce a feaures o requerimientos, no resume
+    - shy, doesnt push back
+    - be comfortable in his own skin
+    zero buffer
+    lois does translation between differentex 
+
+    im here to support you guys to rolloff
+
+#### RAY 1:1
+
+    - cap-bcs transition and overlapping reqs
+      with perfect information we could do it, just do the best we can
+    - wallet and A&A
+    - wagner
+    - bridge
+
+  - CHAJA Some of the things I’ve seen in the few months I’ve been in the company
+
+  - We are in a constant state of fear of not meeting deadlines. 
+    Deadlines are very aggressive and require devs to make hacks that end up piling up tech debt. 
+    When the deadline actually comes (a lot of the times it is postponed), 
+    a lot of the features that were required are not used/shown. 
+    We’re constantly in ‘sprinting’ mode and have little time to reflect and look at the big picture.
+
+
+    - more specific about whayts causing crunch
+    moving too slow becaus eof confusion or communication?
+    not enough time for homewokr?
+    detachment from clients or reqs?
+
+    - more specific about who is impacted
+    e.g. people are burning out, is everyon at 110 or three people carrying the load?
+    the different changes how to solve it
+    if the team is always behind and we crunch const to keep up ...
+
+    - more detail on tech debt 
+
+    the more detail we give the better answer we get 
+    tech debt is too general 
+
+    - moving goalpoast
+    in a system and
+    change habitd
+    the crunch moves up, keep doing that
+    the crunch has to be at the decision makers
+
+    the tech debt is more than you know
+
+  - There seems to be a culture of micromanaging that burns out devs. 
+    I want a culture where devs are empowered, not pawns but players. 
+    Were they get high level objectives and have the ability to decide how to pursue them.
+
+  (This might be more CAP specific though)
+
+
+
+  cap product ownership, harold will help, more being identifiied 
+
+#### COMITE
+
+  Tenemos reunión de Comité en un ratito. Propongo temario (agreguen lo que quieran):
+  @chaja @aki @unbalancedparen
+  Contexto y respuesta del mensaje rosqueril que mandó Chajá hoy
+  Comienzo de Blockchain, cómo viene la relación con todos (Chris, Ray, Dale, Jan-Eric..) y situación Wagner (cómo lo podemos ayudar)
+  (idea) Excusas para generar una llamada Chajá/Ray y que tengan más relación antes de que Ray se vaya de CAP?
+  Cómo hacemos cuando CAP se quede sin product owner de nuevo en el corto plazo?
+
+### 2022-01-28
+
+#### JAN ERIC
+  - cicd for trunk based trunk-based-development
+  - kafka 
+  - start out with a monorepo and one service and break 
+  - going live conditions:
+    - separet deployments units for api, event processor, 
+  - tdd
+
+  get closer to cap 
+  get a migration story 
+
+#### JAVI Y BRIDGE
+
+#### WAGNER
+
+#### BCS PLANNING 
+
+    Discussions/Alternatives/Approvals for workflows:
+    Git: PR checklist (e.g. service labels, JIRA issue in title, etc.)
+      - set up components 
+      - customer facing documentation github label
+    JIRA: Intake templates for new story/task/bug
+      - look into that
+    Best practices writing PRs, and tickets
+      - pr template, team label, check list, commit history 
+    Development process: Trunk-based development w/ CD
+      - circle ci 
+      - harness 
+
+  - [ ] bcs team and repo setup
+  - [ ] reunion lunes conlorenzo sobre bar 
+
+  - #### trueshot planning
+  - juan y wagner
+  - mati fachal
+  - maci
+
+FORTE TODO
+
+LAMBDA
+
+COMPLIANCE PTI
++ [x] sardine secrets
++ [ ] documentation
+    - section on pti compliance requirements
+    these things are stored, these are not, data in transit 
+    database encryption (matt)
+  - two different ownership aspects: 
+    - product 
+    - engineering 
+  - pti separate entinty spun up as a sister company of forte to set up compliance aspects 
+    a pro forma company for that purpose
+    cliel reports to josh
+    legal is very unclear about a number of things 
+    dont want to risk things that might jeaperdize the money transfer license 
+  - the remaining questions are 
+    - does pti need to host those services or can forte host in separte infra ?
+      nobody has the answer to that right now 
+  - on a product level, they (PTI) are taking ownership of anything money related 
+  - what about the engineering aspects?
+    - access 
+    - dev process 
+    - monitoring 
+  - medium to long term path of transfer 
+  - exchange will be using compliance 
+  - northern labs will be busy with other stuff
+  - no way to do the transfer before exchange goes live, or trueshot 
+
+V5
++ [x] review document
++ [ ] tdd + task breakdown
+      https://forteio.atlassian.net/browse/CAP-1444
+
+OPS
++ [ ] staging env setup and deploy
++ [ ] prod deploy
++ [ ] AES secrets: upload secrets to dev env and handoff aes blockchain key generation and upload to Matt
+  igaray@aki-mba priv % git checkout -b cap-1063-encrypt-aleo-keys origin/cap-1063-encrypt-aleo-keys
+  Branch 'cap-1063-encrypt-aleo-keys' set up to track remote branch 'cap-1063-encrypt-aleo-keys' from 'origin'.
+  Switched to a new branch 'cap-1063-encrypt-aleo-keys'
+  igaray@aki-mba priv % ls
+  gettext repo  scripts
+  igaray@aki-mba priv % cd scripts
+  igaray@aki-mba scripts % ls
+  key-gen
+  igaray@aki-mba scripts % ls -la
+  total 8
+  drwxr-xr-x  3 igaray  staff   96 Nov 30 18:32 .
+  drwxr-xr-x  5 igaray  staff  160 Nov 30 18:32 ..
+  -rwxr-xr-x  1 igaray  staff  179 Nov 30 18:32 key-gen
+  igaray@aki-mba scripts % ./key-gen 
+  sW8prd+GbkD9tjk1HvHxJukcdCGxFaJOD0dfsuIWwuc=
+  igaray@aki-mba scripts % 
+  forte_qa.json:
+  {
+    "cap-blockchain-svc-aes256-keys": "sW8prd+GbkD9tjk1HvHxJukcdCGxFaJOD0dfsuIWwuc="
+  }
++ [ ] admin github
+- [x] sentry project setup and secret upload to all services
+- [ ] capturar la app de aleo en una seed 
+- [ ] capturar la app de admin en una seed
+- [ ] capturar la app de whitelabel en una seed
+
+PROCESS
++ [x] announcement
+      estimacion y testing 
+      planning 
+      demos 
+      revision de prs
+- [ ] JIRA bug reporting template
+- [ ] update PR template in all repos to include docs and integration tests
+
+COMPLIANCE
+- [ ] compliance datadog
+- [ ] compliance app register lockdown
+- [ ] compliance multitenancy
+
+WHITELABEL
+- notes
+  a lot of stuff is optional, up to our preferences
+  react project in typescrupt, mobx global state, material ui available, weve been removing that returning straight jsx and vanilla css
+  third rail has been working html 
+  one major pieace we really want, to get the string literals out of the project
+  cap storefront folder , docker compuse build and up, site runs on 5001, set to point to QA, .env file sets env vars in the gitignore, copy the one in development 
+  the entryfile into the dockerfile runs a yanr serving function that does hot reloasing
+  maybe just run nginx 
+- [ ] set up infra 
+- [ ] setting up an app id
+- [x] take a look at the code and do assessment
+- [ ] testing
+- [ ] code quality
+- [ ] documentation
+- [ ] customer onboarding runbook
+
+ADMIN
+- [ ] color by environment
+- [ ] namespace cap entities
+- [ ] if we can pull the item description text and assets into the item listing
+- [ ] remove wallet id column from account wallet item listing
+- [ ] where dzoes the display name come from? remove it
+- [ ] intention is to not use username at all, yes: email, accid,raveid,rsoid
+- [ ] payment search parameters: email , paymentid, unique transaction id generated
+- [ ] payment subsection for chargebacks
+- [ ] if paying with coinbase, record inbound origin wallet
+- [ ] add login history to account profile, player profile record login history, capture ip addres and device, timestamp
+- [ ] deactivate account
+- [ ] list jobs on blockchain service
+- [ ] por cada request en el admin, se hace un get de la data de la aplicacion, buscar alguna manera comoda de guardar ese estado 
+- [ ] epic: rewrite content inside of AAP
+
+API
+- [ ] when a cap application is created, it should be automatically registered in the marketplace and compliance
+- [ ] user sessions in redis, with token expiration 
+- [ ] refresh endpoint to extend token expiration
+- [ ] get all endpoints to use status codes, no text back from API
+- [ ] API auth
+  Aki, me decía tyny recién si estaría bueno revisar cómo finalmente va a quedar la interacción de Corey con api 
+  (hoy lo está usando con JWT? O va contra /test) terminar de definir eso creo para encarar los cambios en api.
+
+ACCOUNT & RAVE
+- [ ] follow up on letting rave know ahead of time the drops and traffic spikes to deal with the cold start, either manually, and or via api, also for ci cd automated load tests
+- [ ] set up account to get rave url from env var and add prod cluster
+
+MARKETPLACE
+- [ ] now that drop activation is gone from backend logic, payment should check whether an item is in a drop whose timestamp is in the future
+
+PERFORMANCE & LOAD TESTING
++ [ ] load test on production
+- [ ] metricas de cuanto esta tardando rave en responder y tasa de error
+
+TECH DEBT: DOCUMENTATION
++ [ ] environment config values & dependency tracking 
+      https://forteio.atlassian.net/wiki/spaces/AE/pages/1292107817/External+dependencies
+      https://forteio.atlassian.net/wiki/spaces/PLAT/pages/303989311/Partner+Status
+      https://forteio.atlassian.net/browse/CAP-1260
+- [ ] https://forteio.atlassian.net/browse/CAP-1384
+- [ ] https://forteio.atlassian.net/browse/CAP-1380
+- [ ] https://forteio.atlassian.net/browse/CAP-1381
+- [ ] https://forteio.atlassian.net/browse/CAP-1379
+- [ ] https://forteio.atlassian.net/browse/CAP-1389
+- [ ] openapispex para server api
+- [ ] openapispex at least for api svc 
+- [ ] document fortex_common_devops
+- [ ] document fallback controller
+  CapUtils.CapActionFallbackSetup, CapApiSvcWeb.FallbackController
+  hasta ahora,todo los controllers tenian un rescue porque la idea era handlear eso enel fallbackcontroller
+  la idea es que el CapActionFallbackSetup recibe el fallbackcontroller
+  eso hace que todas las cosas que no devuelva una conn vaya a parar al action fallback y trata de resolverlo ahi
+  eso es parte de phoenix
+  aparte de setear el action fallback, define una funcion action que en phoenix por defecto no hace nada, solo redirige los parametros y llama la action que llamas con el reouter
+  en fortex_utils lib/cap/cap_action_fallback_setup.ex
+  se hace lo mismo, solo que ademas, se agrega un rescue
+  esto se hace para que todos los errores y excepciones caigan en el fallback
+  aparte setea el cap_render, recibe la conn status y view y resultado uqe mandas a la view
+  busca el view model del controller
+  el fallback controller de api tiene la funcion call y define los casos que quiere manejar esepecifcamente ese servicio y tiene una ultima cal generica para redireccionar a fortex_utils lib/cap/cap_response_handler.ex
+  aca handle_response responde a cada cosa, 
+  COMO FUNCIONA NODULE
+  nodule carga
+  levanta el manager
+  el manager obtiene el token del url para el service account
+  USA GOTH
+  hace el load config para todas las apps, para todas las variables
+  el set env hace fetch de cada valor y la setea en el entorno
+  COMO FUNCIONA KANE
+- [ ] how to profile elixir and rust code
+- [ ] add queue service documentation 
+      https://api.queue-fair.net/swagger/
+- [ ] add mailbox service documentation
+- [ ] document that dev.exs is only for local development
+- [ ] documenta repo standard
+- [ ] move api and arch md files to individual services, and modify cap_docs github action to pull them on build along with 
+- [ ] document how to use datadog
+- [ ] document how to use sentry
+- [ ] document how the action fallback workfs
+
+TECH DEBT: COMMON
+- [ ] remove utils as central point
+- [ ] define a process to version all services so they don’t break on updates, and also doesn’t put us in a situation too far removed from continuous integration, in which we have to update all services in lockstep
+- [ ] appid in all tables and queries, and possible base schema enforcing this in the query, and another whcih doesnt 
+- [ ] Load shedding mechanism
+- [ ] correct timeout reporting and retry handling across services
+- [ ] evaluation of backpressure mechanisms
+- [ ] code review across all services to make sure we are not using ecto delete to delete data from databases while running the services (not migration)
+- [ ] design a plan for future proofing greybox site and preparing the system for multiple customers
+- [ ] multiproduct reusability, multitenancy, second, third customers
+- [ ] transition plan for LA2 
+- [ ] incorporate the new services, aap, mailbox, queue into standards
+- [ ] kill the portal service
+- [ ] test checklist for whole team, cap greybox
+- [ ] figure out if cap_mocks can be removed, or at least, renamed to _svc
+
+TECH DEBT: API
+- [ ] server to server api
+- [ ] lock down admin api with auth, and take into account the smoke tests 
+- [ ] General API Review
+- [ ] mailbox api cleanup
+
+TECH DEBT: ADMIN
+- [ ] flor y admin github
+- [ ] delete app and cleanup
+
+TECH DEBT: AAP
+- [ ] reimplement the content service in aap, and kill it
+
+TECH DEBT: PAYMENT
+- [ ] payment: periodically clean up workflows on checkout
+
+TECH DEBT: BLOCKCHAIN
+- [ ] Guardar transition_ids y mensajes de una manera razonable. En este momento para cada transaccion se guardan todos los transition_ids y los mensajes como un json encodeado muy falopa, lo hice asi para armar rapido el endpoint que querian los de aleo para el explorer y porque no me quedaba claro la mejor manera de armarlo; de todas maneras hacer el cambio no es dificil en terminos de migrar los datos que ya estan. Sospecho que la idea va a ser tener una tabla de transiciones y otra de mensajes, pero hay que mirarlo bien.
+- [ ] Agregar tests como la gente. Teniamos un test que hacia todo el flow hasta el minteo, pero despues cambiamos a pubsub y agregamos el transfer y demas y no tenemos nada. Quiero tener un test que haga todas las operaciones de punta a punta, pasando por pubsub y redis, etc. También alguno que testee que el lock funciona bien
+- [ ] Hacer que el codigo de rust sea stateless posta. Esto seria basicamente mover el codigo que hace la request rpc para conseguir los commitments de la transaccion previa a elixir. Implica modificar un poco el codigo en rust.
+- [ ] https://forteio.atlassian.net/browse/CAP-1042
+- [ ] https://forteio.atlassian.net/browse/CAP-1112
+
+TECH DEBT: OPS & INFRA
+- [x] cdn services, no nginx
+- [ ] proponer cambio en nodule & FCD para secretos globales
+- [ ] multiple dbs por service
+- [ ] fix the database migration story
+- [ ] migrate all dev, qa, and staging envs to arcane-agnostic domains 
+- [ ] what are these projects?
+  cap-dev-service-account
+  forte-cap-319117
+  forte-diem-local-ortiz
+  forte-nonprd-cap-001
+  forte-nonprd-compliance-001
+  forte-prod-cap-002
+  forte-prod-compliance-001
+  forte-sb-cap-001
+  forte-vasp
+  jpcenteno-pubsub-1635550411331
+- [ ] define a proper release process with trunk based development
+- [ ] api versioning
+- [ ] automated integrated testing: run smoke tests on PR commit
+- [ ] codify integration
+- [ ] canary deploys
+- [ ] reduce namespacing
+- [ ] ansible replacement
+- [ ] host private hex registry
+- [ ] get rid of aki deploy bot: have cloudbuild announce deploys on channel
+- [ ] github / gitlab repo template for cap svc
+- [ ] github / gitlab repo rules with terraform
+  - branch protection rules
+
+TECH DEBT: FRONTEND
+- [ ] make little alchemist use the api svc
+
+UNSORTED
+- [ ] payment testing 
+  - [ ] curls to api svc: how to generate a payment that will be processed by checkout
+  - [ ] set up dev and qa envs with checkout sandbox
+- [ ] mailbox+email notif on account creation
+- [ ] queue join qualification info from RSO 
+- [ ] check queue token verification
+- [ ] rave prod cluster
+- [ ] martina jira review
+- [ ] general secrets and environments review
+- [ ] ver uso indices en modelos
+- [ ] loadtesting: revision de apis, content service 
+- [ ] sacar genservers
+- [ ] document load testing process and analysis
+- [ ] move all dev, qa, and staging service ingress domains to arcane.forte.io
+- [ ] relax branch protections
+
+immediate
+- [ ] https://forteio.atlassian.net/browse/CAP-982
+- [ ] https://forteio.atlassian.net/browse/CAP-1045
+- [ ] https://forteio.atlassian.net/browse/CAP-1123
+todo de aki
+- https://forte-io.slack.com/archives/C026LRKLLJ0/p1637790791372800
+- https://forte-io.slack.com/archives/C027YJ91BB4/p1637777401126100
+
+longterm
+- LSA
+- multitenancy
+- trueshot outside of lsa and top priority
+  anything new at some point anything that can be shared be developed as a baseline
+- testing: your own e2e tests, at some point a team of QA devs will come to help
+- automated intergration tests
+- canary deploys
+
+ROLES AND PERMISSIONS
+  - forte admin = 
+    - can do anything and everything
+  - app admin = app creator + app csr
+    - 
+    - manage permissions for other app users
+  - app creator (mint, marketplace)
+    - can interact with the AAP
+    - can mint
+    - can edit marketplace items and drops
+  - app csr (accounts, wallets, items, payments, transactions)
+    - can access 
+  - enduser
+    - can list marketplaces and purchase items, and list their wallets
+    - cannot access admin site
+
+
+---
+BCS
+
+  NOTES
+    proxy routing caching
+    several 
+    dom
+    ilp
+    20 engs
+    who are the people
+      aki, javi, joaquin, mati, 
+    pure json rpc router-proxy
+
+    challegnes
+      much more secure and documented software development process
+      use structured templates for bugs
+      document meetings
+
+    education, blockchain and elixir
+
+  TODO
+  - [ ] CAP tech debt review
+  - [ ] user stories extract questions
+  - [ ] refine user stories
+  - [ ] write initial BCS TDD to get more questions
+    - [ ] decide on initial services: api, events, sample, wallet
+  - [ ] set up scaffolding tasks
+
+  CODACY
+  - set up coverage
+  - set up the slack integration
+  - maybe set up jira integratrion
+  - get some code into the bcs repo
+  - see about getting custom credo checks
+
+  Initial teams setup
+
+  Team 1
+    @Inaki Garay(Lead) 
+    @Joaquin Centeno 
+    @Milton Scuderi 
+  Team 2
+    @Jan-Eric Duden (Lead)
+    @Bruno Ripa 
+    @Lorenzo Lopez 
+  Team 3
+    @Javier Chatruc (Lead)
+    @Matias Fachal 
+    @Gabriel Bosio 
+
+
+    Lauri
+
+  - goals: ownership, accountability
+
+
+
+  ---
+  no quiero hacer esto, este puesto no es tecnico
+    
+  - rosca constante
+  - promesas
+  - vacaciones
+
+
+  dale
+  matt
+  erik
+  jed
+  dom
+
+  ---
+  - describir el problema
+    cambiar el formato del manifest expuso este problema
+  - charlar con rodri y chaja
+  - crear tickets
+  - hacerlo
+  - comunicar con corey, tomi, check with northern labs
+
+
+
+
+
+  On the frontend, Corey needs to show more info for wallet/marketplace items than he's currently getting. This info comes from the blueprint's manifest, things like `Class`, `Category`, `Tags`, etc. Right now the way the endpoints that list items work is they show these fields coming from the manifest individually for each item:
+
+  def render("list_price_marketplace_items.json", %{marketplace_items: marketplace_items}) do
+      %{
+        "list_price_marketplace_items" =>
+          render_many(marketplace_items, __MODULE__, "item.json", as: :item)
+      }
+    end
+
+    def render("item.json", %{item: item}) do
+      %{
+        "id" => Map.get(item, :id),
+        "wallet_item_id" => Map.get(item, "wallet_item_id"),
+        "container_id" => Map.get(item, "container_id"),
+        "wallet_id" => Map.get(item, "wallet_id"),
+        "status" => Map.get(item, "status"),
+        "token_id" => Map.get(item, "token_id"),
+        "serial_index" => Map.get(item, "serial_index"),
+
+        "price" => Map.get(item, "price"),
+
+        "blueprint_id" => Map.get(item, "blueprint_id"),
+        "base_url" => Map.get(item, "base_url"),
+        "data" => %{
+          "name" => Map.get(item, "name"),
+          "assets" => Map.get(item, "assets"),
+          "description" => Map.get(item, "description")
+        }
+      }
+    end
+
+  but this is very wasteful, as items belonging to the same blueprint share the manifest and therefore all its data. We could separate the info coming from the manifest when the items all belong to the same blueprint.
+
+  {
+    "list_price_marketplace_items": [
+      {
+        "id": "...", 
+        "wallet_item_id": "..."
+        "blueprint_id": 
+      }, ... 
+    ],
+    "blueprints": [
+      {
+        "id": ...,
+        "manifest": manifest del blueprint 
+      }
+    ]
+  }
+
+---
+
+
+- solana bridge: austin, ewan, ray, harold
+- brdige to eth, with chainbridge, oss modified
+- suggested changing to wormhole: vetoed for security issues
+
+- buenas noticias
+  se cerraron varios clientes/juegos grandes
+  y me esta diciendo MJ que esta re de acuerdo con nuestra critica
+  estan buscnado tener un Ray de largo plazo
+  CAP va a ser medio el equipo central al principio
+  y a futuro blcokchain services en 1 ano
+  mientras no tenemos bien andando blockchain services
+  lo clave es que puedan salir a vender y dps mover a polygon
+  chris y el ceo pidierno que @aki y @Javier esten a cargo de blockchain service
+  hay que chequear si eso sigue asi, pero parece que si
+  nos lo van a confirmar, pero viene bien
+  excelente discusion con MJ
+  me dijo que 
+  1) necesita un product owner el equipo de largo plazo
+  2) que sabe que es todo fragil
+  y que esta saliendo a venderse
+  por que si no la competencia le va a ganar a forte
+  y es muy importante llegar antes
+  es una carrera
+  pero le dije que si salimos rapido pero mal
+  va a ser peor
+  me dijo que ella piensa lo mismo
+  y por eso quiere que haya un strike team de 5 a 10 personas
+  que este enfocada en hacer todo mas duro
+  es medio lo que estoy intentando armar con @Tomás Arjovsky que justo ahora esta con covid
+  3) me pidio que le pase documentos explicando los problemas
+
+- repo setup
+- cicd discussion
+
+- milton: k8s, kind y tilt
+- mati: elixir ramp up
+- gabi: leyendo de ethereum, metamask, levantar goethereum, parity, criptography
+
+- [ ] pasear milton por cap CICD
+- 1:1s
+- progress reports
+- talk to dom
+- move to one planning per week and an async daily with the geekbot, and meetings as needed
+
+cost model
+  do you pay for an node, do you pay by transaction, 
+  as we design our system, at some point someone needs to pay our bill
+  if we come up with an infra design thats very expensive per tx, the business needs to go out an get it from the customer
+  at the very least we should have a conversation about
+
+  e.g. if you see you should charge by tx and were previously having fixed cost or per-node cost, moving over to a new cost/payment model it entails architecture changes
+
+  some databases, e.g. bigquery charges per mb scanned, 
+  probably our model could be fixed, but after a rate limit is reached they are cut off
+
+infura
+  some things are offered are purely oss, 
+
+
+rate limiting:
+  general amount of calls being done,
+  another based on time
+  limit by total volume
+
+
+
+
+
+
+
+- what are the differences between ILP and rollups? ask dom
+- sample application idea: arbitrage bot?
+
+
+
+
+
+
+
+
+
+NR
+- pehuen (complicado por burocracia)
+- martin vallone (entraria)
+- pablo brud (lo veo mal)
+
+Forte
+- cap (20 personas)
+- blockchain (6 personas)
+
+Merigo
+- 2 personas, 
+
+Mevaterapia (necesita terminarlo)
+- 4 juniors contratados
+- todo junior pasa por aca al menos un mes
+
+Aleo cliente
+- martin fraga y dos juniors y fede
+
+Tornado Cash
+- herman, pedro, marian (ex equipo data science)
+
+---
+1 chaja necesita mas gente
+2 aki necesita 1 mas
+3 mevaterapia
+
+
+---
+ALEO
+
+- aleohq_nft: rust library
+- fortex_aleo: elixir rustler library
+
+En el readme muestra varias opciones pero quedo la opcion A.
+
+Como levantar un nodo de aleo: pagina de confluence necesita un poco de actualizacion 
+Originalmente estabamos en el testnet1, y salio testnet2 y cambiaron las cosas.
+La mejor forma de empezar es ir al repo de nft y mirar los tests.
+En rpc.rs estan los tests que le pegan a los nodos a traves del api rpc.
+
+En general, llamas una funcion a la que le pasas un estado, las cuales generalmente te devuelven la transaccion y el estado nuevo.
+Ellos le llaman application a un contrato.
+El estado de un contrato/application no se guarda en la blockchain sino que lo guardamos nosotros en la base de datos de cap_blockchain_svc
+Todas as funciones siguen este patron de requerir un estado previo, y devuelven un estado nuevo que se transmite a la blockchain
+
+La unica operacion que no muta estado es la de deploy.
+Hoy en dia no hay nada que pueda mutar es estado porque aleo no soporta on-chain storage.
+
+Un detalle importante es que estas funciones en rust no son stateless, hacen IO a traves de rpc a los nodos.
+Lo ideal seria que las llamadas a la blockchain esten del lado de elixir, y que nft sea bien stateless.
