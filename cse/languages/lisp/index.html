@@ -1,0 +1,915 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>LISP - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../../cse/mathematics/index.html">Mathematics</a></li><li class="chapter-item "><a href="../../../cse/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../../../cse/ai/index.html">Artificial Intelligence</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../../cse/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../../cse/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping</a></li><li class="chapter-item "><a href="../../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages</a></li><li class="chapter-item "><a href="../../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../../cse/compilers/why_inheritance_never_made_sense.html">Inheritance</a></li><li class="chapter-item "><a href="../../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item expanded "><a href="../../../cse/languages/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/ada.html">Ada</a></li><li class="chapter-item "><a href="../../../cse/languages/array.html">Array Languages</a></li><li class="chapter-item "><a href="../../../cse/languages/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../../cse/languages/c.html">C</a></li><li class="chapter-item "><a href="../../../cse/languages/cpp.html">C++</a></li><li class="chapter-item "><a href="../../../cse/languages/go.html">Go</a></li><li class="chapter-item "><a href="../../../cse/languages/haskell.html">Haskell</a></li><li class="chapter-item "><a href="../../../cse/languages/idris.html">Idris</a></li><li class="chapter-item expanded "><a href="../../../cse/languages/lisp/index.html" class="active">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/the_lisp_curse.html">The Lisp Curse</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/racket.html">Racket</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/scheme.html">Scheme</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/common_lisp.html">Common Lisp</a></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/python.html">Python</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/sql.html">SQL</a></li><li class="chapter-item "><a href="../../../cse/languages/zig.html">Zig</a></li></ol></li><li class="chapter-item "><a href="../../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/quality.html">Quality</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li></ol></li><li class="chapter-item "><a href="../../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/incremental.html">Incremental Computation</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/testing.html">Testing</a></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/cli/index.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/cli/git.html">git</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/nix.html">nix</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/nnn.html">nnn</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/rsync.html">rsync</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/sed.html">sed</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/ssh.html">ssh</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/editors/index.html">Editors</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/editors/kakoune.html">Kakoune</a></li><li class="chapter-item "><a href="../../../cse/tools/editors/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/editors/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../../cse/tools/prometheus.html">Prometheus</a></li><li class="chapter-item "><a href="../../../cse/tools/reddragon.html">Red Dragon Draconic</a></li></ol></li><li class="chapter-item "><a href="../../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><a href="../../../hum/history/index.html">History</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item "><a href="../../../hum/literature/index.html">Literature</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/literature/borges.html">Borges</a></li><li class="chapter-item "><a href="../../../hum/literature/dune.html">Dune</a></li></ol></li><li class="chapter-item "><a href="../../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/anapanasanti.html">Anapanasanti</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddha_the_word.html">Buddha: the word</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">Buddha's Way and abortion</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/death_is_a_sacrament.html">Death is a sacrament</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/detachment.html">Detachment</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/dokkodo.html">Dokkodo</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_dalai_lama.html">Emptiness: Dalai Lama</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/yunmens_bright_light.html">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../../music/wave.html">*wave</a></li><li class="chapter-item "><a href="../../../music/classical.html">Classical Music</a></li><li class="chapter-item "><a href="../../../music/jazz.html">Jazz</a></li></ol></li><li class="chapter-item "><a href="../../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../../misc/library/index.html">Library</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/library/wishlist.html">Wishlist</a></li></ol></li><li class="chapter-item "><a href="../../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+<!-- 
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+-->
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="lisp"><a class="header" href="#lisp">LISP</a></h1>
+<ul>
+<li><a href="#online-resources">Online Resources</a></li>
+<li><a href="#racket">Racket</a></li>
+<li><a href="#books">Books</a>
+<ul>
+<li><a href="#basics--general---common-lisp">Basics &amp; General - Common Lisp</a>
+<ul>
+<li><a href="#common-lisp-a-gentle-introduction-to-symbolic-computation-david-touretzky">Common Lisp. A Gentle Introduction to Symbolic Computation [David Touretzky]</a></li>
+<li><a href="#practical-common-lisp-peter-seibel">Practical Common Lisp [Peter Seibel]</a></li>
+<li><a href="#land-of-lisp-conrad-barski">Land of Lisp [Conrad Barski]</a></li>
+<li><a href="#ansi-common-lisp-paul-graham">ANSI Common Lisp [Paul Graham]</a></li>
+<li><a href="#common-lisp-the-language-guy-steele">Common Lisp the Language [Guy Steele]</a></li>
+</ul>
+</li>
+<li><a href="#basics--general---scheme">Basics &amp; General - Scheme</a>
+<ul>
+<li><a href="#structure-and-interpretation-of-computer-programs-guy-steele">Structure and Interpretation of Computer Programs [Guy Steele]</a></li>
+<li><a href="#the-little-schemer">The Little Schemer</a></li>
+</ul>
+</li>
+<li><a href="#other">Other</a>
+<ul>
+<li><a href="#common-lisp-an-interactive-approach-stuart-shapiro">Common Lisp. An interactive approach [Stuart Shapiro]</a></li>
+<li><a href="#loving-lisp">Loving Lisp</a></li>
+<li><a href="#successful-lisp">Successful Lisp</a></li>
+<li><a href="#the-art-of-lisp-programming">The Art of Lisp Programming</a></li>
+</ul>
+</li>
+<li><a href="#advanced--metaprogramming">Advanced &amp; Metaprogramming</a>
+<ul>
+<li><a href="#object-oriented-programming-in-common-lisp">Object-Oriented Programming in Common Lisp</a></li>
+<li><a href="#the-art-of-metaobject-protocol">The Art of Metaobject Protocol</a></li>
+<li><a href="#on-lisp">On Lisp</a></li>
+<li><a href="#let-over-lambda">Let over Lambda</a></li>
+<li><a href="#paradigms-of-artificial-intelligence">Paradigms of Artificial Intelligence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="online-resources"><a class="header" href="#online-resources">Online Resources</a></h2>
+<!--  
+- LISP
+- https://people.csail.mit.edu/jaffer/lambda.txt
+- https://www.reddit.com/r/lisp/comments/1fyk4dn/how_to_integrate_formal_methods_into_a_workflow/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-0/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-1/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-2/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-3/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-4/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-5/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-6/
+  - https://bernsteinbear.com/blog/compiling-a-lisp-7/
+  - https://lobste.rs/s/hwekzx/compiling_lisp_overture
+  - [[http://mitpress.mit.edu/sicp/full-text/book/book.html][Structure and Interpretation  of Computer Programs]]
+  - [[http://okmij.org/ftp/Scheme/circular-list-infections.txt][http://okmij.org/ftp/Scheme/circular-list-infections.txt]]
+  - [[http://pagesperso-systeme.lip6.fr/Christian.Queinnec/WWW/LiSP.html][Christian Queinnec's home page]]
+  - [[http://planet.lisp.org/][Planet Lisp]]
+  - [[http://psung.blogspot.it/2008/06/million-lines-of-lisp.html][A million lines of Lisp]]
+  - [[http://swizec.com/blog/the-birth-of-lisp-a-summary-of-john-mccarthys-original-paper/swizec/5075][The birth of LISP - a summary of John McCarthy's original paper - A geek with a hat]]
+  - [[http://tech.grammarly.com/blog/posts/Running-Lisp-in-Production.html][Running Lisp in Production]]
+  - http://technicae.cogitat.io/2012/12/the-secret-history-of-lambda.html
+  - [[http://technomancy.us/169][in which the reader is invited to engage in comparative lispology - Technomancy]]
+  - http://vitovan.com/lispweb3.html
+  - [[http://web.archive.org/web/20080803193859/http://www.lambdassociates.org/blog/bipolar.htm][The Bipolar Lisp Programmer]]
+  - [[http://web.archive.org/web/20110905203820/www.tfeb.org/lisp/][Lisp information]]
+  - [[http://web.archive.org/web/20110905203820/www.tfeb.org/lisp/hax.html][Lisp hacks]]
+  - [[http://www.cipht.net/2014/08/19/ilc2014.html][ILC2014 summary]]
+  - [[http://www.defmacro.org/ramblings/lisp.html][defmacro - The Nature of Lisp]]
+  - [[http://www.dreamsongs.com/WIB.html][Worse Is Better]]
+  - [[http://www.flownet.com/gat/jpl-lisp.html][http://www.flownet.com/gat/jpl-lisp.html]]
+  - [[http://www.flyingmachinestudios.com/programming/a-taste-of-the-lambda-calculus/][A Taste of the λ Calculus]]
+  - [[http://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html][L-99: Ninety-Nine Lisp Problems]]
+  - [[http://www.lispforum.com/][LispForum • Index page]]
+  - [[http://www.michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/][Lisp as the Maxwell’s equations of software | DDI]]
+  - [[http://www.nhplace.com/kent/PS/Lambda.html?dupe=2014][P.S.: More Than Just Words]]
+  - https://news.ycombinator.com/item?id=16469167
+  - [[http://www.paulgraham.com/thist.html][History of T]]
+  - http://www.psg.com/~dlamkins/sl/contents.html
+  - [[http://www.pvk.ca/Blog/2012/07/03/binary-search-star-eliminates-star-branch-mispredictions/][Binary Search #eliminates# Branch Mispredictions - Paul Khuong: some Lisp]]
+  - [[http://www.reddit.com/r/lisp/comments/368k50/impossible_to_get_started/][Impossible to get started. : lisp]]
+  - [[http://www.restlessdevice.com/e02-lisp-learning-to-think-about-thinking/][E02 -- Lisp: Learning to Think about Thinking | Restless Device]]
+  - [[http://www.rntz.net/post/intuitive-hygienic-macros.html][Intuitive hygienic macros]]
+  - http://www.vagrant-coder.com/articles/english/Lisp-in-3-words.html
+  - [[http://www.winestockwebdesign.com/Essays/Lisp_Curse.html][The Lisp Curse]]
+  - [[http://www.xach.com/naggum/articles/index.html][Erik Naggum comp.lang.lisp archive]]
+  - [[http://www0.cs.ucl.ac.uk/staff/ucacbbl/lisp2dot][lisp2dot]]
+  - [[http://yoo2080.wordpress.com/2014/07/04/it-is-not-hard-to-read-lisp-code/][It is not hard to read Lisp code | Yoo Box]]
+  - [[http://yoo2080.wordpress.com/2014/07/20/it-is-not-hard-to-edit-lisp-code/][It is not hard to edit Lisp code | Yoo Box]]
+  - https://www.lvguowei.me/post/sicp-goodness-data/
+  - https://www.lvguowei.me/post/sicp-goodness-data-2/
+  - https://markkarpov.com/post/lisp-and-haskell.html
+  - https://lisp-lang.org/style-guide/
+  - http://stevelosh.com/blog/2018/08/a-road-to-common-lisp/#consequences
+  - https://twobithistory.org/2018/10/14/lisp.html
+  - http://jakob.space/blog/thoughts-on-lisps.html
+  - http://jmc.stanford.edu/articles/lisp.html
+  - https://t3x.org/lfn/
+  - https://dreamsongs.com/Files/amop-review.pdf
+  - https://applied-langua.ge/posts/zero-feet.html
+    - https://news.ycombinator.com/item?id=33201363
+- PROGRAMMING LANGUAGES / ARPILISP
+  - https://github.com/marcpaq/arpilisp/blob/master/arpilisp.s
+- PROGRAMMING LANGUAGES / CHRYSALISP
+  - https://github.com/vygr/ChrysaLisp
+- PROGRAMMING LANGUAGES / CLASP
+  - http://drmeister.wordpress.com/2014/09/18/announcing-clasp/
+  - http://github.com/drmeister/clasp
+  - http://github.com/drmeister/externals-clasp
+  - http://www.infoworld.com/article/2687997/application-development/clasp-project-fuses-common-lisp-with-c.html
+- PROGRAMMING LANGUAGES / CLOJURE
+  - https://purelyfunctional.tv/guide/clojure-concurrency/
+  - [[http://adambard.com/blog/ten-reasons-to-use-clojure/][Ten reasons to use Clojure/ClojureScript on your next web dev project - Adam Bard and his magical blog]]
+  - [[http://adambard.com/blog/write-friendlier-clojure/][Writing Friendlier Clojure - Adam Bard and his magical blog]]
+  - [[http://adzerk.com/blog/2014/11/clojurescript-builds-rebooted/][ClojureScript Builds, Rebooted | Build Your Own Ad Server]]
+  - [[http://aphyr.com/posts/301-clojure-from-the-ground-up-welcome][Clojure from the ground up: welcome]]
+  - [[http://aphyr.com/posts/302-clojure-from-the-ground-up-basic-types][Clojure from the ground up: basic types]]
+  - [[http://aphyr.com/posts/319-clojure-from-the-ground-up-debugging][Clojure from the ground up: debugging]]
+  - [[http://arrdem.com/2015/08/03/Strictly-Tagged-Clojure-Core/][Strictly Tagged Clojure · f : ⊥ x ⊥ → ⊥]]
+  - [[http://augustl.com/blog/2016/datomic_the_most_innovative_db_youve_never_heard_of/][Datomic: The most innovative DB you've never heard of (August Lilleaas' blog)]]
+  - [[http://bensu.github.io/decomplecting_clojure/][Sebastian Bensusan]]
+  - [[http://blakesmith.me/2012/05/15/understanding-clojure-concurrency-part-1.html][understanding clojure concurrency, part 1 » Blake Smith]]
+  - [[http://blakesmith.me/2012/05/25/understanding-clojure-concurrency-part-2.html][understanding clojure concurrency, part 2 » Blake Smith]]
+  - [[http://blog.8thlight.com/connor-mendenhall/2014/09/12/clojure-stacktraces.html][Clojure Stack Traces for the Uninitiated | 8th Light]]
+  - [[http://blog.alex-turok.com/2014/05/how-to-make-sql-from-clojure-or-my.html][Courage: How to Make an SQL from Clojure or My Macros Kata]]
+  - [[http://blog.cognitect.com/blog/2014/10/24/analysis-of-the-state-of-clojure-and-clojurescript-survey-2014][Analysis of the State of Clojure and ClojureScript Survey 2014 — Cognitect Blog]]
+  - [[http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming][Transducers are Coming — Cognitect Blog]]
+  - [[http://blog.getprismatic.com/om-sweet-om-high-functional-frontend-engineering-with-clojurescript-and-react/][getprismatic.com is coming soon]]
+  - [[http://blog.juxt.pro/posts/course-notes.html][JUXT Blog: Building a chat system using core.async and server-sent-events]]
+  - [[http://www.braveclojure.com/core-async/][Mastering Concurrent Processes with core.async | Clojure for the Brave and True]]
+  - [[http://blog.juxt.pro/posts/why-clojurescript-matters.html][JUXT Blog: Why ClojureScript Matters]]
+  - [[http://blog.mattgauger.com/blog/2014/09/15/clojure-code-quality-tools/][Clojure Code Quality Tools - blog.mattgauger.com]]
+  - [[http://blog.michielborkent.nl/blog/2014/11/16/my-clojurescript-adventure-at-oredev/][My ClojureScript Adventure at Øredev - Through the cracks of immutability]]
+  - http://blog.paralleluniverse.co/2013/05/02/quasar-pulsar/
+  - [[http://blog.podsnap.com/ducers2.html][Type-safe transducers in Clojure. And Scala. And Haskell. - podsnap]]
+  - [[http://blog.tarkalabs.com/2014/10/11/clojurescript-and-om-functional-programming-in-the-javascript-land/][ClojureScript and Om – Functional programming in the Javascript land – τarka λabs]]
+  - [[http://brunov.org/clojure/2014/05/14/throttler/][Throttler: a Clojure library for rate limiting]]
+  - [[http://cdn.rawgit.com/runexec/ufc-clojure/master/html/part1.html][ufc-dataset : UFC-Clojure-Rewrite.clj]]
+  - http://charliegriefer.github.io/2014/11/09/clojure-weekend-puzzler/
+  - [[http://cjohansen.no/clojure-to-die-for][Clojure to die for]]
+  - [[http://clojure-liberator.github.io/liberator/][Liberator - Welcome]]
+  - [[http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html][Clojure :: Reducers - A Library and Model for Collection Processing]]
+  - [[http://clojure.org/][Clojure]]
+  - [[http://clojurekoans.com/][Clojure Koans]]
+  - http://danboykis.com/?p=2263
+  - http://daveyarwood.github.io/2014/07/30/20-cool-clojure-functions/
+  - [[http://deliberate-software.com/clojure-state/][Wrangling State In Clojure  · deliberate software]]
+  - [[http://deliberate-software.com/unusual-reasons-why-clojure-is-a-delight/][Six Unusual Reasons why Clojure is a Delight  · deliberate software]]
+  - http://dev.mixrad.io/blog/2014/10/19/Clojure-libraries/
+  - http://domkm.com/posts/2014-06-15-isomorphic-clojure-1/
+  - [[http://draketo.de/proj/guile-basics/][Basic questions and answers for GNU Guile (from the perspective of a Pythonista)]]
+  - [[http://elementsofclojure.com/][Elements of Clojure]]
+  - [[http://eng.climate.com/2014/02/25/claypoole-threadpool-tools-for-clojure/][Claypoole: Threadpool tools for Clojure | Climate Science & Engineering]]
+  - [[http://fgiasson.com/blog/index.php/2015/04/02/clj-fst-finite-state-transducers-fst-for-clojure/?utm_source=dlvr.it&utm_medium=twitter][clj-fst: Finite State Transducers (FST) for Clojure | Frederick Giasson]]
+  - [[http://frenchy64.github.io/2015/06/19/gradual-typing.html][Gradual typing for Clojure]]
+  - [[http://gigasquidsoftware.com/blog/2014/11/13/clojure-fizzbuzz-without-conditionals/][Clojure FizzBuzz without Conditionals - Squid's Blog]]
+  - [[http://gist.github.com/ptaoussanis/e537bd8ffdc943bbbce7][Quick recap/commentary: Clojure transducers · GitHub]]
+  - [[http://gist.github.com/spacemanaki/1093917][Clojure ant sim from Rich Hickey · GitHub]]
+  - [[http://github.com/aaronc/freactive][GitHub - aaronc/freactive: High-performance, pure Clojurescript, declarative DOM library]]
+  - [[http://github.com/aphyr/riemann][GitHub - riemann/riemann: A network event stream processing system, in Clojure.]]
+  - [[http://github.com/dgrnbrg/libdistsys][GitHub - dgrnbrg/libdistsys]]
+  - [[http://github.com/feature-macros/clojurescript/tree/feature-macros/feature-macros-demo][clojurescript/feature-macros-demo at feature-macros · feature-macros/clojurescript · GitHub]]
+  - [[http://github.com/funcool/clojurescript-unraveled][GitHub - funcool/clojurescript-unraveled: An open source book about ClojureScript]]
+  - [[http://github.com/functional-koans/clojure-koans][GitHub - functional-koans/clojure-koans: A set of exercises for learning Clojure]]
+  - [[http://github.com/gigasquid/wonderland-clojure-katas][GitHub - gigasquid/wonderland-clojure-katas: Clojure Katas inspired by Alice in Wonderland]]
+  - [[http://github.com/hraberg/mimir][GitHub - hraberg/mimir: Mímir is an experimental rule engine written in Clojure.]]
+  - [[http://github.com/marick/structural-typing][GitHub - marick/structural-typing: Structural typing for Clojure, somewhat inspired by Elm. Tailored to "flow-style" programming, where complex structures flow through a series of functions, each of which makes a smallish change. Can also be used in testing tools and the like that need to describe how a nested structure differs from a description.]]
+  - [[http://github.com/rbrush/clara-rules][GitHub - cerner/clara-rules: Forward-chaining rules in Clojure]]
+  - [[http://github.com/tallesl/Rich-Hickey-fanclub][GitHub - tallesl/Rich-Hickey-fanclub: "every time I watch one of his talks I feel like someone has gone in and organized my brain"]]
+  - [[http://github.com/thi-ng/trio][GitHub - thi-ng/trio: Datatype agnostic triple store & query engine API]]
+  - [[http://github.com/typedclojure/gradual-untyped-import][GitHub - typedclojure/gradual-untyped-import: Demo for core.typed features]]
+  - [[http://github.com/venantius/ultra][GitHub - venantius/ultra: A Leiningen plugin for a superior development environment]]
+  - [[http://hypirion.com/musings/understanding-persistent-vector-pt-1][polymatheia - Understanding Clojure's Persistent Vector, pt. 1]]
+  - [[http://hypirion.com/musings/understanding-persistent-vector-pt-2][polymatheia - Understanding Clojure's Persistent Vector, pt. 2]]
+  - [[http://hypirion.com/musings/understanding-persistent-vector-pt-3][polymatheia - Understanding Clojure's Persistent Vectors, pt. 3]]
+  - [[http://insideclojure.org/2015/05/01/contributing-clojure/][Contributing to Clojure – Inside Clojure]]
+  - http://jjperezaguinaga.com/2012/11/10/diving-into-clojure-a-hello-world-with-light-table-0-2-0/
+  - http://john2x.com/blog/clojure-destructuring/
+  - [[http://jonase.github.io/nil-recur/posts/11-1-2015-pre-post-conditions.html][nil/recur]]
+  - http://kep.io/is-lisp-still-a-secret-weapon/
+  - [[http://learnxinyminutes.com/docs/clojure-macros/][Learn clojure macros in Y Minutes]]
+  - [[http://learnxinyminutes.com/docs/clojure/][Learn clojure in Y Minutes]]
+  - [[http://mbonaci.github.io/clojure/][Clojure by mbonaci]]
+  - http://medium.com/@hlship/1cd5fa509eca
+  - http://medium.com/@ianprojones/clojure-koans-maps-1cff2163d326#.ao97nxa1f
+  - http://medium.com/p/1a12997a5f70
+  - http://medium.com/this-is-not-a-monad-tutorial/how-to-earn-your-clojure-white-belt-7e7db68a71e5
+  - http://michaeldrogalis.github.io/jekyll/update/2015/06/08/Onyx-0.6.0:-Going-Faster.html
+  - [[http://mooc.cs.helsinki.fi/clojure][Redirecting…]]
+  - [[http://news.ycombinator.com/item?id=8342718][“Transducers” by Rich Hickey at Strange Loop [video] | Hacker News]]
+  - http://nightmod.net/
+  - [[http://noobtuts.com/clojure/handling-clojure-state-the-erlang-way?utm_source=dlvr.it&utm_medium=twitter][noobtuts - Handling Clojure state the Erlang way]]
+  - [[http://nvbn.github.io/2015/01/30/reinventing-oop-with-clojure/][Reinventing OOP with Clojure | nvbn blog]]
+  - [[http://owenrh.me.uk/blog/2015/08/24/][The Beauty of Clojure]]
+  - [[http://prog-elisp.blogspot.ru/2013/10/lisp-for-c-programmers.html][On elisp and programming in general: Lisp for C++ programmers]]
+  - [[http://radar.oreilly.com/2015/05/creative-computing-with-clojure.html][Creative computing with Clojure - O'Reilly Radar]]
+  - [[http://rigsomelight.com/2014/05/01/interactive-programming-flappy-bird-clojurescript.html][Interactive Programming in ClojureScript]]
+  - [[http://robots.thoughtbot.com/tips-for-clojure-beginners][Tips for Clojure Beginners]]
+  - [[http://spin.atomicobject.com/2010/04/25/matchure-serious-clojure-pattern-matching?utm_source=social-media&utm_medium=social-media&utm_campaign=social-media][Matchure: Serious Clojure Pattern Matching]]
+  - [[http://spootnik.org/entries/2014/10/26_from-angularjs-to-om-a-walk-through.html][From Angular.JS to Om: A walk-through]]
+  - [[http://stevelosh.com/blog/2012/07/caves-of-clojure-01/][The Caves of Clojure: Part 1          /  Steve Losh]]
+  - [[http://stuartsierra.com/2016/01/09/how-to-name-clojure-functions][How to Name Clojure Functions – Digital Digressions by Stuart Sierra]]
+  - http://swannodette.github.io/2013/08/17/comparative/
+  - [[http://tryclj.com/][Try Clojure]]
+  - [[http://www.4clojure.com/][4clojure – Welcome!]]
+  - [[http://www.braveclojure.com/][Learn to Program the World's Most Bodacious Language with Clojure for the Brave and True]]
+  - [[http://www.braveclojure.com/concurrency/][The Sacred Art of Concurrent and Parallel Programming | Clojure for the Brave and True]]
+  - [[http://www.braveclojure.com/functional-programming/?again][Functional Programming | Clojure for the Brave and True]]
+  - [[http://www.braveclojure.com/multimethods-records-protocols/][Creating and Extending Abstractions with Multimethods, Protocols, and Records | Clojure for the Brave and True]]
+  - http://www.clojure.tn/posts/20-08-2015-clojure-data-algos-book.html
+  - [[http://www.emacs-doctor.com/learn-emacs-lisp-in-15-minutes.html][Learn Emacs Lisp in 15 minutes]]
+  - http://www.essentialsql.com/get-ready-to-learn-sql-8-database-first-normal-form-explained-in-simple-english/
+  - [[http://www.hakkalabs.co/articles/clojure-software-dendrology][Clojure Software Dendrology]]
+  - [[http://www.lispcast.com/100-most-used-clojure-expressions][The 100 Most Used Clojure Expressions | LispCast]]
+  - [[http://www.lispcast.com/clojure-is-imperative][Clojure is Imperative | LispCast]]
+  - [[http://www.lispcast.com/Hindley-Milner-in-Clojure][Hindley-Milner in Clojure | LispCast]]
+  - [[http://www.lispcast.com/reification][Reification | LispCast]]
+  - [[http://www.lispcast.com/ultimate-guide-to-learning-clojure-for-free][The Ultimate Guide to Learning Clojure for Free | LispCast]]
+  - http://www.pixelmonkey.org/2014/11/02/clojonic
+  - [[http://www.plusastra.com/2014/07/understanding-clojure-protocols.html][Plus Astra: Understanding Clojure protocols]]
+  - http://www.railslove.com/stories/my-way-into-clojure-building-a-card-game-with-om-part-1
+  - [[http://www.reddit.com/r/Clojure/comments/21izqj/predictably_fast_clojure/][Predictably Fast Clojure : Clojure]]
+  - http://www.rkn.io/2014/02/20/clojure-cookbook-rbt/
+  - [[http://www.robots.ox.ac.uk/~fwood/anglican/language/index.html][The Anglican Probabilistic Programming System]]
+  - [[http://www.stuttaford.me/2016/01/15/how-cognician-uses-onyx/][How Cognician uses Onyx · Robert Stuttaford, Clojure Enthusiast]]
+  - http://www.takipiblog.com/clojure-at-scale-why-python-just-wasnt-enough-for-appsflyer/
+  - [[http://www.uswitch.com/tech/zero-downtime-clojure-deployments/][Zero downtime Clojure deployments]]
+  - http://yobriefca.se/blog/2014/01/18/adventures-in-clojure-land/
+  - http://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/
+  - [[http://yogthos.net/posts/2015-06-17-Using-Pulsar.html][Using Pulsar]]
+  - https://bsima.me/clog/robust-clojure-nil.html
+  - https://www.case-podcast.org/20-problem-solving-and-clojure-19-with-rich-hickey
+  - https://news.ycombinator.com/item?id=17723744
+  - https://github.com/aredington/schism
+  - https://janstepien.com/native-clojure-with-graalvm/
+  - http://nathanmarz.com/blog/clojures-missing-piece.html
+  - http://www.sicpdistilled.com/
+  - https://medium.com/@ertu.ctn/why-clojure-seriously-why-9f5e6f24dc29
+   - http://blog.klipse.tech/clojure/2018/12/18/welcome-clojure-10.html
+   - https://github.com/oakes/odoyle-rules
+  - https://stopa.io/post/255
+  - https://github.com/mbuczko/awesome-clojure
+  - https://github.com/razum2um/awesome-clojure
+  - https://github.com/chr15m/awesome-clojure-likes
+  - https://clojure.zeef.com/vlad.bokov
+  - https://www.juxt.pro/blog/abstract-clojure
+  - https://cuddly-octo-palm-tree.com/posts/2021-11-21-circular-clojure/
+  - https://blog.janetacarr.com/how-clojure-works-for-you/
+- PROGRAMMING LANGUAGES / CLOJURE / METAPROGRAMMING
+  - http://blog.factual.com/using-clojure-to-generate-java-to-reimplement-clojure
+  - http://www.lispcast.com/when-to-use-a-macro
+  - https://blog.metaobject.com/2019/03/lisp-macros-delayed-evaluation-and.html
+- PROGRAMMING LANGUAGES / CLOJURE / RESOURCES
+  - http://www.lispcast.com/clojure-and-types
+  - [[https://github.com/killme2008/defun][A macro to define clojure functions with parameter pattern matching just like erlang or elixir]]
+  - [[https://www.infoq.com/presentations/clojure-spec][Clojure Spec: Expressing Data Constraints without Types]]
+  - http://clojure-doc.org/articles/tutorials/introduction.html
+  - http://clojure.org/agents
+  - http://clojure.org/cheatsheet
+  - http://clojure.org/getting_started
+- PROGRAMMING LANGUAGES / COMMON LISP
+  - https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node80.html
+  - https://cs.gmu.edu/~sean/lisp/LispTutorial.html
+  - https://lthms.xyz/blog/lisp-journey-getting-started
+  - [[http://abhishek.geek.nz/docs/features-of-common-lisp][abhishek.geek.nz]]
+  - http://alpha.common-lisp.net/language.html
+  - [[http://articulate-lisp.com/][articulate-lisp.com]]
+  - http://blog.30dor.com/2014/03/21/performance-and-types-in-lisp/
+  - [[http://blog.s21g.com/hayamiz][Stacking myself - s21g]]
+  - http://chaitanyagupta.com/lisp/restarts.html
+  - [[http://chaosradio.ccc.de/cre084.html][CRE084 LISP | CRE: Technik, Kultur, Gesellschaft]]
+  - [[http://chriskohlhepp.wordpress.com/embedding-lisp-in-cplusplus-a-recipe/][Embedding Lisp in C++ – A Recipe | Chris Kohlhepp's Blog]]
+  - [[http://chriskohlhepp.wordpress.com/metacircular-adventures-in-functional-abstraction-challenging-clojure-in-common-lisp/][Meta-Circular Adventures in Functional Abstraction | Chris Kohlhepp's Blog]]
+  - [[http://cl-cookbook.sourceforge.net/][The Common Lisp Cookbook]]
+  - [[http://cl21.org/][CL21]]
+  - [[http://clisp.cons.org/impnotes/index.html][Implementation Notes for GNU CLISP]]
+  - [[http://common-lisp.net/][Welcome to Common-Lisp.net!]]
+  - [[http://common-lisp.net/project/fset/][fset]]
+  - http://common-lisp.net/~dlw/LispSurvey.html
+  - [[http://createuniverses.blogspot.com/2009/08/embedding-lisp-interpreter-into-qt-app.html][Create Universes: Scripting simulations with ECL]]
+  - [[http://directed-procrastination.blogspot.se/2011/05/backtracking-with-common-lisp-condition.html][directed procrastination: Backtracking with the Common Lisp Condition System]]
+  - http://dto.github.com/notebook/developers-guide.html#sec-7.5.6
+  - http://ecls.sourceforge.net/ecldev/index.html#Top
+  - [[http://en.wikibooks.org/wiki/Common_Lisp][Common Lisp - Wikibooks, open books for an open world]]
+  - [[http://en.wikipedia.org/wiki/Common_Lisp][Common Lisp - Wikipedia]]
+  - http://eudoxia.me/article/common-lisp-sotu-2015/
+  - [[http://eudoxia0.github.io/crane/][Crane]]
+  - [[http://fare.livejournal.com/184127.html][Common Lisp as a Scripting Language, 2015 edition - Cybernethics / Cybernéthique]]
+  - [[http://gist.github.com/chaitanyagupta/9324402][Reader Macros in Common Lisp · GitHub]]
+  - [[http://github.com/blakemcbride/eclipse-lisp][GitHub - blakemcbride/eclipse-lisp: Eclipse Common Lisp]]
+  - [[http://github.com/capitaomorte/sly][GitHub - joaotavora/sly: Sylvester the Cat's Common Lisp IDE]]
+  - [[http://github.com/fukamachi/cl21][GitHub - fukamachi/cl21: Just a fork of CL21. See https://github.com/cl21/cl21 for the original one.]]
+  - [[http://github.com/fukamachi/fast-http][GitHub - fukamachi/fast-http: A fast HTTP request/response parser for Common Lisp.]]
+  - [[http://github.com/kozross/awesome-cl][GitHub - CodyReichert/awesome-cl: A curated list of awesome Common Lisp frameworks, libraries and other shiny stuff.]]
+  - [[http://github.com/robert-strandh/SICL][GitHub - robert-strandh/SICL: A fresh implementation of Common Lisp]]
+  - http://google-styleguide.googlecode.com/svn/trunk/lispguide.xml
+  - [[http://grimoire.arrdem.com/][Grimoire - Community Clojure Documentation]]
+  - [[http://learnlispthehardway.org/][L(λ)THW]]
+  - http://lisper.in/reader-macros/
+  - [[http://lisptips.com/post/133211847914/making-a-directory-from-a-pathname][Making a directory from a pathname]]
+  - [[http://malisper.me/2015/07/07/debugging-lisp-part-1-recompilation/][Debugging Lisp Part 1: Recompilation | malisper.me]]
+  - [[http://malisper.me/2015/07/14/debugging-lisp-part-2-inspecting/][Debugging Lisp Part 2: Inspecting | malisper.me]]
+  - [[http://malisper.me/2015/07/22/debugging-lisp-part-3-redefining-classes/][Debugging Lisp Part 3: Redefining Classes | malisper.me]]
+  - [[http://malisper.me/2015/08/05/debugging-lisp-part-4-restarts/][Debugging Lisp Part 4: Restarts | malisper.me]]
+  - http://minispec.org/index.html
+  - [[http://p-cos.blogspot.com.ar/2014/09/why-i-like-common-lisp.html][p-cos blog: "Why I like Common Lisp"]]
+  - [[http://pleac.sourceforge.net/pleac_commonlisp/][PLEAC-Common Lisp]]
+  - [[http://pvk.ca/Blog/2015/06/27/linear-log-bucketing-fast-versatile-simple/][Linear-log Bucketing: Fast, Versatile, Simple - Paul Khuong: some Lisp]]
+  - http://qiita.com/guicho271828/items/07ba4ff11bff494dc03f
+  - [[http://random-state.net/files/nikodemus-cl-faq.html][Nikodemus' Common Lisp FAQ]]
+  - [[http://redlinernotes.com/blog/?p=1232][Improved Means for Achieving Deteriorated Ends]]
+  - [[http://ryepup.unwashedmeme.com/blog/2010/11/21/coroutines-in-common-lisp-with-bordeaux-threads/][Ryan's Tech Blog › coroutines in common lisp with bordeaux-threads]]
+  - [[http://ryepup.unwashedmeme.com/blog/2010/11/21/coroutines-in-common-lisp/][Ryan's Tech Blog › coroutines in common lisp]]
+  - [[http://tkpapp.blogspot.com/2009/12/first-steps-with-ecl.html][Tamas K Papp's blog: first steps with ECL]]
+  - http://un-common-lisp.com/#/
+  - [[http://www.ai.sri.com/~pkarp/loop.html][Tutorial for the Common Lisp Loop Macro]]
+  - [[http://www.aiai.ed.ac.uk/~jeff/clos-guide.html][A Brief Guide to CLOS]]
+  - http://www.apl.jhu.edu/~hall/lisp.html
+  - http://www.cl-user.net/asp/e8x72/sdataQ0ZL<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord mathnormal">x</span><span class="mord">71</span></span></span></span>Hn7DQ3kWHpX8yBX8yBXnMq=/sdataQu3F$sSHnB==
+  - [[http://www.cliki.net/web][CLiki: Web]]
+  - [[http://www.cneufeld.ca/genie/blog/2014/01/the-less-familiar-parts-of-lisp-for-beginners-fboundp/][The less-familiar parts of Lisp for beginners — fboundp | WordPress on cneufeld.ca]]
+  - [[http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/][Index]]
+  - [[http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html][Contents]]
+  - [[http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html][Common Lisp the Language, 2nd Edition]]
+  - [[http://www.cs.utexas.edu/users/novak/lispeff.html][CS 394P:  Introduction to GLISP]]
+  - [[http://www.dawnofthedata.com/2014/05/abusing-langauge-features-common-lisp.html][Dawn of the Data: (Ab)Using Language Features: The Common Lisp Condition System]]
+  - [[http://www.drdobbs.com/high-performance-computing/199702507][Multitasking for Common LISP | Dr Dobb's]]
+  - [[http://www.gigamonkeys.com/book/][Practical Common Lisp]]
+  - [[http://www.gnu.org/software/gcl/][GCL - GNU Common Lisp]]
+  - [[http://www.lisperati.com/casting.html][http://www.lisperati.com/casting.html]]
+  - [[http://www.lispworks.com/][LispWorks]]
+  - [[http://www.nhplace.com/kent/Papers/cl-untold-story.html][Common Lisp: The Untold Story]]
+  - http://www.psg.com/~dlamkins/sl/
+  - [[http://www.pvk.ca/Blog/2013/04/13/starting-to-hack-on-sbcl/][Starting to Hack on SBCL - Paul Khuong: some Lisp]]
+  - [[http://www.pvk.ca/Blog/2013/12/19/so-you-want-to-write-an-lp-solver/][So You Want to Write an LP Solver (a.k.a. My Little LP: Cholesky Is Magic) - Paul Khuong: some Lisp]]
+  - [[http://www.pvk.ca/Blog/2014/10/19/performance-optimisation-~-writing-an-essay/][Performance Tuning ~ Writing an Essay - Paul Khuong: some Lisp]]
+  - [[http://www.reddit.com/r/lisp/comments/2mpmci/installing_common_lisp_emacs_slime_quicklisp/][Installing Common Lisp, Emacs, Slime & Quicklisp - Video on Youtube : lisp]]
+  - [[http://www.snellman.net/blog/archive/2015-07-27-use-cases-for-change-class-in-common-lisp/][Use cases for CHANGE-CLASS in Common Lisp]]
+  - [[http://www.weitz.de/einstein.html][Who owns the fish? A Common Lisp solution to "Einstein's Riddle"]]
+  - https://www.codeproject.com/Articles/1186940/Lisps-Mysterious-Tuple-Problem
+  - https://tech.grammarly.com/blog/running-lisp-in-production
+  - http://malisper.me/debugging-lisp-part-1-recompilation/
+  - https://lparallel.org/overview/
+  - https://www.informatik.uni-kiel.de/~wg/clicc.html
+  - http://stevelosh.com/blog/2018/08/a-road-to-common-lisp/
+  - [[http://blog.jacius.info/2012/05/29/a-personal-lisp-crisis/][A Personal Lisp Crisis · croisant.net]]
+  - [[http://common-lisp.net/project/bknr/static/lmman/toc.html][Sign in · GitLab]]
+  - [[http://nklein.com/2013/08/the-bowling-game-kata-in-functional-common-lisp/][The Bowling Game Kata in Functional Common Lisp :: nklein software]]
+  - [[http://www.norvig.com/Lisp-retro.html][A Retrospective on PAIP]]
+  - https://github.com/norvig/paip-lisp
+  - https://github.com/joinr/clclojure
+  - https://ebzzry.io/en/script-lisp/
+  - https://common-lispers.hexstreamsoft.com/
+  - https://lispcookbook.github.io/cl-cookbook/
+  - https://medium.com/@erights/the-tragedy-of-the-common-lisp-why-large-languages-explode-4e83096239b9
+  - https://sulami.github.io/posts/common-lisp-restarts/
+  - https://news.ycombinator.com/item?id=22747932
+  - https://github.com/froggey/mezzano
+  - https://www.hexstreamsoft.com/
+  - https://gist.github.com/digikar99/a1925ad3249a431c9eecf09af2fdef8a
+  - https://blog.veitheller.de/Building_Setf.html
+  - https://axisofeval.blogspot.com/2011/04/whats-condition-system-and-why-do-you.html
+    - https://lobste.rs/s/q8lz7a/what_s_condition_system_why_do_you_want_one
+  - https://reader.tymoon.eu/article/413
+  - https://www.reddit.com/r/lisp/comments/vxug8p/if_you_were_hired_to_create_a_new_distribution_of/
+- PROGRAMMING LANGUAGES / COMMON LISP / SBCL
+  - http://bugs.launchpad.net/sbcl
+  - http://common-lisp.net/project/cmucl/doc/cmu-user/
+  - http://en.wikipedia.org/wiki/Steel_Bank_Common_Lisp
+  - http://insidelisp.blogspot.com/2010/04/blog-post.html
+  - http://planet.sbcl.org/
+  - http://sbcl-internals.cliki.net/index
+  - http://sbcl.sourceforge.net/sbcl-internals/index.html#Top
+  - http://www.sbcl.org/manual/
+  - http://www.sbcl.org/manual/Miscellaneous-Efficiency-Issues.html
+  - http://xach.com/lisp/buildapp/
+  - http://xach.livejournal.com/188527.html
+  - http://xach.livejournal.com/278047.html
+  - http://lisp-lang.org/learn/getting-started/
+- PROGRAMMING LANGUAGES / LISP
+  - https://github.com/google/lisp-koans
+  - http://hyperpolyglot.org/lisp
+  - https://github.com/shaunlebron/history-of-lisp-parens/blob/master/editors.md
+  - https://www.gnu.org/gnu/rms-lisp.en.html
+  - http://fare.tunes.org/LispM.html
+  - [[http://arrdem.com/2014/11/28/the_future_of_the_lispm/][The Future of the LispM · f : ⊥ x ⊥ → ⊥]]
+  - [[http://blog.fogus.me/2011/05/03/the-german-school-of-lisp-2/][fogus: The German School of Lisp]]
+  - [[http://blog.rongarret.info/2015/05/why-lisp.html][Rondam Ramblings: Why Lisp?]]
+  - [[http://c2.com/cgi/wiki?WhyWeHateLisp][http://c2.com/cgi/wiki?WhyWeHateLisp]]
+  - [[http://chrisdone.com/posts/haskell-lisp-philosophy-difference][A philosophical difference between Haskell and Lisp]]
+  - [[http://codecall.net/2014/03/04/best-online-lisp-books/][Online Programming Books - A List of Lisp Books  » CODECALL]]
+  - [[http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/][http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/]]
+  - [[http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/2007-07/msg00060.html][Is Lisp a Blub?]]
+  - [[http://community.schemewiki.org/?scheme-vs-common-lisp][scheme-vs-common-lisp]]
+  - [[http://deliberate-software.com/learning-lisp-was-hard/][Learning Lisp Was Hard  · deliberate software]]
+  - http://designzum.com/2014/03/04/best-online-lisp-books/
+  - [[http://dreamsongs.com/ArtOfLisp.html][The Art of Lisp & Writing]]
+  - [[http://en.wikipedia.org/wiki/Lisp_programming_language][Lisp (programming language) - Wikipedia]]
+  - [[http://fare.livejournal.com/77480.html][What Makes Lisp Great - Cybernethics / Cybernéthique]]
+  - [[http://gist.github.com/chrisdone/516489f4f27846712225#file-anintro-md][Statically Typed Lisp · GitHub]]
+  - [[http://leanpub.com/readevalprintlove002/read][Read Read-Eval-Print-λove | Leanpub]]
+  - [[http://link.springer.com/book/10.1007/978-1-4471-1719-3][The Art of Lisp Programming - Springer]]
+  - [[http://lispinsummerprojects.org/winning-projects][Lisp in Summer Projects - winning-projects]]
+  - http://lispwebtales.ppenev.com/
+  - http://medium.com/@technicat/i-miss-lisp-847bf040be84
+  - http://lisper.in/promises/
+  - [[http://news.ycombinator.com/item?id=2474833][Super Mario 64 was built with a system written in Lisp | Hacker News]]
+  - [[http://news.ycombinator.com/item?id=7324984][Lisp: A Language for Internet Scripting and Programming (1998) | Hacker News]]
+  - https://www.brinckerhoff.org/scraps/joe-marshall-on-FEXPRS-and-DEFMACRO.txt
+  - https://chrisdone.com/posts/haskell-lisp-philosophy-difference/
+  - https://chrisdone.com/posts/stream-composability/
+  - https://github.com/norvig/paip-lisp
+  - https://fossandcrafts.org/episodes/47-what-is-lisp.html
+- PROGRAMMING LANGUAGES / LISP / IMPLEMENTING
+  - https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html
+  - http://news.ycombinator.com/item?id=12799227
+  - http://www.nhplace.com/kent/Papers/Technical-Issues.html
+  - http://badbyteblues.blogspot.com/2010/09/micro-manual-for-lisp-in-c.html
+  - http://bernhardkausler.wordpress.com/2009/11/28/sinc-%E2%80%94-the-tiniest-lisp-compiler-to-python/
+  - http://blackkettle.org/blog/2012/04/29/go-lang-micro-manual-for-lisp/
+  - http://cs61a.org/lab/lab09/
+  - http://fitzgeraldnick.com/weblog/60/
+  - http://github.com/adkennan/logo
+  - http://github.com/darius/ichbins/blob/master/ichbins.scm
+  - http://github.com/feyeleanor/greenspun
+  - http://github.com/fragglet/yoctolisp/blob/master/yoctolisp.md
+  - http://github.com/JackMc/BasicLisp
+  - http://github.com/kanaka/mal
+  - http://github.com/krig/LISP
+  - http://github.com/kvalle/diy-lisp
+  - http://github.com/qhfgva/diy-lisp-julia
+  - http://github.com/szastupov/lgears
+  - http://hkn.eecs.berkeley.edu/~dyoo/python/pyscheme/
+  - http://hookrace.net/blog/make-a-lisp-in-nim/
+  - http://howtowriteaprogram.blogspot.com/2010/11/lisp-interpreter-in-90-lines-of-c.html
+  - http://jonathan.tang.name/files/scheme_in_48/tutorial/overview.html
+  - http://kjetilvalle.com/posts/implement-a-programming-language.html
+  - http://matt.might.net/articles/implementing-a-programming-language/
+  - http://matt.might.net/articles/writing-an-interpreter-substitution-denotational-big-step-small-step/
+  - http://nakkaya.com/2010/08/24/a-micro-manual-for-lisp-implemented-in-c/
+  - http://news.ycombinator.com/item?id=7825054
+  - http://norvig.com/lispy.html
+  - http://norvig.com/lispy2.html
+  - http://peter.michaux.ca/articles/scheme-from-scratch-introduction
+  - http://playingwithpointers.com/compiling-lambda.html
+  - http://rpal.sourceforge.net/oneday.html
+  - http://shiroyasha.github.io/create-a-programming-language.html
+  - http://stud4.tuwien.ac.at/~e0225855/lisprolog/lisprolog.html
+  - http://t3x.org/s9book/
+  - http://t3x.org/s9book/index.html
+  - http://t3x.org/s9fes/
+  - http://un.portemanteau.ca/learn-a-lisp-with-python.html
+  - http://www-inst.eecs.berkeley.edu/~cs61a/sp14/proj/scheme/scheme.html
+  - http://www.buildyourownlisp.com/
+  - https://news.ycombinator.com/item?id=17478489
+  - http://www.ducklet.com/jisp/
+  - http://www.more-magic.net/posts/internals-data-representation.html
+  - http://www.nhplace.com/kent/Papers/Technical-Issues.html
+  - http://www.pvk.ca/Blog/2013/11/22/the-weaknesses-of-sbcls-type-propagation/
+  - http://www.recurse.com/blog/21-little-lisp-interpreter
+  - http://www.reddit.com/r/Julia/comments/2b5hc2/make_your_own_lisp_in_julia/
+  - http://www.sonoma.edu/users/l/luvisi/sl3.c
+  - https://kirit.com/Build%20me%20a%20LISP
+  - https://mpov.timmorgan.org/i-built-a-lisp-compiler/
+  - https://news.ycombinator.com/item?id=18530260
+  - https://notes.eatonphil.com/compiler-basics-lisp-to-assembly.html
+- PROGRAMMING LANGUAGES / LISPYSCRIPT
+  - http://lispyscript.com/
+- PROGRAMMING LANGUAGES / NEWLISP
+  - http://www.newlisp.org/index.cgi
+- PROGRAMMING LANGUAGES / PARALLELA-LISP
+  - http://github.com/drewvid/parallella-lisp
+- PROGRAMMING LANGUAGES / PICOLISP
+  - http://bitbucket.org/mihailp/tankfeeder/src/08eedef3c2873206abf76db1b079cb55cd3f5aff/4clojure/?at=default
+  - http://www.picolisp.org/
+- PROGRAMMING LANGUAGES / PORTABLE STANDARD LISP
+  - http://github.com/blakemcbride/PSL
+- PROGRAMMING LANGUAGES / ULISP
+  - https://news.ycombinator.com/item?id=18882335
+  - http://www.ulisp.com/show?3J
+- PROGRAMMING LANGUAGES / SCHEME
+  - https://scheme.fail/
+  - [[http://en.wikipedia.org/wiki/Scheme_%28programming_language%29][Scheme (programming language) - Wikipedia]]
+  - [[http://okmij.org/ftp/Scheme/misc.html][Scheme Programming: Miscellanea]]
+  - [[http://armpit.sourceforge.net/][A Scheme Interpreter for ARM Microcontrollers]]
+  - [[http://blog.klipse.tech/scheme/2016/09/11/scheme-tutorial-1.html][Interactive overview of Scheme's semantics]]
+  - http://carloscarrasco.com/embedding-scheme-for-a-game-mission-scripting-dsl.html
+  - [[http://www.madore.org/~david/programs/self-int.scm][http://www.madore.org/~david/programs/self-int.scm]]
+  - [[http://www.reddit.com/r/lisp/comments/fnsfr/why_are_there_so_many_schemes_and_which_one/][Why are there so many Schemes and which one should I choose? : lisp]]
+  - [[http://www.scheme.com/tspl4/][The Scheme Programming Language, 4th Edition]]
+  - [[http://www.trollope.org/scheme.html][A Scheme Story]]
+  - http://yinwang0.wordpress.com/2013/11/04/scheme-benchmarking/
+  - [[http://people.cs.aau.dk/~normark/prog3-03/html/notes/theme-index.html][Functional Programming in Scheme]]
+  - [[http://people.csail.mit.edu/gregs/ll1-discuss-archive-html/msg03277.html][RE: What's so cool about Scheme?]]
+  - [[http://programming-musings.org/2007/01/31/a-scheme-bookshelf/][programming musings]]
+  - [[http://stackoverflow.com/questions/12496482/scheme-procedures-that-return-another-inner-procedure/12496867][functional programming - Scheme: Procedures that return another inner procedure - Stack Overflow]]
+  - [[http://matt.might.net/articles/compiling-scheme-to-c/][Compiling Scheme to C with flat closure conversion]]
+  - http://hackerretreat.com/why-how-start-sicp/
+  - [[http://htdp.org/2003-09-26/][How to Design Programs]]
+  - [[http://jao.io/blog/2014/08/06/spj-s-y-combinator-in-scheme/][spj's y-combinator in scheme]]
+  - [[http://journal.stuffwithstuff.com/2013/07/18/javascript-isnt-scheme/][JavaScript Isn't Scheme – journal.stuffwithstuff.com]]
+  - [[http://library.readscheme.org/index.html][Bibliography of Scheme-related Research]]
+  - [[http://github.com/the-concurrent-schemer/scm][GitHub - the-concurrent-schemer/scm: UNMAINTAINED The Concurrent Schemer]]
+  - http://kflu.github.io/2018/04/15/2018-04-15-implement-scheme/
+  - http://lambda.jstolarek.com/2013/01/the-little-schemer-book-review/
+  - https://mitpress.mit.edu/books/reasoned-schemer
+  - https://ds26gte.github.io/tyscheme/
+  - http://blog.veitheller.de/Scheme_Macros_IV:_Deconstructing_Classes.html
+  - [[http://community.schemewiki.org/?call-with-current-continuation-for-C-programmers][call-with-current-continuation-for-C-programmers]]
+  - [[http://github.com/part-cw/lambdanative/wiki][Home · part-cw/lambdanative Wiki · GitHub]]
+  - [[http://nongnu.org/geiser/][Geiser: Top]]
+  - http://www.jetcafe.org/jim/lambda.html
+  - [[https://engineering.purdue.edu/~qobi/software/][Jeffrey Mark Siskind's Software]]
+  - https://hardmath123.github.io/perchance-to-scheme.html
+  - https://hardmath123.github.io/perchance-to-scheme.html
+  - http://wiki.c2.com/?LispSchemeDifferences
+  - https://news.ycombinator.com/item?id=19027400
+  - https://world.cs.brown.edu/
+  - https://people.csail.mit.edu/jhbrown/scheme/
+  - https://erkin.party/blog/200715/evolution/
+  - https://www.cs.utexas.edu/ftp/garbage/cs345/schintro-v14/schintro_142.html#SEC271
+  - https://ccrma.stanford.edu/software/snd/snd/s7.html
+  - https://justinethier.github.io/cyclone/
+  - https://www.unsyntax.org/
+  - http://matt.might.net/articles/compiling-scheme-to-c/
+  - https://r7rsindex.com/
+  - https://spritely.institute/static/papers/scheme-primer.html
+    - https://lobste.rs/s/akvnzg/scheme_primer
+  - https://dustycloud.org/blog/guile-steel-proposal/
+    - https://news.ycombinator.com/item?id=32053083
+    - https://www.reddit.com/r/lisp/comments/vxknpz/guile_steel_a_proposal_for_a_systems_lisp/
+  - http://fmnt.info/blog/20181029_scheme.html
+  - https://wingolog.org/archives/2013/01/07/an-opinionated-guide-to-scheme-implementations
+    - https://news.ycombinator.com/item?id=32700027
+  - https://code-magazine.com/Article/2207071/The-Excellent-Schemer
+  - https://www.erichgrunewald.com/posts/using-scheme-to-find-the-median-of-two-sorted-integer-lists/
+  - https://lobste.rs/s/uzq4af/clojure_from_schemer_s_perspective
+  - https://carloscarrasco.com/love-letter-to-s7-scheme/
+  - https://parentheticallyspeaking.org/articles/drscheme-in-space/
+  - [[http://devdriven.com/2014/10/piumarta-and-warths-open-objects-in-scheme/][Piumarta and Warth’s Open Objects in Scheme | developer driven]]
+  - [[http://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours][Write Yourself a Scheme in 48 Hours - Wikibooks, open books for an open world]]
+  - [[http://library.readscheme.org/page1.html?][The Original 'Lambda Papers' by Guy Steele and Gerald Sussman]]
+  - [[http://readscheme.org/][Readscheme.org - Functional Programming Resources]]
+  - [[http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf][http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf]]
+  - [[http://srfi.schemers.org/srfi-1/srfi-1.html][SRFI 1: List Library]]
+  - [[http://www.cs.rpi.edu/academics/courses/fall00/ai/scheme/reference/schintro-v14/schintro_toc.html][An Introduction to Scheme and its Implementation - Table of Contents]]
+  - [[http://www.pawfal.org/dave/index.cgi?Projects/Scheme%20Bricks][dave's page of art and programming]]
+  - [[http://github.com/cisco/ChezScheme][GitHub - cisco/ChezScheme: Chez Scheme]]
+  - [[http://github.com/justinethier/cyclone][GitHub - justinethier/cyclone: A brand-new compiler that allows practical application development using R7RS Scheme.]]
+  - http://carloscarrasco.com/a-love-letter-to-s7-scheme.html
+  - [[https://news.ycombinator.com/item?id=12985880][A love letter to s7 Scheme | Hacker News]]
+  - [[https://wespiser.com/writings/wyas/home.html][Adam Wespiser Write You A Scheme, Version 2]]
+  - [[https://wiki.call-cc.org/explicit-renaming-macros][Mini-tutorial on explicit (and implicit) renaming macros in CHICKEN - The CHICKEN Scheme wiki]]
+  - [[https://github.com/joeltg/ozymandias][GitHub - joeltg/ozymandias: MIT Scheme environment for the browser]]
+  - [[https://github.com/scvalencia/Coddie][GitHub - scvalencia/Coddie: An Interpreter for Extended Relational Algebra (Scheme based)]]
+  - [[https://github.com/justinethier/cyclone/blob/master/docs/Writing-the-Cyclone-Scheme-Compiler-Revised-2017.md][cyclone/Writing-the-Cyclone-Scheme-Compiler-Revised-2017.md at master · justinethier/cyclone · GitHub]]
+  - [[https://vermillionazure.com/2017/04/13/in-scheme-even-your-keywords-could-be-redefined/][In Scheme, even your keywords could be redefined. – VermillionAzure]]
+  - https://medium.com/smalltalk-talk/smalltalk-vs-scheme-javascript-and-java-e031fa6d3528
+  - [[https://vermillionazure.com/2017/05/18/doing-scheme-the-big-lie/][Doing Scheme – The Big Lie – VermillionAzure]]
+  - https://www.reddit.com/r/scheme/comments/6hng3q/i_developed_a_medium_sized_cross_platform/
+  - [[https://rain-1.github.io/scheme-1][Scheme Programming Lessons from Tarot: 1 - sequences]]
+  - [[https://stackoverflow.com/questions/19664993/is-it-possible-to-implement-common-lisps-macro-system-in-scheme/19670813#19670813][compiler construction - Is it possible to implement Common Lisp's macro system in scheme? - Stack Overflow]]
+  - [[https://github.com/morhetz/gruvbox][GitHub - morhetz/gruvbox: Retro groove color scheme for Vim]]
+  - https://github.com/cisco/chezscheme
+  - http://www.edoput.it/scheme/2018/10/30/smt-and-scheme.html
+  - https://dekudekuplex.wordpress.com/2009/08/19/how-scheme-can-train-the-mind-one-reason-that-mit-should-reinstate-scheme-and-6-001/
+  - http://www.willdonnelly.net/blog/scheme-syntax-rules/
+  - https://rain-1.github.io/scheme-continuations.html
+  - https://www.gnu.org/software/guile/manual/guile.html#Guile-and-Scheme
+  - https://hyper.dev/blog/yet-another-scheme.html
+  - https://www.scheme.com/tspl4/
+- PROGRAMMING LANGUAGES / SCHEME / CHIBI
+  - [[http://github.com/ashinn/chibi-scheme][GitHub - ashinn/chibi-scheme: Official chibi-scheme repository]]
+- PROGRAMMING LANGUAGES / SCHEME / CHICKEN
+  - http://news.ycombinator.com/item?id=12773314
+  - [[http://alex-charlton.com/posts/Prototype_to_polish_Making_games_in_CHICKEN_Scheme_with_Hypergiant/][Alex Charlton — Prototype to polish: Making games in CHICKEN Scheme with Hypergiant]]
+  - https://www.more-magic.net/posts/internals-gc.html
+- PROGRAMMING LANGUAGES / SCHEME / GNU SCHEME
+  - [[http://www.gnu.org/software/mit-scheme/][MIT/GNU Scheme - GNU Project - Free Software Foundation]]
+- PROGRAMMING LANGUAGES / SCHEME / JS-SCHEME
+  - http://www.eriksilkensen.com/projects/js-scheme/
+- PROGRAMMING LANGUAGES / SCHEME / KAWA
+  - [[http://www.gnu.org/software/kawa/][http://www.gnu.org/software/kawa/]]
+  - https://www.gnu.org/software/kawa/index.html
+
+- PROGRAMMING LANGUAGES / SCHEME / RACKET
+  - http://artyom.me/learning-racket-1
+  - http://blog.racket-lang.org/
+  - http://jeremykun.com/2011/10/02/a-taste-of-racket/
+  - https://cacm.acm.org/magazines/2018/3/225475-a-programmable-programming-language/fulltext
+  - https://beautifulracket.com/
+  - https://cacm.acm.org/magazines/2012/1/144809-creating-languages-in-racket/fulltext
+  - https://gist.github.com/rain-1/36c4851b7c29cf8e42f23ba6eec37be6
+  - https://beautifulracket.com/appendix/why-lop-why-racket.html
+  - https://lexi-lambda.github.io/blog/2019/04/21/defeating-racket-s-separate-compilation-guarantee/
+  - https://blog.racket-lang.org/2019/05/racket-v7-3.html
+  - https://blog.racket-lang.org/2020/08/racket-v7-8.html
+  - https://beautifulracket.com/
+- PROGRAMMING LANGUAGES / SCHEME / STALIN
+  - [[http://community.schemewiki.org/?Stalin][Stalin]]
+  - [[http://code.google.com/p/stalingui/][StalinGUI]]
+  - [[http://sourceforge.net/projects/stalin/][stalin download | SourceForge.net]]
+- PROGRAMMING LANGUAGES / SCHEME / TY SCHEME
+  - [[http://www.ccs.neu.edu/home/dorai/t-y-scheme/t-y-scheme.html][t-y-scheme]]
+-->
+<h2 id="racket"><a class="header" href="#racket">Racket</a></h2>
+<ul>
+<li>
+<p><a href="https://con.racket-lang.org/">RacketCon</a></p>
+</li>
+<li>
+<p><a href="https://blog.lambdaclass.com/rebuilding-the-racket-compiler-with-chez-scheme/">2020/11 Rebuilding the Racket Compiler with Chez Scheme</a></p>
+</li>
+<li>
+<p><a href="https://dustycloud.org/blog/racket-is-an-acceptable-python/">2019/07 Racket is an acceptable Python</a></p>
+</li>
+<li>
+<p><a href="https://www.micahcantor.com/blog/why-learn-racket/">2022/02 Why learn Racket? A student's perspective</a></p>
+</li>
+</ul>
+<!--  
+- https://beautifulracket.com/appendix/racket-and-chez-scheme.html
+- [[http://practicaltypography.com/why-racket-why-lisp.html][Why Racket? Why Lisp? | Butterick’s Practical Typography]]
+- https://www.youtube.com/playlist?list=PLXr4KViVC0qKmAX_RnT0-mHKaJrF90Nxb
+- https://racket.discourse.group/t/qi-accelerated-qi-4-release-announcement/2672?u=spdegabrielle
+- [](https://blog.winny.tech/posts/racket-frustrates-me/) [L.rs](https://lobste.rs/s/mzmdux/racket_frustrates_me)
+- https://docs.racket-lang.org/more/index.html
+- https://racket.discourse.group/t/responses-to-common-criticisms-of-lisp-languages/1986
+- https://racket.discourse.group/t/levin-tree-search-with-context-models/1984
+- https://spritely.institute/news/spritely-goblins-v010-for-guile-and-racket.html
+- https://defn.io/2022/11/12/ann-racket-lua/
+- http://racketscript.org/
+- [Lambda World 2019 - Language-Oriented Programming with Racket - Matthias Felleisen](https://www.youtube.com/watch?v=z8Pz4bJV3Tk)
+- https://web.archive.org/web/20230917075414/https://gopiandcode.uk/logs/log-racket-and-rhombus-sexp.html
+- https://github.com/racket/rhombus-prototype/blob/master/resources/state-of-rhombus.md
+- https://github.com/racket/racket/pull/4179
+- https://github.com/racket/zuo
+- https://racket.discourse.group/t/rendering-2-million-data-points-on-an-interactive-map/988?u=spdegabrielle
+- http://tech.perpetua.io/2022/01/generating-sqlite-bindings-with-racket-macros/
+- https://www.macadie.net/2019/08/11/thoughts-on-lisp-and-racket/
+  - https://news.ycombinator.com/item?id=28179463
+- [A Racket Perspective on Research, Education, and Production - Matthew Flatt](https://www.youtube.com/watch?v=LN0qG-i1iT0)
+- https://defn.io/2021/12/30/parallel-racket-web-server/
+- https://docs.racket-lang.org/rosette-guide/index.html
+- https://github.com/racket/rhombus-prototype/discussions/199
+- https://docs.racket-lang.org/goblins/
+- http://guillaume.baierouge.fr/2021/04/23/simulating-digital-circuits-in-racket/a-risc-v-core-in-racket/index.html
+- https://blog.racket-lang.org/2021/01/racket-status.html
+- https://blog.racket-lang.org/2020/02/racket-on-chez-status.html
+- [[http://blog.ezyang.com/2016/07/what-template-haskell-gets-wrong-and-racket-gets-right/][What Template Haskell gets wrong and Racket gets right :  Inside 245-5D]]
+- [[http://realmofracket.com/][Realm of Racket]]
+- [[http://www.ccs.neu.edu/home/matthias/HtDP2e/][How to Design Programs, Second Edition]]
+- [[http://www.ccs.neu.edu/home/matthias/Tmp/manifesto/][the Racket manifesto]]
+- [[http://news.ycombinator.com/item?id=9220468][John Carmack: “I just dumped the C++ server I wrote for a new one in Racket” | Hacker News]]
+- [[http://slides.com/ronie/racket-beyond-clojure#/][Racket - Lisp beyond do Clojure by Ronie Uliana]]
+- [[http://beautifulracket.com/][Beautiful Racket by Matthew Butterick]]
+- http://racket-lang.org/
+- [[https://github.com/lexi-lambda/hackett][GitHub - lexi-lambda/hackett: WIP implementation of a Haskell 98-like Lisp in Racket]]
+- [[https://news.ycombinator.com/item?id=13477107][Racket v6.8 | Hacker News]]
+- http://docs.racket-lang.org/nanopass/index.html
+- [[https://news.ycombinator.com/item?id=13881535][Beautiful Racket v1.0 | Hacker News]]
+- [[http://beautifulracket.com/appendix/why-racket-why-lisp.html][Beautiful Racket: Why Racket? Why Lisp?]]
+- http://blog.racket-lang.org/2017/04/type-tailoring.html
+- https://docs.racket-lang.org/2d/index.html
+- http://www.michaelburge.us/2018/03/06/continuations-in-racket.html
+- https://docs.racket-lang.org/ruckus/index.html
+- https://docs.racket-lang.org/reference/match.html
+- https://www.greghendershott.com/2018/05/extramaze-llc-using-racket-postgresql-aws-but-no-ads-or-js.html
+- https://docs.racket-lang.org/reference/eval-model.html
+- http://docs.racket-lang.org/rackjure/index.html
+- https://defn.io/2018/10/21/racket
+- https://www.greghendershott.com/2018/10/racket-mode.html
+- http://programming-puzzler.blogspot.com/2010/08/racket-vs-clojure.html
+- https://lobste.rs/s/q2kci7/racket_is_acceptable_python
+- https://defn.io/2019/06/17/racket-gui-saves/
+- https://www.greghendershott.com/2019/07/future-of-racket.html
+- https://defn.io/2019/09/05/racket-generators/
+- https://www.realmofracket.com/
+
+- YOUTUBE / RACKET CONFERENCES
+  - [[https://www.youtube.com/user/racketlang/playlists][RacketLang]]
+  - [[https://www.youtube.com/playlist?list=PLXr4KViVC0qI9t3lizitiFJ1cFIeN2Gdh][RacketCon 2014]]
+  - [[https://www.youtube.com/playlist?list=PLXr4KViVC0qJAsNuDeQzhFDjMK1gEdls8][RacketCon 2015]]
+  - [[https://www.youtube.com/playlist?list=PLXr4KViVC0qKSiKGO6Vz9EtxUfKPb1Ma0][RacketCon 2016]]
+  - [[https://www.youtube.com/playlist?list=PLXr4KViVC0qIgkwFFzM-0we_aoOfAl16Y][RacketCon 2017]]
+
+-->
+<h2 id="books"><a class="header" href="#books">Books</a></h2>
+<h3 id="basics--general---common-lisp"><a class="header" href="#basics--general---common-lisp">Basics &amp; General - Common Lisp</a></h3>
+<h4 id="common-lisp-a-gentle-introduction-to-symbolic-computation-david-touretzky"><a class="header" href="#common-lisp-a-gentle-introduction-to-symbolic-computation-david-touretzky">Common Lisp. A Gentle Introduction to Symbolic Computation [David Touretzky]</a></h4>
+<h4 id="practical-common-lisp-peter-seibel"><a class="header" href="#practical-common-lisp-peter-seibel">Practical Common Lisp [Peter Seibel]</a></h4>
+<h4 id="land-of-lisp-conrad-barski"><a class="header" href="#land-of-lisp-conrad-barski">Land of Lisp [Conrad Barski]</a></h4>
+<h4 id="ansi-common-lisp-paul-graham"><a class="header" href="#ansi-common-lisp-paul-graham">ANSI Common Lisp [Paul Graham]</a></h4>
+<h4 id="common-lisp-the-language-guy-steele"><a class="header" href="#common-lisp-the-language-guy-steele">Common Lisp the Language [Guy Steele]</a></h4>
+<h3 id="basics--general---scheme"><a class="header" href="#basics--general---scheme">Basics &amp; General - Scheme</a></h3>
+<h4 id="structure-and-interpretation-of-computer-programs-guy-steele"><a class="header" href="#structure-and-interpretation-of-computer-programs-guy-steele">Structure and Interpretation of Computer Programs [Guy Steele]</a></h4>
+<h4 id="the-little-schemer"><a class="header" href="#the-little-schemer">The Little Schemer</a></h4>
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<h4 id="common-lisp-an-interactive-approach-stuart-shapiro"><a class="header" href="#common-lisp-an-interactive-approach-stuart-shapiro">Common Lisp. An interactive approach [Stuart Shapiro]</a></h4>
+<h4 id="loving-lisp"><a class="header" href="#loving-lisp">Loving Lisp</a></h4>
+<h4 id="successful-lisp"><a class="header" href="#successful-lisp">Successful Lisp</a></h4>
+<h4 id="the-art-of-lisp-programming"><a class="header" href="#the-art-of-lisp-programming">The Art of Lisp Programming</a></h4>
+<h3 id="advanced--metaprogramming"><a class="header" href="#advanced--metaprogramming">Advanced &amp; Metaprogramming</a></h3>
+<h4 id="object-oriented-programming-in-common-lisp"><a class="header" href="#object-oriented-programming-in-common-lisp">Object-Oriented Programming in Common Lisp</a></h4>
+<h4 id="the-art-of-metaobject-protocol"><a class="header" href="#the-art-of-metaobject-protocol">The Art of Metaobject Protocol</a></h4>
+<h4 id="on-lisp"><a class="header" href="#on-lisp">On Lisp</a></h4>
+<h4 id="let-over-lambda"><a class="header" href="#let-over-lambda">Let over Lambda</a></h4>
+<h4 id="paradigms-of-artificial-intelligence"><a class="header" href="#paradigms-of-artificial-intelligence">Paradigms of Artificial Intelligence</a></h4>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../cse/languages/idris.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../cse/languages/lisp/the_bipolar_lisp_programmer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../cse/languages/idris.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../cse/languages/lisp/the_bipolar_lisp_programmer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>

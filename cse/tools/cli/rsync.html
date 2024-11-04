@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js tmpout">
+    <head>
+        <!-- Preload for some efficiency -->
+        <link rel="preload" as="font" type="font/woff" href="../fonts/gohu.woff" crossorigin>
+
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>rsync - PKB</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="My personal knowledge base">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "tmpout" : "tmpout";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('tmpout')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../../Home.html">Home</a></li><li class="chapter-item affix "><li class="part-title">Computer Science and Engineering</li><li class="chapter-item "><a href="../../../cse/mathematics/index.html">Mathematics</a></li><li class="chapter-item "><a href="../../../cse/algorithms/index.html">Algorithms</a></li><li class="chapter-item "><a href="../../../cse/ai/index.html">Artificial Intelligence</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/ai/timeline.html">AI Timeline</a></li><li class="chapter-item "><a href="../../../cse/ai/bdi.html">BDI Model</a></li><li class="chapter-item "><a href="../../../cse/ai/natural_language_processing.html">Natural Language Processing</a></li><li class="chapter-item "><a href="../../../cse/ai/richard_sutton.html">Richard Sutton</a></li><li class="chapter-item "><a href="../../../cse/ai/machine_learning_dev_ops.html">MLOps</a></li></ol></li><li class="chapter-item "><a href="../../../cse/compilers/index.html">Compilers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/compilers/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/compilers/bootstrapping_a_simple_compiler_from_nothing.html">Bootstrapping</a></li><li class="chapter-item "><a href="../../../cse/compilers/dynamic_languages_are_static_languages.html">Dynamic Languages</a></li><li class="chapter-item "><a href="../../../cse/compilers/llvm.html">LLVM</a></li><li class="chapter-item "><a href="../../../cse/compilers/static_analysis.html">Static Analysis</a></li><li class="chapter-item "><a href="../../../cse/compilers/why_inheritance_never_made_sense.html">Inheritance</a></li><li class="chapter-item "><a href="../../../cse/compilers/incremental_compilation.html">Incremental Compilation</a></li></ol></li><li class="chapter-item "><a href="../../../cse/distributed_systems/index.html">Distributed Systems</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/distributed_systems/books/index.html">Books</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/microservices.html">Microservices</a></li><li class="chapter-item "><a href="../../../cse/distributed_systems/observability.html">O11y</a></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/index.html">Programming Languages</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/ada.html">Ada</a></li><li class="chapter-item "><a href="../../../cse/languages/array.html">Array Languages</a></li><li class="chapter-item "><a href="../../../cse/languages/beam/index.html">BEAM</a></li><li class="chapter-item "><a href="../../../cse/languages/c.html">C</a></li><li class="chapter-item "><a href="../../../cse/languages/cpp.html">C++</a></li><li class="chapter-item "><a href="../../../cse/languages/go.html">Go</a></li><li class="chapter-item "><a href="../../../cse/languages/haskell.html">Haskell</a></li><li class="chapter-item "><a href="../../../cse/languages/idris.html">Idris</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/index.html">LISP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/lisp/the_bipolar_lisp_programmer.html">The Bipolar Lisp Programmer</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/the_lisp_curse.html">The Lisp Curse</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/racket.html">Racket</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/scheme.html">Scheme</a></li><li class="chapter-item "><a href="../../../cse/languages/lisp/common_lisp.html">Common Lisp</a></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/python.html">Python</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/index.html">Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_tracing.html">Tracing</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books.html">Resources: Books</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_trpl.html">The Rust Programming Language</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_progrust.html">Programming Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_mastering_rust.html">Mastering Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_rust_cookbook.html">Rust Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_rust_programming_cookbook.html">Rust Programming Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_standard_library_cookbook.html">Rust Standard Library Cookbook</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_data_structures_algorithms_with_rust.html">Data Structures and Algorithms in Rust</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_resources_books_high_performance.html">High Performance Rust</a></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib.html">Stdlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_01_intro.html">Intro</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_02_built_in_types.html">Built-in Types</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_03_error_handling.html">Error Handling</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_04_text.html">Text</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_05_containers.html">Containers</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_06_memory.html">Memory</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_07_types.html">Types</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_08_interacting_with_the_world.html">Interacting with the World</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_09_concurrency.html">Concurrency</a></li><li class="chapter-item "><a href="../../../cse/languages/rust/rust_stdlib_10_macros.html">Macros</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/languages/sql.html">SQL</a></li><li class="chapter-item "><a href="../../../cse/languages/zig.html">Zig</a></li></ol></li><li class="chapter-item "><a href="../../../cse/software_engineering/index.html">Software Engineering</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/index.html">Excellency</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/holding_a_program_in_ones_head.html">Holding a Program in One's Head</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/how_to_be_an_excellent_programmer.html">How to be an excellent programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/interviews.html">Interviews</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/pomodoro.html">Pomodoro</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/professional_programmer.html">Professional programmer</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/quality.html">Quality</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/stop_procrastination.html">Stop Procrastination</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/the_zone.html">The Zone</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/excellency/twelve_steps_to_better_code.html">Twelve Steps to Better Code</a></li></ol></li><li class="chapter-item "><a href="../../../cse/software_engineering/api_design.html">API Design</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/cohesion.html">Cohesion</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/debugging.html">Debugging</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/entity_component_systems.html">Entity Component Systems</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/formal_methods.html">Formal Methods</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/incremental.html">Incremental Computation</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/nasa.html">NASA</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/performance_engineering.html">Performance Engineering</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/reflections_on_programming.html">Reflections on Programming</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/state_machines.html">State Machines</a></li><li class="chapter-item "><a href="../../../cse/software_engineering/testing.html">Testing</a></li></ol></li><li class="chapter-item expanded "><a href="../../../cse/tools/index.html">Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../cse/tools/cli/index.html">CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/cli/git.html">git</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/nix.html">nix</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/nnn.html">nnn</a></li><li class="chapter-item expanded "><a href="../../../cse/tools/cli/rsync.html" class="active">rsync</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/sed.html">sed</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/ssh.html">ssh</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/tmsu.html">tmsu</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/tmux.html">tmux</a></li><li class="chapter-item "><a href="../../../cse/tools/cli/zsh.html">zsh</a></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/editors/index.html">Editors</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/editors/kakoune.html">Kakoune</a></li><li class="chapter-item "><a href="../../../cse/tools/editors/vim.html">Vim</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/tools/editors/vim_options.html">Vim Options</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../cse/tools/asciidoc.html">AsciiDoc</a></li><li class="chapter-item "><a href="../../../cse/tools/docker.html">Docker</a></li><li class="chapter-item "><a href="../../../cse/tools/elasticsearch.html">ElasticSearch</a></li><li class="chapter-item "><a href="../../../cse/tools/latex.html">Latex</a></li><li class="chapter-item "><a href="../../../cse/tools/networking.html">Networking</a></li><li class="chapter-item "><a href="../../../cse/tools/prometheus.html">Prometheus</a></li><li class="chapter-item "><a href="../../../cse/tools/reddragon.html">Red Dragon Draconic</a></li></ol></li><li class="chapter-item "><a href="../../../cse/misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../cse/misc/climate_modeling.html">Climate Modeling</a></li><li class="chapter-item "><a href="../../../cse/misc/crypto.html">Crypto</a></li><li class="chapter-item "><a href="../../../cse/misc/magic.html">Magic</a></li><li class="chapter-item "><a href="../../../cse/misc/pcg.html">PCG</a></li><li class="chapter-item "><a href="../../../cse/misc/quotes.html">Quotes</a></li><li class="chapter-item "><a href="../../../cse/misc/unix_philosophy.html">The Philosophy of Unix</a></li><li class="chapter-item "><a href="../../../cse/misc/scientific_method.html">The Scientific Method</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_python.html">The Zen of Python</a></li><li class="chapter-item "><a href="../../../cse/misc/zen_programmer.html">The Zen Programmer</a></li><li class="chapter-item "><a href="../../../cse/misc/webassembly.html">Webassembly</a></li><li class="chapter-item "><a href="../../../cse/misc/technical_and_scientific_writing.html">Writing</a></li></ol></li><li class="chapter-item "><li class="part-title">Humanities</li><li class="chapter-item "><a href="../../../hum/history/index.html">History</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/history/argentina.html">Historia Argentina</a></li><li class="chapter-item "><a href="../../../hum/history/euskal_herria.html">Historia de Vasconia</a></li></ol></li><li class="chapter-item "><a href="../../../hum/literature/index.html">Literature</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/literature/borges.html">Borges</a></li><li class="chapter-item "><a href="../../../hum/literature/dune.html">Dune</a></li></ol></li><li class="chapter-item "><a href="../../../hum/philosophy/index.html">Philosophy</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/index.html">Buddhism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_mind_illuminated.html">The Mind Illuminated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">Philosophy of Mind and Buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/anapanasanti.html">Anapanasanti</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddha_the_word.html">Buddha: the word</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/buddhas_way_and_abortion.html">Buddha's Way and abortion</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/comment_on_the_kesa_sutra.html">comment_on_the_kesa_sutra</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/death_is_a_sacrament.html">Death is a sacrament</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/detachment.html">Detachment</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/dokkodo.html">Dokkodo</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_dalai_lama.html">Emptiness: Dalai Lama</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_lama_zopa_rinpoche.html">emptiness_lama_zopa_rinpoche</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/emptiness_thanissaro_bikkhu.html">emptiness_thanissaro_bikkhu</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/historical_roots_of_zen.html">historical_roots_of_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/index.html">index</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/lecture_on_zen.html">lecture_on_zen</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/mountains_and_waters.html">mountains_and_waters</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/philosophy_of_mind_and_buddhism.html">philosophy_of_mind_and_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/red_thread_zen_the_tao_of_love_passion_and_sex.html">red_thread_zen_the_tao_of_love_passion_and_sex</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/seijo_and_her_soul_separated.html">seijo_and_her_soul_separated</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/taizan_teisho_ki.html">taizan_teisho_ki</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/teisho_path_of_the_bodhisattva.html">teisho_path_of_the_bodhisattva</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_pools.html">the_pools</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/the_second_precept_generosity.html">the_second_precept_generosity</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/vow_of_the_10_footsteps.html">vow_of_the_10_footsteps</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/yasutani_hakuun_roshi.html">yasutani_hakuun_roshi</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/yunmens_bright_light.html">yunmens_bright_light</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_buddhism.html">zen_buddhism</a></li><li class="chapter-item "><a href="../../../hum/philosophy/buddhism/zen_teachings_of_bodhidarma.html">zen_teachings_of_bodhidarma</a></li></ol></li><li class="chapter-item "><a href="../../../hum/philosophy/non_violent_communication.html">Non-Violent Communication</a></li><li class="chapter-item "><a href="../../../hum/philosophy/truth.html">The Simple Truth</a></li><li class="chapter-item "><a href="../../../hum/philosophy/philosophers.html">Philosophers</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/index.html">Politics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/anarchism.html">Anarchism</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../hum/politics/everything_you_wanted_to_know_about_anarchism.html">Everything you wanted to know about anarchism</a></li><li class="chapter-item "><a href="../../../hum/politics/why_self_organized_networks_will_destroy_hierarchies.html">Why self organized networks will destroy hierarchies</a></li><li class="chapter-item "><a href="../../../hum/politics/sustainable_economics.html">Sustainable Economics</a></li></ol></li><li class="chapter-item "><a href="../../../hum/politics/guide_to_forum_spies.html">Guide to Forum Spies</a></li><li class="chapter-item "><a href="../../../hum/politics/independencia_y_capitalismo.html">Independencia y Capitalismo</a></li><li class="chapter-item "><a href="../../../hum/politics/umberto_eco_ur_fascism.html">Ur Fascism</a></li></ol></li><li class="chapter-item "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../../../euskera/index.html">Euskera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/studying_languages_linguistics.html">Studying Languages & Linguistics</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe.html">HABE</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/habe/habe_a1.html">HABE A1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_a2.html">HABE A2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b1.html">HABE B1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_b2.html">HABE B2</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c1.html">HABE C1</a></li><li class="chapter-item "><a href="../../../euskera/habe/habe_c2.html">HABE C2</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/gramatica_didactica.html">Gramatica Didactica</a></li><li class="chapter-item "><a href="../../../euskera/nire_apunteak.html">Nire Apunteak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/lexiko.html">Lexiko</a></li><li class="chapter-item "><a href="../../../euskera/euskarazko_hiztegi_txikia.html">Euskarazko Hiztegi Txikia</a></li><li class="chapter-item "><a href="../../../euskera/izen_sintagma.html">Izen Sintagma</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/nombres.html">Nombres</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_femeninos.html">Nombres Femeninos</a></li><li class="chapter-item "><a href="../../../euskera/nombres_vascos_masculinos.html">Nombres Masculinos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres.html">Pronombres</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales.html">Pronombres personales</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_personales_intensivos.html">Pronombres personales intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos.html">Pronombres demostrativos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_demostrativos_intensivos.html">Pronombres demostrativos intensivos</a></li><li class="chapter-item "><a href="../../../euskera/pronombres_indeterminados.html">Pronombres indeterminados</a></li><li class="chapter-item "><a href="../../../euskera/adjektiboak.html">Adjektiboak</a></li></ol></li><li class="chapter-item "><a href="../../../euskera/aditzak.html">Aditzak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../euskera/aditz_laguntzaileak.html">Aditz Laguntzaileak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_bereziak.html">Aditz Bereziak</a></li><li class="chapter-item "><a href="../../../euskera/aditz_trinkoak.html">Aditz Trinkoak</a></li><li class="chapter-item "><a href="../../../euskera/nominalizazioa.html">Nominalizazioa</a></li><li class="chapter-item "><a href="../../../euskera/baldintzak.html">Baldintzak (Condicionales)</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../euskera/historia.html">Historia</a></li></ol></li><li class="chapter-item "><a href="../../../music/index.html">Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/index.html">Lyrics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/index.html">Aesop Rock</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/rings.html">Rings</a></li><li class="chapter-item "><a href="../../../music/lyrics/aesop_rock/none_shall_pass.html">None Shall Pass</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/index.html">Berri Txarrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/bisai_berriak.html">Bisai Berriak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/index.html">1999 Ikasten</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/01_ikasten.html">01 Ikasten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/02_iritsi.html">02 Iritsi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/03_soberan.html">03 Soberan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/04_off.html">04 Off</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/05_ez.html">05 Ez</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/06_aspaldian_utzitako_zelda.html">06 Aspaldian utzitako zelda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/07_betiko_leloaren_betiko_leloa.html">07 Betiko leloaren betiko leloa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/08_izebergaren_punta.html">08 Izebergaren punta</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/09_biluzik.html">09 Biluzik</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/10_minutu_bat.html">10 Minutu bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/1999_ikasten/11_ikusi_arte.html">11 Ikusi arte</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/index.html">2001 Eskuak-Ekubilak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/01_oihu.html">01 Oihu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/02_ebidenteegia.html">02 Ebidenteegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/03_ez_dut_nahi.html">03 Ez dut nahi</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/04_pangea.html">04 Pangea</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/05_biziraun.html">05 Biziraun</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/06_zirkua.html">06 Zirkua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/07_smt.html">07 SMT</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/08_lehia.html">08 Lehia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/09_mundua_begiratzeko_leihoak.html">09 Mundua begiratzeko leihoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/10_stereo.html">10 Stereo</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/11_hil_baino_lehenago.html">11 Hil baino lehenago</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/12_eskuak.html">12 Eskuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2001_eskuak_ekubilak/13_ukabilak.html">13 Ukabilak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/index.html">2003 Libre ©</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/01_hil_nintzen_eguna.html">01 Hil nintzen eguna</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/02_espero_zaitzaket.html">02 Espero zaitzaket</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/03_izena_izana_ezina.html">03 Izena, izana, ezina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/04_pintadek.html">04 Pintadek</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/05_emazten_fabore_ii.html">05 Emazten fabore II</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/06_kanta_goibelak.html">06 Kanta goibelak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/07_ez_naiz_aldatuko_esan_zuen_kameloiak.html">07 Ez naiz aldatuko (Esan zuen kamaleoiak)</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/08_denak_ez_du_balio.html">08 Denak ez du balio</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/09_irailak_10.html">09 Irailak 10</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/10_libre.html">10 Libre ©</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2003_libre/11_gezur_bat_mila_aldiz.html">11 Gezur bat mila aldiz</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/index.html">2005 Jaoi.Musika.Hil</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/01_zertarako_amestu.html">01 Zertarako amestu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/02_berba_eta_irudia.html">02 Berba eta irudia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/03_oreka.html">03 Oreka</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/04_iparra_galdu,_hegora_joan.html">04 Iparra galdu: Hegora joan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/05_jaoi_musika_hil.html">05 Jaio.Musika.Hil</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/06_onak_eta_txarra.html">06 Onak eta txarrak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/07_iraultza_txikien_asanblada.html">07 Iraultza txikien asanblada</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/08_bueltatzen.html">08 Bueltatzen</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/09_kezkak.html">09 Kezkak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/10_isiltzen_banaiz.html">10 Isiltzen banaiz</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/11_breyten.html">11 Breyten</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2005_jaoi_musika_hil/12_gelaneuria.html">12 Gelaneuria</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/index.html">2009 Payola</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/01_folklore.html">01 Folklore</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/02_gure_dekadentziaren_onenean.html">02 Gure dekadentziaren onenean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/03_maravillas.html">03 Maravillas</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/04_dortoken_mendean.html">04 Dortoken Mendean</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/05_achtung.html">05 Achtung!!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/06_payola.html">06 Payola</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/07_paperezkoa.html">07 Paperezkoa</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/08_etorkizuneko_aurrekari_guztiak.html">08 Etorkizuneko aurrekari guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/09_hasi_eta_bukatu.html">09 Hasi eta bukatu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/10_arren_darwish.html">10 Arren, Darwish</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2009_payola/11_jainko_ateoa.html">11 Jainko ateoa</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/index.html">2011 Haria</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/01_sugea_suge.html">01 Sugea suge</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/02_albo_kalteak.html">02 Albo-kalteak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/03_haria.html">03 Haria</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/04_guda.html">04 Guda</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/05_lepokoak.html">05 Lepokoak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/06_iraila.html">06 Iraila</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/07_harra.html">07 Harra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/08_makuluak.html">08 Makuluak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/09_faq.html">09 FAQ</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/10_non_bestela.html">10 Non bestela</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/11_soilik_agur.html">11 Soilik agur</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2011_haria/12_lehortzen.html">12 Lehortzen</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/index.html">2014 Denbora da poligrafo bakarra</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/index.html">I Sutxakurrak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/01_lanbroan.html">01 Lanbroan</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/02_ordaina.html">02 Ordaina</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/03_alegia.html">03 Alegia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/04_zimelkor.html">04 Zimelkor</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/05_armak.html">05 Armak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/06_etsia.html">06 Etsia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/i_sutxakurrak/07_sutxakurrak.html">07 Sutxakurrak</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/index.html">II Helduleku Guztiak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/01_aditu_bihurtuak.html">01 Aditu bihurtuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/02_bigarren_itzala.html">02 Bigarren itzala</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/03_lemak_aingurak.html">03 Lemak, aingurak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/04_poligrafo_bakarra.html">04 Poligrafo bakarra</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/05_bele_eraldoia.html">05 Bele erraldoia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/06_helduleku_guztiak.html">06 Helduleku guztiak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/ii_helduleku_guztiak/07_26_segundotan.html">07 26 segundotan</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/index.html">III Xake-Mate Kultural Bat</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/01_zerbait_asmatuko_dugu.html">01 Zerbait asmatuko dugu</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/02_hemen_sukaldarien_herrian.html">02 Hemen sukaldarien herrian</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/03_orain_norbait_zara.html">03 Orain norbait zara</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/04_hitzen_oinarri_ahula.html">04 Hitzen oinarri ahula</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/05_xake_mate_kultural_bat.html">05 Xake-mate kultural bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2014_denbora_da_poligrafo_bakarra/iii_xake_mate_kultural_bat/06_bigarren_eskuko_amets.html">06 Bigarren eskuko amets</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/index.html">2017 Infrasoinuak</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/01_dardaren_bat.html">01 Dardararen bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/02_zuri.html">02 Zuri</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/03_infrasoinuak.html">03 Infrasoinuak</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/04_spoiler.html">04 Spoiler!</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/05_zaldi_zauritua.html">05 Zaldi zauritua</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/06_beude.html">06 Beude</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/07_hozkia.html">07 Hozkia</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/08_sed_lex.html">08 Sed lex</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/09_katedral_bat.html">09 Katedral bat</a></li><li class="chapter-item "><a href="../../../music/lyrics/berri_txarrak/2017_infrasoinuak/10_zorionaren_lobbya.html">10 Zorionaren lobbya</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/index.html">Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/index.html">1995 Adrenaline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/01_bored.html">01 Bored</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/02_minus_blindfold.html">02 Minus Blindfold</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/03_one_weak.html">03 One Weak</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/04_nosebleed.html">04 Nosebleed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/05_lifter.html">05 Lifter</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/06_root.html">06 Root</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/07_7_words.html">07 7 Words</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/08_birthmark.html">08 Birthmark</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/09_engine_no_9.html">09 Engine No. 9</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/10_fireal.html">10 Fireal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1995_adrenaline/11_fist.html">11 Fist</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/index.html">1997 Around the Fur</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/01_my_own_summer_shove_it.html">01 My Own Summer (Shove It)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/02_lhabia.html">02 Lhabia.md</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/03_mascara.html">03 Mascara</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/04_around_the_fur.html">04 Around the Fur</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/05_rickets.html">05 Rickets</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/06_be_quiet_and_drive_far_away.html">06 Be Quiet and Drive (Far Away)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/07_lotion.html">07 Lotion</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/08_dai_the_flu.html">08 Dai the Flu</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/09_headup.html">09 Headup</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/10_mx.html">10 MX</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/1997_around_the_fur/11_damone.html">11 Damone</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/index.html">2000 White Pony</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/01_back_to_school_mini_maggit.html">01 Back to School (Mini Maggit)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/02_feiticeira.html">02 Feiticeira</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/03_digital_bath.html">03 Digital Bath</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/04_elite.html">04 Elite</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/05_rx_queen.html">05 Rx Queen</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/06_street_carp.html">06 Street Carp</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/07_teenager.html">07 Teenager</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/08_knife_prty.html">08 Knife Prty</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/09_korea.html">09 Korea</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/10_passenger.html">10 Passenger</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/11_change_in_the_house_of_flies.html">11 Change (In the House of Flies)</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2000_white_pony/12_pink_maggit.html">12 Pink Maggit</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/index.html">2003 Deftones</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/01_hexagram.html">01 Hexagram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/02_needles_and_pins.html">02 Needles and Pins</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/03_minerva.html">03 Minerva</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/04_good_morning_beautiful.html">04 Good Morning Beautiful</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/05_deathblow.html">05 Deathblow</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/06_when_girls_telephone_boys.html">06 When Girls Telephone Boys</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/07_battle_ax.html">07 Battle-axe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/08_lucky_you.html">08 Lucky You</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/09_bloody_cape.html">09 Bloody Cape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/10_anniversary_of_an_uninteresting_event.html">10 Anniversary of an Uninteresting Event</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2003_deftones/11_moana.html">11 Moana</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/index.html">2006 Saturday Night Wrist</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/01_hole_in_the_earth.html">01 Hole in the Earth</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/02_rapture.html">02 Rapture</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/03_beware.html">03 Beware</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/04_cherry_waves.html">04 Cherry Waves</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/05_mein.html">05 Mein</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/06_uuddlrlrabselectstart.html">06 U,U,D,D,L,R,L,R,A,B,Select,Start</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/07_xerces.html">07 Xerces</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/08_ratsratsrats.html">08 Rats!Rats!Rats!</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/09_pink_cellphone.html">09 Pink Cellphone</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/10_combat.html">10 Combat</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/11_kimdracula.html">11 Kimdracula</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/12_riviere.html">12 Rivière</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2006_saturday_night_wrist/13_drive.html">13 Drive</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/index.html">2010 Diamond Eyes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/01_diamond_eyes.html">01 Diamond Eyes</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/02_royal.html">02 Royal</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/03_cmnd_ctrl.html">03 CMND/CTRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/04_youve_seen_the_butcher.html">04 You've Seen the Butcher</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/05_beauty_school.html">05 Beauty School</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/06_prince.html">06 Prince</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/07_rocket_skates.html">07 Rocket Skates</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/08_sextape.html">08 Sextape</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/09_risk.html">09 Risk</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/10_976_evil.html">10 976-EVIL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/11_this_place_is_death.html">11 This Place is Death</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/12_do_you_believe.html">12 Do You Believe</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/13_ghosts.html">13 Ghosts</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2010_diamond_eyes/14_caress.html">14 Caress</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/index.html">2012 Koi No Yokan</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/01_swerve_city.html">01 Swerve City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/02_romantic_dreams.html">02 Romantic Dreams</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/03_leathers.html">03 Leathers</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/04_poltergeist.html">04 Poltergeist</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/05_entombed.html">05 Entombed</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/06_graphic_nature.html">06 Graphic Nature</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/07_tempest.html">07 Tempest</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/08_gauze.html">08 Gauze</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/09_rosemary.html">09 Rosemary</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/10_goon_squad.html">10 Goon Squad</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2012_koi_no_yokan/11_what_happened_to_you.html">11 What Happened to You?</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/index.html">2016 Gore</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/01_prayers_triangles.html">01 Prayers/Triangles</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/02_acid_hologram.html">02 Acid Hologram</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/03_doomed_user.html">03 Doomed User</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/04_geometric_headdress.html">04 Geometric Headdress</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/05_hearts_wires.html">05 Hearts/Wires</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/06_pittura_infamante.html">06 Pittura Infamante</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/07_xenon.html">07 Xenon</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/08_lmirl.html">08 (L)MIRL</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/09_gore.html">09 Gore</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/10_phantom_bride.html">10 Phantom Bride</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2016_gore/11_rubicon.html">11 Rubicon</a></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/index.html">2020 Ohms</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/01_genesis.html">01 Genesis</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/02_ceremony.html">02 Ceremony</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/03_urantia.html">03 Urantia</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/04_error.html">04 Error</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/05_the_spell_of_mathematics.html">05 The Spell of Mathematics</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/06_pompeji.html">06 Pompeji</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/07_this_link_is_dead.html">07 This Link is Dead</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/08_radiant_city.html">08 Radiant City</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/09_headless.html">09 Headless</a></li><li class="chapter-item "><a href="../../../music/lyrics/deftones/2020_ohms/10_ohms.html">10 Ohms</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/lyrics/tool/index.html">Tool</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/lyrics/tool/1993_undertow/index.html">1993 Undertow</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/1996_aenima/index.html">1996 Aenima</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2001_lateralus/index.html">2001 Lateralus</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2006_10000_days/index.html">2006 10000 Days</a></li><li class="chapter-item "><a href="../../../music/lyrics/tool/2019_fear_inoculum/index.html">2019 Fear Inoculum</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../music/tabs/index.html">Tabs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../music/tabs/alien_ant_farm__smooth_criminal.html">Alien Ant Farm - Smooth Criminal</a></li><li class="chapter-item "><a href="../../../music/tabs/at_the_drive_in__enfilade.html">At the Drive-In - Enfilade</a></li><li class="chapter-item "><a href="../../../music/tabs/audioslave__out_of_exile.html">Audioslave - Out of Exile</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__one_weak.html">Deftones - One Weak</a></li><li class="chapter-item "><a href="../../../music/tabs/deftones__root.html">Deftones - Root</a></li><li class="chapter-item "><a href="../../../music/tabs/the_mars_volta__son_et_lumiere_inertiatic_esp.html">The Mars Volta - Son et Lumiere & Inertiatic ESP</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__ghost_riders.html">The Surfaris - Ghost Riders</a></li><li class="chapter-item "><a href="../../../music/tabs/the_surfaris__wipeout.html">The Surfaris - Wipeout</a></li></ol></li><li class="chapter-item "><a href="../../../music/wave.html">*wave</a></li><li class="chapter-item "><a href="../../../music/classical.html">Classical Music</a></li><li class="chapter-item "><a href="../../../music/jazz.html">Jazz</a></li></ol></li><li class="chapter-item "><a href="../../../misc/index.html">Misc</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/aikido.html">Aikido</a></li><li class="chapter-item "><a href="../../../misc/checklists/index.html">Checklists</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/checklists/shopping.html">Shopping</a></li><li class="chapter-item "><a href="../../../misc/checklists/travel.html">Travel</a></li><li class="chapter-item "><a href="../../../misc/checklists/car.html">Car</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cooking/index.html">Cooking</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/cooking/arroz_con_hongos.html">Arroz con Hongos</a></li><li class="chapter-item "><a href="../../../misc/cooking/croquetas_de_acelga_o_espinaca.html">Croquetas de Acelga/Espinaca</a></li><li class="chapter-item "><a href="../../../misc/cooking/gluhwein.html">Glühwein</a></li><li class="chapter-item "><a href="../../../misc/cooking/hotcakes.html">Hotcakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/mayonesa.html">Mayonesa</a></li><li class="chapter-item "><a href="../../../misc/cooking/pan_masa_madre.html">Pan de Masa Madre</a></li><li class="chapter-item "><a href="../../../misc/cooking/pancakes.html">Pancakes</a></li><li class="chapter-item "><a href="../../../misc/cooking/sopa_de_arvejas.html">Sopa de Arvejas</a></li></ol></li><li class="chapter-item "><a href="../../../misc/cyberpunk.html">Cyberpunk</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/ghost_in_the_shell.html">Ghost in the Shell</a></li></ol></li><li class="chapter-item "><a href="../../../misc/library/index.html">Library</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../misc/library/wishlist.html">Wishlist</a></li></ol></li><li class="chapter-item "><a href="../../../misc/machine_poetry.html">Machine Poetry</a></li><li class="chapter-item "><a href="../../../misc/numbers.html">Numbers</a></li><li class="chapter-item "><a href="../../../misc/permaculture.html">Permaculture</a></li><li class="chapter-item "><a href="../../../misc/si_imperial_conversion.html">SI - Imperial Conversion</a></li><li class="chapter-item "><a href="../../../misc/traditional_japanese_architecture.html">Traditional Japanese Architecture</a></li><li class="chapter-item "><a href="../../../misc/words.html">Words</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="tmpout">TmpOut (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+<!-- 
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+-->
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PKB</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="rsync"><a class="header" href="#rsync">RSync</a></h1>
+<p><code>rsync</code>'s speciality lies in its ability to analyse files and only copy the changes made to files rather than all files.
+This can lead to enormous improvements when copying a directory tree a second time.</p>
+<h5 id="trailing-slashes"><a class="header" href="#trailing-slashes">Trailing slashes</a></h5>
+<ul>
+<li>
+<p><code>/home/user/dir</code>: without the trailing slash, it will copy the directory contents in its entirety</p>
+</li>
+<li>
+<p><code>/home/user/dir/</code>: with the trailing slash, will copy the contents of the directory but won't recreate the directory</p>
+</li>
+</ul>
+<p>If you're trying to replicate a directory structure with rsync, you should omit the trailing slash, for instance, if you're mirroring /var/www on another machine or something like that.</p>
+<h5 id="hidden-files"><a class="header" href="#hidden-files">Hidden files</a></h5>
+<p><code>rsync</code> will move hidden files without any special options.</p>
+<p>If you want to exclude hidden files, you can use the option <code>--exclude=".*/"</code></p>
+<p>You can also use the <code>--exclude</code> option to prevent copying things like Vim's swap files (<code>.swp</code>) and automatic backups (<code>.bak</code>) created by some programs.</p>
+<h5 id="delete-files"><a class="header" href="#delete-files">Delete files</a></h5>
+<p>If you want to make sure that local files you've deleted since the last time you ran rsync are deleted from the external system as well, you'll want to add the <code>--deleted</code> option, like so:</p>
+<pre><code>rsync -avh --delete /home/user/dir/ /media/disk/backup
+</code></pre>
+<h5 id="dry-runs"><a class="header" href="#dry-runs">Dry runs</a></h5>
+<p>While you're getting used to <code>rsync</code>, it's probably a good idea to use the <code>--dry-run</code> option with your commands to run through the transfer first, without actually copying or synching files.</p>
+<h5 id="examples"><a class="header" href="#examples">Examples</a></h5>
+<pre><code>rsync [options] source destination
+</code></pre>
+<pre><code>export SRC=/media/igaray/1373c3ad-4dc6-4e88-aac3-2c29e0f94d68/igarai@gmail.com/backup/applications/
+export DST=/media/igaray/DATA-4T/igarai@gmail.com/applications/
+rsync --dry-run --delete --verbose --human-readable --stats --itemize-changes --progress --recursive --links --no-perms --no-times --group --owner --devices --specials --size-only --exclude='.DS_Store' --exclude='Thumbs.db' --exclude='\._*' $SRC $DST
+</code></pre>
+<h5 id="options-summary"><a class="header" href="#options-summary">Options Summary</a></h5>
+<p>Here is a short summary of the options available in rsync.</p>
+<pre><code>-v, --verbose               increase verbosity
+    --info=FLAGS            fine-grained informational verbosity
+    --debug=FLAGS           fine-grained debug verbosity
+    --msgs2stderr           special output handling for debugging
+-q, --quiet                 suppress non-error messages
+    --no-motd               suppress daemon-mode MOTD (see caveat)
+-c, --checksum              skip based on checksum, not mod-time &amp; size
+-a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
+    --no-OPTION             turn off an implied OPTION (e.g. --no-D)
+-r, --recursive             recurse into directories
+-R, --relative              use relative path names
+    --no-implied-dirs       don't send implied dirs with --relative
+-b, --backup                make backups (see --suffix &amp; --backup-dir)
+    --backup-dir=DIR        make backups into hierarchy based in DIR
+    --suffix=SUFFIX         backup suffix (default ~ w/o --backup-dir)
+-u, --update                skip files that are newer on the receiver
+    --inplace               update destination files in-place
+    --append                append data onto shorter files
+    --append-verify         --append w/old data in file checksum
+-d, --dirs                  transfer directories without recursing
+-l, --links                 copy symlinks as symlinks
+-L, --copy-links            transform symlink into referent file/dir
+    --copy-unsafe-links     only "unsafe" symlinks are transformed
+    --safe-links            ignore symlinks that point outside the tree
+    --munge-links           munge symlinks to make them safer
+-k, --copy-dirlinks         transform symlink to dir into referent dir
+-K, --keep-dirlinks         treat symlinked dir on receiver as dir
+-H, --hard-links            preserve hard links
+-p, --perms                 preserve permissions
+-E, --executability         preserve executability
+    --chmod=CHMOD           affect file and/or directory permissions
+-A, --acls                  preserve ACLs (implies -p)
+-X, --xattrs                preserve extended attributes
+-o, --owner                 preserve owner (super-user only)
+-g, --group                 preserve group
+    --devices               preserve device files (super-user only)
+    --specials              preserve special files
+-D                          same as --devices --specials
+-t, --times                 preserve modification times
+-O, --omit-dir-times        omit directories from --times
+-J, --omit-link-times       omit symlinks from --times
+    --super                 receiver attempts super-user activities
+    --fake-super            store/recover privileged attrs using xattrs
+-S, --sparse                turn sequences of nulls into sparse blocks
+    --preallocate           allocate dest files before writing
+-n, --dry-run               perform a trial run with no changes made
+-W, --whole-file            copy files whole (w/o delta-xfer algorithm)
+    --checksum-choice=STR   choose the checksum algorithms
+-x, --one-file-system       don't cross filesystem boundaries
+-B, --block-size=SIZE       force a fixed checksum block-size
+-e, --rsh=COMMAND           specify the remote shell to use
+    --rsync-path=PROGRAM    specify the rsync to run on remote machine
+    --existing              skip creating new files on receiver
+    --ignore-existing       skip updating files that exist on receiver
+    --remove-source-files   sender removes synchronized files (non-dir)
+    --del                   an alias for --delete-during
+    --delete                delete extraneous files from dest dirs
+    --delete-before         receiver deletes before xfer, not during
+    --delete-during         receiver deletes during the transfer
+    --delete-delay          find deletions during, delete after
+    --delete-after          receiver deletes after transfer, not during
+    --delete-excluded       also delete excluded files from dest dirs
+    --ignore-missing-args   ignore missing source args without error
+    --delete-missing-args   delete missing source args from destination
+    --ignore-errors         delete even if there are I/O errors
+    --force                 force deletion of dirs even if not empty
+    --max-delete=NUM        don't delete more than NUM files
+    --max-size=SIZE         don't transfer any file larger than SIZE
+    --min-size=SIZE         don't transfer any file smaller than SIZE
+    --partial               keep partially transferred files
+    --partial-dir=DIR       put a partially transferred file into DIR
+    --delay-updates         put all updated files into place at end
+-m, --prune-empty-dirs      prune empty directory chains from file-list
+    --numeric-ids           don't map uid/gid values by user/group name
+    --usermap=STRING        custom username mapping
+    --groupmap=STRING       custom groupname mapping
+    --chown=USER:GROUP      simple username/groupname mapping
+    --timeout=SECONDS       set I/O timeout in seconds
+    --contimeout=SECONDS    set daemon connection timeout in seconds
+-I, --ignore-times          don't skip files that match size and time
+    --size-only             skip files that match in size
+-@, --modify-window=NUM     set the accuracy for mod-time comparisons
+-T, --temp-dir=DIR          create temporary files in directory DIR
+-y, --fuzzy                 find similar file for basis if no dest file
+    --compare-dest=DIR      also compare received files relative to DIR
+    --copy-dest=DIR         ... and include copies of unchanged files
+    --link-dest=DIR         hardlink to files in DIR when unchanged
+-z, --compress              compress file data during the transfer
+    --compress-level=NUM    explicitly set compression level
+    --skip-compress=LIST    skip compressing files with suffix in LIST
+-C, --cvs-exclude           auto-ignore files in the same way CVS does
+-f, --filter=RULE           add a file-filtering RULE
+-F                          same as --filter='dir-merge /.rsync-filter'
+                            repeated: --filter='- .rsync-filter'
+    --exclude=PATTERN       exclude files matching PATTERN
+    --exclude-from=FILE     read exclude patterns from FILE
+    --include=PATTERN       don't exclude files matching PATTERN
+    --include-from=FILE     read include patterns from FILE
+    --files-from=FILE       read list of source-file names from FILE
+-0, --from0                 all *from/filter files are delimited by 0s
+-s, --protect-args          no space-splitting; wildcard chars only
+    --address=ADDRESS       bind address for outgoing socket to daemon
+    --port=PORT             specify double-colon alternate port number
+    --sockopts=OPTIONS      specify custom TCP options
+    --blocking-io           use blocking I/O for the remote shell
+    --outbuf=N|L|B          set out buffering to None, Line, or Block
+    --stats                 give some file-transfer stats
+-8, --8-bit-output          leave high-bit chars unescaped in output
+-h, --human-readable        output numbers in a human-readable format
+    --progress              show progress during transfer
+-P                          same as --partial --progress
+-i, --itemize-changes       output a change-summary for all updates
+-M, --remote-option=OPTION  send OPTION to the remote side only
+    --out-format=FORMAT     output updates using the specified FORMAT
+    --log-file=FILE         log what we're doing to the specified FILE
+    --log-file-format=FMT   log updates using the specified FMT
+    --password-file=FILE    read daemon-access password from FILE
+    --list-only             list the files instead of copying them
+    --bwlimit=RATE          limit socket I/O bandwidth
+    --stop-at=y-m-dTh:m     Stop rsync at year-month-dayThour:minute
+    --time-limit=MINS       Stop rsync after MINS minutes have elapsed
+    --write-batch=FILE      write a batched update to FILE
+    --only-write-batch=FILE like --write-batch but w/o updating dest
+    --read-batch=FILE       read a batched update from FILE
+    --protocol=NUM          force an older protocol version to be used
+    --iconv=CONVERT_SPEC    request charset conversion of filenames
+    --checksum-seed=NUM     set block/file checksum seed (advanced)
+    --noatime               do not alter atime when opening source files
+-4, --ipv4                  prefer IPv4
+-6, --ipv6                  prefer IPv6
+    --version               print version number
+(-h) --help                  show this help (see below for -h comment)
+</code></pre>
+<pre><code> -v, --verbose
+        This  option  increases  the  amount  of information you are given during the transfer.  By default, rsync works silently. A single -v will give you information about what files are being
+        transferred and a brief summary at the end. Two -v options will give you information on what files are being skipped and slightly more information at the end. More  than  two  -v  options
+        should only be used if you are debugging rsync.
+
+        In  a  modern  rsync,  the  -v option is equivalent to the setting of groups of --info and --debug options.  You can choose to use these newer options in addition to, or in place of using
+        --verbose, as any fine-grained settings override the implied settings of -v.  Both --info and --debug have a way to ask for help that tells you exactly what flags are  set  for  each  in‐
+        crease in verbosity.
+
+        However, do keep in mind that a daemon’s "max verbosity" setting will limit how high of a level the various individual flags can be set on the daemon side.  For instance, if the max is 2,
+        then any info and/or debug flag that is set to a higher value than what would be set by -vv will be downgraded to the -vv level in the daemon’s logging.
+
+ --info=FLAGS
+        This option lets you have fine-grained control over the information output you want to see.  An individual flag name may be followed by a level number, with 0 meaning to silence that out‐
+        put,  1 being the default output level, and higher numbers increasing the output of that flag (for those that support higher levels).  Use --info=help to see all the available flag names,
+        what they output, and what flag names are added for each increase in the verbose level.  Some examples:
+
+            rsync -a --info=progress2 src/ dest/
+            rsync -avv --info=stats2,misc1,flist0 src/ dest/
+
+        Note that --info=name’s output is affected by the --out-format and --itemize-changes (-i) options.  See those options for more information on what is output and when.
+
+        This option was added to 3.1.0, so an older rsync on the server side might reject your attempts at fine-grained control (if one or more flags needed to be  send  to  the  server  and  the
+        server was too old to understand them).  See also the "max verbosity" caveat above when dealing with a daemon.
+
+        FLAGS:
+
+        Use OPT or OPT1 for level 1 output, OPT2 for level 2, etc.; OPT0 silences.
+
+        BACKUP     Mention files backed up
+        COPY       Mention files copied locally on the receiving side
+        DEL        Mention deletions on the receiving side
+        FLIST      Mention file-list receiving/sending (levels 1-2)
+        MISC       Mention miscellaneous information (levels 1-2)
+        MOUNT      Mention mounts that were found or skipped
+        NAME       Mention 1) updated file/dir names, 2) unchanged names
+        PROGRESS   Mention 1) per-file progress or 2) total transfer progress
+        REMOVE     Mention files removed on the sending side
+        SKIP       Mention files that are skipped due to options used
+        STATS      Mention statistics at end of run (levels 1-3)
+        SYMSAFE    Mention symlinks that are unsafe
+
+        ALL        Set all --info options (e.g. all4)
+        NONE       Silence all --info options (same as all0)
+        HELP       Output this help message
+
+        Options added for each increase in verbose level:
+        1) COPY,DEL,FLIST,MISC,NAME,STATS,SYMSAFE
+        2) BACKUP,MISC2,MOUNT,NAME2,REMOVE,SKIP
+
+ --debug=FLAGS
+        This  option lets you have fine-grained control over the debug output you want to see.  An individual flag name may be followed by a level number, with 0 meaning to silence that output, 1
+        being the default output level, and higher numbers increasing the output of that flag (for those that support higher levels).  Use --debug=help to see all the available flag  names,  what
+        they output, and what flag names are added for each increase in the verbose level.  Some examples:
+
+            rsync -avvv --debug=none src/ dest/
+            rsync -avA --del --debug=del2,acl src/ dest/
+
+        Note that some debug messages will only be output when --msgs2stderr is specified, especially those pertaining to I/O and buffer debugging.
+
+        This  option  was  added  to  3.1.0,  so an older rsync on the server side might reject your attempts at fine-grained control (if one or more flags needed to be send to the server and the
+        server was too old to understand them).  See also the "max verbosity" caveat above when dealing with a daemon.
+
+        FLAGS:
+
+        Use OPT or OPT1 for level 1 output, OPT2 for level 2, etc.; OPT0 silences.
+
+        ACL        Debug extra ACL info
+        BACKUP     Debug backup actions (levels 1-2)
+        BIND       Debug socket bind actions
+        CHDIR      Debug when the current directory changes
+        CONNECT    Debug connection events (levels 1-2)
+        CMD        Debug commands+options that are issued (levels 1-2)
+        DEL        Debug delete actions (levels 1-3)
+        DELTASUM   Debug delta-transfer checksumming (levels 1-4)
+        DUP        Debug weeding of duplicate names
+        EXIT       Debug exit events (levels 1-3)
+        FILTER     Debug filter actions (levels 1-2)
+        FLIST      Debug file-list operations (levels 1-4)
+        FUZZY      Debug fuzzy scoring (levels 1-2)
+        GENR       Debug generator functions
+        HASH       Debug hashtable code
+        HLINK      Debug hard-link actions (levels 1-3)
+        ICONV      Debug iconv character conversions (levels 1-2)
+        IO         Debug I/O routines (levels 1-4)
+        OWN        Debug ownership changes in users &amp; groups (levels 1-2)
+        PROTO      Debug protocol information
+        RECV       Debug receiver functions
+        SEND       Debug sender functions
+        TIME       Debug setting of modified times (levels 1-2)
+
+        ALL        Set all --debug options (e.g. all4)
+        NONE       Silence all --debug options (same as all0)
+        HELP       Output this help message
+
+        Options added for each increase in verbose level:
+        2) BIND,CONNECT,CMD,DEL,DELTASUM,DUP,FILTER,FLIST,ICONV
+        3) ACL,BACKUP,CONNECT2,DEL2,DELTASUM2,EXIT,FILTER2,FLIST2,FUZZY,GENR,OWN,RECV,SEND,TIME
+        4) CMD2,DEL3,DELTASUM3,EXIT2,FLIST3,ICONV2,OWN2,PROTO,TIME2
+        5) CHDIR,DELTASUM4,FLIST4,FUZZY2,HASH,HLINK
+
+ --size-only
+        This modifies rsync’s "quick check" algorithm for finding files that need to be transferred, changing it from the default of transferring files with either a changed  size  or  a  changed
+        last-modified  time  to just looking for files that have changed in size.  This is useful when starting to use rsync after using another mirroring system which may not preserve timestamps
+        exactly.
+
+ -c, --checksum
+        This  changes  the  way rsync checks if the files have been changed and are in need of a transfer.  Without this option, rsync uses a "quick check" that (by default) checks if each file’s
+        size and time of last modification match between the sender and receiver.  This option changes this to compare a 128-bit checksum for each file that has a matching size.   Generating  the
+        checksums  means  that  both  sides will expend a lot of disk I/O reading all the data in the files in the transfer (and this is prior to any reading that will be done to transfer changed
+        files), so this can slow things down significantly.
+
+        The sending side generates its checksums while it is doing the file-system scan that builds the list of the available files.  The receiver generates its checksums when it is scanning  for
+        changed files, and will checksum any file that has the same size as the corresponding sender’s file:  files with either a changed size or a changed checksum are selected for transfer.
+
+        Note  that  rsync  always  verifies  that each transferred file was correctly reconstructed on the receiving side by checking a whole-file checksum that is generated as the file is trans‐
+        ferred, but that automatic after-the-transfer verification has nothing to do with this option’s before-the-transfer "Does this file need to be updated?" check.
+
+        For protocol 30 and beyond (first supported in 3.0.0), the checksum used is MD5.  For older protocols, the checksum used is MD4.
+
+ --no-OPTION
+        You  may  turn off one or more implied options by prefixing the option name with "no-".  Not all options may be prefixed with a "no-": only options that are implied by other options (e.g.
+        --no-D, --no-perms) or have different defaults in various circumstances (e.g. --no-whole-file, --no-blocking-io, --no-dirs).  You may specify either the short or the long option name  af‐
+        ter the "no-" prefix (e.g. --no-R is the same as --no-relative).
+
+        For example: if you want to use -a (--archive) but don’t want -o (--owner), instead of converting -a into -rlptgD, you could specify -a --no-o (or -a --no-owner).
+
+        The  order  of  the  options  is  important:   if  you  specify  --no-r  -a, the -r option would end up being turned on, the opposite of -a --no-r.  Note also that the side-effects of the
+        --files-from option are NOT positional, as it affects the default state of several options and slightly changes the meaning of -a (see the --files-from option for more details).
+
+ -r, --recursive
+        This tells rsync to copy directories recursively.  See also --dirs (-d).
+
+        Beginning with rsync 3.0.0, the recursive algorithm used is now an incremental scan that uses much less memory than before and begins the transfer after the scanning of the first few  di‐
+        rectories  have  been completed.  This incremental scan only affects our recursion algorithm, and does not change a non-recursive transfer.  It is also only possible when both ends of the
+        transfer are at least version 3.0.0.
+
+        Some options require rsync to know the full file list, so these options disable the incremental recursion mode.  These include: --delete-before,  --delete-after,  --prune-empty-dirs,  and
+        --delay-updates.  Because of this, the default delete mode when you specify --delete is now --delete-during when both ends of the connection are at least 3.0.0 (use --del or --delete-dur‐
+        ing to request this improved deletion mode explicitly).  See also the --delete-delay option that is a better choice than using --delete-after.
+
+        Incremental recursion can be disabled using the --no-inc-recursive option or its shorter --no-i-r alias.
+
+ -p, --perms
+        This  option causes the receiving rsync to set the destination permissions to be the same as the source permissions.  (See also the --chmod option for a way to modify what rsync considers
+        to be the source permissions.)
+
+        When this option is off, permissions are set as follows:
+
+        o      Existing files (including updated files) retain their existing permissions, though the --executability option might change just the execute permission for the file.
+
+        o      New files get their "normal" permission bits set to the source file’s permissions masked with the receiving directory’s default permissions (either the receiving  process’s  umask,
+               or the permissions specified via the destination directory’s default ACL), and their special permission bits disabled except in the case where a new directory inherits a setgid bit
+               from its parent directory.
+
+        Thus, when --perms and --executability are both disabled, rsync’s behavior is the same as that of other file-copy utilities, such as cp(1) and tar(1).
+
+        In summary: to give destination files (both old and new) the source permissions, use --perms.  To give new files the destination-default permissions  (while  leaving  existing  files  un‐
+        changed),  make  sure  that  the  --perms option is off and use --chmod=ugo=rwX (which ensures that all non-masked bits get enabled).  If you’d care to make this latter behavior easier to
+        type, you could define a popt alias for it, such as putting this line in the file ~/.popt (the following defines the -Z option, and includes --no-g to use the default group of the  desti‐
+        nation dir):
+
+        rsync alias -Z --no-p --no-g --chmod=ugo=rwX
+
+        You could then use this new option in a command such as this one:
+
+        rsync -avZ src/ dest/
+
+        (Caveat: make sure that -a does not follow -Z, or it will re-enable the two "--no-*" options mentioned above.)
+
+        The  preservation  of the destination’s setgid bit on newly-created directories when --perms is off was added in rsync 2.6.7.  Older rsync versions erroneously preserved the three special
+        permission bits for newly-created files when --perms was off, while overriding the destination’s setgid bit setting on a newly-created directory.  Default ACL observance was added to  the
+        ACL  patch  for rsync 2.6.7, so older (or non-ACL-enabled) rsyncs use the umask even if default ACLs are present.  (Keep in mind that it is the version of the receiving rsync that affects
+        these behaviors.)
+
+ -E, --executability
+        This option causes rsync to preserve the executability (or non-executability) of regular files when --perms is not enabled.  A regular file is considered to be executable if at least  one
+        ’x’  is  turned on in its permissions.  When an existing destination file’s executability differs from that of the corresponding source file, rsync modifies the destination file’s permis‐
+        sions as follows:
+
+        o      To make a file non-executable, rsync turns off all its ’x’ permissions.
+
+        o      To make a file executable, rsync turns on each ’x’ permission that has a corresponding ’r’ permission enabled.
+
+        If --perms is enabled, this option is ignored.
+
+ -o, --owner
+        This option causes rsync to set the owner of the destination file to be the same as the source file, but only if the receiving rsync is being run as the super-user (see also  the  --super
+        and --fake-super options).  Without this option, the owner of new and/or transferred files are set to the invoking user on the receiving side.
+
+        The  preservation  of ownership will associate matching names by default, but may fall back to using the ID number in some circumstances (see also the --numeric-ids option for a full dis‐
+        cussion).
+
+ -g, --group
+        This option causes rsync to set the group of the destination file to be the same as the source file.  If the receiving program is not running as the super-user (or if --no-super was spec‐
+        ified),  only groups that the invoking user on the receiving side is a member of will be preserved.  Without this option, the group is set to the default group of the invoking user on the
+        receiving side.
+
+        The preservation of group information will associate matching names by default, but may fall back to using the ID number in some circumstances (see also the  --numeric-ids  option  for  a
+        full discussion).
+
+ --devices
+        This  option  causes rsync to transfer character and block device files to the remote system to recreate these devices.  This option has no effect if the receiving rsync is not run as the
+        super-user (see also the --super and --fake-super options).
+
+ --specials
+        This option causes rsync to transfer special files such as named sockets and fifos.
+
+ -t, --times
+        This tells rsync to transfer modification times along with the files and update them on the remote system.  Note that if this option is not used, the optimization that excludes files that
+        have  not  been  modified  cannot be effective; in other words, a missing -t or -a will cause the next transfer to behave as if it used -I, causing all files to be updated (though rsync’s
+        delta-transfer algorithm will make the update fairly efficient if the files haven’t actually changed, you’re much better off using -t).
+
+ -O, --omit-dir-times
+        This tells rsync to omit directories when it is preserving modification times (see --times).  If NFS is sharing the directories on the receiving side, it is a good idea to use  -O.   This
+        option is inferred if you use --backup without --backup-dir.
+
+        This  option also has the side-effect of avoiding early creation of directories in incremental recursion copies.  The default --inc-recursive copying normally does an early-create pass of
+        all the sub-directories in a parent directory in order for it to be able to then set the modify time of the parent directory right away (without having to delay that until a bunch of  re‐
+        cursive  copying  has  finished).  This early-create idiom is not necessary if directory modify times are not being preserved, so it is skipped.  Since early-create directories don’t have
+        accurate mode, mtime, or ownership, the use of this option can help when someone wants to avoid these partially-finished directories.
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../cse/tools/cli/nnn.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../../cse/tools/cli/sed.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../cse/tools/cli/nnn.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../../cse/tools/cli/sed.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../../assets/js/mermaid/mermaid-init.js"></script>
+
+
+    </body>
+</html>
